@@ -1,0 +1,12 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.18.0/inter.css");
+
+.App {
+  font-family: Inter;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 45vh;
+  font-size: 30px;
+}
+
