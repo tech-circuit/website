@@ -1,16 +1,42 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import { GoogleLogin } from 'react-google-login';
 import GoogleButton from 'react-google-button'
 
 const clientId = '884360040700-4093n49it73naktrttlljb9ad6ga4jjo.apps.googleusercontent.com';
 
 function Login() {
+  const [profile, setProfile] = useState(null);
+  
   const onSuccess = (res) => {
-    console.log(res.profileObj)
+    const { email, familyName, givenName, googleId, imageUrl, name } = res.profileObj
     const authToken = res.tokenObj.access_token
     localStorage.setItem("authToken", authToken)
-    // send api request to add user
+    fetch('https://techcircuit.herokuapp.com/user/gauth', {
+        
+        // Adding method type
+        method: "POST",
+          
+        // Adding body or contents to send
+        body: JSON.stringify({
+            email,
+            familyName,
+            givenName,
+            googleId,
+            imageUrl,
+            name,
+            access_token: authToken
+        }),
+          
+        // Adding headers to the request
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+    .then(response => {
+      console.log(response.status)
+      setProfile(res.profileObj.email)
+    })
+    .catch(error => console.log(error));
   };
 
   const onFailure = (res) => {
@@ -29,8 +55,11 @@ function Login() {
         onSuccess={onSuccess}
         onFailure={onFailure}
         cookiePolicy={'single_host_origin'}
-        isSignedIn={true}
+        isSignedIn={false}
       />
+      <div className="profile">
+        {profile && <p>{profile}</p>}
+      </div>
     </div>
   );
 }
