@@ -1,4 +1,5 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.18.0/inter.css");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 .App {
   font-family: Inter;
@@ -13,4 +14,108 @@ h1 {
 .authButton {
   width: 235px;
   margin: auto;
+}
+
+.nav-wrapper {
+  height: 141px;
+  width: 100%;
+  padding-top: 30px;
+}
+
+.nav-links {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-left: 17%;
+  margin-top: -5px;
+}
+
+.logo {
+  position: absolute;
+  max-width: 12%;
+  height: auto;
+  margin-left: 30px;
+  color: black;
+}
+
+.nav-link {
+  margin-right: 50px;
+  margin-top: 0.7%;  
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  font-family: 'Poppins', sans-serif;
+}
+
+.discord-link-button {
+  height: 40px;
+  width: 100px;
+  border: none;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 3px;
+  text-align: center;
+  background-color: transparent;
+  font-family: 'Poppins', sans-serif;
+}
+
+.discord-link-button:hover {
+  background: #4678F9;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-right {
+  margin-top: 7px;
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.register-link-button {
+  height: 40px;
+  width: 100px;
+  border: none;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 3px;
+  text-align: center;
+  background-color: #4678F9;
+  color: white;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  margin-right: -35px;
+}
+
+.login-link-button {
+  height: 40px;
+  width: 100px;
+  border: none;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 3px;
+  text-align: center;
+  background-color: #29313D;
+  color: white;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  margin-right: 30px;
+}
+
+.register-link-button:hover, .login-link-button:hover {
+  cursor: pointer;
+}
+
+.account-logo {
+  width: 40%;
+  height: auto;
+  margin-top: 5px;
 }
