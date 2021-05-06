@@ -1,2 +1,2 @@
 # website
-TechCircuit WebApp
+techCircuit WebApp

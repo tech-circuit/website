@@ -17,9 +17,9 @@ class Navbar extends Component {
                       <div className="nav-link"><Link to="/contact" class="link">Contact</Link></div>
                       <div className="nav-link"><Link to="/server" class="link"><button className="discord-link-button" id="discord-button">Discord</button></Link></div>
                       <div className="nav-right">
-                        <div className="nav-link"><Link to="/profile"><span><img src="/assets/accounticon.png" alt="tC logo" className="account-logo"/></span></Link></div>
-                        {/* <div className="nav-link"><Link to="/register" class="link"><button className="register-link-button" id="discord-button">Sign up</button></Link></div>
-                        <div className="nav-link"><Link to="/login" class="link"><button className="login-link-button" id="discord-button">Log in</button></Link></div> */}
+                        {/* <div className="nav-link"><Link to="/profile"><span><img src="/assets/accounticon.png" alt="tC logo" className="account-logo"/></span></Link></div> */}
+                        <div className="nav-link"><Link to="/register" class="link"><button className="register-link-button" id="discord-button">Sign up</button></Link></div>
+                        <div className="nav-link"><Link to="/login" class="link"><button className="login-link-button" id="discord-button">Log in</button></Link></div>
                       </div>
                     </div>
                 </div>
