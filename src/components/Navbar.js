@@ -38,7 +38,7 @@ class Navbar extends Component {
                       <div className="nav-link"><Link to="/contact" class="link">About</Link></div>
                       <div className="nav-link"><Link to="/server"><button className="discord-link-button" id="discord-button">Discord</button></Link></div>
                       <div className="nav-right">
-                        {this.state.content == '' && <div className="nav-link"><button className="login-link-button" id="discord-button" onClick={this.handleClick}>Login</button></div>}
+                        {this.state.content === '' && <div className="nav-link"><button className="login-link-button" id="discord-button" onClick={this.handleClick}>Login</button></div>}
                         {this.state.content}
                       </div>
                     </div>
