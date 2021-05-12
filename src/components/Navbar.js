@@ -2,6 +2,27 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
+    constructor(props){
+      super(props)
+      this.state = {content:''}
+      this.handleClick = this.handleClick.bind(this)
+    }
+    
+    renderContent(){
+      return (
+        <>
+        <div className="nav-link"><Link to="/profile"><span><img src="/assets/notif.png" alt="tC logo" className="notif-logo"/></span></Link></div>
+        <div className="nav-link"><Link to="/profile"><span><img src="/assets/account.png" alt="tC logo" className="account-logo"/></span></Link></div>
+        </>
+      ) 
+    }
+    
+    handleClick(){
+      this.setState({
+        content : this.renderContent()
+      })
+    }
+    
     render(){
         return (
             <>
@@ -15,11 +36,10 @@ class Navbar extends Component {
                       <div className="nav-link"><Link to="/forum" class="link">Community</Link></div>
                       <div className="nav-link"><Link to="/resources" class="link">Resources</Link></div>
                       <div className="nav-link"><Link to="/contact" class="link">About</Link></div>
-                      <div className="nav-link"><Link to="/server" class="link"><button className="discord-link-button" id="discord-button">Discord</button></Link></div>
+                      <div className="nav-link"><Link to="/server"><button className="discord-link-button" id="discord-button">Discord</button></Link></div>
                       <div className="nav-right">
-                        {/* <div className="nav-link"><Link to="/profile"><span><img src="/assets/notif.png" alt="tC logo" className="notif-logo"/></span></Link></div>
-                        <div className="nav-link"><Link to="/profile"><span><img src="/assets/account.png" alt="tC logo" className="account-logo"/></span></Link></div> */}
-                        <div className="nav-link"><Link to="/login" class="link"><button className="login-link-button" id="discord-button">Login</button></Link></div>
+                        {this.state.content == '' && <div className="nav-link"><button className="login-link-button" id="discord-button" onClick={this.handleClick}>Login</button></div>}
+                        {this.state.content}
                       </div>
                     </div>
                 </div>
