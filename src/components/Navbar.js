@@ -27,7 +27,7 @@ class Navbar extends Component {
     render(){
         return (
             <>
-            <nav>
+            <nav id="nav">
                 <div className="nav-wrapper">
                     <Link to="/"><span><img src="/assets/fulllogo.png" alt="tC logo" className="logo"/></span></Link>
                     <div className="nav-links">
