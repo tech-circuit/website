@@ -44,7 +44,7 @@ h1 {
 }
 
 .nav-link {
-  margin-right: 27px;
+  margin-right: 32px;
   margin-top: 0.2%;  
   font-size: 18px;
 }
@@ -58,7 +58,8 @@ h1 {
 .link:hover {
   color: #4678F9;
   border-bottom: 2px solid #4678F9;
-  padding-bottom: 3px
+  padding-bottom: 3px;
+  transition: all 0.2s;
 }
 
 .discord-link-button {
