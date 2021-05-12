@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 class Navbar extends Component {
     constructor(props){
@@ -11,8 +12,8 @@ class Navbar extends Component {
     renderContent(){
       return (
         <>
-        <div className="nav-link"><Link to="/profile"><span><img src="/assets/notif.png" alt="tC logo" className="notif-logo"/></span></Link></div>
-        <div className="nav-link"><Link to="/profile"><span><img src="/assets/account.png" alt="tC logo" className="account-logo"/></span></Link></div>
+        <div className="nav-link"><Link to="/profile"><span><i className="fas fa-bell fa-sm" id="notif-logo"></i></span></Link></div>
+        <div className="nav-link"><Link to="/profile"><span><i className="fas fa-user-circle" id="account-logo"></i></span></Link></div>
         </>
       ) 
     }

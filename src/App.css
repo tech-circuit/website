@@ -31,8 +31,8 @@ h1 {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  margin-left: 250px;
-  margin-top: -5px;
+  margin-left: 230px;
+  margin-top: -4px;
 }
 
 .logo {
@@ -44,22 +44,34 @@ h1 {
 }
 
 .nav-link {
-  margin-right: 32px;
   margin-top: 0.2%;  
   font-size: 18px;
 }
 
+.nav-link  a:hover {
+  color: #4678F9;
+}
+
 .link {
+  display: inline-block;
   text-decoration: none;
   color: black;
   font-family: 'Poppins', sans-serif;
+  padding: 0 20px;
 }
 
-.link:hover {
-  color: #4678F9;
-  border-bottom: 2px solid #4678F9;
-  padding-bottom: 3px;
-  transition: all 0.2s;
+.link::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #4678F9;
+  transition: width .3s;
+}
+
+.link:hover::after {
+  width: 100%;
+  transition: width .3s;
 }
 
 .discord-link-button {
@@ -109,20 +121,22 @@ h1 {
   border: none;
   font-size: 18px;
   font-family: 'Poppins', sans-serif;
+  margin-top: -6px;
 }
 
 .register-link-button:hover, .login-link-button:hover {
   cursor: pointer;
 }
 
-.notif-logo {
-  width: 17px;
-  height: 20px;
-  margin-top: 5px;
+#notif-logo {
+  color: #29313D;
+  margin-top: -5px;
+  margin-right: 17px;
+  font-size: 19px;
 }
 
-.account-logo {
-  width: 32px;
-  height: 32px;
-  margin-top: 5px;
+#account-logo {
+  color: #29313D;
+  margin-top: -6px;
+  font-size: 32px;
 }
