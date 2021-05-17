@@ -164,6 +164,8 @@ h1 {
 .right {
   height: 500px;
   width: 40%;
+  position: fixed;
+  margin-left: 50%;
 }
 
 .left h1 {
@@ -197,12 +199,38 @@ h1 {
 }
 
 .image-area {
-  height: 320px;
-  width: 466px;
-  background-image: url("https://cdn.discordapp.com/attachments/803844775941111808/842127553501069332/unknown.png");
+  height: 265px;
+  width: 457px;
+  border: 1px dashed #000000;
+  box-sizing: border-box;
+  border-radius: 5px;
+  text-align: center;
   background-size: contain;
   background-repeat: no-repeat;
-  border-radius: 5px;
+}
+
+#file-add-icon {
+  font-size: 52px;
+  color: #747474;
+  margin-top: 75px;
+}
+
+.image-area h5 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  color: black;
+  margin-top: 17px;
+}
+
+.image-area p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #747474;
+  margin-top: -25px;
 }
 
 .buttons {
