@@ -20,8 +20,10 @@ h1 {
   height: 56px;
   width: 100%;
   padding-top: 20px;
+  background-color: white;
   box-shadow: 0px 1px 25px rgba(0, 0, 0, 0.15);
   position: fixed;
+  z-index: 9999;
   top: 0;
   right: 0;
   left: 0;
@@ -32,7 +34,7 @@ h1 {
   flex-flow: row wrap;
   align-items: center;
   margin-left: 230px;
-  margin-top: -5px;
+  margin-top: -4px;
 }
 
 .logo {
@@ -44,21 +46,34 @@ h1 {
 }
 
 .nav-link {
-  margin-right: 27px;
   margin-top: 0.2%;  
   font-size: 18px;
 }
 
+.nav-link  a:hover {
+  color: #4678F9;
+}
+
 .link {
+  display: inline-block;
   text-decoration: none;
   color: black;
   font-family: 'Poppins', sans-serif;
+  padding: 0 20px;
 }
 
-.link:hover {
-  color: #4678F9;
-  border-bottom: 2px solid #4678F9;
-  padding-bottom: 3px
+.link::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #4678F9;
+  transition: width .3s;
+}
+
+.link:hover::after {
+  width: 100%;
+  transition: width .3s;
 }
 
 .discord-link-button {
@@ -71,6 +86,7 @@ h1 {
   border-width: 1px;
   border-radius: 3px;
   text-align: center;
+  transition: background-color 0.2s ease;
   background-color: transparent;
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
@@ -78,6 +94,7 @@ h1 {
 }
 
 .discord-link-button:hover {
+  border: none;
   background: #4678F9;
   color: white;
   border: none;
@@ -108,20 +125,260 @@ h1 {
   border: none;
   font-size: 18px;
   font-family: 'Poppins', sans-serif;
+  margin-top: -6px;
 }
 
 .register-link-button:hover, .login-link-button:hover {
   cursor: pointer;
 }
 
-.notif-logo {
-  width: 17px;
-  height: 20px;
-  margin-top: 5px;
+#notif-logo {
+  color: #29313D;
+  margin-top: -5px;
+  margin-right: 17px;
+  font-size: 19px;
 }
 
-.account-logo {
-  width: 32px;
-  height: 32px;
-  margin-top: 5px;
+#account-logo {
+  color: #29313D;
+  margin-top: -6px;
+  font-size: 32px;
+}
+
+.main {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-left: 120px;
+  margin-right: 120px;
+  height: auto;
+  margin-top: 120px;
+  font-family: Poppins;
+}
+
+.left {
+  height: 500px;
+  width: 60%;
+}
+
+.right {
+  height: 500px;
+  width: 40%;
+  position: fixed;
+  margin-left: 50%;
+}
+
+.left h1 {
+  margin-top: 0px;
+  font-size: 36px;
+} 
+
+.left p {
+  font-size: 18px;
+  color: #9C9C9C;
+  margin-top: -25px;
+}
+
+.top-inline {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.right h3 {
+  font-size: 24px;
+}
+
+#delete-icon {
+  color: #C4C4C4;
+  margin-left: 20px;
+}
+
+#delete-icon:hover {
+  cursor: pointer;
+}
+
+.image-area {
+  height: 265px;
+  width: 457px;
+  border: 1px dashed #000000;
+  box-sizing: border-box;
+  border-radius: 5px;
+  text-align: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#file-add-icon {
+  font-size: 52px;
+  color: #747474;
+  margin-top: 75px;
+}
+
+.image-area h5 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  color: black;
+  margin-top: 17px;
+}
+
+.image-area p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #747474;
+  margin-top: -25px;
+}
+
+.buttons {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.saveDraft {
+  width: 222px;
+  height: 54px;
+  background: #29313D;
+  border: none;
+  border-radius: 4.28558px;
+  color: white;
+  font-family: Poppins;
+  font-size: 18px;
+}
+
+.previewProject {
+  width: 222px;
+  height: 54px;
+  border: 1px solid #747474;
+  box-sizing: border-box;
+  border-radius: 4.28558px;
+  margin-left: 15px;
+  color: #747474;
+  font-family: Poppins;
+  background-color: transparent;
+  font-size: 18px;
+}
+
+.createProjectButton {
+  width: 464px;
+  height: 54px;
+  background: #4678F9;
+  border: none;
+  border-radius: 4.28558px;
+  color: white;
+  font-family: Poppins;
+  font-size: 18px;
+  margin-top: 25px;
+}
+
+.saveDraft:hover, .previewProject:hover, .createProjectButton:hover {
+  cursor: pointer;
+}
+
+.left h3 {
+  font-weight: normal;
+  font-size: 24px;
+}
+
+.left input {
+  width: 570px;
+  height: 56px;
+  border: 2px solid #C4C4C4;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-size: 18px;
+  font-family: Poppins;
+  color: #747474;
+  padding-left: 22px;
+  margin-top: -20px;
+}
+
+.left input:focus {
+  outline: none;
+}
+
+.left textarea {
+  width: 570px;
+  height: 193px;
+  border: 2px solid #C4C4C4;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-size: 18px;
+  font-family: Poppins;
+  color: #747474;
+  padding-left: 22px;
+  padding-top: 18px;
+  margin-top: -15px;
+}
+
+.left textarea:focus {
+  outline: none;
+}
+
+.input-link {
+  padding-top: 15px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.input-link-logo {
+  height: 35px;
+  width: 35px;
+  margin-top: -20px;
+  margin-right: 20px;
+}
+
+.input-add-logo {
+  height: 17px;
+  width: 35px;
+  margin-top: -20px;
+  margin-right: 20px;
+}
+
+#input-delete-icon {
+  font-size: 22px;
+  color: #747474;
+  margin-top: -20px;
+  margin-left: 30px;
+}
+
+#input-add-icon {
+  font-size: 34px;
+  color: #4678F9;
+  margin-top: -20px;
+  margin-left: 24px;
+}
+
+#input-delete-icon:hover, #input-add-icon:hover {
+  cursor: pointer;
+}
+
+.left select {
+  width: 570px;
+  height: 56px;
+  border: 2px solid #C4C4C4;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-size: 18px;
+  font-family: Poppins;
+  color: #747474;
+  margin-top: -20px;
+  padding-left: 22px;
+}
+
+.below-input {
+  width: 570px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: #747474;
+  margin-top: 10px;
 }
