@@ -1,7 +1,6 @@
-import React, { Component, useState }from 'react';
+import React, { useState }from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { FileDrop } from 'react-file-drop';
-import axios from 'axios';
 import firebase from '../firebase/firebase';
 
 function CreateProject() {  
@@ -61,14 +60,6 @@ function CreateProject() {
         // console.log(tag)
         setTags(tag)
     }   
-
-    const fileToBase64 = async(file) =>
-    new Promise((resolve, reject) => {
-        const reader = new FileReader()
-        reader.readAsDataURL(file)
-        reader.onload = () => resolve(reader.result)
-        reader.onerror = (e) => reject(e)
-    })
         
     const setImage = async (inputFile) => {
         if(inputFile.name.endsWith('.png') || inputFile.name.endsWith('.jpg') || inputFile.name.endsWith('.jpeg')) {

@@ -39,7 +39,7 @@ function Community() {
             </div>
             <div className="mid-area">
                 <div class="search">
-                    <img class="searchicon" src="/assets/magnifying-glass.svg"/>
+                    <img class="searchicon" src="/assets/magnifying-glass.svg" alt="magnifying-glass"/>
                     <input class="searchbar" type="text" placeholder={"Search " + currDiv}/>
                 </div>
                 <div class="sort">
@@ -54,7 +54,7 @@ function Community() {
                 </div>
                 {
                         currDiv === 'organizations' ? 
-                        <button class="create-new-org"><img src="/assets/add-button.svg" className="addIcon"/>Create New Org</button>
+                        <button class="create-new-org"><img src="/assets/add-button.svg" className="addIcon" alt="add-button"/>Create New Org</button>
                         : 
                         <></>
                 }
