@@ -389,7 +389,7 @@ h1 {
   width: 100%;
   background: #29313D;
   box-shadow: 0px 4px 31px rgba(0, 0, 0, 0.15);
-  z-index: 999;
+  z-index: 1001;
   right: 0;
   left: 0;
   margin-top: 65px;
@@ -398,14 +398,14 @@ h1 {
 
 .header-div h1 {
   margin-top: 40px;
-  margin-left: 30px;
+  margin-left: 120px;
   font-size: 36px;
   font-weight: normal;
   color: #FFFFFF;
 }
 
 .header-div p {
-  margin-left: 30px;
+  margin-left: 120px;
   font-weight: 400;
   color: white;
   font-size: 18px;
@@ -419,7 +419,7 @@ h1 {
 }
 
 .switchers {
-  margin-left: 30px;
+  margin-left: 120px;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
@@ -453,7 +453,7 @@ h1 {
   color: #85D49C;
   text-align: center;
   margin-right: 40px;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .switch-div-active h3 {
@@ -467,14 +467,22 @@ h1 {
 }
 
 .mid-area {
-  width: 97%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  position: absolute;
-  z-index: 1000;
-  margin-top: 330px;
-  margin-left: 30px;
+  position: fixed;
+  z-index: 1001;
+  margin-top: 327px;
+  margin-right: -10px;
+  background: #FFFFFF;
+  box-shadow: 0px -6px 29px rgba(0, 0, 0, 0.25);
+  padding-bottom: 20px;
 }
 
 .search {
@@ -484,6 +492,7 @@ h1 {
   align-items: center;
   display: flex;
   flex-flow: row wrap;
+  margin-left: 120px;
 }
 
 .searchbar {
@@ -528,7 +537,7 @@ h1 {
   display: block;
   position: absolute;
   right: 0;
-  margin-right: 20px;
+  margin-right: 125px;
   margin-top: 3vh;
   border: none;
   outline: none;
@@ -541,17 +550,161 @@ h1 {
   height: 50px;
   font-family: Poppins;
   font-style: normal;
-  font-weight: 600;
   font-size: 16px;
   color: white;
   right: 0;
 }
 
 .addIcon {
-  margin-left: 30px;
+  margin-left: 33px;
   margin-right: 11px;
 }
 
 .create-new-org:hover {
   cursor: pointer;
+}
+
+.comm-cards {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  position: absolute;
+  z-index: 1000;
+  margin-top: 450px;
+  margin-left: -10px;
+  padding-left: 120px;
+}
+
+.org-card {
+  width: 355px;
+  height: 426px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  margin-right: 46px;
+  margin-bottom: 40px;
+  text-align: center;
+  font-family: Poppins;
+}
+
+.org-card .org-logo {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  margin-top: 40px;
+}
+
+.org-card h1 {
+  margin-top: 20px;
+  font-style: 24px;
+}
+
+.org-card .address {
+  margin-top: -15px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: #747474;
+}
+
+.org-card .inline-place {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-left: 95px;
+  margin-top: -10px;
+}
+
+.inline-place p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: #747474;
+}
+
+.inline-place img {
+  margin-right: 10px;
+}
+
+.org-card .social-links {
+  margin-top: 10px;
+}
+
+.social-links img {
+  height: 27px;
+  width: 27px;
+  margin-right: 15px;
+}
+.social-links img:hover {
+  cursor: pointer;
+}
+
+.org-card button {
+  width: 313px;
+  height: 48px;
+  border: 1px solid #4678F9;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-color: transparent;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  color: #4678F9;
+  margin-top: 40px;
+}
+
+.org-card button:hover {
+  cursor: pointer;
+  background-color: #4678F9;
+  color: white;
+}
+
+.user-card {
+  width: 266px;
+  height: 350px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  margin-right: 46px;
+  margin-bottom: 40px;
+  text-align: center;
+  font-family: Poppins;
+}
+
+.user-card .org-logo {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  margin-top: 32px;
+}
+
+.user-card h1 {
+  margin-top: 20px;
+  font-style: 24px;
+}
+
+.user-card .address {
+  margin-top: -15px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: #747474;
+}
+
+.user-card .inline-place {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-left: 55px;
+  margin-top: -10px;
+}
+
+.user-card .social-links {
+  margin-top: 10px;
+  margin-left: 10px;
 }

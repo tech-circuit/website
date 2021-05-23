@@ -4,13 +4,24 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 function Community() {  
 
     const [currDiv,  setCurrDiv] = useState("organizations")
+    const [scrollState,  setscrollState] = useState(false)
 
     const switchDivs = (s) => {
         setCurrDiv(s)
     }
 
+    const listenScrollEvent = e => {
+        if (window.scrollY > 400) {
+          setscrollState(true)
+        } else {
+            setscrollState(false)
+        }
+    }
+    
+    window.addEventListener('scroll', listenScrollEvent)
+
     return (    
-        <>
+        <> 
             <div className="header-div">
                 <h1>Welcome to <span className="bold-tc">techCircuit</span> Community!</h1>
                 <p>Over 500 Clubs and organzations (primarily high schools and colleges) from all over the Globe are part of the tC community!</p>
@@ -38,12 +49,12 @@ function Community() {
                 </div>
             </div>
             <div className="mid-area">
-                <div class="search">
-                    <img class="searchicon" src="/assets/magnifying-glass.svg" alt="magnifying-glass"/>
-                    <input class="searchbar" type="text" placeholder={"Search " + currDiv}/>
+                <div className="search">
+                    <img className="searchicon" src="/assets/magnifying-glass.svg" alt="magnifying-glass"/>
+                    <input className="searchbar" type="text" placeholder={"Search " + currDiv}/>
                 </div>
-                <div class="sort">
-                    <select name="sort" id="sort" class="sortSelector">
+                <div className="sort">
+                    <select name="sort" id="sort" className="sortSelector">
                         <option>Sort by region</option>
                         <option>region 1</option>
                         <option>region 2</option>
@@ -54,11 +65,193 @@ function Community() {
                 </div>
                 {
                         currDiv === 'organizations' ? 
-                        <button class="create-new-org"><img src="/assets/add-button.svg" className="addIcon" alt="add-button"/>Create New Org</button>
+                        <button className="create-new-org"><img src="/assets/add-button.svg" className="addIcon" alt="add-button"/>Create New Org</button>
                         : 
                         <></>
                 }
-                
+            </div>
+            <div className="comm-cards">
+                {
+                    currDiv === 'organizations' ? 
+                        <>
+                            <div className="org-card">
+                                <img src="https://github.com/techsyndicate.png" alt="org-logo" className="org-logo"/>
+                                <h1>Code Warriors</h1>
+                                <p className="address">Delhi Public School, Vasant Kunj</p>
+                                <div className="inline-place">
+                                    <img src="/assets/place.svg" alt="marker"/>
+                                    <p>New Delhi, India</p>
+                                </div>
+                                <div className="social-links">
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                </div>
+                                <button>View Page</button>
+                            </div>
+                            <div className="org-card">
+                                <img src="https://github.com/techsyndicate.png" alt="org-logo" className="org-logo"/>
+                                <h1>Code Warriors</h1>
+                                <p className="address">Delhi Public School, Vasant Kunj</p>
+                                <div className="inline-place">
+                                    <img src="/assets/place.svg" alt="marker"/>
+                                    <p>New Delhi, India</p>
+                                </div>
+                                <div className="social-links">
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                </div>
+                                <button>View Page</button>
+                            </div>
+                            <div className="org-card">
+                                <img src="https://github.com/techsyndicate.png" alt="org-logo" className="org-logo"/>
+                                <h1>Code Warriors</h1>
+                                <p className="address">Delhi Public School, Vasant Kunj</p>
+                                <div className="inline-place">
+                                    <img src="/assets/place.svg" alt="marker"/>
+                                    <p>New Delhi, India</p>
+                                </div>
+                                <div className="social-links">
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                </div>
+                                <button>View Page</button>
+                            </div>
+                            <div className="org-card">
+                                <img src="https://github.com/techsyndicate.png" alt="org-logo" className="org-logo"/>
+                                <h1>Code Warriors</h1>
+                                <p className="address">Delhi Public School, Vasant Kunj</p>
+                                <div className="inline-place">
+                                    <img src="/assets/place.svg" alt="marker"/>
+                                    <p>New Delhi, India</p>
+                                </div>
+                                <div className="social-links">
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                </div>
+                                <button>View Page</button>
+                            </div>
+                            <div className="org-card">
+                                <img src="https://github.com/techsyndicate.png" alt="org-logo" className="org-logo"/>
+                                <h1>Code Warriors</h1>
+                                <p className="address">Delhi Public School, Vasant Kunj</p>
+                                <div className="inline-place">
+                                    <img src="/assets/place.svg" alt="marker"/>
+                                    <p>New Delhi, India</p>
+                                </div>
+                                <div className="social-links">
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                </div>
+                                <button>View Page</button>
+                            </div>
+                        </> 
+                    : 
+                        <>
+                            <div className="user-card">
+                                <img src="https://github.com/techsyndicate.png" alt="org-logo" className="org-logo"/>
+                                <h1>Ishaan Das</h1>
+                                <p className="address">Student, Desginer</p>
+                                <div className="inline-place">
+                                    <img src="/assets/place.svg" alt="marker"/>
+                                    <p>New Delhi, India</p>
+                                </div>
+                                <div className="social-links">
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                </div>
+                            </div>
+                            <div className="user-card">
+                                <img src="https://github.com/techsyndicate.png" alt="org-logo" className="org-logo"/>
+                                <h1>Ishaan Das</h1>
+                                <p className="address">Student, Desginer</p>
+                                <div className="inline-place">
+                                    <img src="/assets/place.svg" alt="marker"/>
+                                    <p>New Delhi, India</p>
+                                </div>
+                                <div className="social-links">
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                </div>
+                            </div>
+                            <div className="user-card">
+                                <img src="https://github.com/techsyndicate.png" alt="org-logo" className="org-logo"/>
+                                <h1>Ishaan Das</h1>
+                                <p className="address">Student, Desginer</p>
+                                <div className="inline-place">
+                                    <img src="/assets/place.svg" alt="marker"/>
+                                    <p>New Delhi, India</p>
+                                </div>
+                                <div className="social-links">
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                </div>
+                            </div>
+                            <div className="user-card">
+                                <img src="https://github.com/techsyndicate.png" alt="org-logo" className="org-logo"/>
+                                <h1>Ishaan Das</h1>
+                                <p className="address">Student, Desginer</p>
+                                <div className="inline-place">
+                                    <img src="/assets/place.svg" alt="marker"/>
+                                    <p>New Delhi, India</p>
+                                </div>
+                                <div className="social-links">
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                </div>
+                            </div>
+                            <div className="user-card">
+                                <img src="https://github.com/techsyndicate.png" alt="org-logo" className="org-logo"/>
+                                <h1>Ishaan Das</h1>
+                                <p className="address">Student, Desginer</p>
+                                <div className="inline-place">
+                                    <img src="/assets/place.svg" alt="marker"/>
+                                    <p>New Delhi, India</p>
+                                </div>
+                                <div className="social-links">
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                </div>
+                            </div>
+                            <div className="user-card">
+                                <img src="https://github.com/techsyndicate.png" alt="org-logo" className="org-logo"/>
+                                <h1>Ishaan Das</h1>
+                                <p className="address">Student, Desginer</p>
+                                <div className="inline-place">
+                                    <img src="/assets/place.svg" alt="marker"/>
+                                    <p>New Delhi, India</p>
+                                </div>
+                                <div className="social-links">
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                </div>
+                            </div>
+                            <div className="user-card">
+                                <img src="https://github.com/techsyndicate.png" alt="org-logo" className="org-logo"/>
+                                <h1>Ishaan Das</h1>
+                                <p className="address">Student, Desginer</p>
+                                <div className="inline-place">
+                                    <img src="/assets/place.svg" alt="marker"/>
+                                    <p>New Delhi, India</p>
+                                </div>
+                                <div className="social-links">
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                    <img src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png" alt="behance-logo"/>
+                                </div>
+                            </div>
+                        </> 
+                }
             </div>
         </>
     )
