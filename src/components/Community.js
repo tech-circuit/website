@@ -11,7 +11,7 @@ function Community() {
     }
 
     const listenScrollEvent = e => {
-        if (window.scrollY > 400) {
+        if (window.scrollY > 300) {
           setscrollState(true)
         } else {
             setscrollState(false)
@@ -100,12 +100,12 @@ function Community() {
                                 }
                             </div>
                         </div>
-                        <div className="mid-area mid-area-shadow" style={{ marginTop: '144px' }}>
-                            <div className="search">
+                        <div className="mid-area mid-area-shadow" style={{ marginTop: '143px', height:'43px' }}>
+                            <div className="search" style={{ marginTop: '10px'}}>
                                 <img className="searchicon" src="/assets/magnifying-glass.svg" alt="magnifying-glass"/>
                                 <input className="searchbar" type="text" placeholder={"Search " + currDiv}/>
                             </div>
-                            <div className="sort">
+                            <div className="sort" style={{ marginTop: '10px'}}>
                                 <select name="sort" id="sort" className="sortSelector">
                                     <option>Sort by region</option>
                                     <option>region 1</option>
@@ -117,7 +117,7 @@ function Community() {
                             </div>
                             {
                                     currDiv === 'organizations' ? 
-                                    <button className="create-new-org"><img src="/assets/add-button.svg" className="addIcon" alt="add-button"/>Create New Org</button>
+                                    <button className="create-new-org" style={{ marginTop: '20px'}}><img src="/assets/add-button.svg" className="addIcon" alt="add-button"/>Create New Org</button>
                                     : 
                                     <></>
                             }
