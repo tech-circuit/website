@@ -1,7 +1,6 @@
-import React, { Component, useState }from 'react';
+import React, { useState }from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { FileDrop } from 'react-file-drop';
-import axios from 'axios';
 import firebase from '../firebase/firebase';
 
 function CreateProject() {  
@@ -61,14 +60,6 @@ function CreateProject() {
         // console.log(tag)
         setTags(tag)
     }   
-
-    const fileToBase64 = async(file) =>
-    new Promise((resolve, reject) => {
-        const reader = new FileReader()
-        reader.readAsDataURL(file)
-        reader.onload = () => resolve(reader.result)
-        reader.onerror = (e) => reject(e)
-    })
         
     const setImage = async (inputFile) => {
         if(inputFile.name.endsWith('.png') || inputFile.name.endsWith('.jpg') || inputFile.name.endsWith('.jpeg')) {
@@ -116,13 +107,13 @@ function CreateProject() {
                     {links.map((ex_link) => (
                         <div className="input-link">
                             <img src={ex_link.icon_url} className="input-link-logo" alt="logo"/>
-                            <input type="text" name="external-link" autoComplete="off" placeholder={ex_link.link} disabled></input>
+                            <input type="text" name="external-link" autoComplete="off" placeholder={ex_link.link} disabled style={{ 'width': '455px' }}></input>
                             <i className="fas fa-trash" id="input-delete-icon" onClick={() => deleteLink(ex_link.link)}></i>
                         </div>
                     ))}
                     <div className="input-link">
                         <img src="https://cdn.discordapp.com/attachments/803844775941111808/842139922831638538/unknown.png" className="input-add-logo" alt="logo"/>
-                        <input type="text" name="external-link" autoComplete="off" placeholder="Add external link" onChange={event => setTitle(event.target.value)} value={title && title}></input>
+                        <input type="text" name="external-link" autoComplete="off" placeholder="Add external link" onChange={event => setTitle(event.target.value)} value={title && title} style={{ 'width': '455px' }}></input>
                         <i className="fas fa-plus-circle" id="input-add-icon" onClick={addLink}></i>
                     </div>
                     <h3 style={{marginTop: 59 + 'px'}}>Fields</h3>

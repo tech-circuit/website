@@ -32,9 +32,9 @@ class Navbar extends Component {
                     <Link to="/"><span><img src="/assets/fulllogo.png" alt="tC logo" className="logo"/></span></Link>
                     <div className="nav-links">
                       <div className="nav-link"><Link to="/work" class="link">Work</Link></div>
-                      <div className="nav-link"><Link to="/community" class="link">Events</Link></div>
-                      <div className="nav-link"><Link to="/about" class="link">Forums</Link></div>
-                      <div className="nav-link"><Link to="/forum" class="link">Community</Link></div>
+                      <div className="nav-link"><Link to="/events" class="link">Events</Link></div>
+                      <div className="nav-link"><Link to="/forums" class="link">Forums</Link></div>
+                      <div className="nav-link"><Link to="/community" class="link">Community</Link></div>
                       <div className="nav-link"><Link to="/resources" class="link">Resources</Link></div>
                       <div className="nav-link"><Link to="/create" class="link">Create</Link></div>
                       <div className="nav-link"><Link to="/server"><button className="discord-link-button" id="discord-button">Discord</button></Link></div>
