@@ -17,9 +17,9 @@ const FullForum = () => {
               Ullamcorper ultricies elit rhoncus, justo eget.
             </h2>
             <h3>
-              posted 25 mins ago by <a href="#">samvrart</a> on designathon
+              posted 25 mins ago by <a href="/">samvrart</a> on designathon
             </h3>
-            <img src="/assets/sample-banner.jpg" />
+            <img src="/assets/sample-banner.jpg" alt="forum-banner" />
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Condimentum aliquam sagittis fermentum, quis cras. Adipiscing
@@ -87,12 +87,12 @@ const FullForum = () => {
             </form>
           </div>
           <div className="comment">
-            <a href="#" className="comm-icon">
+            <a href="/" className="comm-icon">
               <img src="/assets/accounticon.png" alt="" />
             </a>
             <div className="comm-content">
               <div className="details">
-                <a href="#">Samvrant Samantaray</a>
+                <a href="/">Samvrant Samantaray</a>
                 <p className="on">20 mins ago</p>
               </div>
               <p className="comm-body">
@@ -127,12 +127,12 @@ const FullForum = () => {
             </div>
           </div>
           <div className="comment">
-            <a href="#" className="comm-icon">
+            <a href="/" className="comm-icon">
               <img src="/assets/accounticon.png" alt="" />
             </a>
             <div className="comm-content">
               <div className="details">
-                <a href="#">Samvrant Samantaray</a>
+                <a href="/">Samvrant Samantaray</a>
                 <p className="on">20 mins ago</p>
               </div>
               <p className="comm-body">
@@ -167,12 +167,12 @@ const FullForum = () => {
             </div>
           </div>
           <div className="comment">
-            <a href="#" className="comm-icon">
+            <a href="/" className="comm-icon">
               <img src="/assets/accounticon.png" alt="" />
             </a>
             <div className="comm-content">
               <div className="details">
-                <a href="#">Samvrant Samantaray</a>
+                <a href="/">Samvrant Samantaray</a>
                 <p className="on">20 mins ago</p>
               </div>
               <p className="comm-body">

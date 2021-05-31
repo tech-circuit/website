@@ -51,7 +51,7 @@ const Forums = () => {
               Ullamcorper ultricies elit rhoncus, justo eget.
             </h2>
             <h3>
-              posted 25 mins ago by <a href="#">samvrart</a> on designathon
+              posted 25 mins ago by <a href="/">samvrart</a> on designathon
             </h3>
             <div className="card-options">
               <div className="l-opts">
@@ -86,7 +86,7 @@ const Forums = () => {
               Ullamcorper ultricies elit rhoncus, justo eget.
             </h2>
             <h3>
-              posted 25 mins ago by <a href="#">samvrart</a> on designathon
+              posted 25 mins ago by <a href="/">samvrart</a> on designathon
             </h3>
             <div className="card-options">
               <div className="l-opts">
@@ -121,7 +121,7 @@ const Forums = () => {
               Ullamcorper ultricies elit rhoncus, justo eget.
             </h2>
             <h3>
-              posted 25 mins ago by <a href="#">samvrart</a> on designathon
+              posted 25 mins ago by <a href="/">samvrart</a> on designathon
             </h3>
             <div className="card-options">
               <div className="l-opts">
@@ -156,7 +156,7 @@ const Forums = () => {
               Ullamcorper ultricies elit rhoncus, justo eget.
             </h2>
             <h3>
-              posted 25 mins ago by <a href="#">samvrart</a> on designathon
+              posted 25 mins ago by <a href="/">samvrart</a> on designathon
             </h3>
             <div className="card-options">
               <div className="l-opts">
@@ -191,7 +191,7 @@ const Forums = () => {
               Ullamcorper ultricies elit rhoncus, justo eget.
             </h2>
             <h3>
-              posted 25 mins ago by <a href="#">samvrart</a> on designathon
+              posted 25 mins ago by <a href="/">samvrart</a> on designathon
             </h3>
             <div className="card-options">
               <div className="l-opts">
@@ -226,7 +226,7 @@ const Forums = () => {
               Ullamcorper ultricies elit rhoncus, justo eget.
             </h2>
             <h3>
-              posted 25 mins ago by <a href="#">samvrart</a> on designathon
+              posted 25 mins ago by <a href="/">samvrart</a> on designathon
             </h3>
             <div className="card-options">
               <div className="l-opts">

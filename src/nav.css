@@ -6,11 +6,21 @@ nav {
   top: 0;
   background: #fff;
   z-index: 9999;
+  box-shadow: 0px 1px 25px rgba(0, 0, 0, 0.15);
 }
 .nav-left,
 .nav-right {
   height: 100%;
   display: flex;
+}
+.nav-left {
+  width: 80%;
+}
+.nav-right {
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 .nav-logo-holder {
   width: 10%;
@@ -50,4 +60,31 @@ nav {
 }
 .nav-link:hover:after {
   width: 100%;
+}
+.disc-btn {
+  text-decoration: none;
+  border: 1px #4678f9 solid;
+  color: #4678f9;
+  border-radius: 5px;
+  font-size: 0.98vw;
+  padding: 0.6vh 1.6vw;
+  transition: all 0.2s;
+}
+.disc-btn:hover {
+  background: #4678f9;
+  color: #fff;
+}
+.login-btn {
+  text-decoration: none;
+  background: #4678f9;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 0.98vw;
+  padding: 0.6vh 1.6vw;
+  transition: all 0.2s;
+}
+.login-btn:hover {
+  background: #4371e6;
 }
