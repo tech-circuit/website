@@ -5,12 +5,18 @@ import { FaShareAlt } from "react-icons/fa";
 import { FaBookmark } from "react-icons/fa";
 import { FaExclamationTriangle } from "react-icons/fa";
 import { FaArrowUp } from "react-icons/fa";
+import { FaChevronLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const FullForum = () => {
   return (
     <React.Fragment>
       <div className="container fullForumCont">
-        <div className="forumCards">
+        <div className="forumCards fullForumCards">
+          <Link className="back" to="/forums">
+            <FaChevronLeft />
+            Back
+          </Link>
           <div className="forumCard fullForumCard">
             <h2>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -42,7 +48,7 @@ const FullForum = () => {
               <div className="l-opts">
                 <button>
                   <FaCommentAlt />
-                  &nbsp; 12 comments
+                  &nbsp; Reply
                 </button>
                 <button>
                   <FaShareAlt />
