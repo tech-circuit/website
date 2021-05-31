@@ -178,6 +178,10 @@
   color: #747474;
   text-decoration: none;
   font-size: 1.4vw;
+  transition: all 0.3s;
+}
+.back:hover {
+  color: #000;
 }
 .fullForumCards {
   padding-top: 12vh;
