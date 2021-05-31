@@ -165,11 +165,14 @@
   align-items: center;
   background: transparent;
   border: none;
-  color: #29313d;
+  color: #747474;
   margin-right: 1.6vw;
   font-size: 0.96vw;
   font-weight: 300;
   transition: all 0.2s ease-in;
+}
+.card-options .card-opt-done {
+  color: #29313d;
 }
 .back {
   display: flex;

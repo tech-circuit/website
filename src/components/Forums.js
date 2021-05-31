@@ -63,7 +63,7 @@ const Forums = () => {
                   <FaShareAlt />
                   &nbsp; Share
                 </button>
-                <button>
+                <button className="card-opt-done">
                   <FaBookmark />
                   &nbsp; Save
                 </button>
