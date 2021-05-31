@@ -57,7 +57,7 @@ const Forums = () => {
               <div className="l-opts">
                 <button>
                   <FaCommentAlt />
-                  &nbsp; 12 comments
+                  &nbsp; 12 replies
                 </button>
                 <button>
                   <FaShareAlt />
@@ -92,7 +92,7 @@ const Forums = () => {
               <div className="l-opts">
                 <button>
                   <FaCommentAlt />
-                  &nbsp; 12 comments
+                  &nbsp; 12 replies
                 </button>
                 <button>
                   <FaShareAlt />
@@ -127,7 +127,42 @@ const Forums = () => {
               <div className="l-opts">
                 <button>
                   <FaCommentAlt />
-                  &nbsp; 12 comments
+                  &nbsp; 12 replies
+                </button>
+                <button>
+                  <FaShareAlt />
+                  &nbsp; Share
+                </button>
+                <button>
+                  <FaBookmark />
+                  &nbsp; Save
+                </button>
+                <button>
+                  <FaArrowUp />
+                  &nbsp; Upvote
+                </button>
+              </div>
+              <div className="r-opts">
+                <button>
+                  <FaExclamationTriangle />
+                  &nbsp; Report
+                </button>
+              </div>
+            </div>
+          </a>
+          <a href="/full-forum" className="forumCard">
+            <h2>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Ullamcorper ultricies elit rhoncus, justo eget.
+            </h2>
+            <h3>
+              posted 25 mins ago by <a href="/">samvrart</a> on designathon
+            </h3>
+            <div className="card-options">
+              <div className="l-opts">
+                <button>
+                  <FaCommentAlt />
+                  &nbsp; 12 replies
                 </button>
                 <button>
                   <FaShareAlt />

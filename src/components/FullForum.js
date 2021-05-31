@@ -114,7 +114,7 @@ const FullForum = () => {
                 <div className="l-opts">
                   <button>
                     <FaCommentAlt />
-                    &nbsp; 12 comments
+                    &nbsp; 12 replies
                   </button>
                   <button>
                     <FaShareAlt />
@@ -154,7 +154,7 @@ const FullForum = () => {
                 <div className="l-opts">
                   <button>
                     <FaCommentAlt />
-                    &nbsp; 12 comments
+                    &nbsp; 12 replies
                   </button>
                   <button>
                     <FaShareAlt />
@@ -194,7 +194,7 @@ const FullForum = () => {
                 <div className="l-opts">
                   <button>
                     <FaCommentAlt />
-                    &nbsp; 12 comments
+                    &nbsp; 12 replies
                   </button>
                   <button>
                     <FaShareAlt />
