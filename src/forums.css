@@ -1,0 +1,292 @@
+/* header ---------------------------------------------------------------- */
+.forumHeader {
+  background: #29313d;
+  width: 100vw;
+  color: #fff;
+}
+.head-1 {
+  padding-top: 12vh;
+}
+.head-2 {
+  padding: 3vh 0;
+  position: sticky;
+  top: 7.7vh;
+  z-index: 999;
+}
+.forumTitle {
+  margin: 0;
+  font-weight: 300;
+  font-size: 3vw;
+}
+.forumHeader strong {
+  font-weight: 600;
+  color: #85d49c;
+}
+.forumHeader p {
+  font-weight: 300;
+  font-size: 1vw;
+}
+.search-box {
+  display: flex;
+  height: 5.5vh;
+  margin-bottom: 3vh;
+}
+.search-box > * {
+  height: 100%;
+}
+.forumHeader .add {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9vw;
+  padding: 0 1.6vw;
+  font-weight: 300;
+  border-radius: 5px;
+  background: #4678f9;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.forumHeader .add:hover {
+  background: #2f5dd1;
+}
+.add svg {
+  margin-right: 0.8vw;
+}
+.input {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1vw;
+  margin-right: 2vw;
+  background: #fff;
+  padding: 0 1.2vw;
+  border-radius: 6px;
+  width: 30vw;
+}
+.input svg {
+  color: #747474;
+  font-size: 1.6vw;
+  font-weight: 100;
+  margin-right: 0.6vw;
+}
+.input input {
+  height: 100%;
+  width: 100%;
+  font-size: 1vw;
+  font-weight: 300;
+  padding: 0 0.6vw;
+  background: transparent;
+  border: none;
+}
+.sort-box {
+  display: flex;
+  align-items: center;
+}
+.sort-box > * {
+  font-weight: 300;
+}
+.sort-opts {
+  display: flex;
+  margin-left: 3vw;
+}
+.sort-opt {
+  font-weight: 300;
+  cursor: pointer;
+  padding: 0.5vh 2.7vw;
+  border: 1px #85d49c solid;
+  margin-right: 1vw;
+  border-radius: 50px;
+  color: #85d49c;
+}
+.sort-opt-active {
+  color: #29313d;
+  background: #85d49c;
+}
+/* Cards ---------------------------------------------------------------- */
+.forumCards {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 5vh;
+}
+.forumCard {
+  width: 80%;
+  padding: 3vh 4vw;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  margin-top: 5vh;
+  text-decoration: none;
+}
+.forumCard h2 {
+  font-weight: 500;
+  opacity: 0.9;
+  font-size: 1.03vw;
+  width: 60%;
+  line-height: 3vh;
+  color: #000;
+}
+.forumCard h3 {
+  font-weight: 400;
+  width: 60%;
+  font-size: 0.9vw;
+  margin-top: 2vh;
+  margin-bottom: 5vh;
+  color: #777;
+}
+.forumCard h3 a {
+  color: #4678f9;
+  text-decoration: none;
+}
+.card-options {
+  display: flex;
+  justify-content: space-between;
+}
+.l-opts {
+  display: flex;
+}
+.card-options button {
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: #888;
+  margin-right: 1.6vw;
+  font-size: 0.96vw;
+  font-weight: 300;
+  transition: all 0.2s;
+}
+.card-options button:hover {
+  color: #333;
+}
+.fullForumCont {
+  padding-top: 60px;
+}
+.fullForumCard {
+  width: 100%;
+}
+.fullForumCard h2 {
+  width: 90%;
+  font-size: 26px;
+  line-height: 4vh;
+  margin-bottom: 1vh;
+}
+.fullForumCard h3 {
+  margin: 0;
+  margin-bottom: 2vh;
+}
+.fullForumCard img {
+  width: 100%;
+  margin-top: 1vh;
+  margin-bottom: 2vh;
+}
+.fullForumCard p {
+  margin-bottom: 5vh;
+}
+.comment-card {
+  width: 100%;
+  padding: 7vh 4vw;
+  padding-bottom: 2vh;
+  margin-bottom: 6vh;
+}
+.comment-card h2 {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 1.6vw;
+  margin-bottom: 4vh;
+}
+.comment-card h2 svg {
+  color: #555;
+}
+/* Add Comment ------------------------------------------------------------------- */
+.add-comment {
+  margin-bottom: 5vh;
+}
+.add-comment form {
+  display: flex;
+  flex-direction: column;
+}
+.add-comm-top {
+  display: flex;
+}
+.comment-card img {
+  margin-right: 1vw;
+  margin-top: 0.7vh;
+  width: 3vw;
+  height: 100%;
+}
+.add-comm-top textarea {
+  width: 100%;
+  min-height: 10vh;
+  resize: vertical;
+  padding: 2vh 1vw;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  font-size: 0.9vw;
+}
+.comment-btns {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 3vh;
+}
+.comment-btns .btn {
+  padding: 1vh 2vw;
+  font-size: 0.7vw;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 1vw;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+.comment-btns .com-cancel {
+  border: 1px solid #747474;
+  color: #747474;
+}
+.comment-btns .com-create {
+  background: #4678f9;
+  color: #fff;
+}
+.comment-btns .com-cancel:hover {
+  background: #747474;
+  color: #fff;
+}
+.comment-btns .com-create:hover {
+  background: #2e57be;
+}
+/* Comment --------------------------------------------------------------------------- */
+.comment {
+  display: flex;
+  margin-bottom: 5vh;
+}
+.comm-icon {
+  height: 100%;
+}
+.comm-content {
+  display: flex;
+  flex-direction: column;
+}
+.comment .details {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1vh;
+}
+.comment .details a,
+.comment .details p {
+  text-decoration: none;
+  font-size: 0.9vw;
+}
+.comment .details a {
+  color: #4678f9;
+}
+.comment .details p {
+  margin-left: 1vw;
+  color: #747474;
+}
+.comm-body {
+  text-align: justify;
+  margin-bottom: 1.4vh;
+}
