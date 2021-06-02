@@ -25,7 +25,7 @@ class Index extends Component {
                                 let reader = new FileReader()
                                 reader.readAsDataURL(inputFile)
                                 reader.onload = () => {
-                                    const b64 = reader.result
+                                    const b64 = reader.result.split('base64,')[1]
                                     fetch('https://techcircuit.herokuapp.com/image/upload', {
                                         
                                         // Adding method type
@@ -38,36 +38,16 @@ class Index extends Component {
                                         
                                         // Adding headers to the request
                                         headers: {
-                                            "Content-type": "application/json; charset=UTF-8"
+                                            "Content-type": "application/json; charset=UTF-8",
+                                            "Access-Control-Allow-Origin": "*"
                                         }
                                     })
-                                    .then(response => {
-                                        console.log(response)
-                                        console.log(response.status)
-                                        console.log(response.link)
+                                    .then(async (response) => {
+                                        const resp = await response.json()
+                                        cb(resp.link, { title: inputFile.name })
                                     })
                                     .catch(error => console.log(error));
                                 }
-                                // if(inputFile.name.endsWith('.png') || inputFile.name.endsWith('.jpg') || inputFile.name.endsWith('.jpeg')) {
-                                //     let file = inputFile;
-                                //     var storage = firebase.storage();
-                                //     var storageRef = storage.ref();
-                                //     var uploadTask = storageRef.child('folder/' + file.name).put(file);
-                        
-                                //     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-                                //         (snapshot) => {
-                                //                 var progress = Math.round((snapshot.bytesTransferred/snapshot.totalBytes))*100
-                                //                 console.log(progress)
-                                //             }, (error) => {
-                                //                 console.log(error)
-                                //                 throw error
-                                //             },() => {
-                                //             uploadTask.snapshot.ref.getDownloadURL().then((url) =>{
-                                //                 cb(url, { title: file.name })
-                                //             })
-                                //         }
-                                //     ) 
-                                // }
                             };
 
                             input.click();

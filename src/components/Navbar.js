@@ -23,7 +23,7 @@ const Navbar = () => {
             Community
           </Link>
           <Link to="/resources" className="nav-link">
-            Rsources
+            Resources
           </Link>
           <Link to="/about" className="nav-link">
             About
