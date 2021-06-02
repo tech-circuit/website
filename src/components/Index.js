@@ -26,7 +26,7 @@ class Index extends Component {
                                 reader.readAsDataURL(inputFile)
                                 reader.onload = () => {
                                     const b64 = reader.result
-                                    fetch('http://api.techcircuit.co/image/upload', {
+                                    fetch('https://techcircuit.herokuapp.com/image/upload', {
                                         
                                         // Adding method type
                                         method: "POST",
