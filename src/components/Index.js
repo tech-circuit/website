@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Editor } from "@tinymce/tinymce-react";
-import firebase from '../firebase/firebase';
 
 class Index extends Component {
     render(){
