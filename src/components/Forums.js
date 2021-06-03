@@ -43,16 +43,19 @@ const Forums = () => {
           </div>
         </div>
       </header>
+
       <div className="container">
         <div className="forumCards">
-          <a href="/full-forum" className="forumCard">
-            <h2>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Ullamcorper ultricies elit rhoncus, justo eget.
-            </h2>
-            <h3>
-              posted 25 mins ago by <a href="/">samvrart</a> on designathon
-            </h3>
+          <div className="forumCard">
+            <a href="/full-forum" className="card-top">
+              <h2>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Ullamcorper ultricies elit rhoncus, justo eget.
+              </h2>
+              <h3>
+                posted 25 mins ago by <a href="/">samvrart</a> on designathon
+              </h3>
+            </a>
             <div className="card-options">
               <div className="l-opts">
                 <button>
@@ -79,15 +82,17 @@ const Forums = () => {
                 </button>
               </div>
             </div>
-          </a>
-          <a href="/full-forum" className="forumCard">
-            <h2>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Ullamcorper ultricies elit rhoncus, justo eget.
-            </h2>
-            <h3>
-              posted 25 mins ago by <a href="/">samvrart</a> on designathon
-            </h3>
+          </div>
+          <div className="forumCard">
+            <a href="/full-forum" className="card-top">
+              <h2>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Ullamcorper ultricies elit rhoncus, justo eget.
+              </h2>
+              <h3>
+                posted 25 mins ago by <a href="/">samvrart</a> on designathon
+              </h3>
+            </a>
             <div className="card-options">
               <div className="l-opts">
                 <button>
@@ -98,7 +103,7 @@ const Forums = () => {
                   <FaShareAlt />
                   &nbsp; Share
                 </button>
-                <button>
+                <button className="card-opt-done">
                   <FaBookmark />
                   &nbsp; Save
                 </button>
@@ -114,15 +119,17 @@ const Forums = () => {
                 </button>
               </div>
             </div>
-          </a>
-          <a href="/full-forum" className="forumCard">
-            <h2>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Ullamcorper ultricies elit rhoncus, justo eget.
-            </h2>
-            <h3>
-              posted 25 mins ago by <a href="/">samvrart</a> on designathon
-            </h3>
+          </div>
+          <div className="forumCard">
+            <a href="/full-forum" className="card-top">
+              <h2>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Ullamcorper ultricies elit rhoncus, justo eget.
+              </h2>
+              <h3>
+                posted 25 mins ago by <a href="/">samvrart</a> on designathon
+              </h3>
+            </a>
             <div className="card-options">
               <div className="l-opts">
                 <button>
@@ -133,7 +140,7 @@ const Forums = () => {
                   <FaShareAlt />
                   &nbsp; Share
                 </button>
-                <button>
+                <button className="card-opt-done">
                   <FaBookmark />
                   &nbsp; Save
                 </button>
@@ -149,15 +156,17 @@ const Forums = () => {
                 </button>
               </div>
             </div>
-          </a>
-          <a href="/full-forum" className="forumCard">
-            <h2>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Ullamcorper ultricies elit rhoncus, justo eget.
-            </h2>
-            <h3>
-              posted 25 mins ago by <a href="/">samvrart</a> on designathon
-            </h3>
+          </div>
+          <div className="forumCard">
+            <a href="/full-forum" className="card-top">
+              <h2>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Ullamcorper ultricies elit rhoncus, justo eget.
+              </h2>
+              <h3>
+                posted 25 mins ago by <a href="/">samvrart</a> on designathon
+              </h3>
+            </a>
             <div className="card-options">
               <div className="l-opts">
                 <button>
@@ -168,7 +177,7 @@ const Forums = () => {
                   <FaShareAlt />
                   &nbsp; Share
                 </button>
-                <button>
+                <button className="card-opt-done">
                   <FaBookmark />
                   &nbsp; Save
                 </button>
@@ -184,7 +193,266 @@ const Forums = () => {
                 </button>
               </div>
             </div>
-          </a>
+          </div>
+          <div className="forumCard">
+            <a href="/full-forum" className="card-top">
+              <h2>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Ullamcorper ultricies elit rhoncus, justo eget.
+              </h2>
+              <h3>
+                posted 25 mins ago by <a href="/">samvrart</a> on designathon
+              </h3>
+            </a>
+            <div className="card-options">
+              <div className="l-opts">
+                <button>
+                  <FaCommentAlt />
+                  &nbsp; 12 replies
+                </button>
+                <button>
+                  <FaShareAlt />
+                  &nbsp; Share
+                </button>
+                <button className="card-opt-done">
+                  <FaBookmark />
+                  &nbsp; Save
+                </button>
+                <button>
+                  <FaArrowUp />
+                  &nbsp; Upvote
+                </button>
+              </div>
+              <div className="r-opts">
+                <button>
+                  <FaExclamationTriangle />
+                  &nbsp; Report
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="forumCard">
+            <a href="/full-forum" className="card-top">
+              <h2>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Ullamcorper ultricies elit rhoncus, justo eget.
+              </h2>
+              <h3>
+                posted 25 mins ago by <a href="/">samvrart</a> on designathon
+              </h3>
+            </a>
+            <div className="card-options">
+              <div className="l-opts">
+                <button>
+                  <FaCommentAlt />
+                  &nbsp; 12 replies
+                </button>
+                <button>
+                  <FaShareAlt />
+                  &nbsp; Share
+                </button>
+                <button className="card-opt-done">
+                  <FaBookmark />
+                  &nbsp; Save
+                </button>
+                <button>
+                  <FaArrowUp />
+                  &nbsp; Upvote
+                </button>
+              </div>
+              <div className="r-opts">
+                <button>
+                  <FaExclamationTriangle />
+                  &nbsp; Report
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="forumCard">
+            <a href="/full-forum" className="card-top">
+              <h2>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Ullamcorper ultricies elit rhoncus, justo eget.
+              </h2>
+              <h3>
+                posted 25 mins ago by <a href="/">samvrart</a> on designathon
+              </h3>
+            </a>
+            <div className="card-options">
+              <div className="l-opts">
+                <button>
+                  <FaCommentAlt />
+                  &nbsp; 12 replies
+                </button>
+                <button>
+                  <FaShareAlt />
+                  &nbsp; Share
+                </button>
+                <button className="card-opt-done">
+                  <FaBookmark />
+                  &nbsp; Save
+                </button>
+                <button>
+                  <FaArrowUp />
+                  &nbsp; Upvote
+                </button>
+              </div>
+              <div className="r-opts">
+                <button>
+                  <FaExclamationTriangle />
+                  &nbsp; Report
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="forumCard">
+            <a href="/full-forum" className="card-top">
+              <h2>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Ullamcorper ultricies elit rhoncus, justo eget.
+              </h2>
+              <h3>
+                posted 25 mins ago by <a href="/">samvrart</a> on designathon
+              </h3>
+            </a>
+            <div className="card-options">
+              <div className="l-opts">
+                <button>
+                  <FaCommentAlt />
+                  &nbsp; 12 replies
+                </button>
+                <button>
+                  <FaShareAlt />
+                  &nbsp; Share
+                </button>
+                <button className="card-opt-done">
+                  <FaBookmark />
+                  &nbsp; Save
+                </button>
+                <button>
+                  <FaArrowUp />
+                  &nbsp; Upvote
+                </button>
+              </div>
+              <div className="r-opts">
+                <button>
+                  <FaExclamationTriangle />
+                  &nbsp; Report
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="forumCard">
+            <a href="/full-forum" className="card-top">
+              <h2>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Ullamcorper ultricies elit rhoncus, justo eget.
+              </h2>
+              <h3>
+                posted 25 mins ago by <a href="/">samvrart</a> on designathon
+              </h3>
+            </a>
+            <div className="card-options">
+              <div className="l-opts">
+                <button>
+                  <FaCommentAlt />
+                  &nbsp; 12 replies
+                </button>
+                <button>
+                  <FaShareAlt />
+                  &nbsp; Share
+                </button>
+                <button className="card-opt-done">
+                  <FaBookmark />
+                  &nbsp; Save
+                </button>
+                <button>
+                  <FaArrowUp />
+                  &nbsp; Upvote
+                </button>
+              </div>
+              <div className="r-opts">
+                <button>
+                  <FaExclamationTriangle />
+                  &nbsp; Report
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="forumCard">
+            <a href="/full-forum" className="card-top">
+              <h2>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Ullamcorper ultricies elit rhoncus, justo eget.
+              </h2>
+              <h3>
+                posted 25 mins ago by <a href="/">samvrart</a> on designathon
+              </h3>
+            </a>
+            <div className="card-options">
+              <div className="l-opts">
+                <button>
+                  <FaCommentAlt />
+                  &nbsp; 12 replies
+                </button>
+                <button>
+                  <FaShareAlt />
+                  &nbsp; Share
+                </button>
+                <button className="card-opt-done">
+                  <FaBookmark />
+                  &nbsp; Save
+                </button>
+                <button>
+                  <FaArrowUp />
+                  &nbsp; Upvote
+                </button>
+              </div>
+              <div className="r-opts">
+                <button>
+                  <FaExclamationTriangle />
+                  &nbsp; Report
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="forumCard">
+            <a href="/full-forum" className="card-top">
+              <h2>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Ullamcorper ultricies elit rhoncus, justo eget.
+              </h2>
+              <h3>
+                posted 25 mins ago by <a href="/">samvrart</a> on designathon
+              </h3>
+            </a>
+            <div className="card-options">
+              <div className="l-opts">
+                <button>
+                  <FaCommentAlt />
+                  &nbsp; 12 replies
+                </button>
+                <button>
+                  <FaShareAlt />
+                  &nbsp; Share
+                </button>
+                <button className="card-opt-done">
+                  <FaBookmark />
+                  &nbsp; Save
+                </button>
+                <button>
+                  <FaArrowUp />
+                  &nbsp; Upvote
+                </button>
+              </div>
+              <div className="r-opts">
+                <button>
+                  <FaExclamationTriangle />
+                  &nbsp; Report
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </React.Fragment>

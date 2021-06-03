@@ -122,6 +122,7 @@
 .forumCard {
   width: 80%;
   padding: 3vh 4vw;
+  padding-bottom: 3vh;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   margin-top: 3vh;
@@ -149,6 +150,9 @@
 }
 .forumCard h3 a {
   color: #4678f9;
+  text-decoration: none;
+}
+.forumCard a {
   text-decoration: none;
 }
 .card-options {
