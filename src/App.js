@@ -16,9 +16,7 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route exact path="/">
-          <div className="container">
-            <Index />
-          </div>
+          <Index />
         </Route>
         <Route exact path="/login">
           <div className="container">

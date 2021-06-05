@@ -1,64 +1,172 @@
-import React, { Component } from 'react';
-import { Editor } from "@tinymce/tinymce-react";
+import React from "react";
+import "../index.css";
+import { Link } from "react-router-dom";
+import {
+  FaLongArrowAltRight,
+  FaChevronDown,
+  FaCommentAlt,
+} from "react-icons/fa";
 
-class Index extends Component {
-    render(){
-        return (
-            <>
-                <br></br><br></br><br></br>
-                 <Editor
-                    apiKey="6qe6iqm7o54kawhl9yap1pljb09c0lpqrnf0ehytebrqf6jm"
-                    init={{
-                        height: 500,
-                        selector: 'textarea', 
-                        plugins: 'image code',
-                        toolbar: 'undo redo | link image',
-                        image_title: true,
-                        automatic_uploads: true,
-                        file_picker_types: 'image',
-                        file_picker_callback: function (cb, value, meta) {
-                            var input = document.createElement('input');
-                            input.setAttribute('type', 'file');
-                            input.setAttribute('accept', 'image/*');
-                            input.onchange = function () {
-                                var inputFile = this.files[0];
-                                let reader = new FileReader()
-                                reader.readAsDataURL(inputFile)
-                                reader.onload = () => {
-                                    const b64 = reader.result.split('base64,')[1]
-                                    fetch('https://techcircuit.herokuapp.com/image/upload', {
-                                        
-                                        // Adding method type
-                                        method: "POST",
-                                        
-                                        // Adding body or contents to send
-                                        body: JSON.stringify({
-                                            b64
-                                        }),
-                                        
-                                        // Adding headers to the request
-                                        headers: {
-                                            "Content-type": "application/json; charset=UTF-8",
-                                            "Access-Control-Allow-Origin": "*"
-                                        }
-                                    })
-                                    .then(async (response) => {
-                                        const resp = await response.json()
-                                        cb(resp.link, { title: inputFile.name })
-                                    })
-                                    .catch(error => console.log(error));
-                                }
-                            };
+const Index = () => {
+  return (
+    <main>
+      <div className="msg">
+        <FaCommentAlt />
+      </div>
+      <section className="hero">
+        <div className="hero-left">
+          <div className="container">
+            <h1>
+              The place where
+              <br />
+              everything takes place.
+            </h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse duis lectus mi urna nulla suscipit lorem egestas.
+              <br />
+              Diam dignissim sed congue id duis mattis dictum integer sit.
+            </p>
+            <Link to="/" className="hero-btn">
+              Join us Now&nbsp;&nbsp;
+              <FaLongArrowAltRight />
+            </Link>
+            <div className="scroll-more-hold">
+              <a href="/" className="scroll-more">
+                Scroll to know more
+              </a>
+              <FaChevronDown />
+            </div>
+          </div>
+        </div>
+        <div className="hero-right">
+          <img src="/assets/hero.svg" alt="Hero Banner" />
+        </div>
+      </section>
 
-                            input.click();
-                        },
-                        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
-                        object_resizing: true
-                    }}
-                />
-            </>
-        )
-    }
-}
+      <section className="about">
+        <div className="abt-left">
+          <div className="container">
+            <h1>
+              What is <strong>techCircuit?</strong>
+            </h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh enim
+              fames elementum turpis elementum lacus. Purus nunc turpis arcu at
+              ac tortor in purus. Purus penatibus vestibulum, sed sodales id
+              molestie massa pretium. Neque congue euismod sagittis cras cras
+              sit. Scelerisque rhoncus eget amet.
+              <br />
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse duis lectus mi urna nulla suscipit lorem egestas. Diam
+              dignissim sed congue id duis mattis dictum integer sit.
+            </p>
+            <img src="/assets/abt.svg" alt="About Banner" />
+          </div>
+        </div>
+        <div className="abt-right"></div>
+      </section>
+
+      <section className="feats">
+        <div className="clubs container">
+          <div className="club-left">
+            <h2>
+              Home to the most influential
+              <br />
+              tech clubs from all over India.
+            </h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse duis lectus mi urna nulla suscipit lorem egestas. Diam
+              dignissim sed congue id duis mattis dictum integer sit.
+            </p>
+          </div>
+          <div className="club-right">
+            <div className="club-logos">
+              <img src="/assets/exun.svg" alt="" className="club-logo" />
+              <img src="/assets/exun.svg" alt="" className="club-logo" />
+              <img src="/assets/exun.svg" alt="" className="club-logo" />
+              <img src="/assets/exun.svg" alt="" className="club-logo" />
+              <img src="/assets/exun.svg" alt="" className="club-logo" />
+              <img src="/assets/exun.svg" alt="" className="club-logo" />
+            </div>
+          </div>
+          <Link to="/" className="club-btn">
+            View Clubs
+          </Link>
+        </div>
+        <div className="top">
+          <img src="/assets/top.svg" alt="Top curve" />
+        </div>
+
+        <div className="feat container first-feat">
+          <div className="feat-banner">
+            <img className="feat-img-minus" src="/assets/write.png" alt="" />
+          </div>
+          <div className="feat-content">
+            <h2>Showcase your work and skills</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis at
+              amet molestie et, vulputate arcu sed mattis. Elit neque, amet,
+              amet, vulputate eget blandit. Pellentesque luctus elementum dui
+              gravida. Tortor sed pulvinar mauris nam eu. Placerat porttitor
+              euismod eget vulputate orci, convallis accumsan. Vitae, adipiscing
+              diam justo, netus.
+            </p>
+          </div>
+        </div>
+        <div className="feat container">
+          <div className="feat-content">
+            <h2>Showcase your work and skills</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis at
+              amet molestie et, vulputate arcu sed mattis. Elit neque, amet,
+              amet, vulputate eget blandit. Pellentesque luctus elementum dui
+              gravida. Tortor sed pulvinar mauris nam eu. Placerat porttitor
+              euismod eget vulputate orci, convallis accumsan. Vitae, adipiscing
+              diam justo, netus.
+            </p>
+          </div>
+          <div className="feat-banner">
+            <img className="feat-img-plus" src="/assets/write.png" alt="" />
+          </div>
+        </div>
+        <div className="feat container">
+          <div className="feat-banner">
+            <img className="feat-img-minus" src="/assets/write.png" alt="" />
+          </div>
+          <div className="feat-content">
+            <h2>Showcase your work and skills</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis at
+              amet molestie et, vulputate arcu sed mattis. Elit neque, amet,
+              amet, vulputate eget blandit. Pellentesque luctus elementum dui
+              gravida. Tortor sed pulvinar mauris nam eu. Placerat porttitor
+              euismod eget vulputate orci, convallis accumsan. Vitae, adipiscing
+              diam justo, netus.
+            </p>
+          </div>
+        </div>
+        <div className="feat container">
+          <div className="feat-content">
+            <h2>Showcase your work and skills</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis at
+              amet molestie et, vulputate arcu sed mattis. Elit neque, amet,
+              amet, vulputate eget blandit. Pellentesque luctus elementum dui
+              gravida. Tortor sed pulvinar mauris nam eu. Placerat porttitor
+              euismod eget vulputate orci, convallis accumsan. Vitae, adipiscing
+              diam justo, netus.
+            </p>
+          </div>
+          <div className="feat-banner">
+            <img className="feat-img-plus" src="/assets/write.png" alt="" />
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+};
 
 export default Index;

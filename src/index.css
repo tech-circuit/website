@@ -1,0 +1,245 @@
+/* Hero ------------------------------------------------------------------------------------------------ */
+.msg {
+  position: fixed;
+  bottom: 1vw;
+  right: 1vw;
+  font-size: 1.2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 3vw;
+  height: 3vw;
+  background: #29313d;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #29313d3d;
+  cursor: pointer;
+}
+.hero {
+  display: flex;
+  margin-top: 10vh;
+}
+.hero .container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero-left,
+.hero-right {
+  width: 50%;
+  height: 90vh;
+}
+.hero-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.hero img {
+  width: 90%;
+}
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero h1 {
+  font-size: 2.7vw;
+  font-weight: 400;
+}
+.hero p {
+  font-size: 1vw;
+  margin-top: 1.6vh;
+}
+.hero-btn {
+  font-size: 1.3vw;
+  font-weight: 300;
+  padding: 1vh 0;
+  border-radius: 5px;
+  background: #4678f9;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  margin-top: 7vh;
+  margin-bottom: 14vh;
+  transition: all 0.3s;
+}
+.hero-btn:hover {
+  background: #3255af;
+}
+.scroll-more-hold {
+  display: flex;
+  color: #747474;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(4vh);
+}
+.scroll-more {
+  text-decoration: none;
+  margin-bottom: 1vh;
+  color: #747474;
+  font-size: 1vw;
+}
+
+/* About --------------------------------------------------------------------------------------- */
+.about {
+  display: flex;
+}
+.abt-left,
+.abt-right {
+  height: 110vh;
+}
+.abt-left {
+  width: 65%;
+}
+.abt-right {
+  width: 35%;
+}
+.about .container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.about h1 {
+  color: #4678f9;
+  font-weight: 400;
+  font-size: 2.7vw;
+}
+.about h1 strong {
+  font-weight: 600;
+}
+.about p {
+  font-size: 1vw;
+  margin-top: 2vh;
+}
+.abt-left img {
+  width: 110%;
+  margin-top: 9vh;
+  transform: translateX(-10%);
+}
+/* Features ------------------------------------------------------------------------------------------------ */
+.feats {
+  background: #4678f9;
+  color: #fff;
+  min-height: 300vh;
+  position: relative;
+}
+/* Clubs ----------------------------------------------------- */
+.clubs {
+  background: #29313d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 4vh;
+  padding-bottom: 4vh;
+  z-index: 2;
+}
+.club-left,
+.club-right {
+  width: 50%;
+  margin-bottom: 6vh;
+}
+.club-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.3vw;
+  font-weight: 300;
+  padding: 1vh 2vw;
+  border-radius: 5px;
+  background: #4678f9;
+  transition: all 0.3s;
+  margin-bottom: 4vh;
+}
+.club-btn:hover {
+  background: #3255af;
+}
+.club-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.club-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.clubs h2 {
+  color: #85d49c;
+  font-weight: 600;
+  font-size: 2vw;
+}
+.clubs p {
+  margin-top: 3vh;
+  font-size: 1vw;
+  padding-right: 5vw;
+}
+.club-logos {
+  width: 80%;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.club-logo {
+  width: 26%;
+  margin: 1%;
+  background: #4678f9;
+}
+.club-btn {
+  position: absolute;
+  z-index: 2;
+  transform: translateY(100%);
+  top: 45vh;
+}
+.feats .top {
+  position: absolute;
+  top: 38vh;
+  left: 0;
+  z-index: 1;
+}
+.top img {
+  width: 100vw;
+}
+
+/* Write */
+.first-feat {
+  margin-top: 30vh;
+}
+.feat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.feat-banner {
+  width: 60%;
+}
+.feat-content {
+  width: 40%;
+}
+.feat h2 {
+  font-size: 2.7vw;
+  font-weight: 600;
+  margin-bottom: 2vh;
+}
+.feat p {
+  font-size: 1vw;
+  font-weight: 300;
+}
+.feat-img-plus{
+  width: 90%;
+  transform: translateX(10%);
+}
+.feat-img-minus{
+  width: 90%;
+  transform: translateX(-10%);
+}

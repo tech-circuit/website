@@ -5,7 +5,7 @@
   flex-flow: column wrap;
 }
 
-h1 {
+.intro-div h1 {
   margin-top: 35vh;
   font-size: 30px;
 }
