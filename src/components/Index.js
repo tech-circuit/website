@@ -5,6 +5,13 @@ import {
   FaLongArrowAltRight,
   FaChevronDown,
   FaCommentAlt,
+  FaGithub,
+  FaLinkedin,
+  FaInstagram,
+  FaBehanceSquare,
+  FaFacebookSquare,
+  FaTwitterSquare,
+  FaEnvelope,
 } from "react-icons/fa";
 
 const Index = () => {
@@ -148,7 +155,7 @@ const Index = () => {
             </p>
           </div>
         </div>
-        <div className="feat container">
+        <div className="feat last-feat container">
           <div className="feat-content">
             <h2>Showcase your work and skills</h2>
             <p>
@@ -164,7 +171,85 @@ const Index = () => {
             <img className="feat-img-plus" src="/assets/write.png" alt="" />
           </div>
         </div>
+
+        <div className="foot-img">
+          <img src="/assets/footer.svg" alt="Footer Asset" />
+        </div>
       </section>
+
+      <footer className="foot">
+        <div className="foot-left container">
+          <h2>Join our mailing list for the latest updates</h2>
+          <form className="foot-mail">
+            <div className="input">
+              <FaEnvelope />
+              <input type="text" placeholder="Email Address" />
+            </div>
+            <button type="submit" className="btn">
+              Submit
+            </button>
+          </form>
+        </div>
+        <div className="foot-right container">
+          <div className="links">
+            <h3>Explore</h3>
+            <ul>
+              <li>
+                <Link>Events</Link>
+              </li>
+              <li>
+                <Link>Events</Link>
+              </li>
+              <li>
+                <Link>Events</Link>
+              </li>
+              <li>
+                <Link>Events</Link>
+              </li>
+            </ul>
+          </div>
+          <div className="links">
+            <h3>Explore</h3>
+            <ul>
+              <li>
+                <Link>Events</Link>
+              </li>
+              <li>
+                <Link>Events</Link>
+              </li>
+              <li>
+                <Link>Events</Link>
+              </li>
+              <li>
+                <Link>Events</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="foot-bottom container">
+          <p>&copy; 2021 techCircuit</p>
+          <div className="socials">
+            <a href="/">
+              <FaLinkedin />
+            </a>
+            <a href="/">
+              <FaGithub />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaBehanceSquare />
+            </a>
+            <a href="/">
+              <FaFacebookSquare />
+            </a>
+            <a href="/">
+              <FaTwitterSquare />
+            </a>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 };

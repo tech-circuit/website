@@ -14,6 +14,7 @@
   border-radius: 50%;
   box-shadow: 0 0 10px #29313d3d;
   cursor: pointer;
+  z-index: 999999;
 }
 .hero {
   display: flex;
@@ -131,19 +132,19 @@
 }
 /* Clubs ----------------------------------------------------- */
 .clubs {
-  background: #29313d;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   padding-top: 4vh;
   padding-bottom: 4vh;
-  z-index: 2;
 }
 .club-left,
 .club-right {
   width: 50%;
   margin-bottom: 6vh;
+  z-index: 2;
+  padding: 5vh 0;
 }
 .club-btn {
   display: flex;
@@ -199,16 +200,18 @@
   position: absolute;
   z-index: 2;
   transform: translateY(100%);
-  top: 45vh;
+  top: 50vh;
 }
 .feats .top {
   position: absolute;
-  top: 38vh;
+  top: 0vh;
   left: 0;
+  width: 100vw;
   z-index: 1;
 }
 .top img {
-  width: 100vw;
+  width: 100%;
+  z-index: -1;
 }
 
 /* Write */
@@ -235,11 +238,114 @@
   font-size: 1vw;
   font-weight: 300;
 }
-.feat-img-plus{
+.feat-img-plus {
   width: 90%;
   transform: translateX(10%);
 }
-.feat-img-minus{
+.feat-img-minus {
   width: 90%;
   transform: translateX(-10%);
+}
+.last-feat {
+  padding-bottom: 30vh;
+}
+/* Footer */
+.foot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  background: #29313d;
+  color: #fff;
+  padding: 8vh 0;
+}
+.foot-left {
+  width: 60%;
+  padding-right: 20%;
+}
+.foot-right {
+  width: 40%;
+  display: flex;
+}
+.foot-bottom {
+  width: 100%;
+  margin-top: 15vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.foot h2 {
+  color: #85d49c;
+  font-size: 2.1vw;
+  font-weight: 600;
+  margin-bottom: 3vh;
+}
+.foot-mail {
+  display: flex;
+}
+.foot .input input {
+  padding: 1.4vh 0;
+  padding-left: 0.3vw;
+}
+.foot .btn {
+  padding: 0 2vw;
+  font-size: 1.2vw;
+  font-weight: 300;
+  border: none;
+  background: #4678f9;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+.foot .btn:hover {
+  background: #3255af;
+}
+.foot-right {
+  display: flex;
+  justify-content: flex-end;
+}
+.links {
+  width: 30%;
+  margin-right: 10%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.links h3 {
+  font-weight: 400;
+  font-size: 1.2vw;
+  margin-bottom: 2vh;
+}
+.foot ul {
+  list-style: none;
+}
+.foot li {
+  margin-top: 1vh;
+}
+.foot a {
+  color: #b1b1b1;
+  text-decoration: none;
+  font-size: 1vw;
+}
+.foot a:hover {
+  text-decoration: underline;
+}
+.foot .socials {
+  display: flex;
+}
+.foot svg {
+  margin: 0 0.4vw;
+  font-size: 1.7vw;
+}
+
+.foot-img {
+  width: 100vw;
+  position: absolute;
+  bottom: -1%;
+  left: 0;
+}
+.foot-img img {
+  width: 100vw;
 }
