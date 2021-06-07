@@ -7,6 +7,7 @@ import Community from "./components/Community";
 import Resources from "./components/Resources";
 import Forums from "./components/Forums";
 import FullForum from "./components/FullForum";
+import TextBox from "./components/TextBox";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -18,15 +19,14 @@ const App = () => {
         <Route exact path="/">
           <Index />
         </Route>
+        <Route exact path="/about">
+          <TextBox />
+        </Route>
         <Route exact path="/login">
-          <div className="container">
             <Login />
-          </div>
         </Route>
         <Route exact path="/create">
-          <div className="container">
-            <CreateProject />
-          </div>
+          <CreateProject />
         </Route>
         <Route exact path="/community">
           <Community />

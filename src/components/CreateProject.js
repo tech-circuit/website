@@ -3,7 +3,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import { FileDrop } from 'react-file-drop';
 import firebase from '../firebase/firebase';
 
-function CreateProject() {  
+const CreateProject = () => {  
     const [links, setLinks] = useState([])
     const [title, setTitle] = useState('')
     const [fieldsText, setFieldsText] = useState('')

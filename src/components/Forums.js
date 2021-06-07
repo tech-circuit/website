@@ -25,7 +25,7 @@ const Forums = () => {
               <img src="/assets/magnifying-glass.svg" alt="" />
               <input
                 type="text"
-                placeholder="Search communities, posts, intrests..."
+                placeholder="Search communities, posts, interests..."
               />
             </div>
             <h3 className="add">

@@ -1,7 +1,7 @@
 import React, { useState }from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-function Community() {  
+const Community = () => {  
 
     const [currDiv,  setCurrDiv] = useState("organizations")
     const [scrollState,  setscrollState] = useState(false)

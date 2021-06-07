@@ -606,3 +606,7 @@ img {
   margin-top: 10px;
   margin-left: 10px;
 }
+
+.textbox-wrapper {
+  padding-left: 10vw;
+}
