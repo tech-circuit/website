@@ -1,7 +1,6 @@
 import React, { useState }from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { FileDrop } from 'react-file-drop';
-import firebase from '../firebase/firebase';
 
 const CreateProject = () => {  
     const [links, setLinks] = useState([])
@@ -63,26 +62,33 @@ const CreateProject = () => {
         
     const setImage = async (inputFile) => {
         if(inputFile.name.endsWith('.png') || inputFile.name.endsWith('.jpg') || inputFile.name.endsWith('.jpeg')) {
-            let file = inputFile;
-            var storage = firebase.storage();
-            var storageRef = storage.ref();
-            var uploadTask = storageRef.child('folder/' + file.name).put(file);
+            let reader = new FileReader();
+            reader.readAsDataURL(inputFile);
+            reader.onload = () => {
+                const b64 = reader.result.split("base64,")[1];
+                fetch("https://techcircuit.herokuapp.com/image/upload", {
+                    // Adding method type
+                    method: "POST",
 
-            uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-                (snapshot) => {
-                        var progress = Math.round((snapshot.bytesTransferred/snapshot.totalBytes))*100
-                        console.log(progress)
-                    }, (error) => {
-                        console.log(error)
-                        throw error
-                    },() => {
-                    uploadTask.snapshot.ref.getDownloadURL().then((url) =>{
-                        console.log(url)
-                        document.getElementById("img-area").style.backgroundImage = `url('${url}')`
-                        setImgUrl(url)
-                    })
-                }
-            ) 
+                    // Adding body or contents to send
+                    body: JSON.stringify({
+                        b64,
+                    }),
+
+                    // Adding headers to the request
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8",
+                        "Access-Control-Allow-Origin": "*",
+                    },
+                })
+                .then(async (response) => {
+                    const resp = await response.json();
+                    console.log(resp.link)
+                    document.getElementById("img-area").style.backgroundImage = `url('${resp.link}')`
+                    setImgUrl(resp.link)
+                })
+                .catch((error) => console.log(error));
+            };
         }
     }
 
