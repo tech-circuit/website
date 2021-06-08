@@ -88,6 +88,9 @@ const Index = () => {
               Suspendisse duis lectus mi urna nulla suscipit lorem egestas. Diam
               dignissim sed congue id duis mattis dictum integer sit.
             </p>
+            <Link to="/" className="club-btn">
+              View Clubs
+            </Link>
           </div>
           <div className="club-right">
             <div className="club-logos">
@@ -99,12 +102,6 @@ const Index = () => {
               <img src="/assets/exun.svg" alt="" className="club-logo" />
             </div>
           </div>
-          <Link to="/" className="club-btn">
-            View Clubs
-          </Link>
-        </div>
-        <div className="top">
-          <img src="/assets/top.svg" alt="Top curve" />
         </div>
 
         <div className="feat container first-feat">
@@ -170,10 +167,6 @@ const Index = () => {
           <div className="feat-banner">
             <img className="feat-img-plus" src="/assets/write.png" alt="" />
           </div>
-        </div>
-
-        <div className="foot-img">
-          <img src="/assets/footer.svg" alt="Footer Asset" />
         </div>
       </section>
 

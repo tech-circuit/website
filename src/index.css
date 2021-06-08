@@ -140,6 +140,7 @@
   flex-wrap: wrap;
   padding-top: 4vh;
   padding-bottom: 4vh;
+  background: #29313d;
 }
 .club-left,
 .club-right {
@@ -150,17 +151,19 @@
 }
 .club-btn {
   display: flex;
+  width: 30%;
   justify-content: center;
   align-items: center;
   color: #fff;
   text-decoration: none;
   font-size: 1.3vw;
   font-weight: 300;
-  padding: 1vh 2vw;
+  padding: 1vh 0;
   border-radius: 5px;
   background: #4678f9;
   transition: all 0.3s;
-  margin-bottom: 4vh;
+  margin: 4vh 0;
+  margin-top: 8vh;
 }
 .club-btn:hover {
   background: #3255af;
@@ -197,23 +200,6 @@
   width: 26%;
   margin: 1%;
   background: #4678f9;
-}
-.club-btn {
-  position: absolute;
-  z-index: 2;
-  transform: translateY(100%);
-  top: 48vh;
-}
-.feats .top {
-  position: absolute;
-  top: -2.5%;
-  left: 0;
-  width: 100vw;
-  z-index: 1;
-}
-.top img {
-  width: 100%;
-  z-index: -1;
 }
 
 /* Write */
@@ -260,7 +246,7 @@
   position: relative;
   background: #29313d;
   color: #fff;
-  padding-bottom: 8vh;
+  padding: 8vh 0;
 }
 .foot-left {
   width: 60%;
@@ -341,13 +327,4 @@
 .foot svg {
   margin: 0 0.4vw;
   font-size: 1.7vw;
-}
-.foot-img {
-  width: 100vw;
-  position: absolute;
-  bottom: -1%;
-  left: 0;
-}
-.foot-img img {
-  width: 100vw;
 }
