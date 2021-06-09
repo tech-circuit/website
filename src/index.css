@@ -15,6 +15,83 @@
   box-shadow: 0 0 10px #29313d3d;
   cursor: pointer;
   z-index: 999999;
+  filter: drop-shadow(0px 0px 25px rgba(0, 0, 0, 0.33));
+}
+.contact-card {
+  position: fixed;
+  width: 20vw;
+  height: 22vw;
+  background: #FFFFFF;
+  border-radius: 7px;
+  filter: drop-shadow(0px 4px 31px rgba(0, 0, 0, 0.3));
+  z-index: 999999;
+  right: 0.5vw;
+  bottom: 4.5vw;
+  padding-top: 1.5vw;
+  padding-left: 1.5vw;
+  padding-right: 1.5vw;
+  padding-bottom: 1.5vw;
+}
+.contact-card:hover{
+  cursor: auto
+}
+.contact-card h1 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.3vw;
+  color: #29313D;
+}
+.contact-card .input {
+  width: 17vw;
+  height: 2.5vw;
+  background: #FFFFFF;
+  border: 1px solid #C4C4C4;
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin-top: 1vw;
+}
+.contact-card .input input {
+  padding: 1.4vh 0;
+  padding-left: 1vw;
+  font-size: 1vw;
+}
+.contact-card .message {
+  width: 17vw;
+  height: 9vw;
+  background: #FFFFFF;
+  border: 1px solid #C4C4C4;
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin-top: 0.8vw;
+  padding: 1vw;
+  font-size: 1vw;
+  padding-top: 0.5vw;
+}
+.contact-btn {
+  display: flex;
+  width: 17vw;
+  height: 2.5vw;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1vw;
+  font-weight: 300;
+  padding: 1vh 0;
+  border-radius: 5px;
+  background: #4678f9;
+  transition: all 0.3s;
+  margin-top: 0.5vw;
+}
+.contact-btn:hover {
+  background: #3255af;
+}
+.green-btn {
+  background: #85D49C;
+}
+.green-btn:hover {
+  background: #85d49c;
 }
 .hero {
   display: flex;
@@ -93,7 +170,7 @@
 }
 .abt-left,
 .abt-right {
-  height: 110vh;
+  height: 120vh;
 }
 .abt-left {
   width: 65%;
@@ -139,13 +216,12 @@
   align-items: center;
   flex-wrap: wrap;
   padding-top: 4vh;
-  padding-bottom: 4vh;
   background: #29313d;
 }
 .club-left,
 .club-right {
   width: 50%;
-  margin-bottom: 6vh;
+  margin-bottom: 4vh;
   z-index: 2;
   padding: 5vh 0;
 }
@@ -204,7 +280,7 @@
 
 /* Write */
 .first-feat {
-  margin-top: 30vh;
+  margin-top: 10vh;
 }
 .feat {
   display: flex;
@@ -235,7 +311,7 @@
   transform: translateX(-10%);
 }
 .last-feat {
-  padding-bottom: 30vh;
+  padding-bottom: 10vh;
 }
 /* Footer */
 .foot {

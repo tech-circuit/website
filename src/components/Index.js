@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import "../index.css";
 import { Link } from "react-router-dom";
 import {
@@ -11,13 +12,66 @@ import {
   FaFacebookSquare,
   FaTwitterSquare,
   FaEnvelope,
+  FaCheck
 } from "react-icons/fa";
 
 const Index = () => {
+  const [modalView, setModalView] = useState(false)
+  const [sendButton, setSendButton] = useState(true)
+  const [contactEmail, setContactEmail] = useState('')
+  const [contactMessage, setContactMessage] = useState('')
+
+  const modalStateChange = (bool) => {
+    setModalView(bool)
+  }
+
+  const editContactEmail = (val) => {
+    setContactEmail(val)
+  }
+
+  const editContactMessage = (val) => {
+    setContactMessage(val)
+  }
+  
+  const contactFormSubmit = () => {
+    if(contactEmail.trim().length !== 0 && contactMessage.trim().length !== 0) {
+      console.log(contactEmail, contactMessage)
+      setContactMessage('')
+      setContactEmail('')
+      setSendButton(false)
+    }
+  }
+
+  const resetForm = () => {
+    setSendButton(true)
+  }
+
   return (
     <main>
       <div className="msg">
-        <FaCommentAlt />
+        {modalView === true ? 
+          <>
+            <div className="contact-card">
+              <h1>Leave us a message!</h1>
+              <div className="input">
+                  <FaEnvelope />
+                  <input type="text" placeholder="Email Address" value={contactEmail} onChange={event => editContactEmail(event.target.value)}/>
+              </div>
+              <textarea className="message" placeholder="Type your message here!" value={contactMessage} onChange={event => editContactMessage(event.target.value)}></textarea>
+              {sendButton === true ? 
+                <Link to="/" className="contact-btn" onClick={() => contactFormSubmit()}>
+                    Send
+                </Link>
+                : 
+                <Link to="/" className="contact-btn green-btn" onClick={() => resetForm()}>
+                  <FaCheck />
+                </Link>
+              }
+            </div>
+            <FaChevronDown onClick={() => modalStateChange(false)}/>
+          </>
+          : <FaCommentAlt onClick={() => modalStateChange(true)}/>
+        }
       </div>
       <section className="hero">
         <div className="hero-left">
