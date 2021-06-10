@@ -67,6 +67,7 @@
   padding: 1vw;
   font-size: 1vw;
   padding-top: 0.5vw;
+  resize: none;
 }
 .contact-btn {
   display: flex;
