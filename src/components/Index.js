@@ -45,7 +45,6 @@ const Index = () => {
 
   return (
     <main>
-      <div className="msg">
         {modalView === true ? 
           <>
             <div className="contact-card">
@@ -65,11 +64,15 @@ const Index = () => {
                 </Link>
               }
             </div>
-            <FaChevronDown onClick={() => modalStateChange(false)}/>
+            <div className="msg">
+              <FaChevronDown onClick={() => modalStateChange(false)}/>
+            </div>
           </>
-          : <FaCommentAlt onClick={() => modalStateChange(true)}/>
+          : 
+          <div className="msg">
+            <FaCommentAlt onClick={() => modalStateChange(true)}/>
+          </div>
         }
-      </div>
       <section className="hero">
         <div className="hero-left">
           <div className="container">
