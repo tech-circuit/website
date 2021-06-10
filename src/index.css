@@ -19,8 +19,8 @@
 }
 .contact-card {
   position: fixed;
-  width: 20vw;
-  height: 22vw;
+  width: 24vw;
+  height: 26vw;
   background: #FFFFFF;
   border-radius: 7px;
   filter: drop-shadow(0px 4px 31px rgba(0, 0, 0, 0.3));
@@ -43,7 +43,7 @@
   color: #29313D;
 }
 .contact-card .input {
-  width: 17vw;
+  width: 21vw;
   height: 2.5vw;
   background: #FFFFFF;
   border: 1px solid #C4C4C4;
@@ -57,8 +57,8 @@
   font-size: 1vw;
 }
 .contact-card .message {
-  width: 17vw;
-  height: 9vw;
+  width: 21vw;
+  height: 13vw;
   background: #FFFFFF;
   border: 1px solid #C4C4C4;
   box-sizing: border-box;
@@ -70,7 +70,7 @@
 }
 .contact-btn {
   display: flex;
-  width: 17vw;
+  width: 21vw;
   height: 2.5vw;
   justify-content: center;
   align-items: center;

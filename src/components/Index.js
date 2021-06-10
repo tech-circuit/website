@@ -39,11 +39,8 @@ const Index = () => {
       setContactMessage('')
       setContactEmail('')
       setSendButton(false)
+      setTimeout(() => setSendButton(true), 1000)
     }
-  }
-
-  const resetForm = () => {
-    setSendButton(true)
   }
 
   return (
@@ -63,7 +60,7 @@ const Index = () => {
                     Send
                 </Link>
                 : 
-                <Link to="/" className="contact-btn green-btn" onClick={() => resetForm()}>
+                <Link to="/" className="contact-btn green-btn">
                   <FaCheck />
                 </Link>
               }
