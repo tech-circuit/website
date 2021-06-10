@@ -237,7 +237,7 @@ const Index = () => {
           </form>
         </div>
         <div className="foot-right container">
-          <div className="links">
+          <div className="links" style={{ marginRight: '20%' }}>
             <h3>Explore</h3>
             <ul>
               <li>
@@ -255,7 +255,7 @@ const Index = () => {
             </ul>
           </div>
           <div className="links">
-            <h3>Explore</h3>
+            <h3 style={{ width: '10vw' }}>Useful Links</h3>
             <ul>
               <li>
                 <Link>Events</Link>
