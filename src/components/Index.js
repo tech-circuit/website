@@ -1,78 +1,90 @@
-import { useState } from 'react';
+import { useState } from "react";
 import "../index.css";
 import { Link } from "react-router-dom";
 import {
   FaLongArrowAltRight,
   FaChevronDown,
   FaCommentAlt,
-  FaGithub,
-  FaLinkedin,
-  FaInstagram,
-  FaBehanceSquare,
-  FaFacebookSquare,
-  FaTwitterSquare,
   FaEnvelope,
-  FaCheck
+  FaCheck,
 } from "react-icons/fa";
+import Footer from "../components/Footer";
 
 const Index = () => {
-  const [modalView, setModalView] = useState(false)
-  const [sendButton, setSendButton] = useState(true)
-  const [contactEmail, setContactEmail] = useState('')
-  const [contactMessage, setContactMessage] = useState('')
+  const [modalView, setModalView] = useState(false);
+  const [sendButton, setSendButton] = useState(true);
+  const [contactEmail, setContactEmail] = useState("");
+  const [contactMessage, setContactMessage] = useState("");
 
   const modalStateChange = (bool) => {
-    setModalView(bool)
-  }
+    setModalView(bool);
+  };
 
   const editContactEmail = (val) => {
-    setContactEmail(val)
-  }
+    setContactEmail(val);
+  };
 
   const editContactMessage = (val) => {
-    setContactMessage(val)
-  }
-  
+    setContactMessage(val);
+  };
+
   const contactFormSubmit = () => {
-    if(contactEmail.trim().length !== 0 && contactMessage.trim().length !== 0) {
-      console.log(contactEmail, contactMessage)
-      setContactMessage('')
-      setContactEmail('')
-      setSendButton(false)
-      setTimeout(() => setSendButton(true), 1000)
+    if (
+      contactEmail.trim().length !== 0 &&
+      contactMessage.trim().length !== 0
+    ) {
+      console.log(contactEmail, contactMessage);
+      setContactMessage("");
+      setContactEmail("");
+      setSendButton(false);
+      setTimeout(() => setSendButton(true), 1000);
     }
-  }
+  };
 
   return (
     <main>
-        {modalView === true ? 
-          <>
-            <div className="contact-card">
-              <h1>Leave us a message!</h1>
-              <div className="input">
-                  <FaEnvelope />
-                  <input type="text" placeholder="Email Address" value={contactEmail} onChange={event => editContactEmail(event.target.value)}/>
-              </div>
-              <textarea className="message" placeholder="Type your message here!" value={contactMessage} onChange={event => editContactMessage(event.target.value)}></textarea>
-              {sendButton === true ? 
-                <Link to="/" className="contact-btn" onClick={() => contactFormSubmit()}>
-                    Send
-                </Link>
-                : 
-                <Link to="/" className="contact-btn green-btn">
-                  <FaCheck />
-                </Link>
-              }
+      {modalView === true ? (
+        <>
+          <div className="contact-card">
+            <h1>Leave us a message!</h1>
+            <div className="input">
+              <FaEnvelope />
+              <input
+                type="text"
+                placeholder="Email Address"
+                value={contactEmail}
+                onChange={(event) => editContactEmail(event.target.value)}
+              />
             </div>
-            <div className="msg">
-              <FaChevronDown onClick={() => modalStateChange(false)}/>
-            </div>
-          </>
-          : 
-          <div className="msg">
-            <FaCommentAlt onClick={() => modalStateChange(true)}/>
+            <textarea
+              className="message"
+              placeholder="Type your message here!"
+              value={contactMessage}
+              onChange={(event) => editContactMessage(event.target.value)}
+            ></textarea>
+            {sendButton === true ? (
+              <Link
+                to="/"
+                className="contact-btn"
+                onClick={() => contactFormSubmit()}
+              >
+                Send
+              </Link>
+            ) : (
+              <Link to="/" className="contact-btn green-btn">
+                <FaCheck />
+              </Link>
+            )}
           </div>
-        }
+          <div className="msg">
+            <FaChevronDown onClick={() => modalStateChange(false)} />
+          </div>
+        </>
+      ) : (
+        <div className="msg">
+          <FaCommentAlt onClick={() => modalStateChange(true)} />
+        </div>
+      )}
       <section className="hero">
         <div className="hero-left">
           <div className="container">
@@ -223,79 +235,7 @@ const Index = () => {
         </div>
       </section>
 
-      <footer className="foot">
-        <div className="foot-left container">
-          <h2>Join our mailing list for the latest updates</h2>
-          <form className="foot-mail">
-            <div className="input">
-              <FaEnvelope />
-              <input type="text" placeholder="Email Address" />
-            </div>
-            <button type="submit" className="btn">
-              Submit
-            </button>
-          </form>
-        </div>
-        <div className="foot-right container">
-          <div className="links" style={{ marginRight: '20%' }}>
-            <h3>Explore</h3>
-            <ul>
-              <li>
-                <Link>Events</Link>
-              </li>
-              <li>
-                <Link>Events</Link>
-              </li>
-              <li>
-                <Link>Events</Link>
-              </li>
-              <li>
-                <Link>Events</Link>
-              </li>
-            </ul>
-          </div>
-          <div className="links">
-            <h3 style={{ width: '10vw' }}>Useful Links</h3>
-            <ul>
-              <li>
-                <Link>Events</Link>
-              </li>
-              <li>
-                <Link>Events</Link>
-              </li>
-              <li>
-                <Link>Events</Link>
-              </li>
-              <li>
-                <Link>Events</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="foot-bottom container">
-          <p>&copy; 2021 techCircuit</p>
-          <div className="socials">
-            <a href="/">
-              <FaLinkedin />
-            </a>
-            <a href="/">
-              <FaGithub />
-            </a>
-            <a href="/">
-              <FaInstagram />
-            </a>
-            <a href="/">
-              <FaBehanceSquare />
-            </a>
-            <a href="/">
-              <FaFacebookSquare />
-            </a>
-            <a href="/">
-              <FaTwitterSquare />
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 };

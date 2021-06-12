@@ -7,7 +7,8 @@ import Community from "./components/Community";
 import Resources from "./components/Resources";
 import Forums from "./components/Forums";
 import FullForum from "./components/FullForum";
-import TextBox from "./components/TextBox";
+// import TextBox from "./components/TextBox";
+import About from "./components/About";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -20,10 +21,11 @@ const App = () => {
           <Index />
         </Route>
         <Route exact path="/about">
-          <TextBox />
+          {/* <TextBox /> */}
+          <About />
         </Route>
         <Route exact path="/login">
-            <Login />
+          <Login />
         </Route>
         <Route exact path="/create">
           <CreateProject />
