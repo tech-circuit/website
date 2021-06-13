@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../index.css";
 import { Link } from "react-router-dom";
 import {
@@ -9,6 +9,8 @@ import {
   FaCheck,
 } from "react-icons/fa";
 import Footer from "../components/Footer";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Index = () => {
   const [modalView, setModalView] = useState(false);
@@ -40,6 +42,15 @@ const Index = () => {
       setTimeout(() => setSendButton(true), 1000);
     }
   };
+
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      duration: 600,
+      delay: 100,
+    });
+    AOS.refresh();
+  }, []);
 
   return (
     <main>
@@ -88,23 +99,28 @@ const Index = () => {
       <section className="hero">
         <div className="hero-left">
           <div className="container">
-            <h1>
+            <h1 data-aos="fade-right">
               The place where
               <br />
               everything takes place.
             </h1>
-            <p>
+            <p data-aos="fade-right" data-aos-delay="200">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Suspendisse duis lectus mi urna nulla suscipit lorem egestas.
               <br />
               Diam dignissim sed congue id duis mattis dictum integer sit.
             </p>
-            <Link to="/" className="hero-btn">
+            <Link
+              data-aos="fade-up"
+              data-aos-delay="300"
+              to="/"
+              className="hero-btn"
+            >
               Join us Now&nbsp;&nbsp;
               <FaLongArrowAltRight />
             </Link>
             <div className="scroll-more-hold">
-              <a href="/" className="scroll-more">
+              <a href="#abt" className="scroll-more">
                 Scroll to know more
               </a>
               <FaChevronDown />
@@ -116,13 +132,13 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="about">
+      <section id="abt" className="about">
         <div className="abt-left">
           <div className="container">
-            <h1>
+            <h1 data-aos="fade-right">
               What is <strong>techCircuit?</strong>
             </h1>
-            <p>
+            <p data-aos="fade-up-left" data-aos-delay="300">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh enim
               fames elementum turpis elementum lacus. Purus nunc turpis arcu at
               ac tortor in purus. Purus penatibus vestibulum, sed sodales id
@@ -164,28 +180,63 @@ const Index = () => {
       <section className="feats">
         <div className="clubs container">
           <div className="club-left">
-            <h2>
+            <h2 data-aos="fade-right">
               Home to the most influential
               <br />
               tech clubs from all over India.
             </h2>
-            <p>
+            <p data-aos="fade-right" data-aos-delay="400">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Suspendisse duis lectus mi urna nulla suscipit lorem egestas. Diam
               dignissim sed congue id duis mattis dictum integer sit.
             </p>
-            <Link to="/" className="club-btn">
+            <Link data-aos="fade-right" to="/" className="club-btn">
               View Clubs
             </Link>
           </div>
           <div className="club-right">
             <div className="club-logos">
-              <img src="/assets/exun.svg" alt="" className="club-logo" />
-              <img src="/assets/exun.svg" alt="" className="club-logo" />
-              <img src="/assets/exun.svg" alt="" className="club-logo" />
-              <img src="/assets/exun.svg" alt="" className="club-logo" />
-              <img src="/assets/exun.svg" alt="" className="club-logo" />
-              <img src="/assets/exun.svg" alt="" className="club-logo" />
+              <img
+                data-aos="zoom-in"
+                src="/assets/exun.svg"
+                alt=""
+                className="club-logo"
+              />
+              <img
+                data-aos="zoom-in"
+                data-aos-delay="200"
+                src="/assets/exun.svg"
+                alt=""
+                className="club-logo"
+              />
+              <img
+                data-aos="zoom-in"
+                data-aos-delay="300"
+                src="/assets/exun.svg"
+                alt=""
+                className="club-logo"
+              />
+              <img
+                data-aos="zoom-in"
+                data-aos-delay="400"
+                src="/assets/exun.svg"
+                alt=""
+                className="club-logo"
+              />
+              <img
+                data-aos="zoom-in"
+                data-aos-delay="500"
+                src="/assets/exun.svg"
+                alt=""
+                className="club-logo"
+              />
+              <img
+                data-aos="zoom-in"
+                data-aos-delay="600"
+                src="/assets/exun.svg"
+                alt=""
+                className="club-logo"
+              />
             </div>
           </div>
         </div>
@@ -195,8 +246,8 @@ const Index = () => {
             <img className="feat-img-minus" src="/assets/write.png" alt="" />
           </div>
           <div className="feat-content">
-            <h2>Showcase your work and skills</h2>
-            <p>
+            <h2 data-aos="fade-left">Showcase your work and skills</h2>
+            <p data-aos="fade-left" data-aos-delay="300">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis at
               amet molestie et, vulputate arcu sed mattis. Elit neque, amet,
               amet, vulputate eget blandit. Pellentesque luctus elementum dui
@@ -208,8 +259,8 @@ const Index = () => {
         </div>
         <div className="feat container">
           <div className="feat-content">
-            <h2>Showcase your work and skills</h2>
-            <p>
+            <h2 data-aos="fade-right">Showcase your work and skills</h2>
+            <p data-aos="fade-right" data-aos-delay="300">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis at
               amet molestie et, vulputate arcu sed mattis. Elit neque, amet,
               amet, vulputate eget blandit. Pellentesque luctus elementum dui
@@ -227,8 +278,8 @@ const Index = () => {
             <img className="feat-img-minus" src="/assets/write.png" alt="" />
           </div>
           <div className="feat-content">
-            <h2>Showcase your work and skills</h2>
-            <p>
+            <h2 data-aos="fade-left">Showcase your work and skills</h2>
+            <p data-aos="fade-left" data-aos-delay="300">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis at
               amet molestie et, vulputate arcu sed mattis. Elit neque, amet,
               amet, vulputate eget blandit. Pellentesque luctus elementum dui
@@ -240,8 +291,8 @@ const Index = () => {
         </div>
         <div className="feat last-feat container">
           <div className="feat-content">
-            <h2>Showcase your work and skills</h2>
-            <p>
+            <h2 data-aos="fade-right">Showcase your work and skills</h2>
+            <p data-aos="fade-right" data-aos-delay="300">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis at
               amet molestie et, vulputate arcu sed mattis. Elit neque, amet,
               amet, vulputate eget blandit. Pellentesque luctus elementum dui

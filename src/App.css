@@ -8,6 +8,9 @@
   outline: 0;
   font-family: Poppins, sans-serif;
 }
+html {
+  scroll-behavior: smooth;
+}
 body {
   width: 100vw;
   overflow-x: hidden;
