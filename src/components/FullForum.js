@@ -87,7 +87,7 @@ const FullForum = () => {
                 ></textarea>
               </div>
               <div className="comment-btns">
-                <button className="btn com-cancel">Cancel</button>
+                {/* <button className="btn com-cancel">Cancel</button> */}
                 <button className="btn com-create">Post Comment</button>
               </div>
             </form>

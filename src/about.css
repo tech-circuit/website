@@ -214,6 +214,7 @@
   font-size: 2.7vw;
   color: #4678f9;
   font-weight: 600;
+  margin-bottom: 2vh;
 }
 .member-cont p {
   width: 50%;
@@ -239,8 +240,8 @@
   width: 50%;
 }
 .member img {
-  width: 12vw;
-  height: 12vw;
+  width: 11vw;
+  height: 11vw;
   border-radius: 50%;
   margin-bottom: 3vh;
 }

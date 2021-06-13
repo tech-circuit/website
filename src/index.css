@@ -320,7 +320,7 @@
 .circ-hold {
   position: relative;
   top: 25%;
-  left: 24%;
+  left: 5%;
   right: 100%;
   width: 150%;
   height: calc((35 / 100 * 100vw) * 1.5);
