@@ -139,12 +139,24 @@ const Index = () => {
         </div>
         <div className="abt-right">
           <div className="circ-hold">
-            <div id="circ-1" className="circ"></div>
-            <div id="circ-2" className="circ"></div>
-            <div id="circ-3" className="circ"></div>
-            <div id="circ-4" className="circ"></div>
-            <div id="circ-5" className="circ"></div>
-            <div id="circ-6" className="circ"></div>
+            <div id="circ-1" className="circ">
+              <FaEnvelope />
+            </div>
+            <div id="circ-2" className="circ">
+              <FaEnvelope />
+            </div>
+            <div id="circ-3" className="circ">
+              <FaEnvelope />
+            </div>
+            <div id="circ-4" className="circ">
+              <FaEnvelope />
+            </div>
+            <div id="circ-5" className="circ">
+              <FaEnvelope />
+            </div>
+            <div id="circ-6" className="circ">
+              <FaEnvelope />
+            </div>
           </div>
         </div>
       </section>

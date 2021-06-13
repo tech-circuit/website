@@ -334,6 +334,12 @@
   height: 12vw;
   background: #4678f9;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3vw;
+  color: #fff;
+  animation: rot2 8s infinite linear reverse;
 }
 /* Individual Styling   ------  thres: 25     */
 /* top */
@@ -341,6 +347,7 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+  animation: rot3 8s infinite linear reverse;
 }
 #circ-2 {
   top: 18%;
@@ -355,6 +362,7 @@
   bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
+  animation: rot3 8s infinite linear reverse;
 }
 #circ-5 {
   top: 52%;
@@ -372,5 +380,21 @@
   }
   100% {
     transform: translateY(-20%) rotate(360deg);
+  }
+}
+@keyframes rot2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rot3 {
+  0% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(360deg);
   }
 }
