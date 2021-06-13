@@ -21,7 +21,7 @@
   position: fixed;
   width: 24vw;
   height: 26vw;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 7px;
   filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.11));
   z-index: 999999;
@@ -32,21 +32,21 @@
   padding-right: 1.5vw;
   padding-bottom: 1.5vw;
 }
-.contact-card:hover{
-  cursor: auto
+.contact-card:hover {
+  cursor: auto;
 }
 .contact-card h1 {
   font-family: Poppins;
   font-style: normal;
   font-weight: 500;
   font-size: 1.3vw;
-  color: #29313D;
+  color: #29313d;
 }
 .contact-card .input {
   width: 21vw;
   height: 2.5vw;
-  background: #FFFFFF;
-  border: 1px solid #C4C4C4;
+  background: #ffffff;
+  border: 1px solid #c4c4c4;
   box-sizing: border-box;
   border-radius: 4px;
   margin-top: 1vw;
@@ -59,8 +59,8 @@
 .contact-card .message {
   width: 21vw;
   height: 13vw;
-  background: #FFFFFF;
-  border: 1px solid #C4C4C4;
+  background: #ffffff;
+  border: 1px solid #c4c4c4;
   box-sizing: border-box;
   border-radius: 4px;
   margin-top: 0.8vw;
@@ -89,7 +89,7 @@
   background: #3255af;
 }
 .green-btn {
-  background: #85D49C;
+  background: #85d49c;
 }
 .green-btn:hover {
   background: #85d49c;
@@ -175,9 +175,6 @@
 }
 .abt-left {
   width: 65%;
-}
-.abt-right {
-  width: 35%;
 }
 .about .container {
   height: 100%;
@@ -313,4 +310,67 @@
 }
 .last-feat {
   padding-bottom: 10vh;
+}
+/* CIRC ANIM ---------------------------------------------------------------------------------------------------------- */
+.abt-right {
+  width: 35%;
+  position: relative;
+  overflow: hidden;
+}
+.circ-hold {
+  position: relative;
+  top: 25%;
+  left: 24%;
+  right: 100%;
+  width: 150%;
+  height: calc((35 / 100 * 100vw) * 1.5);
+  border-radius: 50%;
+  transform: translateY(-20%);
+  animation: rot 8s infinite linear;
+}
+.circ {
+  position: absolute;
+  width: 12vw;
+  height: 12vw;
+  background: #4678f9;
+  border-radius: 50%;
+}
+/* Individual Styling   ------  thres: 25     */
+/* top */
+#circ-1 {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#circ-2 {
+  top: 18%;
+  left: 7%;
+}
+#circ-3 {
+  top: 18%;
+  right: 7%;
+}
+/* bot */
+#circ-4 {
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#circ-5 {
+  top: 52%;
+  left: 7%;
+}
+#circ-6 {
+  top: 52%;
+  right: 7%;
+}
+
+/* ANIM */
+@keyframes rot {
+  0% {
+    transform: translateY(-20%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-20%) rotate(360deg);
+  }
 }

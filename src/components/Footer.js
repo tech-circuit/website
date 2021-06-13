@@ -31,16 +31,16 @@ const Footer = () => {
           <h3>Explore</h3>
           <ul>
             <li>
-              <Link>Events</Link>
+              <Link to="/">Events</Link>
             </li>
             <li>
-              <Link>Events</Link>
+              <Link to="/">Events</Link>
             </li>
             <li>
-              <Link>Events</Link>
+              <Link to="/">Events</Link>
             </li>
             <li>
-              <Link>Events</Link>
+              <Link to="/">Events</Link>
             </li>
           </ul>
         </div>
@@ -48,16 +48,16 @@ const Footer = () => {
           <h3 style={{ width: "10vw" }}>Useful Links</h3>
           <ul>
             <li>
-              <Link>Events</Link>
+              <Link to="/">Events</Link>
             </li>
             <li>
-              <Link>Events</Link>
+              <Link to="/">Events</Link>
             </li>
             <li>
-              <Link>Events</Link>
+              <Link to="/">Events</Link>
             </li>
             <li>
-              <Link>Events</Link>
+              <Link to="/">Events</Link>
             </li>
           </ul>
         </div>

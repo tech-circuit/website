@@ -137,7 +137,16 @@ const Index = () => {
             <img src="/assets/abt.svg" alt="About Banner" />
           </div>
         </div>
-        <div className="abt-right"></div>
+        <div className="abt-right">
+          <div className="circ-hold">
+            <div id="circ-1" className="circ"></div>
+            <div id="circ-2" className="circ"></div>
+            <div id="circ-3" className="circ"></div>
+            <div id="circ-4" className="circ"></div>
+            <div id="circ-5" className="circ"></div>
+            <div id="circ-6" className="circ"></div>
+          </div>
+        </div>
       </section>
 
       <section className="feats">
