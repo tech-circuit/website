@@ -76,13 +76,13 @@ const Index = () => {
               </Link>
             )}
           </div>
-          <div className="msg">
-            <FaChevronDown onClick={() => modalStateChange(false)} />
+          <div className="msg" onClick={() => modalStateChange(false)}>
+            <FaChevronDown />
           </div>
         </>
       ) : (
-        <div className="msg">
-          <FaCommentAlt onClick={() => modalStateChange(true)} />
+        <div className="msg" onClick={() => modalStateChange(true)}>
+          <FaCommentAlt />
         </div>
       )}
       <section className="hero">
