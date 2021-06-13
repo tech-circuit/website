@@ -61,6 +61,13 @@ nav {
 .nav-link:hover:after {
   width: 100%;
 }
+.nav-link-active {
+  color: #4678f9;
+}
+.nav-link-active:after {
+  width: 100%;
+}
+
 .disc-btn {
   text-decoration: none;
   border: 1px #4678f9 solid;
