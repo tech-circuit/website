@@ -1,50 +1,54 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../nav.css";
 
 const Navbar = () => {
-  const [activePage, setActivePage] = useState("Work");
+  const location = useLocation();
+  const [activePage, setActivePage] = useState(location.pathname);
 
   return (
     <nav className="nav">
       <div className="nav-left">
-        <Link className="nav-logo-holder" to="/">
+        <Link className="nav-logo-holder" 
+          to="/"
+          onClick={(e) => setActivePage("/")}
+        >
           <img src="/assets/fulllogo.png" alt="" className="logo" />
         </Link>
         <div className="nav-links">
           <Link
-            to="/"
-            onClick={(e) => setActivePage(e.target.textContent)}
+            to="/work"
+            onClick={(e) => setActivePage("/work")}
             className={
-              activePage === "Work" ? "nav-link nav-link-active" : "nav-link"
+              activePage === "/work" ? "nav-link nav-link-active" : "nav-link"
             }
           >
             Work
           </Link>
           <Link
             to="/events"
-            onClick={(e) => setActivePage(e.target.textContent)}
+            onClick={(e) => setActivePage("/events")}
             className={
-              activePage === "Events" ? "nav-link nav-link-active" : "nav-link"
+              activePage === "/events" ? "nav-link nav-link-active" : "nav-link"
             }
           >
             Events
           </Link>
           <Link
             to="/forums"
-            onClick={(e) => setActivePage(e.target.textContent)}
+            onClick={(e) => setActivePage("/forums")}
             className={
-              activePage === "Forums" ? "nav-link nav-link-active" : "nav-link"
+              activePage === "/forums" ? "nav-link nav-link-active" : "nav-link"
             }
           >
             Forums
           </Link>
           <Link
             to="/community"
-            onClick={(e) => setActivePage(e.target.textContent)}
+            onClick={(e) => setActivePage("/community")}
             className={
-              activePage === "Community"
+              activePage === "/community"
                 ? "nav-link nav-link-active"
                 : "nav-link"
             }
@@ -53,9 +57,9 @@ const Navbar = () => {
           </Link>
           <Link
             to="/resources"
-            onClick={(e) => setActivePage(e.target.textContent)}
+            onClick={(e) => setActivePage("/resources")}
             className={
-              activePage === "Resources"
+              activePage === "/resources"
                 ? "nav-link nav-link-active"
                 : "nav-link"
             }
@@ -64,9 +68,9 @@ const Navbar = () => {
           </Link>
           <Link
             to="/about"
-            onClick={(e) => setActivePage(e.target.textContent)}
+            onClick={(e) => setActivePage("/about")}
             className={
-              activePage === "About" ? "nav-link nav-link-active" : "nav-link"
+              activePage === "/about" ? "nav-link nav-link-active" : "nav-link"
             }
           >
             About
