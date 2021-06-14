@@ -1,11 +1,105 @@
-import React from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import "../about.css";
-import { FaChevronDown, FaLongArrowAltRight } from "react-icons/fa";
+import "../index.css";
+import {
+  FaLongArrowAltRight,
+  FaChevronDown,
+  FaCommentAlt,
+  FaEnvelope,
+  FaCheck,
+} from "react-icons/fa";
 import Footer from "../components/Footer";
 
 const About = () => {
+  const [modalView, setModalView] = useState(false);
+  const [sendButton, setSendButton] = useState(true);
+  const [contactEmail, setContactEmail] = useState("");
+  const [contactMessage, setContactMessage] = useState("");
+
+  const modalStateChange = (bool) => {
+    setModalView(bool);
+  };
+
+  const editContactEmail = (val) => {
+    setContactEmail(val);
+  };
+
+  const editContactMessage = (val) => {
+    setContactMessage(val);
+  };
+
+  const contactFormSubmit = () => {
+    if (
+      contactEmail.trim().length !== 0 &&
+      contactMessage.trim().length !== 0
+    ) {
+      console.log(contactEmail, contactMessage);
+      setContactMessage("");
+      setContactEmail("");
+      setSendButton(false);
+      setTimeout(() => setSendButton(true), 1000);
+    }
+  };
+
+  function toggleAns(eve) {
+    if (eve.target.parentElement.classList.contains("faq")) {
+      eve.target.nextElementSibling.nextElementSibling.classList.toggle(
+        "a-active"
+      );
+      eve.target.classList.toggle("faq-toggle-active");
+    } else {
+      eve.target.parentElement.nextElementSibling.nextElementSibling.classList.toggle(
+        "a-active"
+      );
+      eve.target.parentElement.classList.toggle("faq-toggle-active");
+    }
+  }
+
   return (
     <>
+      {modalView === true ? (
+        <>
+          <div className="contact-card">
+            <h1>Leave us a message!</h1>
+            <div className="input">
+              <FaEnvelope />
+              <input
+                type="text"
+                placeholder="Email Address"
+                value={contactEmail}
+                onChange={(event) => editContactEmail(event.target.value)}
+              />
+            </div>
+            <textarea
+              className="message"
+              placeholder="Type your message here!"
+              value={contactMessage}
+              onChange={(event) => editContactMessage(event.target.value)}
+            ></textarea>
+            {sendButton === true ? (
+              <Link
+                to="/about"
+                className="contact-btn"
+                onClick={() => contactFormSubmit()}
+              >
+                Send
+              </Link>
+            ) : (
+              <Link to="/about" className="contact-btn green-btn">
+                <FaCheck />
+              </Link>
+            )}
+          </div>
+          <div className="msg" onClick={() => modalStateChange(false)}>
+            <FaChevronDown />
+          </div>
+        </>
+      ) : (
+        <div className="msg" onClick={() => modalStateChange(true)}>
+          <FaCommentAlt />
+        </div>
+      )}
       <div className="container abt-hero">
         <h1>
           tech<strong>Circuit</strong>
@@ -70,7 +164,7 @@ const About = () => {
       </div>
 
       <div className="faqs-cont container">
-        <h1>FAQs</h1>
+        <h1>Frequently Asked Questions</h1>
         <div className="faqs">
           <div className="faq">
             <FaChevronDown
@@ -216,10 +310,10 @@ const About = () => {
           </div>
         </div>
         <h2>Got more Questions?</h2>
-        <a href="/about" className="btn">
+        <Link className="btn" onClick={() => modalStateChange(true)}>
           Leave us a Message!&nbsp;&nbsp;
           <FaLongArrowAltRight />
-        </a>
+        </Link>
       </div>
 
       <div className="member-cont container">
@@ -273,20 +367,6 @@ const About = () => {
       <Footer />
     </>
   );
-
-  function toggleAns(eve) {
-    if (eve.target.parentElement.classList.contains("faq")) {
-      eve.target.nextElementSibling.nextElementSibling.classList.toggle(
-        "a-active"
-      );
-      eve.target.classList.toggle("faq-toggle-active");
-    } else {
-      eve.target.parentElement.nextElementSibling.nextElementSibling.classList.toggle(
-        "a-active"
-      );
-      eve.target.parentElement.classList.toggle("faq-toggle-active");
-    }
-  }
 };
 
 export default About;
