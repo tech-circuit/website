@@ -17,11 +17,11 @@ const Events = () => {
       <header className="head-2 eventHead container eventHead2">
         <div className="eventSearch">
           <div className="input">
-            <img src="/assets/magnifying-glass.svg" alt="" />
+            <img src="/assets/magnifying-glass.svg" alt="alt" />
             <input type="text" placeholder="Search" />
           </div>
           <button className="eventFilter">
-            <img src="/assets/filter.svg" alt="" />
+            <img src="/assets/filter.svg" alt="alt" />
             &nbsp;&nbsp;&nbsp;&nbsp;Filter Region
           </button>
         </div>
@@ -44,21 +44,21 @@ const Events = () => {
           showStatus={false}
         >
           <div>
-            <img src="/assets/sample-banner.jpg" />
+            <img src="/assets/sample-banner.jpg" alt="alt" />
             <h1>Alphanode 2021 by N.O.D.E.</h1>
             <h2>
               Lorem ipsum dolor inter-school tech event hosted by DPS Gurgaon{" "}
             </h2>
           </div>
           <div>
-            <img src="/assets/sample-banner.jpg" />
+            <img src="/assets/sample-banner.jpg" alt="alt" />
             <h1>Alphanode 2021 by N.O.D.E.</h1>
             <h2>
               Lorem ipsum dolor inter-school tech event hosted by DPS Gurgaon{" "}
             </h2>
           </div>
           <div>
-            <img src="/assets/sample-banner.jpg" />
+            <img src="/assets/sample-banner.jpg" alt="alt" />
             <h1>Alphanode 2021 by N.O.D.E.</h1>
             <h2>
               Lorem ipsum dolor inter-school tech event hosted by DPS Gurgaon{" "}
@@ -69,7 +69,7 @@ const Events = () => {
 
       <section className="events container">
         <div className="event">
-          <img src="/assets/sample-banner.jpg" alt="" />
+          <img src="/assets/sample-banner.jpg" alt="alt" />
           <div className="eventBody">
             <div className="head">
               <h1>nCRYPT 2021 Lorem </h1>
@@ -91,7 +91,7 @@ const Events = () => {
           </div>
         </div>
         <div className="event">
-          <img src="/assets/sample-banner.jpg" alt="" />
+          <img src="/assets/sample-banner.jpg" alt="alt" />
           <div className="eventBody">
             <div className="head">
               <h1>nCRYPT 2021 Lorem </h1>
@@ -113,7 +113,7 @@ const Events = () => {
           </div>
         </div>
         <div className="event">
-          <img src="/assets/sample-banner.jpg" alt="" />
+          <img src="/assets/sample-banner.jpg" alt="alt" />
           <div className="eventBody">
             <div className="head">
               <h1>nCRYPT 2021 Lorem </h1>
@@ -135,7 +135,7 @@ const Events = () => {
           </div>
         </div>
         <div className="event">
-          <img src="/assets/sample-banner.jpg" alt="" />
+          <img src="/assets/sample-banner.jpg" alt="alt" />
           <div className="eventBody">
             <div className="head">
               <h1>nCRYPT 2021 Lorem </h1>
@@ -157,7 +157,7 @@ const Events = () => {
           </div>
         </div>
         <div className="event">
-          <img src="/assets/sample-banner.jpg" alt="" />
+          <img src="/assets/sample-banner.jpg" alt="alt" />
           <div className="eventBody">
             <div className="head">
               <h1>nCRYPT 2021 Lorem </h1>
@@ -179,7 +179,7 @@ const Events = () => {
           </div>
         </div>
         <div className="event">
-          <img src="/assets/sample-banner.jpg" alt="" />
+          <img src="/assets/sample-banner.jpg" alt="alt" />
           <div className="eventBody">
             <div className="head">
               <h1>nCRYPT 2021 Lorem </h1>
@@ -201,7 +201,7 @@ const Events = () => {
           </div>
         </div>
         <div className="event">
-          <img src="/assets/sample-banner.jpg" alt="" />
+          <img src="/assets/sample-banner.jpg" alt="alt" />
           <div className="eventBody">
             <div className="head">
               <h1>nCRYPT 2021 Lorem </h1>
@@ -223,7 +223,7 @@ const Events = () => {
           </div>
         </div>
         <div className="event">
-          <img src="/assets/sample-banner.jpg" alt="" />
+          <img src="/assets/sample-banner.jpg" alt="alt" />
           <div className="eventBody">
             <div className="head">
               <h1>nCRYPT 2021 Lorem </h1>
@@ -245,7 +245,7 @@ const Events = () => {
           </div>
         </div>
         <div className="event">
-          <img src="/assets/sample-banner.jpg" alt="" />
+          <img src="/assets/sample-banner.jpg" alt="alt" />
           <div className="eventBody">
             <div className="head">
               <h1>nCRYPT 2021 Lorem </h1>

@@ -80,7 +80,7 @@ const FullForum = () => {
           <div className="add-comment">
             <form>
               <div className="add-comm-top">
-                <img src="/assets/accounticon.png" alt="" />
+                <img src="/assets/accounticon.png" alt="alt" />
                 <textarea
                   name="comment"
                   placeholder="What do you think about this post..."
@@ -94,7 +94,7 @@ const FullForum = () => {
           </div>
           <div className="comment">
             <a href="/" className="comm-icon">
-              <img src="/assets/accounticon.png" alt="" />
+              <img src="/assets/accounticon.png" alt="alt" />
             </a>
             <div className="comm-content">
               <div className="details">
@@ -134,7 +134,7 @@ const FullForum = () => {
           </div>
           <div className="comment">
             <a href="/" className="comm-icon">
-              <img src="/assets/accounticon.png" alt="" />
+              <img src="/assets/accounticon.png" alt="alt" />
             </a>
             <div className="comm-content">
               <div className="details">
@@ -174,7 +174,7 @@ const FullForum = () => {
           </div>
           <div className="comment">
             <a href="/" className="comm-icon">
-              <img src="/assets/accounticon.png" alt="" />
+              <img src="/assets/accounticon.png" alt="alt" />
             </a>
             <div className="comm-content">
               <div className="details">

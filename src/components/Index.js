@@ -199,42 +199,42 @@ const Index = () => {
               <img
                 data-aos="zoom-in"
                 src="/assets/exun.svg"
-                alt=""
+                alt="alt"
                 className="club-logo"
               />
               <img
                 data-aos="zoom-in"
                 data-aos-delay="200"
                 src="/assets/exun.svg"
-                alt=""
+                alt="alt"
                 className="club-logo"
               />
               <img
                 data-aos="zoom-in"
                 data-aos-delay="300"
                 src="/assets/exun.svg"
-                alt=""
+                alt="alt"
                 className="club-logo"
               />
               <img
                 data-aos="zoom-in"
                 data-aos-delay="400"
                 src="/assets/exun.svg"
-                alt=""
+                alt="alt"
                 className="club-logo"
               />
               <img
                 data-aos="zoom-in"
                 data-aos-delay="500"
                 src="/assets/exun.svg"
-                alt=""
+                alt="alt"
                 className="club-logo"
               />
               <img
                 data-aos="zoom-in"
                 data-aos-delay="600"
                 src="/assets/exun.svg"
-                alt=""
+                alt="alt"
                 className="club-logo"
               />
             </div>
@@ -243,7 +243,7 @@ const Index = () => {
 
         <div className="feat container first-feat">
           <div className="feat-banner">
-            <img className="feat-img-minus" src="/assets/write.png" alt="" />
+            <img className="feat-img-minus" src="/assets/write.png" alt="alt" />
           </div>
           <div className="feat-content">
             <h2 data-aos="fade-left">Showcase your work and skills</h2>
@@ -270,12 +270,12 @@ const Index = () => {
             </p>
           </div>
           <div className="feat-banner">
-            <img className="feat-img-plus" src="/assets/write.png" alt="" />
+            <img className="feat-img-plus" src="/assets/write.png" alt="alt" />
           </div>
         </div>
         <div className="feat container">
           <div className="feat-banner">
-            <img className="feat-img-minus" src="/assets/write.png" alt="" />
+            <img className="feat-img-minus" src="/assets/write.png" alt="alt" />
           </div>
           <div className="feat-content">
             <h2 data-aos="fade-left">Showcase your work and skills</h2>
@@ -302,7 +302,7 @@ const Index = () => {
             </p>
           </div>
           <div className="feat-banner">
-            <img className="feat-img-plus" src="/assets/write.png" alt="" />
+            <img className="feat-img-plus" src="/assets/write.png" alt="alt" />
           </div>
         </div>
       </section>

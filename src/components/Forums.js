@@ -22,7 +22,7 @@ const Forums = () => {
         <div className="container">
           <div className="search-box">
             <div className="input">
-              <img src="/assets/magnifying-glass.svg" alt="" />
+              <img src="/assets/magnifying-glass.svg" alt="alt" />
               <input
                 type="text"
                 placeholder="Search communities, posts, interests..."

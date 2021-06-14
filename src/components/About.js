@@ -153,12 +153,12 @@ const About = () => {
         </div>
         <div className="club-right">
           <div className="club-logos">
-            <img src="/assets/exun.svg" alt="" className="club-logo" />
-            <img src="/assets/exun.svg" alt="" className="club-logo" />
-            <img src="/assets/exun.svg" alt="" className="club-logo" />
-            <img src="/assets/exun.svg" alt="" className="club-logo" />
-            <img src="/assets/exun.svg" alt="" className="club-logo" />
-            <img src="/assets/exun.svg" alt="" className="club-logo" />
+            <img src="/assets/exun.svg" alt="alt" className="club-logo" />
+            <img src="/assets/exun.svg" alt="alt" className="club-logo" />
+            <img src="/assets/exun.svg" alt="alt" className="club-logo" />
+            <img src="/assets/exun.svg" alt="alt" className="club-logo" />
+            <img src="/assets/exun.svg" alt="alt" className="club-logo" />
+            <img src="/assets/exun.svg" alt="alt" className="club-logo" />
           </div>
         </div>
       </div>
@@ -325,39 +325,39 @@ const About = () => {
         </p>
         <div className="big-members">
           <div className="big-member member">
-            <img src="/assets/sample-banner.jpg" alt="" />
+            <img src="/assets/sample-banner.jpg" alt="alt" />
             <h3>Your Mom</h3>
             <h4>Founder Director</h4>
           </div>
           <div className="big-member member">
-            <img src="/assets/sample-banner.jpg" alt="" />
+            <img src="/assets/sample-banner.jpg" alt="alt" />
             <h3>Your Mom</h3>
             <h4>Founder Director</h4>
           </div>
         </div>
         <div className="members">
           <div className="member">
-            <img src="/assets/sample-banner.jpg" alt="" />
+            <img src="/assets/sample-banner.jpg" alt="alt" />
             <h3>Your Mom</h3>
             <h4>Founder Director</h4>
           </div>
           <div className="member">
-            <img src="/assets/sample-banner.jpg" alt="" />
+            <img src="/assets/sample-banner.jpg" alt="alt" />
             <h3>Your Mom</h3>
             <h4>Founder Director</h4>
           </div>
           <div className="member">
-            <img src="/assets/sample-banner.jpg" alt="" />
+            <img src="/assets/sample-banner.jpg" alt="alt" />
             <h3>Your Mom</h3>
             <h4>Founder Director</h4>
           </div>
           <div className="member">
-            <img src="/assets/sample-banner.jpg" alt="" />
+            <img src="/assets/sample-banner.jpg" alt="alt" />
             <h3>Your Mom</h3>
             <h4>Founder Director</h4>
           </div>
           <div className="member">
-            <img src="/assets/sample-banner.jpg" alt="" />
+            <img src="/assets/sample-banner.jpg" alt="alt" />
             <h3>Your Mom</h3>
             <h4>Founder Director</h4>
           </div>

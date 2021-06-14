@@ -15,7 +15,7 @@ const Navbar = () => {
           to="/"
           onClick={(e) => setActivePage("/")}
         >
-          <img src="/assets/fulllogo.png" alt="" className="logo" />
+          <img src="/assets/fulllogo.png" alt="alt" className="logo" />
         </Link>
         <div className="nav-links">
           <Link
