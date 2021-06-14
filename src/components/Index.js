@@ -156,22 +156,22 @@ const Index = () => {
         <div className="abt-right">
           <div className="circ-hold">
             <div id="circ-1" className="circ">
-              <FaEnvelope />
+              <img src="/assets/circ-1.svg" alt="circ" />
             </div>
             <div id="circ-2" className="circ">
-              <FaEnvelope />
+              <img src="/assets/circ-2.svg" alt="circ" />
             </div>
             <div id="circ-3" className="circ">
-              <FaEnvelope />
+              <img src="/assets/circ-3.svg" alt="circ" />
             </div>
             <div id="circ-4" className="circ">
-              <FaEnvelope />
+              <img src="/assets/circ-4.svg" alt="circ" />
             </div>
             <div id="circ-5" className="circ">
-              <FaEnvelope />
+              <img src="/assets/circ-5.svg" alt="circ" />
             </div>
             <div id="circ-6" className="circ">
-              <FaEnvelope />
+              <img src="/assets/circ-6.svg" alt="circ" />
             </div>
           </div>
         </div>

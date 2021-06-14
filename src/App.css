@@ -18,6 +18,13 @@ body {
 img {
   object-fit: cover;
 }
+button {
+  border: none;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
 .App {
   font-family: Inter;
   text-align: center;
@@ -27,6 +34,32 @@ img {
   padding: 0 8vw;
   width: 100%;
   overflow-x: hidden;
+}
+
+/* Header */
+header strong {
+  font-weight: 600;
+  color: #85d49c;
+}
+header p {
+  font-weight: 300;
+  font-size: 1vw;
+  margin-bottom: 1.3vh;
+}
+header {
+  background: #29313d;
+  width: 100vw;
+  color: #fff;
+}
+.head-1 {
+  padding-top: 12vh;
+}
+.head-2 {
+  transform: translateY(-2px);
+  padding: 2vh 0;
+  position: sticky;
+  top: 7vh;
+  z-index: 999;
 }
 
 .authButton {

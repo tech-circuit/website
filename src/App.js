@@ -7,6 +7,7 @@ import Community from "./components/Community";
 import Resources from "./components/Resources";
 import Forums from "./components/Forums";
 import FullForum from "./components/FullForum";
+import Events from "./components/Events";
 // import TextBox from "./components/TextBox";
 import About from "./components/About";
 
@@ -23,6 +24,9 @@ const App = () => {
         <Route exact path="/about">
           {/* <TextBox /> */}
           <About />
+        </Route>
+        <Route exact path="/events">
+          <Events />
         </Route>
         <Route exact path="/login">
           <Login />

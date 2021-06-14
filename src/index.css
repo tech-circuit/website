@@ -337,9 +337,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 3vw;
   color: #fff;
   animation: rot2 8s infinite linear reverse;
+}
+.circ img {
+  width: 40%;
 }
 /* Individual Styling   ------  thres: 25     */
 /* top */

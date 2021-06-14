@@ -279,10 +279,12 @@ const About = () => {
       eve.target.nextElementSibling.nextElementSibling.classList.toggle(
         "a-active"
       );
+      eve.target.classList.toggle("faq-toggle-active");
     } else {
       eve.target.parentElement.nextElementSibling.nextElementSibling.classList.toggle(
         "a-active"
       );
+      eve.target.parentElement.classList.toggle("faq-toggle-active");
     }
   }
 };

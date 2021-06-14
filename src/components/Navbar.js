@@ -10,7 +10,8 @@ const Navbar = () => {
   return (
     <nav className="nav">
       <div className="nav-left">
-        <Link className="nav-logo-holder" 
+        <Link
+          className="nav-logo-holder"
           to="/"
           onClick={(e) => setActivePage("/")}
         >
@@ -42,7 +43,7 @@ const Navbar = () => {
               activePage === "/forums" ? "nav-link nav-link-active" : "nav-link"
             }
           >
-            Forums
+            Forum
           </Link>
           <Link
             to="/community"
