@@ -34,7 +34,29 @@ const Forums = () => {
       if (content.trim().length !== 0) {
         console.log("Title:", title)
         console.log("Content", content)
-        closeModal()
+        const authToken = localStorage.getItem("authToken")
+        console.log(authToken)
+        fetch(`https://techcircuit.herokuapp.com/forum/new?access_token=${authToken}`, {
+            
+            // Adding method type
+            method: "POST",
+              
+            // Adding body or contents to send
+            body: JSON.stringify({
+                title,
+                content
+            }),
+              
+            // Adding headers to the request
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        .then(response => {
+            console.log(response.status)
+            closeModal()
+        })
+        .catch(error => console.log(error));
       }
     }
   }
