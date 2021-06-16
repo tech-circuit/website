@@ -2,20 +2,21 @@ import React from "react";
 import { Editor } from "@tinymce/tinymce-react";
 
 const TextBox = () => {
+    const handleEditorChange = (e) => {
+      localStorage.setItem("content", e.target.getContent())
+    }
+
     return (
       <>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
         <div className="textbox-wrapper">
           <Editor
+            onChange={handleEditorChange}
             apiKey="6qe6iqm7o54kawhl9yap1pljb09c0lpqrnf0ehytebrqf6jm"
             init={{
               skin_url: `${process.env.PUBLIC_URL}/assets/textbox-custom`,
               min_height: 316,
               max_height: 773,
-              width: 983,
+              width: '100%',
               menubar: false,
               statusbar: false,
               selector: "textarea",
@@ -62,7 +63,7 @@ const TextBox = () => {
               content_style:
                 `
                 @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900'); 
-                body { font-family: Poppins; font-size: 18px; line-height: 27px; }
+                body { font-family: Poppins }
                 #tinymce { color: #747474; }
                 #mce-toolbar-grp {
                     background-color: #000 !important; /* uses !important or override .mce-panel background-color/image */
@@ -73,9 +74,6 @@ const TextBox = () => {
             }}
           />
         </div>
-        <br></br>
-        <br></br>
-        <br></br>
       </>
     );
 }

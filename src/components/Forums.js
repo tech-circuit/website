@@ -6,10 +6,65 @@ import { FaShareAlt } from "react-icons/fa";
 import { FaBookmark } from "react-icons/fa";
 import { FaExclamationTriangle } from "react-icons/fa";
 import { FaArrowUp } from "react-icons/fa";
+import Modal from 'react-modal';
+import ReactModal from "react-modal";
+import TextBox from "./TextBox";
+
+ReactModal.defaultStyles = {}
 
 const Forums = () => {
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [title, setTitle] = React.useState("");
+
+  const openModal = () => {
+    document.getElementsByClassName("head-2")[0].style.zIndex = 0
+    document.getElementsByTagName('nav')[0].style.zIndex = 0
+    setIsOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsOpen(false)
+    document.getElementsByClassName("head-2")[0].style.zIndex = 999
+    document.getElementsByTagName('nav')[0].style.zIndex = 9999
+  }
+
+  const createPost = () => {
+    if (title.trim().length !== 0) {
+      const content = localStorage.getItem("content")
+      if (content.trim().length !== 0) {
+        console.log("Title:", title)
+        console.log("Content", content)
+        closeModal()
+      }
+    }
+  }
+
   return (
     <React.Fragment>
+      {/* modal */}
+      <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+        >
+        <div className="modal-content">
+          <div className="header">
+            <div className="left">
+              <h1>Create Post</h1>
+              <p>Share what’s on your mind with the community!</p>
+            </div>
+            <h2>Drafts(42)</h2>
+          </div>
+          <div className="input-fields">
+            <h3>Title</h3>
+            <input className="title" type="text" placeholder="Enter title" onChange={(event) => setTitle(event.target.value)}></input>
+            <TextBox />
+          </div>
+          <div className="buttons">
+            <button className="create-post" onClick={createPost}>Create Post</button>
+            <button className="save-draft">Save Draft</button>
+          </div>
+        </div>
+      </Modal>
       <header className="forumHeader head-1">
         <div className="container">
           <h1 className="forumTitle">
@@ -28,7 +83,7 @@ const Forums = () => {
                 placeholder="Search communities, posts, interests..."
               />
             </div>
-            <h3 className="add">
+            <h3 className="add" onClick={openModal}>
               <FaPlus />
               New Post
             </h3>
