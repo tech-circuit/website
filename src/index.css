@@ -94,9 +94,10 @@
 .green-btn:hover {
   background: #85d49c;
 }
+/* HERO ---------------------------------------------------------------------------------------------------------- */
 .hero {
   display: flex;
-  margin-top: 10vh;
+  margin: 10vh 0;
 }
 .hero .container {
   height: 100%;
@@ -146,6 +147,9 @@
   margin-bottom: 14vh;
   transition: all 0.3s !important;
 }
+.hero-btn img {
+  width: 9%;
+}
 .hero-btn:hover {
   background: #3255af;
 }
@@ -168,6 +172,7 @@
 .about {
   display: flex;
   z-index: 9;
+  margin-bottom: 10vh;
 }
 .abt-left,
 .abt-right {
@@ -203,7 +208,6 @@
 .feats {
   background: #4678f9;
   color: #fff;
-  min-height: 300vh;
   position: relative;
   overflow: hidden;
 }
@@ -276,7 +280,7 @@
   background: #4678f9;
 }
 
-/* Write */
+/* Write ---------------------------------------------------------------------------------------------------------- */
 .first-feat {
   margin-top: 10vh;
 }
@@ -286,13 +290,13 @@
   align-items: center;
 }
 .feat-banner {
-  width: 60%;
+  width: 45%;
 }
 .feat-content {
   width: 40%;
 }
 .feat h2 {
-  font-size: 2.7vw;
+  font-size: 2.2vw;
   font-weight: 600;
   margin-bottom: 2vh;
 }

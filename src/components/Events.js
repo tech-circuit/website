@@ -44,25 +44,40 @@ const Events = () => {
           showStatus={false}
         >
           <div>
-            <img src="/assets/sample-banner.jpg" alt="alt" />
-            <h1>Alphanode 2021 by N.O.D.E.</h1>
-            <h2>
-              Lorem ipsum dolor inter-school tech event hosted by DPS Gurgaon{" "}
-            </h2>
+            <div className="imgHold">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="imgShadow"></div>
+            </div>
+            <div className="event-banner-text">
+              <h1>Alphanode 2021 by N.O.D.E.</h1>
+              <h2>
+                Lorem ipsum dolor inter-school tech event hosted by DPS Gurgaon{" "}
+              </h2>
+            </div>
           </div>
           <div>
-            <img src="/assets/sample-banner.jpg" alt="alt" />
-            <h1>Alphanode 2021 by N.O.D.E.</h1>
-            <h2>
-              Lorem ipsum dolor inter-school tech event hosted by DPS Gurgaon{" "}
-            </h2>
+            <div className="imgHold">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="imgShadow"></div>
+            </div>
+            <div className="event-banner-text">
+              <h1>Alphanode 2021 by N.O.D.E.</h1>
+              <h2>
+                Lorem ipsum dolor inter-school tech event hosted by DPS Gurgaon{" "}
+              </h2>
+            </div>
           </div>
           <div>
-            <img src="/assets/sample-banner.jpg" alt="alt" />
-            <h1>Alphanode 2021 by N.O.D.E.</h1>
-            <h2>
-              Lorem ipsum dolor inter-school tech event hosted by DPS Gurgaon{" "}
-            </h2>
+            <div className="imgHold">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="imgShadow"></div>
+            </div>
+            <div className="event-banner-text">
+              <h1>Alphanode 2021 by N.O.D.E.</h1>
+              <h2>
+                Lorem ipsum dolor inter-school tech event hosted by DPS Gurgaon{" "}
+              </h2>
+            </div>
           </div>
         </Carousel>
       </section>

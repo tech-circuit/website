@@ -208,8 +208,8 @@
 /* Members ----------------------------------------------------------------------------------------------------------- */
 .member-cont {
   display: flex;
-  margin: 7vh 0;
-  margin-bottom: 14vh;
+  margin: 14vh 0;
+  margin-bottom: 24vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;

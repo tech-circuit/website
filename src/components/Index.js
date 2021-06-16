@@ -117,7 +117,7 @@ const Index = () => {
               className="hero-btn"
             >
               Join us Now&nbsp;&nbsp;
-              <FaLongArrowAltRight />
+              <img src="/assets/Right_Arrow.svg" alt="" />
             </Link>
             <div className="scroll-more-hold">
               <a href="#abt" className="scroll-more">
@@ -138,7 +138,7 @@ const Index = () => {
             <h1 data-aos="fade-right">
               What is <strong>techCircuit?</strong>
             </h1>
-            <p data-aos="fade-up-left" data-aos-delay="300">
+            <p data-aos="fade-right" data-aos-delay="300">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh enim
               fames elementum turpis elementum lacus. Purus nunc turpis arcu at
               ac tortor in purus. Purus penatibus vestibulum, sed sodales id
