@@ -1,11 +1,6 @@
 import React from "react";
 import "../forums.css";
-import { FaPlus } from "react-icons/fa";
-import { FaCommentAlt } from "react-icons/fa";
-import { FaShareAlt } from "react-icons/fa";
-import { FaBookmark } from "react-icons/fa";
 import { FaExclamationTriangle } from "react-icons/fa";
-import { FaArrowUp } from "react-icons/fa";
 import Modal from "react-modal";
 import ReactModal from "react-modal";
 import TextBox from "./TextBox";
@@ -14,11 +9,7 @@ import 'notyf/notyf.min.css';
 import TimeAgo from 'react-timeago';
 
 ReactModal.defaultStyles = {};
-
-let posts = []
-let drafts = 0
 const authToken = localStorage.getItem("authToken");
-
 const notyf = new Notyf({
   duration: 2500,
   position: {
@@ -51,19 +42,12 @@ const notyf = new Notyf({
   ]
 })
 
-fetch(`https://techcircuit.herokuapp.com/forum/?sort=latest&access_token=${authToken}`)
-.then(async(response) => {
-    let resp = await response.json()
-    if (resp.success === true) {
-      posts = resp.posts
-      drafts = resp.drafts
-    }  
-})
-
 const Forums = () => {
   document.getElementsByTagName('html')[0].style.scrollBehavior = 'initial'
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [title, setTitle] = React.useState("");
+  const [posts, setPosts] = React.useState([]);
+  const [drafts, setDrafts] = React.useState("0");
 
   const openModal = () => {
     document.getElementsByClassName("head-2")[0].style.zIndex = 0;
@@ -120,6 +104,7 @@ const Forums = () => {
                   type: 'success',
                   message: successMessage
                 });
+                window.location.reload()
               } else {
                 notyf.open({
                   type: 'error',
@@ -146,6 +131,33 @@ const Forums = () => {
       }
     }
   };
+
+  const setThumbnail = (posts) => {
+    posts.forEach((p) => {
+      const content = p.content
+      try {
+        const imgURL = content.split('img title="')[1].split('" />')[0].split('src="')[1].split('"')[0]
+        p.thumbnail = imgURL
+      } catch (error) {
+        p.thumbnail = undefined
+      }
+    })
+    return posts
+  }
+
+  React.useEffect(() => {
+    fetch(`https://techcircuit.herokuapp.com/forum/?sort=latest&access_token=${authToken}`)
+    .then(async(response) => {
+        let resp = await response.json()
+        if (resp.success === true) {
+          console.log(resp.authenticated)
+          const updatedPosts = setThumbnail(resp.posts)
+          console.log(updatedPosts)
+          setPosts(updatedPosts)
+          setDrafts(resp.drafts)
+        }  
+    })
+  }, [])
 
   return (
     <React.Fragment>
@@ -202,8 +214,8 @@ const Forums = () => {
               </div>
             </button>
             <h3 className="add" onClick={openModal}>
-              <FaPlus />
-              New Post
+              <img src="/assets/post-add.svg" alt="post-add-icon"/>
+              Create new post
             </h3>
           </div>
         </div>
@@ -214,30 +226,57 @@ const Forums = () => {
           {posts.map((post, index)=> (
             <div className="forumCard">
             <a href="/full-forum" className="card-top">
-              <h2>
-                {post.title}
-              </h2>
-              <h3>
-                posted <TimeAgo date={post.date}/> by <a href="/">{post.author}</a>
-              </h3>
+                <div className="l-card-top">
+                  <h2>
+                    {post.title}
+                  </h2>
+                  <h3>
+                    posted <TimeAgo date={post.date}/> by <a href="/">{post.author}</a>
+                  </h3>
+                </div>
+                <div className="r-card-top">
+                  {post.thumbnail === undefined ? <></> : 
+                    <img src={post.thumbnail} alt="post-thumbnail" className="post-thumbnail"/>
+                  }
+                </div>
             </a>
             <div className="card-options">
               <div className="l-opts">
                 <button>
-                  <FaCommentAlt />
+                  <img src="/assets/comments.svg" alt="comments-icon"/>
                   &nbsp; {post.comments} comments
                 </button>
                 <button>
-                  <FaShareAlt />
+                  <img src="/assets/share.svg" alt="share-icon"/>
                   &nbsp; Share
                 </button>
                 <button className="card-opt-done">
-                  <FaBookmark />
-                  &nbsp; Save
+                  {post.is_saved ? 
+                    <>
+                      <img src="/assets/active-save.svg" alt="save-icon-active"/>
+                      &nbsp; Saved
+                    </>
+                    :
+                    <>
+                      <img src="/assets/inactive-save.svg" alt="save-icon-inactive"/>
+                      &nbsp; Save
+                    </>
+                  }
+                  
                 </button>
                 <button>
-                  <FaArrowUp />
-                  &nbsp; Upvote
+                  {post.is_upvoted ? 
+                    <>
+                      <img src="/assets/active-upvote.svg" alt="upvote-icon-active"/>
+                      &nbsp; Upvoted
+                    </>
+                    :
+                    <>
+                      <img src="/assets/inactive-upvote.svg" alt="upvote-icon-inactive"/>
+                      &nbsp; Upvote
+                    </>
+                  }
+                  
                 </button>
               </div>
               <div className="r-opts">

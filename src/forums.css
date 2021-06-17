@@ -24,14 +24,14 @@
   padding: 0 1.6vw;
   font-weight: 300;
   border-radius: 5px;
-  background: #4678f9;
+  background: linear-gradient(91.38deg, rgba(255, 255, 255, 0.18) 16.97%, rgba(255, 255, 255, 0) 100%), #4678F9;
   transition: all 0.3s;
   cursor: pointer;
 }
 .forumHeader .add:hover {
   background: #2f5dd1;
 }
-.add svg {
+.add img {
   margin-right: 0.8vw;
 }
 .input {
@@ -62,13 +62,14 @@
 }
 .sortBtn {
   margin-right: 4vw;
-  background: #fff;
+  background: transparent;
+  border: 1px solid #FFFFFF;
   border-radius: 5px;
   padding: 0 1.6vw;
   font-size: 1vw;
   cursor: pointer;
   font-weight: 300;
-  color: #000;
+  color: white;
   position: relative;
   overflow: visible;
 }
@@ -139,16 +140,16 @@
   font-weight: 500;
   opacity: 0.9;
   font-size: 1.03vw;
-  width: 60%;
+  width: 85%;
   line-height: 3vh;
   color: #000;
 }
 .forumCard h3 {
   font-weight: 400;
-  width: 60%;
+  width: 85%;
   font-size: 0.9vw;
   margin-top: 1.6vh;
-  margin-bottom: 4vh;
+  margin-bottom: 6vh;
   color: #777;
 }
 .forumCard h3 a {
@@ -157,6 +158,22 @@
 }
 .forumCard a {
   text-decoration: none;
+}
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+.l-card-top {
+  width: 85%;
+}
+.r-card-top {
+  width: 5vw;
+  margin-right: 1.5vw;
+}
+.r-card-top .post-thumbnail {
+  width: 5vw;
+  height: 5vw;
 }
 .card-options {
   display: flex;
