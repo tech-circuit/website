@@ -12,6 +12,7 @@
     "axios": "^0.21.1",
     "font-awesome": "^4.7.0",
     "imgur-anonymous-uploader": "^1.1.0",
+    "notyf": "^3.10.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-file-drop": "^3.1.2",

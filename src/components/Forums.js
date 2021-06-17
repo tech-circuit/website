@@ -9,8 +9,42 @@ import { FaArrowUp } from "react-icons/fa";
 import Modal from "react-modal";
 import ReactModal from "react-modal";
 import TextBox from "./TextBox";
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css'; 
 
 ReactModal.defaultStyles = {};
+
+const notyf = new Notyf({
+  duration: 2500,
+  position: {
+    x: 'left',
+    y: 'bottom'
+  },
+  types: [
+    {
+      type: 'error',
+      background: '#FF6B6B',
+      dismissible: true,
+      icon: {
+        className: 'material-icons',
+        tagName: 'i',
+        text: 'cancel',
+        color: '#ffffff'
+      }
+    },
+    {
+      type: 'success',
+      background: '#85D49C',
+      dismissible: true,
+      icon: {
+        className: 'material-icons',
+        tagName: 'i',
+        text: 'check_circle',
+        color: '#ffffff'
+      }
+    }
+  ]
+})
 
 const Forums = () => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
