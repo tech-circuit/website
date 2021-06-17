@@ -9,12 +9,13 @@ import Forums from "./components/Forums";
 import FullForum from "./components/FullForum";
 import Events from "./components/Events";
 import About from "./components/About";
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ScrollToTop from './components/ScrollToTop';
 
 const App = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Navbar />
       <Switch>
         <Route exact path="/">

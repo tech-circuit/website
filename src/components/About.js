@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import "../about.css";
 import "../index.css";
 import {
@@ -12,15 +12,11 @@ import {
 import Footer from "../components/Footer";
 
 const About = () => {
+  document.getElementsByTagName('html')[0].style.scrollBehavior = 'initial'
   const [modalView, setModalView] = useState(false);
   const [sendButton, setSendButton] = useState(true);
   const [contactEmail, setContactEmail] = useState("");
   const [contactMessage, setContactMessage] = useState("");
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
 
   const modalStateChange = (bool) => {
     setModalView(bool);

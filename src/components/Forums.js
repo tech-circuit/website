@@ -11,8 +11,6 @@ import ReactModal from "react-modal";
 import TextBox from "./TextBox";
 import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css'; 
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
 
 ReactModal.defaultStyles = {};
 
@@ -49,13 +47,9 @@ const notyf = new Notyf({
 })
 
 const Forums = () => {
+  document.getElementsByTagName('html')[0].style.scrollBehavior = 'initial'
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [title, setTitle] = React.useState("");
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
 
   const openModal = () => {
     document.getElementsByClassName("head-2")[0].style.zIndex = 0;
@@ -69,7 +63,7 @@ const Forums = () => {
     document.getElementsByTagName("nav")[0].style.zIndex = 9999;
   };
 
-  const createPost = () => {
+  const createPost = (isDraft) => {
     if (title.trim().length !== 0) {
       const content = localStorage.getItem("content");
       if (content.trim().length !== 0) {
@@ -77,6 +71,12 @@ const Forums = () => {
         console.log("Content", content);
         const authToken = localStorage.getItem("authToken");
         console.log(authToken);
+        let successMessage = "Posted successfully!"
+        let errorMessage = "Could not post"
+        if (isDraft) {
+          successMessage = "Draft saved successfully!"
+          errorMessage = "Could not save"
+        }
         fetch(
           `https://techcircuit.herokuapp.com/forum/new?access_token=${authToken}`,
           {
@@ -87,6 +87,7 @@ const Forums = () => {
             body: JSON.stringify({
               title,
               content,
+              is_draft: isDraft
             }),
 
             // Adding headers to the request
@@ -103,12 +104,12 @@ const Forums = () => {
               if(resp.success) {
                 notyf.open({
                   type: 'success',
-                  message: 'Posted successfully!'
+                  message: successMessage
                 });
               } else {
                 notyf.open({
                   type: 'error',
-                  message: 'Could not post'
+                  message: errorMessage
                 });
               }
             } else {
@@ -116,7 +117,7 @@ const Forums = () => {
               console.log(response)
               notyf.open({
                 type: 'error',
-                message: 'Could not post'
+                message: errorMessage
               });
             }
         })
@@ -125,7 +126,7 @@ const Forums = () => {
             closeModal()
             notyf.open({
               type: 'error',
-              message: 'Could not post'
+              message: errorMessage
             });
         });
       }
@@ -155,10 +156,10 @@ const Forums = () => {
             <TextBox />
           </div>
           <div className="buttons">
-            <button className="create-post" onClick={createPost}>
+            <button className="create-post" onClick={() => createPost(false)}>
               Create Post
             </button>
-            <button className="save-draft">Save Draft</button>
+            <button className="save-draft" onClick={() => createPost(true)}>Save Draft</button>
           </div>
         </div>
       </Modal>

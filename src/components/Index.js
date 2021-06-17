@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "../index.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   FaChevronDown,
   FaCommentAlt,
@@ -16,11 +16,6 @@ const Index = () => {
   const [sendButton, setSendButton] = useState(true);
   const [contactEmail, setContactEmail] = useState("");
   const [contactMessage, setContactMessage] = useState("");
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
 
   const modalStateChange = (bool) => {
     setModalView(bool);
@@ -54,6 +49,7 @@ const Index = () => {
       delay: 100,
     });
     AOS.refresh();
+    document.getElementsByTagName('html')[0].style.scrollBehavior = 'smooth' 
   }, []);
 
   return (

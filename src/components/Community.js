@@ -1,15 +1,11 @@
 import "../community.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Community = () => {
+  document.getElementsByTagName('html')[0].style.scrollBehavior = 'initial'
   const [page, setPage] = useState("orgs");
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
 
   document.addEventListener("scroll", () => {
     if (document.querySelector(".comSearch")) {
@@ -20,6 +16,13 @@ const Community = () => {
       }
     }
   });
+
+  const switchPage = (eve) => {
+    document.querySelector(".sortComAct").classList.remove("sortComAct");
+    eve.target.classList.add("sortComAct");
+    setPage(page === "orgs" ? "users" : "orgs");
+    window.scrollTo(0, 0)
+  }
 
   return (
     <>
@@ -501,12 +504,6 @@ const Community = () => {
       </div>
     </>
   );
-
-  function switchPage(eve) {
-    document.querySelector(".sortComAct").classList.remove("sortComAct");
-    eve.target.classList.add("sortComAct");
-    setPage(page === "orgs" ? "users" : "orgs");
-  }
 };
 
 export default Community;
