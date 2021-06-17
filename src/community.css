@@ -39,6 +39,10 @@
 .sortComAct::after {
   width: 100% !important;
 }
+.forumHeader.head-2.comHead {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
 /* Search ------------------------------------------------------------------------------------------------ */
 .comSearch {
   padding-top: 4vh;

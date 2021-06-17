@@ -27,7 +27,7 @@ const Community = () => {
           </p>
         </div>
       </header>
-      <header className="forumHeader head-2">
+      <header className="forumHeader head-2 comHead">
         <div className="container sortCom">
           <button
             onClick={(e) => switchPage(e)}
