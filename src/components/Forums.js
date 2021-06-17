@@ -6,68 +6,67 @@ import { FaShareAlt } from "react-icons/fa";
 import { FaBookmark } from "react-icons/fa";
 import { FaExclamationTriangle } from "react-icons/fa";
 import { FaArrowUp } from "react-icons/fa";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 import ReactModal from "react-modal";
 import TextBox from "./TextBox";
 
-ReactModal.defaultStyles = {}
+ReactModal.defaultStyles = {};
 
 const Forums = () => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [title, setTitle] = React.useState("");
 
   const openModal = () => {
-    document.getElementsByClassName("head-2")[0].style.zIndex = 0
-    document.getElementsByTagName('nav')[0].style.zIndex = 0
-    setIsOpen(true)
-  }
+    document.getElementsByClassName("head-2")[0].style.zIndex = 0;
+    document.getElementsByTagName("nav")[0].style.zIndex = 0;
+    setIsOpen(true);
+  };
 
   const closeModal = () => {
-    setIsOpen(false)
-    document.getElementsByClassName("head-2")[0].style.zIndex = 999
-    document.getElementsByTagName('nav')[0].style.zIndex = 9999
-  }
+    setIsOpen(false);
+    document.getElementsByClassName("head-2")[0].style.zIndex = 999;
+    document.getElementsByTagName("nav")[0].style.zIndex = 9999;
+  };
 
   const createPost = () => {
     if (title.trim().length !== 0) {
-      const content = localStorage.getItem("content")
+      const content = localStorage.getItem("content");
       if (content.trim().length !== 0) {
-        console.log("Title:", title)
-        console.log("Content", content)
-        const authToken = localStorage.getItem("authToken")
-        console.log(authToken)
-        fetch(`https://techcircuit.herokuapp.com/forum/new?access_token=${authToken}`, {
-            
+        console.log("Title:", title);
+        console.log("Content", content);
+        const authToken = localStorage.getItem("authToken");
+        console.log(authToken);
+        fetch(
+          `https://techcircuit.herokuapp.com/forum/new?access_token=${authToken}`,
+          {
             // Adding method type
             method: "POST",
-              
+
             // Adding body or contents to send
             body: JSON.stringify({
-                title,
-                content
+              title,
+              content,
             }),
-              
+
             // Adding headers to the request
             headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        })
-        .then(response => {
-            console.log(response.status)
-            closeModal()
-        })
-        .catch(error => console.log(error));
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          }
+        )
+          .then((response) => {
+            console.log(response.status);
+            closeModal();
+          })
+          .catch((error) => console.log(error));
       }
     }
-  }
+  };
 
   return (
     <React.Fragment>
       {/* modal */}
-      <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-        >
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
         <div className="modal-content">
           <div className="header">
             <div className="left">
@@ -78,11 +77,18 @@ const Forums = () => {
           </div>
           <div className="input-fields">
             <h3>Title</h3>
-            <input className="title" type="text" placeholder="Enter title" onChange={(event) => setTitle(event.target.value)}></input>
+            <input
+              className="title"
+              type="text"
+              placeholder="Enter title"
+              onChange={(event) => setTitle(event.target.value)}
+            ></input>
             <TextBox />
           </div>
           <div className="buttons">
-            <button className="create-post" onClick={createPost}>Create Post</button>
+            <button className="create-post" onClick={createPost}>
+              Create Post
+            </button>
             <button className="save-draft">Save Draft</button>
           </div>
         </div>
@@ -105,18 +111,16 @@ const Forums = () => {
                 placeholder="Search communities, posts, interests..."
               />
             </div>
+            <button className="sortBtn">
+              Sort by: <span id="sortVal">Latest</span>
+              <div className="sortOpts">
+                <button className="sortOpt">Recommended</button>
+              </div>
+            </button>
             <h3 className="add" onClick={openModal}>
               <FaPlus />
               New Post
             </h3>
-          </div>
-          <div className="sort-box">
-            <h3>Sort By</h3>
-            <div className="sort-opts">
-              <h3 className="sort-opt sort-opt-active">Popular</h3>
-              <h3 className="sort-opt">Trending</h3>
-              <h3 className="sort-opt">Hot</h3>
-            </div>
           </div>
         </div>
       </header>

@@ -1,780 +1,505 @@
-import React, { useState } from "react";
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import "../community.css";
+import { Link } from "react-router-dom";
+import { FaInstagram } from "react-icons/fa";
+import { useState } from "react";
 
 const Community = () => {
-  const [currDiv, setCurrDiv] = useState("organizations");
-  const [scrollState, setscrollState] = useState(false);
+  const [page, setPage] = useState("orgs");
 
-  const switchDivs = (s) => {
-    setCurrDiv(s);
-  };
-
-  const listenScrollEvent = (e) => {
-    if (window.scrollY > 300) {
-      setscrollState(true);
+  document.addEventListener("scroll", () => {
+    if (document.querySelector(".comSearch").offsetTop !== 386) {
+      document.querySelector(".comSearch").classList.add("sha");
     } else {
-      setscrollState(false);
+      document.querySelector(".comSearch").classList.remove("sha");
     }
-  };
-
-  window.addEventListener("scroll", listenScrollEvent);
+  });
 
   return (
     <>
-      {scrollState === false ? (
-        <>
-          <div className="header-div">
-            <h1>
-              Welcome to <span className="bold-tc">techCircuit</span> Community!
-            </h1>
-            <p>
-              Over 500 Clubs and organzations (primarily high schools and
-              colleges) from all over the Globe are part of the tC community!
-            </p>
-            <div className="switchers">
-              {currDiv === "organizations" ? (
-                <>
-                  <div
-                    className="switch-div-active"
-                    onClick={() => switchDivs("organizations")}
-                  >
-                    <h3>Orgs</h3>
-                  </div>
-                  <div
-                    className="switch-div"
-                    onClick={() => switchDivs("users")}
-                  >
-                    <h3>Users</h3>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div
-                    className="switch-div"
-                    onClick={() => switchDivs("organizations")}
-                  >
-                    <h3>Orgs</h3>
-                  </div>
-                  <div
-                    className="switch-div-active"
-                    onClick={() => switchDivs("users")}
-                  >
-                    <h3>Users</h3>
-                  </div>
-                </>
-              )}
-            </div>
-          </div>
-          <div className="mid-area">
-            <div className="search">
-              <img
-                className="searchicon"
-                src="/assets/magnifying-glass.svg"
-                alt="magnifying-glass"
-              />
-              <input
-                className="searchbar"
-                type="text"
-                placeholder={"Search " + currDiv}
-              />
-            </div>
-            <div className="sort">
-              <select name="sort" id="sort" className="sortSelector">
-                <option>Sort by region</option>
-                <option>region 1</option>
-                <option>region 2</option>
-                <option>region 3</option>
-                <option>region 4</option>
-                <option>region 5</option>
-              </select>
-            </div>
-            {currDiv === "organizations" ? (
-              <button className="create-new-org">
-                <img
-                  src="/assets/add-button.svg"
-                  className="addIcon"
-                  alt="add-button"
-                />
-                Create New Org
-              </button>
-            ) : (
-              <></>
-            )}
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="header-div" style={{ height: "70px" }}>
-            <div className="switchers">
-              {currDiv === "organizations" ? (
-                <>
-                  <div
-                    className="switch-div-active"
-                    onClick={() => switchDivs("organizations")}
-                    style={{ marginTop: "0px" }}
-                  >
-                    <h3 style={{ fontSize: "18px", marginTop: "30px" }}>
-                      Orgs
-                    </h3>
-                  </div>
-                  <div
-                    className="switch-div"
-                    onClick={() => switchDivs("users")}
-                    style={{ marginTop: "0px" }}
-                  >
-                    <h3 style={{ fontSize: "18px", marginTop: "30px" }}>
-                      Users
-                    </h3>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div
-                    className="switch-div"
-                    onClick={() => switchDivs("organizations")}
-                    style={{ marginTop: "0px" }}
-                  >
-                    <h3 style={{ fontSize: "18px", marginTop: "30px" }}>
-                      Orgs
-                    </h3>
-                  </div>
-                  <div
-                    className="switch-div-active"
-                    onClick={() => switchDivs("users")}
-                    style={{ marginTop: "0px" }}
-                  >
-                    <h3 style={{ fontSize: "18px", marginTop: "30px" }}>
-                      Users
-                    </h3>
-                  </div>
-                </>
-              )}
-            </div>
-          </div>
-          <div
-            className="mid-area mid-area-shadow"
-            style={{ marginTop: "143px", height: "43px" }}
+      <header className="forumHeader head-1">
+        <div className="container">
+          <h1 className="forumTitle">
+            Welcome to <strong>techCircuit</strong>&nbsp;Community
+          </h1>
+          <p>
+            Over 500 Clubs and organzations (primarily high schools and
+            colleges) from all over the Globe are part of the tC community!
+          </p>
+        </div>
+      </header>
+      <header className="forumHeader head-2">
+        <div className="container sortCom">
+          <button
+            onClick={(e) => switchPage(e)}
+            className={page === "orgs" ? "sortComAct" : ""}
           >
-            <div className="search" style={{ marginTop: "10px" }}>
-              <img
-                className="searchicon"
-                src="/assets/magnifying-glass.svg"
-                alt="magnifying-glass"
-              />
-              <input
-                className="searchbar"
-                type="text"
-                placeholder={"Search " + currDiv}
-              />
-            </div>
-            <div className="sort" style={{ marginTop: "10px" }}>
-              <select name="sort" id="sort" className="sortSelector">
-                <option>Sort by region</option>
-                <option>region 1</option>
-                <option>region 2</option>
-                <option>region 3</option>
-                <option>region 4</option>
-                <option>region 5</option>
-              </select>
-            </div>
-            {currDiv === "organizations" ? (
-              <button className="create-new-org" style={{ marginTop: "20px" }}>
-                <img
-                  src="/assets/add-button.svg"
-                  className="addIcon"
-                  alt="add-button"
-                />
-                Create New Org
-              </button>
-            ) : (
-              <></>
-            )}
+            Orgs
+          </button>
+          <button
+            onClick={(e) => switchPage(e)}
+            className={page === "users" ? "sortComAct" : ""}
+          >
+            Users
+          </button>
+        </div>
+      </header>
+
+      <div className="comSearch container">
+        <div className="comLeft">
+          <div className="input">
+            <img src="/assets/magnifying-glass.svg" alt="alt" />
+            <input type="text" placeholder="Search Organisations" />
           </div>
-        </>
-      )}
-      <div className="comm-cards">
-        {currDiv === "organizations" ? (
-          <>
-            <div className="org-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Code Warriors</h1>
-              <p className="address">Delhi Public School, Vasant Kunj</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-              <button>View Page</button>
-            </div>
-            <div className="org-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Code Warriors</h1>
-              <p className="address">Delhi Public School, Vasant Kunj</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-              <button>View Page</button>
-            </div>
-            <div className="org-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Code Warriors</h1>
-              <p className="address">Delhi Public School, Vasant Kunj</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-              <button>View Page</button>
-            </div>
-            <div className="org-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Code Warriors</h1>
-              <p className="address">Delhi Public School, Vasant Kunj</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-              <button>View Page</button>
-            </div>
-            <div className="org-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Code Warriors</h1>
-              <p className="address">Delhi Public School, Vasant Kunj</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-              <button>View Page</button>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="user-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Your Mom</h1>
-              <p className="address">Student, Desginer</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-            </div>
-            <div className="user-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Your Mom</h1>
-              <p className="address">Student, Desginer</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-            </div>
-            <div className="user-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Your Mom</h1>
-              <p className="address">Student, Desginer</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-            </div>
-            <div className="user-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Your Mom</h1>
-              <p className="address">Student, Desginer</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-            </div>
-            <div className="user-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Your Mom</h1>
-              <p className="address">Student, Desginer</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-            </div>
-            <div className="user-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Your Mom</h1>
-              <p className="address">Student, Desginer</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-            </div>
-            <div className="user-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Your Mom</h1>
-              <p className="address">Student, Desginer</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-            </div>
-            <div className="user-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Your Mom</h1>
-              <p className="address">Student, Desginer</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-            </div>
-            <div className="user-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Your Mom</h1>
-              <p className="address">Student, Desginer</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-            </div>
-            <div className="user-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Your Mom</h1>
-              <p className="address">Student, Desginer</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-            </div>
-            <div className="user-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Your Mom</h1>
-              <p className="address">Student, Desginer</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-            </div>
-            <div className="user-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Your Mom</h1>
-              <p className="address">Student, Desginer</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-            </div>
-            <div className="user-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Your Mom</h1>
-              <p className="address">Student, Desginer</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-            </div>
-            <div className="user-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Your Mom</h1>
-              <p className="address">Student, Desginer</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-            </div>
-            <div className="user-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Your Mom</h1>
-              <p className="address">Student, Desginer</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-            </div>
-            <div className="user-card">
-              <img
-                src="https://github.com/techsyndicate.png"
-                alt="org-logo"
-                className="org-logo"
-              />
-              <h1>Your Mom</h1>
-              <p className="address">Student, Desginer</p>
-              <div className="inline-place">
-                <img src="/assets/place.svg" alt="marker" />
-                <p>New Delhi, India</p>
-              </div>
-              <div className="social-links">
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-                <img
-                  src="https://cdn.discordapp.com/attachments/803844775941111808/842136554662264842/unknown.png"
-                  alt="behance-logo"
-                />
-              </div>
-            </div>
-          </>
-        )}
+          <button>Sort by Region</button>
+        </div>
+        <div className="comRight">
+          <button className={page === "orgs" ? "" : "hide"} id="newOrg">
+            Create New Org
+          </button>
+        </div>
+      </div>
+
+      <div
+        className={page === "orgs" ? "coms container" : "coms container hide"}
+      >
+        <div className="com">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Coding Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+          <Link className="view" to="/">
+            View Page
+          </Link>
+        </div>
+        <div className="com">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Code Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+          <Link className="view" to="/">
+            View Page
+          </Link>
+        </div>
+        <div className="com">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Code Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+          <Link className="view" to="/">
+            View Page
+          </Link>
+        </div>
+        <div className="com">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Code Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+          <Link className="view" to="/">
+            View Page
+          </Link>
+        </div>
+        <div className="com">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Code Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+          <Link className="view" to="/">
+            View Page
+          </Link>
+        </div>
+        <div className="com">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Code Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+          <Link className="view" to="/">
+            View Page
+          </Link>
+        </div>
+        <div className="com">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Code Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+          <Link className="view" to="/">
+            View Page
+          </Link>
+        </div>
+        <div className="com">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Code Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+          <Link className="view" to="/">
+            View Page
+          </Link>
+        </div>
+        <div className="com">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Code Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+          <Link className="view" to="/">
+            View Page
+          </Link>
+        </div>
+        <div className="com">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Code Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+          <Link className="view" to="/">
+            View Page
+          </Link>
+        </div>
+        <div className="com">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Code Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+          <Link className="view" to="/">
+            View Page
+          </Link>
+        </div>
+      </div>
+
+      <div
+        className={page === "users" ? "coms container" : "coms container hide"}
+      >
+        <div className="com user">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Coding Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+        </div>
+        <div className="com user">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Coding Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+        </div>
+        <div className="com user">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Coding Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+        </div>
+        <div className="com user">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Coding Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+        </div>
+        <div className="com user">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Coding Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+        </div>
+        <div className="com user">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Coding Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+        </div>
+        <div className="com user">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Coding Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+        </div>
+        <div className="com user">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Coding Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+        </div>
+        <div className="com user">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Coding Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+        </div>
+        <div className="com user">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Coding Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+        </div>
+        <div className="com user">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Coding Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+        </div>
+        <div className="com user">
+          <img src="/assets/sample-banner.jpg" alt="alt" />
+          <h2>Coding Wars</h2>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <p>Delhi Public School, Vasant Kunj</p>
+          <div className="socials">
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+          </div>
+        </div>
       </div>
     </>
   );
+
+  function switchPage(eve) {
+    document.querySelector(".sortComAct").classList.remove("sortComAct");
+    eve.target.classList.add("sortComAct");
+    setPage(page === "orgs" ? "users" : "orgs");
+  }
 };
 
 export default Community;
