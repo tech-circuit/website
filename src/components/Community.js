@@ -1,10 +1,15 @@
 import "../community.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Community = () => {
   const [page, setPage] = useState("orgs");
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   document.addEventListener("scroll", () => {
     if (document.querySelector(".comSearch")) {

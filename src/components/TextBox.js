@@ -53,7 +53,7 @@ const TextBox = () => {
                 })
               },
               skin_url: `${process.env.PUBLIC_URL}/assets/textbox-custom`,
-              min_height: 316,
+              min_height: 250,
               max_height: 773,
               width: '100%',
               menubar: false,

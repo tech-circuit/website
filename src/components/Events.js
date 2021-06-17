@@ -3,8 +3,15 @@ import "../events.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { FaPlus } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const Events = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <>
       <header className="eventHead head-1 container">

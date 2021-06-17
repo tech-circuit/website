@@ -11,6 +11,8 @@ import ReactModal from "react-modal";
 import TextBox from "./TextBox";
 import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css'; 
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 ReactModal.defaultStyles = {};
 
@@ -49,6 +51,11 @@ const notyf = new Notyf({
 const Forums = () => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [title, setTitle] = React.useState("");
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   const openModal = () => {
     document.getElementsByClassName("head-2")[0].style.zIndex = 0;

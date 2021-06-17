@@ -1,8 +1,16 @@
 import React from "react";
 import "../resources.css";
 import { FaSearch } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const Resources = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <div className="container rsc-cont">
       <div className="rsc-head">
