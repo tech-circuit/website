@@ -29,7 +29,7 @@ const Events = () => {
         <div className="addEvent">
           <a href="/">
             <FaPlus />
-            &nbsp;&nbsp;Organize and Event
+            &nbsp;&nbsp;Organize an Event
           </a>
         </div>
       </header>
