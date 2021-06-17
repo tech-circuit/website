@@ -88,11 +88,39 @@ const Forums = () => {
             },
           }
         )
-          .then((response) => {
-            console.log(response.status);
-            closeModal();
-          })
-          .catch((error) => console.log(error));
+        .then(async(response) => {
+            closeModal()
+            if(response.status === 200) {
+              const resp = await response.json();
+              console.log(resp.success)
+              if(resp.success) {
+                notyf.open({
+                  type: 'success',
+                  message: 'Posted successfully!'
+                });
+              } else {
+                notyf.open({
+                  type: 'error',
+                  message: 'Could not post'
+                });
+              }
+            } else {
+              console.log(response.status)
+              console.log(response)
+              notyf.open({
+                type: 'error',
+                message: 'Could not post'
+              });
+            }
+        })
+        .catch(error => {
+            console.log(error)
+            closeModal()
+            notyf.open({
+              type: 'error',
+              message: 'Could not post'
+            });
+        });
       }
     }
   };
