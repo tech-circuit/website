@@ -1,11 +1,15 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../nav.css";
 
 const Navbar = () => {
   const location = useLocation();
   const [activePage, setActivePage] = useState(location.pathname);
+
+  useEffect(() => {
+    setActivePage(location.pathname)
+  },[location])
 
   return (
     <nav className="nav">

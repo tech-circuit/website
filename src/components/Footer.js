@@ -45,7 +45,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className="links">
-          <h3 style={{ width: "10vw" }}>Useful Links</h3>
+          <h3>Useful Links</h3>
           <ul>
             <li>
               <Link to="/about">About Us</Link>
@@ -54,7 +54,7 @@ const Footer = () => {
               <Link to="/">Contact Us</Link>
             </li>
             <li>
-              <Link to="/">Design Guidelines</Link>
+              <Link to="/">Guidelines</Link>
             </li>
           </ul>
         </div>
