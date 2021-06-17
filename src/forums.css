@@ -8,6 +8,10 @@
   display: flex;
   height: 5.2vh;
 }
+.forumHeader.head-2 {
+  padding-top: 2vh !important;
+  padding-bottom: 2vh !important;
+}
 .search-box > * {
   height: 100%;
 }
