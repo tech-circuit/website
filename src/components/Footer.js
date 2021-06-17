@@ -31,16 +31,16 @@ const Footer = () => {
           <h3>Explore</h3>
           <ul>
             <li>
-              <Link to="/">Events</Link>
+              <Link to="/events">Events</Link>
             </li>
             <li>
-              <Link to="/">Events</Link>
+              <Link to="/community">Community</Link>
             </li>
             <li>
-              <Link to="/">Events</Link>
+              <Link to="/resources">Resources</Link>
             </li>
             <li>
-              <Link to="/">Events</Link>
+              <Link to="/discord">Discord</Link>
             </li>
           </ul>
         </div>
@@ -48,16 +48,13 @@ const Footer = () => {
           <h3 style={{ width: "10vw" }}>Useful Links</h3>
           <ul>
             <li>
-              <Link to="/">Events</Link>
+              <Link to="/about">About Us</Link>
             </li>
             <li>
-              <Link to="/">Events</Link>
+              <Link to="/">Contact Us</Link>
             </li>
             <li>
-              <Link to="/">Events</Link>
-            </li>
-            <li>
-              <Link to="/">Events</Link>
+              <Link to="/">Design Guidelines</Link>
             </li>
           </ul>
         </div>

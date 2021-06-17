@@ -1,266 +1,311 @@
 .abt-hero {
-  text-align: center;
-  height: 90vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    text-align: center;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+
 .abt-hero h1 {
-  font-size: 3vw;
-  color: #29313d;
-  font-weight: 600;
+    font-size: 3vw;
+    color: #29313d;
+    font-weight: 600;
 }
+
 .abt-hero h1 strong {
-  color: #85d49c;
-  font-weight: 600;
+    color: #85d49c;
+    font-weight: 600;
 }
+
 .abt-hero h3 {
-  font-size: 1.4vw;
-  font-weight: 400;
-  margin-bottom: 6vh;
-  margin-top: 1vh;
+    font-size: 1.4vw;
+    font-weight: 400;
+    margin-bottom: 6vh;
+    margin-top: 1vh;
 }
+
 .abt-hero p {
-  padding: 0 18vw;
-  font-size: 1vw;
-  text-align: justify;
+    padding: 0 18vw;
+    font-size: 1vw;
+    text-align: justify;
 }
+
 
 /* WHY ------------------------------------------------------------------------------------------------ */
+
 .why {
-  color: #fff;
-  background: #29313d;
-  display: flex;
-  flex-direction: column;
-  padding-top: 11vh;
-  padding-bottom: 11vh;
+    color: #fff;
+    background: #29313d;
+    display: flex;
+    flex-direction: column;
+    padding-top: 11vh;
+    padding-bottom: 11vh;
 }
+
 .why-top {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  margin-bottom: 8vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8vh;
 }
+
 .why h1 {
-  width: 35%;
-  padding-right: 5%;
-  color: #85d49c;
-  font-size: 2.7vw;
-  font-weight: 600;
+    width: 35%;
+    padding-right: 5%;
+    color: #85d49c;
+    font-size: 2.7vw;
+    font-weight: 600;
 }
+
 .why p {
-  width: 65%;
-  font-weight: 300;
-  font-size: 1vw;
+    width: 65%;
+    font-weight: 300;
+    font-size: 1vw;
 }
+
 .why-bot {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 .why h3 {
-  width: 70%;
-  font-weight: 400;
-  font-size: 1.4vw;
-  padding: 3vh 5%;
-  position: relative;
+    width: 70%;
+    font-weight: 400;
+    font-size: 1.4vw;
+    padding: 3vh 5%;
+    position: relative;
 }
+
 .why h3::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 7px;
-  height: 100%;
-  background: #85d49c;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 7px;
+    height: 100%;
+    background: #85d49c;
 }
+
 
 /* Clubs --------------------------------------------------------------------------------------- */
+
 .about-clubs {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  padding-top: 4vh;
-  padding-bottom: 4vh;
-  background: #4678f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+    background: #4678f9;
 }
+
 .about-clubs .club-left,
 .about-clubs .club-right {
-  width: 50%;
-  z-index: 2;
-  margin: 0 !important;
-  padding: 2vh 0;
+    width: 50%;
+    z-index: 2;
+    margin: 0 !important;
+    padding: 2vh 0;
 }
+
 .about-clubs .club-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
 .about-clubs .club-right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 .about-clubs p {
-  margin-top: 0 !important;
-  font-size: 1vw;
-  padding-right: 10vw;
-  color: #fff;
+    margin-top: 0 !important;
+    font-size: 1vw;
+    padding-right: 10vw;
+    color: #fff;
 }
+
 .about-clubs .club-logos {
-  width: 70%;
-  height: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+    width: 70%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
+
 .about-clubs .club-logo {
-  width: 26%;
-  margin: 1%;
-  border-radius: 5px;
-  background: #395baf;
+    width: 26%;
+    margin: 1%;
+    border-radius: 5px;
+    background: #395baf;
 }
+
 
 /* FAQ --------------------------------------------------------------------------------------- */
-.faqs-cont {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 8vh;
-  padding-bottom: 8vh;
-}
-.faqs-cont h1 {
-  font-size: 2.7vw;
-  font-weight: 600;
-  color: #4678f9;
-  text-align: center;
-  margin-bottom: 6vh;
-}
-.faqs {
-  padding: 0 5vw;
-}
-.faq {
-  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  padding: 2vh 3vw;
-  position: relative;
-  margin-bottom: 3vh;
-}
-.faq-toggle {
-  position: absolute;
-  top: calc((1vw + 2vh));
-  transform: translateY(-70%);
-  right: 3vw;
-  font-size: 1.3vw;
-  cursor: pointer;
-  transition: all 0.6s;
-}
-.q {
-  font-size: 1vw;
-  font-weight: 400;
-}
-.a {
-  text-align: justify;
-  font-size: 0.9vw;
-  transition: max-height 0.6s, margin 0.5s, opacity 0.4s;
 
-  margin: 0;
-  padding: 0;
-  opacity: 0;
-  max-height: 0;
+.faqs-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8vh;
+    padding-bottom: 8vh;
 }
+
+.faqs-cont h1 {
+    font-size: 2.7vw;
+    font-weight: 600;
+    color: #4678f9;
+    text-align: center;
+    margin-bottom: 6vh;
+}
+
+.faqs {
+    padding: 0 5vw;
+}
+
+.faq {
+    box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 2vh 3vw;
+    position: relative;
+    margin-bottom: 3vh;
+}
+
+.faq-toggle {
+    position: absolute;
+    top: calc((1vw + 2vh));
+    transform: translateY(-70%);
+    right: 3vw;
+    font-size: 1.3vw;
+    cursor: pointer;
+    transition: all 0.6s;
+}
+
+.q {
+    font-size: 1vw;
+    font-weight: 400;
+}
+
+.a {
+    text-align: justify;
+    font-size: 0.9vw;
+    transition: max-height 0.6s, margin 0.5s, opacity 0.4s;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    max-height: 0;
+}
+
 .a-active {
-  margin-top: 2vh;
-  padding-right: 5vw;
-  opacity: 1;
-  max-height: 500px;
+    margin-top: 2vh;
+    padding-right: 5vw;
+    opacity: 1;
+    max-height: 500px;
 }
+
 .faqs-cont h2 {
-  font-weight: 500;
-  color: #4678f9;
-  font-size: 2vw;
-  text-align: center;
-  margin-top: 5vh;
+    font-weight: 500;
+    color: #4678f9;
+    font-size: 2vw;
+    text-align: center;
+    margin-top: 5vh;
 }
+
 .faqs-cont .btn {
-  background: #4678f9;
-  color: #fff;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  padding: 1.2vh 2.1vw;
-  margin-top: 1.6vh;
-  border-radius: 5px;
-  transition: all 0.3s;
+    background: #4678f9;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    padding: 1.2vh 2.1vw;
+    margin-top: 1.6vh;
+    border-radius: 5px;
+    transition: all 0.3s;
 }
+
 .faqs-cont .btn:hover {
-  background: #325ac0;
+    background: #325ac0;
 }
+
 .faq-toggle-active {
-  transform: translateY(-70%) rotate(180deg);
+    transform: translateY(-70%) rotate(180deg);
 }
+
+
 /* Members ----------------------------------------------------------------------------------------------------------- */
+
 .member-cont {
-  display: flex;
-  margin: 14vh 0;
-  margin-bottom: 24vh;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    margin: 14vh 0;
+    margin-bottom: 24vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
 .member-cont h1 {
-  font-size: 2.7vw;
-  color: #4678f9;
-  font-weight: 600;
-  margin-bottom: 2vh;
+    font-size: 2.7vw;
+    color: #4678f9;
+    font-weight: 600;
+    margin-bottom: 2vh;
 }
+
 .member-cont p {
-  width: 50%;
-  text-align: center;
-  font-size: 1vw;
-  margin-bottom: 7vh;
+    width: 50%;
+    text-align: center;
+    font-size: 1vw;
+    margin-bottom: 7vh;
 }
+
 .big-members {
-  display: flex;
-  width: 100%;
-  padding: 0 27%;
-  margin-bottom: 8vh;
+    display: flex;
+    width: 100%;
+    padding: 0 27%;
+    margin-bottom: 8vh;
 }
+
 .member {
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0 3vw;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 3vw;
 }
+
 .big-member {
-  width: 50%;
+    width: 50%;
 }
+
 .member img {
-  width: 11vw;
-  height: 11vw;
-  border-radius: 50%;
-  margin-bottom: 3vh;
+    width: 11vw;
+    height: 11vw;
+    border-radius: 50%;
+    margin-bottom: 3vh;
 }
+
 .member h3 {
-  font-weight: 400;
-  font-size: 1.4vw;
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.4vw;
 }
+
 .member h4 {
-  font-weight: 300;
-  font-size: 1vw;
+    font-weight: 300;
+    font-size: 1vw;
 }
+
 .members {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  flex-wrap: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-wrap: nowrap;
 }

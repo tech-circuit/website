@@ -9,7 +9,7 @@ import {
   FaEnvelope,
   FaCheck,
 } from "react-icons/fa";
-import Footer from "../components/Footer";
+import Footer from "./Footer";
 
 const About = () => {
   document.getElementsByTagName('html')[0].style.scrollBehavior = 'initial'
@@ -105,19 +105,18 @@ const About = () => {
         <h1>
           tech<strong>Circuit</strong>
         </h1>
-        <h3>Lorem ipsum dolor sit amet consectetur</h3>
+        <h3>The place where everything takes place</h3>
         <p>
-          We’re a team of developers, designers, lorem but most importantly
-          creators who have all experienced our own difficulties when trying to
-          build a better understanding of the tech circuit in general <br />
-          <br /> While we believe we live in an era full of opportunity, we feel
-          much of this passes us by. Given our abundant and constant access to
-          major lorem, we should all feel very much involved lorem ipsum dolor.
+          We’re a team of developers and designers but most importantly creators 
+          who have all experienced our own difficulties when trying to build a 
+          better understanding of the tech circuit in general. <br />
+          <br /> While we believe we live in an era full of opportunity, we feel 
+          much of this passes us by. Given our abundant and constant access to useful 
+          resources, we felt that we should do out part in helping fellow tech enthusiasts.
           <br />
-          <br /> However, lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-          amet, consectetur adipiscing elit. Turpis at amet molestie et,
-          vulputate arcu sed mattis. Elit neque, amet, amet, vulputate eget
-          blandit.
+          <br /> Since long, the tech community has lacked a centralised platform, using which
+          people can connect, share their creative work and get feedback, and participate in 
+          events. techCircuit aims to solve all of these problems.
         </p>
       </div>
 
@@ -125,18 +124,15 @@ const About = () => {
         <div className="why-top">
           <h1>Why we built techCircuit</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis at
-            amet molestie et, vulputate arcu sed mattis. Elit neque, amet, amet,
-            vulputate eget blandit. Pellentesque luctus elementum dui gravida.
-            Tortor sed pulvinar mauris nam eu. Placerat porttitor euismod eget
-            vulputate orci, convallis accumsan. Vitae, adipiscing diam justo,
-            netus.
+          Being members of some of the most popular tech clubs in India, we have come across a number
+          of problems during the time we’ve spent as a part of the Delhi Tech Circuit. We resoluted 
+          to build a platform, which would eradicate such stumbling blocks for tech enthusiasts around 
+          the world. 
           </p>
         </div>
         <div className="why-bot">
           <h3>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis at
-            amet molestie et, vulputate arcu sed mattis.
+          techCircuit aims to bridge the gap between professionals and beginners across multiple tech fields.
           </h3>
         </div>
       </div>
@@ -326,41 +322,41 @@ const About = () => {
         </p>
         <div className="big-members">
           <div className="big-member member">
-            <img src="/assets/sample-banner.jpg" alt="alt" />
-            <h3>Your Mom</h3>
+            <img src="https://github.com/ishaanndas.png" alt="Ishaan Das" />
+            <h3>Ishaan Das</h3>
             <h4>Founder Director</h4>
           </div>
           <div className="big-member member">
-            <img src="/assets/sample-banner.jpg" alt="alt" />
-            <h3>Your Mom</h3>
+            <img src="https://github.com/laxyapahuja.png" alt="Laxya Pahuja" />
+            <h3>Laxya Pahuja</h3>
             <h4>Founder Director</h4>
           </div>
         </div>
         <div className="members">
           <div className="member">
-            <img src="/assets/sample-banner.jpg" alt="alt" />
-            <h3>Your Mom</h3>
-            <h4>Founder Director</h4>
+            <img src="/assets/sample-banner.jpg" alt="Samvrant Samantaray" />
+            <h3>Samvrant Samantaray</h3>
+            <h4>Design Head</h4>
           </div>
           <div className="member">
-            <img src="/assets/sample-banner.jpg" alt="alt" />
-            <h3>Your Mom</h3>
-            <h4>Founder Director</h4>
+            <img src="https://github.com/sheldor1510.png" alt="Anshul Saha" />
+            <h3>Anshul Saha</h3>
+            <h4>Development Head</h4>
           </div>
           <div className="member">
-            <img src="/assets/sample-banner.jpg" alt="alt" />
-            <h3>Your Mom</h3>
-            <h4>Founder Director</h4>
+            <img src="https://code-warriors.org/img/c3f085fc-5e72-4a00-a5ce-298aefded73d-1617915473562.jpg" alt="Vedanta Somnathe" />
+            <h3>Vedanta Somnathe</h3>
+            <h4>Developer</h4>
           </div>
           <div className="member">
-            <img src="/assets/sample-banner.jpg" alt="alt" />
-            <h3>Your Mom</h3>
-            <h4>Founder Director</h4>
+            <img src="https://github.com/ribhavsharma.png" alt="Ribhav Sharma" />
+            <h3>Ribhav Sharma</h3>
+            <h4>Research Head</h4>
           </div>
           <div className="member">
-            <img src="/assets/sample-banner.jpg" alt="alt" />
-            <h3>Your Mom</h3>
-            <h4>Founder Director</h4>
+            <img src="https://code-warriors.org/img/bda54ab1-636b-4acb-8ade-2bd154d5cdf0-1617907928677.jpg" alt="Amrtayan Baehaerha" />
+            <h3>Amrtayan Baehaerha</h3>
+            <h4>Designer</h4>
           </div>
         </div>
       </div>
