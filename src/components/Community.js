@@ -7,10 +7,12 @@ const Community = () => {
   const [page, setPage] = useState("orgs");
 
   document.addEventListener("scroll", () => {
-    if (document.querySelector(".comSearch").offsetTop !== 386) {
-      document.querySelector(".comSearch").classList.add("sha");
-    } else {
-      document.querySelector(".comSearch").classList.remove("sha");
+    if (document.querySelector(".comSearch")) {
+      if (document.querySelector(".comSearch").offsetTop !== 386) {
+        document.querySelector(".comSearch").classList.add("sha");
+      } else {
+        document.querySelector(".comSearch").classList.remove("sha");
+      }
     }
   });
 
