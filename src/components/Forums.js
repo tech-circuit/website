@@ -51,7 +51,7 @@ const notyf = new Notyf({
   ]
 })
 
-fetch(`https://techcircuit.herokuapp.com/forum/?access_token=${authToken}`)
+fetch(`https://techcircuit.herokuapp.com/forum/?sort=latest&access_token=${authToken}`)
 .then(async(response) => {
     let resp = await response.json()
     if (resp.success === true) {
