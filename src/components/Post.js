@@ -75,6 +75,7 @@ const Post = () => {
           type: 'success',
           message: 'Comment posted successfully.'
         });
+        window.location.reload()
       } else {
         notyf.open({
           type: 'error',
@@ -163,11 +164,11 @@ const Post = () => {
           {comments.map((comment, index) => (
             <div className="comment">
             <a href="/" className="comm-icon">
-              <img src="/assets/accounticon.png" alt="alt" />
+              <img src={comment.author_pfp_url} alt="alt" />
             </a>
             <div className="comm-content">
               <div className="details">
-                <a href="/">{comment.username}</a>
+                <a href="/">{comment.author_username}</a>
                 <p className="on"><TimeAgo date={comment.date}/></p>
               </div>
               <p className="comm-body">

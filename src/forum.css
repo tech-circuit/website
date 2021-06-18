@@ -316,8 +316,9 @@
 .comment-card img {
     margin-right: 1vw;
     margin-top: 0.7vh;
-    width: 2.8vw;
-    height: 100%;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%
 }
 
 .add-comm-top textarea {
