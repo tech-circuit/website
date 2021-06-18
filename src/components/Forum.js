@@ -104,9 +104,7 @@ const Forums = () => {
                   type: 'success',
                   message: successMessage
                 });
-                setTimeout(() => {
-                  window.location.reload()
-                }, 1500)
+                reFetch()
               } else {
                 notyf.open({
                   type: 'error',
@@ -150,6 +148,41 @@ const Forums = () => {
   const getContent = (content) => {
     console.log(content)
     setContent(content)
+  }
+
+  const postAction = (action, postID) => {
+    fetch(`https://techcircuit.herokuapp.com/forum/${action}/${postID}?access_token=${authToken}`, { method: "POST" })
+    .then(async(response) => {
+      let resp = await response.json()
+      if(resp.success === true) {
+        if(action === "save" || action === "unsave") {
+          notyf.open({
+            type: 'success',
+            message: `Post ${action}d successfully!`
+          });
+        }
+        reFetch()
+      } else {
+        notyf.open({
+          type: 'error',
+          message: `Could not ${action} post`
+        })
+      }
+    })
+  }
+
+  const reFetch = () => {
+    fetch(`https://techcircuit.herokuapp.com/forum/?page=1&sort=latest&access_token=${authToken}`)
+    .then(async(response) => {
+        let resp = await response.json()
+        if (resp.success === true) {
+          console.log(resp.authenticated)
+          const updatedPosts = setThumbnail(resp.posts)
+          console.log(updatedPosts)
+          setPosts(updatedPosts)
+          setDrafts(resp.drafts)
+        }  
+    })
   }
 
   React.useEffect(() => {
@@ -260,12 +293,12 @@ const Forums = () => {
                 <button className="card-opt-done">
                   {post.is_saved ? 
                     <>
-                      <img src="/assets/active-save.svg" alt="save-icon-active"/>
+                      <img src="/assets/active-save.svg" alt="save-icon-active" onClick={() => postAction("unsave", post.id)}/>
                       &nbsp; Saved
                     </>
                     :
                     <>
-                      <img src="/assets/inactive-save.svg" alt="save-icon-inactive"/>
+                      <img src="/assets/inactive-save.svg" alt="save-icon-inactive" onClick={() => postAction("save", post.id)}/>
                       &nbsp; Save
                     </>
                   }
@@ -274,12 +307,12 @@ const Forums = () => {
                 <button>
                   {post.is_upvoted ? 
                     <>
-                      <img src="/assets/active-upvote.svg" alt="upvote-icon-active"/>
+                      <img src="/assets/active-upvote.svg" alt="upvote-icon-active" onClick={() => postAction("unpvote", post.id)}/>
                       &nbsp; Upvoted
                     </>
                     :
                     <>
-                      <img src="/assets/inactive-upvote.svg" alt="upvote-icon-inactive"/>
+                      <img src="/assets/inactive-upvote.svg" alt="upvote-icon-inactive" onClick={() => postAction("upvote", post.id)}/>
                       &nbsp; Upvote
                     </>
                   }
