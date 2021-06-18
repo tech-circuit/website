@@ -572,11 +572,11 @@ i {
 }
 
 .inactive-upvote {
-    opacity: 60%;
+    opacity: 0.6;
 }
 
 .inactive-upvote:hover {
-    opacity: 100%;
+    opacity: 1;
 }
 
 .inactive-upvote-text:hover {
@@ -584,11 +584,11 @@ i {
 }
 
 .inactive-save {
-    opacity: 60%;
+    opacity: 0.6;
 }
 
 .inactive-save:hover {
-    opacity: 100%;
+    opacity: 1;
 }
 
 .inactive-save-text {
@@ -600,11 +600,11 @@ i {
 }
 
 .inactive-share {
-    opacity: 60%;
+    opacity: 0.6;
 }
 
 .inactive-share:hover {
-    opacity: 100%;
+    opacity: 1;
 }
 
 .inactive-share-text:hover {
