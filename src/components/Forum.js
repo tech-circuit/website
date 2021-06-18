@@ -1,5 +1,5 @@
 import React from "react";
-import "../forums.css";
+import "../forum.css";
 import { FaExclamationTriangle } from "react-icons/fa";
 import Modal from "react-modal";
 import ReactModal from "react-modal";
@@ -151,7 +151,7 @@ const Forums = () => {
   }
 
   React.useEffect(() => {
-    fetch(`https://techcircuit.herokuapp.com/forum/?sort=latest&access_token=${authToken}`)
+    fetch(`https://techcircuit.herokuapp.com/forum/?page=1&sort=latest&access_token=${authToken}`)
     .then(async(response) => {
         let resp = await response.json()
         if (resp.success === true) {
@@ -230,7 +230,7 @@ const Forums = () => {
         <div className="forumCards">
           {posts.map((post, index)=> (
             <div className="forumCard">
-            <a href="/full-forum" className="card-top">
+            <a href={`forum/post/${post.id}`} className="card-top">
                 <div className="l-card-top">
                   <h2>
                     {post.title}

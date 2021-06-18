@@ -41,10 +41,10 @@ const Navbar = () => {
             Events
           </Link>
           <Link
-            to="/forums"
-            onClick={(e) => setActivePage("/forums")}
+            to="/forum"
+            onClick={(e) => setActivePage("/forum")}
             className={
-              activePage === "/forums" ? "nav-link nav-link-active" : "nav-link"
+              activePage === "/forum" ? "nav-link nav-link-active" : "nav-link"
             }
           >
             Forum

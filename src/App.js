@@ -5,8 +5,8 @@ import Index from "./components/Index";
 import CreateProject from "./components/CreateProject";
 import Community from "./components/Community";
 import Resources from "./components/Resources";
-import Forums from "./components/Forums";
-import FullForum from "./components/FullForum";
+import Forums from "./components/Forum";
+import Post from "./components/Post"
 import Events from "./components/Events";
 import About from "./components/About";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -39,12 +39,10 @@ const App = () => {
         <Route exact path="/resources">
           <Resources />
         </Route>
-        <Route exact path="/forums">
+        <Route exact path="/forum">
           <Forums />
         </Route>
-        <Route exact path="/full-forum">
-          <FullForum />
-        </Route>
+        <Route exact path="/forum/post/:postId" component={Post}/>
       </Switch>
     </Router>
   );
