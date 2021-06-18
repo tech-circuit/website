@@ -104,7 +104,9 @@ const Forums = () => {
                   type: 'success',
                   message: successMessage
                 });
-                window.location.reload()
+                setTimeout(() => {
+                  window.location.reload()
+                }, 1500)
               } else {
                 notyf.open({
                   type: 'error',

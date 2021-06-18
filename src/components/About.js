@@ -10,6 +10,40 @@ import {
   FaCheck,
 } from "react-icons/fa";
 import Footer from "./Footer";
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
+
+const notyf = new Notyf({
+  duration: 2500,
+  position: {
+    x: 'left',
+    y: 'bottom'
+  },
+  types: [
+    {
+      type: 'error',
+      background: '#FF6B6B',
+      dismissible: true,
+      icon: {
+        className: 'material-icons',
+        tagName: 'i',
+        text: 'cancel',
+        color: '#ffffff'
+      }
+    },
+    {
+      type: 'success',
+      background: '#85D49C',
+      dismissible: true,
+      icon: {
+        className: 'material-icons',
+        tagName: 'i',
+        text: 'check_circle',
+        color: '#ffffff'
+      }
+    }
+  ]
+})
 
 const About = () => {
   document.getElementsByTagName('html')[0].style.scrollBehavior = 'initial'
@@ -30,12 +64,20 @@ const About = () => {
     setContactMessage(val);
   };
 
-  const contactFormSubmit = async () => {
-    if (
-      contactEmail.trim().length !== 0 &&
-      contactMessage.trim().length !== 0
-    ) {
-      console.log(contactEmail, contactMessage);
+  const contactFormSubmit = () => {
+    let emailValid = true
+    contactEmail.trim().split('@').forEach((p) => { if (p.trim().length === 0) { emailValid = false }})
+    if (contactEmail.trim().length === 0 || emailValid === false) {
+      notyf.open({
+        type: 'error',
+        message: 'Please enter a valid e-mail ID.'
+      });
+    } else if (contactMessage.trim().length === 0) {
+      notyf.open({
+        type: 'error',
+        message: 'Please enter a message.'
+      });
+    } else {
       let formData = new FormData();
       formData.append('email', contactEmail);
       formData.append('message', contactMessage);
@@ -46,7 +88,12 @@ const About = () => {
       setContactMessage("");
       setContactEmail("");
       setSendButton(false);
+      notyf.open({
+        type: 'success',
+        message: 'Message sent!'
+      });
       setTimeout(() => setSendButton(true), 1000);
+      setTimeout(() => modalStateChange(false), 500);
     }
   };
 
