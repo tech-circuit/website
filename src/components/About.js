@@ -30,12 +30,19 @@ const About = () => {
     setContactMessage(val);
   };
 
-  const contactFormSubmit = () => {
+  const contactFormSubmit = async () => {
     if (
       contactEmail.trim().length !== 0 &&
       contactMessage.trim().length !== 0
     ) {
       console.log(contactEmail, contactMessage);
+      let formData = new FormData();
+      formData.append('email', contactEmail);
+      formData.append('message', contactMessage);
+      fetch(`https://formspree.io/f/mdoyzyob`,{
+        method: "POST",
+        body: formData
+      })
       setContactMessage("");
       setContactEmail("");
       setSendButton(false);
