@@ -44,7 +44,7 @@ const Login = () => {
     };
 
     return (
-      <div>
+      <div className="login-area">
         <GoogleLogin
           clientId={clientId}
           render={renderProps => (
@@ -58,7 +58,7 @@ const Login = () => {
           isSignedIn={false}
         />
         <div className="profile">
-          {profile && <p>{profile}</p>}
+          {profile && <p>logged in successfully as {profile}</p>}
         </div>
       </div>
     );
