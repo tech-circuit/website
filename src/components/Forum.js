@@ -136,7 +136,7 @@ const Forums = () => {
     posts.forEach((p) => {
       const content = p.content
       try {
-        const imgURL = content.split('img title="')[1].split('" />')[0].split('src="')[1].split('"')[0]
+        const imgURL = content.split('src="')[1].split('"')[0]
         p.thumbnail = imgURL
       } catch (error) {
         p.thumbnail = undefined

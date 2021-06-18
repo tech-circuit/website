@@ -112,8 +112,9 @@ const Post = () => {
             <h3>
               posted <TimeAgo date={response.date}/> by <a href="/">{response.author}</a>
             </h3>
-            <div dangerouslySetInnerHTML={{__html: response.content}}>
+            <div dangerouslySetInnerHTML={{__html: response.content}} className="post-content">
             </div>
+            <br></br><br></br>
             <div className="card-options">
               <div className="l-opts">
                 <button>

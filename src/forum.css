@@ -237,7 +237,7 @@
     align-items: center;
     color: #747474;
     text-decoration: none;
-    font-size: 1.4vw;
+    font-size: 1vw;
     transition: all 0.3s;
 }
 
@@ -558,4 +558,8 @@
 
 i {
     margin-top: 0.4vw;
+}
+
+.post-content p {
+    margin-bottom: 0vh;
 }

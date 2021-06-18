@@ -60,6 +60,15 @@ header {
   z-index: 999;
 }
 
+.login-area {
+  margin-top: 10vw;
+}
+
+.login-area .profile {
+  text-align: center;
+  margin-top: 2vw;
+}
+
 .authButton {
   width: 235px;
   margin: auto;

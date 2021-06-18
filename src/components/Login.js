@@ -10,6 +10,7 @@ const Login = () => {
     const onSuccess = (res) => {
       const { email, familyName, givenName, googleId, imageUrl, name } = res.profileObj
       const authToken = res.tokenObj.access_token
+      localStorage.removeItem("authToken")
       localStorage.setItem("authToken", authToken)
       fetch('https://techcircuit.herokuapp.com/user/gauth', {
           
@@ -35,6 +36,9 @@ const Login = () => {
       .then(response => {
         console.log(response.status)
         setProfile(res.profileObj.email)
+        setTimeout(() => {
+          window.location.href = '/'
+        }, 1000)
       })
       .catch(error => console.log(error));
     };
@@ -44,7 +48,7 @@ const Login = () => {
     };
 
     return (
-      <div>
+      <div className="login-area">
         <GoogleLogin
           clientId={clientId}
           render={renderProps => (
@@ -58,7 +62,7 @@ const Login = () => {
           isSignedIn={false}
         />
         <div className="profile">
-          {profile && <p>{profile}</p>}
+          {profile && <p>logged in successfully as {profile}</p>}
         </div>
       </div>
     );
