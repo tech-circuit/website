@@ -48,6 +48,7 @@ const Forums = () => {
   const [title, setTitle] = React.useState("");
   const [posts, setPosts] = React.useState([]);
   const [drafts, setDrafts] = React.useState("0");
+  const [content, setContent] = React.useState("");
 
   const openModal = () => {
     document.getElementsByClassName("head-2")[0].style.zIndex = 0;
@@ -63,7 +64,6 @@ const Forums = () => {
 
   const createPost = (isDraft) => {
     if (title.trim().length !== 0) {
-      const content = localStorage.getItem("content");
       if (content.trim().length !== 0) {
         console.log("Title:", title);
         console.log("Content", content);
@@ -145,6 +145,11 @@ const Forums = () => {
     return posts
   }
 
+  const getContent = (content) => {
+    console.log(content)
+    setContent(content)
+  }
+
   React.useEffect(() => {
     fetch(`https://techcircuit.herokuapp.com/forum/?sort=latest&access_token=${authToken}`)
     .then(async(response) => {
@@ -179,7 +184,7 @@ const Forums = () => {
               placeholder="Enter title"
               onChange={(event) => setTitle(event.target.value)}
             ></input>
-            <TextBox />
+            <TextBox handleContentChange={getContent}/>
           </div>
           <div className="buttons">
             <button className="create-post" onClick={() => createPost(false)}>

@@ -1,9 +1,9 @@
 import React from "react";
 import { Editor } from "@tinymce/tinymce-react";
 
-const TextBox = () => {
+const TextBox = (props) => {
     const handleEditorChange = (e) => {
-      localStorage.setItem("content", e.target.getContent())
+      props.handleContentChange(e.target.getContent())
     }
 
     return (
