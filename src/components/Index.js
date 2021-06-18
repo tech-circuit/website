@@ -159,10 +159,9 @@ const Index = () => {
               everything takes place.
             </h1>
             <p data-aos="fade-right" data-aos-delay="200">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse duis lectus mi urna nulla suscipit lorem egestas.
-              <br />
-              Diam dignissim sed congue id duis mattis dictum integer sit.
+            Be it meeting talented people from the tech industry, Looking at amazing projects 
+            created by professionals, connecting with new people, participating in events, or 
+            even organizing your own -- techCircuit is the place to be.
             </p>
             <Link
               data-aos="fade-up"
@@ -193,16 +192,16 @@ const Index = () => {
               What is <strong>techCircuit?</strong>
             </h1>
             <p data-aos="fade-right" data-aos-delay="300">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh enim
-              fames elementum turpis elementum lacus. Purus nunc turpis arcu at
-              ac tortor in purus. Purus penatibus vestibulum, sed sodales id
-              molestie massa pretium. Neque congue euismod sagittis cras cras
-              sit. Scelerisque rhoncus eget amet.
+            In simple words, techCircuit is a hub for tech enthusiasts around the world. 
+            The platform allows users to surf through a plethora of projects, ranging 
+            from code to design, built by experts in their respective fields. techCircuit 
+            allows users to also browse through events and meetups being organized, and 
+            sign up for the same really easily.
               <br />
               <br />
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse duis lectus mi urna nulla suscipit lorem egestas. Diam
-              dignissim sed congue id duis mattis dictum integer sit.
+              Organizations or individuals can also post events of their own, and get traction 
+              instantly. techCircuit’s user-friendly and minimalistic UI/UX makes navigating 
+              through the platform a breeze.
             </p>
             <img src="/assets/abt.svg" alt="About Banner" />
           </div>
@@ -240,9 +239,8 @@ const Index = () => {
               tech clubs from all over India.
             </h2>
             <p data-aos="fade-right" data-aos-delay="400">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse duis lectus mi urna nulla suscipit lorem egestas. Diam
-              dignissim sed congue id duis mattis dictum integer sit.
+            The biggest names in the Indian Tech Circuit, including Exun, CW, 
+            TS and more have tested and approved of the features that techCircuit offers.
             </p>
             <Link data-aos="fade-right" to="/" className="club-btn">
               View Clubs
@@ -302,25 +300,23 @@ const Index = () => {
           <div className="feat-content">
             <h2 data-aos="fade-left">Showcase your work and skills</h2>
             <p data-aos="fade-left" data-aos-delay="300">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis at
-              amet molestie et, vulputate arcu sed mattis. Elit neque, amet,
-              amet, vulputate eget blandit. Pellentesque luctus elementum dui
-              gravida. Tortor sed pulvinar mauris nam eu. Placerat porttitor
-              euismod eget vulputate orci, convallis accumsan. Vitae, adipiscing
-              diam justo, netus.
+            techCircuit serves as a platform for individuals with varying skillsets, 
+            ranging from code to design,  to show off their projects to the tech community. 
+            Users can upvote, share and comment on posts, making the community a positive and 
+            friendly space. techCircuit’s easy to use filters let users navigate through projects 
+            effortlessly.
             </p>
           </div>
         </div>
         <div className="feat container">
           <div className="feat-content">
-            <h2 data-aos="fade-right">Showcase your work and skills</h2>
+            <h2 data-aos="fade-right">Community of creators</h2>
             <p data-aos="fade-right" data-aos-delay="300">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis at
-              amet molestie et, vulputate arcu sed mattis. Elit neque, amet,
-              amet, vulputate eget blandit. Pellentesque luctus elementum dui
-              gravida. Tortor sed pulvinar mauris nam eu. Placerat porttitor
-              euismod eget vulputate orci, convallis accumsan. Vitae, adipiscing
-              diam justo, netus.
+            techCircuit has a friendly and really helpful community which aims to ultimately help 
+            everyone benefit from the platform. Creators can get feedback on their projects, tech 
+            enthusiasts can sign up for events, and organizations can promote their events. The 
+            techCircuit forum also serves as a place for healthy discussion amongst people interested 
+            in tech.
             </p>
           </div>
           <div className="feat-banner">
@@ -332,20 +328,19 @@ const Index = () => {
             <img className="feat-img-minus" src="/assets/write.png" alt="alt" />
           </div>
           <div className="feat-content">
-            <h2 data-aos="fade-left">Showcase your work and skills</h2>
+            <h2 data-aos="fade-left">Crowdsourced Resources</h2>
             <p data-aos="fade-left" data-aos-delay="300">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis at
-              amet molestie et, vulputate arcu sed mattis. Elit neque, amet,
-              amet, vulputate eget blandit. Pellentesque luctus elementum dui
-              gravida. Tortor sed pulvinar mauris nam eu. Placerat porttitor
-              euismod eget vulputate orci, convallis accumsan. Vitae, adipiscing
-              diam justo, netus.
+            techCircuit also features learning resources for various tech-related fields, 
+            including Design, A/V, Software Development, Cryptic Hunts and more; to which 
+            members of the community can contribute. We have handpicked the best archives 
+            from tech symposiums that have taken place in the past years so that users can 
+            access all of them easily.
             </p>
           </div>
         </div>
         <div className="feat last-feat container">
           <div className="feat-content">
-            <h2 data-aos="fade-right">Showcase your work and skills</h2>
+            <h2 data-aos="fade-right">Start a discussion on forum</h2>
             <p data-aos="fade-right" data-aos-delay="300">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis at
               amet molestie et, vulputate arcu sed mattis. Elit neque, amet,
