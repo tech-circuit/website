@@ -570,3 +570,51 @@ i {
     border-radius: 5px;
     box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.25);
 }
+
+.inactive-upvote {
+    opacity: 60%;
+}
+
+.inactive-upvote:hover {
+    opacity: 100%;
+}
+
+.inactive-upvote-text:hover {
+    color: #29313D;
+}
+
+.inactive-save {
+    opacity: 60%;
+}
+
+.inactive-save:hover {
+    opacity: 100%;
+}
+
+.inactive-save-text {
+    color: #747474;
+}
+
+.inactive-save-text:hover {
+    color: #29313D;
+}
+
+.inactive-share {
+    opacity: 60%;
+}
+
+.inactive-share:hover {
+    opacity: 100%;
+}
+
+.inactive-share-text:hover {
+    color: #29313D
+}
+
+.r-opts svg:hover {
+    color: #29313D
+}
+
+.report-text:hover {
+    color: #29313D
+}

@@ -287,19 +287,19 @@ const Forums = () => {
                   &nbsp; {post.comments} comments
                 </button>
                 <button>
-                  <img src="/assets/share.svg" alt="share-icon"/>
-                  &nbsp; Share
+                  <img src="/assets/share.svg" alt="share-icon" className="inactive-share"/>
+                  <span className="inactive-share-text">&nbsp; Share</span>
                 </button>
                 <button className="card-opt-done">
                   {post.is_saved ? 
                     <>
                       <img src="/assets/active-save.svg" alt="save-icon-active" onClick={() => postAction("unsave", post.id)}/>
-                      &nbsp; Saved
+                      <span style={{ color: '#29313D' }}>&nbsp; Saved</span>
                     </>
                     :
                     <>
-                      <img src="/assets/inactive-save.svg" alt="save-icon-inactive" onClick={() => postAction("save", post.id)}/>
-                      &nbsp; Save
+                      <img src="/assets/inactive-save.svg" alt="save-icon-inactive" onClick={() => postAction("save", post.id)} className="inactive-save"/>
+                      <span className="inactive-save-text">&nbsp; Save</span>
                     </>
                   }
                   
@@ -307,13 +307,13 @@ const Forums = () => {
                 <button>
                   {post.is_upvoted ? 
                     <>
-                      <img src="/assets/active-upvote.svg" alt="upvote-icon-active" onClick={() => postAction("unpvote", post.id)}/>
-                      &nbsp; Upvoted
+                      <img src="/assets/active-upvote.svg" alt="upvote-icon-active" onClick={() => postAction("unupvote", post.id)}/>
+                      <span style={{ color: '#29313D' }}>&nbsp; Upvoted</span>
                     </>
                     :
                     <>
-                      <img src="/assets/inactive-upvote.svg" alt="upvote-icon-inactive" onClick={() => postAction("upvote", post.id)}/>
-                      &nbsp; Upvote
+                      <img src="/assets/inactive-upvote.svg" alt="upvote-icon-inactive" onClick={() => postAction("upvote", post.id)} className="inactive-upvote"/>
+                      <span className="inactive-upvote-text">&nbsp; Upvote</span>
                     </>
                   }
                   
@@ -322,7 +322,7 @@ const Forums = () => {
               <div className="r-opts">
                 <button>
                   <FaExclamationTriangle />
-                  &nbsp; Report
+                  <span className="report-text">&nbsp; Report</span>
                 </button>
               </div>
             </div>
