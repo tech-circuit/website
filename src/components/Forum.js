@@ -57,6 +57,7 @@ const Forums = () => {
   };
 
   const closeModal = () => {
+    notyf.dismissAll()
     setIsOpen(false);
     document.getElementsByClassName("head-2")[0].style.zIndex = 999;
     document.getElementsByTagName("nav")[0].style.zIndex = 9999;
@@ -72,8 +73,8 @@ const Forums = () => {
         let successMessage = "Posted successfully!"
         let errorMessage = "Could not post"
         if (isDraft) {
-          successMessage = "Draft saved successfully!"
-          errorMessage = "Could not save"
+          successMessage = "Draft saved"
+          errorMessage = "Could not save draft"
         }
         fetch(
           `https://techcircuit.herokuapp.com/forum/new?access_token=${authToken}`,
@@ -158,7 +159,7 @@ const Forums = () => {
         if(action === "save" || action === "unsave") {
           notyf.open({
             type: 'success',
-            message: `Post ${action}d successfully!`
+            message: `Post ${action}d`
           });
         }
         reFetch()

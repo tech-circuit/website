@@ -60,9 +60,11 @@ const TextBox = (props) => {
                       const allowedExt = ['png', 'jpg', 'jpeg', 'gif']
                       if(allowedExt.includes(inputFile.name.split('.')[1])) {
                         notyf.open({
-                          type: 'success',
-                          message: 'Uploading',
-                          duration: 0
+                          message: 'Uploading...',
+                          icon: false,
+                          background: '#4678f9',
+                          duration: 0,
+                          dismissible: false
                         });
                         let reader = new FileReader();
                         reader.readAsDataURL(inputFile);
