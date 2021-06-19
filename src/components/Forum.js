@@ -282,10 +282,12 @@ const Forums = () => {
             </a>
             <div className="card-options">
               <div className="l-opts">
-                <button>
-                  <img src="/assets/comments.svg" alt="comments-icon"/>
-                  &nbsp; {post.comments} comments
-                </button>
+                <a href={`forum/post/${post.id}/#comments`}>
+                  <button>
+                      <img src="/assets/comments.svg" alt="comments-icon"/>
+                      &nbsp; {post.comments} comments
+                  </button>
+                </a>
                 <button>
                   <img src="/assets/share.svg" alt="share-icon" className="inactive-share"/>
                   <span className="inactive-share-text">&nbsp; Share</span>

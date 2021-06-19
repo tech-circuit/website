@@ -52,37 +52,49 @@ const Post = () => {
   const { postId } = useParams();
 
   const createComment = () => {
-    fetch(`https://techcircuit.herokuapp.com/forum/comment/new?access_token=${authToken}`, {
-        // Adding method type
-        method: "POST",
+    if(commentContent.trim().length !== 0) {
+      document.getElementById('post-comment-button').disabled = true
+      document.getElementById('comment-input-area').value = ''
+      setCommentContent('')
+      fetch(`https://techcircuit.herokuapp.com/forum/comment/new?access_token=${authToken}`, {
+          // Adding method type
+          method: "POST",
 
-        // Adding body or contents to send
-        body: JSON.stringify({
-          comment: commentContent,
-          post_id: postId
-        }),
+          // Adding body or contents to send
+          body: JSON.stringify({
+            comment: commentContent,
+            post_id: postId
+          }),
 
-        // Adding headers to the request
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
+          // Adding headers to the request
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          }
         }
-      }
-    ).then(async(response) => {
-      let res = await response.json()
-      console.log(res)
-      if(res.success === true) {
-        notyf.open({
-          type: 'success',
-          message: 'Comment posted successfully.'
-        });
-        updateComments()
-      } else {
-        notyf.open({
-          type: 'error',
-          message: res.error
-        })
-      }
-    })
+      ).then(async(response) => {
+        let res = await response.json()
+        console.log(res)
+        if(res.success === true) {
+          notyf.open({
+            type: 'success',
+            message: 'Comment posted successfully.'
+          });
+          updateComments()
+        } else {
+          notyf.open({
+            type: 'error',
+            message: res.error
+          })
+        }
+      document.getElementById('post-comment-button').disabled = false
+      })
+    } else {
+      notyf.open({
+        type: 'error',
+        message: 'Please enter a comment.'
+      })
+    }
+    
   }
 
   const updateComments = () => {
@@ -106,6 +118,7 @@ const Post = () => {
           setComments(resp.comments)
         }
     })
+    document.getElementsByTagName('html')[0].style.scrollBehavior = 'smooth'
   }, [postId])
 
   return (
@@ -154,7 +167,7 @@ const Post = () => {
             </div>
           </div>
         </div>
-        <div className="forumCard comment-card">
+        <div className="forumCard comment-card" id="comments">
           <h2>
             Comments({comments.length}) &nbsp;
             <FaCommentAlt />
@@ -166,11 +179,12 @@ const Post = () => {
                   name="comment"
                   placeholder="What do you think about this post..."
                   onChange={(event) => setCommentContent(event.target.value)}
+                  id="comment-input-area"
                 ></textarea>
               </div>
               <div className="comment-btns">
                 {/* <button className="btn com-cancel">Cancel</button> */}
-                <button className="btn com-create" onClick={() => createComment()}>Post Comment</button>
+                <button className="btn com-create" onClick={() => createComment()} id="post-comment-button">Post Comment</button>
               </div>
           </div>
           {comments.map((comment, index) => (

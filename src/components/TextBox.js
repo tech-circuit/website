@@ -1,5 +1,39 @@
 import React from "react";
 import { Editor } from "@tinymce/tinymce-react";
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
+
+const notyf = new Notyf({
+  duration: 2500,
+  position: {
+    x: 'left',
+    y: 'bottom'
+  },
+  types: [
+    {
+      type: 'error',
+      background: '#FF6B6B',
+      dismissible: true,
+      icon: {
+        className: 'material-icons',
+        tagName: 'i',
+        text: 'cancel',
+        color: '#ffffff'
+      }
+    },
+    {
+      type: 'success',
+      background: '#85D49C',
+      dismissible: true,
+      icon: {
+        className: 'material-icons',
+        tagName: 'i',
+        text: 'check_circle',
+        color: '#ffffff'
+      }
+    }
+  ]
+})
 
 const TextBox = (props) => {
     const handleEditorChange = (e) => {
@@ -23,31 +57,50 @@ const TextBox = (props) => {
                     uploadElement.click()
                     uploadElement.onchange = () => {
                       const inputFile = uploadElement.files[0]
-                      let reader = new FileReader();
-                      reader.readAsDataURL(inputFile);
-                      reader.onload = () => {
-                        const b64 = reader.result.split("base64,")[1];
-                        fetch("https://techcircuit.herokuapp.com/image/upload", {
-                          // Adding method type
-                          method: "POST",
+                      const allowedExt = ['png', 'jpg', 'jpeg', 'gif']
+                      if(allowedExt.includes(inputFile.name.split('.')[1])) {
+                        notyf.open({
+                          type: 'success',
+                          message: 'Uploading',
+                          duration: 0
+                        });
+                        let reader = new FileReader();
+                        reader.readAsDataURL(inputFile);
+                        reader.onload = () => {
+                          const b64 = reader.result.split("base64,")[1];
+                          fetch("https://techcircuit.herokuapp.com/image/upload", {
+                            // Adding method type
+                            method: "POST",
 
-                          // Adding body or contents to send
-                          body: JSON.stringify({
-                            b64,
-                          }),
+                            // Adding body or contents to send
+                            body: JSON.stringify({
+                              b64,
+                            }),
 
-                          // Adding headers to the request
-                          headers: {
-                            "Content-type": "application/json; charset=UTF-8",
-                            "Access-Control-Allow-Origin": "*",
-                          },
-                        })
-                          .then(async (response) => {
-                            const resp = await response.json();
-                            editor.insertContent(`<img title="${inputFile.name}" src="${resp.link}" alt="" />`);
+                            // Adding headers to the request
+                            headers: {
+                              "Content-type": "application/json; charset=UTF-8",
+                              "Access-Control-Allow-Origin": "*",
+                            },
                           })
-                          .catch((error) => console.log(error));
-                      };
+                            .then(async (response) => {
+                              const resp = await response.json();
+                              editor.insertContent(`<img title="${inputFile.name}" src="${resp.link}" alt="" />`);
+                              notyf.dismissAll()
+                              notyf.open({
+                                type: 'success',
+                                message: 'Uploaded successfully!',
+                                duration: 2000
+                              });
+                            })
+                            .catch((error) => console.log(error));
+                        };
+                      } else {
+                        notyf.open({
+                          type: 'error',
+                          message: 'Invalid image format'
+                        });
+                      }
                     }
                   }
                 })
