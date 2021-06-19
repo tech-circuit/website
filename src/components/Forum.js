@@ -291,12 +291,12 @@ const Forums = () => {
                   {post.is_saved ? 
                     <>
                       <img src="/assets/active-save.svg" alt="save-icon-active" onClick={() => postAction("unsave", post.id)}/>
-                      <span style={{ color: '#29313D' }}>&nbsp; Saved</span>
+                      <span style={{ color: '#29313D' }} onClick={() => postAction("unsave", post.id)}>&nbsp; Saved</span>
                     </>
                     :
                     <>
                       <img src="/assets/inactive-save.svg" alt="save-icon-inactive" onClick={() => postAction("save", post.id)} className="inactive-save"/>
-                      <span className="inactive-save-text">&nbsp; Save</span>
+                      <span className="inactive-save-text" onClick={() => postAction("save", post.id)}>&nbsp; Save</span>
                     </>
                   }
                   

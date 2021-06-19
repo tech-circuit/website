@@ -50,6 +50,7 @@ const Post = () => {
   const [comments, setComments] = React.useState([]);
   const [commentContent, setCommentContent] = React.useState("");
   const { postId } = useParams();
+  const [authenticated, setAuthenticated] = React.useState(false);
 
   const createComment = () => {
     if(commentContent.trim().length !== 0) {
@@ -104,6 +105,16 @@ const Post = () => {
     })
   }
 
+  const checkIfAuthenticated = () => {
+    fetch(`https://techcircuit.herokuapp.com/user/pfp?access_token=${authToken}`)
+    .then(res => {
+      if(res.status !== 404) {
+        setAuthenticated(true)
+      }
+    })
+    .catch(err => console.log(err))
+  }
+
   React.useEffect(() => {
     fetch(`https://techcircuit.herokuapp.com/forum/post/${postId}?access_token=${authToken}`)
     .then(async(res) => {
@@ -115,6 +126,7 @@ const Post = () => {
         }
     })
     document.getElementsByTagName('html')[0].style.scrollBehavior = 'smooth'
+    checkIfAuthenticated()
   }, [postId])
 
   return (
@@ -170,7 +182,7 @@ const Post = () => {
           </h2>
           <div className="add-comment">
               <div className="add-comm-top">
-                <img src={`https://techcircuit.herokuapp.com/user/pfp?access_token=${authToken}`} alt="alt" />
+                <img src={authenticated ? `https://techcircuit.herokuapp.com/user/pfp?access_token=${authToken}` : '/assets/accounticon.png'} alt="alt" />
                 <textarea
                   name="comment"
                   placeholder="What do you think about this post..."
