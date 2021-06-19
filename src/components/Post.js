@@ -75,13 +75,24 @@ const Post = () => {
           type: 'success',
           message: 'Comment posted successfully.'
         });
-        window.location.reload()
+        updateComments()
       } else {
         notyf.open({
           type: 'error',
           message: res.error
         })
       }
+    })
+  }
+
+  const updateComments = () => {
+    fetch(`https://techcircuit.herokuapp.com/forum/post/${postId}?access_token=${authToken}`)
+    .then(async(res) => {
+        let resp = await res.json()
+        console.log(resp)
+        if (resp.success === true) {
+          setComments(resp.comments)
+        }
     })
   }
 
@@ -150,7 +161,7 @@ const Post = () => {
           </h2>
           <div className="add-comment">
               <div className="add-comm-top">
-                <img src="/assets/accounticon.png" alt="alt" />
+                <img src={`https://techcircuit.herokuapp.com/user/pfp?access_token=${authToken}`} alt="alt" />
                 <textarea
                   name="comment"
                   placeholder="What do you think about this post..."
@@ -163,7 +174,7 @@ const Post = () => {
               </div>
           </div>
           {comments.map((comment, index) => (
-            <div className="comment">
+            <div className="comment" id={comment.id}>
             <a href="/" className="comm-icon">
               <img src={comment.author_pfp_url} alt="alt" />
             </a>
