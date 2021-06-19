@@ -156,12 +156,6 @@ const Forums = () => {
     .then(async(response) => {
       let resp = await response.json()
       if(resp.success === true) {
-        if(action === "save" || action === "unsave") {
-          notyf.open({
-            type: 'success',
-            message: `Post ${action}d`
-          });
-        }
         reFetch()
       } else {
         notyf.open({
@@ -311,12 +305,12 @@ const Forums = () => {
                   {post.is_upvoted ? 
                     <>
                       <img src="/assets/active-upvote.svg" alt="upvote-icon-active" onClick={() => postAction("unupvote", post.id)}/>
-                      <span style={{ color: '#29313D' }}>&nbsp; Upvoted</span>
+                      <span style={{ color: '#29313D' }} onClick={() => postAction("unupvote", post.id)}>&nbsp; Upvoted</span>
                     </>
                     :
                     <>
                       <img src="/assets/inactive-upvote.svg" alt="upvote-icon-inactive" onClick={() => postAction("upvote", post.id)} className="inactive-upvote"/>
-                      <span className="inactive-upvote-text">&nbsp; Upvote</span>
+                      <span className="inactive-upvote-text" onClick={() => postAction("upvote", post.id)}>&nbsp; Upvote</span>
                     </>
                   }
                   

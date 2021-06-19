@@ -75,10 +75,6 @@ const Post = () => {
         let res = await response.json()
         console.log(res)
         if(res.success === true) {
-          notyf.open({
-            type: 'success',
-            message: 'Comment posted successfully.'
-          });
           updateComments()
         } else {
           notyf.open({
