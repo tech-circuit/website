@@ -9,6 +9,7 @@ import Forums from "./components/Forum";
 import Post from "./components/Post"
 import Events from "./components/Events";
 import About from "./components/About";
+import Work from "./components/Work";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ScrollToTop from './components/ScrollToTop';
 
@@ -20,6 +21,9 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <Index />
+        </Route>
+        <Route exact path="/work">
+          <Work />
         </Route>
         <Route exact path="/about">
           <About />
@@ -42,7 +46,7 @@ const App = () => {
         <Route exact path="/forum">
           <Forums />
         </Route>
-        <Route exact path="/forum/post/:postId" component={Post}/>
+        <Route exact path="/forum/post/:postId" component={Post} />
       </Switch>
     </Router>
   );

@@ -1,0 +1,153 @@
+/* Car Options */
+.carHold {
+  width: 100%;
+  position: relative;
+}
+#carPrev,
+#carNext {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  color: #fff;
+  font-size: 2.3vw;
+  cursor: pointer;
+}
+#carPrev {
+  left: -6%;
+}
+#carNext {
+  left: 100%;
+}
+.owl-stage-outer {
+  overflow: hidden;
+}
+.owl-stage {
+  display: flex;
+}
+.owl-prev,
+.owl-next {
+  display: none;
+}
+.owl-item {
+  width: 10vw !important;
+  height: 10vw;
+  border: 2px solid #85d49c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  margin: 3vh 0;
+  margin-right: 2vw;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.owl-item h1 {
+  font-size: 1.6vw;
+  font-weight: 400;
+  color: #85d49c;
+  transition: all 0.3s;
+}
+.owl-item:hover {
+  background: #85d49c;
+}
+.owl-item:hover h1 {
+  color: #fff;
+}
+/* POPULAR */
+.popular {
+  margin-top: 9vh;
+  margin-bottom: 16vh;
+}
+.popular h1,
+.projects h1 {
+  text-align: center;
+  font-weight: 400;
+  color: #29313d;
+  font-size: 2.7vw;
+}
+.projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.workTitle {
+  font-weight: 600;
+  font-size: 2vw;
+  padding-right: 40%;
+}
+.workTitle a {
+  text-decoration: underline;
+  color: #85d49c;
+}
+/* SORT */
+.workSort {
+  display: flex;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4vh;
+  margin-top: 2vh;
+  border-bottom: 3px solid #dcdcdc;
+}
+.workSort button {
+  font-size: 1vw;
+  font-weight: 400;
+  color: #29313d;
+  background: none;
+  cursor: pointer;
+  position: relative;
+  padding: 0 1.4vw;
+  padding-bottom: 1vh;
+  transition: all 0.3s;
+}
+button.workSortActive {
+  color: #4678f9;
+}
+.workSort button:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #4678f9;
+  transform: translateY(3px) scaleX(0);
+  transform-origin: center;
+  transition: all 0.3s;
+}
+button.workSortActive::after {
+  transform: translateY(3px) scaleX(1);
+}
+/* CARDS */
+.workCards {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 2.6vw;
+}
+.workCard {
+  width: 23%;
+  margin: 2% 0;
+  padding: 0 1vw;
+}
+.workCard img {
+  width: 100%;
+  height: 26vh;
+  border-radius: 5px;
+}
+.workCard h2,
+.workCard h3 {
+  display: block;
+  text-align: left;
+  font-weight: 400;
+}
+.workCard h2 {
+  font-size: 1.2vw;
+  font-weight: 500;
+}
+.workCard h3 {
+  font-size: 1vw;
+  color: #747474;
+}
