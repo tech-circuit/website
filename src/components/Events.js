@@ -3,9 +3,11 @@ import "../events.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { FaPlus } from "react-icons/fa";
+// import { useEffect } from "react";
 
 const Events = () => {
-  document.getElementsByTagName('html')[0].style.scrollBehavior = 'initial'
+  document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
+
   return (
     <>
       <header className="eventHead head-1 container">
@@ -101,9 +103,9 @@ const Events = () => {
               <p>Ends</p>
               <h5>May 18th, 2021</h5>
             </div>
-            <Link to="/" className="view">
+            <button to="/" className="view">
               View Page
-            </Link>
+            </button>
           </div>
         </div>
         <div className="event">
@@ -123,9 +125,9 @@ const Events = () => {
               <p>Ends</p>
               <h5>May 18th, 2021</h5>
             </div>
-            <Link to="/" className="view">
+            <button to="/" className="view">
               View Page
-            </Link>
+            </button>
           </div>
         </div>
         <div className="event">
@@ -145,9 +147,9 @@ const Events = () => {
               <p>Ends</p>
               <h5>May 18th, 2021</h5>
             </div>
-            <Link to="/" className="view">
+            <button to="/" className="view">
               View Page
-            </Link>
+            </button>
           </div>
         </div>
         <div className="event">
@@ -167,9 +169,9 @@ const Events = () => {
               <p>Ends</p>
               <h5>May 18th, 2021</h5>
             </div>
-            <Link to="/" className="view">
+            <button to="/" className="view">
               View Page
-            </Link>
+            </button>
           </div>
         </div>
         <div className="event">
@@ -189,97 +191,76 @@ const Events = () => {
               <p>Ends</p>
               <h5>May 18th, 2021</h5>
             </div>
-            <Link to="/" className="view">
+            <button to="/" className="view">
               View Page
-            </Link>
+            </button>
           </div>
         </div>
-        <div className="event">
+      </section>
+
+      <section className="fullEvent">
+        <button className="return">Back</button>
+
+        <div className="fullEventBanner">
           <img src="/assets/sample-banner.jpg" alt="alt" />
-          <div className="eventBody">
-            <div className="head">
-              <h1>nCRYPT 2021 Lorem </h1>
-              <h2>
-                Organised by <Link to="/">DUGUY</Link>
-              </h2>
-            </div>
-            <h3 className="ava">2 Days left | Registration Open</h3>
-            <div className="details">
-              <h4>Happening online</h4>
-              <p>Starts</p>
-              <h5>May 15th, 2021</h5>
-              <p>Ends</p>
-              <h5>May 18th, 2021</h5>
-            </div>
-            <Link to="/" className="view">
-              View Page
-            </Link>
+          <h1>Event Banner</h1>
+          <h3>
+            Organised by <Link to="/">nCrypt DPS Sushant Lok Gurgaon</Link>
+          </h3>
+        </div>
+
+        <div className="eventRegis">
+          <p>Registeration Open till 13th May 11:59pm</p>
+          <button>Register</button>
+        </div>
+
+        <div className="elig">
+          <h4>Eligibility Criteria</h4>
+          <p>Somnathe1412</p>
+        </div>
+
+        <div className="fullEventInfo">
+          <div className="fullEventUnit">
+            <h4>Starts</h4>
+            <p>15th May, 2021</p>
+          </div>
+          <div className="fullEventUnit">
+            <h4>Starts</h4>
+            <p>15th May, 2021</p>
+          </div>
+          <div className="fullEventUnit">
+            <h4>Starts</h4>
+            <p>15th May, 2021</p>
           </div>
         </div>
-        <div className="event">
-          <img src="/assets/sample-banner.jpg" alt="alt" />
-          <div className="eventBody">
-            <div className="head">
-              <h1>nCRYPT 2021 Lorem </h1>
-              <h2>
-                Organised by <Link to="/">DUGUY</Link>
-              </h2>
-            </div>
-            <h3 className="ava">2 Days left | Registration Open</h3>
-            <div className="details">
-              <h4>Happening online</h4>
-              <p>Starts</p>
-              <h5>May 15th, 2021</h5>
-              <p>Ends</p>
-              <h5>May 18th, 2021</h5>
-            </div>
-            <Link to="/" className="view">
-              View Page
-            </Link>
-          </div>
+
+        <div className="aboutEvent">
+          <h4>About event</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+            turpis diam enim odio. Faucibus sagittis, non enim nibh. Diam
+            consectetur maecenas varius nibh at. Porttitor nunc nascetur
+            ultricies vulputate. Egestas at egestas ut mi lectus morbi nam lacus
+            viverra. Sed purus praesent viverra posuere ridiculus tempor. Enim
+            habitasse dictum tristique duis ac sagittis viverra.
+          </p>
         </div>
-        <div className="event">
-          <img src="/assets/sample-banner.jpg" alt="alt" />
-          <div className="eventBody">
-            <div className="head">
-              <h1>nCRYPT 2021 Lorem </h1>
-              <h2>
-                Organised by <Link to="/">DUGUY</Link>
-              </h2>
-            </div>
-            <h3 className="ava">2 Days left | Registration Open</h3>
-            <div className="details">
-              <h4>Happening online</h4>
-              <p>Starts</p>
-              <h5>May 15th, 2021</h5>
-              <p>Ends</p>
-              <h5>May 18th, 2021</h5>
-            </div>
-            <Link to="/" className="view">
-              View Page
-            </Link>
+
+        <div className="eventOrganizers">
+          <div className="unit">
+            <h4>Mode of conductance</h4>
+            <p>Online</p>
           </div>
-        </div>
-        <div className="event">
-          <img src="/assets/sample-banner.jpg" alt="alt" />
-          <div className="eventBody">
-            <div className="head">
-              <h1>nCRYPT 2021 Lorem </h1>
-              <h2>
-                Organised by <Link to="/">DUGUY</Link>
-              </h2>
+          <div className="eventClub">
+            <div className="eventClubLeft">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
             </div>
-            <h3 className="ava">2 Days left | Registration Open</h3>
-            <div className="details">
-              <h4>Happening online</h4>
-              <p>Starts</p>
-              <h5>May 15th, 2021</h5>
-              <p>Ends</p>
-              <h5>May 18th, 2021</h5>
+            <div className="eventClubRight">
+              <Link to="/">View club page</Link>
+              <p>
+                nCrypt: Tech Club of Delhi Public School Sushant Lok Gurgaon
+              </p>
             </div>
-            <Link to="/" className="view">
-              View Page
-            </Link>
           </div>
         </div>
       </section>

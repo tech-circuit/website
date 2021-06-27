@@ -29,10 +29,10 @@ const Work = () => {
             </a>
           </h1>
           <div className="carHold">
-            <button id="carPrev" onClick={() => sortRef.current.next()}>
+            <button id="carPrev" onClick={() => sortRef.current.prev()}>
               <FaChevronLeft />
             </button>
-            <button id="carNext" onClick={() => sortRef.current.prev()}>
+            <button id="carNext" onClick={() => sortRef.current.next()}>
               <FaChevronRight />
             </button>
             <OwlCarousel ref={sortRef} options={options}>

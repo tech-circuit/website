@@ -3,7 +3,8 @@
 }
 .eventHead h1 {
   width: 45%;
-  font-weight: 400;
+  font-weight: 600;
+  font-size: 2vw;
   margin-bottom: 3.2vh;
 }
 .eventHead2 {
@@ -175,6 +176,9 @@
   color: #4678f9;
   font-size: 1vw;
   display: flex;
+  width: 100%;
+  background: none;
+  cursor: pointer;
   justify-content: center;
   align-items: center;
   margin-top: 3.6vh;
@@ -187,4 +191,20 @@
 .event .view:hover {
   color: #fff;
   background: #4678f9;
+}
+/* FULL EVENT */
+.fullEvent {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70vw;
+  padding: 4vh 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100000;
+  background: #fff;
+  box-shadow: 0 0 100000px #000;
+  border-radius: 16px;
 }
