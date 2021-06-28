@@ -151,3 +151,8 @@ button.workSortActive::after {
   font-size: 1vw;
   color: #747474;
 }
+
+.workCard:hover > h2,
+.workCard:hover > h3 {
+  text-decoration: underline;
+}

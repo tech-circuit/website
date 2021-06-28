@@ -2,6 +2,7 @@ import "../work.css";
 import { FaPlus, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useState, useRef } from "react";
 import OwlCarousel from "react-owl-carousel2";
+import { Link } from "react-router-dom";
 
 const options = {
   items: 7,
@@ -75,46 +76,46 @@ const Work = () => {
       <section className="popular container">
         <h1>Popular & Trending</h1>
         <div className="workCards">
-          <div className="workCard">
+          <Link to="/" className="workCard">
             <img src="/assets/sample-banner.jpg" alt="" />
             <h2>Arena | Chess Platform Concept</h2>
             <h3>Isam</h3>
-          </div>
-          <div className="workCard">
+          </Link>
+          <Link to="/" className="workCard">
             <img src="/assets/sample-banner.jpg" alt="" />
             <h2>Arena | Chess Platform Concept</h2>
             <h3>Isam</h3>
-          </div>
-          <div className="workCard">
+          </Link>
+          <Link to="/" className="workCard">
             <img src="/assets/sample-banner.jpg" alt="" />
             <h2>Arena | Chess Platform Concept</h2>
             <h3>Isam</h3>
-          </div>
-          <div className="workCard">
+          </Link>
+          <Link to="/" className="workCard">
             <img src="/assets/sample-banner.jpg" alt="" />
             <h2>Arena | Chess Platform Concept</h2>
             <h3>Isam</h3>
-          </div>
-          <div className="workCard">
+          </Link>
+          <Link to="/" className="workCard">
             <img src="/assets/sample-banner.jpg" alt="" />
             <h2>Arena | Chess Platform Concept</h2>
             <h3>Isam</h3>
-          </div>
-          <div className="workCard">
+          </Link>
+          <Link to="/" className="workCard">
             <img src="/assets/sample-banner.jpg" alt="" />
             <h2>Arena | Chess Platform Concept</h2>
             <h3>Isam</h3>
-          </div>
-          <div className="workCard">
+          </Link>
+          <Link to="/" className="workCard">
             <img src="/assets/sample-banner.jpg" alt="" />
             <h2>Arena | Chess Platform Concept</h2>
             <h3>Isam</h3>
-          </div>
-          <div className="workCard">
+          </Link>
+          <Link to="/" className="workCard">
             <img src="/assets/sample-banner.jpg" alt="" />
             <h2>Arena | Chess Platform Concept</h2>
             <h3>Isam</h3>
-          </div>
+          </Link>
         </div>
       </section>
 
@@ -159,46 +160,46 @@ const Work = () => {
           </button>
         </div>
         <div className="workCards">
-          <div className="workCard">
+          <Link to="/" className="workCard">
             <img src="/assets/sample-banner.jpg" alt="" />
             <h2>Arena | Chess Platform Concept</h2>
             <h3>Isam</h3>
-          </div>
-          <div className="workCard">
+          </Link>
+          <Link to="/" className="workCard">
             <img src="/assets/sample-banner.jpg" alt="" />
             <h2>Arena | Chess Platform Concept</h2>
             <h3>Isam</h3>
-          </div>
-          <div className="workCard">
+          </Link>
+          <Link to="/" className="workCard">
             <img src="/assets/sample-banner.jpg" alt="" />
             <h2>Arena | Chess Platform Concept</h2>
             <h3>Isam</h3>
-          </div>
-          <div className="workCard">
+          </Link>
+          <Link to="/" className="workCard">
             <img src="/assets/sample-banner.jpg" alt="" />
             <h2>Arena | Chess Platform Concept</h2>
             <h3>Isam</h3>
-          </div>
-          <div className="workCard">
+          </Link>
+          <Link to="/" className="workCard">
             <img src="/assets/sample-banner.jpg" alt="" />
             <h2>Arena | Chess Platform Concept</h2>
             <h3>Isam</h3>
-          </div>
-          <div className="workCard">
+          </Link>
+          <Link to="/" className="workCard">
             <img src="/assets/sample-banner.jpg" alt="" />
             <h2>Arena | Chess Platform Concept</h2>
             <h3>Isam</h3>
-          </div>
-          <div className="workCard">
+          </Link>
+          <Link to="/" className="workCard">
             <img src="/assets/sample-banner.jpg" alt="" />
             <h2>Arena | Chess Platform Concept</h2>
             <h3>Isam</h3>
-          </div>
-          <div className="workCard">
+          </Link>
+          <Link to="/" className="workCard">
             <img src="/assets/sample-banner.jpg" alt="" />
             <h2>Arena | Chess Platform Concept</h2>
             <h3>Isam</h3>
-          </div>
+          </Link>
         </div>
       </section>
     </>

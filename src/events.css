@@ -110,15 +110,39 @@
   padding-bottom: 3vh;
 }
 .imgShadow {
-  box-shadow: -7px -99px 56px -19px rgba(37, 37, 37, 0.9) inset;
-  -webkit-box-shadow: -7px -99px 56px -19px rgba(37, 37, 37, 0.9) inset;
-  -moz-box-shadow: -7px -99px 56px -19px rgba(37, 37, 37, 0.9) inset;
   position: absolute;
-  bottom: 0 !important;
-  height: calc(100% - 7.4vh);
+  top: 0 !important;
+  left: 0;
   width: 100%;
-  transform: translateY(-12.8vh);
-  border-radius: 10px;
+  height: 50vh;
+  box-shadow: 0px -14vh 4vh -2vh rgba(0, 0, 0, 0.67) inset;
+  -webkit-box-shadow: 0px -14vh 4vh -2vh rgba(0, 0, 0, 0.67) inset;
+  -moz-box-shadow: 0px -14vh 4vh -2vh rgba(0, 0, 0, 0.67) inset;
+  border-radius: 14px;
+}
+.control-arrow {
+  height: 80%;
+}
+.control-next::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  content: "\f054" !important;
+  font-size: 2.4vw;
+}
+.control-prev::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  content: "\f053" !important;
+  font-size: 2.4vw;
+}
+.carousel .control-next.control-arrow:before,
+.carousel .control-prev.control-arrow:before {
+  border: none !important;
+}
+.carousel .control-arrow,
+.carousel.carousel-slider .control-arrow {
+  padding: 0 1vw !important;
+  background: none !important;
 }
 /* Event Cards */
 .events {
