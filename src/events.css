@@ -180,6 +180,7 @@
 }
 .event h1 {
   font-size: 1.4vw;
+  font-weight: 500;
 }
 .event h2 a {
   color: #4678f9;
@@ -190,6 +191,8 @@
 }
 .details h4 {
   margin-bottom: 1vh;
+  font-size: 1.1vw;
+  font-weight: 500;
 }
 .details p {
   color: #747474;
