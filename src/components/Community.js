@@ -4,7 +4,7 @@ import { FaInstagram } from "react-icons/fa";
 import { useState } from "react";
 
 const Community = () => {
-  document.getElementsByTagName('html')[0].style.scrollBehavior = 'initial'
+  document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
   const [page, setPage] = useState("orgs");
 
   document.addEventListener("scroll", () => {
@@ -21,8 +21,8 @@ const Community = () => {
     document.querySelector(".sortComAct").classList.remove("sortComAct");
     eve.target.classList.add("sortComAct");
     setPage(page === "orgs" ? "users" : "orgs");
-    window.scrollTo(0, 0)
-  }
+    window.scrollTo(0, 0);
+  };
 
   return (
     <>
