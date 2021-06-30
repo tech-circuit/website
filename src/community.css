@@ -54,7 +54,7 @@
   display: flex;
   justify-content: space-between;
   position: sticky;
-  top: calc(1vh + 1.2vw + 1vh + 5px + 7vh);
+  top: calc(4vh + 1.2vw + 5px + 7vh);
   background: #fff;
   transition: all 0.3s;
 }

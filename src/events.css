@@ -1,5 +1,5 @@
 .head-1 {
-  padding-top: 14vh;
+  padding-top: 10vh;
 }
 .eventHead h1 {
   width: 45%;
@@ -86,7 +86,7 @@
 }
 .control-dots {
   margin: 0 !important;
-  bottom: 4.5vh !important;
+  bottom: 6vh !important;
 }
 .showcase .dot {
   width: 12px !important;
@@ -252,7 +252,12 @@ nav {
 .fullEventWrapActive {
   opacity: 1;
   pointer-events: all;
-  box-shadow: 0 0 100px #000;
+  padding-bottom: 10vh;
+}
+
+.fullEventOuter {
+  width: 100%;
+  height: 195%;
 }
 
 .fullEvent {
@@ -267,7 +272,6 @@ nav {
   flex-direction: column;
   background: #fff;
   border-radius: 16px;
-  margin-bottom: 10vh;
 }
 .fullEvent > * {
   width: 100%;

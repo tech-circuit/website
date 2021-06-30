@@ -31,7 +31,7 @@
 }
 .owl-item {
   width: 10vw !important;
-  height: 10vw !important;
+  height: 9.6vw !important;
   border: 2px solid #85d49c;
   display: flex;
   justify-content: center;
@@ -43,16 +43,20 @@
   transition: all 0.3s;
 }
 .owl-item h1 {
-  font-size: 1.6vw;
+  font-size: 1.1vw;
   font-weight: 400;
-  color: #85d49c;
+  /* color: #85d49c; */
+  color: #fff;
+  padding: 0 0.6vw;
   transition: all 0.3s;
+  text-align: center;
 }
 .owl-item:hover {
   background: #85d49c;
 }
 .owl-item:hover h1 {
-  color: #fff;
+  /* color: #fff; */
+  color: #29313d;
 }
 /* POPULAR */
 .popular {

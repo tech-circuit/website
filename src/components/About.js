@@ -10,43 +10,43 @@ import {
   FaCheck,
 } from "react-icons/fa";
 import Footer from "./Footer";
-import { Notyf } from 'notyf';
-import 'notyf/notyf.min.css';
+import { Notyf } from "notyf";
+import "notyf/notyf.min.css";
 
 const notyf = new Notyf({
   duration: 2500,
   position: {
-    x: 'left',
-    y: 'bottom'
+    x: "left",
+    y: "bottom",
   },
   types: [
     {
-      type: 'error',
-      background: '#FF6B6B',
+      type: "error",
+      background: "#FF6B6B",
       dismissible: true,
       icon: {
-        className: 'material-icons',
-        tagName: 'i',
-        text: 'cancel',
-        color: '#ffffff'
-      }
+        className: "material-icons",
+        tagName: "i",
+        text: "cancel",
+        color: "#ffffff",
+      },
     },
     {
-      type: 'success',
-      background: '#85D49C',
+      type: "success",
+      background: "#85D49C",
       dismissible: true,
       icon: {
-        className: 'material-icons',
-        tagName: 'i',
-        text: 'check_circle',
-        color: '#ffffff'
-      }
-    }
-  ]
-})
+        className: "material-icons",
+        tagName: "i",
+        text: "check_circle",
+        color: "#ffffff",
+      },
+    },
+  ],
+});
 
 const About = () => {
-  document.getElementsByTagName('html')[0].style.scrollBehavior = 'initial'
+  document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
   const [modalView, setModalView] = useState(false);
   const [sendButton, setSendButton] = useState(true);
   const [contactEmail, setContactEmail] = useState("");
@@ -65,32 +65,39 @@ const About = () => {
   };
 
   const contactFormSubmit = () => {
-    let emailValid = true
-    contactEmail.trim().split('@').forEach((p) => { if (p.trim().length === 0) { emailValid = false }})
+    let emailValid = true;
+    contactEmail
+      .trim()
+      .split("@")
+      .forEach((p) => {
+        if (p.trim().length === 0) {
+          emailValid = false;
+        }
+      });
     if (contactEmail.trim().length === 0 || emailValid === false) {
       notyf.open({
-        type: 'error',
-        message: 'Please enter a valid e-mail ID.'
+        type: "error",
+        message: "Please enter a valid e-mail ID.",
       });
     } else if (contactMessage.trim().length === 0) {
       notyf.open({
-        type: 'error',
-        message: 'Please enter a message.'
+        type: "error",
+        message: "Please enter a message.",
       });
     } else {
       let formData = new FormData();
-      formData.append('email', contactEmail);
-      formData.append('message', contactMessage);
-      fetch(`https://formspree.io/f/mdoyzyob`,{
+      formData.append("email", contactEmail);
+      formData.append("message", contactMessage);
+      fetch(`https://formspree.io/f/mdoyzyob`, {
         method: "POST",
-        body: formData
-      })
+        body: formData,
+      });
       setContactMessage("");
       setContactEmail("");
       setSendButton(false);
       notyf.open({
-        type: 'success',
-        message: 'Message sent!'
+        type: "success",
+        message: "Message sent!",
       });
       setTimeout(() => setSendButton(true), 1000);
       setTimeout(() => modalStateChange(false), 500);
@@ -156,21 +163,21 @@ const About = () => {
         </div>
       )}
       <div className="container abt-hero">
-        <h1>
-          tech<strong>Circuit</strong>
-        </h1>
+        <img src="/assets/fulllogo.png" alt="logo" />
         <h3>The place where everything takes place</h3>
         <p>
-          We’re a team of developers and designers but most importantly creators 
-          who have all experienced our own difficulties when trying to build a 
+          We’re a team of developers and designers but most importantly creators
+          who have all experienced our own difficulties when trying to build a
           better understanding of the tech circuit in general. <br />
-          <br /> While we believe we live in an era full of opportunity, we feel 
-          much of this passes us by. Given our abundant and constant access to useful 
-          resources, we felt that we should do out part in helping fellow tech enthusiasts.
+          <br /> While we believe we live in an era full of opportunity, we feel
+          much of this passes us by. Given our abundant and constant access to
+          useful resources, we felt that we should do out part in helping fellow
+          tech enthusiasts.
           <br />
-          <br /> Since long, the tech community has lacked a centralised platform, using which
-          people can connect, share their creative work and get feedback, and participate in 
-          events. techCircuit aims to solve all of these problems.
+          <br /> Since long, the tech community has lacked a centralised
+          platform, using which people can connect, share their creative work
+          and get feedback, and participate in events. techCircuit aims to solve
+          all of these problems.
         </p>
       </div>
 
@@ -178,15 +185,17 @@ const About = () => {
         <div className="why-top">
           <h1>Why we built techCircuit</h1>
           <p>
-          Being members of some of the most popular tech clubs in India, we have come across a number
-          of problems during the time we’ve spent as a part of the Delhi Tech Circuit. We resoluted 
-          to build a platform, which would eradicate such stumbling blocks for tech enthusiasts around 
-          the world. 
+            Being members of some of the most popular tech clubs in India, we
+            have come across a number of problems during the time we’ve spent as
+            a part of the Delhi Tech Circuit. We resoluted to build a platform,
+            which would eradicate such stumbling blocks for tech enthusiasts
+            around the world.
           </p>
         </div>
         <div className="why-bot">
           <h3>
-          techCircuit aims to bridge the gap between professionals and beginners across multiple tech fields.
+            techCircuit aims to bridge the gap between professionals and
+            beginners across multiple tech fields.
           </h3>
         </div>
       </div>
@@ -398,17 +407,26 @@ const About = () => {
             <h4>Development Head</h4>
           </div>
           <div className="member">
-            <img src="https://code-warriors.org/img/c3f085fc-5e72-4a00-a5ce-298aefded73d-1617915473562.jpg" alt="Vedanta Somnathe" />
+            <img
+              src="https://code-warriors.org/img/c3f085fc-5e72-4a00-a5ce-298aefded73d-1617915473562.jpg"
+              alt="Vedanta Somnathe"
+            />
             <h3>Vedanta Somnathe</h3>
             <h4>Developer</h4>
           </div>
           <div className="member">
-            <img src="https://github.com/ribhavsharma.png" alt="Ribhav Sharma" />
+            <img
+              src="https://github.com/ribhavsharma.png"
+              alt="Ribhav Sharma"
+            />
             <h3>Ribhav Sharma</h3>
             <h4>Research Head</h4>
           </div>
           <div className="member">
-            <img src="https://code-warriors.org/img/bda54ab1-636b-4acb-8ade-2bd154d5cdf0-1617907928677.jpg" alt="Amrtayan Baehaerha" />
+            <img
+              src="https://code-warriors.org/img/bda54ab1-636b-4acb-8ade-2bd154d5cdf0-1617907928677.jpg"
+              alt="Amrtayan Baehaerha"
+            />
             <h3>Amrtayan Baehaerha</h3>
             <h4>Designer</h4>
           </div>

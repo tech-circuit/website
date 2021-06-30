@@ -37,19 +37,18 @@ const Work = () => {
               <FaChevronRight />
             </button>
             <OwlCarousel ref={sortRef} options={options}>
-              <h1>Design</h1>
-              <h1>Coding</h1>
-              <h1>The</h1>
-              <h1>Vedanta</h1>
-              <h1>Is</h1>
-              <h1>Coder</h1>
-              <h1>Hi</h1>
-              <h1>I</h1>
-              <h1>Am</h1>
-              <h1>Ishana</h1>
-              <h1>Dasa</h1>
-              <h1>Of</h1>
-              <h1>India</h1>
+              <h1>Web Development</h1>
+              <h1>UI/UX Design</h1>
+              <h1>Machine Learning</h1>
+              <h1>Web Development</h1>
+              <h1>UI/UX Design</h1>
+              <h1>Machine Learning</h1>
+              <h1>Web Development</h1>
+              <h1>UI/UX Design</h1>
+              <h1>Machine Learning</h1>
+              <h1>Web Development</h1>
+              <h1>UI/UX Design</h1>
+              <h1>Machine Learning</h1>
             </OwlCarousel>
           </div>
         </div>
