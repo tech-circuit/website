@@ -65,7 +65,7 @@ const Work = () => {
           </button>
         </div>
         <div className="addEvent">
-          <a href="/">
+          <a href="/create-post">
             <FaPlus />
             &nbsp;&nbsp;Create Project
           </a>

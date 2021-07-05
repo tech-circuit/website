@@ -6,12 +6,13 @@ import CreateProject from "./components/CreateProject";
 import Community from "./components/Community";
 import Resources from "./components/Resources";
 import Forums from "./components/Forum";
-import Post from "./components/Post"
+import Post from "./components/Post";
 import Events from "./components/Events";
 import About from "./components/About";
 import Work from "./components/Work";
+import CreatePost from "./components/CreatePost";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ScrollToTop from './components/ScrollToTop';
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   return (
@@ -45,6 +46,9 @@ const App = () => {
         </Route>
         <Route exact path="/forum">
           <Forums />
+        </Route>
+        <Route exact path="/create-post">
+          <CreatePost />
         </Route>
         <Route exact path="/forum/post/:postId" component={Post} />
       </Switch>

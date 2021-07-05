@@ -17,6 +17,10 @@ img {
   object-fit: cover;
 }
 
+textarea {
+  resize: vertical;
+}
+
 button {
   border: none;
 }
