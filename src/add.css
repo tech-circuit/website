@@ -136,7 +136,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 2px dashed #000;
+  border: 2px dashed #747474;
   cursor: pointer;
 }
 .file-inp-lab h3 {
