@@ -1,7 +1,5 @@
 .create {
   padding-top: 12vh;
-  height: 100vh;
-  overflow: hidden;
 }
 .create .back {
   display: flex;
@@ -12,16 +10,15 @@
   display: flex;
   margin-top: 4vh;
   padding-bottom: 8vh;
-  height: 75vh;
-  overflow-y: scroll;
 }
 .create-left {
   width: 60%;
 }
 .create-right {
   width: 40%;
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 16vh;
+  right: 5vw;
 }
 .right-hold {
   width: 90%;
@@ -111,6 +108,7 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  margin-top: 4vh;
 }
 .sec {
   width: 48%;
@@ -128,4 +126,33 @@
   font-size: 1vw;
   background: #4678f9;
   color: #fff;
+}
+
+.file-inp-lab {
+  width: 100%;
+  height: 40vh;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #000;
+  cursor: pointer;
+}
+.file-inp-lab h3 {
+  margin: 1.2vh 0;
+  color: #747474;
+  font-weight: 400;
+  font-size: 1.4vw;
+  transition: all 0.3s;
+}
+.file-inp-lab h4 {
+  color: #747474;
+  font-weight: 300;
+  font-size: 1vw;
+  transition: all 0.3s;
+}
+.file-inp-lab:hover > h4,
+.file-inp-lab:hover > h3 {
+  color: #29313d;
 }

@@ -97,12 +97,19 @@ const CreatePost = () => {
           <div className="create-right">
             <div className="right-hold">
               <div className="input">
-                <label htmlFor="cover">Cover Image</label>
+                <label htmlFor="none">Cover Image</label>
+                <label htmlFor="cover" className="file-inp-lab">
+                  <img src="/assets/create-add.svg" alt="" />
+                  <h3>Add Files</h3>
+                  <h4>1920 x 1080 (JPG, PNG)</h4>
+                </label>
                 <input
                   type="file"
                   name="cover"
+                  id="cover"
                   accept="image/gif, image/jpeg, image/png, image/webp"
                   className="create-cover"
+                  hidden
                 />
               </div>
 
