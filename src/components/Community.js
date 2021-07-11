@@ -7,15 +7,15 @@ const Community = () => {
   document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
   const [page, setPage] = useState("orgs");
 
-  document.addEventListener("scroll", () => {
-    if (document.querySelector(".comSearch")) {
-      if (document.querySelector(".comSearch").offsetTop !== 386) {
-        document.querySelector(".comSearch").classList.add("sha");
-      } else {
-        document.querySelector(".comSearch").classList.remove("sha");
-      }
-    }
-  });
+  // document.addEventListener("scroll", () => {
+  //   if (document.querySelector(".comSearch")) {
+  //     if (document.querySelector(".comSearch").offsetTop !== 386) {
+  //       document.querySelector(".comSearch").classList.add("sha");
+  //     } else {
+  //       document.querySelector(".comSearch").classList.remove("sha");
+  //     }
+  //   }
+  // });
 
   const switchPage = (eve) => {
     document.querySelector(".sortComAct").classList.remove("sortComAct");

@@ -53,8 +53,8 @@
   padding-bottom: 2vh;
   display: flex;
   justify-content: space-between;
-  position: sticky;
-  top: calc(4vh + 1.2vw + 5px + 7vh);
+  /* position: sticky;
+  top: calc(4vh + 1.2vw + 5px + 7vh); */
   background: #fff;
   transition: all 0.3s;
 }
