@@ -118,7 +118,7 @@
   color: #fff;
   cursor: pointer;
   border-radius: 5px;
-  margin: 1vh 0;
+  margin: 2vh 0;
 }
 .prim {
   width: 100%;
@@ -126,6 +126,7 @@
   font-size: 1vw;
   background: #4678f9;
   color: #fff;
+  cursor: pointer;
 }
 
 .file-inp-lab {
@@ -155,4 +156,49 @@
 .file-inp-lab:hover > h4,
 .file-inp-lab:hover > h3 {
   color: #29313d;
+}
+
+.create-radio-grp {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.create-radio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #747474;
+}
+.create-radio input {
+  width: auto;
+  height: auto;
+  margin-right: 0.6vw;
+  cursor: pointer;
+}
+
+.create-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.org-right {
+  width: 80%;
+}
+.create-org-file-inp {
+  height: 35vh;
+}
+
+.input input[type="date"] {
+  width: 40%;
+}
+
+.smol-input-hold {
+  width: 79%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.smol-input-hold .input input {
+  width: 100%;
 }

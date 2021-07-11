@@ -11,6 +11,7 @@ import Events from "./components/Events";
 import About from "./components/About";
 import Work from "./components/Work";
 import CreatePost from "./components/CreatePost";
+import Organize from "./components/Organize";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -49,6 +50,9 @@ const App = () => {
         </Route>
         <Route exact path="/create-post">
           <CreatePost />
+        </Route>
+        <Route exact path="/organize">
+          <Organize />
         </Route>
         <Route exact path="/forum/post/:postId" component={Post} />
       </Switch>
