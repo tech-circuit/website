@@ -34,6 +34,7 @@
   left: 0;
   width: 0;
   height: 5px;
+  border-radius: 5px 5px 0 0;
   background: #85d49c;
   transition: all 0.3s;
 }

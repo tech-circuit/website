@@ -12,6 +12,7 @@ import About from "./components/About";
 import Work from "./components/Work";
 import CreatePost from "./components/CreatePost";
 import Organize from "./components/Organize";
+import Profile from "./components/Profile";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -53,6 +54,9 @@ const App = () => {
         </Route>
         <Route exact path="/organize">
           <Organize />
+        </Route>
+        <Route exact path="/profile">
+          <Profile />
         </Route>
         <Route exact path="/forum/post/:postId" component={Post} />
       </Switch>
