@@ -813,9 +813,9 @@ const CreatePost = () => {
     </>
   );
 
-  function toggleRadio() {
-    console.log("the");
-  }
+  // function toggleRadio() {
+  //   console.log("the");
+  // }
 };
 
 export default CreatePost;

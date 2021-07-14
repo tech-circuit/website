@@ -1,7 +1,16 @@
+import "../profile-info.css";
+
 const ProfileInfo = () => {
   return (
     <>
-      <h1>Profile Info</h1>
+      <div className="profileInfo">
+        <div className="pfpSide"></div>
+        <div className="profInfoSide">
+          <h1 className="name">
+            Ishaan Das<span>IshaanDas@gmail.com</span>
+          </h1>
+        </div>
+      </div>
     </>
   );
 };
