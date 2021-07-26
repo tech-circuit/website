@@ -18,7 +18,7 @@ const Events = () => {
             &nbsp; and organisations!
           </h1>
         </header>
-        <header className="head-2 eventHead container eventHead2">
+        <header className="eventHead2 head-2 eventHead container">
           <div className="eventSearch">
             <div className="input">
               <img src="/assets/magnifying-glass.svg" alt="alt" />

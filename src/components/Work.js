@@ -5,7 +5,7 @@ import OwlCarousel from "react-owl-carousel2";
 import { Link } from "react-router-dom";
 
 const options = {
-  items: 7,
+  items: 10,
   rewind: true,
   autoplay: true,
   loop: true,
@@ -23,11 +23,8 @@ const Work = () => {
       <header className="forumHeader head-1">
         <div className="container">
           <h1 className="forumTitle workTitle">
-            Projects across multiple fields in tech done by the techCircuit
-            Community!&nbsp;
-            <a href="/">
-              <strong>Learn More.</strong>
-            </a>
+            Projects across multiple fields in tech done by the&nbsp;
+            <strong>techCircuit</strong>&nbsp;Community!
           </h1>
           <div className="carHold">
             <button id="carPrev" onClick={() => sortRef.current.prev()}>
@@ -53,7 +50,7 @@ const Work = () => {
           </div>
         </div>
       </header>
-      <header className="head-2 eventHead container eventHead2">
+      <header className="head-2 eventHead container eventHead2 workHead">
         <div className="eventSearch">
           <div className="input">
             <img src="/assets/magnifying-glass.svg" alt="alt" />

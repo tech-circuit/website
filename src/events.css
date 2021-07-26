@@ -1,4 +1,4 @@
-.head-1 {
+.eventHead.head-1 {
   padding-top: 10vh;
 }
 .eventHead h1 {
@@ -8,9 +8,7 @@
   margin-bottom: 3.2vh;
 }
 .eventHead2 {
-  padding: 2vh 0;
-  padding-left: 8vw;
-  padding-right: 8vw;
+  padding: 2vh 9.1vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,7 +22,7 @@
   align-items: center;
 }
 .eventSearch button {
-  padding: 1vh 2vw;
+  padding: 1.4vh 2vw;
   color: #747474;
   background: #fff;
   border-radius: 5px;
@@ -36,13 +34,13 @@
   background: #f1f1f1;
 }
 .eventHead input {
-  padding: 1vh 1vw;
+  padding: 1.4vh 1vw;
   font-size: 1vw;
 }
 .eventHead a {
   font-size: 1vw;
   color: #fff;
-  padding: 1vh 2vw;
+  padding: 1.4vh 2vw;
   background: linear-gradient(
       91.38deg,
       rgba(255, 255, 255, 0.18) 16.97%,
