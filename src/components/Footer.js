@@ -7,7 +7,6 @@ import {
   FaBehanceSquare,
   FaFacebookSquare,
   FaTwitterSquare,
-  FaEnvelope,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -18,7 +17,7 @@ const Footer = () => {
         <h2>Join our mailing list for the latest updates</h2>
         <form className="foot-mail">
           <div className="input">
-            <FaEnvelope />
+            <img src="/assets/mail.svg" alt="alt" />
             <input type="text" placeholder="Email Address" />
           </div>
           <button type="submit" className="btn">

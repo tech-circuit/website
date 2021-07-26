@@ -39,6 +39,14 @@
 .foot-mail {
   display: flex;
 }
+.foot-mail .input {
+  margin-right: 1.5vw;
+}
+
+.foot-mail .input img {
+  width: 1.6vw;
+  margin: 0 0.4vw;
+}
 
 .foot .input input {
   padding: 1.4vh 0;

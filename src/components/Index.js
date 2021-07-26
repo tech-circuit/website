@@ -1,52 +1,47 @@
 import { useState, useEffect } from "react";
 import "../index.css";
 import { Link } from "react-router-dom";
-import {
-  FaChevronDown,
-  FaCommentAlt,
-  FaEnvelope,
-  FaCheck,
-} from "react-icons/fa";
+import { FaChevronDown, FaCommentAlt, FaCheck } from "react-icons/fa";
 import Footer from "../components/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Notyf } from 'notyf';
-import 'notyf/notyf.min.css';
+import { Notyf } from "notyf";
+import "notyf/notyf.min.css";
 
 const notyf = new Notyf({
   duration: 2500,
   position: {
-    x: 'left',
-    y: 'bottom'
+    x: "left",
+    y: "bottom",
   },
   types: [
     {
-      type: 'error',
-      background: '#FF6B6B',
+      type: "error",
+      background: "#FF6B6B",
       dismissible: true,
       icon: {
-        className: 'material-icons',
-        tagName: 'i',
-        text: 'cancel',
-        color: '#ffffff'
-      }
+        className: "material-icons",
+        tagName: "i",
+        text: "cancel",
+        color: "#ffffff",
+      },
     },
     {
-      type: 'success',
-      background: '#85D49C',
+      type: "success",
+      background: "#85D49C",
       dismissible: true,
       icon: {
-        className: 'material-icons',
-        tagName: 'i',
-        text: 'check_circle',
-        color: '#ffffff'
-      }
-    }
-  ]
-})
+        className: "material-icons",
+        tagName: "i",
+        text: "check_circle",
+        color: "#ffffff",
+      },
+    },
+  ],
+});
 
 const Index = () => {
-  const [modalView, setModalView] = useState(false);
+  const [modalView, setModalView] = useState(true);
   const [sendButton, setSendButton] = useState(true);
   const [contactEmail, setContactEmail] = useState("");
   const [contactMessage, setContactMessage] = useState("");
@@ -64,32 +59,39 @@ const Index = () => {
   };
 
   const contactFormSubmit = () => {
-    let emailValid = true
-    contactEmail.trim().split('@').forEach((p) => { if (p.trim().length === 0) { emailValid = false }})
+    let emailValid = true;
+    contactEmail
+      .trim()
+      .split("@")
+      .forEach((p) => {
+        if (p.trim().length === 0) {
+          emailValid = false;
+        }
+      });
     if (contactEmail.trim().length === 0 || emailValid === false) {
       notyf.open({
-        type: 'error',
-        message: 'Please enter a valid e-mail ID.'
+        type: "error",
+        message: "Please enter a valid e-mail ID.",
       });
     } else if (contactMessage.trim().length === 0) {
       notyf.open({
-        type: 'error',
-        message: 'Please enter a message.'
+        type: "error",
+        message: "Please enter a message.",
       });
     } else {
       let formData = new FormData();
-      formData.append('email', contactEmail);
-      formData.append('message', contactMessage);
-      fetch(`https://formspree.io/f/mdoyzyob`,{
+      formData.append("email", contactEmail);
+      formData.append("message", contactMessage);
+      fetch(`https://formspree.io/f/mdoyzyob`, {
         method: "POST",
-        body: formData
-      })
+        body: formData,
+      });
       setContactMessage("");
       setContactEmail("");
       setSendButton(false);
       notyf.open({
-        type: 'success',
-        message: 'Message sent!'
+        type: "success",
+        message: "Message sent!",
       });
       setTimeout(() => setSendButton(true), 1000);
       setTimeout(() => modalStateChange(false), 500);
@@ -103,53 +105,84 @@ const Index = () => {
       delay: 100,
     });
     AOS.refresh();
-    document.getElementsByTagName('html')[0].style.scrollBehavior = 'smooth' 
+    document.getElementsByTagName("html")[0].style.scrollBehavior = "smooth";
   }, []);
 
   return (
     <main>
-      {modalView === true ? (
-        <>
-          <div className="contact-card">
-            <h1>Leave us a message!</h1>
-            <div className="input">
-              <FaEnvelope />
-              <input
-                type="text"
-                placeholder="Email Address"
-                value={contactEmail}
-                onChange={(event) => editContactEmail(event.target.value)}
-              />
-            </div>
-            <textarea
-              className="message"
-              placeholder="Type your message here!"
-              value={contactMessage}
-              onChange={(event) => editContactMessage(event.target.value)}
-            ></textarea>
-            {sendButton === true ? (
-              <Link
-                to="/"
-                className="contact-btn"
-                onClick={() => contactFormSubmit()}
-              >
-                Send
-              </Link>
-            ) : (
-              <Link to="/" className="contact-btn green-btn">
-                <FaCheck />
-              </Link>
-            )}
-          </div>
-          <div className="msg" onClick={() => modalStateChange(false)}>
-            <FaChevronDown />
-          </div>
-        </>
-      ) : (
-        <div className="msg" onClick={() => modalStateChange(true)}>
-          <FaCommentAlt />
+      <div
+        className="msg"
+        onClick={() =>
+          modalView === true ? modalStateChange(false) : modalStateChange(true)
+        }
+      >
+        <FaChevronDown
+          className="backIcon"
+          style={
+            modalView === true
+              ? {
+                  transform: "scale(0.5) rotate(45deg) translateX(50%)",
+                  opacity: "0",
+                }
+              : {
+                  transform: "scale(1) rotate(0deg) translateX(50%)",
+                  opacity: "1",
+                }
+          }
+        />
+        <FaCommentAlt
+          style={
+            modalView === true
+              ? {
+                  transform: "scale(1) rotate(0deg) translateX(-50%)",
+                  opacity: "1",
+                }
+              : {
+                  transform: "scale(0.5) rotate(-45deg) translateX(-50%)",
+                  opacity: "0",
+                }
+          }
+          className="commentIcon"
+        />
+      </div>
+      <div
+        style={
+          modalView === true
+            ? { opacity: "0", pointerEvents: "none" }
+            : { opacity: "1", pointerEvents: "all" }
+        }
+        className="contact-card"
+      >
+        <h1>Leave us a message!</h1>
+        <div className="input">
+          {/* <img src="/assets/mail.svg" alt="alt" /> */}
+          <input
+            type="text"
+            placeholder="Email Address"
+            value={contactEmail}
+            onChange={(event) => editContactEmail(event.target.value)}
+          />
         </div>
-      )}
+        <textarea
+          className="message"
+          placeholder="Type your message here!"
+          value={contactMessage}
+          onChange={(event) => editContactMessage(event.target.value)}
+        ></textarea>
+        {sendButton === true ? (
+          <Link
+            to="/"
+            className="contact-btn"
+            onClick={() => contactFormSubmit()}
+          >
+            Send
+          </Link>
+        ) : (
+          <Link to="/" className="contact-btn green-btn">
+            <FaCheck />
+          </Link>
+        )}
+      </div>
       <section className="hero">
         <div className="hero-left">
           <div className="container">
@@ -159,9 +192,10 @@ const Index = () => {
               everything takes place.
             </h1>
             <p data-aos="fade-right" data-aos-delay="200">
-            Be it meeting talented people from the tech industry, Looking at amazing projects 
-            created by professionals, connecting with new people, participating in events, or 
-            even organizing your own -- techCircuit is the place to be.
+              Be it meeting talented people from the tech industry, Looking at
+              amazing projects created by professionals, connecting with new
+              people, participating in events, or even organizing your own --
+              techCircuit is the place to be.
             </p>
             <Link
               data-aos="fade-up"
@@ -192,16 +226,17 @@ const Index = () => {
               What is <strong>techCircuit?</strong>
             </h1>
             <p data-aos="fade-right" data-aos-delay="300">
-            In simple words, techCircuit is a hub for tech enthusiasts around the world. 
-            The platform allows users to surf through a plethora of projects, ranging 
-            from code to design, built by experts in their respective fields. techCircuit 
-            allows users to also browse through events and meetups being organized, and 
-            sign up for the same really easily.
+              In simple words, techCircuit is a hub for tech enthusiasts around
+              the world. The platform allows users to surf through a plethora of
+              projects, ranging from code to design, built by experts in their
+              respective fields. techCircuit allows users to also browse through
+              events and meetups being organized, and sign up for the same
+              really easily.
               <br />
               <br />
-              Organizations or individuals can also post events of their own, and get traction 
-              instantly. techCircuit’s user-friendly and minimalistic UI/UX makes navigating 
-              through the platform a breeze.
+              Organizations or individuals can also post events of their own,
+              and get traction instantly. techCircuit’s user-friendly and
+              minimalistic UI/UX makes navigating through the platform a breeze.
             </p>
             <img src="/assets/abt.svg" alt="About Banner" />
           </div>
@@ -239,11 +274,14 @@ const Index = () => {
               tech clubs from all over India.
             </h2>
             <p data-aos="fade-right" data-aos-delay="400">
-            The biggest names in the Indian Tech Circuit, including Exun, CW, 
-            TS and more have tested and approved of the features that techCircuit offers.
+              The biggest names in the Indian Tech Circuit, including
+              <br />
+              Exun, CW, TS and more have tested and approved of the features
+              that techCircuit offers.
             </p>
             <Link data-aos="fade-right" to="/" className="club-btn">
-              View Clubs
+              View Clubs&nbsp;&nbsp;
+              <img src="/assets/Right_Arrow.svg" alt="" />
             </Link>
           </div>
           <div className="club-right">
@@ -298,25 +336,37 @@ const Index = () => {
             <img className="feat-img-minus" src="/assets/write.png" alt="alt" />
           </div>
           <div className="feat-content">
-            <h2 data-aos="fade-left">Showcase your work and skills</h2>
+            <h2 data-aos="fade-left">
+              Showcase your work
+              <br />
+              and skills!
+            </h2>
             <p data-aos="fade-left" data-aos-delay="300">
-            techCircuit serves as a platform for individuals with varying skillsets, 
-            ranging from code to design,  to show off their projects to the tech community. 
-            Users can upvote, share and comment on posts, making the community a positive and 
-            friendly space. techCircuit’s easy to use filters let users navigate through projects 
-            effortlessly.
+              techCircuit serves as a platform for individuals with varying
+              skillsets, ranging from code to design, to show off their projects
+              to the tech community. Users can upvote, share and comment on
+              posts, making the community a positive and friendly space.
+              techCircuit’s easy to use filters let users navigate through
+              projects effortlessly.
             </p>
           </div>
         </div>
         <div className="feat container">
           <div className="feat-content">
-            <h2 data-aos="fade-right">Community of creators</h2>
+            <h2 data-aos="fade-right">
+              Meet. Share. Discuss.
+              <br />
+              Welcome to Community
+              <br />
+              of creators!
+            </h2>
             <p data-aos="fade-right" data-aos-delay="300">
-            techCircuit has a friendly and really helpful community which aims to ultimately help 
-            everyone benefit from the platform. Creators can get feedback on their projects, tech 
-            enthusiasts can sign up for events, and organizations can promote their events. The 
-            techCircuit forum also serves as a place for healthy discussion amongst people interested 
-            in tech.
+              techCircuit has a friendly and really helpful community which aims
+              to ultimately help everyone benefit from the platform. Creators
+              can get feedback on their projects, tech enthusiasts can sign up
+              for events, and organizations can promote their events. The
+              techCircuit forum also serves as a place for healthy discussion
+              amongst people interested in tech.
             </p>
           </div>
           <div className="feat-banner">
@@ -328,19 +378,24 @@ const Index = () => {
             <img className="feat-img-minus" src="/assets/write.png" alt="alt" />
           </div>
           <div className="feat-content">
-            <h2 data-aos="fade-left">Crowdsourced Resources</h2>
+            <h2 data-aos="fade-left">
+              Curated crowdsourced resources for all fields!
+            </h2>
             <p data-aos="fade-left" data-aos-delay="300">
-            techCircuit also features learning resources for various tech-related fields, 
-            including Design, A/V, Software Development, Cryptic Hunts and more; to which 
-            members of the community can contribute. We have handpicked the best archives 
-            from tech symposiums that have taken place in the past years so that users can 
-            access all of them easily.
+              techCircuit also features learning resources for various
+              tech-related fields, including Design, A/V, Software Development,
+              Cryptic Hunts and more; to which members of the community can
+              contribute. We have handpicked the best archives from tech
+              symposiums that have taken place in the past years so that users
+              can access all of them easily.
             </p>
           </div>
         </div>
         <div className="feat last-feat container">
           <div className="feat-content">
-            <h2 data-aos="fade-right">Start a discussion on forum</h2>
+            <h2 data-aos="fade-right">
+              Place to discuss your intrests, doubts, projects with everyone!
+            </h2>
             <p data-aos="fade-right" data-aos-delay="300">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis at
               amet molestie et, vulputate arcu sed mattis. Elit neque, amet,

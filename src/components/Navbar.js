@@ -8,11 +8,11 @@ const Navbar = () => {
   const [activePage, setActivePage] = useState(location.pathname);
 
   useEffect(() => {
-    setActivePage(location.pathname)
-  },[location])
+    setActivePage(location.pathname);
+  }, [location]);
 
   return (
-    <nav className="nav">
+    <nav className="container nav">
       <div className="nav-left">
         <Link
           className="nav-logo-holder"
@@ -86,7 +86,9 @@ const Navbar = () => {
         </div>
       </div>
       <div className="nav-right">
-        <Link to="/login" className="login-btn">Login</Link>
+        <Link to="/login" className="login-btn">
+          Login
+        </Link>
       </div>
     </nav>
   );

@@ -29,6 +29,9 @@ a {
   text-decoration: none;
   color: #000;
 }
+p {
+  font-weight: 300;
+}
 
 .App {
   font-family: Inter;
@@ -36,7 +39,7 @@ a {
 }
 
 .container {
-  padding: 0 8vw;
+  padding: 0 9.1vw;
   width: 100%;
   overflow-x: hidden;
 }
@@ -61,7 +64,7 @@ header {
 }
 
 .head-1 {
-  padding-top: 8vh;
+  padding-top: calc(8.5vh + 32px);
 }
 
 .head-2 {
