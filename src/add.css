@@ -1,4 +1,5 @@
 .create {
+  padding: 0 calc(9.1vw + 135px);
   padding-top: 12vh;
 }
 .create .back {
@@ -14,11 +15,14 @@
 .create-left {
   width: 60%;
 }
+.create-right label {
+  margin-bottom: 1.4vh !important;
+}
 .create-right {
-  width: 40%;
+  width: 30%;
   position: fixed;
-  top: 16vh;
-  right: 5vw;
+  top: 15vh;
+  right: calc(9.1vw + 135px);
 }
 .right-hold {
   width: 90%;
@@ -49,12 +53,12 @@
 .create label {
   font-size: 1.2vw;
   font-weight: 400;
-  margin-bottom: 0.8vh;
+  margin-bottom: 0.7vh;
 }
 .create input,
 .create textarea,
 .create select {
-  border: 2px solid #c4c4c4;
+  border: 2px solid #eee;
   padding: 1vh 1vw;
   font-size: 1vw;
   border-radius: 5px;
@@ -108,7 +112,7 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 4vh;
+  margin-top: 1vh;
 }
 .sec {
   width: 48%;
@@ -131,13 +135,13 @@
 
 .file-inp-lab {
   width: 100%;
-  height: 40vh;
+  height: 48vh;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 2px dashed #747474;
+  border: 2px dashed #c4c4c4;
   cursor: pointer;
 }
 .file-inp-lab h3 {
@@ -201,4 +205,13 @@
 }
 .smol-input-hold .input input {
   width: 100%;
+}
+.border {
+  background-color: transparent;
+  border: 2px solid #29313d;
+  color: #29313d;
+  transition: all 0.3s;
+}
+.border:hover {
+  background: rgba(0, 0, 0, 0.08);
 }

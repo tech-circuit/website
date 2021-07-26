@@ -115,7 +115,7 @@ const CreatePost = () => {
 
               <div className="create-btns">
                 <button className="sec">Save Draft</button>
-                <button className="sec border">Save Draft</button>
+                <button className="sec border">Preview Draft</button>
                 <button className="prim">Create Project</button>
               </div>
             </div>

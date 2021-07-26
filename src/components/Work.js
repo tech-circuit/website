@@ -1,11 +1,11 @@
 import "../work.css";
-import { FaPlus, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useState, useRef } from "react";
 import OwlCarousel from "react-owl-carousel2";
 import { Link } from "react-router-dom";
 
 const options = {
-  items: 10,
+  items: 9,
   rewind: true,
   autoplay: true,
   loop: true,
@@ -15,6 +15,7 @@ const options = {
 
 const Work = () => {
   const [workSort, setWorkSort] = useState("Coding");
+  const [sortHover, setSortHover] = useState(false);
 
   const sortRef = useRef("sort");
 
@@ -36,16 +37,16 @@ const Work = () => {
             <OwlCarousel ref={sortRef} options={options}>
               <h1>Web Development</h1>
               <h1>UI/UX Design</h1>
-              <h1>Machine Learning</h1>
-              <h1>Web Development</h1>
+              <h1>Web Dev</h1>
+              <h1>Web Dev</h1>
               <h1>UI/UX Design</h1>
               <h1>Machine Learning</h1>
-              <h1>Web Development</h1>
+              <h1>Web Dev</h1>
               <h1>UI/UX Design</h1>
-              <h1>Machine Learning</h1>
-              <h1>Web Development</h1>
+              <h1>Web Dev</h1>
+              <h1>Web Dev</h1>
               <h1>UI/UX Design</h1>
-              <h1>Machine Learning</h1>
+              <h1>Web Dev</h1>
             </OwlCarousel>
           </div>
         </div>
@@ -56,14 +57,27 @@ const Work = () => {
             <img src="/assets/magnifying-glass.svg" alt="alt" />
             <input type="text" placeholder="Search" />
           </div>
-          <button className="eventFilter">
-            <img src="/assets/filter.svg" alt="alt" />
+          <button
+            onMouseEnter={() => setSortHover(true)}
+            onMouseLeave={() => setSortHover(false)}
+            className="eventFilter"
+          >
+            <img
+              style={sortHover ? { display: "inline" } : { display: "none" }}
+              src="/assets/filter2.svg"
+              alt="alt"
+            />
+            <img
+              style={sortHover ? { display: "none" } : { display: "inline" }}
+              src="/assets/filter.svg"
+              alt="alt"
+            />
             &nbsp;&nbsp;&nbsp;&nbsp;Filter Categories
           </button>
         </div>
         <div className="addEvent">
           <a href="/create-post">
-            <FaPlus />
+            <img src="/assets/plus.svg" alt="alt" />
             &nbsp;&nbsp;Create Project
           </a>
         </div>

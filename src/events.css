@@ -23,19 +23,25 @@
 }
 .eventSearch button {
   padding: 1.4vh 2vw;
-  color: #747474;
-  background: #fff;
+  color: #fff;
+  background: transparent;
+  border: 2px solid #fff;
   border-radius: 5px;
   font-size: 1vw;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.2s;
 }
 .eventSearch button:hover {
-  background: #f1f1f1;
+  background: #fff;
+  color: #29313d;
 }
 .eventHead input {
   padding: 1.4vh 1vw;
   font-size: 1vw;
+  padding-left: 0.6vw;
+}
+.eventSearch .input img {
+  width: 4.4%;
 }
 .eventHead a {
   font-size: 1vw;
