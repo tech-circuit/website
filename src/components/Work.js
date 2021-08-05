@@ -14,7 +14,7 @@ const options = {
 };
 
 const Work = () => {
-  const [workSort, setWorkSort] = useState("Coding");
+  // const [workSort, setWorkSort] = useState("Coding");
   const [sortHover, setSortHover] = useState(false);
 
   const sortRef = useRef("sort");
@@ -83,9 +83,31 @@ const Work = () => {
         </div>
       </header>
 
-      <section className="popular container">
-        <h1>Popular & Trending</h1>
+      <section className="projects container firstProjSec">
+        <h1>
+          Popular & Trending&nbsp;<a href="/">View All</a>
+        </h1>
         <div className="workCards">
+          <Link to="/" className="workCard">
+            <img src="/assets/sample-banner.jpg" alt="" />
+            <h2>Arena | Chess Platform Concept</h2>
+            <h3>Isam</h3>
+          </Link>
+          <Link to="/" className="workCard">
+            <img src="/assets/sample-banner.jpg" alt="" />
+            <h2>Arena | Chess Platform Concept</h2>
+            <h3>Isam</h3>
+          </Link>
+          <Link to="/" className="workCard">
+            <img src="/assets/sample-banner.jpg" alt="" />
+            <h2>Arena | Chess Platform Concept</h2>
+            <h3>Isam</h3>
+          </Link>
+          <Link to="/" className="workCard">
+            <img src="/assets/sample-banner.jpg" alt="" />
+            <h2>Arena | Chess Platform Concept</h2>
+            <h3>Isam</h3>
+          </Link>
           <Link to="/" className="workCard">
             <img src="/assets/sample-banner.jpg" alt="" />
             <h2>Arena | Chess Platform Concept</h2>
@@ -130,8 +152,10 @@ const Work = () => {
       </section>
 
       <section className="projects container">
-        <h1>C0D1NG5</h1>
-        <div className="workSort">
+        <h1>
+          C0D1NG5&nbsp;<a href="/">View All</a>
+        </h1>
+        {/* <div className="workSort">
           <button
             className={workSort === "Coding" ? "workSortActive" : ""}
             onClick={(e) => sortWork(e)}
@@ -168,8 +192,28 @@ const Work = () => {
           >
             Dasness
           </button>
-        </div>
+        </div> */}
         <div className="workCards">
+          <Link to="/" className="workCard">
+            <img src="/assets/sample-banner.jpg" alt="" />
+            <h2>Arena | Chess Platform Concept</h2>
+            <h3>Isam</h3>
+          </Link>
+          <Link to="/" className="workCard">
+            <img src="/assets/sample-banner.jpg" alt="" />
+            <h2>Arena | Chess Platform Concept</h2>
+            <h3>Isam</h3>
+          </Link>
+          <Link to="/" className="workCard">
+            <img src="/assets/sample-banner.jpg" alt="" />
+            <h2>Arena | Chess Platform Concept</h2>
+            <h3>Isam</h3>
+          </Link>
+          <Link to="/" className="workCard">
+            <img src="/assets/sample-banner.jpg" alt="" />
+            <h2>Arena | Chess Platform Concept</h2>
+            <h3>Isam</h3>
+          </Link>
           <Link to="/" className="workCard">
             <img src="/assets/sample-banner.jpg" alt="" />
             <h2>Arena | Chess Platform Concept</h2>
@@ -215,9 +259,9 @@ const Work = () => {
     </>
   );
 
-  function sortWork(eve) {
-    setWorkSort(eve.target.textContent);
-  }
+  // function sortWork(eve) {
+  //   setWorkSort(eve.target.textContent);
+  // }
 };
 
 export default Work;

@@ -58,7 +58,7 @@
 
 .contact-card .input input {
   padding: 1.4vh 0;
-  /* padding-left: 1vw; */
+  padding-left: 1vw;
   font-size: 1vw;
 }
 
@@ -203,7 +203,7 @@
 .about {
   display: flex;
   z-index: 9;
-  margin-top: 8vh;
+  padding-top: 8vh;
   margin-bottom: 8vh;
 }
 
