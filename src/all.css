@@ -1,5 +1,4 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.18.0/inter.css");
-@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +6,9 @@
   outline: 0;
   font-family: Poppins, sans-serif;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
   width: 100vw;
   overflow-x: hidden;
@@ -673,4 +674,255 @@ i {
 .root {
   width: 100vw !important;
   overflow: hidden !important;
+}
+
+/* NAV ------------------------------------------------------------------------------------------------------------------------------------------ */
+nav {
+  display: flex;
+  height: 8.5vh;
+  padding: 1vh 0;
+  position: fixed;
+  top: 0;
+  background: #fff;
+  z-index: 9999;
+  box-shadow: 0px 1px 25px rgba(0, 0, 0, 0.08);
+}
+#short-nav-logo {
+  display: none;
+}
+
+.nav-left,
+.nav-right {
+  height: 100%;
+  display: flex;
+}
+
+.nav-left {
+  width: 80%;
+}
+
+.nav-right {
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-logo-holder {
+  width: 12%;
+  height: 100%;
+  margin-right: 3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav .logo {
+  width: 100%;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #000;
+  transition: all 0.3s;
+  margin-right: 2vw;
+  font-size: 1vw;
+  position: relative;
+  font-weight: 400;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2.5px;
+  border-radius: 50px;
+  background: #4678f9;
+  transition: all 0.2s;
+}
+
+.nav-link:hover {
+  color: #4678f9;
+}
+
+.nav-link:hover:after {
+  width: 100%;
+}
+
+.nav-link-active {
+  color: #4678f9;
+}
+
+.nav-link-active:after {
+  width: 100%;
+}
+
+.disc-btn {
+  text-decoration: none;
+  border: 1px #4678f9 solid;
+  color: #4678f9;
+  border-radius: 3px;
+  font-size: 0.98vw;
+  padding: 0.6vh 1.6vw;
+  transition: all 0.2s;
+}
+.disc-btn:hover {
+  background: #4678f9;
+  color: #fff;
+}
+.login-btn {
+  text-decoration: none;
+  background: #4678f9;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 0.98vw;
+  padding: 0.6vh 1.6vw;
+  transition: all 0.3s ease-in-out;
+}
+.login-btn:hover {
+  background: #4371e6;
+}
+
+.ham {
+  padding: 2vh 2vw;
+  cursor: pointer;
+  display: none;
+  z-index: 100;
+}
+.ham .line {
+  width: 4.6vw;
+  height: 3px;
+  background: #29313d;
+  border-radius: 5px;
+  position: relative;
+  transition: all 0.2s;
+}
+.line::before,
+.line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  background: #29313d;
+  border-radius: inherit;
+  transition: inherit;
+}
+.line::before {
+  top: -0.9vh;
+}
+.line::after {
+  top: 0.9vh;
+}
+
+.ham-active .line {
+  background: transparent;
+}
+.ham-active .line::after {
+  top: 0;
+  transform: rotate(45deg);
+}
+.ham-active .line::before {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+/* MEDIA */
+@media (max-width: 1100px) {
+  .container {
+    padding: 0 6vw;
+  }
+  .nav-link,
+  .disc-btn,
+  .login-btn {
+    font-size: 1.2vw;
+  }
+  .nav-link {
+    margin-right: 2.4vw;
+  }
+}
+@media (max-width: 800px) {
+  .container {
+    padding: 0 5vw;
+  }
+  .nav-links {
+    position: fixed;
+    width: 45vw;
+    height: 100vh;
+    background: #fff;
+    box-shadow: 0 0 100px #29313d56;
+    top: 0;
+    right: -100%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .nav-links-active {
+    right: 0;
+  }
+  .nav-link,
+  .disc-btn,
+  .login-btn {
+    margin: 2vh 0;
+    font-size: 2vh;
+  }
+  .disc-btn,
+  .login-btn {
+    padding: 1vh 5vw;
+  }
+  .login-btn {
+    position: fixed;
+    bottom: 4%;
+    right: -100%;
+    transform: translateX(50%);
+    z-index: 11;
+  }
+  .login-btn-active {
+    right: calc(45vw / 2);
+  }
+  nav {
+    height: 7vh;
+  }
+  .nav-logo-holder {
+    display: none;
+  }
+  #short-nav-logo {
+    display: flex;
+  }
+  #short-nav-logo img {
+    width: 60%;
+  }
+  .ham {
+    display: inline-block;
+  }
+}
+@media (max-width: 500px) {
+  #short-nav-logo img {
+    width: 100%;
+  }
+  .ham .line {
+    width: 6.6vw;
+  }
+  .nav-links {
+    width: 80vw;
+  }
+  .login-btn-active {
+    right: calc(80vw / 2);
+  }
+  .disc-btn,
+  .login-btn {
+    padding: 0.8vh 8vw;
+  }
 }

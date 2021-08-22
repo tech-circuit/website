@@ -31,10 +31,10 @@
   cursor: pointer;
   transition: all 0.2s;
 }
-.eventSearch button:hover {
+/* .eventSearch button:hover {
   background: #fff;
   color: #29313d;
-}
+} */
 .eventHead input {
   padding: 1.4vh 1vw;
   font-size: 1vw;
@@ -72,6 +72,7 @@
   padding-top: 7vh;
   padding-bottom: 4vh;
   background: #fff;
+  width: 80%;
 }
 .eventCarousel img {
   height: 50vh;
@@ -149,6 +150,29 @@
   background: none !important;
 }
 /* Event Cards */
+.whole-event-hold {
+  margin-bottom: 6vh;
+}
+#event-card-heading {
+  font-weight: 500;
+  color: #29313d;
+  font-size: 2.3vw;
+  padding-left: 1.6%;
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+}
+#event-card-heading a {
+  color: #4678f9;
+  font-size: 1vw;
+  font-weight: 300;
+  height: 100%;
+  margin-left: 2vw;
+}
+#event-card-heading a:hover {
+  text-decoration: underline;
+}
 .events {
   display: flex;
   justify-content: space-between;

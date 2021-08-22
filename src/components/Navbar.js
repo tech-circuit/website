@@ -1,11 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import "../nav.css";
 
 const Navbar = () => {
   const location = useLocation();
   const [activePage, setActivePage] = useState(location.pathname);
+  const [hamActive, setHam] = useState(false);
 
   useEffect(() => {
     setActivePage(location.pathname);
@@ -21,7 +21,15 @@ const Navbar = () => {
         >
           <img src="/assets/fulllogo.png" alt="alt" className="logo" />
         </Link>
-        <div className="nav-links">
+        <Link
+          id="short-nav-logo"
+          className="nav-logo-holder"
+          to="/"
+          onClick={(e) => setActivePage("/")}
+        >
+          <img src="/assets/short.svg" alt="alt" className="logo" />
+        </Link>
+        <div className={hamActive ? "nav-links nav-links-active" : "nav-links"}>
           <Link
             to="/work"
             onClick={(e) => setActivePage("/work")}
@@ -86,9 +94,18 @@ const Navbar = () => {
         </div>
       </div>
       <div className="nav-right">
-        <Link to="/login" className="login-btn">
+        <Link
+          to="/login"
+          className={hamActive ? "login-btn login-btn-active" : "login-btn"}
+        >
           Login
         </Link>
+        <div
+          className={hamActive ? "ham ham-active" : "ham"}
+          onClick={() => setHam(!hamActive)}
+        >
+          <div className="line"></div>
+        </div>
       </div>
     </nav>
   );

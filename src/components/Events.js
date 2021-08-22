@@ -82,210 +82,424 @@ const Events = () => {
                 <h1>Alphanode 2021 by N.O.D.E.</h1>
                 <h2>
                   Lorem ipsum dolor inter-school tech event hosted by DPS
-                  Gurgaon{" "}
+                  Gurgaon
                 </h2>
               </div>
             </div>
           </Carousel>
         </section>
 
-        <section className="events container">
-          <div className="event">
-            <img src="/assets/sample-banner.jpg" alt="alt" />
-            <div className="eventBody">
-              <div className="head">
-                <h1>nCRYPT 2021 Lorem </h1>
-                <h2>
-                  Organised by <Link to="/">DUGUY</Link>
-                </h2>
+        <section className="whole-event-hold">
+          <div className="container">
+            <h1 id="event-card-heading">
+              Upcoming Events&nbsp;<a href="/">View All</a>
+            </h1>
+          </div>
+          <div className="events container">
+            <div className="event">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="eventBody">
+                <div className="head">
+                  <h1>nCRYPT 2021 Lorem </h1>
+                  <h2>
+                    Organised by <Link to="/">DUGUY</Link>
+                  </h2>
+                </div>
+                <h3 className="ava">2 Days left | Registration Open</h3>
+                <div className="details">
+                  <h4>Happening online</h4>
+                  <p>Starts</p>
+                  <h5>May 15th, 2021</h5>
+                  <p>Ends</p>
+                  <h5>May 18th, 2021</h5>
+                </div>
+                <button to="/" className="view" onClick={view}>
+                  View Page
+                </button>
               </div>
-              <h3 className="ava">2 Days left | Registration Open</h3>
-              <div className="details">
-                <h4>Happening online</h4>
-                <p>Starts</p>
-                <h5>May 15th, 2021</h5>
-                <p>Ends</p>
-                <h5>May 18th, 2021</h5>
+            </div>
+            <div className="event">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="eventBody">
+                <div className="head">
+                  <h1>nCRYPT 2021 Lorem </h1>
+                  <h2>
+                    Organised by <Link to="/">DUGUY</Link>
+                  </h2>
+                </div>
+                <h3 className="ava">2 Days left | Registration Open</h3>
+                <div className="details">
+                  <h4>Happening online</h4>
+                  <p>Starts</p>
+                  <h5>May 15th, 2021</h5>
+                  <p>Ends</p>
+                  <h5>May 18th, 2021</h5>
+                </div>
+                <button to="/" className="view" onClick={view}>
+                  View Page
+                </button>
               </div>
-              <button to="/" className="view" onClick={view}>
-                View Page
-              </button>
+            </div>
+            <div className="event">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="eventBody">
+                <div className="head">
+                  <h1>nCRYPT 2021 Lorem </h1>
+                  <h2>
+                    Organised by <Link to="/">DUGUY</Link>
+                  </h2>
+                </div>
+                <h3 className="ava">2 Days left | Registration Open</h3>
+                <div className="details">
+                  <h4>Happening online</h4>
+                  <p>Starts</p>
+                  <h5>May 15th, 2021</h5>
+                  <p>Ends</p>
+                  <h5>May 18th, 2021</h5>
+                </div>
+                <button to="/" className="view" onClick={view}>
+                  View Page
+                </button>
+              </div>
+            </div>
+            <div className="event">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="eventBody">
+                <div className="head">
+                  <h1>nCRYPT 2021 Lorem </h1>
+                  <h2>
+                    Organised by <Link to="/">DUGUY</Link>
+                  </h2>
+                </div>
+                <h3 className="ava">2 Days left | Registration Open</h3>
+                <div className="details">
+                  <h4>Happening online</h4>
+                  <p>Starts</p>
+                  <h5>May 15th, 2021</h5>
+                  <p>Ends</p>
+                  <h5>May 18th, 2021</h5>
+                </div>
+                <button to="/" className="view" onClick={view}>
+                  View Page
+                </button>
+              </div>
+            </div>
+            <div className="event">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="eventBody">
+                <div className="head">
+                  <h1>nCRYPT 2021 Lorem </h1>
+                  <h2>
+                    Organised by <Link to="/">DUGUY</Link>
+                  </h2>
+                </div>
+                <h3 className="ava">2 Days left | Registration Open</h3>
+                <div className="details">
+                  <h4>Happening online</h4>
+                  <p>Starts</p>
+                  <h5>May 15th, 2021</h5>
+                  <p>Ends</p>
+                  <h5>May 18th, 2021</h5>
+                </div>
+                <button to="/" className="view" onClick={view}>
+                  View Page
+                </button>
+              </div>
+            </div>
+            <div className="event">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="eventBody">
+                <div className="head">
+                  <h1>nCRYPT 2021 Lorem </h1>
+                  <h2>
+                    Organised by <Link to="/">DUGUY</Link>
+                  </h2>
+                </div>
+                <h3 className="ava">2 Days left | Registration Open</h3>
+                <div className="details">
+                  <h4>Happening online</h4>
+                  <p>Starts</p>
+                  <h5>May 15th, 2021</h5>
+                  <p>Ends</p>
+                  <h5>May 18th, 2021</h5>
+                </div>
+                <button to="/" className="view" onClick={view}>
+                  View Page
+                </button>
+              </div>
+            </div>
+            <div className="event">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="eventBody">
+                <div className="head">
+                  <h1>nCRYPT 2021 Lorem </h1>
+                  <h2>
+                    Organised by <Link to="/">DUGUY</Link>
+                  </h2>
+                </div>
+                <h3 className="ava">2 Days left | Registration Open</h3>
+                <div className="details">
+                  <h4>Happening online</h4>
+                  <p>Starts</p>
+                  <h5>May 15th, 2021</h5>
+                  <p>Ends</p>
+                  <h5>May 18th, 2021</h5>
+                </div>
+                <button to="/" className="view" onClick={view}>
+                  View Page
+                </button>
+              </div>
+            </div>
+            <div className="event">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="eventBody">
+                <div className="head">
+                  <h1>nCRYPT 2021 Lorem </h1>
+                  <h2>
+                    Organised by <Link to="/">DUGUY</Link>
+                  </h2>
+                </div>
+                <h3 className="ava">2 Days left | Registration Open</h3>
+                <div className="details">
+                  <h4>Happening online</h4>
+                  <p>Starts</p>
+                  <h5>May 15th, 2021</h5>
+                  <p>Ends</p>
+                  <h5>May 18th, 2021</h5>
+                </div>
+                <button to="/" className="view" onClick={view}>
+                  View Page
+                </button>
+              </div>
+            </div>
+            <div className="event">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="eventBody">
+                <div className="head">
+                  <h1>nCRYPT 2021 Lorem </h1>
+                  <h2>
+                    Organised by <Link to="/">DUGUY</Link>
+                  </h2>
+                </div>
+                <h3 className="ava">2 Days left | Registration Open</h3>
+                <div className="details">
+                  <h4>Happening online</h4>
+                  <p>Starts</p>
+                  <h5>May 15th, 2021</h5>
+                  <p>Ends</p>
+                  <h5>May 18th, 2021</h5>
+                </div>
+                <button to="/" className="view" onClick={view}>
+                  View Page
+                </button>
+              </div>
             </div>
           </div>
-          <div className="event">
-            <img src="/assets/sample-banner.jpg" alt="alt" />
-            <div className="eventBody">
-              <div className="head">
-                <h1>nCRYPT 2021 Lorem </h1>
-                <h2>
-                  Organised by <Link to="/">DUGUY</Link>
-                </h2>
-              </div>
-              <h3 className="ava">2 Days left | Registration Open</h3>
-              <div className="details">
-                <h4>Happening online</h4>
-                <p>Starts</p>
-                <h5>May 15th, 2021</h5>
-                <p>Ends</p>
-                <h5>May 18th, 2021</h5>
-              </div>
-              <button to="/" className="view" onClick={view}>
-                View Page
-              </button>
-            </div>
+        </section>
+        <section className="whole-event-hold">
+          <div className="container">
+            <h1 id="event-card-heading">
+              Upcoming Events&nbsp;<a href="/">View All</a>
+            </h1>
           </div>
-          <div className="event">
-            <img src="/assets/sample-banner.jpg" alt="alt" />
-            <div className="eventBody">
-              <div className="head">
-                <h1>nCRYPT 2021 Lorem </h1>
-                <h2>
-                  Organised by <Link to="/">DUGUY</Link>
-                </h2>
+          <div className="events container">
+            <div className="event">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="eventBody">
+                <div className="head">
+                  <h1>nCRYPT 2021 Lorem </h1>
+                  <h2>
+                    Organised by <Link to="/">DUGUY</Link>
+                  </h2>
+                </div>
+                <h3 className="ava">2 Days left | Registration Open</h3>
+                <div className="details">
+                  <h4>Happening online</h4>
+                  <p>Starts</p>
+                  <h5>May 15th, 2021</h5>
+                  <p>Ends</p>
+                  <h5>May 18th, 2021</h5>
+                </div>
+                <button to="/" className="view" onClick={view}>
+                  View Page
+                </button>
               </div>
-              <h3 className="ava">2 Days left | Registration Open</h3>
-              <div className="details">
-                <h4>Happening online</h4>
-                <p>Starts</p>
-                <h5>May 15th, 2021</h5>
-                <p>Ends</p>
-                <h5>May 18th, 2021</h5>
-              </div>
-              <button to="/" className="view" onClick={view}>
-                View Page
-              </button>
             </div>
-          </div>
-          <div className="event">
-            <img src="/assets/sample-banner.jpg" alt="alt" />
-            <div className="eventBody">
-              <div className="head">
-                <h1>nCRYPT 2021 Lorem </h1>
-                <h2>
-                  Organised by <Link to="/">DUGUY</Link>
-                </h2>
+            <div className="event">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="eventBody">
+                <div className="head">
+                  <h1>nCRYPT 2021 Lorem </h1>
+                  <h2>
+                    Organised by <Link to="/">DUGUY</Link>
+                  </h2>
+                </div>
+                <h3 className="ava">2 Days left | Registration Open</h3>
+                <div className="details">
+                  <h4>Happening online</h4>
+                  <p>Starts</p>
+                  <h5>May 15th, 2021</h5>
+                  <p>Ends</p>
+                  <h5>May 18th, 2021</h5>
+                </div>
+                <button to="/" className="view" onClick={view}>
+                  View Page
+                </button>
               </div>
-              <h3 className="ava">2 Days left | Registration Open</h3>
-              <div className="details">
-                <h4>Happening online</h4>
-                <p>Starts</p>
-                <h5>May 15th, 2021</h5>
-                <p>Ends</p>
-                <h5>May 18th, 2021</h5>
-              </div>
-              <button to="/" className="view" onClick={view}>
-                View Page
-              </button>
             </div>
-          </div>
-          <div className="event">
-            <img src="/assets/sample-banner.jpg" alt="alt" />
-            <div className="eventBody">
-              <div className="head">
-                <h1>nCRYPT 2021 Lorem </h1>
-                <h2>
-                  Organised by <Link to="/">DUGUY</Link>
-                </h2>
+            <div className="event">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="eventBody">
+                <div className="head">
+                  <h1>nCRYPT 2021 Lorem </h1>
+                  <h2>
+                    Organised by <Link to="/">DUGUY</Link>
+                  </h2>
+                </div>
+                <h3 className="ava">2 Days left | Registration Open</h3>
+                <div className="details">
+                  <h4>Happening online</h4>
+                  <p>Starts</p>
+                  <h5>May 15th, 2021</h5>
+                  <p>Ends</p>
+                  <h5>May 18th, 2021</h5>
+                </div>
+                <button to="/" className="view" onClick={view}>
+                  View Page
+                </button>
               </div>
-              <h3 className="ava">2 Days left | Registration Open</h3>
-              <div className="details">
-                <h4>Happening online</h4>
-                <p>Starts</p>
-                <h5>May 15th, 2021</h5>
-                <p>Ends</p>
-                <h5>May 18th, 2021</h5>
-              </div>
-              <button to="/" className="view" onClick={view}>
-                View Page
-              </button>
             </div>
-          </div>
-          <div className="event">
-            <img src="/assets/sample-banner.jpg" alt="alt" />
-            <div className="eventBody">
-              <div className="head">
-                <h1>nCRYPT 2021 Lorem </h1>
-                <h2>
-                  Organised by <Link to="/">DUGUY</Link>
-                </h2>
+            <div className="event">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="eventBody">
+                <div className="head">
+                  <h1>nCRYPT 2021 Lorem </h1>
+                  <h2>
+                    Organised by <Link to="/">DUGUY</Link>
+                  </h2>
+                </div>
+                <h3 className="ava">2 Days left | Registration Open</h3>
+                <div className="details">
+                  <h4>Happening online</h4>
+                  <p>Starts</p>
+                  <h5>May 15th, 2021</h5>
+                  <p>Ends</p>
+                  <h5>May 18th, 2021</h5>
+                </div>
+                <button to="/" className="view" onClick={view}>
+                  View Page
+                </button>
               </div>
-              <h3 className="ava">2 Days left | Registration Open</h3>
-              <div className="details">
-                <h4>Happening online</h4>
-                <p>Starts</p>
-                <h5>May 15th, 2021</h5>
-                <p>Ends</p>
-                <h5>May 18th, 2021</h5>
-              </div>
-              <button to="/" className="view" onClick={view}>
-                View Page
-              </button>
             </div>
-          </div>
-          <div className="event">
-            <img src="/assets/sample-banner.jpg" alt="alt" />
-            <div className="eventBody">
-              <div className="head">
-                <h1>nCRYPT 2021 Lorem </h1>
-                <h2>
-                  Organised by <Link to="/">DUGUY</Link>
-                </h2>
+            <div className="event">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="eventBody">
+                <div className="head">
+                  <h1>nCRYPT 2021 Lorem </h1>
+                  <h2>
+                    Organised by <Link to="/">DUGUY</Link>
+                  </h2>
+                </div>
+                <h3 className="ava">2 Days left | Registration Open</h3>
+                <div className="details">
+                  <h4>Happening online</h4>
+                  <p>Starts</p>
+                  <h5>May 15th, 2021</h5>
+                  <p>Ends</p>
+                  <h5>May 18th, 2021</h5>
+                </div>
+                <button to="/" className="view" onClick={view}>
+                  View Page
+                </button>
               </div>
-              <h3 className="ava">2 Days left | Registration Open</h3>
-              <div className="details">
-                <h4>Happening online</h4>
-                <p>Starts</p>
-                <h5>May 15th, 2021</h5>
-                <p>Ends</p>
-                <h5>May 18th, 2021</h5>
-              </div>
-              <button to="/" className="view" onClick={view}>
-                View Page
-              </button>
             </div>
-          </div>
-          <div className="event">
-            <img src="/assets/sample-banner.jpg" alt="alt" />
-            <div className="eventBody">
-              <div className="head">
-                <h1>nCRYPT 2021 Lorem </h1>
-                <h2>
-                  Organised by <Link to="/">DUGUY</Link>
-                </h2>
+            <div className="event">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="eventBody">
+                <div className="head">
+                  <h1>nCRYPT 2021 Lorem </h1>
+                  <h2>
+                    Organised by <Link to="/">DUGUY</Link>
+                  </h2>
+                </div>
+                <h3 className="ava">2 Days left | Registration Open</h3>
+                <div className="details">
+                  <h4>Happening online</h4>
+                  <p>Starts</p>
+                  <h5>May 15th, 2021</h5>
+                  <p>Ends</p>
+                  <h5>May 18th, 2021</h5>
+                </div>
+                <button to="/" className="view" onClick={view}>
+                  View Page
+                </button>
               </div>
-              <h3 className="ava">2 Days left | Registration Open</h3>
-              <div className="details">
-                <h4>Happening online</h4>
-                <p>Starts</p>
-                <h5>May 15th, 2021</h5>
-                <p>Ends</p>
-                <h5>May 18th, 2021</h5>
-              </div>
-              <button to="/" className="view" onClick={view}>
-                View Page
-              </button>
             </div>
-          </div>
-          <div className="event">
-            <img src="/assets/sample-banner.jpg" alt="alt" />
-            <div className="eventBody">
-              <div className="head">
-                <h1>nCRYPT 2021 Lorem </h1>
-                <h2>
-                  Organised by <Link to="/">DUGUY</Link>
-                </h2>
+            <div className="event">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="eventBody">
+                <div className="head">
+                  <h1>nCRYPT 2021 Lorem </h1>
+                  <h2>
+                    Organised by <Link to="/">DUGUY</Link>
+                  </h2>
+                </div>
+                <h3 className="ava">2 Days left | Registration Open</h3>
+                <div className="details">
+                  <h4>Happening online</h4>
+                  <p>Starts</p>
+                  <h5>May 15th, 2021</h5>
+                  <p>Ends</p>
+                  <h5>May 18th, 2021</h5>
+                </div>
+                <button to="/" className="view" onClick={view}>
+                  View Page
+                </button>
               </div>
-              <h3 className="ava">2 Days left | Registration Open</h3>
-              <div className="details">
-                <h4>Happening online</h4>
-                <p>Starts</p>
-                <h5>May 15th, 2021</h5>
-                <p>Ends</p>
-                <h5>May 18th, 2021</h5>
+            </div>
+            <div className="event">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="eventBody">
+                <div className="head">
+                  <h1>nCRYPT 2021 Lorem </h1>
+                  <h2>
+                    Organised by <Link to="/">DUGUY</Link>
+                  </h2>
+                </div>
+                <h3 className="ava">2 Days left | Registration Open</h3>
+                <div className="details">
+                  <h4>Happening online</h4>
+                  <p>Starts</p>
+                  <h5>May 15th, 2021</h5>
+                  <p>Ends</p>
+                  <h5>May 18th, 2021</h5>
+                </div>
+                <button to="/" className="view" onClick={view}>
+                  View Page
+                </button>
               </div>
-              <button to="/" className="view" onClick={view}>
-                View Page
-              </button>
+            </div>
+            <div className="event">
+              <img src="/assets/sample-banner.jpg" alt="alt" />
+              <div className="eventBody">
+                <div className="head">
+                  <h1>nCRYPT 2021 Lorem </h1>
+                  <h2>
+                    Organised by <Link to="/">DUGUY</Link>
+                  </h2>
+                </div>
+                <h3 className="ava">2 Days left | Registration Open</h3>
+                <div className="details">
+                  <h4>Happening online</h4>
+                  <p>Starts</p>
+                  <h5>May 15th, 2021</h5>
+                  <p>Ends</p>
+                  <h5>May 18th, 2021</h5>
+                </div>
+                <button to="/" className="view" onClick={view}>
+                  View Page
+                </button>
+              </div>
             </div>
           </div>
         </section>

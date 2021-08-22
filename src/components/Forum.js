@@ -4,46 +4,46 @@ import { FaExclamationTriangle } from "react-icons/fa";
 import Modal from "react-modal";
 import ReactModal from "react-modal";
 import TextBox from "./TextBox";
-import { Notyf } from 'notyf';
-import 'notyf/notyf.min.css';
-import TimeAgo from 'react-timeago';
+import { Notyf } from "notyf";
+import "notyf/notyf.min.css";
+import TimeAgo from "react-timeago";
 
 ReactModal.defaultStyles = {};
 const authToken = localStorage.getItem("authToken");
 const notyf = new Notyf({
   duration: 2500,
   position: {
-    x: 'left',
-    y: 'bottom'
+    x: "left",
+    y: "bottom",
   },
   types: [
     {
-      type: 'error',
-      background: '#FF6B6B',
+      type: "error",
+      background: "#FF6B6B",
       dismissible: true,
       icon: {
-        className: 'material-icons',
-        tagName: 'i',
-        text: 'cancel',
-        color: '#ffffff'
-      }
+        className: "material-icons",
+        tagName: "i",
+        text: "cancel",
+        color: "#ffffff",
+      },
     },
     {
-      type: 'success',
-      background: '#85D49C',
+      type: "success",
+      background: "#85D49C",
       dismissible: true,
       icon: {
-        className: 'material-icons',
-        tagName: 'i',
-        text: 'check_circle',
-        color: '#ffffff'
-      }
-    }
-  ]
-})
+        className: "material-icons",
+        tagName: "i",
+        text: "check_circle",
+        color: "#ffffff",
+      },
+    },
+  ],
+});
 
 const Forums = () => {
-  document.getElementsByTagName('html')[0].style.scrollBehavior = 'initial'
+  document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [title, setTitle] = React.useState("");
   const [posts, setPosts] = React.useState([]);
@@ -57,7 +57,7 @@ const Forums = () => {
   };
 
   const closeModal = () => {
-    notyf.dismissAll()
+    notyf.dismissAll();
     setIsOpen(false);
     document.getElementsByClassName("head-2")[0].style.zIndex = 999;
     document.getElementsByTagName("nav")[0].style.zIndex = 9999;
@@ -70,11 +70,11 @@ const Forums = () => {
         console.log("Content", content);
         const authToken = localStorage.getItem("authToken");
         console.log(authToken);
-        let successMessage = "Posted successfully!"
-        let errorMessage = "Could not post"
+        let successMessage = "Posted successfully!";
+        let errorMessage = "Could not post";
         if (isDraft) {
-          successMessage = "Draft saved"
-          errorMessage = "Could not save draft"
+          successMessage = "Draft saved";
+          errorMessage = "Could not save draft";
         }
         fetch(
           `https://techcircuit.herokuapp.com/forum/new?access_token=${authToken}`,
@@ -86,7 +86,7 @@ const Forums = () => {
             body: JSON.stringify({
               title,
               content,
-              is_draft: isDraft
+              is_draft: isDraft,
             }),
 
             // Adding headers to the request
@@ -95,104 +95,108 @@ const Forums = () => {
             },
           }
         )
-        .then(async(response) => {
-            closeModal()
-            if(response.status === 200) {
+          .then(async (response) => {
+            closeModal();
+            if (response.status === 200) {
               const resp = await response.json();
-              console.log(resp.success)
-              if(resp.success) {
+              console.log(resp.success);
+              if (resp.success) {
                 notyf.open({
-                  type: 'success',
-                  message: successMessage
+                  type: "success",
+                  message: successMessage,
                 });
-                reFetch()
+                reFetch();
               } else {
                 notyf.open({
-                  type: 'error',
-                  message: errorMessage
+                  type: "error",
+                  message: errorMessage,
                 });
               }
             } else {
-              console.log(response.status)
-              console.log(response)
+              console.log(response.status);
+              console.log(response);
               notyf.open({
-                type: 'error',
-                message: errorMessage
+                type: "error",
+                message: errorMessage,
               });
             }
-        })
-        .catch(error => {
-            console.log(error)
-            closeModal()
+          })
+          .catch((error) => {
+            console.log(error);
+            closeModal();
             notyf.open({
-              type: 'error',
-              message: errorMessage
+              type: "error",
+              message: errorMessage,
             });
-        });
+          });
       }
     }
   };
 
   const setThumbnail = (posts) => {
     posts.forEach((p) => {
-      const content = p.content
+      const content = p.content;
       try {
-        const imgURL = content.split('src="')[1].split('"')[0]
-        p.thumbnail = imgURL
+        const imgURL = content.split('src="')[1].split('"')[0];
+        p.thumbnail = imgURL;
       } catch (error) {
-        p.thumbnail = undefined
+        p.thumbnail = undefined;
       }
-    })
-    return posts
-  }
+    });
+    return posts;
+  };
 
   const getContent = (content) => {
-    console.log(content)
-    setContent(content)
-  }
+    console.log(content);
+    setContent(content);
+  };
 
   const postAction = (action, postID) => {
-    fetch(`https://techcircuit.herokuapp.com/forum/${action}/${postID}?access_token=${authToken}`, { method: "POST" })
-    .then(async(response) => {
-      let resp = await response.json()
-      if(resp.success === true) {
-        reFetch()
+    fetch(
+      `https://techcircuit.herokuapp.com/forum/${action}/${postID}?access_token=${authToken}`,
+      { method: "POST" }
+    ).then(async (response) => {
+      let resp = await response.json();
+      if (resp.success === true) {
+        reFetch();
       } else {
         notyf.open({
-          type: 'error',
-          message: `Could not ${action} post`
-        })
+          type: "error",
+          message: `Could not ${action} post`,
+        });
       }
-    })
-  }
+    });
+  };
 
   const reFetch = () => {
-    fetch(`https://techcircuit.herokuapp.com/forum/?page=1&sort=latest&access_token=${authToken}`)
-    .then(async(response) => {
-        let resp = await response.json()
-        if (resp.success === true) {
-          console.log(resp.authenticated)
-          const updatedPosts = setThumbnail(resp.posts)
-          console.log(updatedPosts)
-          setPosts(updatedPosts)
-          setDrafts(resp.drafts)
-        }  
-    })
-  }
+    fetch(
+      `https://techcircuit.herokuapp.com/forum/?page=1&sort=latest&access_token=${authToken}`
+    ).then(async (response) => {
+      let resp = await response.json();
+      if (resp.success === true) {
+        console.log(resp.authenticated);
+        const updatedPosts = setThumbnail(resp.posts);
+        console.log(updatedPosts);
+        setPosts(updatedPosts);
+        setDrafts(resp.drafts);
+      }
+    });
+  };
 
   React.useEffect(() => {
-    fetch(`https://techcircuit.herokuapp.com/forum/?page=1&sort=latest&access_token=${authToken}`)
-    .then(async(response) => {
-        let resp = await response.json()
-        if (resp.success === true) {
-          console.log(resp.authenticated)
-          const updatedPosts = setThumbnail(resp.posts)
-          console.log(updatedPosts)
-          setPosts(updatedPosts)
-          setDrafts(resp.drafts)
-        }  
-    })
-  }, [])
+    fetch(
+      `https://techcircuit.herokuapp.com/forum/?page=1&sort=latest&access_token=${authToken}`
+    ).then(async (response) => {
+      let resp = await response.json();
+      if (resp.success === true) {
+        console.log(resp.authenticated);
+        const updatedPosts = setThumbnail(resp.posts);
+        console.log(updatedPosts);
+        setPosts(updatedPosts);
+        setDrafts(resp.drafts);
+      }
+    });
+  }, []);
 
   return (
     <React.Fragment>
@@ -214,13 +218,15 @@ const Forums = () => {
               placeholder="Enter title"
               onChange={(event) => setTitle(event.target.value)}
             ></input>
-            <TextBox handleContentChange={getContent}/>
+            <TextBox handleContentChange={getContent} />
           </div>
           <div className="buttons">
             <button className="create-post" onClick={() => createPost(false)}>
               Create Post
             </button>
-            <button className="save-draft" onClick={() => createPost(true)}>Save Draft</button>
+            <button className="save-draft" onClick={() => createPost(true)}>
+              Save Draft
+            </button>
           </div>
         </div>
       </Modal>
@@ -229,27 +235,32 @@ const Forums = () => {
           <h1 className="forumTitle">
             <strong>techCircuit</strong> discussion forum
           </h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum
+            dolor sit amet consectetur adipisicing elit.
+          </p>
         </div>
       </header>
       <header className="forumHeader head-2">
         <div className="container">
           <div className="search-box">
-            <div className="input">
-              <img src="/assets/magnifying-glass.svg" alt="alt" />
-              <input
-                type="text"
-                placeholder="Search communities, posts, interests..."
-              />
-            </div>
-            <button className="sortBtn">
-              Sort by: <span id="sortVal">Latest</span>
-              <div className="sortOpts">
-                <button className="sortOpt">Recommended</button>
+            <div className="search-box-left">
+              <div className="input">
+                <img src="/assets/magnifying-glass.svg" alt="alt" />
+                <input
+                  type="text"
+                  placeholder="Search communities, posts, interests..."
+                />
               </div>
-            </button>
+              <button className="sortBtn">
+                Sort by: <span id="sortVal">Latest</span>
+                {/* <div className="sortOpts">
+                <button className="sortOpt">Recommended</button>
+              </div> */}
+              </button>
+            </div>
             <h3 className="add" onClick={openModal}>
-              <img src="/assets/post-add.svg" alt="post-add-icon"/>
+              <img src="/assets/post-add.svg" alt="post-add-icon" />
               Create new post
             </h3>
           </div>
@@ -258,72 +269,117 @@ const Forums = () => {
 
       <div className="container">
         <div className="forumCards">
-          {posts.map((post, index)=> (
+          {posts.map((post, index) => (
             <div className="forumCard">
-            <a href={`forum/post/${post.id}`} className="card-top">
+              <a href={`forum/post/${post.id}`} className="card-top">
                 <div className="l-card-top">
-                  <h2>
-                    {post.title}
-                  </h2>
+                  <h2>{post.title}</h2>
                   <h3>
-                    posted <TimeAgo date={post.date}/> by <a href="/">{post.author}</a>
+                    posted <TimeAgo date={post.date} /> by{" "}
+                    <a href="/">{post.author}</a>
                   </h3>
                 </div>
                 <div className="r-card-top">
-                  {post.thumbnail === undefined ? <></> : 
-                    <img src={post.thumbnail} alt="post-thumbnail" className="post-thumbnail"/>
-                  }
+                  {post.thumbnail === undefined ? (
+                    <></>
+                  ) : (
+                    <img
+                      src={post.thumbnail}
+                      alt="post-thumbnail"
+                      className="post-thumbnail"
+                    />
+                  )}
                 </div>
-            </a>
-            <div className="card-options">
-              <div className="l-opts">
-                <a href={`forum/post/${post.id}/#comments`}>
-                  <button>
-                      <img src="/assets/comments.svg" alt="comments-icon"/>
+              </a>
+              <div className="card-options">
+                <div className="l-opts">
+                  <a href={`forum/post/${post.id}/#comments`}>
+                    <button>
+                      <img src="/assets/comments.svg" alt="comments-icon" />
                       &nbsp; {post.comments} comments
+                    </button>
+                  </a>
+                  <button>
+                    <img
+                      src="/assets/share.svg"
+                      alt="share-icon"
+                      className="inactive-share"
+                    />
+                    <span className="inactive-share-text">&nbsp; Share</span>
                   </button>
-                </a>
-                <button>
-                  <img src="/assets/share.svg" alt="share-icon" className="inactive-share"/>
-                  <span className="inactive-share-text">&nbsp; Share</span>
-                </button>
-                <button className="card-opt-done">
-                  {post.is_saved ? 
-                    <>
-                      <img src="/assets/active-save.svg" alt="save-icon-active" onClick={() => postAction("unsave", post.id)}/>
-                      <span style={{ color: '#29313D' }} onClick={() => postAction("unsave", post.id)}>&nbsp; Saved</span>
-                    </>
-                    :
-                    <>
-                      <img src="/assets/inactive-save.svg" alt="save-icon-inactive" onClick={() => postAction("save", post.id)} className="inactive-save"/>
-                      <span className="inactive-save-text" onClick={() => postAction("save", post.id)}>&nbsp; Save</span>
-                    </>
-                  }
-                  
-                </button>
-                <button>
-                  {post.is_upvoted ? 
-                    <>
-                      <img src="/assets/active-upvote.svg" alt="upvote-icon-active" onClick={() => postAction("unupvote", post.id)}/>
-                      <span style={{ color: '#29313D' }} onClick={() => postAction("unupvote", post.id)}>&nbsp; Upvoted</span>
-                    </>
-                    :
-                    <>
-                      <img src="/assets/inactive-upvote.svg" alt="upvote-icon-inactive" onClick={() => postAction("upvote", post.id)} className="inactive-upvote"/>
-                      <span className="inactive-upvote-text" onClick={() => postAction("upvote", post.id)}>&nbsp; Upvote</span>
-                    </>
-                  }
-                  
-                </button>
-              </div>
-              <div className="r-opts">
-                <button>
-                  <FaExclamationTriangle />
-                  <span className="report-text">&nbsp; Report</span>
-                </button>
+                  <button className="card-opt-done">
+                    {post.is_saved ? (
+                      <>
+                        <img
+                          src="/assets/active-save.svg"
+                          alt="save-icon-active"
+                          onClick={() => postAction("unsave", post.id)}
+                        />
+                        <span
+                          style={{ color: "#29313D" }}
+                          onClick={() => postAction("unsave", post.id)}
+                        >
+                          &nbsp; Saved
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <img
+                          src="/assets/inactive-save.svg"
+                          alt="save-icon-inactive"
+                          onClick={() => postAction("save", post.id)}
+                          className="inactive-save"
+                        />
+                        <span
+                          className="inactive-save-text"
+                          onClick={() => postAction("save", post.id)}
+                        >
+                          &nbsp; Save
+                        </span>
+                      </>
+                    )}
+                  </button>
+                  <button>
+                    {post.is_upvoted ? (
+                      <>
+                        <img
+                          src="/assets/active-upvote.svg"
+                          alt="upvote-icon-active"
+                          onClick={() => postAction("unupvote", post.id)}
+                        />
+                        <span
+                          style={{ color: "#29313D" }}
+                          onClick={() => postAction("unupvote", post.id)}
+                        >
+                          &nbsp; Upvoted
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <img
+                          src="/assets/inactive-upvote.svg"
+                          alt="upvote-icon-inactive"
+                          onClick={() => postAction("upvote", post.id)}
+                          className="inactive-upvote"
+                        />
+                        <span
+                          className="inactive-upvote-text"
+                          onClick={() => postAction("upvote", post.id)}
+                        >
+                          &nbsp; Upvote
+                        </span>
+                      </>
+                    )}
+                  </button>
+                </div>
+                <div className="r-opts">
+                  <button>
+                    <FaExclamationTriangle />
+                    <span className="report-text">&nbsp; Report</span>
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
           ))}
         </div>
       </div>
