@@ -211,7 +211,7 @@ const Forums = () => {
             <h2>Drafts({drafts})</h2>
           </div>
           <div className="input-fields">
-            <h3>Title</h3>
+            <label>Title</label>
             <input
               className="title"
               type="text"
@@ -307,7 +307,7 @@ const Forums = () => {
                     />
                     <span className="inactive-share-text">&nbsp; Share</span>
                   </button>
-                  <button className="card-opt-done">
+                  {/* <button className="card-opt-done">
                     {post.is_saved ? (
                       <>
                         <img
@@ -338,7 +338,7 @@ const Forums = () => {
                         </span>
                       </>
                     )}
-                  </button>
+                  </button> */}
                   <button>
                     {post.is_upvoted ? (
                       <>

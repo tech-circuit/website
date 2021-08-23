@@ -164,10 +164,10 @@ const Post = () => {
                   <FaShareAlt />
                   &nbsp; Share
                 </button>
-                <button>
+                {/* <button>
                   <FaBookmark />
                   &nbsp; Save
-                </button>
+                </button> */}
                 <button>
                   <FaExclamationTriangle />
                   &nbsp; Report

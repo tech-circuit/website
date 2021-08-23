@@ -443,104 +443,100 @@
 .ReactModal__Content {
   background: white;
   width: 70vw;
-  min-height: 40vw;
   border-radius: 16.9046px;
   box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
   position: relative;
-  padding-top: 3vw;
-  padding-left: 4vw;
+  padding: 5vh 4vw;
 }
 
 .modal-content {
-  height: 35vw;
-  width: 66vw;
+  height: 100%;
+  width: 100%;
   overflow-y: auto;
 }
 
 .modal-content .header {
   align-items: center;
   display: flex;
-  flex-flow: column wrap;
-  width: 60vw;
-  height: 4vw;
+  width: 100%;
 }
 
-.left {
+.modal-content .left {
   margin-left: 0vw;
+  height: auto;
+  width: 70%;
 }
 
 .left h1 {
   font-style: normal;
   font-weight: 600;
-  font-size: 3.6vh;
+  font-size: 2vw;
 }
 
 .left p {
   font-style: normal;
   font-weight: normal;
-  font-size: 1.8vh;
+  font-size: 1vw;
   color: #9c9c9c;
   margin-top: 0vw;
 }
-
-.header h2 {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 2.4vh;
-  text-decoration-line: underline;
+.modal-content .header h2 {
+  font-size: 1.2vw;
+  font-weight: 400;
+  text-decoration: underline;
   color: #4678f9;
-  margin-top: 1vw;
-  margin-left: 30%;
+  margin-top: 1.6vh;
+  width: 30%;
+  text-align: right;
 }
 
 .input-fields {
   margin-top: 1.8vw;
+  display: flex;
+  flex-direction: column;
 }
 
-.input-fields h3 {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 2.4vh;
+.input-fields label {
+  font-size: 1vw;
+  padding-left: 0.8vw;
 }
 
 .input-fields input {
   border: none;
-  height: 2.5vw;
-  width: 60vw;
+  width: 100%;
   border: 1px solid #c4c4c4;
   box-sizing: border-box;
   border-radius: 5px;
-  padding-left: 0.8vw;
-  font-size: 1.8vh;
-  margin-top: 0.5vw;
+  padding: 1vh 1vw;
+  font-size: 1vw;
+  margin-top: 0.2vh;
 }
 
 .textbox-wrapper {
-  width: 60vw;
-  margin-top: 1.8vw;
+  width: 100%;
+  margin-top: 2.4vh;
   z-index: 999999;
 }
 
 .buttons {
   align-items: center;
   display: flex;
-  margin-top: 1.8vw;
+  margin-top: 2.4vh;
+  margin-bottom: 3vh;
 }
 
 .create-post {
   display: flex;
-  height: 100%;
   justify-content: center;
   align-items: center;
   font-size: 0.9vw;
-  padding: 0 1.6vw;
+  padding: 1vh 1.6vw;
   font-weight: 300;
   border-radius: 5px;
   background: #4678f9;
+  border: 1px solid #4678f9;
   transition: all 0.3s;
   cursor: pointer;
-  height: 2.5vw;
-  width: 10vw;
   color: white;
 }
 
@@ -550,14 +546,12 @@
   justify-content: center;
   align-items: center;
   font-size: 0.9vw;
-  padding: 0 1.6vw;
+  padding: 1vh 1.6vw;
   font-weight: 300;
   border-radius: 5px;
   background: transparent;
   transition: all 0.3s;
   cursor: pointer;
-  height: 2.5vw;
-  width: 10vw;
   border: 1px solid #29313d;
   box-sizing: border-box;
   border-radius: 4.28558px;
@@ -704,6 +698,14 @@ i {
   .comment-btns .btn {
     font-size: 1vw;
   }
+
+  .ReactModal__Content {
+    padding: 3vh 3vw;
+    width: 68vw;
+  }
+  .tox .tox-sidebar-wrap {
+    height: 10vh;
+  }
 }
 
 @media (max-width: 800px) {
@@ -799,6 +801,48 @@ i {
   .comment-btns .btn {
     font-size: 1.4vw;
     padding: 1.2vh 2.6vw;
+  }
+
+  .ReactModal__Content {
+    padding: 4vh 5vw;
+    width: 85vw;
+  }
+  .left h1 {
+    font-size: 4vw;
+  }
+  .left p {
+    font-size: 1.8vw;
+  }
+  .modal-content .header h2 {
+    font-size: 2vw;
+  }
+  .input-fields {
+    margin-top: 2vh;
+  }
+  .input-fields label {
+    font-size: 2vw;
+    padding-left: 1.2vw;
+  }
+  .input-fields input {
+    padding: 0.8vh 2vw;
+    font-size: 2vw;
+    margin-top: 0.2vh;
+  }
+  .textbox-wrapper {
+    margin-top: 2vh;
+  }
+  .buttons {
+    margin-top: 4vh;
+    margin-bottom: 1vh;
+  }
+  .create-post {
+    font-size: 1.8vw;
+    padding: 1vh 4vw;
+  }
+  .save-draft {
+    font-size: 1.8vw;
+    padding: 1vh 4vw;
+    margin-left: 3vw;
   }
 }
 
@@ -956,5 +1000,49 @@ i {
   }
   .comment-btns {
     margin-top: 1.6vh;
+  }
+
+  .ReactModal__Content {
+    padding: 3vh 6vw;
+    width: 85vw;
+  }
+  .left h1 {
+    font-size: 6vw;
+  }
+  .left p {
+    font-size: 3vw;
+  }
+  .modal-content .header .left {
+    width: 80%;
+  }
+  .modal-content .header h2 {
+    font-size: 3vw;
+    margin: 0;
+    transform: translateY(-100%);
+  }
+  .input-fields {
+    margin-top: 2vh;
+  }
+  .input-fields label {
+    font-size: 3vw;
+    padding-left: 2vw;
+  }
+  .input-fields input {
+    padding: 0.8vh 2.6vw;
+    font-size: 3vw;
+  }
+  .textbox-wrapper {
+    margin-top: 1vh;
+  }
+  .buttons {
+    margin-top: 3vh;
+  }
+  .create-post,
+  .save-draft {
+    font-size: 3vw;
+    padding: 0.8vh 5.4vw;
+  }
+  .save-draft {
+    margin-left: 4vw;
   }
 }
