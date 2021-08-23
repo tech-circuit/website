@@ -257,6 +257,7 @@
 
 .fullForumCards {
   padding-top: 12vh;
+  padding-bottom: 1vh;
 }
 
 .fullForumCard {
@@ -678,6 +679,31 @@ i {
     width: 7vw;
     height: 7vw;
   }
+
+  .back {
+    font-size: 1.6vw;
+  }
+  .comment-card {
+    padding: 4vh 4vw;
+  }
+  .comment-card img {
+    width: 3.4vw;
+    height: 3.4vw;
+    margin-top: 0;
+  }
+  .comment .details {
+    margin-bottom: 0;
+  }
+  .comm-body {
+    font-size: 1.2vw;
+  }
+  .add-comm-top textarea {
+    font-size: 1.2vw;
+    padding: 1.6vh 1.4vw;
+  }
+  .comment-btns .btn {
+    font-size: 1vw;
+  }
 }
 
 @media (max-width: 800px) {
@@ -740,6 +766,39 @@ i {
   .forumHeader.head-2 {
     padding-top: 1.4vh !important;
     padding-bottom: 1.4vh !important;
+  }
+
+  .back {
+    font-size: 2.6vw;
+  }
+  .fullForumCards {
+    padding-top: 10vh;
+  }
+  .comment-card {
+    padding: 3.4vh 5vw;
+  }
+  .comment-card img {
+    width: 5vw;
+    height: 5vw;
+    margin-top: 0;
+    margin-right: 2vw;
+  }
+  .comment .details {
+    margin-bottom: 0;
+  }
+  .comment .details > * {
+    font-size: 1.4vw !important;
+  }
+  .comm-body {
+    font-size: 1.8vw;
+  }
+  .add-comm-top textarea {
+    font-size: 1.6vw;
+    padding: 1.8vh 3vw;
+  }
+  .comment-btns .btn {
+    font-size: 1.4vw;
+    padding: 1.2vh 2.6vw;
   }
 }
 
@@ -857,5 +916,45 @@ i {
   .forumHeader.head-2 {
     padding-top: 1.4vh !important;
     padding-bottom: 1.4vh !important;
+  }
+
+  .back {
+    font-size: 4vw;
+  }
+  .post-content img {
+    max-width: 24vw;
+  }
+  .fullForumCard .l-opts button {
+    font-size: 3vw;
+  }
+  .comment-card {
+    padding: 2.6vh 6vw;
+    margin-bottom: 3vh;
+  }
+  .comment-card img {
+    width: 9vw;
+    height: 9vw;
+    margin-top: 0;
+    margin-right: 3vw;
+  }
+  .comment .details {
+    margin-bottom: 0.4vh;
+  }
+  .comment .details > * {
+    font-size: 2.6vw !important;
+  }
+  .comm-body {
+    font-size: 3.4vw;
+  }
+  .add-comm-top textarea {
+    font-size: 3vw;
+    padding: 1.4vh 3.4vw;
+  }
+  .comment-btns .btn {
+    font-size: 3vw;
+    padding: 1vh 5vw;
+  }
+  .comment-btns {
+    margin-top: 1.6vh;
   }
 }

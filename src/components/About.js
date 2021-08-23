@@ -385,7 +385,7 @@ const About = () => {
         </p>
         <div className="big-members">
           <div className="big-member member">
-            <img src="https://github.com/ishaanndas.png" alt="Ishaan Das" />
+            <img src="/assets/ishana.jpg" alt="Ishaan Das" />
             <h3>Ishaan Das</h3>
             <h4>Founder Director</h4>
           </div>
@@ -421,14 +421,6 @@ const About = () => {
             />
             <h3>Ribhav Sharma</h3>
             <h4>Research Head</h4>
-          </div>
-          <div className="member">
-            <img
-              src="https://code-warriors.org/img/bda54ab1-636b-4acb-8ade-2bd154d5cdf0-1617907928677.jpg"
-              alt="Amrtayan Baehaerha"
-            />
-            <h3>Amrtayan Baehaerha</h3>
-            <h4>Designer</h4>
           </div>
         </div>
       </div>
