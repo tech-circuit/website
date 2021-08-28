@@ -181,7 +181,7 @@
   width: 85%;
   font-size: 0.9vw;
   margin-top: 1.6vh;
-  margin-bottom: 6vh;
+  margin-bottom: 4vh;
   color: #777;
 }
 
@@ -621,6 +621,13 @@ i {
   color: #29313d;
 }
 
+.css-q3o1l2 {
+  position: fixed;
+  top: 60%;
+  left: 40%;
+  width: 80px !important;
+  height: 80px !important;
+}
 /* MEDIA */
 @media (max-width: 1050px) {
   .head-1 .forumTitle {

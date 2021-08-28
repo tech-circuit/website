@@ -381,7 +381,7 @@ const About = () => {
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis at
           amet molestie et, vulputate arcu sed mattis. Elit neque, amet, amet,
-          vulputate eget blandit.
+          vulputate.
         </p>
         <div className="big-members">
           <div className="big-member member">

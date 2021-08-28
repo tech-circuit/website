@@ -148,8 +148,8 @@ const Index = () => {
       <div
         style={
           modalView === true
-            ? { opacity: "0", pointerEvents: "none" }
-            : { opacity: "1", pointerEvents: "all" }
+            ? { transform: "scale(0.5)", opacity: "0", pointerEvents: "none" }
+            : { transform: "scale(1)", opacity: "1", pointerEvents: "all" }
         }
         className="contact-card"
       >

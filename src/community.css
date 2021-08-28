@@ -64,7 +64,9 @@
 }
 .comSearch .comLeft {
   display: flex;
+  justify-content: space-between;
   height: auto;
+  width: 47%;
 }
 .comSearch .input {
   border: 1px #747474 solid;

@@ -7,6 +7,7 @@ import TextBox from "./TextBox";
 import { Notyf } from "notyf";
 import "notyf/notyf.min.css";
 import TimeAgo from "react-timeago";
+import { ClipLoader } from "react-spinners";
 
 ReactModal.defaultStyles = {};
 const authToken = localStorage.getItem("authToken");
@@ -192,6 +193,9 @@ const Forums = () => {
         console.log(resp.authenticated);
         const updatedPosts = setThumbnail(resp.posts);
         console.log(updatedPosts);
+        document.querySelector(".css-q3o1l2")
+          ? document.querySelector(".css-q3o1l2").remove()
+          : console.log("none");
         setPosts(updatedPosts);
         setDrafts(resp.drafts);
       }
@@ -269,6 +273,7 @@ const Forums = () => {
 
       <div className="container">
         <div className="forumCards">
+          <ClipLoader />
           {posts.map((post, index) => (
             <div className="forumCard">
               <a href={`forum/post/${post.id}`} className="card-top">
