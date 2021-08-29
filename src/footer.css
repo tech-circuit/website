@@ -71,12 +71,11 @@
 
 .foot-right {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-around;
 }
 
 .links {
-  width: 41%;
-  margin-right: -7%;
+  width: 45%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -115,4 +114,104 @@
 .foot svg {
   margin: 0 0.4vw;
   font-size: 1.7vw;
+}
+
+@media (max-width: 800px) {
+  .foot {
+    padding: 4vh 0;
+  }
+  .foot-left {
+    padding-right: 10%;
+  }
+  .foot h2 {
+    font-size: 3vw;
+  }
+  .foot-mail .input img {
+    width: 2.6vw;
+  }
+  .foot .input input {
+    padding: 1vh 0;
+    padding-left: 1vw;
+    font-size: 2vw;
+  }
+  .foot .btn {
+    font-size: 2vw;
+  }
+  .links {
+    white-space: nowrap;
+  }
+  .foot-right {
+    padding-left: 0;
+  }
+  .links h3 {
+    font-size: 2.4vw;
+  }
+  .foot a {
+    font-size: 1.8vw;
+  }
+  .foot-bottom {
+    margin-top: 6vh;
+  }
+  .foot svg {
+    font-size: 2.6vw;
+    margin: 0 1.2vw;
+  }
+}
+@media (max-width: 500px) {
+  .foot {
+    padding: 5vh 8vw;
+    flex-direction: column;
+  }
+  .foot-right,
+  .foot-left {
+    width: 100%;
+    padding: 0;
+  }
+  .foot-left {
+    margin-bottom: 6vh;
+  }
+  .foot h2 {
+    font-size: 5.6vw;
+    padding-right: 3vw;
+  }
+  .foot-mail .input {
+    width: 75%;
+    padding: 0 3vw;
+  }
+  .foot-mail .input img {
+    width: 4vw;
+  }
+  .foot .input input {
+    padding: 1vh 0;
+    padding-left: 2vw;
+    font-size: 3.2vw;
+  }
+  .foot .btn {
+    font-size: 3vw;
+    width: 25%;
+  }
+  .links {
+    white-space: nowrap;
+  }
+  .foot-right {
+    padding-left: 0;
+  }
+  .links h3 {
+    font-size: 3.8vw;
+    margin-bottom: 1vh;
+  }
+  .foot a {
+    font-size: 3.2vw;
+  }
+  .foot-bottom {
+    margin-top: 7vh;
+    padding: 0 1vw;
+  }
+  .foot svg {
+    font-size: 3.4vw;
+    margin: 0 1.4vw;
+  }
+  .footCopy {
+    font-size: 3vw;
+  }
 }

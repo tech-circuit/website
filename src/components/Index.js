@@ -333,7 +333,7 @@ const Index = () => {
 
         <div className="feat container first-feat">
           <div className="feat-banner">
-            <img className="feat-img-minus" src="/assets/write.png" alt="alt" />
+            <img className="feat-img-minus" src="/assets/land1.svg" alt="alt" />
           </div>
           <div className="feat-content">
             <h2 data-aos="fade-left">
@@ -370,12 +370,12 @@ const Index = () => {
             </p>
           </div>
           <div className="feat-banner">
-            <img className="feat-img-plus" src="/assets/write.png" alt="alt" />
+            <img className="feat-img-plus" src="/assets/land2.svg" alt="alt" />
           </div>
         </div>
         <div className="feat container">
           <div className="feat-banner">
-            <img className="feat-img-minus" src="/assets/write.png" alt="alt" />
+            <img className="feat-img-minus" src="/assets/land3.svg" alt="alt" />
           </div>
           <div className="feat-content">
             <h2 data-aos="fade-left">
@@ -406,7 +406,7 @@ const Index = () => {
             </p>
           </div>
           <div className="feat-banner">
-            <img className="feat-img-plus" src="/assets/write.png" alt="alt" />
+            <img className="feat-img-plus" src="/assets/land4.svg" alt="alt" />
           </div>
         </div>
       </section>

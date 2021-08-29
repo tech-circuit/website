@@ -26,7 +26,7 @@ const Footer = () => {
         </form>
       </div>
       <div className="foot-right container">
-        <div className="links" style={{ marginRight: "20%" }}>
+        <div className="links">
           <h3>Explore</h3>
           <ul>
             <li>
@@ -59,7 +59,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="foot-bottom container">
-        <p>&copy; 2021 techCircuit</p>
+        <p className="footCopy">&copy; 2021 techCircuit</p>
         <div className="socials">
           <a href="/">
             <FaLinkedin />

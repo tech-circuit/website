@@ -128,7 +128,7 @@
 .hero-left,
 .hero-right {
   width: 50%;
-  height: 90vh;
+  height: 80vh;
 }
 
 .hero-right {
@@ -150,6 +150,7 @@
 .hero h1 {
   font-size: 2.7vw;
   font-weight: 400;
+  margin-top: 10vh;
 }
 
 .hero p {
@@ -206,6 +207,7 @@
   z-index: 9;
   padding-top: 8vh;
   margin-bottom: 8vh;
+  padding: 10vh 0;
 }
 
 .abt-left,
@@ -496,10 +498,6 @@
   .abt-left,
   .abt-right {
     height: 100vh;
-  }
-  .about {
-    padding-top: 0;
-    margin-bottom: 2vh;
   }
   .hero-btn,
   .club-btn {

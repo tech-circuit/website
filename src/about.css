@@ -431,3 +431,135 @@
     font-size: 2.2vw;
   }
 }
+@media (max-width: 500px) {
+  .abt-hero {
+    height: 80vh;
+  }
+  .abt-hero img {
+    width: 70%;
+  }
+  .abt-hero h3 {
+    font-size: 3.6vw;
+  }
+  .abt-hero p {
+    font-size: 3.2vw;
+    padding: 0 4vw;
+  }
+  .why {
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+  }
+  .why-top {
+    flex-direction: column;
+    margin-bottom: 4vh;
+  }
+  .why h1 {
+    width: auto;
+    padding: 0;
+    font-size: 6vw;
+    text-align: center;
+    margin-bottom: 3vh;
+  }
+  .why p {
+    font-size: 3.2vw;
+    width: 95%;
+    line-height: 3vh;
+  }
+  .why h3 {
+    width: 95%;
+    font-size: 3vw;
+    line-height: 3vh;
+    padding: 2vh 9%;
+  }
+  .why h3::before {
+    width: 3px;
+    top: 50%;
+    height: 90%;
+    transform: translateY(-50%);
+  }
+  .about-clubs {
+    padding-top: 2vh;
+    padding-bottom: 3vh;
+  }
+  .about-clubs .club-left,
+  .about-clubs .club-right {
+    width: 100%;
+  }
+  .about-clubs .club-right {
+    padding: 2vh 0;
+  }
+  .about-clubs p {
+    font-size: 3.2vw;
+    line-height: 3.2vh;
+  }
+  .about-clubs .club-logos {
+    width: 100%;
+  }
+  .faqs-cont h1 {
+    font-size: 5.6vw;
+    margin-bottom: 3vh;
+  }
+  .faqs {
+    padding: 0;
+  }
+  .faq {
+    padding: 1.4vh 4vw;
+    margin-bottom: 1.6vh;
+  }
+  .q {
+    font-size: 2.6vw;
+  }
+  .a {
+    font-size: 2.4vw;
+    line-height: 2.3vh;
+  }
+  .faq-toggle {
+    font-size: 3.4vw;
+    top: calc((1vw + 2.2vh));
+  }
+  .faqs-cont h2 {
+    font-size: 6vw;
+  }
+  .faqs-cont .btn {
+    font-size: 3.2vw;
+    padding: 1vh 5vw;
+  }
+  .member-cont {
+    margin: 4vh 0;
+  }
+
+  .big-members {
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+  }
+  .big-member {
+    width: 100%;
+  }
+  .members {
+    padding: 0;
+  }
+  .member {
+    width: 100%;
+    margin-bottom: 6vh;
+    white-space: nowrap;
+  }
+  .member-cont h1 {
+    font-size: 6vw;
+  }
+  .member-cont p {
+    font-size: 3.2vw;
+    width: 100%;
+    line-height: 3vh;
+  }
+  .member img {
+    width: 44vw;
+    height: 44vw;
+  }
+  .member h3 {
+    font-size: 4vw;
+  }
+  .member h4 {
+    font-size: 3.2vw;
+  }
+}
