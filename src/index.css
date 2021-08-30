@@ -172,7 +172,7 @@
   height: 6.4vh;
   width: 40%;
   margin-top: 7vh;
-  margin-bottom: 14vh;
+  margin-bottom: 10vh;
   transition: all 0.3s !important;
 }
 
@@ -526,6 +526,7 @@
   .hero-left h1 {
     text-align: center;
     font-size: 4vw;
+    margin-top: 0;
   }
   .hero-left p {
     text-align: center;
@@ -542,5 +543,102 @@
   }
   .scroll-more-hold {
     display: none;
+  }
+
+  .about {
+    padding: 0;
+    margin-bottom: 0;
+  }
+  .abt-left,
+  .abt-right {
+    height: 80vh;
+  }
+  .about h1 {
+    font-size: 4vw;
+  }
+  .about p {
+    width: 90%;
+    font-size: 1.8vw;
+  }
+  .abt-left img {
+    margin-top: 4vh;
+    width: 90%;
+  }
+  .circ-hold {
+    width: 180%;
+    height: calc((35 / 100 * 100vw) * 1.8);
+  }
+  .circ {
+    width: 15vw;
+    height: 15vw;
+  }
+
+  .clubs {
+    flex-direction: column-reverse;
+  }
+  .club-left,
+  .club-right {
+    width: 100%;
+    margin: 0;
+  }
+  .club-right {
+    padding: 1vh 0;
+  }
+  .club-logos {
+    width: 70%;
+    height: 60%;
+  }
+  .club-logo {
+    width: 25%;
+    margin: 1.8%;
+  }
+  .club-left {
+    padding-bottom: 1vh;
+    text-align: center;
+    align-items: center;
+  }
+  .clubs h2 {
+    font-size: 3vw;
+    text-align: center;
+  }
+  .clubs p {
+    padding: 0 8vw;
+    line-height: 3vh;
+    font-size: 2vw;
+    margin-top: 3vh;
+  }
+  .club-btn {
+    margin: 4vh 0;
+    margin-bottom: 5vh;
+    font-size: 2.4vw;
+  }
+
+  .feat {
+    margin: 12vh 0;
+    padding: 0;
+  }
+  .feat-banner {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .feat-banner img {
+    width: 95%;
+    transform: translateX(-2.5%);
+  }
+  .feat-content {
+    width: 60%;
+    padding-left: 6vw;
+  }
+  .feat h2 {
+    font-size: 2.8vw;
+    line-height: 3.4vh;
+    padding-right: 4vw;
+  }
+  .feat p {
+    width: 85%;
+    font-size: 1.6vw;
+    line-height: 2.3vh;
   }
 }

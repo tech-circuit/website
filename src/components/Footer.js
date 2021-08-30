@@ -81,6 +81,8 @@ const Footer = () => {
           </a>
         </div>
       </div>
+
+      <div className=""></div>
     </footer>
   );
 };

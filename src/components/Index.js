@@ -274,10 +274,9 @@ const Index = () => {
               tech clubs from all over India.
             </h2>
             <p data-aos="fade-right" data-aos-delay="400">
-              The biggest names in the Indian Tech Circuit, including
-              <br />
-              Exun, CW, TS and more have tested and approved of the features
-              that techCircuit offers.
+              The biggest names in the Indian Tech Circuit, including Exun, CW,
+              TS and more have tested and approved of the features that
+              techCircuit offers.
             </p>
             <Link data-aos="fade-right" to="/" className="club-btn">
               View Clubs&nbsp;&nbsp;
@@ -336,11 +335,7 @@ const Index = () => {
             <img className="feat-img-minus" src="/assets/land1.svg" alt="alt" />
           </div>
           <div className="feat-content">
-            <h2 data-aos="fade-left">
-              Showcase your work
-              <br />
-              and skills!
-            </h2>
+            <h2 data-aos="fade-left">Showcase your work and skills!</h2>
             <p data-aos="fade-left" data-aos-delay="300">
               techCircuit serves as a platform for individuals with varying
               skillsets, ranging from code to design, to show off their projects
@@ -354,11 +349,7 @@ const Index = () => {
         <div className="feat container">
           <div className="feat-content">
             <h2 data-aos="fade-right">
-              Meet. Share. Discuss.
-              <br />
-              Welcome to Community
-              <br />
-              of creators!
+              Meet. Share. Discuss. Welcome to Community of creators!
             </h2>
             <p data-aos="fade-right" data-aos-delay="300">
               techCircuit has a friendly and really helpful community which aims
