@@ -642,3 +642,143 @@
     line-height: 2.3vh;
   }
 }
+@media (max-width: 630px) {
+  .hero-left,
+  .hero-right {
+    width: 100%;
+    height: 42vh;
+  }
+  .hero-right {
+    justify-content: center;
+  }
+  .hero-right img {
+    width: 80%;
+  }
+  .hero-left .container {
+    align-items: center;
+  }
+  .hero-left h1 {
+    text-align: center;
+    font-size: 6vw;
+    margin-top: 0;
+  }
+  .hero-left p {
+    text-align: center;
+    width: 100%;
+    padding: 0;
+    font-size: 3vw;
+    margin: 2vh 0;
+    margin-bottom: 4vh;
+  }
+  .hero-left a {
+    margin: 0;
+    font-size: 3.4vw;
+    width: 43%;
+  }
+
+  .about {
+    flex-direction: column;
+    margin-top: 6vh;
+  }
+  .about .container {
+    align-items: center;
+  }
+  .abt-left,
+  .abt-right {
+    height: 65vh;
+    width: 100%;
+  }
+  .abt-right {
+    height: 25vh;
+  }
+  .about h1 {
+    font-size: 6vw;
+    text-align: center;
+  }
+  .about p {
+    width: 100%;
+    font-size: 3vw;
+    text-align: center;
+  }
+  .abt-left img {
+    margin-top: 2vh;
+    width: 100%;
+    transform: translateX(0);
+  }
+  .circ-hold {
+    width: 85vw;
+    height: calc((90 / 100 * 90vw));
+    top: 45%;
+    margin: 0;
+  }
+  .circ {
+    width: 20vw;
+    height: 20vw;
+  }
+
+  .club-right {
+    padding: 1vh 0;
+  }
+  .club-logos {
+    width: 90%;
+  }
+  .club-logo {
+    width: 27%;
+    margin: 2%;
+  }
+  .club-left {
+    padding-bottom: 1vh;
+    text-align: center;
+    align-items: center;
+  }
+  .clubs h2 {
+    font-size: 5vw;
+    text-align: center;
+  }
+  .clubs p {
+    padding: 0 3vw;
+    line-height: 3vh;
+    font-size: 3vw;
+    margin-top: 3vh;
+  }
+  .club-btn {
+    margin: 3vh 0;
+    margin-bottom: 5vh;
+    font-size: 3.4vw;
+    width: 45%;
+  }
+
+  .feat {
+    margin: 10vh 0;
+    flex-direction: column;
+  }
+  .feat:nth-child(3),
+  .feat:nth-child(5) {
+    flex-direction: column-reverse;
+  }
+  .feat-banner {
+    width: 100%;
+    margin-bottom: 2vh;
+  }
+  .feat-banner img {
+    width: 80%;
+    transform: translate(0);
+  }
+  .feat-content {
+    width: 100%;
+    padding: 0;
+  }
+  .feat h2 {
+    font-size: 5.6vw;
+    line-height: 4vh;
+    padding: 0 7vw;
+    text-align: center;
+  }
+  .feat p {
+    width: 100%;
+    padding: 0 7vw;
+    font-size: 2.8vw;
+    line-height: 2.7vh;
+    text-align: center;
+  }
+}
