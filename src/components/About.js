@@ -6,7 +6,6 @@ import {
   FaLongArrowAltRight,
   FaChevronDown,
   FaCommentAlt,
-  FaEnvelope,
   FaCheck,
 } from "react-icons/fa";
 import Footer from "./Footer";
@@ -47,7 +46,7 @@ const notyf = new Notyf({
 
 const About = () => {
   document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
-  const [modalView, setModalView] = useState(false);
+  const [modalView, setModalView] = useState(true);
   const [sendButton, setSendButton] = useState(true);
   const [contactEmail, setContactEmail] = useState("");
   const [contactMessage, setContactMessage] = useState("");
@@ -77,7 +76,7 @@ const About = () => {
     if (contactEmail.trim().length === 0 || emailValid === false) {
       notyf.open({
         type: "error",
-        message: "Please enter a valid e-mail ID.",
+        message: "Please enter a valid email.",
       });
     } else if (contactMessage.trim().length === 0) {
       notyf.open({
@@ -120,48 +119,79 @@ const About = () => {
 
   return (
     <>
-      {modalView === true ? (
-        <>
-          <div className="contact-card">
-            <h1>Leave us a message!</h1>
-            <div className="input">
-              <FaEnvelope />
-              <input
-                type="text"
-                placeholder="Email Address"
-                value={contactEmail}
-                onChange={(event) => editContactEmail(event.target.value)}
-              />
-            </div>
-            <textarea
-              className="message"
-              placeholder="Type your message here!"
-              value={contactMessage}
-              onChange={(event) => editContactMessage(event.target.value)}
-            ></textarea>
-            {sendButton === true ? (
-              <Link
-                to="/about"
-                className="contact-btn"
-                onClick={() => contactFormSubmit()}
-              >
-                Send
-              </Link>
-            ) : (
-              <Link to="/about" className="contact-btn green-btn">
-                <FaCheck />
-              </Link>
-            )}
-          </div>
-          <div className="msg" onClick={() => modalStateChange(false)}>
-            <FaChevronDown />
-          </div>
-        </>
-      ) : (
-        <div className="msg" onClick={() => modalStateChange(true)}>
-          <FaCommentAlt />
+      <div
+        className="msg"
+        onClick={() =>
+          modalView === true ? modalStateChange(false) : modalStateChange(true)
+        }
+      >
+        <FaChevronDown
+          className="backIcon"
+          style={
+            modalView === true
+              ? {
+                  transform: "scale(0.5) rotate(45deg) translateX(50%)",
+                  opacity: "0",
+                }
+              : {
+                  transform: "scale(1) rotate(0deg) translateX(50%)",
+                  opacity: "1",
+                }
+          }
+        />
+        <FaCommentAlt
+          style={
+            modalView === true
+              ? {
+                  transform: "scale(1) rotate(0deg) translateX(-50%)",
+                  opacity: "1",
+                }
+              : {
+                  transform: "scale(0.5) rotate(-45deg) translateX(-50%)",
+                  opacity: "0",
+                }
+          }
+          className="commentIcon"
+        />
+      </div>
+      <div
+        style={
+          modalView === true
+            ? { transform: "scale(0.5)", opacity: "0", pointerEvents: "none" }
+            : { transform: "scale(1)", opacity: "1", pointerEvents: "all" }
+        }
+        className="contact-card"
+      >
+        <h1>Leave us a message!</h1>
+        <div className="input">
+          <img src="/assets/mail.svg" alt="alt" />
+          <input
+            type="text"
+            placeholder="Email Address"
+            value={contactEmail}
+            onChange={(event) => editContactEmail(event.target.value)}
+          />
         </div>
-      )}
+        <textarea
+          className="message"
+          placeholder="Type your message here!"
+          value={contactMessage}
+          onChange={(event) => editContactMessage(event.target.value)}
+        ></textarea>
+        {sendButton === true ? (
+          <Link
+            to="/about"
+            className="contact-btn"
+            onClick={() => contactFormSubmit()}
+          >
+            Send
+          </Link>
+        ) : (
+          <Link to="/about" className="contact-btn green-btn">
+            <FaCheck />
+          </Link>
+        )}
+      </div>
       <div className="container abt-hero">
         <img src="/assets/fulllogo.png" alt="logo" />
         <h3>The place where everything takes place</h3>
@@ -370,7 +400,7 @@ const About = () => {
           </div>
         </div>
         <h2>Got more Questions?</h2>
-        <Link className="btn" onClick={() => modalStateChange(true)}>
+        <Link className="btn" onClick={() => modalStateChange(false)}>
           Leave us a Message!&nbsp;&nbsp;
           <FaLongArrowAltRight />
         </Link>

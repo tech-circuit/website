@@ -837,6 +837,12 @@ nav {
   transform: rotate(-45deg);
 }
 
+.pfp {
+  border-radius: 50%;
+  height: 2.5vw;
+  width: 2.5vw;
+}
+
 /* MEDIA */
 @media (max-width: 1100px) {
   .container {

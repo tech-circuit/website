@@ -1,5 +1,4 @@
 import "./all.css";
-import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import Index from "./components/Index";
 import CreateProject from "./components/CreateProject";
@@ -34,9 +33,6 @@ const App = () => {
         </Route>
         <Route exact path="/events">
           <Events />
-        </Route>
-        <Route exact path="/login">
-          <Login />
         </Route>
         <Route exact path="/create">
           <CreateProject />

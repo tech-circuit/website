@@ -48,7 +48,6 @@ const Forums = () => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [title, setTitle] = React.useState("");
   const [posts, setPosts] = React.useState([]);
-  const [drafts, setDrafts] = React.useState("0");
   const [content, setContent] = React.useState("");
 
   const openModal = () => {
@@ -171,7 +170,7 @@ const Forums = () => {
 
   const reFetch = () => {
     fetch(
-      `https://techcircuit.herokuapp.com/forum/?page=1&sort=latest&access_token=${authToken}`
+      `https://techcircuit.herokuapp.com/forum?page=1&sort=latest&access_token=${authToken}`
     ).then(async (response) => {
       let resp = await response.json();
       if (resp.success === true) {
@@ -179,14 +178,13 @@ const Forums = () => {
         const updatedPosts = setThumbnail(resp.posts);
         console.log(updatedPosts);
         setPosts(updatedPosts);
-        setDrafts(resp.drafts);
       }
     });
   };
 
   React.useEffect(() => {
     fetch(
-      `https://techcircuit.herokuapp.com/forum/?page=1&sort=latest&access_token=${authToken}`
+      `https://techcircuit.herokuapp.com/forum?page=1&sort=latest&access_token=${authToken}`
     ).then(async (response) => {
       let resp = await response.json();
       if (resp.success === true) {
@@ -197,7 +195,6 @@ const Forums = () => {
           ? document.querySelector(".css-q3o1l2").remove()
           : console.log("none");
         setPosts(updatedPosts);
-        setDrafts(resp.drafts);
       }
     });
   }, []);
@@ -212,7 +209,6 @@ const Forums = () => {
               <h1>Create Post</h1>
               <p>Share what’s on your mind with the community!</p>
             </div>
-            <h2>Drafts({drafts})</h2>
           </div>
           <div className="input-fields">
             <label>Title</label>
@@ -227,9 +223,6 @@ const Forums = () => {
           <div className="buttons">
             <button className="create-post" onClick={() => createPost(false)}>
               Create Post
-            </button>
-            <button className="save-draft" onClick={() => createPost(true)}>
-              Save Draft
             </button>
           </div>
         </div>

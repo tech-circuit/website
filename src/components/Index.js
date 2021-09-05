@@ -71,7 +71,7 @@ const Index = () => {
     if (contactEmail.trim().length === 0 || emailValid === false) {
       notyf.open({
         type: "error",
-        message: "Please enter a valid e-mail ID.",
+        message: "Please enter a valid email.",
       });
     } else if (contactMessage.trim().length === 0) {
       notyf.open({
@@ -195,7 +195,7 @@ const Index = () => {
               Be it meeting talented people from the tech industry, Looking at
               amazing projects created by highschool and university students,
               connecting with new people, participating in events, or even
-              organizing your own -- techCircuit is the place to be.
+              organizing your own — techCircuit is the place to be.
             </p>
             <Link
               data-aos="fade-up"

@@ -2,7 +2,6 @@ import React from "react";
 import "../forum.css";
 import { FaCommentAlt } from "react-icons/fa";
 import { FaShareAlt } from "react-icons/fa";
-import { FaBookmark } from "react-icons/fa";
 import { FaExclamationTriangle } from "react-icons/fa";
 import { FaArrowUp } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
@@ -156,10 +155,10 @@ const Post = () => {
             <br></br>
             <div className="card-options">
               <div className="l-opts">
-                <button>
+                {/* <button>
                   <FaCommentAlt />
                   &nbsp; Reply
-                </button>
+                </button> */}
                 <button>
                   <FaShareAlt />
                   &nbsp; Share
@@ -169,14 +168,13 @@ const Post = () => {
                   &nbsp; Save
                 </button> */}
                 <button>
-                  <FaExclamationTriangle />
-                  &nbsp; Report
+                  <FaArrowUp />
+                  &nbsp; Upvote
                 </button>
               </div>
               <div className="r-opts">
                 <button>
-                  <FaArrowUp />
-                  <span>&nbsp; Report</span>
+                  <FaExclamationTriangle />
                 </button>
               </div>
             </div>
@@ -233,10 +231,6 @@ const Post = () => {
                     <button>
                       <FaShareAlt />
                       &nbsp; Share
-                    </button>
-                    <button>
-                      <FaBookmark />
-                      &nbsp; Save
                     </button>
                   </div>
                 </div>

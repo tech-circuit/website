@@ -1,15 +1,58 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { GoogleLogin } from 'react-google-login';
+const clientId = '884360040700-4093n49it73naktrttlljb9ad6ga4jjo.apps.googleusercontent.com';
 
 const Navbar = () => {
   const location = useLocation();
   const [activePage, setActivePage] = useState(location.pathname);
   const [hamActive, setHam] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [pfpUrl, setpfpUrl] = useState("")
 
   useEffect(() => {
     setActivePage(location.pathname);
+    if(localStorage.getItem("authToken") !== null) {
+      setLoggedIn(true)
+      setpfpUrl(localStorage.getItem("pfp"))
+    }
   }, [location]);
+    
+  const onSuccess = (res) => {
+    const { email, familyName, givenName, googleId, imageUrl, name } = res.profileObj
+    const authToken = res.tokenObj.access_token
+    localStorage.removeItem("authToken")
+    localStorage.removeItem("pfp")
+    localStorage.setItem("pfp", imageUrl)
+    localStorage.setItem("authToken", authToken)
+    fetch('https://techcircuit.herokuapp.com/user/gauth', {
+        method: "POST",
+        body: JSON.stringify({
+            email,
+            familyName,
+            givenName,
+            googleId,
+            imageUrl,
+            name,
+            access_token: authToken
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+    .then(response => {
+      console.log(response.status)
+      console.log(res.profileObj.email)
+      setLoggedIn(true)
+      setpfpUrl(localStorage.getItem("pfp"))
+    })
+    .catch(error => console.log(error));
+  };
+
+  const onFailure = (res) => {
+    console.log('Login failed: res:', res);
+  };
 
   return (
     <nav className="container nav">
@@ -94,12 +137,26 @@ const Navbar = () => {
         </div>
       </div>
       <div className="nav-right">
-        <Link
-          to="/login"
-          className={hamActive ? "login-btn login-btn-active" : "login-btn"}
-        >
-          Login
-        </Link>
+        {loggedIn ? 
+          <img src={pfpUrl} className="pfp" alt="pfp"></img>
+          :   
+          <GoogleLogin
+            clientId={clientId}
+            render={renderProps => (
+                  <button
+                    className={hamActive ? "login-btn login-btn-active" : "login-btn"}
+                    onClick={renderProps.onClick}
+                    disabled={renderProps.disabled}
+                  >
+                    Login
+                  </button>
+            )}
+            onSuccess={onSuccess}
+            onFailure={onFailure}
+            cookiePolicy={'single_host_origin'}
+            isSignedIn={false}
+          />
+        }
         <div
           className={hamActive ? "ham ham-active" : "ham"}
           onClick={() => setHam(!hamActive)}
