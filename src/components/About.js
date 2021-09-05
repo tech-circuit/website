@@ -166,18 +166,20 @@ const About = () => {
         <img src="/assets/fulllogo.png" alt="logo" />
         <h3>The place where everything takes place</h3>
         <p>
-          We’re a team of developers and designers but most importantly creators
-          who have all experienced our own difficulties when trying to build a
-          better understanding of the tech circuit in general. <br />
-          <br /> While we believe we live in an era full of opportunity, we feel
-          much of this passes us by. Given our abundant and constant access to
-          useful resources, we felt that we should do out part in helping fellow
-          tech enthusiasts.
+          We’re a team of <b>developers and designers</b> but most importantly
+          creators who have all experienced our own difficulties when trying to
+          build a better understanding of the tech circuit in general. While we
+          believe we live in an era full of opportunity, we feel much of this
+          passes us by. Given our abundant and constant access to useful
+          resources, we felt that we should do out part in helping fellow tech
+          enthusiasts.
           <br />
-          <br /> Since long, the tech community has lacked a centralised
-          platform, using which people can connect, share their creative work
-          and get feedback, and participate in events. techCircuit aims to solve
-          all of these problems.
+          <br />
+          Since long, the{" "}
+          <u>tech community has lacked a centralised platform</u>, using which
+          people can connect, share their creative work and get feedback, and
+          participate in events. techCircuit aims to solve all of these
+          problems.
         </p>
       </div>
 
@@ -203,12 +205,10 @@ const About = () => {
       <div className="clubs about-clubs container">
         <div className="club-left">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis at
-            amet molestie et, vulputate arcu sed mattis. Elit neque, amet, amet,
-            vulputate eget blandit. Pellentesque luctus elementum dui gravida.
-            Tortor sed pulvinar mauris nam eu. Placerat porttitor euismod eget
-            vulputate orci, convallis accumsan. Vitae, adipiscing diam justo,
-            netus.
+            techCircuit allows users to browse projects from various tech
+            fields, which have been created by highly talented individuals. Be
+            it a rebrand for a company, an illustration, or a lorem ipsum,
+            you’ll find something for everything here!
           </p>
         </div>
         <div className="club-right">

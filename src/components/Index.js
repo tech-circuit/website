@@ -189,13 +189,13 @@ const Index = () => {
             <h1 data-aos="fade-right">
               The place where
               <br />
-              everything takes place.
+              <u>everything</u>&nbsp;takes place.
             </h1>
             <p data-aos="fade-right" data-aos-delay="200">
               Be it meeting talented people from the tech industry, Looking at
-              amazing projects created by professionals, connecting with new
-              people, participating in events, or even organizing your own --
-              techCircuit is the place to be.
+              amazing projects created by highschool and university students,
+              connecting with new people, participating in events, or even
+              organizing your own -- techCircuit is the place to be.
             </p>
             <Link
               data-aos="fade-up"
