@@ -65,6 +65,9 @@ const About = () => {
 
   const contactFormSubmit = () => {
     let emailValid = true;
+    if (!contactEmail.includes("@") || !contactEmail.includes(".")) {
+      emailValid = false
+    }
     contactEmail
       .trim()
       .split("@")
