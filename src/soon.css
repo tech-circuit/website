@@ -1,0 +1,13 @@
+#soon-logo {
+  width: 60%;
+  margin-top: 10vh;
+}
+.soon p {
+  font-size: 1.8vw;
+}
+.soon {
+  height: 95vh;
+}
+.soon-right {
+  justify-content: center;
+}

@@ -13,6 +13,7 @@ import Work from "./components/Work";
 import CreatePost from "./components/CreatePost";
 import Organize from "./components/Organize";
 import Profile from "./components/Profile";
+import Soon from "./components/Soon";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -58,7 +59,15 @@ const App = () => {
         <Route exact path="/profile">
           <Profile />
         </Route>
+        <Route exact path="/soon">
+          <Soon />
+        </Route>
         <Route exact path="/forum/post/:postId" component={Post} />
+        <Route path="*">
+          <div className="container">
+            <h1 style={{ marginTop: "16vh", textAlign: "center" }}>404</h1>
+          </div>
+        </Route>
       </Switch>
     </Router>
   );
