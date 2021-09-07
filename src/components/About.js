@@ -199,7 +199,7 @@ const About = () => {
         <img src="/assets/fulllogo.png" alt="logo" />
         <h3>The place where everything takes place</h3>
         <p>
-          We’re a team of <b>developers and designers</b> but most importantly
+          We’re a team of developers and designers but most importantly
           creators who have all experienced our own difficulties when trying to
           build a better understanding of the tech circuit in general. While we
           believe we live in an era full of opportunity, we feel much of this

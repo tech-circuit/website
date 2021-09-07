@@ -61,7 +61,7 @@ const Index = () => {
   const contactFormSubmit = () => {
     let emailValid = true;
     if (!contactEmail.includes("@") || !contactEmail.includes(".")) {
-      emailValid = false
+      emailValid = false;
     }
     contactEmail
       .trim()
@@ -158,7 +158,7 @@ const Index = () => {
       >
         <h1>Leave us a message!</h1>
         <div className="input">
-          <img src="/assets/mail.svg" alt="alt" />
+          <img src="/assets/mail.svg" id="c-im" alt="alt" />
           <input
             type="text"
             placeholder="Email Address"
