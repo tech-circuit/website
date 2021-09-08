@@ -109,6 +109,49 @@ const Index = () => {
     });
     AOS.refresh();
     document.getElementsByTagName("html")[0].style.scrollBehavior = "smooth";
+
+    // Typing
+    const title = document.querySelector("#title");
+    const cursor = document.querySelector(".cursor");
+
+    const textArray = ["The Place where everything takes place."];
+    const typingDelay = 80;
+    const eraseDelay = 30;
+    const newTextDelay = 2000;
+    let textArrayIndex = 0;
+    let charIndex = 0;
+
+    let type = () => {
+      if (charIndex < textArray[textArrayIndex].length) {
+        if (!cursor.classList.contains("cursorActive"))
+          cursor.classList.add("cursorActive");
+        title.innerHTML += textArray[textArrayIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, typingDelay);
+      } else {
+        cursor.classList.remove("cursorActive");
+        setTimeout(erase, newTextDelay);
+      }
+    };
+
+    let erase = () => {
+      if (charIndex > 0) {
+        if (!cursor.classList.contains("cursorActive"))
+          cursor.classList.add("cursorActive");
+        title.innerHTML = textArray[textArrayIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, eraseDelay);
+      } else {
+        cursor.classList.remove("cursorActive");
+        textArrayIndex++;
+        if (textArrayIndex >= textArray.length) {
+          textArrayIndex = 0;
+        }
+        setTimeout(type, typingDelay + 1100);
+      }
+    };
+
+    if (textArray.length) setTimeout(type, 3400);
   }, []);
 
   return (
@@ -189,10 +232,9 @@ const Index = () => {
       <section className="hero">
         <div className="hero-left">
           <div className="container">
-            <h1 data-aos="fade-right">
-              The place where
-              <br />
-              <u>everything</u>&nbsp;takes place.
+            <h1>
+              <span id="title"></span>
+              <div id="cursor" className="cursor"></div>
             </h1>
             <p data-aos="fade-right" data-aos-delay="200">
               Be it meeting talented people from the tech industry, Looking at

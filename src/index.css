@@ -112,7 +112,36 @@
 }
 
 /* HERO ---------------------------------------------------------------------------------------------------------- */
-
+@keyframes cursor {
+  0% {
+    opacity: 1;
+  }
+  49% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 2.4rem;
+  transform: translateY(5px);
+  margin-left: 3px;
+  background-color: #29313d;
+  animation: cursor 0.3s infinite;
+  font-family: light;
+}
+.cursorActive {
+  animation: none;
+}
 .hero {
   display: flex;
   margin-top: 10vh;
@@ -151,6 +180,7 @@
   font-size: 2.7vw;
   font-weight: 400;
   margin-top: 10vh;
+  height: 9vw;
 }
 
 .hero p {
@@ -171,7 +201,7 @@
   justify-content: center;
   height: 6.4vh;
   width: 40%;
-  margin-top: 7vh;
+  margin-top: 4vh;
   margin-bottom: 10vh;
   transition: all 0.3s !important;
 }
@@ -503,8 +533,6 @@
   .club-btn {
     height: 5vh;
   }
-}
-@media (max-width: 1400px) {
   .msg {
     font-size: 2vw;
     width: 5vw;
@@ -550,7 +578,23 @@
     width: 8%;
   }
 }
+@media (max-width: 1100px) {
+  .cursor {
+    height: 4vh;
+  }
+  .hero h1 {
+    height: 10vw;
+  }
+}
 @media (max-width: 800px) {
+  .cursor {
+    height: 3vh;
+  }
+  .hero h1 {
+    width: 100%;
+    padding: 0 18vw;
+    height: 14vw;
+  }
   .hero {
     flex-direction: column-reverse;
   }
@@ -730,6 +774,14 @@
   }
 }
 @media (max-width: 630px) {
+  .cursor {
+    height: 2.6vh;
+  }
+  .hero h1 {
+    width: 100%;
+    padding: 0 6vw;
+    height: 22vw;
+  }
   .hero-left,
   .hero-right {
     width: 100%;
@@ -796,6 +848,7 @@
     width: 85vw;
     height: calc((90 / 100 * 90vw));
     top: 45%;
+    left: 9%;
     margin: 0;
   }
   .circ {
