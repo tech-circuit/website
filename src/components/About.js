@@ -167,7 +167,7 @@ const About = () => {
       >
         <h1>Leave us a message!</h1>
         <div className="input">
-          <img src="/assets/mail.svg" alt="alt" />
+          <img src="/assets/mail.svg" id="c-im" alt="alt" />
           <input
             type="text"
             placeholder="Email Address"
