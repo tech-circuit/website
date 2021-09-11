@@ -22,11 +22,10 @@ const Soon = () => {
         <div className="hero-right soon-right">
           <iframe
             src="https://discord.com/widget?id=706096517244518460&theme=light"
-            width="600"
-            height="600"
             allowtransparency="true"
             frameborder="0"
             title="discord"
+            id="disc-wid"
             sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
           ></iframe>
         </div>

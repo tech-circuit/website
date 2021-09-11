@@ -114,7 +114,14 @@ const Index = () => {
     const title = document.querySelector("#title");
     const cursor = document.querySelector(".cursor");
 
-    const textArray = ["The Place where everything takes place."];
+    const textArray = [
+      "everything",
+      "coding",
+      "designing",
+      "hacking",
+      "networking",
+      "vibing",
+    ];
     const typingDelay = 80;
     const eraseDelay = 30;
     const newTextDelay = 2000;
@@ -125,7 +132,7 @@ const Index = () => {
       if (charIndex < textArray[textArrayIndex].length) {
         if (!cursor.classList.contains("cursorActive"))
           cursor.classList.add("cursorActive");
-        title.innerHTML += textArray[textArrayIndex].charAt(charIndex);
+        title.textContent += textArray[textArrayIndex].charAt(charIndex);
         charIndex++;
         setTimeout(type, typingDelay);
       } else {
@@ -138,7 +145,10 @@ const Index = () => {
       if (charIndex > 0) {
         if (!cursor.classList.contains("cursorActive"))
           cursor.classList.add("cursorActive");
-        title.innerHTML = textArray[textArrayIndex].substring(0, charIndex - 1);
+        title.textContent = textArray[textArrayIndex].substring(
+          0,
+          charIndex - 1
+        );
         charIndex--;
         setTimeout(erase, eraseDelay);
       } else {
@@ -151,7 +161,7 @@ const Index = () => {
       }
     };
 
-    if (textArray.length) setTimeout(type, 3400);
+    if (textArray.length) setTimeout(type, 3000);
   }, []);
 
   return (
@@ -233,8 +243,11 @@ const Index = () => {
         <div className="hero-left">
           <div className="container">
             <h1>
+              The Place where
+              <br />
               <span id="title"></span>
               <div id="cursor" className="cursor"></div>
+              &nbsp;takes place.
             </h1>
             <p data-aos="fade-right" data-aos-delay="200">
               Be it meeting talented people from the tech industry, Looking at
