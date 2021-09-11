@@ -297,13 +297,9 @@ const Forums = () => {
                       &nbsp; {post.comments} comments
                     </button>
                   </a>
-                  <button>
-                    <img
-                      src="/assets/share.svg"
-                      alt="share-icon"
-                      className="inactive-share"
-                    />
-                    <span className="inactive-share-text">&nbsp; Share</span>
+                  <button className="inactive-btn">
+                    <img src="/assets/share.svg" alt="share-icon" />
+                    <span>&nbsp; Share</span>
                   </button>
                   {/* <button className="card-opt-done">
                     {post.is_saved ? (
@@ -337,16 +333,17 @@ const Forums = () => {
                       </>
                     )}
                   </button> */}
-                  <button>
+                  <button className="inactive-btn">
                     {post.is_upvoted ? (
                       <>
                         <img
+                          style={{ color: "#29313d", opacity: "1" }}
                           src="/assets/active-upvote.svg"
-                          alt="upvote-icon-active"
+                          alt="img"
                           onClick={() => postAction("unupvote", post.id)}
                         />
                         <span
-                          style={{ color: "#29313D" }}
+                          style={{ color: "#29313d", opacity: "1" }}
                           onClick={() => postAction("unupvote", post.id)}
                         >
                           &nbsp; Upvoted
@@ -358,12 +355,8 @@ const Forums = () => {
                           src="/assets/inactive-upvote.svg"
                           alt="upvote-icon-inactive"
                           onClick={() => postAction("upvote", post.id)}
-                          className="inactive-upvote"
                         />
-                        <span
-                          className="inactive-upvote-text"
-                          onClick={() => postAction("upvote", post.id)}
-                        >
+                        <span onClick={() => postAction("upvote", post.id)}>
                           &nbsp; Upvote
                         </span>
                       </>

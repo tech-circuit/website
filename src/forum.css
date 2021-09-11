@@ -573,44 +573,11 @@ i {
   box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.25);
 }
 
-.inactive-upvote {
+.inactive-btn {
   opacity: 0.6;
 }
-
-.inactive-upvote:hover {
+.inactive-btn:hover {
   opacity: 1;
-}
-
-.inactive-upvote-text:hover {
-  color: #29313d;
-}
-
-.inactive-save {
-  opacity: 0.6;
-}
-
-.inactive-save:hover {
-  opacity: 1;
-}
-
-.inactive-save-text {
-  color: #747474;
-}
-
-.inactive-save-text:hover {
-  color: #29313d;
-}
-
-.inactive-share {
-  opacity: 0.6;
-}
-
-.inactive-share:hover {
-  opacity: 1;
-}
-
-.inactive-share-text:hover {
-  color: #29313d;
 }
 
 .r-opts svg:hover {

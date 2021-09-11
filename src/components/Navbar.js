@@ -21,6 +21,16 @@ const Navbar = () => {
     }
   }, [location]);
 
+  useEffect(() => {
+    if (hamActive) {
+      for (let link of document.querySelectorAll(".nav-links-active a")) {
+        link.addEventListener("click", () => {
+          setHam(!hamActive);
+        });
+      }
+    }
+  }, [hamActive]);
+
   const onSuccess = (res) => {
     const { email, familyName, givenName, googleId, imageUrl, name } =
       res.profileObj;

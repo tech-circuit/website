@@ -1,17 +1,17 @@
 import "./all.css";
 import Navbar from "./components/Navbar";
 import Index from "./components/Index";
-import CreateProject from "./components/CreateProject";
-import Community from "./components/Community";
-import Resources from "./components/Resources";
+// import CreateProject from "./components/CreateProject";
+// import Community from "./components/Community";
+// import Resources from "./components/Resources";
 import Forums from "./components/Forum";
 import Post from "./components/Post";
-import Events from "./components/Events";
+// import Events from "./components/Events";
 import About from "./components/About";
-import Work from "./components/Work";
-import CreatePost from "./components/CreatePost";
-import Organize from "./components/Organize";
-import Profile from "./components/Profile";
+// import Work from "./components/Work";
+// import CreatePost from "./components/CreatePost";
+// import Organize from "./components/Organize";
+// import Profile from "./components/Profile";
 import Soon from "./components/Soon";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
@@ -26,36 +26,41 @@ const App = () => {
           <Index />
         </Route>
         <Route exact path="/work">
-          <Work />
+          {/* <Work /> */}
+          <Soon />
         </Route>
         <Route exact path="/about">
           <About />
         </Route>
         <Route exact path="/events">
-          <Events />
+          {/* <Events /> */}
+          <Soon />
         </Route>
         <Route exact path="/create">
-          <CreateProject />
+          {/* <CreateProject /> */}
+          <Soon />
         </Route>
         <Route exact path="/community">
-          <Community />
+          {/* <Community /> */}
+          <Soon />
         </Route>
         <Route exact path="/resources">
-          <Resources />
+          {/* <Resources /> */}
+          <Soon />
         </Route>
         <Route exact path="/forum">
           <Forums />
         </Route>
         <Route exact path="/create-post">
-          <CreatePost />
+          {/* <CreatePost /> */}
+          <Soon />
         </Route>
         <Route exact path="/organize">
-          <Organize />
+          {/* <Organize /> */}
+          <Soon />
         </Route>
         <Route exact path="/profile">
-          <Profile />
-        </Route>
-        <Route exact path="/soon">
+          {/* <Profile /> */}
           <Soon />
         </Route>
         <Route exact path="/forum/post/:postId" component={Post} />
