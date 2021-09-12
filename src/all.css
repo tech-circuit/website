@@ -847,15 +847,13 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6vw;
-  color: #29313d;
   margin-left: 1.6vw;
   background: none;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s ease-in-out;
 }
-.logout:hover {
-  color: #1c2431;
+.logout img {
+  width: 1.6vw;
 }
 
 /* MEDIA */
@@ -875,8 +873,8 @@ nav {
     height: 3.2vw;
     width: 3.2vw;
   }
-  .logout {
-    font-size: 2.4vw;
+  .logout img {
+    width: 2vw;
   }
 }
 @media (max-width: 800px) {
@@ -951,12 +949,14 @@ nav {
     box-shadow: 0 0 100px #29313d56;
   }
   .logout {
-    font-size: 4vw;
     position: fixed;
     bottom: 2%;
     right: calc(45vw / 2);
     transform: translate3d(860%, 0, 0);
     z-index: 11;
+  }
+  .logout img {
+    width: 4vw;
   }
   .logout-active {
     transform: translate3d(50%, 0, 0);
@@ -989,8 +989,10 @@ nav {
     box-shadow: 0 0 100px #29313d56;
   }
   .logout {
-    font-size: 8vw;
     right: calc(80vw / 2);
+  }
+  .logout img {
+    width: 7vw;
   }
   .logout-active {
     transform: translate3d(50%, 0, 0);

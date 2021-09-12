@@ -234,7 +234,7 @@
   margin-right: 1.6vw;
   font-size: 0.96vw;
   font-weight: 300;
-  transition: all 0.2s ease-in;
+  transition: all 0.3s ease-in;
 }
 
 .card-options .card-opt-done {
@@ -578,14 +578,6 @@ i {
 }
 .inactive-btn:hover {
   opacity: 1;
-}
-
-.r-opts svg:hover {
-  color: #29313d;
-}
-
-.report-text:hover {
-  color: #29313d;
 }
 
 .css-q3o1l2 {

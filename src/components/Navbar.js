@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
-import { FaSignOutAlt } from "react-icons/fa";
 const clientId =
   "884360040700-4093n49it73naktrttlljb9ad6ga4jjo.apps.googleusercontent.com";
 
@@ -158,7 +157,7 @@ const Navbar = () => {
               alt="pfp"
             ></img>
             <button className={hamActive ? "logout logout-active" : "logout"}>
-              <FaSignOutAlt />
+              <img src="/assets/logout.png" alt="logout" />
             </button>
           </>
         ) : (

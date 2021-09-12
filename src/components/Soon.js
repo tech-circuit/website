@@ -21,7 +21,7 @@ const Soon = () => {
         </div>
         <div className="hero-right soon-right">
           <iframe
-            src="https://discord.com/widget?id=706096517244518460&theme=light"
+            src="https://discord.com/widget?id=706096517244518460&theme=dark"
             allowtransparency="true"
             frameborder="0"
             title="discord"

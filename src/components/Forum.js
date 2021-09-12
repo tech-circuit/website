@@ -364,7 +364,7 @@ const Forums = () => {
                   </button>
                 </div>
                 <div className="r-opts">
-                  <button>
+                  <button className="inactive-btn">
                     <FaExclamationTriangle />
                     <span className="report-text">&nbsp; Report</span>
                   </button>
