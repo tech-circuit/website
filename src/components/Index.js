@@ -172,9 +172,13 @@ const Index = () => {
           .scrollTop;
 
       if (scrollTop >= 3500) {
-        document.querySelector(".msg").style.opacity = "0";
+        if (document.querySelector(".msg")) {
+          document.querySelector(".msg").style.opacity = "0";
+        }
       } else {
-        document.querySelector(".msg").style.opacity = "1";
+        if (document.querySelector(".msg")) {
+          document.querySelector(".msg").style.opacity = "1";
+        }
       }
     });
   }, []);
@@ -313,7 +317,14 @@ const Index = () => {
             </p>
             <img src="/assets/abt.svg" alt="About Banner" />
             <p className="illuBy">
-              Illustrations by <a href="/">Paridhi Bisht</a>
+              Illustrations by{" "}
+              <a
+                href="https://linktr.ee/tiyabosht"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Paridhi Bisht
+              </a>
             </p>
           </div>
         </div>

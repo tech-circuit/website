@@ -240,13 +240,8 @@
 .about {
   display: flex;
   z-index: 9;
-  padding-top: 8vh;
-  margin-bottom: 8vh;
+  margin-bottom: 10vh;
   padding: 10vh 0;
-}
-
-.abt-left,
-.abt-right {
 }
 
 .abt-left {
@@ -277,8 +272,8 @@
 
 .abt-left img {
   width: 110%;
-  height: 60vh;
-  margin-top: 9vh;
+  height: 65vh;
+  margin-top: 2vh;
   transform: translateX(-10%);
 }
 .illuBy {
@@ -538,7 +533,7 @@
 @media (max-width: 1400px) {
   .abt-left,
   .abt-right {
-    height: 100vh;
+    height: 120vh;
   }
   .hero-btn,
   .club-btn {
@@ -836,7 +831,7 @@
   }
   .abt-left,
   .abt-right {
-    height: 65vh;
+    height: auto;
     width: 100%;
   }
   .abt-right {
