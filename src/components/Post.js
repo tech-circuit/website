@@ -1,9 +1,7 @@
 import React from "react";
 import "../forum.css";
 import { FaCommentAlt } from "react-icons/fa";
-import { FaShareAlt } from "react-icons/fa";
 import { FaExclamationTriangle } from "react-icons/fa";
-import { FaArrowUp } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import TimeAgo from "react-timeago";
@@ -159,17 +157,27 @@ const Post = () => {
                   <FaCommentAlt />
                   &nbsp; Reply
                 </button> */}
-                <button>
-                  <FaShareAlt />
-                  &nbsp; Share
+                <button className="inactive-btn">
+                  <img src="/assets/share.svg" alt="share-icon" />
+                  <span>&nbsp; Share</span>
                 </button>
                 {/* <button>
                   <FaBookmark />
                   &nbsp; Save
                 </button> */}
-                <button>
-                  <FaArrowUp />
-                  &nbsp; Upvote
+                <button className="inactive-btn">
+                  <img
+                    style={{ color: "#29313d", opacity: "1" }}
+                    src="/assets/active-upvote.svg"
+                    alt="img"
+                    // onClick={() => postAction("unupvote", post.id)}
+                  />
+                  <span
+                    style={{ color: "#29313d", opacity: "1" }}
+                    // onClick={() => postAction("unupvote", post.id)}
+                  >
+                    &nbsp; Upvoted
+                  </span>
                 </button>
               </div>
               <div className="r-opts">
@@ -228,9 +236,9 @@ const Post = () => {
                 <p className="comm-body">{comment.comment}</p>
                 <div className="card-options">
                   <div className="l-opts">
-                    <button>
-                      <FaShareAlt />
-                      &nbsp; Share
+                    <button className="inactive-btn">
+                      <img src="/assets/share.svg" alt="share-icon" />
+                      <span>&nbsp; Share</span>
                     </button>
                   </div>
                 </div>

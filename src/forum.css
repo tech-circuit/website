@@ -323,7 +323,8 @@
   display: flex;
 }
 
-.comment-card img {
+.comm-icon img,
+.add-comm-top img {
   margin-right: 1vw;
   margin-top: 0.7vh;
   width: 3vw;
@@ -632,7 +633,7 @@ i {
     font-size: 1.2vw;
   }
   .l-opts img {
-    width: 16%;
+    width: 16% !important;
   }
   .r-card-top,
   .r-card-top .post-thumbnail {
@@ -646,7 +647,8 @@ i {
   .comment-card {
     padding: 4vh 4vw;
   }
-  .comment-card img {
+  .comm-icon img,
+  .add-comm-top img {
     width: 3.4vw;
     height: 3.4vw;
     margin-top: 0;
@@ -723,7 +725,7 @@ i {
     font-size: 1.5vw;
   }
   .l-opts img {
-    width: 20%;
+    width: 20% !important;
   }
   .head-1 {
     padding-top: calc(7vh + 36px);
@@ -745,7 +747,8 @@ i {
   .comment-card {
     padding: 3.4vh 5vw;
   }
-  .comment-card img {
+  .comm-icon img,
+  .add-comm-top img {
     width: 5vw;
     height: 5vw;
     margin-top: 0;
@@ -914,7 +917,7 @@ i {
     justify-content: space-between;
   }
   .l-opts img {
-    width: 16%;
+    width: 16% !important;
   }
   .head-1 {
     padding-top: 9vh;
@@ -941,7 +944,8 @@ i {
     padding: 2.6vh 6vw;
     margin-bottom: 3vh;
   }
-  .comment-card img {
+  .comm-icon img,
+  .add-comm-top img {
     width: 9vw;
     height: 9vw;
     margin-top: 0;
