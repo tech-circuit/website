@@ -115,6 +115,10 @@
   margin: 0 0.4vw;
   font-size: 1.7vw;
 }
+.footEmail {
+  margin-bottom: 2vh;
+  padding-left: 0.5vw;
+}
 
 @media (max-width: 800px) {
   .foot {
@@ -155,6 +159,11 @@
   .foot svg {
     font-size: 2.6vw;
     margin: 0 1.2vw;
+  }
+  .footEmail {
+    margin-bottom: 1vh;
+    padding-left: 1.4vw;
+    font-size: 2vw;
   }
 }
 @media (max-width: 500px) {
@@ -212,6 +221,11 @@
     margin: 0 1.4vw;
   }
   .footCopy {
+    font-size: 3vw;
+  }
+  .footEmail {
+    margin-bottom: 0.6vh;
+    padding-left: 1.4vw;
     font-size: 3vw;
   }
 }

@@ -54,7 +54,7 @@ const Footer = () => {
   const mailingListFormSubmit = () => {
     let emailValid = true;
     if (!mailingListEmail.includes("@") || !mailingListEmail.includes(".")) {
-      emailValid = false
+      emailValid = false;
     }
     mailingListEmail
       .trim()
@@ -70,26 +70,26 @@ const Footer = () => {
         message: "Please enter a valid email.",
       });
     } else {
-      fetch('https://techcircuit.herokuapp.com/ml/subscribe', {
+      fetch("https://techcircuit.herokuapp.com/ml/subscribe", {
         method: "POST",
         body: JSON.stringify({
           email: mailingListEmail,
         }),
         headers: {
-          "Content-type": "application/json; charset=UTF-8"
-        }
-    })
-    .then(response => {
-      console.log(response.success)
-      setMailingListEmail("");
-      notyf.open({
-        type: "success",
-        message: "Joined successfully!",
-      });
-    })
-    .catch(error => console.log(error));
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => {
+          console.log(response.success);
+          setMailingListEmail("");
+          notyf.open({
+            type: "success",
+            message: "Joined successfully!",
+          });
+        })
+        .catch((error) => console.log(error));
     }
-  }
+  };
 
   return (
     <footer className="foot">
@@ -98,9 +98,9 @@ const Footer = () => {
         <div className="foot-mail">
           <div className="input">
             <img src="/assets/mail.svg" alt="alt" />
-            <input 
-              type="text" 
-              placeholder="Email Address" 
+            <input
+              type="text"
+              placeholder="Email Address"
               value={mailingListEmail}
               onChange={(event) => editMailingListEmail(event.target.value)}
             />
@@ -145,25 +145,28 @@ const Footer = () => {
       </div>
       <div className="foot-bottom container">
         <p className="footCopy">&copy; 2021 techCircuit</p>
-        <div className="socials">
-          <a href="/">
-            <FaLinkedin />
-          </a>
-          <a href="/">
-            <FaGithub />
-          </a>
-          <a href="/">
-            <FaInstagram />
-          </a>
-          <a href="/">
-            <FaBehanceSquare />
-          </a>
-          <a href="/">
-            <FaFacebookSquare />
-          </a>
-          <a href="/">
-            <FaTwitterSquare />
-          </a>
+        <div>
+          <p className="footEmail">contact@techcircuit.co</p>
+          <div className="socials">
+            <a href="/">
+              <FaLinkedin />
+            </a>
+            <a href="/">
+              <FaGithub />
+            </a>
+            <a href="/">
+              <FaInstagram />
+            </a>
+            <a href="/">
+              <FaBehanceSquare />
+            </a>
+            <a href="/">
+              <FaFacebookSquare />
+            </a>
+            <a href="/">
+              <FaTwitterSquare />
+            </a>
+          </div>
         </div>
       </div>
 

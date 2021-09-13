@@ -164,8 +164,23 @@ const Index = () => {
     if (textArray.length) setTimeout(type, 3000);
   }, []);
 
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      let scrollTop =
+        window.pageYOffset ||
+        (document.documentElement || document.body.parentNode || document.body)
+          .scrollTop;
+
+      if (scrollTop >= 3500) {
+        document.querySelector(".msg").style.opacity = "0";
+      } else {
+        document.querySelector(".msg").style.opacity = "1";
+      }
+    });
+  }, []);
+
   return (
-    <main>
+    <main style={{ position: "relative" }}>
       <div
         className="msg"
         onClick={() =>
@@ -297,6 +312,9 @@ const Index = () => {
               minimalistic UI/UX makes navigating through the platform a breeze.
             </p>
             <img src="/assets/abt.svg" alt="About Banner" />
+            <p className="illuBy">
+              Illustrations by <a href="/">Paridhi Bisht</a>
+            </p>
           </div>
         </div>
         <div className="abt-right">

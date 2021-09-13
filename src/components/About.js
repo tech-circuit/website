@@ -66,7 +66,7 @@ const About = () => {
   const contactFormSubmit = () => {
     let emailValid = true;
     if (!contactEmail.includes("@") || !contactEmail.includes(".")) {
-      emailValid = false
+      emailValid = false;
     }
     contactEmail
       .trim()
@@ -199,13 +199,12 @@ const About = () => {
         <img src="/assets/fulllogo.png" alt="logo" />
         <h3>The place where everything takes place</h3>
         <p>
-          We’re a team of developers and designers but most importantly
-          creators who have all experienced our own difficulties when trying to
-          build a better understanding of the tech circuit in general. While we
-          believe we live in an era full of opportunity, we feel much of this
-          passes us by. Given our abundant and constant access to useful
-          resources, we felt that we should do out part in helping fellow tech
-          enthusiasts.
+          We’re a team of developers and designers but most importantly creators
+          who have all experienced our own difficulties when trying to build a
+          better understanding of the tech circuit in general. While we believe
+          we live in an era full of opportunity, we feel much of this passes us
+          by. Given our abundant and constant access to useful resources, we
+          felt that we should do out part in helping fellow tech enthusiasts.
           <br />
           <br />
           Since long, the{" "}
@@ -430,7 +429,7 @@ const About = () => {
         </div>
         <div className="members">
           <div className="member">
-            <img src="/assets/sample-banner.jpg" alt="Samvrant Samantaray" />
+            <img src="/assets/samvr.jpeg" alt="Samvrant Samantaray" />
             <h3>Samvrant Samantaray</h3>
             <h4>Design Head</h4>
           </div>

@@ -16,6 +16,7 @@
   box-shadow: 0 0 30px #29313d3d;
   cursor: pointer;
   z-index: 999999;
+  transition: all 0.2s;
   filter: drop-shadow(0px 0px 25px rgba(0, 0, 0, 0.33));
 }
 
@@ -279,6 +280,13 @@
   height: 60vh;
   margin-top: 9vh;
   transform: translateX(-10%);
+}
+.illuBy {
+  text-align: center;
+}
+.illuBy a {
+  color: #4678f9;
+  text-decoration: underline;
 }
 
 /* Features ------------------------------------------------------------------------------------------------ */
@@ -599,7 +607,7 @@
     height: 14vw;
   }
   .hero {
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
   .hero-left,
   .hero-right {
@@ -655,6 +663,7 @@
   .abt-left img {
     margin-top: 4vh;
     width: 90%;
+    height: auto;
   }
   .circ-hold {
     width: 180%;
@@ -967,5 +976,9 @@
     font-size: 3vw;
     padding: 1vh 0;
     margin-top: 0.5vw;
+  }
+
+  .illuBy {
+    transform: translateY(-150%);
   }
 }
