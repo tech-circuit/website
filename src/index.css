@@ -429,6 +429,7 @@
   width: 35%;
   position: relative;
   overflow: hidden;
+  height: 120vh;
 }
 
 .circ-hold {
