@@ -1,1018 +1,1082 @@
 /* header ---------------------------------------------------------------- */
 
 .forumTitle {
-  margin: 0;
-  font-weight: 600;
-  font-size: 2vw;
+    margin: 0;
+    font-weight: 600;
+    font-size: 2vw;
 }
 
 .search-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 5.2vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5.2vh;
 }
 .search-box-left {
-  width: 54%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    width: 54%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .forumHeader.head-2 {
-  padding-top: 2vh !important;
-  padding-bottom: 2vh !important;
+    padding-top: 2vh !important;
+    padding-bottom: 2vh !important;
 }
 
 .search-box-left > * {
-  height: 100%;
+    height: 100%;
 }
 
 .forumHeader .add {
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  font-size: 1vw;
-  padding: 0 1.6vw;
-  font-weight: 300;
-  border-radius: 5px;
-  background: linear-gradient(
-      91.38deg,
-      rgba(255, 255, 255, 0.18) 16.97%,
-      rgba(255, 255, 255, 0) 100%
-    ),
-    #4678f9;
-  transition: all 0.3s;
-  cursor: pointer;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 1vw;
+    padding: 0 1.6vw;
+    font-weight: 300;
+    border-radius: 5px;
+    background: linear-gradient(
+            91.38deg,
+            rgba(255, 255, 255, 0.18) 16.97%,
+            rgba(255, 255, 255, 0) 100%
+        ),
+        #4678f9;
+    transition: all 0.3s;
+    cursor: pointer;
 }
 
 .forumHeader .add:hover {
-  background: #2f5dd1;
+    background: #2f5dd1;
 }
 
 .add img {
-  margin-right: 0.8vw;
+    margin-right: 0.8vw;
 }
 
 .input {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  font-size: 1vw;
-  background: #fff;
-  padding: 0 1.2vw;
-  padding-left: 1vw;
-  border-radius: 6px;
-  width: 30vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1vw;
+    background: #fff;
+    padding: 0 1.2vw;
+    padding-left: 1vw;
+    border-radius: 6px;
+    width: 30vw;
 }
 
 .input svg {
-  color: #747474;
-  font-size: 1.6vw;
-  font-weight: 100;
+    color: #747474;
+    font-size: 1.6vw;
+    font-weight: 100;
 }
 
 .input input {
-  height: 100%;
-  width: 100%;
-  font-size: 1vw;
-  font-weight: 300;
-  padding: 0 0.6vw;
-  background: transparent;
-  border: none;
+    height: 100%;
+    width: 100%;
+    font-size: 1vw;
+    font-weight: 300;
+    padding: 0 0.6vw;
+    background: transparent;
+    border: none;
 }
 
 .sortBtn {
-  background: transparent;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
-  padding: 0 1.6vw;
-  font-size: 1vw;
-  cursor: pointer;
-  font-weight: 300;
-  color: white;
-  position: relative;
-  overflow: visible;
+    background: transparent;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    padding: 0 1.6vw;
+    font-size: 1vw;
+    cursor: pointer;
+    font-weight: 300;
+    color: white;
+    position: relative;
+    overflow: visible;
 }
 
-.sortOpts {
-  position: absolute;
-  top: 100%;
-  width: 100%;
-  left: 0;
+.sort-modal {
+    position: absolute;
+    top: 90%;
+    left: 42%;
+    box-shadow: 0 0 100px #29313d2f;
+    width: 32vw;
+    height: 40vh;
+    background: #fff;
+    border-radius: 7px;
+    border: 1px solid #7474742f;
+    padding: 3vh 2vw;
+    pointer-events: none;
+    transform: translate(10vw, 0);
+    opacity: 0;
+    transition: all 0.3s;
 }
-
-.sortOpt {
-  font-size: 1vw;
-  padding: 1.4vh 0;
-  cursor: pointer;
-  background: #fff;
+.sort-modal-active {
+    pointer-events: all;
+    transform: translate(0);
+    opacity: 1;
 }
-
-/* .sort-box {
-  display: flex;
-  align-items: center;
+.sort-modal h1 {
+    color: #747474;
+    font-weight: 400;
+    font-size: 1.2vw;
+    display: flex;
+    align-items: center;
+    margin-bottom: 3vh;
 }
-.sort-box > * {
-  font-weight: 300;
-  font-size: 1vw;
+.sort-modal h1 button {
+    color: #747474;
+    font-size: 0.8vw;
+    margin-left: 5vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
-.sort-opts {
-  display: flex;
-  margin-left: 3vw;
+.sort-modal .categs {
+    display: flex;
+    flex-wrap: wrap;
+    height: 22vh;
+    overflow-y: scroll;
+    margin-bottom: 1vh;
 }
-.sort-opt {
-  font-weight: 300;
-  cursor: pointer;
-  font-size: 1vw;
-  padding: 0.5vh 2.7vw;
-  border: 1px #85d49c solid;
-  margin-right: 1vw;
-  border-radius: 50px;
-  color: #85d49c;
-  transition: all 0.2s;
+.sort-modal .categ {
+    width: 33.3333%;
+    font-size: 1vw;
+    color: #29313d;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 1.4vh;
 }
-.sort-opt-active {
-  color: #29313d;
-  background: #85d49c;
+.sort-modal .categ-active {
+    color: #4678f9;
 }
-.sort-opt:hover {
-  color: #29313d;
-  background: #85d49c;
-} */
+.forum-sort-control {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 10%;
+    margin-top: 3vh;
+}
+#apply {
+    color: #4678f9;
+    font-size: 1vw;
+    margin-right: 2vw;
+}
+#close-sort {
+    font-size: 1vw;
+    color: #747474;
+}
 
 /* Cards ---------------------------------------------------------------- */
 
 .forumCards {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 5vh;
 }
 
 .forumCard {
-  width: 80%;
-  padding: 3vh 4vw;
-  padding-bottom: 3.5vh;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
-  margin-top: 3vh;
-  text-decoration: none;
-  transition: all 0.2s;
+    width: 80%;
+    padding: 3vh 4vw;
+    padding-bottom: 3.5vh;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    margin-top: 3vh;
+    text-decoration: none;
+    transition: all 0.2s;
 }
 
 .forumCard:hover {
-  box-shadow: 0px 18px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 18px 30px rgba(0, 0, 0, 0.15);
 }
 
 .forumCard h2 {
-  font-weight: 500;
-  opacity: 0.9;
-  font-size: 1.03vw;
-  width: 85%;
-  line-height: 3vh;
-  color: #000;
+    font-weight: 500;
+    opacity: 0.9;
+    font-size: 1.03vw;
+    width: 85%;
+    line-height: 3vh;
+    color: #000;
 }
 
 .forumCard h3 {
-  font-weight: 400;
-  width: 85%;
-  font-size: 0.9vw;
-  margin-top: 1.6vh;
-  margin-bottom: 4vh;
-  color: #777;
+    font-weight: 400;
+    width: 85%;
+    font-size: 0.9vw;
+    margin-top: 1.6vh;
+    margin-bottom: 4vh;
+    color: #777;
 }
 
 .forumCard h3 a {
-  color: #4678f9;
-  text-decoration: none;
+    color: #4678f9;
+    text-decoration: none;
 }
 
 .forumCard a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .card-top {
-  display: flex;
-  justify-content: space-between;
-  height: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .l-card-top {
-  width: 85%;
+    width: 85%;
 }
 
 .r-card-top {
-  width: 5vw;
-  margin-right: 1.5vw;
+    width: 5vw;
+    margin-right: 1.5vw;
 }
 
 .r-card-top .post-thumbnail {
-  width: 5vw;
-  height: 5vw;
+    width: 5vw;
+    height: 5vw;
 }
 
 .card-options {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .l-opts {
-  display: flex;
+    display: flex;
 }
 
 .card-options button {
-  display: flex;
-  cursor: pointer;
-  justify-content: center;
-  align-items: center;
-  background: transparent;
-  border: none;
-  color: #747474;
-  margin-right: 1.6vw;
-  font-size: 0.96vw;
-  font-weight: 300;
-  transition: all 0.3s ease-in;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: none;
+    color: #747474;
+    margin-right: 1.6vw;
+    font-size: 0.96vw;
+    font-weight: 300;
+    transition: all 0.3s ease-in;
+}
+
+.share-btn {
+    position: relative;
+}
+.share-opts {
+    position: absolute;
+    top: 140%;
+    left: 50%;
+    display: flex;
+    background-color: #fff;
+    border-radius: 7px;
+    border: 1px solid #7474742f;
+    padding: 1.6vh 1.6vw;
+    pointer-events: none;
+    transform: translate(2vw, 0);
+    opacity: 0;
+    transition: all 0.3s;
+}
+.share-opts-active {
+    pointer-events: all;
+    transform: translate(0);
+    opacity: 1;
+}
+.share-opts a {
+    font-size: 1.6vw;
+    margin: 0 0.6vw;
+    display: flex;
+    align-items: center;
+    opacity: 0.6;
+    transition: all 0.3s;
+}
+.share-opts a:hover {
+    opacity: 1;
+    color: #4678f9;
 }
 
 .card-options .card-opt-done {
-  color: #29313d;
+    color: #29313d;
 }
 
 .back {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #747474;
-  text-decoration: none;
-  font-size: 1vw;
-  transition: all 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #747474;
+    text-decoration: none;
+    font-size: 1vw;
+    transition: all 0.3s;
 }
 
 .back:hover {
-  color: #000;
+    color: #000;
 }
 
 .fullForumCards {
-  padding-top: 12vh;
-  padding-bottom: 1vh;
+    padding-top: 12vh;
+    padding-bottom: 1vh;
 }
 
 .fullForumCard {
-  width: 100%;
-  margin-top: 2vh;
+    width: 100%;
+    margin-top: 2vh;
 }
 
 .fullForumCard:hover {
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
 }
 
 .fullForumCard h2 {
-  width: 90%;
-  font-size: 26px;
-  line-height: 4vh;
-  margin-bottom: 1vh;
+    width: 90%;
+    font-size: 26px;
+    line-height: 4vh;
+    margin-bottom: 1vh;
 }
 
 .fullForumCard h3 {
-  margin: 0;
-  margin-bottom: 2vh;
+    margin: 0;
+    margin-bottom: 2vh;
 }
 
 .fullForumCard p {
-  margin-bottom: 5vh;
+    margin-bottom: 5vh;
 }
 
 .comment-card {
-  width: 100%;
-  padding: 7vh 4vw;
-  padding-bottom: 2vh;
-  margin-bottom: 6vh;
+    width: 100%;
+    padding: 7vh 4vw;
+    padding-bottom: 2vh;
+    margin-bottom: 6vh;
 }
 
 .comment-card:hover {
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
 }
 
 .comment-card h2 {
-  display: flex;
-  align-items: center;
-  font-weight: 400;
-  font-size: 1.1vw;
-  margin-bottom: 4vh;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 1.1vw;
+    margin-bottom: 4vh;
 }
 
 .comment-card h2 svg {
-  color: #555;
+    color: #555;
 }
 
 /* Add Comment ------------------------------------------------------------------- */
 
 .add-comment {
-  margin-bottom: 5vh;
+    margin-bottom: 5vh;
 }
 
 .add-comment form {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .add-comm-top {
-  display: flex;
+    display: flex;
 }
 
 .comm-icon img,
 .add-comm-top img {
-  margin-right: 1vw;
-  margin-top: 0.7vh;
-  width: 3vw;
-  height: 3vw;
-  border-radius: 50%;
+    margin-right: 1vw;
+    margin-top: 0.7vh;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
 }
 
 .add-comm-top textarea {
-  width: 100%;
-  min-height: 10vh;
-  resize: vertical;
-  padding: 2vh 1vw;
-  border: 1px solid #c4c4c4;
-  border-radius: 5px;
-  font-size: 0.9vw;
+    width: 100%;
+    min-height: 10vh;
+    resize: vertical;
+    padding: 2vh 1vw;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    font-size: 0.9vw;
 }
 
 .comment-btns {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 3vh;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 3vh;
 }
 
 .comment-btns .btn {
-  padding: 1vh 2vw;
-  font-size: 0.7vw;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  margin-left: 1vw;
-  border-radius: 5px;
-  transition: all 0.3s;
+    padding: 1vh 2vw;
+    font-size: 0.7vw;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 1vw;
+    border-radius: 5px;
+    transition: all 0.3s;
 }
 
 .comment-btns .com-cancel {
-  border: 1px solid #29313d;
-  color: #29313d;
+    border: 1px solid #29313d;
+    color: #29313d;
 }
 
 .comment-btns .com-create {
-  background: #4678f9;
-  color: #fff;
+    background: #4678f9;
+    color: #fff;
 }
 
 .comment-btns .com-cancel:hover {
-  background: #29313d;
-  color: #fff;
+    background: #29313d;
+    color: #fff;
 }
 
 .comment-btns .com-create:hover {
-  background: #2e57be;
+    background: #2e57be;
 }
 
 /* Comment --------------------------------------------------------------------------- */
 
 .comment {
-  display: flex;
-  margin-bottom: 5vh;
+    display: flex;
+    margin-bottom: 5vh;
 }
 
 .comm-icon {
-  height: 100%;
+    height: 100%;
 }
 
 .comm-content {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .comment .details {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1vh;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1vh;
 }
 
 .comment .details a,
 .comment .details p {
-  text-decoration: none;
-  font-size: 0.9vw;
+    text-decoration: none;
+    font-size: 0.9vw;
 }
 
 .comment .details a {
-  color: #4678f9;
+    color: #4678f9;
 }
 
 .comment .details p {
-  margin-left: 1vw;
-  color: #747474;
+    margin-left: 1vw;
+    color: #747474;
 }
 
 .comm-body {
-  text-align: justify;
-  margin-bottom: 1.4vh;
+    text-align: justify;
+    margin-bottom: 1.4vh;
 }
 
 /* Modal --------------------------------------------------------------------------- */
 
 .ReactModal__Html--open,
 .ReactModal__Body--open {
-  overflow: hidden;
-  /* prevents background page from scrolling when the modal is open */
+    overflow: hidden;
+    /* prevents background page from scrolling when the modal is open */
 }
 
 .ReactModal__Overlay {
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .ReactModal__Content {
-  background: white;
-  width: 70vw;
-  border-radius: 16.9046px;
-  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
-  position: relative;
-  padding: 5vh 4vw;
+    background: white;
+    width: 70vw;
+    border-radius: 16.9046px;
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
+    position: relative;
+    padding: 5vh 4vw;
 }
 
 .modal-content {
-  height: 100%;
-  width: 100%;
-  overflow-y: auto;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
 }
 
 .modal-content .header {
-  align-items: center;
-  display: flex;
-  width: 100%;
+    align-items: center;
+    display: flex;
+    width: 100%;
 }
 
 .modal-content .left {
-  margin-left: 0vw;
-  height: auto;
-  width: 70%;
+    margin-left: 0vw;
+    height: auto;
+    width: 70%;
 }
 
 .left h1 {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 2vw;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2vw;
 }
 
 .left p {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 1vw;
-  color: #9c9c9c;
-  margin-top: 0vw;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1vw;
+    color: #9c9c9c;
+    margin-top: 0vw;
 }
 .modal-content .header h2 {
-  font-size: 1.2vw;
-  font-weight: 400;
-  text-decoration: underline;
-  color: #4678f9;
-  margin-top: 1.6vh;
-  width: 30%;
-  text-align: right;
+    font-size: 1.2vw;
+    font-weight: 400;
+    text-decoration: underline;
+    color: #4678f9;
+    margin-top: 1.6vh;
+    width: 30%;
+    text-align: right;
 }
 
 .input-fields {
-  margin-top: 1.8vw;
-  display: flex;
-  flex-direction: column;
+    margin-top: 1.8vw;
+    display: flex;
+    flex-direction: column;
 }
 
 .input-fields label {
-  font-size: 1vw;
-  padding-left: 0.8vw;
+    font-size: 1vw;
+    padding-left: 0.8vw;
 }
 
 .input-fields input {
-  border: none;
-  width: 100%;
-  border: 1px solid #c4c4c4;
-  box-sizing: border-box;
-  border-radius: 5px;
-  padding: 1vh 1vw;
-  font-size: 1vw;
-  margin-top: 0.2vh;
+    border: none;
+    width: 100%;
+    border: 1px solid #c4c4c4;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 1vh 1vw;
+    font-size: 1vw;
+    margin-top: 0.2vh;
 }
 
 .textbox-wrapper {
-  width: 100%;
-  margin-top: 2.4vh;
-  z-index: 999999;
+    width: 100%;
+    margin-top: 2.4vh;
+    z-index: 999999;
 }
 
 .buttons {
-  align-items: center;
-  display: flex;
-  margin-top: 2.4vh;
-  margin-bottom: 3vh;
+    align-items: center;
+    display: flex;
+    margin-top: 2.4vh;
+    margin-bottom: 3vh;
 }
 
 .create-post {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.9vw;
-  padding: 1vh 1.6vw;
-  font-weight: 300;
-  border-radius: 5px;
-  background: #4678f9;
-  border: 1px solid #4678f9;
-  transition: all 0.3s;
-  cursor: pointer;
-  color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9vw;
+    padding: 1vh 1.6vw;
+    font-weight: 300;
+    border-radius: 5px;
+    background: #4678f9;
+    border: 1px solid #4678f9;
+    transition: all 0.3s;
+    cursor: pointer;
+    color: white;
 }
 
 .save-draft {
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.9vw;
-  padding: 1vh 1.6vw;
-  font-weight: 300;
-  border-radius: 5px;
-  background: transparent;
-  transition: all 0.3s;
-  cursor: pointer;
-  border: 1px solid #29313d;
-  box-sizing: border-box;
-  border-radius: 4.28558px;
-  margin-left: 1vw;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9vw;
+    padding: 1vh 1.6vw;
+    font-weight: 300;
+    border-radius: 5px;
+    background: transparent;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: 1px solid #29313d;
+    box-sizing: border-box;
+    border-radius: 4.28558px;
+    margin-left: 1vw;
 }
 
 i {
-  margin-top: 0.4vw;
+    margin-top: 0.4vw;
 }
 
 .post-content p {
-  margin-bottom: 0vh;
+    margin-bottom: 0vh;
 }
 
 .post-content img {
-  max-width: 18vw;
-  height: auto;
-  border-radius: 5px;
-  box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.25);
+    max-width: 18vw;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.25);
 }
 
-.inactive-btn {
-  opacity: 0.6;
+.inactive-btn img,
+.inactive-btn span {
+    opacity: 0.6;
 }
-.inactive-btn:hover {
-  opacity: 1;
+.inactive-btn:hover img,
+.inactive-btn:hover span {
+    opacity: 1;
 }
 
 .css-q3o1l2 {
-  position: fixed;
-  top: 60%;
-  left: 40%;
-  width: 80px !important;
-  height: 80px !important;
+    position: fixed;
+    top: 60%;
+    left: 40%;
+    width: 80px !important;
+    height: 80px !important;
 }
 /* MEDIA */
 @media (max-width: 1050px) {
-  .head-1 .forumTitle {
-    font-size: 3vw;
-  }
-  .head-1 p {
-    font-size: 1.6vw;
-  }
-  .search-box .input input,
-  .search-box .sortBtn,
-  .search-box h3 {
-    font-size: 1.2vw !important;
-  }
-  .search-box-left {
-    width: 56%;
-  }
-  .search-box .input img {
-    width: 6%;
-  }
-  .add img {
-    width: 10%;
-  }
-  .search-box .input {
-    padding: 0 1.6vw;
-    width: 35vw;
-  }
-  .search-box .input input {
-    padding: 0 1vw;
-  }
-  .forumCard {
-    width: 90%;
-    margin-top: 3vh;
-  }
-  .forumCard h2 {
-    font-size: 1.6vw;
-  }
-  .forumCard h3 {
-    font-size: 1.2vw;
-    margin-bottom: 5vh;
-  }
-  .l-opts button,
-  .r-opts button {
-    font-size: 1.2vw;
-  }
-  .l-opts img {
-    width: 16% !important;
-  }
-  .r-card-top,
-  .r-card-top .post-thumbnail {
-    width: 7vw;
-    height: 7vw;
-  }
+    .head-1 .forumTitle {
+        font-size: 3vw;
+    }
+    .head-1 p {
+        font-size: 1.6vw;
+    }
+    .search-box .input input,
+    .search-box .sortBtn,
+    .search-box h3 {
+        font-size: 1.2vw !important;
+    }
+    .search-box-left {
+        width: 56%;
+    }
+    .search-box .input img {
+        width: 6%;
+    }
+    .add img {
+        width: 10%;
+    }
+    .search-box .input {
+        padding: 0 1.6vw;
+        width: 35vw;
+    }
+    .search-box .input input {
+        padding: 0 1vw;
+    }
+    .forumCard {
+        width: 90%;
+        margin-top: 3vh;
+    }
+    .forumCard h2 {
+        font-size: 1.6vw;
+    }
+    .forumCard h3 {
+        font-size: 1.2vw;
+        margin-bottom: 5vh;
+    }
+    .l-opts button,
+    .r-opts button {
+        font-size: 1.2vw;
+    }
+    .l-opts img {
+        width: 16% !important;
+    }
+    .r-card-top,
+    .r-card-top .post-thumbnail {
+        width: 7vw;
+        height: 7vw;
+    }
 
-  .back {
-    font-size: 1.6vw;
-  }
-  .comment-card {
-    padding: 4vh 4vw;
-  }
-  .comm-icon img,
-  .add-comm-top img {
-    width: 3.4vw;
-    height: 3.4vw;
-    margin-top: 0;
-  }
-  .comment .details {
-    margin-bottom: 0;
-  }
-  .comm-body {
-    font-size: 1.2vw;
-  }
-  .add-comm-top textarea {
-    font-size: 1.2vw;
-    padding: 1.6vh 1.4vw;
-  }
-  .comment-btns .btn {
-    font-size: 1vw;
-  }
+    .back {
+        font-size: 1.6vw;
+    }
+    .comment-card {
+        padding: 4vh 4vw;
+    }
+    .comm-icon img,
+    .add-comm-top img {
+        width: 3.4vw;
+        height: 3.4vw;
+        margin-top: 0;
+    }
+    .comment .details {
+        margin-bottom: 0;
+    }
+    .comm-body {
+        font-size: 1.2vw;
+    }
+    .add-comm-top textarea {
+        font-size: 1.2vw;
+        padding: 1.6vh 1.4vw;
+    }
+    .comment-btns .btn {
+        font-size: 1vw;
+    }
 
-  .ReactModal__Content {
-    padding: 3vh 3vw;
-    width: 68vw;
-  }
-  .tox .tox-sidebar-wrap {
-    height: 10vh;
-  }
+    .ReactModal__Content {
+        padding: 3vh 3vw;
+        width: 68vw;
+    }
+    .tox .tox-sidebar-wrap {
+        height: 10vh;
+    }
 }
 
 @media (max-width: 800px) {
-  .search-box {
-    height: 3.6vh;
-  }
-  .head-1 .forumTitle {
-    font-size: 4vw;
-  }
-  .head-1 p {
-    font-size: 2vw;
-    width: 100%;
-  }
-  .search-box .input input,
-  .search-box .sortBtn,
-  .search-box h3 {
-    font-size: 1.6vw !important;
-  }
-  .search-box-left {
-    width: 68%;
-  }
-  .search-box .input img {
-    width: 5.5%;
-  }
-  .add img {
-    width: 12%;
-  }
-  .search-box .input {
-    padding: 0 1.6vw;
-    width: 42vw;
-  }
-  .search-box .input input {
-    padding: 0 1vw;
-  }
-  .forumCard {
-    width: 90%;
-    margin-top: 2vh;
-  }
-  .forumCard h2 {
-    font-size: 2.4vw;
-  }
-  .forumCard h3 {
-    font-size: 1.8vw;
-    margin-bottom: 3.6vh;
-    margin-top: 0.8vh;
-  }
-  .l-opts button,
-  .r-opts button {
-    font-size: 1.5vw;
-  }
-  .l-opts img {
-    width: 20% !important;
-  }
-  .head-1 {
-    padding-top: calc(7vh + 36px);
-  }
-  .head-2 {
-    top: 7vh;
-  }
-  .forumHeader.head-2 {
-    padding-top: 1.4vh !important;
-    padding-bottom: 1.4vh !important;
-  }
+    .search-box {
+        height: 3.6vh;
+    }
+    .head-1 .forumTitle {
+        font-size: 4vw;
+    }
+    .head-1 p {
+        font-size: 2vw;
+        width: 100%;
+    }
+    .search-box .input input,
+    .search-box .sortBtn,
+    .search-box h3 {
+        font-size: 1.6vw !important;
+    }
+    .search-box-left {
+        width: 68%;
+    }
+    .search-box .input img {
+        width: 5.5%;
+    }
+    .add img {
+        width: 12%;
+    }
+    .search-box .input {
+        padding: 0 1.6vw;
+        width: 42vw;
+    }
+    .search-box .input input {
+        padding: 0 1vw;
+    }
+    .forumCard {
+        width: 90%;
+        margin-top: 2vh;
+    }
+    .forumCard h2 {
+        font-size: 2.4vw;
+    }
+    .forumCard h3 {
+        font-size: 1.8vw;
+        margin-bottom: 3.6vh;
+        margin-top: 0.8vh;
+    }
+    .l-opts button,
+    .r-opts button {
+        font-size: 1.5vw;
+    }
+    .l-opts img {
+        width: 20% !important;
+    }
+    .head-1 {
+        padding-top: calc(7vh + 36px);
+    }
+    .head-2 {
+        top: 7vh;
+    }
+    .forumHeader.head-2 {
+        padding-top: 1.4vh !important;
+        padding-bottom: 1.4vh !important;
+    }
 
-  .back {
-    font-size: 2.6vw;
-  }
-  .fullForumCards {
-    padding-top: 10vh;
-  }
-  .comment-card {
-    padding: 3.4vh 5vw;
-  }
-  .comm-icon img,
-  .add-comm-top img {
-    width: 5vw;
-    height: 5vw;
-    margin-top: 0;
-    margin-right: 2vw;
-  }
-  .comment .details {
-    margin-bottom: 0;
-  }
-  .comment .details > * {
-    font-size: 1.4vw !important;
-  }
-  .comm-body {
-    font-size: 1.8vw;
-  }
-  .add-comm-top textarea {
-    font-size: 1.6vw;
-    padding: 1.8vh 3vw;
-  }
-  .comment-btns .btn {
-    font-size: 1.4vw;
-    padding: 1.2vh 2.6vw;
-  }
+    .back {
+        font-size: 2.6vw;
+    }
+    .fullForumCards {
+        padding-top: 10vh;
+    }
+    .comment-card {
+        padding: 3.4vh 5vw;
+    }
+    .comm-icon img,
+    .add-comm-top img {
+        width: 5vw;
+        height: 5vw;
+        margin-top: 0;
+        margin-right: 2vw;
+    }
+    .comment .details {
+        margin-bottom: 0;
+    }
+    .comment .details > * {
+        font-size: 1.4vw !important;
+    }
+    .comm-body {
+        font-size: 1.8vw;
+    }
+    .add-comm-top textarea {
+        font-size: 1.6vw;
+        padding: 1.8vh 3vw;
+    }
+    .comment-btns .btn {
+        font-size: 1.4vw;
+        padding: 1.2vh 2.6vw;
+    }
 
-  .ReactModal__Content {
-    padding: 4vh 5vw;
-    width: 85vw;
-  }
-  .left h1 {
-    font-size: 4vw;
-  }
-  .left p {
-    font-size: 1.8vw;
-  }
-  .modal-content .header h2 {
-    font-size: 2vw;
-  }
-  .input-fields {
-    margin-top: 2vh;
-  }
-  .input-fields label {
-    font-size: 2vw;
-    padding-left: 1.2vw;
-  }
-  .input-fields input {
-    padding: 0.8vh 2vw;
-    font-size: 2vw;
-    margin-top: 0.2vh;
-  }
-  .textbox-wrapper {
-    margin-top: 2vh;
-  }
-  .buttons {
-    margin-top: 4vh;
-    margin-bottom: 1vh;
-  }
-  .create-post {
-    font-size: 1.8vw;
-    padding: 1vh 4vw;
-  }
-  .save-draft {
-    font-size: 1.8vw;
-    padding: 1vh 4vw;
-    margin-left: 3vw;
-  }
+    .ReactModal__Content {
+        padding: 4vh 5vw;
+        width: 85vw;
+    }
+    .left h1 {
+        font-size: 4vw;
+    }
+    .left p {
+        font-size: 1.8vw;
+    }
+    .modal-content .header h2 {
+        font-size: 2vw;
+    }
+    .input-fields {
+        margin-top: 2vh;
+    }
+    .input-fields label {
+        font-size: 2vw;
+        padding-left: 1.2vw;
+    }
+    .input-fields input {
+        padding: 0.8vh 2vw;
+        font-size: 2vw;
+        margin-top: 0.2vh;
+    }
+    .textbox-wrapper {
+        margin-top: 2vh;
+    }
+    .buttons {
+        margin-top: 4vh;
+        margin-bottom: 1vh;
+    }
+    .create-post {
+        font-size: 1.8vw;
+        padding: 1vh 4vw;
+    }
+    .save-draft {
+        font-size: 1.8vw;
+        padding: 1vh 4vw;
+        margin-left: 3vw;
+    }
 }
 
 @media (max-width: 500px) {
-  .search-box {
-    height: 9vh;
-  }
-  .head-1 .forumTitle {
-    font-size: 5vw;
-    width: 90%;
-  }
-  .head-1 p {
-    font-size: 3vw;
-    width: 90%;
-  }
-  .search-box .input {
-    width: 100%;
-    padding: 0 3vw;
-  }
-  .search-box .input input {
-    font-size: 2.6vw !important;
-  }
-  .search-box .input,
-  .search-box .sortBtn,
-  .search-box .add {
-    font-size: 2.6vw !important;
-    border-radius: 3px;
-    height: 42%;
-  }
-  .sortBtn {
-    width: 45%;
-    padding: 0;
-  }
-  .search-box {
-    width: 100%;
-    position: relative;
-  }
-  .search-box .add {
-    position: absolute;
-    top: 0;
-    width: 50%;
-    left: 50%;
-  }
-  .search-box .add img {
-    margin-right: 2vw;
-  }
-  .search-box-left {
-    width: 100%;
-    flex-direction: column-reverse;
-    align-items: flex-start;
-  }
-  .search-box .input img {
-    width: 5%;
-  }
-  .add img {
-    width: 12%;
-  }
-  .search-box .input input {
-    padding: 0 3vw;
-  }
-  .forumCard {
-    width: 100%;
-    margin-top: 2vh;
-    padding: 2.6vh 6vw;
-    position: relative;
-    border-radius: 6px;
-  }
-  .l-card-top {
-    width: 100%;
-  }
-  .r-card-top {
-    display: none;
-  }
-  .forumCard h2 {
-    font-size: 4vw;
-    width: 100%;
-  }
-  .forumCard h3 {
-    font-size: 3vw;
-    margin-bottom: 3vh;
-    margin-top: 0.6vh;
-  }
-  .card-top {
-    width: 90%;
-  }
-  .l-opts button,
-  .r-opts button {
-    font-size: 2.6vw;
-  }
-  .r-opts {
-    position: absolute;
-    top: 11%;
-    right: 4%;
-  }
-  .r-opts button {
-    font-size: 1.8vh;
-  }
-  .r-opts span {
-    display: none;
-  }
-  .l-opts {
-    width: 100%;
-    justify-content: space-between;
-  }
-  .l-opts img {
-    width: 16% !important;
-  }
-  .head-1 {
-    padding-top: 9vh;
-  }
-  .head-2 {
-    top: 7vh;
-    padding-right: 10vw;
-  }
-  .forumHeader.head-2 {
-    padding-top: 1.4vh !important;
-    padding-bottom: 1.4vh !important;
-  }
+    .search-box {
+        height: 9vh;
+    }
+    .head-1 .forumTitle {
+        font-size: 5vw;
+        width: 90%;
+    }
+    .head-1 p {
+        font-size: 3vw;
+        width: 90%;
+    }
+    .search-box .input {
+        width: 100%;
+        padding: 0 3vw;
+    }
+    .search-box .input input {
+        font-size: 2.6vw !important;
+    }
+    .search-box .input,
+    .search-box .sortBtn,
+    .search-box .add {
+        font-size: 2.6vw !important;
+        border-radius: 3px;
+        height: 42%;
+    }
+    .sortBtn {
+        width: 45%;
+        padding: 0;
+    }
+    .search-box {
+        width: 100%;
+        position: relative;
+    }
+    .search-box .add {
+        position: absolute;
+        top: 0;
+        width: 50%;
+        left: 50%;
+    }
+    .search-box .add img {
+        margin-right: 2vw;
+    }
+    .search-box-left {
+        width: 100%;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+    .search-box .input img {
+        width: 5%;
+    }
+    .add img {
+        width: 12%;
+    }
+    .search-box .input input {
+        padding: 0 3vw;
+    }
+    .forumCard {
+        width: 100%;
+        margin-top: 2vh;
+        padding: 2.6vh 6vw;
+        position: relative;
+        border-radius: 6px;
+    }
+    .l-card-top {
+        width: 100%;
+    }
+    .r-card-top {
+        display: none;
+    }
+    .forumCard h2 {
+        font-size: 4vw;
+        width: 100%;
+    }
+    .forumCard h3 {
+        font-size: 3vw;
+        margin-bottom: 3vh;
+        margin-top: 0.6vh;
+    }
+    .card-top {
+        width: 90%;
+    }
+    .l-opts button,
+    .r-opts button {
+        font-size: 2.6vw;
+    }
+    .r-opts {
+        position: absolute;
+        top: 11%;
+        right: 4%;
+    }
+    .r-opts button {
+        font-size: 1.8vh;
+    }
+    .r-opts span {
+        display: none;
+    }
+    .l-opts {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .l-opts img {
+        width: 16% !important;
+    }
+    .head-1 {
+        padding-top: 9vh;
+    }
+    .head-2 {
+        top: 7vh;
+        padding-right: 10vw;
+    }
+    .forumHeader.head-2 {
+        padding-top: 1.4vh !important;
+        padding-bottom: 1.4vh !important;
+    }
 
-  .back {
-    font-size: 4vw;
-  }
-  .post-content img {
-    max-width: 24vw;
-  }
-  .fullForumCard .l-opts button {
-    font-size: 3vw;
-  }
-  .comment-card {
-    padding: 2.6vh 6vw;
-    margin-bottom: 3vh;
-  }
-  .comm-icon img,
-  .add-comm-top img {
-    width: 9vw;
-    height: 9vw;
-    margin-top: 0;
-    margin-right: 3vw;
-  }
-  .comment .details {
-    margin-bottom: 0.4vh;
-  }
-  .comment .details > * {
-    font-size: 2.6vw !important;
-  }
-  .comm-body {
-    font-size: 3.4vw;
-  }
-  .add-comm-top textarea {
-    font-size: 3vw;
-    padding: 1.4vh 3.4vw;
-  }
-  .comment-btns .btn {
-    font-size: 3vw;
-    padding: 1vh 5vw;
-  }
-  .comment-btns {
-    margin-top: 1.6vh;
-  }
+    .back {
+        font-size: 4vw;
+    }
+    .post-content img {
+        max-width: 24vw;
+    }
+    .fullForumCard .l-opts button {
+        font-size: 3vw;
+    }
+    .comment-card {
+        padding: 2.6vh 6vw;
+        margin-bottom: 3vh;
+    }
+    .comm-icon img,
+    .add-comm-top img {
+        width: 9vw;
+        height: 9vw;
+        margin-top: 0;
+        margin-right: 3vw;
+    }
+    .comment .details {
+        margin-bottom: 0.4vh;
+    }
+    .comment .details > * {
+        font-size: 2.6vw !important;
+    }
+    .comm-body {
+        font-size: 3.4vw;
+    }
+    .add-comm-top textarea {
+        font-size: 3vw;
+        padding: 1.4vh 3.4vw;
+    }
+    .comment-btns .btn {
+        font-size: 3vw;
+        padding: 1vh 5vw;
+    }
+    .comment-btns {
+        margin-top: 1.6vh;
+    }
 
-  .ReactModal__Content {
-    padding: 3vh 6vw;
-    width: 85vw;
-  }
-  .left h1 {
-    font-size: 6vw;
-  }
-  .left p {
-    font-size: 3vw;
-  }
-  .modal-content .header .left {
-    width: 80%;
-  }
-  .modal-content .header h2 {
-    font-size: 3vw;
-    margin: 0;
-    transform: translateY(-100%);
-  }
-  .input-fields {
-    margin-top: 2vh;
-  }
-  .input-fields label {
-    font-size: 3vw;
-    padding-left: 2vw;
-  }
-  .input-fields input {
-    padding: 0.8vh 2.6vw;
-    font-size: 3vw;
-  }
-  .textbox-wrapper {
-    margin-top: 1vh;
-  }
-  .buttons {
-    margin-top: 3vh;
-  }
-  .create-post,
-  .save-draft {
-    font-size: 3vw;
-    padding: 0.8vh 5.4vw;
-  }
-  .save-draft {
-    margin-left: 4vw;
-  }
+    .ReactModal__Content {
+        padding: 3vh 6vw;
+        width: 85vw;
+    }
+    .left h1 {
+        font-size: 6vw;
+    }
+    .left p {
+        font-size: 3vw;
+    }
+    .modal-content .header .left {
+        width: 80%;
+    }
+    .modal-content .header h2 {
+        font-size: 3vw;
+        margin: 0;
+        transform: translateY(-100%);
+    }
+    .input-fields {
+        margin-top: 2vh;
+    }
+    .input-fields label {
+        font-size: 3vw;
+        padding-left: 2vw;
+    }
+    .input-fields input {
+        padding: 0.8vh 2.6vw;
+        font-size: 3vw;
+    }
+    .textbox-wrapper {
+        margin-top: 1vh;
+    }
+    .buttons {
+        margin-top: 3vh;
+    }
+    .create-post,
+    .save-draft {
+        font-size: 3vw;
+        padding: 0.8vh 5.4vw;
+    }
+    .save-draft {
+        margin-left: 4vw;
+    }
 }

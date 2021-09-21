@@ -1,6 +1,11 @@
 import React from "react";
 import "../forum.css";
-import { FaExclamationTriangle } from "react-icons/fa";
+import {
+    FaExclamationTriangle,
+    FaTwitterSquare,
+    FaFacebookSquare,
+    FaLink,
+} from "react-icons/fa";
 import Modal from "react-modal";
 import ReactModal from "react-modal";
 import TextBox from "./TextBox";
@@ -12,296 +17,466 @@ import { ClipLoader } from "react-spinners";
 ReactModal.defaultStyles = {};
 const authToken = localStorage.getItem("authToken");
 const notyf = new Notyf({
-  duration: 2500,
-  position: {
-    x: "left",
-    y: "bottom",
-  },
-  types: [
-    {
-      type: "error",
-      background: "#FF6B6B",
-      dismissible: true,
-      icon: {
-        className: "material-icons",
-        tagName: "i",
-        text: "cancel",
-        color: "#ffffff",
-      },
+    duration: 2500,
+    position: {
+        x: "left",
+        y: "bottom",
     },
-    {
-      type: "success",
-      background: "#85D49C",
-      dismissible: true,
-      icon: {
-        className: "material-icons",
-        tagName: "i",
-        text: "check_circle",
-        color: "#ffffff",
-      },
-    },
-  ],
+    types: [
+        {
+            type: "error",
+            background: "#FF6B6B",
+            dismissible: true,
+            icon: {
+                className: "material-icons",
+                tagName: "i",
+                text: "cancel",
+                color: "#ffffff",
+            },
+        },
+        {
+            type: "success",
+            background: "#85D49C",
+            dismissible: true,
+            icon: {
+                className: "material-icons",
+                tagName: "i",
+                text: "check_circle",
+                color: "#ffffff",
+            },
+        },
+    ],
 });
 
 const Forums = () => {
-  document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-  const [title, setTitle] = React.useState("");
-  const [posts, setPosts] = React.useState([]);
-  const [content, setContent] = React.useState("");
+    document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
+    const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [title, setTitle] = React.useState("");
+    const [posts, setPosts] = React.useState([]);
+    const [content, setContent] = React.useState("");
 
-  const openModal = () => {
-    document.getElementsByClassName("head-2")[0].style.zIndex = 0;
-    document.getElementsByTagName("nav")[0].style.zIndex = 0;
-    setIsOpen(true);
-  };
+    const openModal = () => {
+        document.getElementsByClassName("head-2")[0].style.zIndex = 0;
+        document.getElementsByTagName("nav")[0].style.zIndex = 0;
+        setIsOpen(true);
+    };
 
-  const closeModal = () => {
-    notyf.dismissAll();
-    setIsOpen(false);
-    document.getElementsByClassName("head-2")[0].style.zIndex = 999;
-    document.getElementsByTagName("nav")[0].style.zIndex = 9999;
-  };
+    const closeModal = () => {
+        notyf.dismissAll();
+        setIsOpen(false);
+        document.getElementsByClassName("head-2")[0].style.zIndex = 999;
+        document.getElementsByTagName("nav")[0].style.zIndex = 9999;
+    };
 
-  const createPost = (isDraft) => {
-    if (title.trim().length !== 0) {
-      if (content.trim().length !== 0) {
-        console.log("Title:", title);
-        console.log("Content", content);
-        const authToken = localStorage.getItem("authToken");
-        console.log(authToken);
-        let successMessage = "Posted successfully!";
-        let errorMessage = "Could not post";
-        if (isDraft) {
-          successMessage = "Draft saved";
-          errorMessage = "Could not save draft";
-        }
-        fetch(
-          `https://techcircuit.herokuapp.com/forum/new?access_token=${authToken}`,
-          {
-            // Adding method type
-            method: "POST",
+    const createPost = (isDraft) => {
+        if (title.trim().length !== 0) {
+            if (content.trim().length !== 0) {
+                console.log("Title:", title);
+                console.log("Content", content);
+                const authToken = localStorage.getItem("authToken");
+                console.log(authToken);
+                let successMessage = "Posted successfully!";
+                let errorMessage = "Could not post";
+                if (isDraft) {
+                    successMessage = "Draft saved";
+                    errorMessage = "Could not save draft";
+                }
+                fetch(
+                    `https://techcircuit.herokuapp.com/forum/new?access_token=${authToken}`,
+                    {
+                        // Adding method type
+                        method: "POST",
 
-            // Adding body or contents to send
-            body: JSON.stringify({
-              title,
-              content,
-              is_draft: isDraft,
-            }),
+                        // Adding body or contents to send
+                        body: JSON.stringify({
+                            title,
+                            content,
+                            is_draft: isDraft,
+                        }),
 
-            // Adding headers to the request
-            headers: {
-              "Content-type": "application/json; charset=UTF-8",
-            },
-          }
-        )
-          .then(async (response) => {
-            closeModal();
-            if (response.status === 200) {
-              const resp = await response.json();
-              console.log(resp.success);
-              if (resp.success) {
-                notyf.open({
-                  type: "success",
-                  message: successMessage,
-                });
-                reFetch();
-              } else {
-                notyf.open({
-                  type: "error",
-                  message: errorMessage,
-                });
-              }
-            } else {
-              console.log(response.status);
-              console.log(response);
-              notyf.open({
-                type: "error",
-                message: errorMessage,
-              });
+                        // Adding headers to the request
+                        headers: {
+                            "Content-type": "application/json; charset=UTF-8",
+                        },
+                    }
+                )
+                    .then(async (response) => {
+                        closeModal();
+                        if (response.status === 200) {
+                            const resp = await response.json();
+                            console.log(resp.success);
+                            if (resp.success) {
+                                notyf.open({
+                                    type: "success",
+                                    message: successMessage,
+                                });
+                                reFetch();
+                            } else {
+                                notyf.open({
+                                    type: "error",
+                                    message: errorMessage,
+                                });
+                            }
+                        } else {
+                            console.log(response.status);
+                            console.log(response);
+                            notyf.open({
+                                type: "error",
+                                message: errorMessage,
+                            });
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        closeModal();
+                        notyf.open({
+                            type: "error",
+                            message: errorMessage,
+                        });
+                    });
             }
-          })
-          .catch((error) => {
-            console.log(error);
-            closeModal();
-            notyf.open({
-              type: "error",
-              message: errorMessage,
-            });
-          });
-      }
-    }
-  };
+        }
+    };
 
-  const setThumbnail = (posts) => {
-    posts.forEach((p) => {
-      const content = p.content;
-      try {
-        const imgURL = content.split('src="')[1].split('"')[0];
-        p.thumbnail = imgURL;
-      } catch (error) {
-        p.thumbnail = undefined;
-      }
-    });
-    return posts;
-  };
-
-  const getContent = (content) => {
-    console.log(content);
-    setContent(content);
-  };
-
-  const postAction = (action, postID) => {
-    fetch(
-      `https://techcircuit.herokuapp.com/forum/${action}/${postID}?access_token=${authToken}`,
-      { method: "POST" }
-    ).then(async (response) => {
-      let resp = await response.json();
-      if (resp.success === true) {
-        reFetch();
-      } else {
-        notyf.open({
-          type: "error",
-          message: `Could not ${action} post`,
+    const setThumbnail = (posts) => {
+        posts.forEach((p) => {
+            const content = p.content;
+            try {
+                const imgURL = content.split('src="')[1].split('"')[0];
+                p.thumbnail = imgURL;
+            } catch (error) {
+                p.thumbnail = undefined;
+            }
         });
-      }
-    });
-  };
+        return posts;
+    };
 
-  const reFetch = () => {
-    fetch(
-      `https://techcircuit.herokuapp.com/forum?page=1&sort=latest&access_token=${authToken}`
-    ).then(async (response) => {
-      let resp = await response.json();
-      if (resp.success === true) {
-        console.log(resp.authenticated);
-        const updatedPosts = setThumbnail(resp.posts);
-        console.log(updatedPosts);
-        setPosts(updatedPosts);
-      }
-    });
-  };
+    const getContent = (content) => {
+        console.log(content);
+        setContent(content);
+    };
 
-  React.useEffect(() => {
-    fetch(
-      `https://techcircuit.herokuapp.com/forum?page=1&sort=latest&access_token=${authToken}`
-    ).then(async (response) => {
-      let resp = await response.json();
-      if (resp.success === true) {
-        console.log(resp.authenticated);
-        const updatedPosts = setThumbnail(resp.posts);
-        console.log(updatedPosts);
-        document.querySelector(".css-q3o1l2")
-          ? document.querySelector(".css-q3o1l2").remove()
-          : console.log("none");
-        setPosts(updatedPosts);
-      }
-    });
-  }, []);
+    const postAction = (action, postID) => {
+        fetch(
+            `https://techcircuit.herokuapp.com/forum/${action}/${postID}?access_token=${authToken}`,
+            { method: "POST" }
+        ).then(async (response) => {
+            let resp = await response.json();
+            if (resp.success === true) {
+                reFetch();
+            } else {
+                notyf.open({
+                    type: "error",
+                    message: `Could not ${action} post`,
+                });
+            }
+        });
+    };
 
-  return (
-    <React.Fragment>
-      {/* modal */}
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-        <div className="modal-content">
-          <div className="header">
-            <div className="left">
-              <h1>Create Post</h1>
-              <p>Share what’s on your mind with the community!</p>
-            </div>
-          </div>
-          <div className="input-fields">
-            <label>Title</label>
-            <input
-              className="title"
-              type="text"
-              placeholder="Enter title"
-              onChange={(event) => setTitle(event.target.value)}
-            ></input>
-            <TextBox handleContentChange={getContent} />
-          </div>
-          <div className="buttons">
-            <button className="create-post" onClick={() => createPost(false)}>
-              Create Post
-            </button>
-          </div>
-        </div>
-      </Modal>
-      <header className="forumHeader head-1">
-        <div className="container">
-          <h1 className="forumTitle">
-            <strong>techCircuit</strong> discussion forum
-          </h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum
-            dolor sit amet consectetur adipisicing elit.
-          </p>
-        </div>
-      </header>
-      <header className="forumHeader head-2">
-        <div className="container">
-          <div className="search-box">
-            <div className="search-box-left">
-              <div className="input">
-                <img src="/assets/magnifying-glass.svg" alt="alt" />
-                <input
-                  type="text"
-                  placeholder="Search communities, posts, interests..."
-                />
-              </div>
-              <button className="sortBtn">
-                Sort by: <span id="sortVal">Latest</span>
-                {/* <div className="sortOpts">
-                <button className="sortOpt">Recommended</button>
-              </div> */}
-              </button>
-            </div>
-            <h3 className="add" onClick={openModal}>
-              <img src="/assets/post-add.svg" alt="post-add-icon" />
-              Create new post
-            </h3>
-          </div>
-        </div>
-      </header>
+    const reFetch = () => {
+        fetch(
+            `https://techcircuit.herokuapp.com/forum?page=1&sort=latest&access_token=${authToken}`
+        ).then(async (response) => {
+            let resp = await response.json();
+            if (resp.success === true) {
+                console.log(resp.authenticated);
+                const updatedPosts = setThumbnail(resp.posts);
+                console.log(updatedPosts);
+                setPosts(updatedPosts);
+            }
+        });
+    };
 
-      <div className="container">
-        <div className="forumCards">
-          <ClipLoader />
-          {posts.map((post, index) => (
-            <div className="forumCard">
-              <a href={`forum/post/${post.id}`} className="card-top">
-                <div className="l-card-top">
-                  <h2>{post.title}</h2>
-                  <h3>
-                    posted <TimeAgo date={post.date} /> by{" "}
-                    <a href="/">{post.author}</a>
-                  </h3>
+    React.useEffect(() => {
+        fetch(
+            `https://techcircuit.herokuapp.com/forum?page=1&sort=latest&access_token=${authToken}`
+        ).then(async (response) => {
+            let resp = await response.json();
+            if (resp.success === true) {
+                console.log(resp.authenticated);
+                const updatedPosts = setThumbnail(resp.posts);
+                console.log(updatedPosts);
+                document.querySelector(".css-q3o1l2")
+                    ? document.querySelector(".css-q3o1l2").remove()
+                    : console.log("none");
+                setPosts(updatedPosts);
+            }
+        });
+
+        document.querySelector(".sortBtn").addEventListener("click", (eve) => {
+            eve.target.nextElementSibling.classList.toggle("sort-modal-active");
+        });
+    }, []);
+
+    return (
+        <React.Fragment>
+            {/* modal */}
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+                <div className="modal-content">
+                    <div className="header">
+                        <div className="left">
+                            <h1>Create Post</h1>
+                            <p>Share what’s on your mind with the community!</p>
+                        </div>
+                    </div>
+                    <div className="input-fields">
+                        <label>Title</label>
+                        <input
+                            className="title"
+                            type="text"
+                            placeholder="Enter title"
+                            onChange={(event) => setTitle(event.target.value)}
+                        ></input>
+                        <TextBox handleContentChange={getContent} />
+                    </div>
+                    <div className="buttons">
+                        <button
+                            className="create-post"
+                            onClick={() => createPost(false)}
+                        >
+                            Create Post
+                        </button>
+                    </div>
                 </div>
-                <div className="r-card-top">
-                  {post.thumbnail === undefined ? (
-                    <></>
-                  ) : (
-                    <img
-                      src={post.thumbnail}
-                      alt="post-thumbnail"
-                      className="post-thumbnail"
-                    />
-                  )}
+            </Modal>
+            <header className="forumHeader head-1">
+                <div className="container">
+                    <h1 className="forumTitle">
+                        <strong>techCircuit</strong> discussion forum
+                    </h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
                 </div>
-              </a>
-              <div className="card-options">
-                <div className="l-opts">
-                  <a href={`forum/post/${post.id}/#comments`}>
-                    <button>
-                      <img src="/assets/comments.svg" alt="comments-icon" />
-                      &nbsp; {post.comments} comments
-                    </button>
-                  </a>
-                  <button className="inactive-btn">
-                    <img src="/assets/share.svg" alt="share-icon" />
-                    <span>&nbsp; Share</span>
-                  </button>
-                  {/* <button className="card-opt-done">
+            </header>
+            <header className="forumHeader head-2">
+                <div className="container">
+                    <div className="search-box">
+                        <div className="search-box-left">
+                            <div className="input">
+                                <img
+                                    src="/assets/magnifying-glass.svg"
+                                    alt="alt"
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="Search communities, posts, interests..."
+                                />
+                            </div>
+                            <button className="sortBtn">
+                                Sort by: <span id="sortVal">Latest</span>
+                            </button>
+                            <div className="sort-modal">
+                                <h1>
+                                    Forum Categories
+                                    <button id="forum-sort-clear">
+                                        Clear All
+                                    </button>
+                                </h1>
+                                <div className="categs">
+                                    <button className="categ categ-active">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ categ-active">
+                                        Hackathons
+                                    </button>
+
+                                    <button className="categ categ-active">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ categ-active">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                    <button className="categ">
+                                        Hackathons
+                                    </button>
+                                </div>
+                                <div className="forum-sort-control">
+                                    <button id="apply">APPLY</button>
+                                    <button id="close-sort">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 className="add" onClick={openModal}>
+                            <img
+                                src="/assets/post-add.svg"
+                                alt="post-add-icon"
+                            />
+                            Create new post
+                        </h3>
+                    </div>
+                </div>
+            </header>
+
+            <div className="container">
+                <div className="forumCards">
+                    <ClipLoader />
+                    {posts.map((post, index) => (
+                        <div className="forumCard">
+                            <a
+                                href={`forum/post/${post.id}`}
+                                className="card-top"
+                            >
+                                <div className="l-card-top">
+                                    <h2>{post.title}</h2>
+                                    <h3>
+                                        posted <TimeAgo date={post.date} /> by{" "}
+                                        <a href="/">{post.author}</a>
+                                    </h3>
+                                </div>
+                                <div className="r-card-top">
+                                    {post.thumbnail === undefined ? (
+                                        <></>
+                                    ) : (
+                                        <img
+                                            src={post.thumbnail}
+                                            alt="post-thumbnail"
+                                            className="post-thumbnail"
+                                        />
+                                    )}
+                                </div>
+                            </a>
+                            <div className="card-options">
+                                <div className="l-opts">
+                                    <a href={`forum/post/${post.id}/#comments`}>
+                                        <button>
+                                            <img
+                                                src="/assets/comments.svg"
+                                                alt="comments-icon"
+                                            />
+                                            &nbsp; {post.comments} comments
+                                        </button>
+                                    </a>
+                                    <button className="inactive-btn share-btn">
+                                        <img
+                                            src="/assets/share.svg"
+                                            alt="share-icon"
+                                        />
+                                        <span
+                                            onClick={(e) =>
+                                                e.target.nextElementSibling.classList.toggle(
+                                                    "share-opts-active"
+                                                )
+                                            }
+                                        >
+                                            &nbsp; Share
+                                        </span>
+                                        <div className="share-opts">
+                                            <a href="/">
+                                                <FaTwitterSquare />
+                                            </a>
+                                            <a href="/">
+                                                <FaFacebookSquare />
+                                            </a>
+                                            <a href="/">
+                                                <FaLink />
+                                            </a>
+                                        </div>
+                                    </button>
+                                    {/* <button className="card-opt-done">
                     {post.is_saved ? (
                       <>
                         <img
@@ -333,49 +508,79 @@ const Forums = () => {
                       </>
                     )}
                   </button> */}
-                  <button className="inactive-btn">
-                    {post.is_upvoted ? (
-                      <>
-                        <img
-                          style={{ color: "#29313d", opacity: "1" }}
-                          src="/assets/active-upvote.svg"
-                          alt="img"
-                          onClick={() => postAction("unupvote", post.id)}
-                        />
-                        <span
-                          style={{ color: "#29313d", opacity: "1" }}
-                          onClick={() => postAction("unupvote", post.id)}
-                        >
-                          &nbsp; Upvoted
-                        </span>
-                      </>
-                    ) : (
-                      <>
-                        <img
-                          src="/assets/inactive-upvote.svg"
-                          alt="upvote-icon-inactive"
-                          onClick={() => postAction("upvote", post.id)}
-                        />
-                        <span onClick={() => postAction("upvote", post.id)}>
-                          &nbsp; Upvote
-                        </span>
-                      </>
-                    )}
-                  </button>
+                                    <button className="inactive-btn">
+                                        {post.is_upvoted ? (
+                                            <>
+                                                <img
+                                                    style={{
+                                                        color: "#29313d",
+                                                        opacity: "1",
+                                                    }}
+                                                    src="/assets/active-upvote.svg"
+                                                    alt="img"
+                                                    onClick={() =>
+                                                        postAction(
+                                                            "unupvote",
+                                                            post.id
+                                                        )
+                                                    }
+                                                />
+                                                <span
+                                                    style={{
+                                                        color: "#29313d",
+                                                        opacity: "1",
+                                                    }}
+                                                    onClick={() =>
+                                                        postAction(
+                                                            "unupvote",
+                                                            post.id
+                                                        )
+                                                    }
+                                                >
+                                                    &nbsp; Upvoted
+                                                </span>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <img
+                                                    src="/assets/inactive-upvote.svg"
+                                                    alt="upvote-icon-inactive"
+                                                    onClick={() =>
+                                                        postAction(
+                                                            "upvote",
+                                                            post.id
+                                                        )
+                                                    }
+                                                />
+                                                <span
+                                                    onClick={() =>
+                                                        postAction(
+                                                            "upvote",
+                                                            post.id
+                                                        )
+                                                    }
+                                                >
+                                                    &nbsp; Upvote
+                                                </span>
+                                            </>
+                                        )}
+                                    </button>
+                                </div>
+                                <div className="r-opts">
+                                    <button className="inactive-btn">
+                                        <FaExclamationTriangle />
+                                        <span className="report-text">
+                                            &nbsp; Report
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
                 </div>
-                <div className="r-opts">
-                  <button className="inactive-btn">
-                    <FaExclamationTriangle />
-                    <span className="report-text">&nbsp; Report</span>
-                  </button>
-                </div>
-              </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </React.Fragment>
-  );
+        </React.Fragment>
+    );
 };
 
 export default Forums;
