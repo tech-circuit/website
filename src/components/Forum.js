@@ -5,7 +5,10 @@ import {
     FaTwitterSquare,
     FaFacebookSquare,
     FaLink,
+    FaChevronRight,
+    FaChevronLeft,
 } from "react-icons/fa";
+import { FacebookShareButton, TwitterShareButton } from "react-share";
 import Modal from "react-modal";
 import ReactModal from "react-modal";
 import TextBox from "./TextBox";
@@ -465,15 +468,47 @@ const Forums = () => {
                                             &nbsp; Share
                                         </span>
                                         <div className="share-opts">
-                                            <a href="/">
-                                                <FaTwitterSquare />
+                                            <a className="share-opt" href="/">
+                                                <TwitterShareButton
+                                                    children={
+                                                        <FaTwitterSquare />
+                                                    }
+                                                    url={`${
+                                                        window.location
+                                                            .protocol +
+                                                        "//" +
+                                                        window.location.host
+                                                    }/forum/post/${post.id}`}
+                                                />
                                             </a>
-                                            <a href="/">
-                                                <FaFacebookSquare />
+                                            <a className="share-opt" href="/">
+                                                <FacebookShareButton
+                                                    children={
+                                                        <FaFacebookSquare />
+                                                    }
+                                                    url={`${
+                                                        window.location
+                                                            .protocol +
+                                                        "//" +
+                                                        window.location.host
+                                                    }/forum/post/${post.id}`}
+                                                />
                                             </a>
-                                            <a href="/">
+                                            <button
+                                                className="share-opt"
+                                                onClick={(e) =>
+                                                    copyToClipboard(e)
+                                                }
+                                            >
+                                                <div
+                                                    style={{ display: "none" }}
+                                                >{`${
+                                                    window.location.protocol +
+                                                    "//" +
+                                                    window.location.host
+                                                }/forum/post/${post.id}`}</div>
                                                 <FaLink />
-                                            </a>
+                                            </button>
                                         </div>
                                     </button>
                                     {/* <button className="card-opt-done">
@@ -578,9 +613,28 @@ const Forums = () => {
                         </div>
                     ))}
                 </div>
+                <div className="pages">
+                    <FaChevronLeft id="page-prev" />
+                    <button className="page page-active">1</button>
+                    <button className="page">2</button>
+                    <button className="page">3</button>
+                    <button className="page">4</button>
+                    <button className="page">5</button>
+                    <button className="page">6</button>
+                    <FaChevronRight id="page-next" />
+                </div>
             </div>
         </React.Fragment>
     );
+
+    function copyToClipboard(eve) {
+        const range = document.createRange();
+        window.getSelection().removeAllRanges();
+        range.selectNode(eve.target.parentElement.children[0]);
+        window.getSelection().addRange(range);
+        document.execCommand("copy");
+        window.getSelection().removeAllRanges();
+    }
 };
 
 export default Forums;
