@@ -271,136 +271,9 @@ const Forums = () => {
                                 Sort by: <span id="sortVal">Latest</span>
                             </button>
                             <div className="sort-modal">
-                                <h1>
-                                    Forum Categories
-                                    <button id="forum-sort-clear">
-                                        Clear All
-                                    </button>
-                                </h1>
-                                <div className="categs">
-                                    <button className="categ categ-active">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ categ-active">
-                                        Hackathons
-                                    </button>
-
-                                    <button className="categ categ-active">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ categ-active">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                    <button className="categ">
-                                        Hackathons
-                                    </button>
-                                </div>
-                                <div className="forum-sort-control">
-                                    <button id="apply">APPLY</button>
-                                    <button id="close-sort">Close</button>
-                                </div>
+                                <button>Latest</button>
+                                <button>Latest</button>
+                                <button>Latest</button>
                             </div>
                         </div>
                         <h3 className="add" onClick={openModal}>
@@ -624,6 +497,66 @@ const Forums = () => {
                     <FaChevronRight id="page-next" />
                 </div>
             </div>
+
+            {/* FILTER UI -------------------------------------------------------------------------------------------------------------------------- */}
+            {/* <div className="filter-modal">
+                <h1>
+                    Forum Categories
+                    <button id="forum-filter-clear">Clear All</button>
+                </h1>
+                <div className="categs">
+                    <button className="categ categ-active">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+
+                    <button className="categ">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+                    <button className="categ categ-active">Hackathons</button>
+
+                    <button className="categ categ-active">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+
+                    <button className="categ">Hackathons</button>
+                    <button className="categ categ-active">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+
+                    <button className="categ">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+
+                    <button className="categ">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+
+                    <button className="categ">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+
+                    <button className="categ">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+
+                    <button className="categ">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+
+                    <button className="categ">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+
+                    <button className="categ">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+                    <button className="categ">Hackathons</button>
+                </div>
+                <div className="forum-filter-control">
+                    <button id="apply">APPLY</button>
+                    <button id="close-filter">Close</button>
+                </div>
+            </div> */}
         </React.Fragment>
     );
 

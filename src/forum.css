@@ -93,11 +93,49 @@
     cursor: pointer;
     font-weight: 300;
     color: white;
-    position: relative;
     overflow: visible;
 }
 
+/* SORT */
 .sort-modal {
+    position: absolute;
+    top: 90%;
+    left: 43%;
+    box-shadow: 0 0 100px #29313d2f;
+    background: #fff;
+    border-radius: 7px;
+    border: 1px solid #7474742f;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 18vh;
+    padding: 0 2vw;
+    /* null */
+    pointer-events: none;
+    transform: translate(10vw, 0);
+    opacity: 0;
+    transition: all 0.3s;
+}
+.sort-modal-active {
+    pointer-events: all;
+    transform: translate(0);
+    opacity: 1;
+}
+.sort-modal button {
+    color: #747474;
+    font-size: 1vw;
+    display: flex;
+    align-items: center;
+    margin: 1.2vh 0;
+    margin-right: 3vw;
+    transition: all 0.3s;
+}
+.sort-modal button:hover {
+    color: #29313d;
+}
+
+/* FILTER */
+.filter-modal {
     position: absolute;
     top: 90%;
     left: 42%;
@@ -113,12 +151,12 @@
     opacity: 0;
     transition: all 0.3s;
 }
-.sort-modal-active {
+.filter-modal-active {
     pointer-events: all;
     transform: translate(0);
     opacity: 1;
 }
-.sort-modal h1 {
+.filter-modal h1 {
     color: #747474;
     font-weight: 400;
     font-size: 1.2vw;
@@ -126,7 +164,7 @@
     align-items: center;
     margin-bottom: 3vh;
 }
-.sort-modal h1 button {
+.filter-modal h1 button {
     color: #747474;
     font-size: 0.8vw;
     margin-left: 5vw;
@@ -134,14 +172,14 @@
     display: flex;
     align-items: center;
 }
-.sort-modal .categs {
+.filter-modal .categs {
     display: flex;
     flex-wrap: wrap;
     height: 22vh;
     overflow-y: scroll;
     margin-bottom: 1vh;
 }
-.sort-modal .categ {
+.filter-modal .categ {
     width: 33.3333%;
     font-size: 1vw;
     color: #29313d;
@@ -150,10 +188,10 @@
     justify-content: flex-start;
     margin-bottom: 1.4vh;
 }
-.sort-modal .categ-active {
+.filter-modal .categ-active {
     color: #4678f9;
 }
-.forum-sort-control {
+.forum-filter-control {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -165,7 +203,7 @@
     font-size: 1vw;
     margin-right: 2vw;
 }
-#close-sort {
+#close-filter {
     font-size: 1vw;
     color: #747474;
 }
