@@ -287,7 +287,7 @@ const Forums = () => {
                 </div>
             </header>
 
-            <div className="container">
+            <div className="container forumCardHold">
                 <div className="forumCards">
                     <ClipLoader />
                     {posts.map((post, index) => (
@@ -475,7 +475,10 @@ const Forums = () => {
                                     </button>
                                 </div>
                                 <div className="r-opts">
-                                    <button className="inactive-btn">
+                                    <button
+                                        className="inactive-btn report-post"
+                                        onClick={(eve) => reportBtn(eve)}
+                                    >
                                         <FaExclamationTriangle />
                                         <span className="report-text">
                                             &nbsp; Report
@@ -495,6 +498,43 @@ const Forums = () => {
                     <button className="page">5</button>
                     <button className="page">6</button>
                     <FaChevronRight id="page-next" />
+                </div>
+            </div>
+
+            <div className="report-modal">
+                <h1>Report Post</h1>
+                <div className="report-opts" onChange={(e) => the(e)}>
+                    <div className="report-opt">
+                        <input type="radio" name="report" value="the" />
+                        <label htmlFor="report">Child</label>
+                    </div>
+                    <div className="report-opt">
+                        <input type="radio" name="report" value="the" />
+                        <label htmlFor="report">Child</label>
+                    </div>
+                    <div className="report-opt">
+                        <input type="radio" name="report" value="the" />
+                        <label htmlFor="report">Child</label>
+                    </div>
+                    <div className="report-opt">
+                        <input type="radio" name="report" value="the" />
+                        <label htmlFor="report">Child</label>
+                    </div>
+                </div>
+
+                <div className="report-btns">
+                    <button
+                        className="report-close"
+                        onClick={(e) => {
+                            e.target.parentElement.parentElement.classList.remove(
+                                "report-modal-active"
+                            );
+                            removeBodyOpacity();
+                        }}
+                    >
+                        Cancel
+                    </button>
+                    <button className="report-submit">Report</button>
                 </div>
             </div>
 
@@ -567,6 +607,42 @@ const Forums = () => {
         window.getSelection().addRange(range);
         document.execCommand("copy");
         window.getSelection().removeAllRanges();
+    }
+
+    // SAMPLE FUNCTION FOR BACKEND DEVS
+    function the(eve) {
+        document
+            .querySelector(".report-submit")
+            .classList.add("report-submit-proceed");
+        console.log(eve.target.value);
+    }
+
+    function bodyClick(eve) {
+        if (!eve.target.classList.contains("report-modal-active")) {
+            document
+                .querySelector(".report-modal")
+                .classList.remove("report-modal-active");
+        }
+
+        removeBodyOpacity();
+
+        document.body.removeEventListener("click", bodyClick);
+    }
+
+    function reportBtn(e) {
+        document
+            .querySelector(".report-modal")
+            .classList.add("report-modal-active");
+
+        document.body.classList.add("report-modal-body");
+
+        setTimeout(() => {
+            document.body.addEventListener("click", bodyClick);
+        }, 100);
+    }
+
+    function removeBodyOpacity() {
+        document.body.classList.remove("report-modal-body");
     }
 };
 
