@@ -721,7 +721,7 @@ i {
     background: #4678f9;
 }
 .page:hover {
-    background: #2e57be;
+    background: #000;
 }
 #page-prev {
     margin-right: 2vw;
@@ -835,6 +835,11 @@ i {
 }
 .report-modal-body .forumCards {
     background: transparent;
+}
+#copy-forum {
+    font-size: 1.4vw;
+    margin: 0;
+    margin: 0 0.6vw;
 }
 /* MEDIA */
 @media (max-width: 1050px) {

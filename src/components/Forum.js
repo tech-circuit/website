@@ -369,6 +369,7 @@ const Forums = () => {
                                             </a>
                                             <button
                                                 className="share-opt"
+                                                id="copy-forum"
                                                 onClick={(e) =>
                                                     copyToClipboard(e)
                                                 }
@@ -506,19 +507,23 @@ const Forums = () => {
                 <div className="report-opts" onChange={(e) => the(e)}>
                     <div className="report-opt">
                         <input type="radio" name="report" value="the" />
-                        <label htmlFor="report">Child</label>
+                        <label htmlFor="report">Child Sex</label>
                     </div>
                     <div className="report-opt">
                         <input type="radio" name="report" value="the" />
-                        <label htmlFor="report">Child</label>
+                        <label htmlFor="report">
+                            Unwanted commercial content or spam
+                        </label>
                     </div>
                     <div className="report-opt">
                         <input type="radio" name="report" value="the" />
-                        <label htmlFor="report">Child</label>
+                        <label htmlFor="report">Harassment or bullying</label>
                     </div>
                     <div className="report-opt">
                         <input type="radio" name="report" value="the" />
-                        <label htmlFor="report">Child</label>
+                        <label htmlFor="report">
+                            Pornography or sexually explicit material
+                        </label>
                     </div>
                 </div>
 
@@ -618,15 +623,15 @@ const Forums = () => {
     }
 
     function bodyClick(eve) {
-        if (!eve.target.classList.contains("report-modal-active")) {
+        if (eve.target.id === "root") {
             document
                 .querySelector(".report-modal")
                 .classList.remove("report-modal-active");
+
+            removeBodyOpacity();
+
+            document.body.removeEventListener("click", bodyClick);
         }
-
-        removeBodyOpacity();
-
-        document.body.removeEventListener("click", bodyClick);
     }
 
     function reportBtn(e) {
