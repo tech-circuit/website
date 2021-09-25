@@ -841,6 +841,9 @@ i {
     margin: 0;
     margin: 0 0.6vw;
 }
+#page-prev:hover, #page-next:hover {
+    cursor: pointer;
+}
 /* MEDIA */
 @media (max-width: 1050px) {
     .head-1 .forumTitle {

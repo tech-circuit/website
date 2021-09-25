@@ -52,11 +52,55 @@ const notyf = new Notyf({
 });
 
 const Forums = () => {
+    let currentPage = 1;
     document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [title, setTitle] = React.useState("");
     const [posts, setPosts] = React.useState([]);
     const [content, setContent] = React.useState("");
+    const [totalPages, setTotalPages] = React.useState(0);
+    const [pages, setPages] = React.useState([]);
+    const [pageSelected, setPageSelected] = React.useState(1);
+    const [report, setReport] = React.useState("none");
+    const [reportPost, setReportPost] = React.useState("none");
+
+    const setCurrentPage = (page) => {
+        console.log(totalPages);
+        console.log(page)
+        if (page === "next") {
+            if (pages[pages.length-1] < totalPages) {
+                currentPage = pages[pages.length-1] + 1;
+                setPageSelected(page);
+                let newPages = [];
+                let limit = 6;
+                if (currentPage+limit > totalPages) {
+                    limit = totalPages - currentPage;
+                }
+                for (let i = 0; i<limit; i++) {
+                    newPages.push(currentPage+i);
+                }
+                console.log(newPages);
+                setPages(newPages);
+                reFetch();
+            }
+        } else if (page === "prev") {
+            if (currentPage > 1) {
+                currentPage = pages[0] - 1;
+                setPageSelected(page);
+                let newPages = [];
+                for (let i = 5; i>-1; i--) {
+                    newPages.push(currentPage-i);
+                }
+                console.log(newPages);
+                setPages(newPages);
+                reFetch();
+            }
+        } else {
+            currentPage = page;
+            setPageSelected(page);
+            reFetch();
+        }
+    }
 
     const openModal = () => {
         document.getElementsByClassName("head-2")[0].style.zIndex = 0;
@@ -168,6 +212,7 @@ const Forums = () => {
             if (resp.success === true) {
                 reFetch();
             } else {
+                console.log(resp)
                 notyf.open({
                     type: "error",
                     message: `Could not ${action} post`,
@@ -176,9 +221,44 @@ const Forums = () => {
         });
     };
 
-    const reFetch = () => {
+    const reportCurrentPost = () => {
         fetch(
-            `https://techcircuit.herokuapp.com/forum?page=1&sort=latest&access_token=${authToken}`
+            `https://techcircuit.herokuapp.com/forum/report/new?access_token=${authToken}`,
+            {
+                // Adding method type
+                method: "POST",
+      
+                // Adding body or contents to send
+                body: JSON.stringify({ post_id: reportPost, message: report }),
+      
+                // Adding headers to the request
+                headers: {
+                  "Content-type": "application/json; charset=UTF-8",
+                },
+              }
+        ).then(async (response) => {
+            let resp = await response.json();
+            if (resp.success === true) {
+                notyf.success({
+                    message: "Reported successfully!",
+                })
+            } else {
+                console.log(resp)
+                notyf.open({
+                    type: "error",
+                    message: resp.error,
+                });
+            }
+            document.getElementById('cancel-button').click()
+            setReportPost("none")
+            setReport("none")
+        });
+    }
+
+    const reFetch = () => {
+        window.scrollTo(0,0);
+        fetch(
+            `https://techcircuit.herokuapp.com/forum?page=${currentPage}&sort=latest&access_token=${authToken}`
         ).then(async (response) => {
             let resp = await response.json();
             if (resp.success === true) {
@@ -203,6 +283,7 @@ const Forums = () => {
                     ? document.querySelector(".css-q3o1l2").remove()
                     : console.log("none");
                 setPosts(updatedPosts);
+                setTotalPages(resp.total_pages);
             }
         });
 
@@ -210,6 +291,20 @@ const Forums = () => {
             eve.target.nextElementSibling.classList.toggle("sort-modal-active");
         });
     }, []);
+
+    React.useEffect(() => {
+        if (currentPage === 1) {
+            let initialPages = []
+            let limit = 6
+            if (totalPages < limit) {
+                limit = totalPages
+            }
+            for (let i=1; i<limit+1; i++) {
+                initialPages.push(i);
+            }
+            setPages(initialPages);
+        }
+    }, [totalPages, currentPage]);
 
     return (
         <React.Fragment>
@@ -478,7 +573,7 @@ const Forums = () => {
                                 <div className="r-opts">
                                     <button
                                         className="inactive-btn report-post"
-                                        onClick={(eve) => reportBtn(eve)}
+                                        onClick={(eve) => reportBtn(post.id)}
                                     >
                                         <FaExclamationTriangle />
                                         <span className="report-text">
@@ -491,14 +586,25 @@ const Forums = () => {
                     ))}
                 </div>
                 <div className="pages">
-                    <FaChevronLeft id="page-prev" />
-                    <button className="page page-active">1</button>
-                    <button className="page">2</button>
-                    <button className="page">3</button>
-                    <button className="page">4</button>
-                    <button className="page">5</button>
-                    <button className="page">6</button>
-                    <FaChevronRight id="page-next" />
+                    <FaChevronLeft id="page-prev" onClick={() => setCurrentPage("prev")}/>
+                    {
+                        pages.map((page, index) => {
+                            return (
+                                <button
+                                    key={index}
+                                    className={
+                                        page === pageSelected
+                                            ? "page page-active"
+                                            : "page"
+                                    }
+                                    onClick={() => setCurrentPage(page)}
+                                >
+                                    {page}
+                                </button>
+                            );
+                        })
+                    }
+                    <FaChevronRight id="page-next" onClick={() => setCurrentPage("next")}/>
                 </div>
             </div>
 
@@ -506,21 +612,21 @@ const Forums = () => {
                 <h1>Report Post</h1>
                 <div className="report-opts" onChange={(e) => the(e)}>
                     <div className="report-opt">
-                        <input type="radio" name="report" value="the" />
+                        <input type="radio" name="report" value="Child Sex" />
                         <label htmlFor="report">Child Sex</label>
                     </div>
                     <div className="report-opt">
-                        <input type="radio" name="report" value="the" />
+                        <input type="radio" name="report" value="Unwanted commercial content or spam" />
                         <label htmlFor="report">
                             Unwanted commercial content or spam
                         </label>
                     </div>
                     <div className="report-opt">
-                        <input type="radio" name="report" value="the" />
+                        <input type="radio" name="report" value="Harassment or bullying" />
                         <label htmlFor="report">Harassment or bullying</label>
                     </div>
                     <div className="report-opt">
-                        <input type="radio" name="report" value="the" />
+                        <input type="radio" name="report" value="Pornography or sexually explicit material" />
                         <label htmlFor="report">
                             Pornography or sexually explicit material
                         </label>
@@ -536,10 +642,11 @@ const Forums = () => {
                             );
                             removeBodyOpacity();
                         }}
+                        id="cancel-button"
                     >
                         Cancel
                     </button>
-                    <button className="report-submit">Report</button>
+                    <button className="report-submit" onClick={(e) => reportCurrentPost()}>Report</button>
                 </div>
             </div>
 
@@ -620,6 +727,7 @@ const Forums = () => {
             .querySelector(".report-submit")
             .classList.add("report-submit-proceed");
         console.log(eve.target.value);
+        setReport(eve.target.value);
     }
 
     function bodyClick(eve) {
@@ -634,7 +742,8 @@ const Forums = () => {
         }
     }
 
-    function reportBtn(e) {
+    function reportBtn(postID) {
+        setReportPost(postID)
         document
             .querySelector(".report-modal")
             .classList.add("report-modal-active");

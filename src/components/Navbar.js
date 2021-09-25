@@ -58,6 +58,7 @@ const Navbar = () => {
                 console.log(res.profileObj.email);
                 setLoggedIn(true);
                 setpfpUrl(localStorage.getItem("pfp"));
+                window.location.reload();
             })
             .catch((error) => console.log(error));
     };
@@ -72,6 +73,7 @@ const Navbar = () => {
             localStorage.removeItem("pfp");
             setpfpUrl("");
             setLoggedIn(false);
+            window.location.reload();
         }
     };
 
