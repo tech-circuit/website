@@ -376,69 +376,69 @@ const Index = () => {
             </section>
 
             <section className="feats">
-                {/* <div className="clubs container">
-          <div className="club-left">
-            <h2 data-aos="fade-right">
-              Home to the most influential
-              <br />
-              tech clubs from all over India.
-            </h2>
-            <p data-aos="fade-right" data-aos-delay="400">
-              The biggest names in the Indian Tech Circuit, including Exun, CW,
-              TS and more have tested and approved of the features that
-              techCircuit offers.
-            </p>
-            <Link data-aos="fade-right" to="/" className="club-btn">
-              View Clubs&nbsp;&nbsp;
-              <img src="/assets/Right_Arrow.svg" alt="" />
-            </Link>
-          </div>
-          <div className="club-right">
-            <div className="club-logos">
-              <img
-                data-aos="zoom-in"
-                src="/assets/exun.svg"
-                alt="alt"
-                className="club-logo"
-              />
-              <img
-                data-aos="zoom-in"
-                data-aos-delay="200"
-                src="/assets/exun.svg"
-                alt="alt"
-                className="club-logo"
-              />
-              <img
-                data-aos="zoom-in"
-                data-aos-delay="300"
-                src="/assets/exun.svg"
-                alt="alt"
-                className="club-logo"
-              />
-              <img
-                data-aos="zoom-in"
-                data-aos-delay="400"
-                src="/assets/exun.svg"
-                alt="alt"
-                className="club-logo"
-              />
-              <img
-                data-aos="zoom-in"
-                data-aos-delay="500"
-                src="/assets/exun.svg"
-                alt="alt"
-                className="club-logo"
-              />
-              <img
-                data-aos="zoom-in"
-                data-aos-delay="600"
-                src="/assets/exun.svg"
-                alt="alt"
-                className="club-logo"
-              />
-            </div>
-          </div>
-        </div> */}
+                <div className="clubs container">
+                    <div className="club-left">
+                        <h2 data-aos="fade-right">
+                            Home to the most influential
+                            <br />
+                            tech clubs from all over India.
+                        </h2>
+                        <p data-aos="fade-right" data-aos-delay="400">
+                            The biggest names in the Indian Tech Circuit,
+                            including Exun, CW, TS and more have tested and
+                            approved of the features that techCircuit offers.
+                        </p>
+                        <Link data-aos="fade-right" to="/" className="club-btn">
+                            View Clubs&nbsp;&nbsp;
+                            <img src="/assets/Right_Arrow.svg" alt="" />
+                        </Link>
+                    </div>
+                    <div className="club-right">
+                        <div className="club-logos">
+                            <img
+                                data-aos="zoom-in"
+                                src="/assets/exun.svg"
+                                alt="alt"
+                                className="club-logo"
+                            />
+                            <img
+                                data-aos="zoom-in"
+                                data-aos-delay="200"
+                                src="/assets/exun.svg"
+                                alt="alt"
+                                className="club-logo"
+                            />
+                            <img
+                                data-aos="zoom-in"
+                                data-aos-delay="300"
+                                src="/assets/exun.svg"
+                                alt="alt"
+                                className="club-logo"
+                            />
+                            <img
+                                data-aos="zoom-in"
+                                data-aos-delay="400"
+                                src="/assets/exun.svg"
+                                alt="alt"
+                                className="club-logo"
+                            />
+                            <img
+                                data-aos="zoom-in"
+                                data-aos-delay="500"
+                                src="/assets/exun.svg"
+                                alt="alt"
+                                className="club-logo"
+                            />
+                            <img
+                                data-aos="zoom-in"
+                                data-aos-delay="600"
+                                src="/assets/exun.svg"
+                                alt="alt"
+                                className="club-logo"
+                            />
+                        </div>
+                    </div>
+                </div>
 
                 <div className="feat container first-feat">
                     <div className="feat-banner">
@@ -466,18 +466,16 @@ const Index = () => {
                 <div className="feat container">
                     <div className="feat-content">
                         <h2 data-aos="fade-right">
-                            Meet. Share. Discuss. Welcome to Community of
-                            creators!
+                            Browsing events made easier for you!
                         </h2>
                         <p data-aos="fade-right" data-aos-delay="300">
-                            techCircuit has a friendly and really helpful
-                            community which aims to ultimately help everyone
-                            benefit from the platform. Creators can get feedback
-                            on their projects, tech enthusiasts can sign up for
-                            events, and organizations can promote their events.
-                            The techCircuit forum also serves as a place for
-                            healthy discussion amongst people interested in
-                            tech.
+                            techCircuit also features learning resources for
+                            various tech-related fields, including Design, A/V,
+                            Software Development, Cryptic Hunts and more; to
+                            which members of the community can contribute. We
+                            have handpicked the best archives from tech
+                            symposiums that have taken place in the past years
+                            so that users can access all of them easily.
                         </p>
                     </div>
                     <div className="feat-banner">
@@ -498,9 +496,27 @@ const Index = () => {
                     </div>
                     <div className="feat-content">
                         <h2 data-aos="fade-left">
-                            Curated crowdsourced resources for all fields!
+                            Meet. Share. Discuss. Welcome to Community of
+                            creators!
                         </h2>
                         <p data-aos="fade-left" data-aos-delay="300">
+                            techCircuit has a friendly and really helpful
+                            community which aims to ultimately help everyone
+                            benefit from the platform. Creators can get feedback
+                            on their projects, tech enthusiasts can sign up for
+                            events, and organizations can promote their events.
+                            The techCircuit forum also serves as a place for
+                            healthy discussion amongst people interested in
+                            tech.
+                        </p>
+                    </div>
+                </div>
+                <div className="feat container">
+                    <div className="feat-content">
+                        <h2 data-aos="fade-right">
+                            Browsing events made easier for you!
+                        </h2>
+                        <p data-aos="fade-right" data-aos-delay="300">
                             techCircuit also features learning resources for
                             various tech-related fields, including Design, A/V,
                             Software Development, Cryptic Hunts and more; to
@@ -510,14 +526,28 @@ const Index = () => {
                             so that users can access all of them easily.
                         </p>
                     </div>
+                    <div className="feat-banner">
+                        <img
+                            className="feat-img-plus"
+                            src="/assets/land5.svg"
+                            alt="alt" id="not-final-img"
+                        />
+                    </div>
                 </div>
-                <div className="feat last-feat container">
+                <div className="feat container">
+                    <div className="feat-banner">
+                        <img
+                            className="feat-img-minus"
+                            src="/assets/land4.svg"
+                            alt="alt"
+                        />
+                    </div>
                     <div className="feat-content">
-                        <h2 data-aos="fade-right">
+                        <h2 data-aos="fade-left">
                             Place to discuss your intrests, doubts, projects
                             with everyone!
                         </h2>
-                        <p data-aos="fade-right" data-aos-delay="300">
+                        <p data-aos="fade-left" data-aos-delay="300">
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit. Turpis at amet molestie et, vulputate arcu sed
                             mattis. Elit neque, amet, amet, vulputate eget
@@ -527,10 +557,26 @@ const Index = () => {
                             accumsan. Vitae, adipiscing diam justo, netus.
                         </p>
                     </div>
+                </div>
+                <div className="feat last-feat container">
+                    <div className="feat-content">
+                        <h2 data-aos="fade-right">
+                            Your lorem ipsum clubs on our platform!
+                        </h2>
+                        <p data-aos="fade-right" data-aos-delay="300">
+                            techCircuit also features learning resources for
+                            various tech-related fields, including Design, A/V,
+                            Software Development, Cryptic Hunts and more; to
+                            which members of the community can contribute. We
+                            have handpicked the best archives from tech
+                            symposiums that have taken place in the past years
+                            so that users can access all of them easily.
+                        </p>
+                    </div>
                     <div className="feat-banner">
                         <img
                             className="feat-img-plus"
-                            src="/assets/land4.svg"
+                            src="/assets/land6.svg"
                             alt="alt"
                         />
                     </div>

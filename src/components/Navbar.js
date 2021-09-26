@@ -105,6 +105,28 @@ const Navbar = () => {
                     }
                 >
                     <Link
+                        to="/forum"
+                        onClick={(e) => setActivePage("/forum")}
+                        className={
+                            activePage === "/forum"
+                                ? "nav-link nav-link-active"
+                                : "nav-link"
+                        }
+                    >
+                        Forum
+                    </Link>
+                    <Link
+                        to="/about"
+                        onClick={(e) => setActivePage("/about")}
+                        className={
+                            activePage === "/about"
+                                ? "nav-link nav-link-active"
+                                : "nav-link"
+                        }
+                    >
+                        About
+                    </Link>
+                    <Link
                         to="/work"
                         onClick={(e) => setActivePage("/work")}
                         className={
@@ -127,17 +149,6 @@ const Navbar = () => {
                         Events
                     </Link>
                     <Link
-                        to="/forum"
-                        onClick={(e) => setActivePage("/forum")}
-                        className={
-                            activePage === "/forum"
-                                ? "nav-link nav-link-active"
-                                : "nav-link"
-                        }
-                    >
-                        Forum
-                    </Link>
-                    <Link
                         to="/community"
                         onClick={(e) => setActivePage("/community")}
                         className={
@@ -158,17 +169,6 @@ const Navbar = () => {
                         }
                     >
                         Resources
-                    </Link>
-                    <Link
-                        to="/about"
-                        onClick={(e) => setActivePage("/about")}
-                        className={
-                            activePage === "/about"
-                                ? "nav-link nav-link-active"
-                                : "nav-link"
-                        }
-                    >
-                        About
                     </Link>
                     <Link to="/" className="disc-btn">
                         Discord
