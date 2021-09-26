@@ -616,8 +616,12 @@ const Forums = () => {
                 <h1>Report Post</h1>
                 <div className="report-opts" onChange={(e) => the(e)}>
                     <div className="report-opt">
-                        <input type="radio" name="report" value="Child Sex" />
-                        <label htmlFor="report">Child Sex</label>
+                        <input
+                            type="radio"
+                            name="report"
+                            value="Sexual content"
+                        />
+                        <label htmlFor="report">Sexual content</label>
                     </div>
                     <div className="report-opt">
                         <input
