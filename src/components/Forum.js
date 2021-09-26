@@ -66,18 +66,18 @@ const Forums = () => {
 
     const setCurrentPage = (page) => {
         console.log(totalPages);
-        console.log(page)
+        console.log(page);
         if (page === "next") {
-            if (pages[pages.length-1] < totalPages) {
-                currentPage = pages[pages.length-1] + 1;
+            if (pages[pages.length - 1] < totalPages) {
+                currentPage = pages[pages.length - 1] + 1;
                 setPageSelected(page);
                 let newPages = [];
                 let limit = 6;
-                if (currentPage+limit > totalPages) {
+                if (currentPage + limit > totalPages) {
                     limit = totalPages - currentPage;
                 }
-                for (let i = 0; i<limit; i++) {
-                    newPages.push(currentPage+i);
+                for (let i = 0; i < limit; i++) {
+                    newPages.push(currentPage + i);
                 }
                 console.log(newPages);
                 setPages(newPages);
@@ -88,8 +88,8 @@ const Forums = () => {
                 currentPage = pages[0] - 1;
                 setPageSelected(page);
                 let newPages = [];
-                for (let i = 5; i>-1; i--) {
-                    newPages.push(currentPage-i);
+                for (let i = 5; i > -1; i--) {
+                    newPages.push(currentPage - i);
                 }
                 console.log(newPages);
                 setPages(newPages);
@@ -100,7 +100,7 @@ const Forums = () => {
             setPageSelected(page);
             reFetch();
         }
-    }
+    };
 
     const openModal = () => {
         document.getElementsByClassName("head-2")[0].style.zIndex = 0;
@@ -212,7 +212,7 @@ const Forums = () => {
             if (resp.success === true) {
                 reFetch();
             } else {
-                console.log(resp)
+                console.log(resp);
                 notyf.open({
                     type: "error",
                     message: `Could not ${action} post`,
@@ -227,36 +227,36 @@ const Forums = () => {
             {
                 // Adding method type
                 method: "POST",
-      
+
                 // Adding body or contents to send
                 body: JSON.stringify({ post_id: reportPost, message: report }),
-      
+
                 // Adding headers to the request
                 headers: {
-                  "Content-type": "application/json; charset=UTF-8",
+                    "Content-type": "application/json; charset=UTF-8",
                 },
-              }
+            }
         ).then(async (response) => {
             let resp = await response.json();
             if (resp.success === true) {
                 notyf.success({
                     message: "Reported successfully!",
-                })
+                });
             } else {
-                console.log(resp)
+                console.log(resp);
                 notyf.open({
                     type: "error",
                     message: resp.error,
                 });
             }
-            document.getElementById('cancel-button').click()
-            setReportPost("none")
-            setReport("none")
+            document.getElementById("cancel-button").click();
+            setReportPost("none");
+            setReport("none");
         });
-    }
+    };
 
     const reFetch = () => {
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
         fetch(
             `https://techcircuit.herokuapp.com/forum?page=${currentPage}&sort=latest&access_token=${authToken}`
         ).then(async (response) => {
@@ -294,12 +294,12 @@ const Forums = () => {
 
     React.useEffect(() => {
         if (currentPage === 1) {
-            let initialPages = []
-            let limit = 6
+            let initialPages = [];
+            let limit = 6;
             if (totalPages < limit) {
-                limit = totalPages
+                limit = totalPages;
             }
-            for (let i=1; i<limit+1; i++) {
+            for (let i = 1; i < limit + 1; i++) {
                 initialPages.push(i);
             }
             setPages(initialPages);
@@ -349,7 +349,7 @@ const Forums = () => {
                 </div>
             </header>
             <header className="forumHeader head-2">
-                <div className="container">
+                <div className="container forum-search-cont">
                     <div className="search-box">
                         <div className="search-box-left">
                             <div className="input">
@@ -586,25 +586,29 @@ const Forums = () => {
                     ))}
                 </div>
                 <div className="pages">
-                    <FaChevronLeft id="page-prev" onClick={() => setCurrentPage("prev")}/>
-                    {
-                        pages.map((page, index) => {
-                            return (
-                                <button
-                                    key={index}
-                                    className={
-                                        page === pageSelected
-                                            ? "page page-active"
-                                            : "page"
-                                    }
-                                    onClick={() => setCurrentPage(page)}
-                                >
-                                    {page}
-                                </button>
-                            );
-                        })
-                    }
-                    <FaChevronRight id="page-next" onClick={() => setCurrentPage("next")}/>
+                    <FaChevronLeft
+                        id="page-prev"
+                        onClick={() => setCurrentPage("prev")}
+                    />
+                    {pages.map((page, index) => {
+                        return (
+                            <button
+                                key={index}
+                                className={
+                                    page === pageSelected
+                                        ? "page page-active"
+                                        : "page"
+                                }
+                                onClick={() => setCurrentPage(page)}
+                            >
+                                {page}
+                            </button>
+                        );
+                    })}
+                    <FaChevronRight
+                        id="page-next"
+                        onClick={() => setCurrentPage("next")}
+                    />
                 </div>
             </div>
 
@@ -616,17 +620,29 @@ const Forums = () => {
                         <label htmlFor="report">Child Sex</label>
                     </div>
                     <div className="report-opt">
-                        <input type="radio" name="report" value="Unwanted commercial content or spam" />
+                        <input
+                            type="radio"
+                            name="report"
+                            value="Unwanted commercial content or spam"
+                        />
                         <label htmlFor="report">
                             Unwanted commercial content or spam
                         </label>
                     </div>
                     <div className="report-opt">
-                        <input type="radio" name="report" value="Harassment or bullying" />
+                        <input
+                            type="radio"
+                            name="report"
+                            value="Harassment or bullying"
+                        />
                         <label htmlFor="report">Harassment or bullying</label>
                     </div>
                     <div className="report-opt">
-                        <input type="radio" name="report" value="Pornography or sexually explicit material" />
+                        <input
+                            type="radio"
+                            name="report"
+                            value="Pornography or sexually explicit material"
+                        />
                         <label htmlFor="report">
                             Pornography or sexually explicit material
                         </label>
@@ -646,7 +662,12 @@ const Forums = () => {
                     >
                         Cancel
                     </button>
-                    <button className="report-submit" onClick={(e) => reportCurrentPost()}>Report</button>
+                    <button
+                        className="report-submit"
+                        onClick={(e) => reportCurrentPost()}
+                    >
+                        Report
+                    </button>
                 </div>
             </div>
 
@@ -743,7 +764,7 @@ const Forums = () => {
     }
 
     function reportBtn(postID) {
-        setReportPost(postID)
+        setReportPost(postID);
         document
             .querySelector(".report-modal")
             .classList.add("report-modal-active");
