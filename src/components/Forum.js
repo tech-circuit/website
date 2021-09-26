@@ -63,6 +63,10 @@ const Forums = () => {
     const [pageSelected, setPageSelected] = React.useState(1);
     const [report, setReport] = React.useState("none");
     const [reportPost, setReportPost] = React.useState("none");
+    const [sorts, setSorts] = React.useState(["Latest", "Hottest", "Popular"]);
+    const [currentSort, setCurrentSort] = React.useState("latest");
+    const [doSearch, setDoSearch] = React.useState(false);
+    const [searchQuery, setSearchQuery] = React.useState("");
 
     const setCurrentPage = (page) => {
         console.log(totalPages);
@@ -257,8 +261,12 @@ const Forums = () => {
 
     const reFetch = () => {
         window.scrollTo(0, 0);
+        let url = `https://techcircuit.herokuapp.com/forum?page=${currentPage}&sort=${currentSort}&access_token=${authToken}`
+        if (doSearch) {
+            url = `https://techcircuit.herokuapp.com/forum/search?q=${searchQuery}&page=${currentPage}&access_token=${authToken}`
+        }
         fetch(
-            `https://techcircuit.herokuapp.com/forum?page=${currentPage}&sort=latest&access_token=${authToken}`
+            url
         ).then(async (response) => {
             let resp = await response.json();
             if (resp.success === true) {
@@ -271,8 +279,12 @@ const Forums = () => {
     };
 
     React.useEffect(() => {
+        let url = `https://techcircuit.herokuapp.com/forum?page=1&sort=${currentSort}&access_token=${authToken}`
+        if (doSearch) {
+            url = `https://techcircuit.herokuapp.com/forum/search?q=${searchQuery}&page=${currentPage}&access_token=${authToken}`
+        }
         fetch(
-            `https://techcircuit.herokuapp.com/forum?page=1&sort=latest&access_token=${authToken}`
+            url
         ).then(async (response) => {
             let resp = await response.json();
             if (resp.success === true) {
@@ -288,9 +300,9 @@ const Forums = () => {
         });
 
         document.querySelector(".sortBtn").addEventListener("click", (eve) => {
-            eve.target.nextElementSibling.classList.toggle("sort-modal-active");
+            document.getElementById('sort-modal-div').classList.toggle("sort-modal-active");
         });
-    }, []);
+    }, [currentSort, currentPage, doSearch, searchQuery]);
 
     React.useEffect(() => {
         if (currentPage === 1) {
@@ -360,15 +372,44 @@ const Forums = () => {
                                 <input
                                     type="text"
                                     placeholder="Search communities, posts, interests..."
+                                    onKeyUp={(event) => { 
+                                        let value = event.target.value;
+                                        if (value.trim().length === 0) {
+                                            setDoSearch(false);
+                                            setSearchQuery("")
+                                        } else {
+                                            setDoSearch(true);
+                                            setSearchQuery(event.target.value);
+                                        }
+                                    }}
                                 />
                             </div>
-                            <button className="sortBtn">
-                                Sort by: <span id="sortVal">Latest</span>
-                            </button>
-                            <div className="sort-modal">
-                                <button>Latest</button>
-                                <button>Latest</button>
-                                <button>Latest</button>
+                            {
+                                sorts.map((sort, index) => {
+                                    return (
+                                        index === 0 ? (
+                                            <button className="sortBtn">
+                                                Sort by: <span id="sortVal">{sort}</span>
+                                            </button>
+                                        ) : null
+                                    );
+                                })
+                            }
+                            <div className="sort-modal" id="sort-modal-div">
+                                {
+                                    sorts.map((sort, index) => {
+                                        return (
+                                            index === 0 ? null : (
+                                                <button onClick={() => { 
+                                                    setCurrentSort(sort.toLowerCase())
+                                                    let oldIndex = sorts.indexOf(sort);
+                                                    let newArrayWithCurrentSort = sorts.slice(0, oldIndex).concat(sorts.slice(oldIndex + 1));
+                                                    setSorts([sorts[oldIndex], ...newArrayWithCurrentSort]);
+                                                }}>{sort}</button>
+                                            )
+                                        )
+                                    })
+                                }
                             </div>
                         </div>
                         <h3 className="add" onClick={openModal}>
