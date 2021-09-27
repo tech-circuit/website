@@ -1,4 +1,4 @@
-import "./all.css";
+import "./styles/all.css";
 import Navbar from "./components/Navbar";
 import Index from "./components/Index";
 // import CreateProject from "./components/CreateProject";

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaChevronLeft, FaBehanceSquare } from "react-icons/fa";
-import "../add.css";
+import "../styles/add.css";
 
 const CreatePost = () => {
   return (

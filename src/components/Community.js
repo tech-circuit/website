@@ -1,4 +1,4 @@
-import "../community.css";
+import "../styles/community.css";
 import { Link } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
 import { useState } from "react";

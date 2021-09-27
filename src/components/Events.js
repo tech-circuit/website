@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "../events.css";
+import "../styles/events.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { FaPlus, FaChevronLeft } from "react-icons/fa";

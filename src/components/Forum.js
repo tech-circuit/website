@@ -1,5 +1,5 @@
 import React from "react";
-import "../forum.css";
+import "../styles/forum.css";
 import {
     FaExclamationTriangle,
     FaTwitterSquare,
@@ -298,11 +298,17 @@ const Forums = () => {
                 setTotalPages(resp.total_pages);
             }
         });
-
-        document.querySelector(".sortBtn").addEventListener("click", (eve) => {
-            document.getElementById('sort-modal-div').classList.toggle("sort-modal-active");
-        });
     }, [currentSort, currentPage, doSearch, searchQuery]);
+
+    const toggleSort = (e) => {
+        let classListToUpdate = document.getElementById('sort-modal-div').classList
+        if (classListToUpdate.length === 2) {
+            document.getElementById('sort-modal-div').classList.remove('sort-modal-active')
+        } else if (classListToUpdate.length === 1) {
+            document.getElementById('sort-modal-div').classList.add('sort-modal')
+            document.getElementById('sort-modal-div').classList.add('sort-modal-active')
+        }
+    }
 
     React.useEffect(() => {
         if (currentPage === 1) {
@@ -388,7 +394,7 @@ const Forums = () => {
                                 sorts.map((sort, index) => {
                                     return (
                                         index === 0 ? (
-                                            <button className="sortBtn">
+                                            <button className="sortBtn" onClick={(e) => toggleSort(e)}>
                                                 Sort by: <span id="sortVal">{sort}</span>
                                             </button>
                                         ) : null
@@ -405,6 +411,7 @@ const Forums = () => {
                                                     let oldIndex = sorts.indexOf(sort);
                                                     let newArrayWithCurrentSort = sorts.slice(0, oldIndex).concat(sorts.slice(oldIndex + 1));
                                                     setSorts([sorts[oldIndex], ...newArrayWithCurrentSort]);
+                                                    toggleSort();
                                                 }}>{sort}</button>
                                             )
                                         )

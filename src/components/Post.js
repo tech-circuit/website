@@ -1,5 +1,5 @@
 import React from "react";
-import "../forum.css";
+import "../styles/forum.css";
 import { FaCommentAlt } from "react-icons/fa";
 import { FaExclamationTriangle } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import TimeAgo from "react-timeago";
 import { Notyf } from "notyf";
 import { useParams } from "react-router-dom";
+import { SRLWrapper } from 'simple-react-lightbox';
 
 const authToken = localStorage.getItem("authToken");
 
@@ -131,6 +132,22 @@ const Post = () => {
     checkIfAuthenticated();
   }, [postId]);
 
+  const options = {
+    buttons: {
+      backgroundColor: 'rgba(30,30,36,0.8)',
+      iconColor: 'rgba(255, 255, 255, 0.8)',
+      iconPadding: '10px',
+      showAutoplayButton: false,
+      showCloseButton: true,
+      showDownloadButton: false,
+      showFullscreenButton: false,
+      showNextButton: true,
+      showPrevButton: true,
+      showThumbnailsButton: false,
+      size: '40px'
+    }
+  }
+
   return (
     <React.Fragment>
       <div className="container fullForumCont">
@@ -145,10 +162,12 @@ const Post = () => {
               posted <TimeAgo date={response.date} /> by{" "}
               <a href="/">{response.author}</a>
             </h3>
-            <div
-              dangerouslySetInnerHTML={{ __html: response.content }}
-              className="post-content"
-            ></div>
+            <SRLWrapper options={options}>
+              <div
+                dangerouslySetInnerHTML={{ __html: response.content }}
+                className="post-content"
+              ></div>
+            </SRLWrapper>
             <br></br>
             <br></br>
             <div className="card-options">

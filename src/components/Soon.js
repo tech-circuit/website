@@ -1,4 +1,4 @@
-import "../soon.css";
+import "../styles/soon.css";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 

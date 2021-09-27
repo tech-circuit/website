@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../index.css";
+import "../styles/index.css";
 import { Link } from "react-router-dom";
 import { FaChevronDown, FaCommentAlt, FaCheck } from "react-icons/fa";
 import Footer from "../components/Footer";
