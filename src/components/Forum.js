@@ -636,10 +636,13 @@ const Forums = () => {
                     ))}
                 </div>
                 <div className="pages">
-                    <FaChevronLeft
+                    {totalPages > 6 ? (
+                        <FaChevronLeft
                         id="page-prev"
                         onClick={() => setCurrentPage("prev")}
                     />
+                    ) : null
+                    }
                     {pages.map((page, index) => {
                         return (
                             <button
@@ -655,10 +658,14 @@ const Forums = () => {
                             </button>
                         );
                     })}
-                    <FaChevronRight
-                        id="page-next"
-                        onClick={() => setCurrentPage("next")}
-                    />
+                    {
+                        totalPages > 6 ? (
+                            <FaChevronRight
+                                id="page-next"
+                                onClick={() => setCurrentPage("next")}
+                            />
+                        ) : null
+                    }
                 </div>
             </div>
 
