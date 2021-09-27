@@ -514,17 +514,17 @@ const Forums = () => {
                                                 className="share-opt"
                                                 id="copy-forum"
                                                 onClick={(e) =>
-                                                    copyToClipboard(e)
+                                                    {
+                                                        window.navigator.clipboard.writeText(`${
+                                                            window.location.protocol +
+                                                            "//" +
+                                                            window.location.host
+                                                        }/forum/post/${post.id}`)
+                                                        notyf.success("Copied to clipboard!")
+                                                    }
                                                 }
                                             >
-                                                <div
-                                                    style={{ display: "none" }}
-                                                >{`${
-                                                    window.location.protocol +
-                                                    "//" +
-                                                    window.location.host
-                                                }/forum/post/${post.id}`}</div>
-                                                <FaLink />
+                                            <FaLink/>
                                             </button>
                                         </div>
                                     </button>
@@ -784,15 +784,6 @@ const Forums = () => {
             </div> */}
         </React.Fragment>
     );
-
-    function copyToClipboard(eve) {
-        const range = document.createRange();
-        window.getSelection().removeAllRanges();
-        range.selectNode(eve.target.parentElement.children[0]);
-        window.getSelection().addRange(range);
-        document.execCommand("copy");
-        window.getSelection().removeAllRanges();
-    }
 
     // SAMPLE FUNCTION FOR BACKEND DEVS
     function the(eve) {
