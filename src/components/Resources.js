@@ -1,5 +1,5 @@
 import React from "react";
-import "../resources.css";
+import "../styles/resources.css";
 import { FaSearch } from "react-icons/fa";
 
 const Resources = () => {

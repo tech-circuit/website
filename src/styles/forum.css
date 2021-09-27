@@ -108,7 +108,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 18vh;
+    height: 15vh;
     padding: 0 2vw;
     /* null */
     pointer-events: none;
@@ -1074,7 +1074,7 @@ i {
     .sort-modal {
         top: 90%;
         left: 51%;
-        height: 14vh;
+        height: 10vh;
         padding: 0 3vw;
     }
     .sort-modal button {

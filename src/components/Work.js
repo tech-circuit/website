@@ -1,4 +1,4 @@
-import "../work.css";
+import "../styles/work.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useState, useRef } from "react";
 import OwlCarousel from "react-owl-carousel2";

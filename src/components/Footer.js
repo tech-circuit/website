@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../footer.css";
+import "../styles/footer.css";
 import {
   FaGithub,
   FaLinkedin,
