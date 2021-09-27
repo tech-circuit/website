@@ -226,37 +226,39 @@ const Forums = () => {
     };
 
     const reportCurrentPost = () => {
-        fetch(
-            `https://techcircuit.herokuapp.com/forum/report/new?access_token=${authToken}`,
-            {
-                // Adding method type
-                method: "POST",
-
-                // Adding body or contents to send
-                body: JSON.stringify({ post_id: reportPost, message: report }),
-
-                // Adding headers to the request
-                headers: {
-                    "Content-type": "application/json; charset=UTF-8",
-                },
-            }
-        ).then(async (response) => {
-            let resp = await response.json();
-            if (resp.success === true) {
-                notyf.success({
-                    message: "Reported successfully!",
-                });
-            } else {
-                console.log(resp);
-                notyf.open({
-                    type: "error",
-                    message: resp.error,
-                });
-            }
-            document.getElementById("cancel-button").click();
-            setReportPost("none");
-            setReport("none");
-        });
+        if (report !== "none") {
+            fetch(
+                `https://techcircuit.herokuapp.com/forum/report/new?access_token=${authToken}`,
+                {
+                    // Adding method type
+                    method: "POST",
+    
+                    // Adding body or contents to send
+                    body: JSON.stringify({ post_id: reportPost, message: report }),
+    
+                    // Adding headers to the request
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8",
+                    },
+                }
+            ).then(async (response) => {
+                let resp = await response.json();
+                if (resp.success === true) {
+                    notyf.success({
+                        message: "Reported successfully!",
+                    });
+                } else {
+                    console.log(resp);
+                    notyf.open({
+                        type: "error",
+                        message: resp.error,
+                    });
+                }
+                document.getElementById("cancel-button").click();
+                setReportPost("none");
+                setReport("none");
+            });
+        }
     };
 
     const reFetch = () => {
