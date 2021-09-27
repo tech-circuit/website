@@ -310,6 +310,55 @@
     flex-wrap: nowrap;
 }
 
+/* REVIEWS */
+.reviews {
+    background: #29313d;
+    padding: 6vh 20vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.review {
+    display: flex;
+    background: #fff;
+    padding: 6vh 4vw;
+    padding-left: 2vw;
+    margin: 2vh 0;
+    border-radius: 5px;
+    box-shadow: 0 10px 60px rgba(0, 0, 0, 0.2);
+}
+.review-left {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 5%;
+}
+.review-content {
+    width: 75%;
+}
+.review img {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+}
+.review h2 {
+    color: #4678f9;
+    font-weight: 500;
+    font-size: 1.6vw;
+    margin-top: 2vh;
+    margin-bottom: 0.6vh;
+}
+.review h3 {
+    font-weight: 400;
+    font-size: 1vw;
+}
+.review p {
+    font-size: 1vw;
+    text-align: justify;
+}
+
 /* NEW */
 .about-abt {
     background: #29313d;
@@ -473,6 +522,37 @@
     .member h4 {
         font-size: 2.2vw;
     }
+
+    .reviews {
+        padding: 3vh 10vw;
+    }
+    .review {
+        padding: 4vh 6vw;
+        padding-left: 3vw;
+        margin: 1vh 0;
+    }
+    .review-left {
+        width: 30%;
+        padding-right: 5%;
+    }
+    .review-content {
+        width: 70%;
+    }
+    .review img {
+        width: 12vw;
+        height: 12vw;
+    }
+    .review h2 {
+        font-size: 2vw;
+        margin-top: 1.6vh;
+        margin-bottom: 0.4vh;
+    }
+    .review h3 {
+        font-size: 1.6vw;
+    }
+    .review p {
+        font-size: 1.6vw;
+    }
 }
 @media (max-width: 500px) {
     .abt-hero {
@@ -615,5 +695,36 @@
     }
     .member h4 {
         font-size: 3.2vw;
+    }
+
+    .reviews {
+        padding: 3vh 6vw;
+    }
+    .review {
+        padding: 3vh 7vw;
+        margin: 1vh 0;
+        flex-direction: column;
+    }
+    .review-left {
+        width: 100%;
+        margin-bottom: 3vh;
+    }
+    .review-content {
+        width: 100%;
+    }
+    .review img {
+        width: 20vw;
+        height: 20vw;
+    }
+    .review h2 {
+        font-size: 4vw;
+        margin-top: 1vh;
+        margin-bottom: 0.2vh;
+    }
+    .review h3 {
+        font-size: 2.4vw;
+    }
+    .review p {
+        font-size: 2.8vw;
     }
 }

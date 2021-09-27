@@ -373,6 +373,68 @@ const About = () => {
                 </div>
             </div>
 
+            <div className="reviews">
+                <div className="review">
+                    <div className="review-left">
+                        <img src="/assets/ishana.jpg" alt="ishana" />
+                        <h2>Ishaan Das</h2>
+                        <h3>Founder Director</h3>
+                    </div>
+                    <div className="review-content">
+                        <p>
+                            “We’re a team of developers and designers but most
+                            importantly creators who have all experienced our
+                            own difficulties when trying to build a better
+                            understanding of the tech circuit in general.” While
+                            we believe we live in an era full of opportunity, we
+                            feel much of this passes us by. Given our abundant
+                            and constant access to useful resources, we felt
+                            that we should do out part in helping fellow tech
+                            enthusiasts. Since long, the tech community has
+                            lacked a centralised platform, using which people
+                            can connect, share their creative work and get
+                            feedback, and participate in events. techCircuit
+                            aims to solve all of these problems. We’re a team of
+                            developers and designers but most importantly
+                            creators who have all experienced our own
+                            difficulties when trying to build a better
+                            understanding of the tech circuit in general. While
+                            we believe.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="review">
+                    <div className="review-left">
+                        <img src="/assets/ishana.jpg" alt="ishana" />
+                        <h2>Ishaan Das</h2>
+                        <h3>Founder Director</h3>
+                    </div>
+                    <div className="review-content">
+                        <p>
+                            “We’re a team of developers and designers but most
+                            importantly creators who have all experienced our
+                            own difficulties when trying to build a better
+                            understanding of the tech circuit in general.” While
+                            we believe we live in an era full of opportunity, we
+                            feel much of this passes us by. Given our abundant
+                            and constant access to useful resources, we felt
+                            that we should do out part in helping fellow tech
+                            enthusiasts. Since long, the tech community has
+                            lacked a centralised platform, using which people
+                            can connect, share their creative work and get
+                            feedback, and participate in events. techCircuit
+                            aims to solve all of these problems. We’re a team of
+                            developers and designers but most importantly
+                            creators who have all experienced our own
+                            difficulties when trying to build a better
+                            understanding of the tech circuit in general. While
+                            we believe.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <div className="faqs-cont container">
                 <h1>Frequently Asked Questions</h1>
                 <div className="faqs">
