@@ -199,7 +199,8 @@ const Post = () => {
       ).then(async (response) => {
           let resp = await response.json();
           if (resp.success === true) {
-              console.log(action)
+            console.log(action)
+            reFetch();
           } else {
               console.log(resp);
               notyf.open({
@@ -209,6 +210,18 @@ const Post = () => {
           }
       });
   };
+
+  const reFetch = () => {
+    fetch(
+      `https://techcircuit.herokuapp.com/forum/post/${postId}?access_token=${authToken}`
+    ).then(async (res) => {
+      let resp = await res.json();
+      console.log(resp);
+      if (resp.success === true) {
+        setResponse(resp);
+      }
+    });
+  }
 
   return (
     <React.Fragment>
