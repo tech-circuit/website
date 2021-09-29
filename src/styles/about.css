@@ -190,6 +190,7 @@
     font-weight: 400;
     color: #4678f9;
     font-weight: 500;
+    width: 90%;
 }
 
 .a {
@@ -569,6 +570,7 @@
     .abt-hero p {
         font-size: 3.2vw;
         padding: 0 4vw;
+        text-align: justify;
     }
     .about-abt .abt-right {
         height: 25vh;
@@ -595,6 +597,7 @@
         font-size: 3.2vw;
         width: 95%;
         line-height: 3vh;
+        text-align: justify;
     }
     .why h3 {
         width: 95%;
@@ -622,6 +625,7 @@
     .about-clubs p {
         font-size: 3.2vw;
         line-height: 3.2vh;
+        text-align: justify;
     }
     .about-clubs .club-logos {
         width: 100%;
@@ -644,10 +648,12 @@
     .q {
         font-size: 2.6vw;
         line-height: 2.3vh;
+        text-align: justify;
     }
     .a {
         font-size: 2.4vw;
         line-height: 2.3vh;
+        text-align: justify;
     }
     .faq-toggle {
         font-size: 3.4vw;
@@ -728,5 +734,9 @@
     }
     .review p {
         font-size: 2.8vw;
+        text-align: justify;
+    }
+    .about-abt p {
+        text-align: justify !important;
     }
 }

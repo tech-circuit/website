@@ -699,9 +699,11 @@ const Forums = () => {
                         <input
                             type="radio"
                             name="report"
-                            value="Sexual content"
+                            value="Hate speech or graphic violence"
                         />
-                        <label htmlFor="report">Sexual content</label>
+                        <label htmlFor="report">
+                            Hate speech or graphic violence
+                        </label>
                     </div>
                     <div className="report-opt">
                         <input

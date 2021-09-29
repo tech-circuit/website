@@ -540,11 +540,6 @@ const About = () => {
 
             <div className="member-cont container">
                 <h1>Team behind techCircuit</h1>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Turpis at amet molestie et, vulputate arcu sed mattis. Elit
-                    neque, amet, amet, vulputate.
-                </p>
                 <div className="big-members">
                     <div className="big-member member">
                         <img src="/assets/ishana.jpg" alt="Ishaan Das" />
