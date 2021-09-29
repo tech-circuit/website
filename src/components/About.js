@@ -339,7 +339,7 @@ const About = () => {
                 </div>
             </div>
 
-            <div className="clubs about-clubs container">
+            {/* <div className="clubs about-clubs container">
                 <div className="club-left">
                     <p>
                         techCircuit allows users to browse projects from various
@@ -371,7 +371,7 @@ const About = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <div className="reviews">
                 <div className="review">

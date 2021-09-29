@@ -127,7 +127,7 @@ const Index = () => {
         const eraseDelay = 30;
         const newTextDelay = 2000;
         let textArrayIndex = 0;
-        let charIndex = 0;
+        let charIndex = 10;
 
         let type = () => {
             if (charIndex < textArray[textArrayIndex].length) {
@@ -141,6 +141,8 @@ const Index = () => {
                 cursor.classList.remove("cursorActive");
                 setTimeout(erase, newTextDelay);
             }
+
+            console.log(charIndex);
         };
 
         let erase = () => {
@@ -163,10 +165,8 @@ const Index = () => {
             }
         };
 
-        if (textArray.length) setTimeout(type, 3000);
-    }, []);
+        if (textArray.length) setTimeout(erase, 3000);
 
-    useEffect(() => {
         window.addEventListener("scroll", () => {
             let scrollTop =
                 window.pageYOffset ||
@@ -176,13 +176,25 @@ const Index = () => {
                     document.body
                 ).scrollTop;
 
-            if (scrollTop >= 3500) {
-                if (document.querySelector(".msg")) {
-                    document.querySelector(".msg").style.opacity = "0";
+            if (window.innerWidth < 600) {
+                if (scrollTop >= 4400) {
+                    if (document.querySelector(".msg")) {
+                        document.querySelector(".msg").style.opacity = "0";
+                    }
+                } else {
+                    if (document.querySelector(".msg")) {
+                        document.querySelector(".msg").style.opacity = "1";
+                    }
                 }
-            } else {
-                if (document.querySelector(".msg")) {
-                    document.querySelector(".msg").style.opacity = "1";
+            } else if (window.innerWidth < 800) {
+                if (scrollTop >= 3400) {
+                    if (document.querySelector(".msg")) {
+                        document.querySelector(".msg").style.opacity = "0";
+                    }
+                } else {
+                    if (document.querySelector(".msg")) {
+                        document.querySelector(".msg").style.opacity = "1";
+                    }
                 }
             }
         });
@@ -285,7 +297,7 @@ const Index = () => {
                         <h1>
                             The Place where
                             <br />
-                            <span id="title"></span>
+                            <span id="title">everything</span>
                             <div id="cursor" className="cursor"></div>
                             &nbsp;takes place.
                         </h1>

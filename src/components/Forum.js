@@ -499,11 +499,30 @@ const Forums = () => {
                                             alt="share-icon"
                                         />
                                         <span
-                                            onClick={(e) =>
+                                            onClick={(e) => {
+                                                if (
+                                                    document.querySelector(
+                                                        ".share-opts-active"
+                                                    ) !==
+                                                    e.target.nextElementSibling
+                                                ) {
+                                                    document.querySelector(
+                                                        ".share-opts-active"
+                                                    )
+                                                        ? document
+                                                              .querySelector(
+                                                                  ".share-opts-active"
+                                                              )
+                                                              .classList.remove(
+                                                                  "share-opts-active"
+                                                              )
+                                                        : nullFunc();
+                                                }
+
                                                 e.target.nextElementSibling.classList.toggle(
                                                     "share-opts-active"
-                                                )
-                                            }
+                                                );
+                                            }}
                                         >
                                             &nbsp; Share
                                         </span>
@@ -855,6 +874,10 @@ const Forums = () => {
 
     function removeBodyOpacity() {
         document.body.classList.remove("report-modal-body");
+    }
+
+    function nullFunc() {
+        return;
     }
 };
 

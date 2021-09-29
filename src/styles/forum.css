@@ -100,7 +100,7 @@
 .sort-modal {
     position: absolute;
     top: 90%;
-    left: 43%;
+    left: 41%;
     box-shadow: 0 0 100px #29313d2f;
     background: #fff;
     border-radius: 7px;
@@ -110,7 +110,6 @@
     justify-content: center;
     height: 15vh;
     padding: 0 2vw;
-    /* null */
     pointer-events: none;
     transform: translate(10vw, 0);
     opacity: 0;
