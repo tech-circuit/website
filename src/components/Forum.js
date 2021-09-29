@@ -261,13 +261,11 @@ const Forums = () => {
 
     const reFetch = () => {
         window.scrollTo(0, 0);
-        let url = `https://techcircuit.herokuapp.com/forum?page=${currentPage}&sort=${currentSort}&access_token=${authToken}`
+        let url = `https://techcircuit.herokuapp.com/forum?page=${currentPage}&sort=${currentSort}&access_token=${authToken}`;
         if (doSearch) {
-            url = `https://techcircuit.herokuapp.com/forum/search?q=${searchQuery}&page=${currentPage}&access_token=${authToken}`
+            url = `https://techcircuit.herokuapp.com/forum/search?q=${searchQuery}&page=${currentPage}&access_token=${authToken}`;
         }
-        fetch(
-            url
-        ).then(async (response) => {
+        fetch(url).then(async (response) => {
             let resp = await response.json();
             if (resp.success === true) {
                 console.log(resp.authenticated);
@@ -279,13 +277,13 @@ const Forums = () => {
     };
 
     React.useEffect(() => {
-        let url = `https://techcircuit.herokuapp.com/forum?page=1&sort=${currentSort}&access_token=${authToken}`
+        console.log("fetch call");
+        let url = `https://techcircuit.herokuapp.com/forum?page=1&sort=${currentSort}&access_token=${authToken}`;
         if (doSearch) {
-            url = `https://techcircuit.herokuapp.com/forum/search?q=${searchQuery}&page=${currentPage}&access_token=${authToken}`
+            url = `https://techcircuit.herokuapp.com/forum/search?q=${searchQuery}&page=${currentPage}&access_token=${authToken}`;
         }
-        fetch(
-            url
-        ).then(async (response) => {
+        fetch(url).then(async (response) => {
+            console.log("got smth");
             let resp = await response.json();
             if (resp.success === true) {
                 console.log(resp.authenticated);
@@ -301,14 +299,21 @@ const Forums = () => {
     }, [currentSort, currentPage, doSearch, searchQuery]);
 
     const toggleSort = (e) => {
-        let classListToUpdate = document.getElementById('sort-modal-div').classList
+        let classListToUpdate =
+            document.getElementById("sort-modal-div").classList;
         if (classListToUpdate.length === 2) {
-            document.getElementById('sort-modal-div').classList.remove('sort-modal-active')
+            document
+                .getElementById("sort-modal-div")
+                .classList.remove("sort-modal-active");
         } else if (classListToUpdate.length === 1) {
-            document.getElementById('sort-modal-div').classList.add('sort-modal')
-            document.getElementById('sort-modal-div').classList.add('sort-modal-active')
+            document
+                .getElementById("sort-modal-div")
+                .classList.add("sort-modal");
+            document
+                .getElementById("sort-modal-div")
+                .classList.add("sort-modal-active");
         }
-    }
+    };
 
     React.useEffect(() => {
         if (currentPage === 1) {
@@ -378,11 +383,11 @@ const Forums = () => {
                                 <input
                                     type="text"
                                     placeholder="Search communities, posts, interests..."
-                                    onKeyUp={(event) => { 
+                                    onKeyUp={(event) => {
                                         let value = event.target.value;
                                         if (value.trim().length === 0) {
                                             setDoSearch(false);
-                                            setSearchQuery("")
+                                            setSearchQuery("");
                                         } else {
                                             setDoSearch(true);
                                             setSearchQuery(event.target.value);
@@ -390,33 +395,46 @@ const Forums = () => {
                                     }}
                                 />
                             </div>
-                            {
-                                sorts.map((sort, index) => {
-                                    return (
-                                        index === 0 ? (
-                                            <button className="sortBtn" onClick={(e) => toggleSort(e)}>
-                                                Sort by: <span id="sortVal">{sort}</span>
-                                            </button>
-                                        ) : null
-                                    );
-                                })
-                            }
+                            {sorts.map((sort, index) => {
+                                return index === 0 ? (
+                                    <button
+                                        className="sortBtn"
+                                        onClick={(e) => toggleSort(e)}
+                                    >
+                                        Sort by:{" "}
+                                        <span id="sortVal">{sort}</span>
+                                    </button>
+                                ) : null;
+                            })}
                             <div className="sort-modal" id="sort-modal-div">
-                                {
-                                    sorts.map((sort, index) => {
-                                        return (
-                                            index === 0 ? null : (
-                                                <button onClick={() => { 
-                                                    setCurrentSort(sort.toLowerCase())
-                                                    let oldIndex = sorts.indexOf(sort);
-                                                    let newArrayWithCurrentSort = sorts.slice(0, oldIndex).concat(sorts.slice(oldIndex + 1));
-                                                    setSorts([sorts[oldIndex], ...newArrayWithCurrentSort]);
-                                                    toggleSort();
-                                                }}>{sort}</button>
-                                            )
-                                        )
-                                    })
-                                }
+                                {sorts.map((sort, index) => {
+                                    return index === 0 ? null : (
+                                        <button
+                                            onClick={() => {
+                                                setCurrentSort(
+                                                    sort.toLowerCase()
+                                                );
+                                                let oldIndex =
+                                                    sorts.indexOf(sort);
+                                                let newArrayWithCurrentSort =
+                                                    sorts
+                                                        .slice(0, oldIndex)
+                                                        .concat(
+                                                            sorts.slice(
+                                                                oldIndex + 1
+                                                            )
+                                                        );
+                                                setSorts([
+                                                    sorts[oldIndex],
+                                                    ...newArrayWithCurrentSort,
+                                                ]);
+                                                toggleSort();
+                                            }}
+                                        >
+                                            {sort}
+                                        </button>
+                                    );
+                                })}
                             </div>
                         </div>
                         <h3 className="add" onClick={openModal}>
@@ -513,18 +531,21 @@ const Forums = () => {
                                             <button
                                                 className="share-opt"
                                                 id="copy-forum"
-                                                onClick={(e) =>
-                                                    {
-                                                        window.navigator.clipboard.writeText(`${
-                                                            window.location.protocol +
+                                                onClick={(e) => {
+                                                    window.navigator.clipboard.writeText(
+                                                        `${
+                                                            window.location
+                                                                .protocol +
                                                             "//" +
                                                             window.location.host
-                                                        }/forum/post/${post.id}`)
-                                                        notyf.success("Copied to clipboard!")
-                                                    }
-                                                }
+                                                        }/forum/post/${post.id}`
+                                                    );
+                                                    notyf.success(
+                                                        "Copied to clipboard!"
+                                                    );
+                                                }}
                                             >
-                                            <FaLink/>
+                                                <FaLink />
                                             </button>
                                         </div>
                                     </button>

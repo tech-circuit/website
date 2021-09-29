@@ -591,7 +591,7 @@ const About = () => {
                             alt="Ribhav Sharma"
                         />
                         <h3>Ribhav Sharma</h3>
-                        <h4>Research Head</h4>
+                        <h4>Logistics</h4>
                     </div>
                 </div>
             </div>
