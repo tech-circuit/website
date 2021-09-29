@@ -2,12 +2,18 @@ import React from "react";
 import "../styles/forum.css";
 import { FaCommentAlt } from "react-icons/fa";
 import { FaExclamationTriangle } from "react-icons/fa";
-import { FaChevronLeft } from "react-icons/fa";
+import { 
+  FaTwitterSquare,
+  FaFacebookSquare,
+  FaLink,
+  FaChevronLeft,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import TimeAgo from "react-timeago";
 import { Notyf } from "notyf";
 import { useParams } from "react-router-dom";
 import { SRLWrapper } from 'simple-react-lightbox';
+import { FacebookShareButton, TwitterShareButton } from "react-share";
 
 const authToken = localStorage.getItem("authToken");
 
@@ -49,6 +55,8 @@ const Post = () => {
   const [commentContent, setCommentContent] = React.useState("");
   const { postId } = useParams();
   const [authenticated, setAuthenticated] = React.useState(false);
+  const [report, setReport] = React.useState("none");
+  const [reportPost, setReportPost] = React.useState("none");
 
   const createComment = () => {
     if (commentContent.trim().length !== 0) {
@@ -105,6 +113,42 @@ const Post = () => {
     });
   };
 
+  const reportCurrentPost = () => {
+    if (report !== "none") {
+      fetch(
+          `https://techcircuit.herokuapp.com/forum/report/new?access_token=${authToken}`,
+          {
+              // Adding method type
+              method: "POST",
+
+              // Adding body or contents to send
+              body: JSON.stringify({ post_id: reportPost, message: report }),
+
+              // Adding headers to the request
+              headers: {
+                  "Content-type": "application/json; charset=UTF-8",
+              },
+          }
+      ).then(async (response) => {
+          let resp = await response.json();
+          if (resp.success === true) {
+              notyf.success({
+                  message: "Reported successfully!",
+              });
+          } else {
+              console.log(resp);
+              notyf.open({
+                  type: "error",
+                  message: resp.error,
+              });
+          }
+          document.getElementById("cancel-button").click();
+          setReportPost("none");
+          setReport("none");
+      }); 
+    }
+  };
+
   const checkIfAuthenticated = () => {
     fetch(
       `https://techcircuit.herokuapp.com/user/pfp?access_token=${authToken}`
@@ -147,10 +191,41 @@ const Post = () => {
       size: '40px'
     }
   }
+  
+  const postAction = (action, postID) => {
+      fetch(
+          `https://techcircuit.herokuapp.com/forum/${action}/${postID}?access_token=${authToken}`,
+          { method: "POST" }
+      ).then(async (response) => {
+          let resp = await response.json();
+          if (resp.success === true) {
+            console.log(action)
+            reFetch();
+          } else {
+              console.log(resp);
+              notyf.open({
+                  type: "error",
+                  message: `Could not ${action} post`,
+              });
+          }
+      });
+  };
+
+  const reFetch = () => {
+    fetch(
+      `https://techcircuit.herokuapp.com/forum/post/${postId}?access_token=${authToken}`
+    ).then(async (res) => {
+      let resp = await res.json();
+      console.log(resp);
+      if (resp.success === true) {
+        setResponse(resp);
+      }
+    });
+  }
 
   return (
     <React.Fragment>
-      <div className="container fullForumCont">
+      <div className="container fullForumCont" id="fullForumCards">
         <div className="forumCards fullForumCards">
           <Link className="back" to="/forum">
             <FaChevronLeft />
@@ -176,37 +251,142 @@ const Post = () => {
                   <FaCommentAlt />
                   &nbsp; Reply
                 </button> */}
-                <button className="inactive-btn">
-                  <img src="/assets/share.svg" alt="share-icon" />
-                  <span>&nbsp; Share</span>
+                <button className="inactive-btn share-btn">
+                    <img
+                        src="/assets/share.svg"
+                        alt="share-icon"
+                    />
+                    <span
+                        onClick={(e) =>
+                            e.target.nextElementSibling.classList.toggle(
+                                "share-opts-active"
+                            )
+                        }
+                    >
+                        &nbsp; Share
+                    </span>
+                    <div className="share-opts">
+                        <a className="share-opt" href="/">
+                            <TwitterShareButton
+                                children={
+                                    <FaTwitterSquare />
+                                }
+                                url={`${
+                                    window.location
+                                        .protocol +
+                                    "//" +
+                                    window.location.host
+                                }/forum/post/${response.post_id}`}
+                            />
+                        </a>
+                        <a className="share-opt" href="/">
+                            <FacebookShareButton
+                                children={
+                                    <FaFacebookSquare />
+                                }
+                                url={`${
+                                    window.location
+                                        .protocol +
+                                    "//" +
+                                    window.location.host
+                                }/forum/post/${response.post_id}`}
+                            />
+                        </a>
+                        <button
+                            className="share-opt"
+                            id="copy-forum"
+                            onClick={(e) =>
+                                {
+                                    window.navigator.clipboard.writeText(`${
+                                        window.location.protocol +
+                                        "//" +
+                                        window.location.host
+                                    }/forum/post/${response.post_id}`)
+                                    notyf.success("Copied to clipboard!")
+                                }
+                            }
+                        >
+                        <FaLink/>
+                        </button>
+                    </div>
                 </button>
                 {/* <button>
                   <FaBookmark />
                   &nbsp; Save
                 </button> */}
                 <button className="inactive-btn">
-                  <img
-                    style={{ color: "#29313d", opacity: "1" }}
-                    src="/assets/active-upvote.svg"
-                    alt="img"
-                    // onClick={() => postAction("unupvote", post.id)}
-                  />
-                  <span
-                    style={{ color: "#29313d", opacity: "1" }}
-                    // onClick={() => postAction("unupvote", post.id)}
-                  >
-                    &nbsp; Upvoted
-                  </span>
+                    {response.is_upvoted ? (
+                        <>
+                            <img
+                                style={{
+                                    color: "#29313d",
+                                    opacity: "1",
+                                }}
+                                src="/assets/active-upvote.svg"
+                                alt="img"
+                                onClick={() =>
+                                    postAction(
+                                        "unupvote",
+                                        response.post_id
+                                    )
+                                }
+                            />
+                            <span
+                                style={{
+                                    color: "#29313d",
+                                    opacity: "1",
+                                }}
+                                onClick={() =>
+                                    postAction(
+                                        "unupvote",
+                                        response.post_id
+                                    )
+                                }
+                            >
+                                &nbsp; Upvoted
+                            </span>
+                        </>
+                    ) : (
+                        <>
+                            <img
+                                src="/assets/inactive-upvote.svg"
+                                alt="upvote-icon-inactive"
+                                onClick={() =>
+                                    postAction(
+                                        "upvote",
+                                        response.post_id
+                                    )
+                                }
+                            />
+                            <span
+                                onClick={() =>
+                                    postAction(
+                                        "upvote",
+                                        response.post_id
+                                    )
+                                }
+                            >
+                                &nbsp; Upvote
+                            </span>
+                        </>
+                    )}
                 </button>
               </div>
               <div className="r-opts">
-                <button>
-                  <FaExclamationTriangle />
+                <button
+                    className="inactive-btn report-post"
+                    onClick={(eve) => reportBtn(response.post_id)}
+                >
+                    <FaExclamationTriangle />
+                    <span className="report-text">
+                        &nbsp; Report
+                    </span>
                 </button>
               </div>
             </div>
           </div>
         </div>
+
         <div className="forumCard comment-card" id="comments">
           <h2>
             Comments({comments.length}) &nbsp;
@@ -217,7 +397,7 @@ const Post = () => {
               <img
                 src={
                   authenticated
-                    ? `https://techcircuit.herokuapp.com/user/pfp?access_token=${authToken}`
+                    ? localStorage.getItem("pfp")
                     : "/assets/accounticon.png"
                 }
                 alt="alt"
@@ -253,21 +433,114 @@ const Post = () => {
                   </p>
                 </div>
                 <p className="comm-body">{comment.comment}</p>
-                <div className="card-options">
-                  <div className="l-opts">
-                    <button className="inactive-btn">
-                      <img src="/assets/share.svg" alt="share-icon" />
-                      <span>&nbsp; Share</span>
-                    </button>
-                  </div>
-                </div>
               </div>
             </div>
           ))}
         </div>
       </div>
+      <div className="report-modal">
+            <h1>Report Post</h1>
+            <div className="report-opts" onChange={(e) => the(e)}>
+                <div className="report-opt">
+                    <input
+                        type="radio"
+                        name="report"
+                        value="Sexual content"
+                    />
+                    <label htmlFor="report">Sexual content</label>
+                </div>
+                <div className="report-opt">
+                    <input
+                        type="radio"
+                        name="report"
+                        value="Unwanted commercial content or spam"
+                    />
+                    <label htmlFor="report">
+                        Unwanted commercial content or spam
+                    </label>
+                </div>
+                <div className="report-opt">
+                    <input
+                        type="radio"
+                        name="report"
+                        value="Harassment or bullying"
+                    />
+                    <label htmlFor="report">Harassment or bullying</label>
+                </div>
+                <div className="report-opt">
+                    <input
+                        type="radio"
+                        name="report"
+                        value="Pornography or sexually explicit material"
+                    />
+                    <label htmlFor="report">
+                        Pornography or sexually explicit material
+                    </label>
+                </div>
+            </div>
+
+            <div className="report-btns">
+                <button
+                    className="report-close"
+                    onClick={(e) => {
+                        e.target.parentElement.parentElement.classList.remove(
+                            "report-modal-active"
+                        );
+                        removeBodyOpacity();
+                    }}
+                    id="cancel-button"
+                >
+                    Cancel
+                </button>
+                <button
+                    className="report-submit"
+                    onClick={(e) => reportCurrentPost()}
+                >
+                    Report
+                </button>
+            </div>
+        </div>
     </React.Fragment>
   );
+    // SAMPLE FUNCTION FOR BACKEND DEVS
+  function the(eve) {
+    console.log(eve.target.value)
+    if (eve.target.value !== "none") {
+      document
+      .querySelector(".report-submit")
+      .classList.add("report-submit-proceed");
+      setReport(eve.target.value);
+    }
+  }
+
+  function bodyClick(eve) {
+      if (eve.target.id === "root") {
+          document
+              .querySelector(".report-modal")
+              .classList.remove("report-modal-active");
+
+          removeBodyOpacity();
+
+          document.body.removeEventListener("click", bodyClick);
+      }
+  }
+
+  function reportBtn(postID) {
+      setReportPost(postID);
+      document
+          .querySelector(".report-modal")
+          .classList.add("report-modal-active");
+
+      document.body.classList.add("report-modal-body");
+
+      setTimeout(() => {
+          document.body.addEventListener("click", bodyClick);
+      }, 100);
+  }
+
+  function removeBodyOpacity() {
+      document.body.classList.remove("report-modal-body");
+  }
 };
 
 export default Post;

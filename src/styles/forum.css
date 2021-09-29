@@ -833,6 +833,17 @@ i {
     pointer-events: none;
     background: rgba(0, 0, 0, 0.4);
 }
+.report-modal-body #fullForumCards {
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.4);
+    filter: brightness(0.75)
+}
+.report-modal-body .post-content p {
+    background-color: transparent !important;
+}
+.report-modal-body textarea {
+    background: transparent !important;
+}
 .report-modal-body .forumCards {
     background: transparent;
 }
