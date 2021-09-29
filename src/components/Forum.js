@@ -214,7 +214,7 @@ const Forums = () => {
         ).then(async (response) => {
             let resp = await response.json();
             if (resp.success === true) {
-                reFetch();
+                reFetch(true);
             } else {
                 console.log(resp);
                 notyf.open({
@@ -232,10 +232,13 @@ const Forums = () => {
                 {
                     // Adding method type
                     method: "POST",
-    
+
                     // Adding body or contents to send
-                    body: JSON.stringify({ post_id: reportPost, message: report }),
-    
+                    body: JSON.stringify({
+                        post_id: reportPost,
+                        message: report,
+                    }),
+
                     // Adding headers to the request
                     headers: {
                         "Content-type": "application/json; charset=UTF-8",
@@ -261,8 +264,9 @@ const Forums = () => {
         }
     };
 
-    const reFetch = () => {
-        window.scrollTo(0, 0);
+    const reFetch = (upv) => {
+        let upvoteFetch = upv || false;
+        if (!upvoteFetch) window.scrollTo(0, 0);
         let url = `https://techcircuit.herokuapp.com/forum?page=${currentPage}&sort=${currentSort}&access_token=${authToken}`;
         if (doSearch) {
             url = `https://techcircuit.herokuapp.com/forum/search?q=${searchQuery}&page=${currentPage}&access_token=${authToken}`;
@@ -655,38 +659,36 @@ const Forums = () => {
                             </div>
                         </div>
                     ))}
-                </div>
-                <div className="pages">
-                    {totalPages > 6 ? (
-                        <FaChevronLeft
-                        id="page-prev"
-                        onClick={() => setCurrentPage("prev")}
-                    />
-                    ) : null
-                    }
-                    {pages.map((page, index) => {
-                        return (
-                            <button
-                                key={index}
-                                className={
-                                    page === pageSelected
-                                        ? "page page-active"
-                                        : "page"
-                                }
-                                onClick={() => setCurrentPage(page)}
-                            >
-                                {page}
-                            </button>
-                        );
-                    })}
-                    {
-                        totalPages > 6 ? (
+
+                    <div className="pages">
+                        {totalPages > 6 ? (
+                            <FaChevronLeft
+                                id="page-prev"
+                                onClick={() => setCurrentPage("prev")}
+                            />
+                        ) : null}
+                        {pages.map((page, index) => {
+                            return (
+                                <button
+                                    key={index}
+                                    className={
+                                        page === pageSelected
+                                            ? "page page-active"
+                                            : "page"
+                                    }
+                                    onClick={() => setCurrentPage(page)}
+                                >
+                                    {page}
+                                </button>
+                            );
+                        })}
+                        {totalPages > 6 ? (
                             <FaChevronRight
                                 id="page-next"
                                 onClick={() => setCurrentPage("next")}
                             />
-                        ) : null
-                    }
+                        ) : null}
+                    </div>
                 </div>
             </div>
 

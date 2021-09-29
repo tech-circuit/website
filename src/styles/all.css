@@ -742,10 +742,11 @@ nav {
 .nav-link::after {
     content: "";
     position: absolute;
-    bottom: -2px;
-    left: 0;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 0;
-    height: 2.5px;
+    height: 2.8px;
     border-radius: 50px;
     background: #4678f9;
     transition: all 0.2s;
@@ -756,7 +757,7 @@ nav {
 }
 
 .nav-link:hover:after {
-    width: 100%;
+    width: 60%;
 }
 
 .nav-link-active {
@@ -764,7 +765,7 @@ nav {
 }
 
 .nav-link-active:after {
-    width: 100%;
+    width: 80%;
 }
 
 .disc-btn {
@@ -841,8 +842,8 @@ nav {
 
 .pfp {
     border-radius: 50%;
-    height: 2.5vw;
-    width: 2.5vw;
+    height: 2vw;
+    width: 2vw;
     transition: all 0.3s ease-in-out;
 }
 .logout {
@@ -855,7 +856,7 @@ nav {
     transition: all 0.3s ease-in-out;
 }
 .logout img {
-    width: 1.6vw;
+    width: 1.4vw;
 }
 
 /* MEDIA */

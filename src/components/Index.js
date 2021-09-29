@@ -376,7 +376,7 @@ const Index = () => {
             </section>
 
             <section className="feats">
-                <div className="clubs container">
+                {/* <div className="clubs container">
                     <div className="club-left">
                         <h2 data-aos="fade-right">
                             Home to the most influential
@@ -438,7 +438,7 @@ const Index = () => {
                             />
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div className="feat container first-feat">
                     <div className="feat-banner">
@@ -530,7 +530,8 @@ const Index = () => {
                         <img
                             className="feat-img-plus"
                             src="/assets/land5.svg"
-                            alt="alt" id="not-final-img"
+                            alt="alt"
+                            id="not-final-img"
                         />
                     </div>
                 </div>

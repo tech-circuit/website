@@ -385,7 +385,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10vh 0;
+    margin: 14vh 0;
 }
 
 .feat-banner {
@@ -405,7 +405,7 @@
 .feat p {
     font-size: 1vw;
     font-weight: 400;
-    width: 31vw;
+    width: 100%;
 }
 
 .feat-img-plus {
