@@ -109,7 +109,7 @@ const TextBox = (props) => {
               },
               skin_url: `${process.env.PUBLIC_URL}/assets/textbox-custom`,
               min_height: 250,
-              max_height: 773,
+              max_height: 300,
               width: '100%',
               menubar: false,
               statusbar: false,
@@ -124,6 +124,10 @@ const TextBox = (props) => {
                 #mce-toolbar-grp {
                     background-color: #000 !important; /* uses !important or override .mce-panel background-color/image */
                     background-image: none !important;
+                }
+                img {
+                  max-height: 25vw;
+                  max-width: 25vw;
                 }
                 `,
               object_resizing: true,
