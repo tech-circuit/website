@@ -114,7 +114,9 @@ const TextBox = (props) => {
               menubar: false,
               statusbar: false,
               selector: "textarea",
-              plugins: "image code autoresize",
+              paste_block_drop: false,
+              paste_enable_default_filters: false,
+              plugins: "image code autoresize paste",
               toolbar: "bold italic underline strike | alignleft aligncenter alignright | imageUploadButton",
               content_style:
                 `
