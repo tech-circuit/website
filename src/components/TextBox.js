@@ -95,54 +95,47 @@ const TextBox = (props) => {
                                                             b64,
                                                         }),
 
-                                                        // Adding headers to the request
-                                                        headers: {
-                                                            "Content-type":
-                                                                "application/json; charset=UTF-8",
-                                                            "Access-Control-Allow-Origin":
-                                                                "*",
-                                                        },
-                                                    }
-                                                )
-                                                    .then(async (response) => {
-                                                        const resp =
-                                                            await response.json();
-                                                        editor.insertContent(
-                                                            `<img title="${inputFile.name}" src="${resp.link}" alt="" />`
-                                                        );
-                                                        notyf.dismissAll();
-                                                        notyf.open({
-                                                            type: "success",
-                                                            message:
-                                                                "Uploaded successfully!",
-                                                            duration: 2000,
-                                                        });
-                                                    })
-                                                    .catch((error) =>
-                                                        console.log(error)
-                                                    );
-                                            };
-                                        } else {
-                                            notyf.open({
-                                                type: "error",
-                                                message: "Invalid image format",
-                                            });
-                                        }
-                                    };
-                                },
-                            });
-                        },
-                        skin_url: `${process.env.PUBLIC_URL}/assets/textbox-custom`,
-                        min_height: 250,
-                        max_height: 300,
-                        width: "100%",
-                        menubar: false,
-                        statusbar: false,
-                        selector: "textarea",
-                        plugins: "image code autoresize",
-                        toolbar:
-                            "bold italic underline strike | alignleft aligncenter alignright | imageUploadButton",
-                        content_style: `
+                            // Adding headers to the request
+                            headers: {
+                              "Content-type": "application/json; charset=UTF-8",
+                              "Access-Control-Allow-Origin": "*",
+                            },
+                          })
+                            .then(async (response) => {
+                              const resp = await response.json();
+                              editor.insertContent(`<img title="${inputFile.name}" src="${resp.link}" alt="" />`);
+                              notyf.dismissAll()
+                              notyf.open({
+                                type: 'success',
+                                message: 'Uploaded successfully!',
+                                duration: 2000
+                              });
+                            })
+                            .catch((error) => console.log(error));
+                        };
+                      } else {
+                        notyf.open({
+                          type: 'error',
+                          message: 'Invalid image format'
+                        });
+                      }
+                    }
+                  }
+                })
+              },
+              skin_url: `${process.env.PUBLIC_URL}/assets/textbox-custom`,
+              min_height: 250,
+              max_height: 300,
+              width: '100%',
+              menubar: false,
+              statusbar: false,
+              selector: "textarea",
+              paste_block_drop: false,
+              paste_enable_default_filters: false,
+              plugins: "image code autoresize paste",
+              toolbar: "bold italic underline strike | alignleft aligncenter alignright | imageUploadButton",
+              content_style:
+                `
                 @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900'); 
                 body { font-family: Poppins }
                 #tinymce { color: #29313d; }
