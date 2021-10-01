@@ -304,10 +304,9 @@ const Index = () => {
                         <p data-aos="fade-right" data-aos-delay="200">
                             Be it meeting talented people from the tech
                             industry, Looking at amazing projects created by
-                            highschool and university students, connecting with
-                            new people, participating in events, or even
-                            organizing your own — techCircuit is the place to
-                            be.
+                            professionals, connecting with new people,
+                            participating in events, or even organizing your own
+                            -- techCircuit is the place to be.
                         </p>
                         <Link
                             data-aos="fade-up"
@@ -526,16 +525,13 @@ const Index = () => {
                 <div className="feat container">
                     <div className="feat-content">
                         <h2 data-aos="fade-right">
-                            Browsing events made easier for you!
+                            Curated crowdsourced resources for all fields!
                         </h2>
                         <p data-aos="fade-right" data-aos-delay="300">
                             techCircuit also features learning resources for
                             various tech-related fields, including Design, A/V,
                             Software Development, Cryptic Hunts and more; to
-                            which members of the community can contribute. We
-                            have handpicked the best archives from tech
-                            symposiums that have taken place in the past years
-                            so that users can access all of them easily.
+                            which members of the community can contribute.
                         </p>
                     </div>
                     <div className="feat-banner">
@@ -557,33 +553,26 @@ const Index = () => {
                     </div>
                     <div className="feat-content">
                         <h2 data-aos="fade-left">
-                            Place to discuss your intrests, doubts, projects
-                            with everyone!
+                            Place to discuss your intrests & projects with
+                            everyone!
                         </h2>
                         <p data-aos="fade-left" data-aos-delay="300">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Turpis at amet molestie et, vulputate arcu sed
-                            mattis. Elit neque, amet, amet, vulputate eget
-                            blandit. Pellentesque luctus elementum dui gravida.
-                            Tortor sed pulvinar mauris nam eu. Placerat
-                            porttitor euismod eget vulputate orci, convallis
-                            accumsan. Vitae, adipiscing diam justo, netus.
+                            Our forum provides a place for the tech community to
+                            discuss their interests or projects, promote
+                            content, and share their views on technology-related
+                            topics.
                         </p>
                     </div>
                 </div>
                 <div className="feat last-feat container">
                     <div className="feat-content">
                         <h2 data-aos="fade-right">
-                            Your lorem ipsum clubs on our platform!
+                            Home to student clubs and organizations!
                         </h2>
                         <p data-aos="fade-right" data-aos-delay="300">
-                            techCircuit also features learning resources for
-                            various tech-related fields, including Design, A/V,
-                            Software Development, Cryptic Hunts and more; to
-                            which members of the community can contribute. We
-                            have handpicked the best archives from tech
-                            symposiums that have taken place in the past years
-                            so that users can access all of them easily.
+                            techCircuit aims to provide a unified platform for
+                            school and college tech clubs and organizations to
+                            connect and host events.
                         </p>
                     </div>
                     <div className="feat-banner">

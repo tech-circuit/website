@@ -241,6 +241,7 @@
     display: flex;
     z-index: 9;
     padding: 10vh 0;
+    padding-bottom: 0;
 }
 
 .abt-left {
@@ -270,8 +271,8 @@
 }
 
 .abt-left img {
-    width: 110%;
-    height: 65vh;
+    width: 90%;
+    height: 60vh;
     margin-top: 2vh;
     transform: translateX(-10%);
 }
@@ -432,12 +433,12 @@
     width: 35%;
     position: relative;
     overflow: hidden;
-    height: 120vh;
+    height: 110vh;
 }
 
 .circ-hold {
     position: relative;
-    top: 25%;
+    top: 17%;
     left: 5%;
     right: 100%;
     width: 150%;
