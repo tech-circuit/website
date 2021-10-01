@@ -372,6 +372,7 @@
 }
 .about-abt .abt-left p {
     color: #fff !important;
+    margin-bottom: 10vh;
 }
 
 .about-why {
@@ -555,6 +556,10 @@
     }
     .review p {
         font-size: 1.6vw;
+    }
+
+    .about-abt .abt-left p {
+        margin-bottom: 1vh;
     }
 }
 @media (max-width: 500px) {
