@@ -358,7 +358,7 @@
     font-size: 0.8vw;
 }
 .review p {
-    font-size: 1vw;
+    font-size: 1.15vw;
     text-align: justify;
 }
 
@@ -373,6 +373,13 @@
 .about-abt .abt-left p {
     color: #fff !important;
     margin-bottom: 10vh;
+}
+.about-abt .abt-right {
+    height: auto;
+    transform: scale(0.8) translateX(20%) translateY(-18%);
+}
+.about-abt {
+    margin-bottom: -10vh;
 }
 
 .about-why {

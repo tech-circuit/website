@@ -236,9 +236,7 @@ const About = () => {
             <section id="abt" className="about about-abt">
                 <div className="abt-left">
                     <div className="container">
-                        <h1>
-                            What is <strong>techCircuit?</strong>
-                        </h1>
+                        <h1>A bit of background</h1>
                         <p>
                             Over the past 20 years, in the Delhi-NCR region of
                             India (where our founding team is from), an
@@ -357,8 +355,8 @@ const About = () => {
                         <p>
                             Having been an active participant in the Delhi-NCR
                             tech community for four years, I feel that the
-                            problems we plan to solve with techCircuit are
-                            things everyone has faced at some point during their
+                            problems we plan to solve with techCircuit are ones
+                            everyone has faced at some point during their
                             endeavors. All we’re doing is trying to organize
                             this whole system that we’ve been a part of for so
                             long, to make the experience smoother for everyone
