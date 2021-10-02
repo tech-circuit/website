@@ -483,7 +483,7 @@ const About = () => {
                             not plan to do so in the near future as well.
                             However, if you do have suggestions to help us make
                             the platform better, feel free to drop an email at
-                            (email)
+                            contact@techcircuit.co
                         </div>
                     </div>
 
