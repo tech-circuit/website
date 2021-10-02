@@ -107,9 +107,14 @@ const Forums = () => {
     };
 
     const openModal = () => {
-        document.getElementsByClassName("head-2")[0].style.zIndex = 0;
-        document.getElementsByTagName("nav")[0].style.zIndex = 0;
-        setIsOpen(true);
+        const authToken = localStorage.getItem("authToken");
+        if (authToken !== null) {
+            document.getElementsByClassName("head-2")[0].style.zIndex = 0;
+            document.getElementsByTagName("nav")[0].style.zIndex = 0;
+            setIsOpen(true);
+        } else {
+            notyf.error("Please log in to post");
+        }
     };
 
     const closeModal = () => {

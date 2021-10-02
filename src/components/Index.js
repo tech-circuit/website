@@ -295,7 +295,7 @@ const Index = () => {
                 <div className="hero-left">
                     <div className="container">
                         <h1>
-                            The Place where
+                            The place where
                             <br />
                             <span id="title">everything</span>
                             <div id="cursor" className="cursor"></div>
