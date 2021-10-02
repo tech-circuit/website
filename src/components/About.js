@@ -240,58 +240,31 @@ const About = () => {
                             What is <strong>techCircuit?</strong>
                         </h1>
                         <p>
-                            Being members of some of the most popular tech clubs
-                            in India, we have come across a number of problems
-                            during the time we’ve spent as a part of the Delhi
-                            Tech Circuit. We resoluted to build a platform,
-                            which would eradicate such stumbling blocks for tech
-                            enthusiasts around the world. We’re a team of
-                            developers and designers but most importantly
-                            creators who have all experienced our own
-                            difficulties when trying to build a better
-                            understanding of the tech circuit in general. While
-                            we believe we live in an era full of opportunity, we
-                            feel much of this passes us by. Given our abundant
-                            and constant access to useful resources, we felt
-                            that we should do out part in helping fellow tech
-                            enthusiasts.
+                            Over the past 20 years, in the Delhi-NCR region of
+                            India (where our founding team is from), an
+                            ecosystem of tech clubs and symposiums has been
+                            formed, commonly referred to as the Tech Circuit.
+                            Here’s how it works - every institute has a tech
+                            club with a unique identity; they host and
+                            participate in all kinds of events related to tech,
+                            members grow their skills across various fields of
+                            tech (design. Development, etc), recruit and guide
+                            juniors, build cool stuff and grow their network by
+                            collaborating with or competing against like-minded
+                            students.
                             <br />
                             <br />
-                            Since long, the tech community has lacked a
-                            centralised platform, using which people can
-                            connect, share their creative work and get feedback,
-                            and participate in events. techCircuit aims to solve
-                            all of these problems. We’re a team of developers
-                            and designers but most importantly creators who have
-                            all experienced our own difficulties when trying to
-                            build a better understanding of the tech circuit in
-                            general. While we believe we live in an era full of
-                            opportunity, we feel much of this passes us by.
-                            Given our abundant and constant access to useful
-                            resources, we felt that we should do out part in
-                            helping fellow tech enthusiasts.
+                            This ecosystem inspired the creation of techCircuit.
+                            We realized that there was no common platform where
+                            all this activity could take place which limited the
+                            recognition many organizations or creators could
+                            attain.
                             <br />
                             <br />
-                            Since long, the tech community has lacked a
-                            centralised platform, using which people can
-                            connect, share their creative work and get feedback,
-                            and participate in events. techCircuit aims to solve
-                            all of these problems. We’re a team of developers
-                            and designers but most importantly creators who have
-                            all experienced our own difficulties when trying to
-                            build a better understanding of the tech circuit in
-                            general. While we believe we live in an era full of
-                            opportunity, we feel much of this passes us by.
-                            Given our abundant and constant access to useful
-                            resources, we felt that we should do out part in
-                            helping fellow tech enthusiasts.
-                            <br />
-                            <br />
-                            Since long, the tech community has lacked a
-                            centralised platform, using which people can
-                            connect, share their creative work and get feedback,
-                            and participate in events. techCircuit aims to solve
-                            all of these problems.
+                            We aim to provide a platform and place for just
+                            that. We also want to expand this network beyond our
+                            place of origin, and potentially create a circuit
+                            that spans the entire world.
                         </p>
                     </div>
                 </div>
@@ -382,54 +355,36 @@ const About = () => {
                     </div>
                     <div className="review-content">
                         <p>
-                            “We’re a team of developers and designers but most
-                            importantly creators who have all experienced our
-                            own difficulties when trying to build a better
-                            understanding of the tech circuit in general.” While
-                            we believe we live in an era full of opportunity, we
-                            feel much of this passes us by. Given our abundant
-                            and constant access to useful resources, we felt
-                            that we should do out part in helping fellow tech
-                            enthusiasts. Since long, the tech community has
-                            lacked a centralised platform, using which people
-                            can connect, share their creative work and get
-                            feedback, and participate in events. techCircuit
-                            aims to solve all of these problems. We’re a team of
-                            developers and designers but most importantly
-                            creators who have all experienced our own
-                            difficulties when trying to build a better
-                            understanding of the tech circuit in general. While
-                            we believe.
+                            Having been an active participant in the Delhi-NCR
+                            tech community for four years, I feel that the
+                            problems we plan to solve with techCircuit are
+                            things everyone has faced at some point during their
+                            endeavors. All we’re doing is trying to organize
+                            this whole system that we’ve been a part of for so
+                            long, to make the experience smoother for everyone
+                            to provide way more people an opportunity to be a
+                            part of this community.
                         </p>
                     </div>
                 </div>
 
                 <div className="review">
                     <div className="review-left">
-                        <img src="/assets/ishana.jpg" alt="ishana" />
-                        <h2>Ishaan Das</h2>
+                        <img
+                            src="https://github.com/laxyapahuja.png"
+                            alt="laxy"
+                        />
+                        <h2>Laxya Pahuja</h2>
                         <h3>Founder Director</h3>
                     </div>
                     <div className="review-content">
                         <p>
-                            “We’re a team of developers and designers but most
-                            importantly creators who have all experienced our
-                            own difficulties when trying to build a better
-                            understanding of the tech circuit in general.” While
-                            we believe we live in an era full of opportunity, we
-                            feel much of this passes us by. Given our abundant
-                            and constant access to useful resources, we felt
-                            that we should do out part in helping fellow tech
-                            enthusiasts. Since long, the tech community has
-                            lacked a centralised platform, using which people
-                            can connect, share their creative work and get
-                            feedback, and participate in events. techCircuit
-                            aims to solve all of these problems. We’re a team of
-                            developers and designers but most importantly
-                            creators who have all experienced our own
-                            difficulties when trying to build a better
-                            understanding of the tech circuit in general. While
-                            we believe.
+                            The number of tech organizations in India was
+                            increasing exponentially. We knew that a separate
+                            entity that recognizes these clubs and more
+                            organizations from all over India and gives them
+                            opportunities on a wider scale was very much needed.
+                            So, we made one.
                         </p>
                     </div>
                 </div>

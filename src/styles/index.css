@@ -246,6 +246,7 @@
 
 .abt-left {
     width: 65%;
+    height: auto;
 }
 
 .about .container {
@@ -278,6 +279,7 @@
 }
 .illuBy {
     text-align: center;
+    margin-bottom: 12vh;
 }
 .illuBy a {
     color: #4678f9;
@@ -433,7 +435,7 @@
     width: 35%;
     position: relative;
     overflow: hidden;
-    height: 115vh;
+    min-height: 110vh;
 }
 
 .circ-hold {
@@ -536,9 +538,7 @@
 
 /* MEDIAS */
 @media (max-width: 1400px) {
-    .abt-left,
     .abt-right {
-        height: 120vh;
     }
     .hero-btn,
     .club-btn {
@@ -649,9 +649,7 @@
         padding: 0;
         margin-bottom: 0;
     }
-    .abt-left,
     .abt-right {
-        height: 80vh;
     }
     .about h1 {
         font-size: 4vw;
@@ -834,7 +832,6 @@
     .about .container {
         align-items: center;
     }
-    .abt-left,
     .abt-right {
         height: auto;
         width: 100%;

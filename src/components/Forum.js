@@ -371,10 +371,10 @@ const Forums = () => {
                     <h1 className="forumTitle">
                         <strong>techCircuit</strong> discussion forum
                     </h1>
-                    <p>
+                    {/* <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
+                    </p> */}
                 </div>
             </header>
             <header className="forumHeader head-2">

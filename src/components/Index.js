@@ -480,13 +480,10 @@ const Index = () => {
                             Browsing events made easier for you!
                         </h2>
                         <p data-aos="fade-right" data-aos-delay="300">
-                            techCircuit also features learning resources for
-                            various tech-related fields, including Design, A/V,
-                            Software Development, Cryptic Hunts and more; to
-                            which members of the community can contribute. We
-                            have handpicked the best archives from tech
-                            symposiums that have taken place in the past years
-                            so that users can access all of them easily.
+                            We strive to provide the ideal platform for people
+                            to host and promote their hackathons, designathons
+                            and tech symposiums, and coordinate schedules to
+                            avoid conflicts.
                         </p>
                     </div>
                     <div className="feat-banner">
