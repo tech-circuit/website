@@ -5,8 +5,7 @@ import {
     FaLinkedin,
     FaInstagram,
     FaBehanceSquare,
-    // FaFacebookSquare,
-    // FaTwitterSquare,
+    FaTwitterSquare,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Notyf } from "notyf";
@@ -160,7 +159,7 @@ const Footer = () => {
             <div className="foot-bottom container">
                 <p className="footCopy">&copy; 2021 techCircuit</p>
                 <div>
-                    <p className="footEmail">contact@techcircuit.co</p>
+                    <a href="mailto:contact@techcircuit.co"><p className="footEmail">contact@techcircuit.co</p></a>
                     <div className="socials">
                         <a href="http://linkedin.com/company/tech-circuit/">
                             <FaLinkedin />
@@ -174,12 +173,9 @@ const Footer = () => {
                         <a href="https://www.behance.net/techCircuit">
                             <FaBehanceSquare />
                         </a>
-                        {/* <a href="/">
-                            <FaFacebookSquare />
-                        </a>
-                        <a href="/">
+                        <a href="https://twitter.com/techCircuit_">
                             <FaTwitterSquare />
-                        </a> */}
+                        </a>
                     </div>
                 </div>
             </div>
