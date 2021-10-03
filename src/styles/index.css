@@ -831,7 +831,8 @@
     .about .container {
         align-items: center;
     }
-    .abt-right {
+    .abt-right,
+    .abt-left {
         height: auto;
         width: 100%;
     }

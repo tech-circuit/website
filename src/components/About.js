@@ -254,14 +254,14 @@ const About = () => {
                             <br />
                             This ecosystem inspired the creation of techCircuit.
                             We realized that there was no common platform where
-                            all this activity could take place which limited the
+                            all this activity could take place, limiting the
                             recognition many organizations or creators could
                             attain.
                             <br />
                             <br />
                             We aim to provide a platform and place for just
                             that. We also want to expand this network beyond our
-                            place of origin, and potentially create a circuit
+                            place of origin and potentially create a circuit
                             that spans the entire world.
                         </p>
                     </div>
@@ -349,7 +349,7 @@ const About = () => {
                     <div className="review-left">
                         <img src="/assets/ishana.jpg" alt="ishana" />
                         <h2>Ishaan Das</h2>
-                        <h3>Founder Director</h3>
+                        <h3>Co-Founder Director</h3>
                     </div>
                     <div className="review-content">
                         <p>
@@ -373,7 +373,7 @@ const About = () => {
                             alt="laxy"
                         />
                         <h2>Laxya Pahuja</h2>
-                        <h3>Founder Director</h3>
+                        <h3>Co-Founder Director</h3>
                     </div>
                     <div className="review-content">
                         <p>
@@ -497,7 +497,7 @@ const About = () => {
                     <div className="big-member member">
                         <img src="/assets/ishana.jpg" alt="Ishaan Das" />
                         <h3>Ishaan Das</h3>
-                        <h4>Founder Director</h4>
+                        <h4>Co-Founder Director</h4>
                     </div>
                     <div className="big-member member">
                         <img
@@ -505,7 +505,7 @@ const About = () => {
                             alt="Laxya Pahuja"
                         />
                         <h3>Laxya Pahuja</h3>
-                        <h4>Founder Director</h4>
+                        <h4>Co-Founder Director</h4>
                     </div>
                 </div>
                 <div className="members">
