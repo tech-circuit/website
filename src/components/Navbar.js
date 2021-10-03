@@ -170,7 +170,10 @@ const Navbar = () => {
                     >
                         Resources
                     </Link>
-                    <Link to="/" className="disc-btn">
+                    <Link
+                        to="https://discord.gg/PrbuvQPtSs"
+                        className="disc-btn"
+                    >
                         Discord
                     </Link>
                 </div>

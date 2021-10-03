@@ -472,7 +472,7 @@ const Forums = () => {
                                     <h2>{post.title}</h2>
                                     <h3>
                                         posted <TimeAgo date={post.date} /> by{" "}
-                                        <a href="/">{post.author}</a>
+                                        <h4>{post.author}</h4>
                                     </h3>
                                 </div>
                                 <div className="r-card-top">
