@@ -1144,11 +1144,13 @@ i {
         margin: 0 1vw;
     }
 
-    .report-modal {
+    .report-modal,
+    .delete-modal {
         padding: 3vh 6vw;
         width: 70vw;
     }
-    .report-modal h1 {
+    .report-modal h1,
+    .delete-modal h1 {
         margin-bottom: 4vh;
         font-size: 3vw;
     }
@@ -1171,7 +1173,8 @@ i {
         font-size: 2vw;
         margin-right: 1vw;
     }
-    .report-submit {
+    .report-submit,
+.delete-submit{
         padding: 1.4vh 4vw;
         font-size: 2vw;
         margin-left: 1vw;
@@ -1427,11 +1430,13 @@ i {
         margin: 0 1.6vw;
     }
 
-    .report-modal {
+    .report-modal,
+    .delete-modal {
         padding: 4vh 7vw;
         width: 90vw;
     }
-    .report-modal h1 {
+    .report-modal h1,
+    .delete-modal h1 {
         margin-bottom: 3vh;
         font-size: 5vw;
     }
@@ -1453,7 +1458,8 @@ i {
         padding: 1vh 6vw;
         font-size: 4vw;
     }
-    .report-submit {
+    .report-submit,
+.delete-submit{
         padding: 1vh 6vw;
         font-size: 4vw;
     }
