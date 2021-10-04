@@ -7,6 +7,7 @@ import {
     FaFacebookSquare,
     FaLink,
     FaChevronLeft,
+    FaTrash
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import TimeAgo from "react-timeago";
@@ -57,6 +58,7 @@ const Post = () => {
     const [authenticated, setAuthenticated] = React.useState(false);
     const [report, setReport] = React.useState("none");
     const [reportPost, setReportPost] = React.useState("none");
+    const [deletePost, setDeletePost] = React.useState("none");
 
     const createComment = () => {
         if (commentContent.trim().length !== 0) {
@@ -162,6 +164,28 @@ const Post = () => {
                 }
             })
             .catch((err) => console.log(err));
+    };
+
+    const deleteCurrentPost = () => {
+        fetch(`https://techcircuit.herokuapp.com/forum/delete/${deletePost}?access_token=${authToken}`).then(async (response) => {
+            let resp = await response.json();
+            if (resp.success === true) {
+                notyf.success({
+                    message: "Deleted successfully!",
+                });
+                document.getElementById("delete-cancel-button").click();
+                setDeletePost("none");
+                window.location.href = "/forum";
+            } else {
+                console.log(resp);
+                notyf.open({
+                    type: "error",
+                    message: resp.error,
+                });
+            }
+            document.getElementById("delete-cancel-button").click();
+            setDeletePost("none");
+        })
     };
 
     React.useEffect(() => {
@@ -382,17 +406,32 @@ const Post = () => {
                                 </button>
                             </div>
                             <div className="r-opts">
-                                <button
-                                    className="inactive-btn report-post"
-                                    onClick={(eve) =>
-                                        reportBtn(response.post_id)
-                                    }
-                                >
-                                    <FaExclamationTriangle />
-                                    <span className="report-text">
-                                        &nbsp; Report
-                                    </span>
-                                </button>
+                            {response.is_mine === true ? (
+                                            <button
+                                                className="inactive-btn delete-post"
+                                                style={{ color: "#FF6B6B" }}
+                                                onClick={(eve) =>
+                                                    deleteBtn(response.post_id)
+                                                }
+                                            >
+                                                <FaTrash />
+                                                <span className="report-text">
+                                                    &nbsp; Delete
+                                                </span>
+                                            </button>
+                                    ) : (
+                                        <button
+                                            className="inactive-btn report-post"
+                                            onClick={(eve) =>
+                                                reportBtn(response.post_id)
+                                            }
+                                        >
+                                            <FaExclamationTriangle />
+                                            <span className="report-text">
+                                                &nbsp; Report
+                                            </span>
+                                        </button>
+                                    )}
                             </div>
                         </div>
                     </div>
@@ -515,6 +554,31 @@ const Post = () => {
                     </button>
                 </div>
             </div>
+
+            <div className="delete-modal">
+                <h1>Are you sure you want to delete this post?</h1>
+
+                <div className="report-btns">
+                    <button
+                        className="report-close"
+                        onClick={(e) => {
+                            e.target.parentElement.parentElement.classList.remove(
+                                "delete-modal-active"
+                            );
+                            removeBodyOpacity();
+                        }}
+                        id="delete-cancel-button"
+                    >
+                        No
+                    </button>
+                    <button
+                        onClick={(e) => deleteCurrentPost()}
+                        className="delete-submit"
+                    >
+                        Yes
+                    </button>
+                </div>
+            </div>
         </React.Fragment>
     );
     // SAMPLE FUNCTION FOR BACKEND DEVS
@@ -538,6 +602,19 @@ const Post = () => {
 
             document.body.removeEventListener("click", bodyClick);
         }
+    }
+
+    function deleteBtn(postID) {
+        setDeletePost(postID);
+        document
+            .querySelector(".delete-modal")
+            .classList.add("delete-modal-active");
+
+        document.body.classList.add("report-modal-body");
+
+        setTimeout(() => {
+            document.body.addEventListener("click", bodyClick);
+        }, 100);
     }
 
     function reportBtn(postID) {

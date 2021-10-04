@@ -7,7 +7,7 @@ import {
     FaLink,
     FaChevronRight,
     FaChevronLeft,
-    // FaTrash,
+    FaTrash,
 } from "react-icons/fa";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 import Modal from "react-modal";
@@ -64,7 +64,7 @@ const Forums = () => {
     const [pageSelected, setPageSelected] = React.useState(1);
     const [report, setReport] = React.useState("none");
     const [reportPost, setReportPost] = React.useState("none");
-    // const [deletePost, setDeletePost] = React.useState("none");
+    const [deletePost, setDeletePost] = React.useState("none");
     const [sorts, setSorts] = React.useState(["Latest", "Hottest", "Popular"]);
     const [currentSort, setCurrentSort] = React.useState("latest");
     const [doSearch, setDoSearch] = React.useState(false);
@@ -271,7 +271,25 @@ const Forums = () => {
         }
     };
 
-    const deleteCurrentPost = () => {};
+    const deleteCurrentPost = () => {
+        fetch(`https://techcircuit.herokuapp.com/forum/delete/${deletePost}?access_token=${authToken}`).then(async (response) => {
+            let resp = await response.json();
+            if (resp.success === true) {
+                notyf.success({
+                    message: "Deleted successfully!",
+                });
+            } else {
+                console.log(resp);
+                notyf.open({
+                    type: "error",
+                    message: resp.error,
+                });
+            }
+            document.getElementById("delete-cancel-button").click();
+            setDeletePost("none");
+            reFetch();
+        })
+    };
 
     const reFetch = (upv) => {
         let upvoteFetch = upv || false;
@@ -672,20 +690,19 @@ const Forums = () => {
                                     </button>
                                 </div>
                                 <div className="r-opts">
-                                    {/* {post.user_id ==
-                                    localStorage.getItem("user_id") ? (
-                                        <button
-                                            className="inactive-btn delete-post"
-                                            style={{ color: "#FF6B6B" }}
-                                            onClick={(eve) =>
-                                                deleteBtn(post.id)
-                                            }
-                                        >
-                                            <FaTrash />
-                                            <span className="report-text">
-                                                &nbsp; Delete
-                                            </span>
-                                        </button>
+                                    {post.is_mine === true ? (
+                                            <button
+                                                className="inactive-btn delete-post"
+                                                style={{ color: "#FF6B6B" }}
+                                                onClick={(eve) =>
+                                                    deleteBtn(post.id)
+                                                }
+                                            >
+                                                <FaTrash />
+                                                <span className="report-text">
+                                                    &nbsp; Delete
+                                                </span>
+                                            </button>
                                     ) : (
                                         <button
                                             className="inactive-btn report-post"
@@ -698,16 +715,7 @@ const Forums = () => {
                                                 &nbsp; Report
                                             </span>
                                         </button>
-                                    )} */}
-                                    <button
-                                        className="inactive-btn report-post"
-                                        onClick={(eve) => reportBtn(post.id)}
-                                    >
-                                        <FaExclamationTriangle />
-                                        <span className="report-text">
-                                            &nbsp; Report
-                                        </span>
-                                    </button>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -824,7 +832,7 @@ const Forums = () => {
                             );
                             removeBodyOpacity();
                         }}
-                        id="cancel-button"
+                        id="delete-cancel-button"
                     >
                         No
                     </button>
@@ -933,18 +941,18 @@ const Forums = () => {
         }, 100);
     }
 
-    // function deleteBtn(postID) {
-    //     setDeletePost(postID);
-    //     document
-    //         .querySelector(".delete-modal")
-    //         .classList.add("delete-modal-active");
+    function deleteBtn(postID) {
+        setDeletePost(postID);
+        document
+            .querySelector(".delete-modal")
+            .classList.add("delete-modal-active");
 
-    //     document.body.classList.add("report-modal-body");
+        document.body.classList.add("report-modal-body");
 
-    //     setTimeout(() => {
-    //         document.body.addEventListener("click", bodyClick);
-    //     }, 100);
-    // }
+        setTimeout(() => {
+            document.body.addEventListener("click", bodyClick);
+        }, 100);
+    }
 
     function removeBodyOpacity() {
         document.body.classList.remove("report-modal-body");
