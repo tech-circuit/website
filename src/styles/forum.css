@@ -506,14 +506,15 @@
     margin-bottom: 1vh;
 }
 
-.comment .details a,
+.comment .details h4,
 .comment .details p {
     text-decoration: none;
     font-size: 0.9vw;
 }
 
-.comment .details a {
+.comment .details h4 {
     color: #4678f9;
+    font-weight: 400;
 }
 
 .comment .details p {
@@ -837,8 +838,25 @@ i {
     background: #cf4444;
 }
 
-.report-modal-body {
+.opaq-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: #000000;
+    opacity: 0;
+    z-index: 1000;
+    pointer-events: none;
+    transition: all 0.3s;
+}
+.report-modal-body .opaq-layer {
+    opacity: 0.5;
+    pointer-events: all;
+}
+/* .report-modal-body {
     box-shadow: 0 0 1000px #29313d2f;
+    background: rgba(0, 0, 0, 0.5);
 }
 .report-modal-body header {
     pointer-events: none;
@@ -850,7 +868,7 @@ i {
 }
 .report-modal-body .forumCardHold {
     pointer-events: none;
-    background: rgba(0, 0, 0, 0.4);
+    filter: brightness(0.5);
 }
 .report-modal-body #fullForumCards {
     pointer-events: none;
@@ -865,7 +883,7 @@ i {
 }
 .report-modal-body .forumCards {
     background: transparent;
-}
+} */
 #copy-forum {
     font-size: 1.4vw;
     margin: 0;

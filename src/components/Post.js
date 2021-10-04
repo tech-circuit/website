@@ -7,7 +7,7 @@ import {
     FaFacebookSquare,
     FaLink,
     FaChevronLeft,
-    FaTrash
+    FaTrash,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import TimeAgo from "react-timeago";
@@ -167,7 +167,9 @@ const Post = () => {
     };
 
     const deleteCurrentPost = () => {
-        fetch(`https://techcircuit.herokuapp.com/forum/delete/${deletePost}?access_token=${authToken}`).then(async (response) => {
+        fetch(
+            `https://techcircuit.herokuapp.com/forum/delete/${deletePost}?access_token=${authToken}`
+        ).then(async (response) => {
             let resp = await response.json();
             if (resp.success === true) {
                 notyf.success({
@@ -185,7 +187,7 @@ const Post = () => {
             }
             document.getElementById("delete-cancel-button").click();
             setDeletePost("none");
-        })
+        });
     };
 
     React.useEffect(() => {
@@ -263,7 +265,7 @@ const Post = () => {
                         <h2>{response.title}</h2>
                         <h3>
                             posted <TimeAgo date={response.date} /> by{" "}
-                            <a href="/">{response.author}</a>
+                            <h4 href="/">{response.author}</h4>
                         </h3>
                         <SRLWrapper options={options}>
                             <div
@@ -406,32 +408,32 @@ const Post = () => {
                                 </button>
                             </div>
                             <div className="r-opts">
-                            {response.is_mine === true ? (
-                                            <button
-                                                className="inactive-btn delete-post"
-                                                style={{ color: "#FF6B6B" }}
-                                                onClick={(eve) =>
-                                                    deleteBtn(response.post_id)
-                                                }
-                                            >
-                                                <FaTrash />
-                                                <span className="report-text">
-                                                    &nbsp; Delete
-                                                </span>
-                                            </button>
-                                    ) : (
-                                        <button
-                                            className="inactive-btn report-post"
-                                            onClick={(eve) =>
-                                                reportBtn(response.post_id)
-                                            }
-                                        >
-                                            <FaExclamationTriangle />
-                                            <span className="report-text">
-                                                &nbsp; Report
-                                            </span>
-                                        </button>
-                                    )}
+                                {response.is_mine === true ? (
+                                    <button
+                                        className="inactive-btn delete-post"
+                                        style={{ color: "#FF6B6B" }}
+                                        onClick={(eve) =>
+                                            deleteBtn(response.post_id)
+                                        }
+                                    >
+                                        <FaTrash />
+                                        <span className="report-text">
+                                            &nbsp; Delete
+                                        </span>
+                                    </button>
+                                ) : (
+                                    <button
+                                        className="inactive-btn report-post"
+                                        onClick={(eve) =>
+                                            reportBtn(response.post_id)
+                                        }
+                                    >
+                                        <FaExclamationTriangle />
+                                        <span className="report-text">
+                                            &nbsp; Report
+                                        </span>
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -479,7 +481,7 @@ const Post = () => {
                             </a>
                             <div className="comm-content">
                                 <div className="details">
-                                    <a href="/">{comment.author_username}</a>
+                                    <h4 href="/">{comment.author_username}</h4>
                                     <p className="on">
                                         <TimeAgo date={comment.date} />
                                     </p>

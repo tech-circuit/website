@@ -272,7 +272,9 @@ const Forums = () => {
     };
 
     const deleteCurrentPost = () => {
-        fetch(`https://techcircuit.herokuapp.com/forum/delete/${deletePost}?access_token=${authToken}`).then(async (response) => {
+        fetch(
+            `https://techcircuit.herokuapp.com/forum/delete/${deletePost}?access_token=${authToken}`
+        ).then(async (response) => {
             let resp = await response.json();
             if (resp.success === true) {
                 notyf.success({
@@ -288,7 +290,7 @@ const Forums = () => {
             document.getElementById("delete-cancel-button").click();
             setDeletePost("none");
             reFetch();
-        })
+        });
     };
 
     const reFetch = (upv) => {
@@ -363,6 +365,7 @@ const Forums = () => {
     return (
         <React.Fragment>
             {/* modal */}
+            <div className="opaq-layer"></div>
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
                 <div className="modal-content">
                     <div className="header">
@@ -691,18 +694,18 @@ const Forums = () => {
                                 </div>
                                 <div className="r-opts">
                                     {post.is_mine === true ? (
-                                            <button
-                                                className="inactive-btn delete-post"
-                                                style={{ color: "#FF6B6B" }}
-                                                onClick={(eve) =>
-                                                    deleteBtn(post.id)
-                                                }
-                                            >
-                                                <FaTrash />
-                                                <span className="report-text">
-                                                    &nbsp; Delete
-                                                </span>
-                                            </button>
+                                        <button
+                                            className="inactive-btn delete-post"
+                                            style={{ color: "#FF6B6B" }}
+                                            onClick={(eve) =>
+                                                deleteBtn(post.id)
+                                            }
+                                        >
+                                            <FaTrash />
+                                            <span className="report-text">
+                                                &nbsp; Delete
+                                            </span>
+                                        </button>
                                     ) : (
                                         <button
                                             className="inactive-btn report-post"
@@ -917,10 +920,14 @@ const Forums = () => {
     }
 
     function bodyClick(eve) {
-        if (eve.target.id === "root") {
-            document
-                .querySelector(".report-modal")
-                .classList.remove("report-modal-active");
+        if (eve.target.classList.contains("opaq-layer")) {
+            document.querySelector(".report-modal-active")
+                ? document
+                      .querySelector(".report-modal")
+                      .classList.remove("report-modal-active")
+                : document
+                      .querySelector(".delete-modal")
+                      .classList.remove("delete-modal-active");
 
             removeBodyOpacity();
 
