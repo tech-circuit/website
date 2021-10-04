@@ -253,6 +253,8 @@
 .forumCard h3 h4 {
     color: #4678f9;
     text-decoration: none;
+    display: inline;
+    font-weight: 400;
 }
 
 .forumCard a {
@@ -734,7 +736,8 @@ i {
 }
 
 /* report */
-.report-modal {
+.report-modal,
+.delete-modal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -749,12 +752,17 @@ i {
     pointer-events: none;
     transition: all 0.3s;
 }
-.report-modal-active {
+.delete-modal {
+    width: 30vw;
+}
+.report-modal-active,
+.delete-modal-active {
     opacity: 1;
     pointer-events: all;
     transform: translate(-50%, -50%) scale(1);
 }
-.report-modal h1 {
+.report-modal h1,
+.delete-modal h1 {
     width: 100%;
     text-align: center;
     margin-bottom: 4vh;
@@ -796,7 +804,8 @@ i {
     margin-right: 2vw;
     transition: all 0.3s;
 }
-.report-submit {
+.report-submit,
+.delete-submit {
     padding: 1.4vh 2vw;
     color: #fff;
     background-color: #ff6b6b;
@@ -807,10 +816,17 @@ i {
     transition: all 0.3s;
     opacity: 0.7;
     cursor: not-allowed;
+    pointer-events: none;
+}
+.delete-submit {
+    opacity: 1;
+    cursor: pointer;
+    pointer-events: all;
 }
 .report-submit-proceed {
     opacity: 1;
     cursor: pointer;
+    pointer-events: all;
 }
 .report-close:hover {
     background-color: #4678f9;

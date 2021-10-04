@@ -7,6 +7,7 @@ import {
     FaLink,
     FaChevronRight,
     FaChevronLeft,
+    // FaTrash,
 } from "react-icons/fa";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 import Modal from "react-modal";
@@ -63,6 +64,7 @@ const Forums = () => {
     const [pageSelected, setPageSelected] = React.useState(1);
     const [report, setReport] = React.useState("none");
     const [reportPost, setReportPost] = React.useState("none");
+    // const [deletePost, setDeletePost] = React.useState("none");
     const [sorts, setSorts] = React.useState(["Latest", "Hottest", "Popular"]);
     const [currentSort, setCurrentSort] = React.useState("latest");
     const [doSearch, setDoSearch] = React.useState(false);
@@ -269,6 +271,8 @@ const Forums = () => {
         }
     };
 
+    const deleteCurrentPost = () => {};
+
     const reFetch = (upv) => {
         let upvoteFetch = upv || false;
         if (!upvoteFetch) window.scrollTo(0, 0);
@@ -288,13 +292,11 @@ const Forums = () => {
     };
 
     React.useEffect(() => {
-        console.log("fetch call");
         let url = `https://techcircuit.herokuapp.com/forum?page=1&sort=${currentSort}&access_token=${authToken}`;
         if (doSearch) {
             url = `https://techcircuit.herokuapp.com/forum/search?q=${searchQuery}&page=${currentPage}&access_token=${authToken}`;
         }
         fetch(url).then(async (response) => {
-            console.log("got smth");
             let resp = await response.json();
             if (resp.success === true) {
                 console.log(resp.authenticated);
@@ -670,6 +672,33 @@ const Forums = () => {
                                     </button>
                                 </div>
                                 <div className="r-opts">
+                                    {/* {post.user_id ==
+                                    localStorage.getItem("user_id") ? (
+                                        <button
+                                            className="inactive-btn delete-post"
+                                            style={{ color: "#FF6B6B" }}
+                                            onClick={(eve) =>
+                                                deleteBtn(post.id)
+                                            }
+                                        >
+                                            <FaTrash />
+                                            <span className="report-text">
+                                                &nbsp; Delete
+                                            </span>
+                                        </button>
+                                    ) : (
+                                        <button
+                                            className="inactive-btn report-post"
+                                            onClick={(eve) =>
+                                                reportBtn(post.id)
+                                            }
+                                        >
+                                            <FaExclamationTriangle />
+                                            <span className="report-text">
+                                                &nbsp; Report
+                                            </span>
+                                        </button>
+                                    )} */}
                                     <button
                                         className="inactive-btn report-post"
                                         onClick={(eve) => reportBtn(post.id)}
@@ -691,23 +720,23 @@ const Forums = () => {
                                 onClick={() => setCurrentPage("prev")}
                             />
                         ) : null}
-                        {totalPages > 1 ? (
-                            pages.map((page, index) => {
-                                return (
-                                    <button
-                                        key={index}
-                                        className={
-                                            page === pageSelected
-                                                ? "page page-active"
-                                                : "page"
-                                        }
-                                        onClick={() => setCurrentPage(page)}
-                                    >
-                                        {page}
-                                    </button>
-                                );
-                            })
-                        ) : null}
+                        {totalPages > 1
+                            ? pages.map((page, index) => {
+                                  return (
+                                      <button
+                                          key={index}
+                                          className={
+                                              page === pageSelected
+                                                  ? "page page-active"
+                                                  : "page"
+                                          }
+                                          onClick={() => setCurrentPage(page)}
+                                      >
+                                          {page}
+                                      </button>
+                                  );
+                              })
+                            : null}
                         {totalPages > 6 ? (
                             <FaChevronRight
                                 id="page-next"
@@ -779,6 +808,31 @@ const Forums = () => {
                         onClick={(e) => reportCurrentPost()}
                     >
                         Report
+                    </button>
+                </div>
+            </div>
+
+            <div className="delete-modal">
+                <h1>Are you sure you want to delete this post?</h1>
+
+                <div className="report-btns">
+                    <button
+                        className="report-close"
+                        onClick={(e) => {
+                            e.target.parentElement.parentElement.classList.remove(
+                                "delete-modal-active"
+                            );
+                            removeBodyOpacity();
+                        }}
+                        id="cancel-button"
+                    >
+                        No
+                    </button>
+                    <button
+                        onClick={(e) => deleteCurrentPost()}
+                        className="delete-submit"
+                    >
+                        Yes
                     </button>
                 </div>
             </div>
@@ -878,6 +932,19 @@ const Forums = () => {
             document.body.addEventListener("click", bodyClick);
         }, 100);
     }
+
+    // function deleteBtn(postID) {
+    //     setDeletePost(postID);
+    //     document
+    //         .querySelector(".delete-modal")
+    //         .classList.add("delete-modal-active");
+
+    //     document.body.classList.add("report-modal-body");
+
+    //     setTimeout(() => {
+    //         document.body.addEventListener("click", bodyClick);
+    //     }, 100);
+    // }
 
     function removeBodyOpacity() {
         document.body.classList.remove("report-modal-body");
