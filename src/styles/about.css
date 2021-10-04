@@ -408,9 +408,16 @@
         font-size: 1.8vw;
         padding: 0 8vw;
     }
+    .about-abt {
+        width: 100vw;
+        overflow: hidden;
+    }
     .about-abt .abt-left,
     .about-abt .abt-right {
         height: auto;
+    }
+    .about-abt .abt-right {
+        transform: scale(0.9) translateX(20%) translateY(-10%);
     }
     .about-abt .abt-left {
         padding: 6vh 0;
@@ -419,6 +426,7 @@
         top: 35%;
     }
     .why {
+        margin-top: 8vh;
         padding-top: 6vh;
         padding-bottom: 6vh;
     }
@@ -584,6 +592,9 @@
         padding: 0 4vw;
         text-align: justify;
     }
+    .about-abt {
+        display: block;
+    }
     .about-abt .abt-right {
         height: 25vh;
     }
@@ -591,6 +602,7 @@
         top: 40%;
     }
     .why {
+        margin-top: 4vh;
         padding-top: 4vh;
         padding-bottom: 4vh;
     }
@@ -750,5 +762,9 @@
     }
     .about-abt p {
         text-align: justify !important;
+    }
+
+    .about-abt .abt-right {
+        transform: scale(1) translateX(0) translateY(-22%);
     }
 }

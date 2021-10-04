@@ -36,7 +36,10 @@ a {
 p {
     font-weight: 400;
 }
-
+#root {
+    width: 100vw;
+    overflow: hidden;
+}
 .App {
     font-family: Inter;
     text-align: center;
