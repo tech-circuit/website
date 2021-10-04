@@ -224,10 +224,14 @@ const Forums = () => {
                 reFetch(true);
             } else {
                 console.log(resp);
-                notyf.open({
-                    type: "error",
-                    message: `Could not ${action} post`,
-                });
+                if (authToken === null) {
+                    notyf.error(`Please log in to ${action} this post.`);
+                } else {
+                    notyf.open({
+                        type: "error",
+                        message: `Could not ${action} post`,
+                    })
+                }
             }
         });
     };
@@ -936,16 +940,20 @@ const Forums = () => {
     }
 
     function reportBtn(postID) {
-        setReportPost(postID);
-        document
-            .querySelector(".report-modal")
-            .classList.add("report-modal-active");
+        if (authToken !== null) {
+            setReportPost(postID);
+            document
+                .querySelector(".report-modal")
+                .classList.add("report-modal-active");
 
-        document.body.classList.add("report-modal-body");
+            document.body.classList.add("report-modal-body");
 
-        setTimeout(() => {
-            document.body.addEventListener("click", bodyClick);
-        }, 100);
+            setTimeout(() => {
+                document.body.addEventListener("click", bodyClick);
+            }, 100);
+        } else {
+            notyf.error("Please log in to report")
+        }
     }
 
     function deleteBtn(postID) {
