@@ -691,21 +691,23 @@ const Forums = () => {
                                 onClick={() => setCurrentPage("prev")}
                             />
                         ) : null}
-                        {pages.map((page, index) => {
-                            return (
-                                <button
-                                    key={index}
-                                    className={
-                                        page === pageSelected
-                                            ? "page page-active"
-                                            : "page"
-                                    }
-                                    onClick={() => setCurrentPage(page)}
-                                >
-                                    {page}
-                                </button>
-                            );
-                        })}
+                        {totalPages > 1 ? (
+                            pages.map((page, index) => {
+                                return (
+                                    <button
+                                        key={index}
+                                        className={
+                                            page === pageSelected
+                                                ? "page page-active"
+                                                : "page"
+                                        }
+                                        onClick={() => setCurrentPage(page)}
+                                    >
+                                        {page}
+                                    </button>
+                                );
+                            })
+                        ) : null}
                         {totalPages > 6 ? (
                             <FaChevronRight
                                 id="page-next"
