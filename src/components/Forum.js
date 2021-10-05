@@ -230,7 +230,7 @@ const Forums = () => {
                     notyf.open({
                         type: "error",
                         message: `Could not ${action} post`,
-                    })
+                    });
                 }
             }
         });
@@ -952,7 +952,7 @@ const Forums = () => {
                 document.body.addEventListener("click", bodyClick);
             }, 100);
         } else {
-            notyf.error("Please log in to report")
+            notyf.error("Please log in to report");
         }
     }
 

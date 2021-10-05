@@ -489,6 +489,7 @@
 .comment {
     display: flex;
     margin-bottom: 5vh;
+    flex-wrap: wrap;
 }
 
 .comm-icon {
@@ -525,6 +526,23 @@
 .comm-body {
     text-align: justify;
     margin-bottom: 1.4vh;
+}
+.comm-card-opts {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+#delete-comment {
+    display: flex;
+    align-items: center;
+    opacity: 0.7;
+    font-size: 0.9vw;
+    color: #ff6b6b;
+    margin-left: 2vw;
+    transition: all 0.3s;
+}
+#delete-comment:hover {
+    opacity: 1;
 }
 
 /* Modal --------------------------------------------------------------------------- */
@@ -1174,7 +1192,7 @@ i {
         margin-right: 1vw;
     }
     .report-submit,
-.delete-submit{
+    .delete-submit {
         padding: 1.4vh 4vw;
         font-size: 2vw;
         margin-left: 1vw;
@@ -1459,7 +1477,7 @@ i {
         font-size: 4vw;
     }
     .report-submit,
-.delete-submit{
+    .delete-submit {
         padding: 1vh 6vw;
         font-size: 4vw;
     }

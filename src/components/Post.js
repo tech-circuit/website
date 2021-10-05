@@ -8,6 +8,7 @@ import {
     FaLink,
     FaChevronLeft,
     FaTrash,
+    // FaBookmark,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import TimeAgo from "react-timeago";
@@ -89,7 +90,7 @@ const Post = () => {
                     updateComments();
                 } else {
                     if (res.error === "User not found.") {
-                        notyf.error("Please log in to comment")
+                        notyf.error("Please log in to comment");
                     } else {
                         notyf.open({
                             type: "error",
@@ -112,7 +113,6 @@ const Post = () => {
             `https://techcircuit.herokuapp.com/forum/post/${postId}?access_token=${authToken}`
         ).then(async (res) => {
             let resp = await res.json();
-            console.log(resp);
             if (resp.success === true) {
                 setComments(resp.comments);
             }
@@ -146,11 +146,11 @@ const Post = () => {
                     });
                 } else {
                     console.log(resp);
-                        notyf.open({
-                            type: "error",
-                            message: resp.error,
-                        });
-                    }
+                    notyf.open({
+                        type: "error",
+                        message: resp.error,
+                    });
+                }
                 document.getElementById("cancel-button").click();
                 setReportPost("none");
                 setReport("none");
@@ -261,6 +261,32 @@ const Post = () => {
         });
     };
 
+    const deleteComment = (id) => {
+        fetch(
+            `https://techcircuit.herokuapp.com/forum/comment/delete?access_token=${authToken}&comment_id=${id}`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                },
+            }
+        ).then(async (response) => {
+            let res = await response.json();
+            if (res.success === true) {
+                updateComments();
+            } else {
+                if (res.error) {
+                    notyf.error(`${res.error}`);
+                } else {
+                    notyf.open({
+                        type: "error",
+                        message: res.error,
+                    });
+                }
+            }
+        });
+    };
+
     return (
         <React.Fragment>
             <div className="container fullForumCont" id="fullForumCards">
@@ -354,9 +380,9 @@ const Post = () => {
                                     </div>
                                 </button>
                                 {/* <button>
-                  <FaBookmark />
-                  &nbsp; Save
-                </button> */}
+                                    <FaBookmark />
+                                    &nbsp; Save
+                                </button> */}
                                 <button className="inactive-btn">
                                     {response.is_upvoted ? (
                                         <>
@@ -496,6 +522,21 @@ const Post = () => {
                                 </div>
                                 <p className="comm-body">{comment.comment}</p>
                             </div>
+                            {comment.is_mine ? (
+                                <div className="comm-card-opts">
+                                    <button
+                                        id="delete-comment"
+                                        onClick={(e) =>
+                                            deleteComment(comment.id)
+                                        }
+                                    >
+                                        <FaTrash />
+                                        &nbsp;&nbsp;Delete comment
+                                    </button>
+                                </div>
+                            ) : (
+                                <></>
+                            )}
                         </div>
                     ))}
                 </div>
@@ -640,7 +681,7 @@ const Post = () => {
                 document.body.addEventListener("click", bodyClick);
             }, 100);
         } else {
-            notyf.error("Please log in to report")
+            notyf.error("Please log in to report");
         }
     }
 
