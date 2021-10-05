@@ -1212,6 +1212,9 @@ i {
         margin: 0;
         margin: 0 1.4vw;
     }
+    #delete-comment {
+        font-size: 1.6vw;
+    }
 }
 
 @media (max-width: 500px) {
@@ -1358,6 +1361,9 @@ i {
         margin-top: 0;
         margin-right: 3vw;
     }
+    .comment {
+        position: relative;
+    }
     .comment .details {
         margin-bottom: 0.4vh;
     }
@@ -1494,5 +1500,17 @@ i {
     #copy-forum {
         font-size: 4.2vw;
         margin: 0 2vw;
+    }
+    .comm-card-opts {
+        position: absolute;
+        top: 10%;
+        right: 0;
+    }
+    #delete-comment {
+        font-size: 3.6vw;
+        opacity: 1;
+    }
+    #delete-comment span {
+        display: none;
     }
 }

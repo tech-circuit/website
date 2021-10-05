@@ -531,7 +531,7 @@ const Post = () => {
                                         }
                                     >
                                         <FaTrash />
-                                        &nbsp;&nbsp;Delete comment
+                                        &nbsp;&nbsp;<span>Delete comment</span>
                                     </button>
                                 </div>
                             ) : (
