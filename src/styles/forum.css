@@ -839,7 +839,9 @@ i {
 }
 .delete-submit {
     opacity: 1;
-    cursor: pointer;
+    cursor: pointer; 
+}
+.delete-modal-active .delete-submit {
     pointer-events: all;
 }
 .report-submit-proceed {

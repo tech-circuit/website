@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
+import BASE_API_URL from "../constants";
 const clientId =
     "884360040700-4093n49it73naktrttlljb9ad6ga4jjo.apps.googleusercontent.com";
 
@@ -38,7 +39,7 @@ const Navbar = () => {
         localStorage.removeItem("pfp");
         localStorage.setItem("pfp", imageUrl);
         localStorage.setItem("authToken", authToken);
-        fetch("https://techcircuit.herokuapp.com/user/gauth", {
+        fetch(`${BASE_API_URL}/user/gauth`, {
             method: "POST",
             body: JSON.stringify({
                 email,
@@ -54,8 +55,6 @@ const Navbar = () => {
             },
         })
             .then((response) => {
-                console.log(response.status);
-                console.log(res.profileObj.email);
                 setLoggedIn(true);
                 setpfpUrl(localStorage.getItem("pfp"));
                 window.location.reload();
@@ -64,7 +63,7 @@ const Navbar = () => {
     };
 
     const onFailure = (res) => {
-        console.log("Login failed: res:", res);
+        // console.log("Login failed: res:", res);
     };
 
     const logout = () => {

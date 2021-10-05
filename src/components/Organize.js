@@ -812,10 +812,6 @@ const CreatePost = () => {
       </section>
     </>
   );
-
-  // function toggleRadio() {
-  //   console.log("the");
-  // }
 };
 
 export default CreatePost;

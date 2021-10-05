@@ -10,6 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import { Notyf } from "notyf";
 import "notyf/notyf.min.css";
+import BASE_API_URL from "../constants"
 
 const notyf = new Notyf({
     duration: 2500,
@@ -72,7 +73,7 @@ const Footer = () => {
                 message: "Please enter a valid email.",
             });
         } else {
-            fetch("https://techcircuit.herokuapp.com/ml/subscribe", {
+            fetch(`${BASE_API_URL}/ml/subscribe`, {
                 method: "POST",
                 body: JSON.stringify({
                     email: mailingListEmail,
@@ -82,7 +83,7 @@ const Footer = () => {
                 },
             })
                 .then((response) => {
-                    console.log(response.success);
+                    // console.log(response.success);
                     setMailingListEmail("");
                     notyf.open({
                         type: "success",
@@ -159,7 +160,9 @@ const Footer = () => {
             <div className="foot-bottom container">
                 <p className="footCopy">&copy; 2021 techCircuit</p>
                 <div>
-                    <a href="mailto:contact@techcircuit.co"><p className="footEmail">contact@techcircuit.co</p></a>
+                    <a href="mailto:contact@techcircuit.co">
+                        <p className="footEmail">contact@techcircuit.co</p>
+                    </a>
                     <div className="socials">
                         <a href="http://linkedin.com/company/tech-circuit/">
                             <FaLinkedin />

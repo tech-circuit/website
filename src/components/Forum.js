@@ -17,6 +17,7 @@ import { Notyf } from "notyf";
 import "notyf/notyf.min.css";
 import TimeAgo from "react-timeago";
 import { ClipLoader } from "react-spinners";
+import BASE_API_URL from "../constants";
 
 ReactModal.defaultStyles = {};
 const authToken = localStorage.getItem("authToken");
@@ -71,8 +72,8 @@ const Forums = () => {
     const [searchQuery, setSearchQuery] = React.useState("");
 
     const setCurrentPage = (page) => {
-        console.log(totalPages);
-        console.log(page);
+        // console.log(totalPages);
+        // console.log(page);
         if (page === "next") {
             if (pages[pages.length - 1] < totalPages) {
                 currentPage = pages[pages.length - 1] + 1;
@@ -85,7 +86,7 @@ const Forums = () => {
                 for (let i = 0; i < limit; i++) {
                     newPages.push(currentPage + i);
                 }
-                console.log(newPages);
+                // console.log(newPages);
                 setPages(newPages);
                 reFetch();
             }
@@ -97,7 +98,7 @@ const Forums = () => {
                 for (let i = 5; i > -1; i--) {
                     newPages.push(currentPage - i);
                 }
-                console.log(newPages);
+                // console.log(newPages);
                 setPages(newPages);
                 reFetch();
             }
@@ -129,40 +130,35 @@ const Forums = () => {
     const createPost = (isDraft) => {
         if (title.trim().length !== 0) {
             if (content.trim().length !== 0) {
-                console.log("Title:", title);
-                console.log("Content", content);
+                // console.log("Title:", title);
+                // console.log("Content", content);
                 const authToken = localStorage.getItem("authToken");
-                console.log(authToken);
                 let successMessage = "Posted successfully!";
                 let errorMessage = "Could not post";
                 if (isDraft) {
                     successMessage = "Draft saved";
                     errorMessage = "Could not save draft";
                 }
-                fetch(
-                    `https://techcircuit.herokuapp.com/forum/new?access_token=${authToken}`,
-                    {
-                        // Adding method type
-                        method: "POST",
+                fetch(`${BASE_API_URL}/forum/new?access_token=${authToken}`, {
+                    // Adding method type
+                    method: "POST",
 
-                        // Adding body or contents to send
-                        body: JSON.stringify({
-                            title,
-                            content,
-                            is_draft: isDraft,
-                        }),
+                    // Adding body or contents to send
+                    body: JSON.stringify({
+                        title,
+                        content,
+                        is_draft: isDraft,
+                    }),
 
-                        // Adding headers to the request
-                        headers: {
-                            "Content-type": "application/json; charset=UTF-8",
-                        },
-                    }
-                )
+                    // Adding headers to the request
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8",
+                    },
+                })
                     .then(async (response) => {
                         closeModal();
                         if (response.status === 200) {
                             const resp = await response.json();
-                            console.log(resp.success);
                             if (resp.success) {
                                 notyf.open({
                                     type: "success",
@@ -176,8 +172,8 @@ const Forums = () => {
                                 });
                             }
                         } else {
-                            console.log(response.status);
-                            console.log(response);
+                            // console.log(response.status);
+                            // console.log(response);
                             notyf.open({
                                 type: "error",
                                 message: errorMessage,
@@ -185,7 +181,7 @@ const Forums = () => {
                         }
                     })
                     .catch((error) => {
-                        console.log(error);
+                        // console.log(error);
                         closeModal();
                         notyf.open({
                             type: "error",
@@ -210,20 +206,19 @@ const Forums = () => {
     };
 
     const getContent = (content) => {
-        console.log(content);
+        // console.log(content);
         setContent(content);
     };
 
     const postAction = (action, postID) => {
         fetch(
-            `https://techcircuit.herokuapp.com/forum/${action}/${postID}?access_token=${authToken}`,
+            `${BASE_API_URL}/forum/${action}/${postID}?access_token=${authToken}`,
             { method: "POST" }
         ).then(async (response) => {
             let resp = await response.json();
             if (resp.success === true) {
                 reFetch(true);
             } else {
-                console.log(resp);
                 if (authToken === null) {
                     notyf.error(`Please log in to ${action} this post.`);
                 } else {
@@ -239,7 +234,7 @@ const Forums = () => {
     const reportCurrentPost = () => {
         if (report !== "none") {
             fetch(
-                `https://techcircuit.herokuapp.com/forum/report/new?access_token=${authToken}`,
+                `${BASE_API_URL}/forum/report/new?access_token=${authToken}`,
                 {
                     // Adding method type
                     method: "POST",
@@ -262,7 +257,7 @@ const Forums = () => {
                         message: "Reported successfully!",
                     });
                 } else {
-                    console.log(resp);
+                    // console.log(resp);
                     notyf.open({
                         type: "error",
                         message: resp.error,
@@ -277,7 +272,7 @@ const Forums = () => {
 
     const deleteCurrentPost = () => {
         fetch(
-            `https://techcircuit.herokuapp.com/forum/delete/${deletePost}?access_token=${authToken}`
+            `${BASE_API_URL}/forum/delete/${deletePost}?access_token=${authToken}`
         ).then(async (response) => {
             let resp = await response.json();
             if (resp.success === true) {
@@ -285,7 +280,6 @@ const Forums = () => {
                     message: "Deleted successfully!",
                 });
             } else {
-                console.log(resp);
                 notyf.open({
                     type: "error",
                     message: resp.error,
@@ -300,32 +294,28 @@ const Forums = () => {
     const reFetch = (upv) => {
         let upvoteFetch = upv || false;
         if (!upvoteFetch) window.scrollTo(0, 0);
-        let url = `https://techcircuit.herokuapp.com/forum?page=${currentPage}&sort=${currentSort}&access_token=${authToken}`;
+        let url = `${BASE_API_URL}/forum?page=${currentPage}&sort=${currentSort}&access_token=${authToken}`;
         if (doSearch) {
-            url = `https://techcircuit.herokuapp.com/forum/search?q=${searchQuery}&page=${currentPage}&access_token=${authToken}`;
+            url = `${BASE_API_URL}/forum/search?q=${searchQuery}&page=${currentPage}&access_token=${authToken}`;
         }
         fetch(url).then(async (response) => {
             let resp = await response.json();
             if (resp.success === true) {
-                console.log(resp.authenticated);
                 const updatedPosts = setThumbnail(resp.posts);
-                console.log(updatedPosts);
                 setPosts(updatedPosts);
             }
         });
     };
 
     React.useEffect(() => {
-        let url = `https://techcircuit.herokuapp.com/forum?page=1&sort=${currentSort}&access_token=${authToken}`;
+        let url = `${BASE_API_URL}/forum?page=1&sort=${currentSort}&access_token=${authToken}`;
         if (doSearch) {
-            url = `https://techcircuit.herokuapp.com/forum/search?q=${searchQuery}&page=${currentPage}&access_token=${authToken}`;
+            url = `${BASE_API_URL}/forum/search?q=${searchQuery}&page=${currentPage}&access_token=${authToken}`;
         }
         fetch(url).then(async (response) => {
             let resp = await response.json();
             if (resp.success === true) {
-                console.log(resp.authenticated);
                 const updatedPosts = setThumbnail(resp.posts);
-                console.log(updatedPosts);
                 document.querySelector(".css-q3o1l2")
                     ? document.querySelector(".css-q3o1l2").remove()
                     : console.log("none");
@@ -919,7 +909,6 @@ const Forums = () => {
         document
             .querySelector(".report-submit")
             .classList.add("report-submit-proceed");
-        console.log(eve.target.value);
         setReport(eve.target.value);
     }
 

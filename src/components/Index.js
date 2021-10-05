@@ -141,8 +141,6 @@ const Index = () => {
                 cursor.classList.remove("cursorActive");
                 setTimeout(erase, newTextDelay);
             }
-
-            console.log(charIndex);
         };
 
         let erase = () => {

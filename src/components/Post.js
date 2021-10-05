@@ -8,7 +8,6 @@ import {
     FaLink,
     FaChevronLeft,
     FaTrash,
-    // FaBookmark,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import TimeAgo from "react-timeago";
@@ -16,6 +15,7 @@ import { Notyf } from "notyf";
 import { useParams } from "react-router-dom";
 import { SRLWrapper } from "simple-react-lightbox";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
+import BASE_API_URL from "../constants";
 
 const authToken = localStorage.getItem("authToken");
 
@@ -67,7 +67,7 @@ const Post = () => {
             document.getElementById("comment-input-area").value = "";
             setCommentContent("");
             fetch(
-                `https://techcircuit.herokuapp.com/forum/comment/new?access_token=${authToken}`,
+                `${BASE_API_URL}/forum/comment/new?access_token=${authToken}`,
                 {
                     // Adding method type
                     method: "POST",
@@ -85,7 +85,6 @@ const Post = () => {
                 }
             ).then(async (response) => {
                 let res = await response.json();
-                console.log(res);
                 if (res.success === true) {
                     updateComments();
                 } else {
@@ -110,7 +109,7 @@ const Post = () => {
 
     const updateComments = () => {
         fetch(
-            `https://techcircuit.herokuapp.com/forum/post/${postId}?access_token=${authToken}`
+            `${BASE_API_URL}/forum/post/${postId}?access_token=${authToken}`
         ).then(async (res) => {
             let resp = await res.json();
             if (resp.success === true) {
@@ -122,7 +121,7 @@ const Post = () => {
     const reportCurrentPost = () => {
         if (report !== "none") {
             fetch(
-                `https://techcircuit.herokuapp.com/forum/report/new?access_token=${authToken}`,
+                `${BASE_API_URL}/forum/report/new?access_token=${authToken}`,
                 {
                     // Adding method type
                     method: "POST",
@@ -145,7 +144,6 @@ const Post = () => {
                         message: "Reported successfully!",
                     });
                 } else {
-                    console.log(resp);
                     notyf.open({
                         type: "error",
                         message: resp.error,
@@ -159,9 +157,7 @@ const Post = () => {
     };
 
     const checkIfAuthenticated = () => {
-        fetch(
-            `https://techcircuit.herokuapp.com/user/pfp?access_token=${authToken}`
-        )
+        fetch(`${BASE_API_URL}/user/pfp?access_token=${authToken}`)
             .then((res) => {
                 if (res.status !== 404) {
                     setAuthenticated(true);
@@ -172,7 +168,7 @@ const Post = () => {
 
     const deleteCurrentPost = () => {
         fetch(
-            `https://techcircuit.herokuapp.com/forum/delete/${deletePost}?access_token=${authToken}`
+            `${BASE_API_URL}/forum/delete/${deletePost}?access_token=${authToken}`
         ).then(async (response) => {
             let resp = await response.json();
             if (resp.success === true) {
@@ -183,7 +179,6 @@ const Post = () => {
                 setDeletePost("none");
                 window.location.href = "/forum";
             } else {
-                console.log(resp);
                 notyf.open({
                     type: "error",
                     message: resp.error,
@@ -196,10 +191,10 @@ const Post = () => {
 
     React.useEffect(() => {
         fetch(
-            `https://techcircuit.herokuapp.com/forum/post/${postId}?access_token=${authToken}`
+            `${BASE_API_URL}/forum/post/${postId}?access_token=${authToken}`
         ).then(async (res) => {
             let resp = await res.json();
-            console.log(resp);
+            // console.log(resp);
             if (resp.success === true) {
                 setResponse(resp);
                 setComments(resp.comments);
@@ -228,15 +223,13 @@ const Post = () => {
 
     const postAction = (action, postID) => {
         fetch(
-            `https://techcircuit.herokuapp.com/forum/${action}/${postID}?access_token=${authToken}`,
+            `${BASE_API_URL}/forum/${action}/${postID}?access_token=${authToken}`,
             { method: "POST" }
         ).then(async (response) => {
             let resp = await response.json();
             if (resp.success === true) {
-                console.log(action);
                 reFetch();
             } else {
-                console.log(resp);
                 if (authToken === null) {
                     notyf.error(`Please log in to ${action} this post.`);
                 } else {
@@ -251,10 +244,9 @@ const Post = () => {
 
     const reFetch = () => {
         fetch(
-            `https://techcircuit.herokuapp.com/forum/post/${postId}?access_token=${authToken}`
+            `${BASE_API_URL}/forum/post/${postId}?access_token=${authToken}`
         ).then(async (res) => {
             let resp = await res.json();
-            console.log(resp);
             if (resp.success === true) {
                 setResponse(resp);
             }
@@ -263,7 +255,7 @@ const Post = () => {
 
     const deleteComment = (id) => {
         fetch(
-            `https://techcircuit.herokuapp.com/forum/comment/delete?access_token=${authToken}&comment_id=${id}`,
+            `${BASE_API_URL}/forum/comment/delete?access_token=${authToken}&comment_id=${id}`,
             {
                 method: "POST",
                 headers: {
@@ -289,6 +281,7 @@ const Post = () => {
 
     return (
         <React.Fragment>
+            <div className="opaq-layer"></div>
             <div className="container fullForumCont" id="fullForumCards">
                 <div className="forumCards fullForumCards">
                     <Link className="back" to="/forum">
@@ -634,7 +627,6 @@ const Post = () => {
     );
     // SAMPLE FUNCTION FOR BACKEND DEVS
     function the(eve) {
-        console.log(eve.target.value);
         if (eve.target.value !== "none") {
             document
                 .querySelector(".report-submit")
