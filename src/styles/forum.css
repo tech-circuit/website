@@ -839,7 +839,7 @@ i {
 }
 .delete-submit {
     opacity: 1;
-    cursor: pointer; 
+    cursor: pointer;
 }
 .delete-modal-active .delete-submit {
     pointer-events: all;
@@ -904,6 +904,9 @@ i {
 .report-modal-body .forumCards {
     background: transparent;
 } */
+.post-content img {
+    margin-top: 2vh;
+}
 #copy-forum {
     font-size: 1.4vw;
     margin: 0;
