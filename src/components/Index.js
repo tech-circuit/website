@@ -306,15 +306,17 @@ const Index = () => {
                             participating in events, or even organizing your own
                             -- techCircuit is the place to be.
                         </p>
-                        <Link
+                        <a
                             data-aos="fade-up"
                             data-aos-delay="300"
-                            to="/"
+                            href="https://discord.gg/PrbuvQPtSs"
                             className="hero-btn"
+                            target="_blank"
+                            rel="noreferrer"
                         >
                             Join us Now&nbsp;&nbsp;
                             <img src="/assets/Right_Arrow.svg" alt="" />
-                        </Link>
+                        </a>
                         <div className="scroll-more-hold">
                             <a href="#abt" className="scroll-more">
                                 Scroll to know more

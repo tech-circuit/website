@@ -169,12 +169,14 @@ const Navbar = () => {
                     >
                         Resources
                     </Link>
-                    <Link
-                        to="https://discord.gg/PrbuvQPtSs"
+                    <a
+                        href="https://discord.gg/PrbuvQPtSs"
                         className="disc-btn"
+                        target="_blank"
+                        rel="noreferrer"
                     >
                         Discord
-                    </Link>
+                    </a>
                 </div>
             </div>
             <div className="nav-right">
