@@ -429,7 +429,7 @@
     display: flex;
 }
 
-.comm-icon img,
+.comm-icon,
 .add-comm-top img {
     margin-right: 1vw;
     margin-top: 0.7vh;
@@ -975,7 +975,7 @@ i {
     .comment-card {
         padding: 4vh 4vw;
     }
-    .comm-icon img,
+    .comm-icon,
     .add-comm-top img {
         width: 3.4vw;
         height: 3.4vw;
@@ -1075,7 +1075,7 @@ i {
     .comment-card {
         padding: 3.4vh 5vw;
     }
-    .comm-icon img,
+    .comm-icon,
     .add-comm-top img {
         width: 5vw;
         height: 5vw;
@@ -1359,7 +1359,7 @@ i {
         padding: 2.6vh 6vw;
         margin-bottom: 3vh;
     }
-    .comm-icon img,
+    .comm-icon,
     .add-comm-top img {
         width: 9vw;
         height: 9vw;

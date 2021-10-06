@@ -503,9 +503,11 @@ const Post = () => {
                     </div>
                     {comments.map((comment, index) => (
                         <div className="comment" id={comment.id}>
-                            <a href="/" className="comm-icon">
-                                <img src={comment.author_pfp_url} alt="alt" />
-                            </a>
+                            <img
+                                src={comment.author_pfp_url}
+                                alt="alt"
+                                className="comm-icon"
+                            />
                             <div className="comm-content">
                                 <div className="details">
                                     <h4 href="/">{comment.author_username}</h4>
