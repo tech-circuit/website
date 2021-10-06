@@ -120,16 +120,33 @@ const About = () => {
         }
     }
 
+    const msgClickHandler = () => {
+        modalStateChange(true);
+        document
+            .querySelector(".msg-opaq-layer")
+            .classList.toggle("msg-opaq-layer-active");
+
+        document
+            .querySelector(".msg-opaq-layer")
+            .removeEventListener("click", msgClickHandler);
+    };
+
+    const msgClick = () => {
+        modalView === true ? modalStateChange(false) : modalStateChange(true);
+
+        document
+            .querySelector(".msg-opaq-layer")
+            .classList.toggle("msg-opaq-layer-active");
+
+        document
+            .querySelector(".msg-opaq-layer")
+            .addEventListener("click", msgClickHandler);
+    };
+
     return (
         <>
-            <div
-                className="msg"
-                onClick={() =>
-                    modalView === true
-                        ? modalStateChange(false)
-                        : modalStateChange(true)
-                }
-            >
+            <div className="msg-opaq-layer"></div>
+            <div className="msg" onClick={msgClick}>
                 <FaChevronDown
                     className="backIcon"
                     style={

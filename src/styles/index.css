@@ -15,7 +15,7 @@
     border-radius: 50%;
     box-shadow: 0 0 30px #29313d3d;
     cursor: pointer;
-    z-index: 999999;
+    z-index: 9999999999;
     transition: all 0.2s;
     filter: drop-shadow(0px 0px 25px rgba(0, 0, 0, 0.33));
 }
@@ -28,7 +28,7 @@
     border-radius: 7px;
     /* filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.11)); */
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.33);
-    z-index: 999999;
+    z-index: 9999;
     right: 1.5vw;
     bottom: 5.5vw;
     padding: 1.5vw;
@@ -535,23 +535,34 @@
     }
 }
 
+.msg-opaq-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 100;
+}
+.msg-opaq-layer-active {
+    pointer-events: all;
+}
+
 /* MEDIAS */
 @media (max-width: 1400px) {
-    .abt-right {
-    }
     .hero-btn,
     .club-btn {
         height: 5vh;
     }
     .msg {
-        font-size: 2vw;
-        width: 5vw;
-        height: 5vw;
+        font-size: 1vw;
+        width: 3vw;
+        height: 3vw;
     }
 
     .contact-card {
         width: 30vw;
-        height: 42vh;
+        height: auto;
         right: 1.5vw;
         bottom: 9vh;
         padding: 2vw;
@@ -561,7 +572,7 @@
     }
     .contact-card .input {
         width: 100%;
-        height: 4vh;
+        height: 6vh;
         margin-top: 1vw;
     }
     .contact-card .input input {
