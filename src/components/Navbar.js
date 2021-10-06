@@ -170,7 +170,7 @@ const Navbar = () => {
                         Resources
                     </Link>
                     <a
-                        href="https://discord.gg/PrbuvQPtSs"
+                        href="https://dsc.gg/techcircuit"
                         className="disc-btn"
                         target="_blank"
                         rel="noreferrer"

@@ -309,7 +309,7 @@ const Index = () => {
                         <a
                             data-aos="fade-up"
                             data-aos-delay="300"
-                            href="https://discord.gg/PrbuvQPtSs"
+                            href="https://dsc.gg/techcircuit"
                             className="hero-btn"
                             target="_blank"
                             rel="noreferrer"

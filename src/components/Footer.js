@@ -10,7 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import { Notyf } from "notyf";
 import "notyf/notyf.min.css";
-import BASE_API_URL from "../constants"
+import BASE_API_URL from "../constants";
 
 const notyf = new Notyf({
     duration: 2500,
@@ -147,7 +147,7 @@ const Footer = () => {
                         </li> */}
                         <li>
                             <a
-                                href="https://discord.gg/PrbuvQPtSs"
+                                href="https://dsc.gg/techcircuit"
                                 target="_blank"
                                 rel="noreferrer"
                             >
