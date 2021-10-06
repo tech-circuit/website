@@ -550,7 +550,7 @@ const Index = () => {
                     </div>
                     <div className="feat-content">
                         <h2 data-aos="fade-left">
-                            Place to discuss your intrests & projects with
+                            Place to discuss your interests & projects with
                             everyone!
                         </h2>
                         <p data-aos="fade-left" data-aos-delay="300">
