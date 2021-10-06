@@ -17,7 +17,7 @@ const Soon = () => {
                             Our platform will be live soon. Join our Discord
                             Server for the latest updates!
                         </p>
-                        <Link to="/" className="hero-btn">
+                        <Link to="https://dsc.gg/techcircuit" className="hero-btn">
                             Join Discord&nbsp;&nbsp;
                             <img src="/assets/Right_Arrow.svg" alt="" />
                         </Link>
