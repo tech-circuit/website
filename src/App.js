@@ -13,65 +13,64 @@ import About from "./components/About";
 // import Organize from "./components/Organize";
 // import Profile from "./components/Profile";
 import Soon from "./components/Soon";
+import Error from "./components/Error";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
-  return (
-    <Router>
-      <ScrollToTop />
-      <Navbar />
-      <Switch>
-        <Route exact path="/">
-          <Index />
-        </Route>
-        <Route exact path="/work">
-          {/* <Work /> */}
-          <Soon />
-        </Route>
-        <Route exact path="/about">
-          <About />
-        </Route>
-        <Route exact path="/events">
-          {/* <Events /> */}
-          <Soon />
-        </Route>
-        <Route exact path="/create">
-          {/* <CreateProject /> */}
-          <Soon />
-        </Route>
-        <Route exact path="/community">
-          {/* <Community /> */}
-          <Soon />
-        </Route>
-        <Route exact path="/resources">
-          {/* <Resources /> */}
-          <Soon />
-        </Route>
-        <Route exact path="/forum">
-          <Forums />
-        </Route>
-        <Route exact path="/create-post">
-          {/* <CreatePost /> */}
-          <Soon />
-        </Route>
-        <Route exact path="/organize">
-          {/* <Organize /> */}
-          <Soon />
-        </Route>
-        <Route exact path="/profile">
-          {/* <Profile /> */}
-          <Soon />
-        </Route>
-        <Route exact path="/forum/post/:postId" component={Post} />
-        <Route path="*">
-          <div className="container">
-            <h1 style={{ marginTop: "16vh", textAlign: "center" }}>404</h1>
-          </div>
-        </Route>
-      </Switch>
-    </Router>
-  );
+    return (
+        <Router>
+            <ScrollToTop />
+            <Navbar />
+            <Switch>
+                <Route exact path="/">
+                    <Index />
+                </Route>
+                <Route exact path="/work">
+                    {/* <Work /> */}
+                    <Soon />
+                </Route>
+                <Route exact path="/about">
+                    <About />
+                </Route>
+                <Route exact path="/events">
+                    {/* <Events /> */}
+                    <Soon />
+                </Route>
+                <Route exact path="/create">
+                    {/* <CreateProject /> */}
+                    <Soon />
+                </Route>
+                <Route exact path="/community">
+                    {/* <Community /> */}
+                    <Soon />
+                </Route>
+                <Route exact path="/resources">
+                    {/* <Resources /> */}
+                    <Soon />
+                </Route>
+                <Route exact path="/forum">
+                    <Forums />
+                </Route>
+                <Route exact path="/create-post">
+                    {/* <CreatePost /> */}
+                    <Soon />
+                </Route>
+                <Route exact path="/organize">
+                    {/* <Organize /> */}
+                    <Soon />
+                </Route>
+                <Route exact path="/profile">
+                    {/* <Profile /> */}
+                    <Soon />
+                </Route>
+                <Route exact path="/forum/post/:postId" component={Post} />
+                <Route path="*">
+                    <Error />
+                </Route>
+            </Switch>
+        </Router>
+    );
 };
 
 export default App;

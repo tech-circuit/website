@@ -16,8 +16,22 @@ const Navbar = () => {
     useEffect(() => {
         setActivePage(location.pathname);
         if (localStorage.getItem("authToken") !== null) {
-            setLoggedIn(true);
-            setpfpUrl(localStorage.getItem("pfp"));
+            fetch(
+                `${BASE_API_URL}/user/pfp?access_token=${localStorage.getItem(
+                    "authToken"
+                )}`
+            )
+                .then((res) => {
+                    if (res.status !== 404) {
+                        setLoggedIn(true);
+                    }
+                })
+                .catch((err) => console.log(err));
+            setpfpUrl(
+                `${BASE_API_URL}/user/pfp?access_token=${localStorage.getItem(
+                    "authToken"
+                )}`
+            );
         }
     }, [location]);
 
@@ -56,7 +70,7 @@ const Navbar = () => {
         })
             .then((response) => {
                 setLoggedIn(true);
-                setpfpUrl(localStorage.getItem("pfp"));
+                setpfpUrl(`${BASE_API_URL}/user/pfp?access_token=${authToken}`);
                 window.location.reload();
             })
             .catch((error) => console.log(error));

@@ -476,7 +476,7 @@ const Post = () => {
                             <img
                                 src={
                                     authenticated
-                                        ? localStorage.getItem("pfp")
+                                        ? `${BASE_API_URL}/user/pfp?access_token=${authToken}`
                                         : "/assets/accounticon.png"
                                 }
                                 alt="alt"

@@ -550,10 +550,6 @@
 
 /* MEDIAS */
 @media (max-width: 1400px) {
-    .hero-btn,
-    .club-btn {
-        height: 5vh;
-    }
     .msg {
         font-size: 1vw;
         width: 3vw;
@@ -646,7 +642,7 @@
         margin: 2vh 0;
         margin-bottom: 4vh;
     }
-    .hero-left a {
+    .hero-btn {
         margin: 0;
         font-size: 2.4vw;
         width: 33%;
@@ -658,8 +654,6 @@
     .about {
         padding: 0;
         margin-bottom: 0;
-    }
-    .abt-right {
     }
     .about h1 {
         font-size: 4vw;
@@ -829,7 +823,7 @@
         margin: 2vh 0;
         margin-bottom: 4vh;
     }
-    .hero-left a {
+    .hero-btn {
         margin: 0;
         font-size: 3.4vw;
         width: 43%;
