@@ -1,217 +1,218 @@
 .create {
-  padding: 0 calc(9.1vw + 135px);
-  padding-top: 12vh;
+    padding: 0 calc(9.1vw + 135px);
+    padding-top: 12vh;
 }
 .create .back {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 .create-hold {
-  display: flex;
-  margin-top: 4vh;
-  padding-bottom: 8vh;
+    display: flex;
+    width: 100%;
+    margin-top: 4vh;
+    padding-bottom: 8vh;
 }
 .create-left {
-  width: 60%;
+    width: 100%;
 }
 .create-right label {
-  margin-bottom: 1.4vh !important;
+    margin-bottom: 1.4vh !important;
 }
 .create-right {
-  width: 30%;
-  position: fixed;
-  top: 15vh;
-  right: calc(9.1vw + 135px);
+    width: 30%;
+    position: fixed;
+    top: 15vh;
+    right: calc(9.1vw + 135px);
 }
 .right-hold {
-  width: 90%;
+    width: 90%;
 }
-.create h1,
-.create label,
-.create input {
-  color: #29313d;
+.fields h1,
+.fields label,
+.fields input {
+    color: #29313d;
 }
-.create p {
-  color: #9c9c9c;
-  font-size: 1vw;
-}
-
-.create h1 {
-  font-weight: 600;
-  font-size: 2vw;
+.fields p {
+    color: #9c9c9c;
+    font-size: 1vw;
 }
 
-.create .input {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0;
-  margin-top: 3vh;
-  width: 75%;
+.fields h1 {
+    font-weight: 600;
+    font-size: 2vw;
 }
-.create label {
-  font-size: 1.2vw;
-  font-weight: 400;
-  margin-bottom: 0.7vh;
+
+.fields .input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    margin-top: 3vh;
+    width: 95%;
 }
-.create input,
-.create textarea,
-.create select {
-  border: 2px solid #eee;
-  padding: 1vh 1vw;
-  font-size: 1vw;
-  border-radius: 5px;
-  width: 100%;
+.fields label {
+    font-size: 1.2vw;
+    font-weight: 400;
+    margin-bottom: 0.7vh;
 }
-.create textarea {
-  min-height: 14vh;
+.fields input,
+.fields textarea,
+.fields select {
+    border: 2px solid #eee;
+    padding: 1vh 1vw;
+    font-size: 1vw;
+    border-radius: 5px;
+    width: 100%;
 }
-.create textarea {
-  width: 100%;
+.fields textarea {
+    min-height: 14vh;
 }
-.create input::placeholder,
-.create textarea::placeholder,
-.create select {
-  color: #9c9c9c;
+.fields textarea {
+    width: 100%;
+}
+.fields input::placeholder,
+.fields textarea::placeholder,
+.fields select {
+    color: #9c9c9c;
 }
 
 .create-links {
-  margin-top: 3vh;
-  width: 80%;
+    margin-top: 3vh;
+    width: 80%;
 }
 .link-unit {
-  display: flex;
-  width: 100%;
-  margin-top: 2vh;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    width: 100%;
+    margin-top: 2vh;
+    align-items: center;
+    justify-content: space-between;
 }
 .link-unit input {
-  width: 75%;
+    width: 75%;
 }
 .create-link-brand,
 .create-link-opt {
-  width: 10%;
-  font-size: 2.2vw !important;
+    width: 10%;
+    font-size: 2.2vw !important;
 }
 
-.create select {
-  color: #4678f9;
+.fields select {
+    color: #4678f9;
 }
 .input p {
-  margin-top: 1vh;
-  font-size: 0.9vw;
+    margin-top: 1vh;
+    font-size: 0.9vw;
 }
 
 .create-right .input {
-  width: 100%;
+    width: 100%;
 }
 .create-btns {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 1vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 1vh;
 }
 .sec {
-  width: 48%;
-  padding: 1.2vh 0;
-  font-size: 1vw;
-  background: #29313d;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 5px;
-  margin: 2vh 0;
+    width: 48%;
+    padding: 1.2vh 0;
+    font-size: 1vw;
+    background: #29313d;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 2vh 0;
 }
 .prim {
-  width: 100%;
-  padding: 1.2vh 0;
-  font-size: 1vw;
-  background: #4678f9;
-  color: #fff;
-  cursor: pointer;
+    width: 100%;
+    padding: 1.2vh 0;
+    font-size: 1vw;
+    background: #4678f9;
+    color: #fff;
+    cursor: pointer;
 }
 
 .file-inp-lab {
-  width: 100%;
-  height: 48vh;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 2px dashed #c4c4c4;
-  cursor: pointer;
+    width: 100%;
+    height: 48vh;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #c4c4c4;
+    cursor: pointer;
 }
 .file-inp-lab h3 {
-  margin: 1.2vh 0;
-  color: #747474;
-  font-weight: 400;
-  font-size: 1.4vw;
-  transition: all 0.3s;
+    margin: 1.2vh 0;
+    color: #747474;
+    font-weight: 400;
+    font-size: 1.4vw;
+    transition: all 0.3s;
 }
 .file-inp-lab h4 {
-  color: #747474;
-  font-weight: 300;
-  font-size: 1vw;
-  transition: all 0.3s;
+    color: #747474;
+    font-weight: 300;
+    font-size: 1vw;
+    transition: all 0.3s;
 }
 .file-inp-lab:hover > h4,
 .file-inp-lab:hover > h3 {
-  color: #29313d;
+    color: #29313d;
 }
 
 .create-radio-grp {
-  width: 80%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .create-radio {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #747474;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #747474;
 }
 .create-radio input {
-  width: auto;
-  height: auto;
-  margin-right: 0.6vw;
-  cursor: pointer;
+    width: auto;
+    height: auto;
+    margin-right: 0.6vw;
+    cursor: pointer;
 }
 
 .create-right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .org-right {
-  width: 80%;
+    width: 80%;
 }
 .create-org-file-inp {
-  height: 35vh;
+    height: 35vh;
 }
 
 .input input[type="date"] {
-  width: 40%;
+    width: 40%;
 }
 
 .smol-input-hold {
-  width: 79%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    width: 79%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .smol-input-hold .input input {
-  width: 100%;
+    width: 100%;
 }
 .border {
-  background-color: transparent;
-  border: 2px solid #29313d;
-  color: #29313d;
-  transition: all 0.3s;
+    background-color: transparent;
+    border: 2px solid #29313d;
+    color: #29313d;
+    transition: all 0.3s;
 }
 .border:hover {
-  background: rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.08);
 }

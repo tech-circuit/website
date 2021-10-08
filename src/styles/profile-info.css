@@ -1,0 +1,19 @@
+.profileInfo {
+    display: flex;
+    width: 100%;
+}
+.pInfo,
+.pfp {
+    width: 50%;
+}
+.pfp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+.pfp img {
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
+}

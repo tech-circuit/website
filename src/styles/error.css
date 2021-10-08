@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 .err-img {
     width: 20%;
@@ -23,8 +24,22 @@
 .error-main .hero-btn img {
     width: 1.4vw;
 }
+.err-illus {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.err-illus img {
+    width: 38%;
+}
 
 @media (max-width: 800px) {
+    .error-main {
+        transform: translateY(-10%);
+    }
     .err-img {
         width: 40%;
         margin-bottom: 6vh;
@@ -39,6 +54,16 @@
     }
     .error-main .hero-btn img {
         width: 3vw;
+    }
+    .err-illus {
+        justify-content: center;
+        bottom: -10%;
+    }
+    .err-illus img {
+        width: 70%;
+    }
+    #flip-ill {
+        display: none;
     }
 }
 @media (max-width: 500px) {
@@ -56,5 +81,8 @@
     .error-main .hero-btn img {
         width: 4vw;
         margin-right: 1vw;
+    }
+    .err-illus img {
+        width: 110%;
     }
 }

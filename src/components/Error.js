@@ -15,8 +15,17 @@ const Error = () => {
                 <h1>Aw ;( Something went wrong!</h1>
                 <button className="hero-btn" onClick={goToPreviousPath}>
                     <img src="/assets/Left-Arrow.svg" alt="" />
-                    &nbsp;&nbsp;Join us Now
+                    &nbsp;&nbsp;Go Back
                 </button>
+                <div className="err-illus">
+                    <img src="/assets/abt.svg" alt="" />
+                    <img
+                        src="/assets/abt.svg"
+                        id="flip-ill"
+                        style={{ transform: "scaleX(-1)" }}
+                        alt=""
+                    />
+                </div>
             </section>
             <Footer />
         </>
