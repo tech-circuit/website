@@ -91,10 +91,15 @@
 .link-unit input {
     width: 75%;
 }
-.create-link-brand,
-.create-link-opt {
+.link-unit .create-link-brand,
+.link-unit .create-link-opt {
     width: 10%;
-    font-size: 2.2vw !important;
+    font-size: 1.6vw;
+}
+.link-unit .create-link-opt {
+    font-size: 1.4vw;
+    cursor: pointer;
+    color: #4678f9;
 }
 
 .fields select {

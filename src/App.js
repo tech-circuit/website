@@ -14,6 +14,7 @@ import About from "./components/About";
 // import Profile from "./components/Profile";
 import Soon from "./components/Soon";
 import Error from "./components/Error";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 

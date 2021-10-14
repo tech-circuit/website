@@ -3,17 +3,133 @@
     width: 100%;
 }
 .pInfo,
-.pfp {
+.pfp-sec {
     width: 50%;
 }
-.pfp {
+.pInfo {
+    margin-left: 4vw;
+    margin-top: 4vh;
+}
+.pfp-sec {
+    width: 25%;
+}
+.pfp-sec {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 50vh;
 }
-.pfp img {
-    width: 20vw;
-    height: 20vw;
+.pfp-sec img {
+    width: 14vw;
+    height: 14vw;
     border-radius: 50%;
+    margin-bottom: 2vh;
+}
+.pfp-sec p {
+    padding: 0 3vw;
+    text-align: center;
+}
+.fields {
+    display: flex;
+    width: 100%;
+    margin-bottom: 6vh;
+}
+.fields input {
+    transition: all 0.3s ease-in-out;
+}
+.pfp-opts {
+    display: flex;
+    width: 70%;
+    margin-top: 1vh;
+    align-items: center;
+    justify-content: space-between;
+}
+#edit-pfp,
+#remove-pfp {
+    color: #4678f9;
+    font-size: 1vw;
+    display: flex;
+    align-items: center;
+    padding: 1vh 1vw;
+}
+#remove-pfp {
+    color: #ff6b6b;
+}
+
+/* Danger zone */
+.danger-zone {
+    margin-top: 6vh;
+}
+.fields .danger-zone h1 {
+    font-size: 1.6vw;
+    font-weight: 500;
+    color: #ff6b6b;
+    font-style: italic;
+}
+.danger-box {
+    width: 100%;
+    padding: 3vh 2.4vw;
+    background-color: #ff6b6b;
+    border-radius: 7px;
+    margin-top: 2vh;
+    color: #fff;
+}
+.danger-box h2 {
+    font-size: 1.6vw;
+    font-weight: 600;
+}
+.fields .danger-box p {
+    font-size: 1vw;
+    color: #fff;
+    margin: 2vh 0;
+}
+.fields .danger-box button {
+    padding: 1.4vh 2vw;
+    background: #fff;
+    color: #ff6b6b;
+    font-size: 1vw;
+    border-radius: 7px;
+    box-shadow: 0 10px 100px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+.fields .danger-box button:hover {
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.14);
+}
+
+.create-link-delete {
+    color: #ff6b6b !important;
+}
+
+.shake-anim {
+    animation: shake 0.8s ease-in-out forwards;
+}
+.shake-anim input {
+    border-color: #ff6b6b !important;
+}
+@keyframes shake {
+    0% {
+        transform: translateX(0px);
+    }
+    16% {
+        transform: translateX(-30px);
+    }
+    33% {
+        transform: translateX(25px);
+    }
+    49% {
+        transform: translateX(-20px);
+    }
+    65% {
+        transform: translateX(15px);
+    }
+    81% {
+        transform: translateX(-10px);
+    }
+    94% {
+        transform: translateX(5px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
 }

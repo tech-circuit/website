@@ -1,11 +1,38 @@
 import "../styles/profile.css";
 import ProfileInfo from "./ProfileInfo";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
+import BASE_API_URL from "../constants";
 
 const Profile = () => {
     const [tab, setTab] = useState("Your Info");
+    const [authenticated, setAuthenticated] = useState(true);
 
-    return (
+    const checkIfAuthenticated = () => {
+        fetch(
+            `${BASE_API_URL}/user/pfp?access_token=${localStorage.getItem(
+                "authToken"
+            )}`
+        )
+            .then((res) => {
+                if (res.status !== 404) {
+                    setAuthenticated(true);
+                } else {
+                    setAuthenticated(false);
+                }
+            })
+            .catch((err) => setAuthenticated(false));
+    };
+
+    useEffect(() => {
+        checkIfAuthenticated();
+    });
+
+    function changeTab(e) {
+        setTab(e.target.textContent);
+    }
+
+    const profilePage = (
         <>
             <header className="head-2 profile-tabs">
                 <div className="left-tabs">
@@ -17,7 +44,7 @@ const Profile = () => {
                     >
                         Your Info
                     </h3>
-                    <h3
+                    {/* <h3
                         className={
                             tab === "Projects" ? "profile-tab-active" : ""
                         }
@@ -54,11 +81,11 @@ const Profile = () => {
                         onClick={(eve) => changeTab(eve)}
                     >
                         Notifications
-                    </h3>
+                    </h3> */}
                 </div>
                 {/* <div className="right-tabs">
-          <h3>Logout</h3>
-        </div> */}
+                    <h3>Logout</h3>
+                </div> */}
             </header>
 
             {/* TABS ------------------------------------------------------------------------------------------------ */}
@@ -69,9 +96,7 @@ const Profile = () => {
         </>
     );
 
-    function changeTab(e) {
-        setTab(e.target.textContent);
-    }
+    return authenticated ? profilePage : <Redirect to="/" />;
 };
 
 export default Profile;
