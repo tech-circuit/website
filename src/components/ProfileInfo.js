@@ -117,7 +117,7 @@ const ProfileInfo = () => {
                 setUser(gotUser);
             }
         );
-    }, []);
+    }, [authToken]);
 
     useEffect(() => {
         let theObj = {};

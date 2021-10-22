@@ -12,7 +12,7 @@ import Work from "./components/Work";
 import CreatePost from "./components/CreatePost";
 import Organize from "./components/Organize";
 import Profile from "./components/Profile";
-import Soon from "./components/Soon";
+// import Soon from "./components/Soon";
 import Error from "./components/Error";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
