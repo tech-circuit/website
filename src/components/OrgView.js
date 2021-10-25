@@ -1,4 +1,5 @@
 import "../styles/org.css";
+import { FaInstagram } from "react-icons/fa";
 
 const OrgView = () => {
     return(
@@ -11,9 +12,15 @@ const OrgView = () => {
                 <div className="org-links">                    
                     <h4>Visit</h4>
                     <div className="orglink-icons">
-                        <a href="/"><img src="/assets/samvr.jpeg" className="link-icon" alt="alt" /></a>
-                        <a href="/"><img src="/assets/samvr.jpeg" className="link-icon" alt="alt" /></a>
-                        <a href="/"><img src="/assets/samvr.jpeg" className="link-icon" alt="alt" /></a>
+                        <a href="/">
+                        <FaInstagram />
+                        </a>
+                        <a href="/">
+                        <FaInstagram />
+                        </a>
+                        <a href="/">
+                        <FaInstagram />
+                        </a>
                     </div>                  
                 </div>
                 <button className="ReqJoinButton">Request to Join</button>

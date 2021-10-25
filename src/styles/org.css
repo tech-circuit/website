@@ -7,7 +7,6 @@
 .org-cont img {
     height: 20vh;
     width: 20vh;
-    background-color: aqua;
 }
 
 .org-cont h1, 
@@ -25,12 +24,10 @@
 .main-info {
     width: 40%;
     text-align: center;
-    /* background-color: yellow; */
 }
 
 .other-info {
     margin-left: 5vw;
-    /* background-color: pink; */
 }
 
 .main-info h1 {
@@ -56,17 +53,14 @@
     margin: 2vh 0;
 }
 
-.main-info .orglink-icons {
-    display: flex;
-    justify-content: center;
+.main-info .orglink-icons  {
     margin-top: 1vh;
+    font-size: 4.2vh;
 }
 
-.main-info .link-icon {
-    border-radius: 100%;;
-    height: 3.2vw;
-    width: 3.2vw;
+.main-info .orglink-icons a{
     margin: 0 0.5vw;
+    color: black
 }
 
 .ReqJoinButton {
@@ -77,8 +71,8 @@
     border-radius: 4.28558px;
     color: white;
     font-family: Poppins;
-    font-size: 18px;
-    margin-top: 25px;
+    font-size: 1vw;
+    margin-top: 2.8vh;
 }
 
 
@@ -111,6 +105,10 @@
 
 .org-div .mod-div .h4 {
     font-size: 0.8vw
+}
+
+.org-div .mod-div p {
+    font-size: 0.9vw
 }
 
 .org-div table {
