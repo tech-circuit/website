@@ -13,6 +13,7 @@ import CreatePost from "./components/CreatePost";
 import Organize from "./components/Organize";
 import Profile from "./components/Profile";
 // import Soon from "./components/Soon";
+import User from "./components/User";
 import Error from "./components/Error";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -44,6 +45,10 @@ const App = () => {
                 </Route>
                 <Route exact path="/community">
                     <Community />
+                    {/* <Soon /> */}
+                </Route>
+                <Route exact path="/user">
+                    <User />
                     {/* <Soon /> */}
                 </Route>
                 <Route exact path="/resources">
