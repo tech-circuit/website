@@ -1,0 +1,126 @@
+.org-cont {
+    margin-top: 15vh;
+    padding: 0 15vw;
+    display: flex;
+}
+
+.org-cont img {
+    height: 20vh;
+    width: 20vh;
+    background-color: aqua;
+}
+
+.org-cont h1, 
+.org-cont h2, 
+.org-cont h3, 
+.org-cont h4 {
+    font-weight: 500;
+}
+
+.org-cont p {
+    color: #747474;
+    font-size: 1.1vw;
+}
+
+.main-info {
+    width: 40%;
+    text-align: center;
+    /* background-color: yellow; */
+}
+
+.other-info {
+    margin-left: 5vw;
+    /* background-color: pink; */
+}
+
+.main-info h1 {
+    font-size: 1.8vw
+}
+
+.main-info p {
+    line-height: 3vh;
+    margin: 1vh 0 2.5vh 0;
+}
+
+.main-info .org-pfp {    
+    height: 20vh;
+    width: 20vh;
+    border-radius: 100%;
+}
+
+.main-info a {
+    color: #4678f9;
+}
+
+.main-info .site {    
+    margin: 2vh 0;
+}
+
+.main-info .orglink-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 1vh;
+}
+
+.main-info .link-icon {
+    border-radius: 100%;;
+    height: 3.2vw;
+    width: 3.2vw;
+    margin: 0 0.5vw;
+}
+
+.ReqJoinButton {
+    width: 18vw;
+    height: 6vh;
+    background: #4678f9;
+    border: none;
+    border-radius: 4.28558px;
+    color: white;
+    font-family: Poppins;
+    font-size: 18px;
+    margin-top: 25px;
+}
+
+
+.other-info .org-div {
+    margin-bottom: 2.5vh;
+    /* max-width: 65%; */
+}
+
+.other-info .org-div h3 {
+    font-size: 1.5vw;
+    color: #4678f9;
+    margin-bottom: 1vh;
+}
+
+.mod-div {
+    display: flex;
+    margin: 2vh 0;
+}
+
+.org-cont .mod-div img {
+    height: 7vh;
+    width: 7vh;
+    border-radius: 100%;
+}
+
+.org-div .mod-div .mod-text {
+    margin: auto 0;
+    margin-left: 1vw;
+} 
+
+.org-div .mod-div .h4 {
+    font-size: 0.8vw
+}
+
+.org-div table {
+    color: #747474;
+    font-size: 1.1vw;
+}
+
+.org-div tr td:first-of-type {
+    padding: 0.5vh 0;
+    padding-right: 1.5vw;
+}
+
+

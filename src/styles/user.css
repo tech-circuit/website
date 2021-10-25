@@ -57,10 +57,6 @@
     height: 25vh
 }
 
-.user-cont .fab {
-    height: 6vw;
-}
-
 .user-div {
     margin: 3vh 0;
     /* max-width: 65%; */
@@ -78,6 +74,7 @@
 
 .user-cont .current-org img {
     height: 7vh;
+    width: 7vh;
     border-radius: 100%;
 }
 

@@ -14,6 +14,7 @@ import Organize from "./components/Organize";
 import Profile from "./components/Profile";
 // import Soon from "./components/Soon";
 import User from "./components/User";
+import OrgView from "./components/OrgView";
 import Error from "./components/Error";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -49,6 +50,10 @@ const App = () => {
                 </Route>
                 <Route exact path="/user">
                     <User />
+                    {/* <Soon /> */}
+                </Route>
+                <Route exact path="/org">
+                    <OrgView />
                     {/* <Soon /> */}
                 </Route>
                 <Route exact path="/resources">
