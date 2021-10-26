@@ -1,5 +1,5 @@
 .user-cont {
-    margin-top: 15vh;
+    margin-top: 13vh;
     padding: 0 15vw;
 }
 
@@ -12,7 +12,17 @@
 
 .user-cont p {
     color: #747474;
-    font-size: 1.1vw;
+    font-size: 0.9vw;
+}
+
+.user-cont .user-back {
+    display: flex;
+    align-items: center;
+    color: #747474;
+    text-decoration: none;
+    font-size: 1vw;
+    transition: all 0.3s;
+    margin-bottom: 2vh;
 }
 
 .user-cont .profile-info {
@@ -36,16 +46,14 @@
 
 .user-cont .text h3 {
     font-size: 1.6vw;
-    display: inline;
 }
 
 .user-cont .email {
-    margin-left: 2vw;
-    display: inline;
+    margin: 1.5vh 0;
+    color: #4678f9;
 }
 
 .user-cont .user-links {
-    margin-top: 2vh;
     font-size: 3.5vh;
 }
 
@@ -59,7 +67,7 @@
 }
 
 .user-div h3 {
-    font-size: 1.5vw;
+    font-size: 1.3vw;
     color: #4678f9;
     margin-bottom: 1vh;
 }
@@ -103,7 +111,7 @@
 .user-projects .proj h4 {
     line-height: 3vh;
     margin-top: 1.5vh;
-    font-size: 1.2vw;
+    font-size: 1vw;
 }
 
 .user-projects .proj h4{

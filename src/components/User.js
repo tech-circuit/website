@@ -1,19 +1,24 @@
 import "../styles/user.css";
-import { FaInstagram } from "react-icons/fa";
+import { FaInstagram, FaChevronLeft } from "react-icons/fa";
+import { Link } from "react-router-dom"
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const User = () => {
     return (
         <>
             <section className="user-cont">
+                <Link className="user-back" to="/forum">
+                    <FaChevronLeft />
+                    Back
+                </Link>
                 <div className="profile-info">
                         <img src="/assets/samvr.jpeg" className="user-pfp" alt="alt" />
                     <div className="text">
                         <div className="e">                            
                             <h3>Samvrant Samantaray</h3>
-                            <p className="email">ishaan2310@gmail.com</p>
+                            <p className="field">Student, Designer</p>                            
                         </div>
-                        <p className="field">Student, Designer</p>                            
+                            <p className="email">ishaan2310@gmail.com</p>
                         <div className="user-links">
                             <a href="/">
                             <FaInstagram />
