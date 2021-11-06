@@ -1,3 +1,4 @@
+import "../styles/createProject.css";
 import React, { useState } from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { FileDrop } from "react-file-drop";
@@ -121,6 +122,12 @@ const CreateProject = () => {
             autoComplete="off"
             placeholder="Arena | Chess Platform Concept"
           ></input>
+          <h3>Description</h3>
+          <textarea
+            name="description"
+            autoComplete="off"
+            placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictum eu, aenean porta neque ante tellus. Ipsum consequat semper amet nullam proin. "
+          ></textarea>
           <h3>Collaborators</h3>
           <input
             type="text"
@@ -128,12 +135,6 @@ const CreateProject = () => {
             autoComplete="off"
             placeholder="Your Mom, Ribhav Sharma"
           ></input>
-          <h3>Description</h3>
-          <textarea
-            name="description"
-            autoComplete="off"
-            placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictum eu, aenean porta neque ante tellus. Ipsum consequat semper amet nullam proin. Pretium eget ut et blandit cursus. Mattis malesuada at semper cursus."
-          ></textarea>
           <h3>Add Links</h3>
           {links.map((ex_link) => (
             <div className="input-link">
@@ -143,6 +144,7 @@ const CreateProject = () => {
                 alt="logo"
               />
               <input
+                className="input-link-text"
                 type="text"
                 name="external-link"
                 autoComplete="off"
@@ -170,7 +172,6 @@ const CreateProject = () => {
               placeholder="Add external link"
               onChange={(event) => setTitle(event.target.value)}
               value={title && title}
-              style={{ width: "455px" }}
             ></input>
             <i
               className="fas fa-plus-circle"
@@ -178,7 +179,7 @@ const CreateProject = () => {
               onClick={addLink}
             ></i>
           </div>
-          <h3 style={{ marginTop: 59 + "px" }}>Fields</h3>
+          <h3>Fields</h3>
           <select name="fields" id="fields">
             <option value={fieldsText}></option>
             <option
@@ -212,7 +213,7 @@ const CreateProject = () => {
           <h5 className="below-input">
             Tags help user find your project. You can use upto 5 tags
           </h5>
-          <h3 style={{ marginTop: 59 + "px" }}>
+          <h3>
             Was this for an event? Mention one!
           </h3>
           <input
@@ -221,8 +222,8 @@ const CreateProject = () => {
             autoComplete="off"
             placeholder="Enter name of school and event along with the year"
           ></input>
-          <h5 className="below-input" style={{ color: "black" }}>
-            Note: It will only be visible on the post once your club president
+          <h5 className="below-input">
+            Note: This will only be visibleonce your club president
             has verified the participation.
           </h5>
           <br></br>
@@ -248,9 +249,11 @@ const CreateProject = () => {
           >
             {imgUrl === "" ? (
               <FileDrop onDrop={(files, event) => setImage(files[0])}>
-                <i className="fas fa-plus-circle" id="file-add-icon"></i>
-                <h5>Drag Files</h5>
-                <p>1920 x 1080 (JPG, PNG)</p>
+                <div className="drop-file-wrap">
+                  <i className="fas fa-plus-circle" id="file-add-icon"></i>
+                  <h5>Drag Files</h5>
+                  <p>1920 x 1080 (JPG, PNG)</p>
+                </div>
               </FileDrop>
             ) : (
               ""
