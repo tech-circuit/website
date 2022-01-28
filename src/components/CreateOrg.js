@@ -247,12 +247,12 @@ const CreateOrg = () => {
         <div className="right">
           <div className="top-inline">
             <h3>Organisation Image Upload</h3>
-            {/* <p>This image will be displayed on community page. Recommended size 500x500px</p> */}
             <i
               className="fas fa-trash"
               id="delete-icon"
               onClick={deleteImage}
             ></i>
+            <span>This image will be displayed on community page. Recommended size 500x500px</span>
           </div>
           <div
             className="image-area"

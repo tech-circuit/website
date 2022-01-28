@@ -183,12 +183,18 @@ input[type="text"].mod-input {
     align-items: center;
 }
 
+.right {
+    width: 25vw;
+}
+
 .right h3 {
     font-size: 1.5vw;
     font-weight: 500;
 }
 
-.right p {
+.right span {
+    font-size: 1vw;
+    color: #9c9c9c;
 }
 
 .image-area {
