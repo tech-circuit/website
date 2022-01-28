@@ -1,0 +1,280 @@
+.create-org-cont {    
+    margin-top: 13vh;
+    padding: 0 15vw;
+    display: flex;
+    text-decoration: none;
+    font-size: 1vw;
+    transition: all 0.3s;
+    margin-bottom: 2vh;
+}
+
+.left-org {
+    width: 60%; 
+}
+
+.create-org-cont .left-org h1 {
+    font-size: 1.8vw;
+    font-weight: 600;
+}
+
+.create-org-cont .left-org p {
+    font-size: 1vw;
+    color: #9c9c9c;
+}
+
+.create-org-cont .left-org h3 {
+    font-size: 1.3vw;
+    font-weight: 500;
+    margin-top: 2.9vh;
+}
+
+.left-org input {
+    width: 75%;
+    height: 6vh;
+    border: 2px solid #c4c4c4;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 1.1vw;
+    font-family: Poppins;
+    color: #747474;
+    padding: 2vh 1.5vh;
+    margin-top: 0.5vh;
+}
+
+.create-org-cont .left-org input:focus {
+    outline: none;
+}
+
+.indi-wrap {
+    display: flex;
+}
+
+input[type = radio] {
+    width: 1.3vw;
+    height: 1.3vw;
+    display: flex;
+    margin-top: 1.7vw;
+    margin-left: 1vw;
+}
+
+.left-org textarea {
+    width: 75%;
+    height: 20vh;
+    border: 2px solid #c4c4c4;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 1.1vw;
+    font-family: Poppins;
+    padding: 2vh 1.5vh;
+    color: #747474;
+    margin-top: 0.5vh;
+}
+
+.left-org textarea:focus {
+    outline: none;
+}
+
+.input-link {
+    /* display: flex; */
+    /* flex-flow: row wrap; */
+    /* align-items: center; */
+    /* margin-bottom: 25px; */
+}
+
+.input-link-logo {
+    height: 35px;
+    width: 35px;
+    margin-right: 1vw;
+}
+
+.input-link-text {
+    width: 60%;
+}
+
+.input-add-logo {
+    height: 17px;
+    width: 35px;
+}
+
+#input-delete-icon {
+    font-size: 22px;
+    color: #747474;
+}
+
+#input-add-icon {
+    font-size: 34px;
+    color: #4678f9;
+    margin-left: 1vw;
+}
+
+#input-delete-icon:hover,
+#input-add-icon:hover {
+    cursor: pointer;
+}
+
+#delete-icon {
+    color: #c4c4c4;
+    margin-left: 1vw;
+    font-size: 1.1vw
+}
+
+#delete-icon:hover {
+    cursor: pointer;
+}
+
+.left-org select {
+    width: 75%;
+    height: 6vh;
+    border: 2px solid #c4c4c4;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 1vw;
+    font-family: Poppins;
+    color: #747474;
+    padding: 1vh;
+    margin-top: 0.5vh;
+}
+
+.below-input {
+    width: 75%;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1vw;
+    color: #747474;
+    margin-top: 10px;
+} 
+
+.org-mod-text{
+    font-size: 1vw;
+    color: #9c9c9c;
+    font-weight: 400;
+    vertical-align: middle;
+    margin-left: 0.5vw;
+}
+
+.mod-wrap {
+    display: flex;
+    width: 75%;
+    margin: 1.8vh 0;
+}
+
+.mod-pfp {
+    height: 4vw;
+    width: 4vw;
+    border-radius: 100%;
+    margin: auto 0;
+    margin-right: 1vw;
+}
+
+.mod-input-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+input[type="text"].mod-input {
+    margin: auto 0;
+    vertical-align: middle;
+    width: 47%;
+}
+
+.top-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.right h3 {
+    font-size: 1.5vw;
+    font-weight: 500;
+}
+
+.right p {
+}
+
+.image-area {
+    height: 40vh;
+    width: 100%;
+    border: 1px dashed #000000;
+    box-sizing: border-box;
+    border-radius: 5px;
+    text-align: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5vh;
+}
+
+.drop-file-wrap {
+    margin-top: 50%;
+}
+
+#file-add-icon {
+    font-size: 2.5vw;
+    color: #747474;
+}
+
+.image-area h5 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.3vw;
+    color: black;
+    margin-top: 1.5vh;
+}
+
+.image-area p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1vw;
+    color: #747474;
+}
+
+.buttons-org {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-top: 25px; */
+    width: 100%;
+}
+
+.buttons-org .saveDraft {
+    width: 50%;
+    height: 7vh;
+    background: #29313d;
+    border: none;
+    border-radius: 4.28558px;
+    color: white;
+    font-family: Poppins;
+    font-size: 1.2vw;
+}
+
+/* .buttons-org .previewProject {
+    width: 50%;
+    height: 7vh;
+    border: 1px solid #747474;
+    box-sizing: border-box;
+    border-radius: 4.28558px;
+    margin-left: 15px;
+    color: #747474;
+    font-family: Poppins;
+    background-color: transparent;
+    font-size: 1.2vw;
+} */
+
+.button-org .createProjectButton {
+    width: 50%;
+    height: 7vh;
+    background: #4678f9;
+    border: none;
+    border-radius: 4.28558px;
+    margin-right: 15px;
+    color: white;
+    font-family: Poppins;
+    font-size: 1.2vw;
+}
+
+.saveDraft:hover,
+.previewProject:hover,
+.createProjectButton:hover {
+    cursor: pointer;
+}

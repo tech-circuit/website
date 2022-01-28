@@ -1,172 +1,173 @@
 .head-1 p {
-  width: 50%;
+    width: 50%;
 }
 .head-1 h1 {
-  font-weight: 400;
-  font-size: 2vw;
+    font-weight: 400;
+    font-size: 2vw;
 }
 .head-2 {
-  padding: 0;
+    padding: 0;
 }
 .sortCom {
-  display: flex;
-  padding-top: 1vh;
+    display: flex;
+    padding-top: 1vh;
 }
 .sortCom button {
-  background: transparent;
-  font-size: 1.2vw;
-  font-weight: 400;
-  margin-right: 5vw;
-  padding: 1vh 1.6vw;
-  padding-bottom: 2vh;
-  color: #c4c4c4;
-  cursor: pointer;
-  position: relative;
-  transition: all 0.3s;
+    background: transparent;
+    font-size: 1.2vw;
+    font-weight: 400;
+    margin-right: 5vw;
+    padding: 1vh 1.6vw;
+    padding-bottom: 2vh;
+    color: #c4c4c4;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s;
 }
 .sortCom button:hover {
-  color: #85d49c;
+    color: #85d49c;
 }
 .sortCom button::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 5px;
-  border-radius: 5px 5px 0 0;
-  background: #85d49c;
-  transition: all 0.3s;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 5px;
+    border-radius: 5px 5px 0 0;
+    background: #85d49c;
+    transition: all 0.3s;
 }
 .sortComAct {
-  color: #85d49c !important;
+    color: #85d49c !important;
 }
 .sortComAct::after {
-  width: 100% !important;
+    width: 100% !important;
 }
 .forumHeader.head-2.comHead {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 /* Search ------------------------------------------------------------------------------------------------ */
 .comSearch {
-  padding-top: 4vh;
-  padding-bottom: 2vh;
-  display: flex;
-  justify-content: space-between;
-  /* position: sticky;
+    padding-top: 4vh;
+    padding-bottom: 2vh;
+    display: flex;
+    justify-content: space-between;
+    /* position: sticky;
   top: calc(4vh + 1.2vw + 5px + 7vh); */
-  background: #fff;
-  transition: all 0.3s;
+    background: #fff;
+    transition: all 0.3s;
 }
 .sha {
-  box-shadow: 0px -6px 29px rgba(0, 0, 0, 0.25) !important;
+    box-shadow: 0px -6px 29px rgba(0, 0, 0, 0.25) !important;
 }
 .comSearch .comLeft {
-  display: flex;
-  justify-content: space-between;
-  height: auto;
-  width: 47%;
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+    width: 47%;
 }
 .comSearch .input {
-  border: 1px #747474 solid;
-  width: 24vw;
+    border: 1px #747474 solid;
+    width: 24vw;
 }
 .comSearch .input input {
-  padding: 1.2vh 1vw;
+    padding: 1.2vh 1vw;
 }
 .comSearch button {
-  padding: 1.2vh 2vw;
-  font-weight: 400;
-  font-size: 1vw;
-  background: #29313d;
-  color: #fff;
-  border-radius: 5px;
-  cursor: pointer;
+    padding: 1.2vh 2vw;
+    font-weight: 400;
+    font-size: 1vw;
+    background: #29313d;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
 }
 #newOrg {
-  background: linear-gradient(
-      91.38deg,
-      rgba(255, 255, 255, 0.18) 16.97%,
-      rgba(255, 255, 255, 0) 100%
-    ),
-    #4678f9;
+    background: linear-gradient(
+            91.38deg,
+            rgba(255, 255, 255, 0.18) 16.97%,
+            rgba(255, 255, 255, 0) 100%
+        ),
+        #4678f9;
 }
 /* coms --------------------------------------------------------------------------- */
 .coms {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
-  padding-top: 6vh;
-  padding-bottom: 6vh;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 6vh;
+    padding-bottom: 6vh;
 }
 .com {
-  background: red;
-  width: 28%;
-  background: #ffffff;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2vh 2vw;
-  margin-bottom: 8vh;
-  transition: all 0.3s;
+    background: red;
+    width: 28%;
+    background: #ffffff;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2vh 2vw;
+    margin-bottom: 8vh;
+    transition: all 0.3s;
 }
 .com:hover {
-  box-shadow: 0px 37px 35px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 37px 35px rgba(0, 0, 0, 0.15);
 }
 .com img {
-  width: 10vh;
-  height: 10vh;
-  border-radius: 50%;
-  margin: 2vh 0;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    margin: 2vh 0;
 }
 .com h2 {
-  font-size: 1.6vw;
-  color: #000;
-  font-weight: 500;
-  margin-bottom: 1vh;
+    font-size: 1.2vw;
+    color: #000;
+    font-weight: 500;
+    margin-bottom: 1vh;
 }
 .com p {
-  margin-bottom: 0.6vh;
-  color: #747474;
+    margin-bottom: 0.6vh;
+    color: #747474;
 }
 .com .socials {
-  display: flex;
-  padding: 2vh 0;
-  font-size: 1.6vw;
-  margin-bottom: 2vh;
+    display: flex;
+    padding: 2vh 0;
+    font-size: 1.6vw;
+    margin-bottom: 2vh;
 }
 .com .socials a {
-  margin: 0 0.6vw;
+    margin: 0 0.6vw;
 }
 .com .view {
-  border: 1px #4678f9 solid;
-  width: 100%;
-  padding: 1vh 0;
-  color: #4678f9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  margin-bottom: 2vh;
-  transition: all 0.3s;
+    border: 1px #4678f9 solid;
+    width: 100%;
+    padding: 1vh 0;
+    color: #4678f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-bottom: 2vh;
+    transition: all 0.3s;
 }
 .com .view:hover {
-  color: #fff;
-  background: #4678f9;
+    color: #fff;
+    background: #4678f9;
 }
 .hide {
-  display: none;
+    display: none;
 }
 .user {
-  width: 23%;
-  margin-bottom: 4vh;
-  text-align: center;
+    width: 23%;
+    height: 32vh;
+    margin-bottom: 4vh;
+    text-align: center;
 }
 .user .socials {
-  margin-top: 2vh;
-  margin-bottom: 0vw;
+    margin-top: 2vh;
+    margin-bottom: 0vw;
 }

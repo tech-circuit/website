@@ -1,0 +1,143 @@
+.bottom-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    padding: 1.6vh 4vw;
+    display: flex;
+    justify-content: space-between;
+    z-index: 20;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    background: #fff;
+}
+.bottom-nav > button {
+    padding: 1vh 5vw;
+    background: #4678f9;
+    border: 1px solid #4678f9;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 0.8vw;
+    transition: all 0.3s;
+}
+.bottom-nav .next-page:hover {
+    background: #2e59c4;
+}
+.bottom-nav .back-page {
+    color: #4678f9;
+    background: #fff;
+}
+
+.top-nav {
+    background: #29313d;
+    width: 100vw;
+    padding: 1.6vh 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 8.5vh;
+    left: 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+.progress-indicator {
+    color: #c4c4c4;
+    font-size: 1vw;
+    padding: 0 2vw;
+}
+
+.flow-page {
+    width: 100vw;
+    height: 100vh;
+    padding: 5vh 9vw;
+    padding-top: 18vh;
+    display: flex;
+}
+.basic-left {
+    width: 60%;
+}
+.basic-right {
+    width: 40%;
+}
+
+.flow-head-cont {
+    display: flex;
+    align-items: center;
+}
+.flow-head-cont div {
+    margin-left: 2vw;
+    color: #747474;
+}
+.flow-name {
+    font-size: 2vw;
+    font-weight: 600;
+}
+
+.flow-basic-unit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 3vh;
+    width: 100%;
+}
+.flow-basic-unit label {
+    font-size: 1.2vw;
+    margin-bottom: 0.6vh;
+}
+.flow-basic-unit input,
+.flow-basic-unit select,
+.flow-basic-unit textarea {
+    width: 70%;
+    border: 2px solid #eee;
+    border-radius: 5px;
+    padding: 1vh 1vw;
+    font-size: 1vw;
+}
+.flow-basic-unit textarea {
+    min-height: 16vh;
+}
+.flow-double-cont {
+    display: flex;
+}
+.flow-double-cont .flow-basic-unit {
+    width: 36.5%;
+}
+.flow-double-cont select {
+    width: 90%;
+}
+
+.basic-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 35vh;
+    padding-right: 10vw;
+}
+.basic-right img {
+    width: 12vw;
+    height: 12vw;
+    border-radius: 50%;
+    border: 2px solid #29313d;
+}
+.basic-right p {
+    color: #c4c4c4;
+    font-size: 1vw;
+    text-align: center;
+    width: 50%;
+    margin-top: 3vh;
+}
+.basic-btn-hold {
+    display: flex;
+    width: 30%;
+    margin-top: 2vh;
+    justify-content: space-between;
+}
+.basic-btn-hold button {
+    font-size: 1vw;
+}
+.pfp-edit {
+    color: #4678f9;
+}
+.pfp-delete {
+    color: #ff6b6b;
+}

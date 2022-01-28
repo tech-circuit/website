@@ -17,21 +17,18 @@ const Navbar = () => {
         setActivePage(location.pathname);
         if (localStorage.getItem("authToken") !== null) {
             fetch(
-                `${BASE_API_URL}/user/pfp?access_token=${localStorage.getItem(
+                `${BASE_API_URL}/user/auth-pfp?access_token=${localStorage.getItem(
                     "authToken"
                 )}`
             )
-                .then((res) => {
+                .then(async (res) => {
                     if (res.status !== 404) {
                         setLoggedIn(true);
                     }
+                    const pfpJson = await res.json();
+                    setpfpUrl(pfpJson.pfp);
                 })
                 .catch((err) => console.log(err));
-            setpfpUrl(
-                `${BASE_API_URL}/user/pfp?access_token=${localStorage.getItem(
-                    "authToken"
-                )}`
-            );
         }
     }, [location]);
 
@@ -71,7 +68,9 @@ const Navbar = () => {
             .then((response) => {
                 setLoggedIn(true);
                 setpfpUrl(`${BASE_API_URL}/user/pfp?access_token=${authToken}`);
-                window.location.reload();
+                setTimeout(() => {
+                    window.location.reload();
+                }, 100);
             })
             .catch((error) => console.log(error));
     };
