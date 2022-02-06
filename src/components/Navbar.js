@@ -195,11 +195,14 @@ const Navbar = () => {
             <div className="nav-right">
                 {loggedIn ? (
                     <>
-                        <img
-                            src={pfpUrl}
-                            className={hamActive ? "pfp pfp-active" : "pfp"}
-                            alt="pfp"
-                        ></img>
+                        <a href="/profile">
+                            <img
+                                src={pfpUrl}
+                                className={hamActive ? "pfp pfp-active" : "pfp"}
+                                alt="pfp"
+                            >
+                            </img>
+                        </a>
                         <button
                             className={
                                 hamActive ? "logout logout-active" : "logout"

@@ -124,7 +124,9 @@ const Community = () => {
                         className={page === "orgs" ? "" : "hide"}
                         id="newOrg"
                     >
-                        Create New Org
+                        <a href="/create-org">
+                            Create New Org
+                        </a>
                     </button>
                 </div>
             </div>
@@ -150,7 +152,7 @@ const Community = () => {
                             <FaInstagram />
                         </a>
                     </div>
-                    <Link className="view" to="/">
+                    <Link className="view" to="/org">
                         View Page
                     </Link>
                 </div>
@@ -170,7 +172,7 @@ const Community = () => {
                             <FaInstagram />
                         </a>
                     </div>
-                    <Link className="view" to="/">
+                    <Link className="view" to="/org">
                         View Page
                     </Link>
                 </div>
@@ -190,7 +192,7 @@ const Community = () => {
                             <FaInstagram />
                         </a>
                     </div>
-                    <Link className="view" to="/">
+                    <Link className="view" to="/org">
                         View Page
                     </Link>
                 </div>
@@ -210,7 +212,7 @@ const Community = () => {
                             <FaInstagram />
                         </a>
                     </div>
-                    <Link className="view" to="/">
+                    <Link className="view" to="/org">
                         View Page
                     </Link>
                 </div>
@@ -230,7 +232,7 @@ const Community = () => {
                             <FaInstagram />
                         </a>
                     </div>
-                    <Link className="view" to="/">
+                    <Link className="view" to="/org">
                         View Page
                     </Link>
                 </div>
@@ -250,7 +252,7 @@ const Community = () => {
                             <FaInstagram />
                         </a>
                     </div>
-                    <Link className="view" to="/">
+                    <Link className="view" to="/org">
                         View Page
                     </Link>
                 </div>
@@ -270,7 +272,7 @@ const Community = () => {
                             <FaInstagram />
                         </a>
                     </div>
-                    <Link className="view" to="/">
+                    <Link className="view" to="/org">
                         View Page
                     </Link>
                 </div>
@@ -290,7 +292,7 @@ const Community = () => {
                             <FaInstagram />
                         </a>
                     </div>
-                    <Link className="view" to="/">
+                    <Link className="view" to="/org">
                         View Page
                     </Link>
                 </div>
@@ -310,7 +312,7 @@ const Community = () => {
                             <FaInstagram />
                         </a>
                     </div>
-                    <Link className="view" to="/">
+                    <Link className="view" to="/org">
                         View Page
                     </Link>
                 </div>
@@ -330,7 +332,7 @@ const Community = () => {
                             <FaInstagram />
                         </a>
                     </div>
-                    <Link className="view" to="/">
+                    <Link className="view" to="/org">
                         View Page
                     </Link>
                 </div>
@@ -350,7 +352,7 @@ const Community = () => {
                             <FaInstagram />
                         </a>
                     </div>
-                    <Link className="view" to="/">
+                    <Link className="view" to="/org">
                         View Page
                     </Link>
                 </div>
@@ -364,21 +366,23 @@ const Community = () => {
                 {users.map((user) => {
                     return (
                         <div className="com user">
-                            <img src={user.pfp_url} alt="alt" />
-                            <h2>{user.name}</h2>
-                            <p>{user.title}</p>
-                            {/* <p>Delhi Public School, Vasant Kunj</p> */}
-                            {/* <div className="socials">
-                                <a href="/">
-                                    <FaInstagram />
-                                </a>
-                                <a href="/">
-                                    <FaInstagram />
-                                </a>
-                                <a href="/">
-                                    <FaInstagram />
-                                </a>
-                            </div> */}
+                            <a href="/user">
+                                <img src={user.pfp_url} alt="alt" />
+                                <h2>{user.name}</h2>
+                                <p>{user.title}</p>
+                                {/* <p>Delhi Public School, Vasant Kunj</p> */}
+                                {/* <div className="socials">
+                                    <a href="/">
+                                        <FaInstagram />
+                                    </a>
+                                    <a href="/">
+                                        <FaInstagram />
+                                    </a>
+                                    <a href="/">
+                                        <FaInstagram />
+                                    </a>
+                                </div> */}
+                            </a>
                         </div>
                     );
                 })}

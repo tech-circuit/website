@@ -6,22 +6,21 @@ import BASE_API_URL from "../constants";
 
 const Profile = () => {
     const [tab, setTab] = useState("Your Info");
-    const [authenticated, setAuthenticated] = useState(true);
+    const [authenticated, setAuthenticated] = useState("checking");
 
-    const checkIfAuthenticated = () => {
-        fetch(
-            `${BASE_API_URL}/user/pfp?access_token=${localStorage.getItem(
+    const checkIfAuthenticated = async () => {
+        const authedJson = await fetch(
+            `${BASE_API_URL}/user/auth-pfp?access_token=${localStorage.getItem(
                 "authToken"
             )}`
-        )
-            .then((res) => {
-                if (res.status !== 404) {
-                    setAuthenticated(true);
-                } else {
-                    setAuthenticated(false);
-                }
-            })
-            .catch((err) => setAuthenticated(false));
+        );
+        const authed = await authedJson.json();
+
+        if (authed.pfp) {
+            setAuthenticated(true);
+        } else {
+            setAuthenticated(false);
+        }
     };
 
     useEffect(() => {
@@ -96,7 +95,13 @@ const Profile = () => {
         </>
     );
 
-    return authenticated ? profilePage : <Redirect to="/" />;
+    return authenticated === "checking" ? (
+        ""
+    ) : authenticated ? (
+        profilePage
+    ) : (
+        <Redirect to="/" />
+    );
 };
 
 export default Profile;

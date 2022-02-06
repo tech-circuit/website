@@ -76,7 +76,7 @@ const Work = () => {
           </button>
         </div>
         <div className="addEvent">
-          <a href="/create-post">
+          <a href="/create-project">
             <img src="/assets/plus.svg" alt="alt" />
             &nbsp;&nbsp;Create Project
           </a>

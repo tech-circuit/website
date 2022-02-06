@@ -1,5 +1,5 @@
 .bottom-nav {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100vw;
@@ -9,6 +9,7 @@
     z-index: 20;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     background: #fff;
+    transition: all 0.5s;
 }
 .bottom-nav > button {
     padding: 1vh 5vw;
@@ -26,23 +27,46 @@
     color: #4678f9;
     background: #fff;
 }
+.bottom-nav .back-page:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
 
 .top-nav {
     background: #29313d;
     width: 100vw;
-    padding: 1.6vh 0;
     display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
     top: 8.5vh;
     left: 0;
+    z-index: 20;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s;
 }
 .progress-indicator {
     color: #c4c4c4;
-    font-size: 1vw;
-    padding: 0 2vw;
+    font-size: 0.8vw;
+    padding: 1.6vh 0;
+    width: 8%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.pi-finished {
+    text-decoration: line-through;
+}
+.pi-active {
+    color: #85d49c;
+}
+.top-nav-line {
+    position: absolute;
+    height: 4px;
+    background: #85d49c;
+    bottom: 0;
+    left: 0;
+    transition: all 0.4s;
 }
 
 .flow-page {
@@ -51,6 +75,36 @@
     padding: 5vh 9vw;
     padding-top: 18vh;
     display: flex;
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+.toCome {
+    transform: translateX(10%);
+}
+.passed {
+    transform: translateX(-10%);
+}
+.flow-page-active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.user-flow-cont {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* BASIC ------------------------------------------------------ */
+.basic-page {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
 .basic-left {
     width: 60%;
@@ -91,9 +145,17 @@
     border-radius: 5px;
     padding: 1vh 1vw;
     font-size: 1vw;
+    transition: all 0.2s;
+}
+.flow-basic-unit input:focus,
+.flow-basic-unit select:focus,
+.flow-basic-unit textarea:focus {
+    border: 2px solid #4678f9;
 }
 .flow-basic-unit textarea {
-    min-height: 16vh;
+    min-height: 8vh;
+    max-height: 20vh;
+    height: 14vh;
 }
 .flow-double-cont {
     display: flex;
@@ -140,4 +202,163 @@
 }
 .pfp-delete {
     color: #ff6b6b;
+}
+
+/* SKILLS -------------------------------------------------------- */
+.skills-page {
+    display: flex;
+    flex-direction: column;
+}
+.skills-page h2 {
+    font-weight: 400;
+    color: #29313d;
+    margin-bottom: 2vh;
+}
+.skills-search {
+    height: 6vh;
+}
+.skills-search .input {
+    border: 1px solid #ccc;
+}
+.skills-search input {
+    padding: 1.2vh 0.8vw;
+}
+.skill-cards {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3vh;
+    flex-wrap: wrap;
+    padding-right: 10vw;
+    padding-bottom: 10vh;
+}
+.skill-cards-searching {
+    justify-content: flex-start;
+}
+.skill-card {
+    width: 23%;
+    margin-right: 2%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.6vh 0;
+    cursor: pointer;
+    margin-bottom: 2vh;
+    border: 2px solid #fff;
+    transition: all 0.3s;
+}
+.skill-card-full {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.skill-card-active {
+    border: 2px solid #4678f9;
+    box-shadow: 0 0 10px rgba(70, 121, 249, 0.15);
+    opacity: 1 !important;
+    cursor: pointer !important;
+}
+.skill-card-hidden {
+    display: none;
+}
+.skill-card h1 {
+    font-size: 1vw;
+    font-weight: 400;
+    color: #29313d;
+    transition: all 0.3s;
+}
+.skill-card-active h1 {
+    color: #4678f9;
+}
+
+/* LINKS --------------------------------------------------------------- */
+.links-page .create-links {
+    flex-direction: column;
+    align-items: flex-start;
+}
+.create-links label {
+    font-size: 1.6vw;
+    color: #29313d;
+}
+.links-page .link-unit {
+    width: 60%;
+}
+.links-page .link-unit input {
+    border: 2px solid #ccc;
+    padding: 1vh 1vw;
+    transition: all 0.5s;
+    border-radius: 5px;
+}
+.add-link-unit-hide {
+    display: none;
+}
+
+/* CLUBS ----------------------------------------------------------------- */
+.org-page {
+    overflow-y: scroll;
+}
+.org-page .com {
+    width: 23%;
+    margin-bottom: 4vh;
+}
+.org-page .com p {
+    text-align: center;
+    font-size: 0.8vw;
+}
+.org-page-ded {
+    padding: 6vh 0;
+    width: 100%;
+}
+/* FINISH PAGE */
+.finish-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    width: 100%;
+}
+.finish-page h1 {
+    font-size: 2vw;
+    font-weight: 400;
+    color: #4678f9;
+    margin-bottom: 2vh;
+}
+.finish-page img {
+    width: 30%;
+}
+.finish-btns {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    margin-top: 5vh;
+}
+.finish-btns a {
+    color: #4678f9;
+    padding: 1vh 3vw;
+    border: 1px solid #4678f9;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+.finish-btns a:hover {
+    background-color: #4678f9;
+    color: #fff;
+}
+.finish-btns .finish-create {
+    background: #4678f9;
+    color: #fff;
+}
+.finish-btns .finish-create:hover {
+    background: #2e59c4;
+    border: 1px solid #2e59c4;
+}
+.exit-flow {
+    transform: translateY(100%);
+    box-shadow: none;
+}
+.exit-flow-t {
+    transform: translateY(-110%);
+    box-shadow: none;
 }

@@ -65,7 +65,7 @@ const ProfileInfo = () => {
                 document
                     .querySelector("#add-link-inp")
                     .parentElement.classList.remove("shake-anim");
-            }, 800);
+            }, 1000);
         }
     };
 
@@ -107,14 +107,15 @@ const ProfileInfo = () => {
         fetch(`${BASE_API_URL}/user/info?access_token=${authToken}`).then(
             async (data) => {
                 const gotUser = await data.json();
+                const user = gotUser.user;
 
                 // Links
-                if (gotUser.links) {
-                    setLinks(gotUser.links);
+                if (user.links) {
+                    setLinks(user.links);
                 }
 
                 // SET
-                setUser(gotUser);
+                setUser(user);
             }
         );
     }, [authToken]);
@@ -182,7 +183,7 @@ const ProfileInfo = () => {
                         <div className="input">
                             <label htmlFor="username">Username</label>
                             <input
-                                maxlength="200"
+                                maxLength="200"
                                 type="text"
                                 name="username"
                                 placeholder="eg. theVedanta"
@@ -195,7 +196,7 @@ const ProfileInfo = () => {
                         <div className="input">
                             <label htmlFor="title">Title</label>
                             <input
-                                maxlength="200"
+                                maxLength="200"
                                 type="text"
                                 name="title"
                                 defaultValue={user.title ? user.title : ""}
@@ -207,7 +208,7 @@ const ProfileInfo = () => {
                         <div className="input">
                             <label htmlFor="about">About me</label>
                             <textarea
-                                maxlength="200"
+                                maxLength="200"
                                 type="text"
                                 name="about"
                                 defaultValue={user.about ? user.about : ""}
@@ -221,7 +222,7 @@ const ProfileInfo = () => {
                             <div className="link-unit">
                                 <FaLink className="create-link-brand" />
                                 <input
-                                    maxlength="200"
+                                    maxLength="200"
                                     type="text"
                                     placeholder="example: https://github.com/kevin"
                                     id="add-link-inp"
@@ -236,7 +237,7 @@ const ProfileInfo = () => {
                                     <div className="link-unit">
                                         {linksObj[link]}
                                         <input
-                                            maxlength="200"
+                                            maxLength="200"
                                             type="text"
                                             placeholder="example: https://github.com/kevin"
                                             value={link}
