@@ -74,13 +74,6 @@ input[type = radio] {
     outline: none;
 }
 
-.input-link {
-    /* display: flex; */
-    /* flex-flow: row wrap; */
-    /* align-items: center; */
-    /* margin-bottom: 25px; */
-}
-
 .input-link-logo {
     height: 35px;
     width: 35px;
@@ -243,37 +236,12 @@ input[type="text"].mod-input {
     width: 100%;
 }
 
-.buttons-org .saveDraft {
-    width: 50%;
-    height: 7vh;
-    background: #29313d;
-    border: none;
-    border-radius: 4.28558px;
-    color: white;
-    font-family: Poppins;
-    font-size: 1.2vw;
-}
-
-/* .buttons-org .previewProject {
-    width: 50%;
-    height: 7vh;
-    border: 1px solid #747474;
-    box-sizing: border-box;
-    border-radius: 4.28558px;
-    margin-left: 15px;
-    color: #747474;
-    font-family: Poppins;
-    background-color: transparent;
-    font-size: 1.2vw;
-} */
-
-.button-org .createProjectButton {
-    width: 50%;
+.button-org .createOrgButton {
+    width: 25vw;
     height: 7vh;
     background: #4678f9;
     border: none;
     border-radius: 4.28558px;
-    margin-right: 15px;
     color: white;
     font-family: Poppins;
     font-size: 1.2vw;

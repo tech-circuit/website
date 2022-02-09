@@ -261,10 +261,8 @@ const CreateProject = () => {
           </div>
 
           <div className="buttons">
-            <button className="saveDraft">Save Draft</button>
-            <button className="previewProject">Preview Project</button>
+            <button className="createProjectButton">Create Project</button>
           </div>
-          <button className="createProjectButton">Create Project</button>
         </div>
       </div>
     </>

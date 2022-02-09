@@ -30,7 +30,7 @@ const Events = () => {
             </button>
           </div>
           <div className="addEvent">
-            <a href="/organize">
+            <a href="/create-event">
               <FaPlus />
               &nbsp;&nbsp;Organize an Event
             </a>

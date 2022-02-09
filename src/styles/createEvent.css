@@ -1,0 +1,256 @@
+.create-event-cont {
+    margin-top: 13vh;
+    padding: 0 15vw;
+    display: flex;
+    text-decoration: none;
+    font-size: 1vw;
+    transition: all 0.3s;
+    margin-bottom: 6vh;
+}
+
+.left-event {
+    width: 60%; 
+}
+
+.create-event-cont .left-event h1 {
+    font-size: 1.8vw;
+    font-weight: 600;
+}
+
+.create-event-cont .left-event p {
+    font-size: 1vw;
+    color: #9c9c9c;
+}
+
+.create-event-cont .left-event h3 {
+    font-size: 1.3vw;
+    font-weight: 500;
+    margin-top: 2.9vh;
+}
+
+.left-event input {
+    width: 75%;
+    height: 6vh;
+    border: 2px solid #c4c4c4;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 1.1vw;
+    font-family: Poppins;
+    color: #747474;
+    padding: 2vh 1.5vh;
+    margin-top: 0.5vh;
+}
+
+.create-event-cont .left-event input:focus {
+    outline: none;
+}
+
+.indi-wrap {
+    display: flex;
+}
+
+input[type = radio] {
+    width: 1.3vw;
+    height: 1.3vw;
+    display: flex;
+    margin-top: 1.7vw;
+    margin-left: 1vw;
+}
+
+.left-event textarea {
+    width: 75%;
+    height: 20vh;
+    border: 2px solid #c4c4c4;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 1.1vw;
+    font-family: Poppins;
+    padding: 2vh 1.5vh;
+    color: #747474;
+    margin-top: 0.5vh;
+}
+
+.left-event textarea:focus {
+    outline: none;
+}
+
+input[type = date].lastDate {
+    width: 14vw;
+}
+
+.hosting-type {
+    display: flex;
+    width: 75%;
+}
+
+.hosting-div {
+    display: flex;
+    margin: 1vh 0;
+    margin-right: 2vw;
+}
+
+.hosting-div input {
+    vertical-align: middle;
+    margin: auto 0;
+}
+
+.hosting-div label {
+    vertical-align: middle;
+    margin: auto 0;
+    color: #9c9c9c;
+    margin-left: 0.5vw;
+}
+
+.date-cont {
+    display: flex;
+    width: 75%;
+}
+
+.date-cont .date-wrap {
+    margin-right: 1.5vw;
+}
+
+.date-cont input[type="date"]{
+    width: 14vw;
+}
+
+.date-cont input[type="time"]{
+    width: 14vw;
+    margin-bottom: 2.9vh;
+}
+
+.location-event {
+    display: flex;
+    width: 75%;
+}
+
+.loc {
+    font-size: 1.3vw;
+    font-weight: 500;
+    vertical-align: middle;
+}
+
+.left-event select.country {
+    height: 6vh;
+    margin: auto 0;
+    vertical-align: middle;
+    width: 14vw;
+    height: 6vh;
+    border: 2px solid #c4c4c4;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 1.1vw;
+    font-family: Poppins;
+    color: #747474;
+    padding: 0 1.5vh;
+    margin-top: 0.5vh;
+    margin-right: 1.5vw;
+    line-height: 40;
+}
+
+.event-left .below-input {
+    width: 75%;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1vw;
+    color: #747474;
+    margin-top: 10px;
+}
+
+.contact-input {
+    width: 75%;
+    /* background-color: yellow; */
+    display: flex;
+    border: 2px solid #c4c4c4;
+    border-radius: 5px;
+    font-size: 1.1vw;
+    font-family: Poppins;
+    color: #747474;
+    padding: 0 1.5vh;
+    margin-top: 0.5vh;
+    margin-right: 1.5vw;
+    line-height: 40;
+}
+
+.contact-input i {
+    margin: auto 0;
+    font-size: 1.5vw;
+}
+
+.contact-input input[type="text"] {
+    width: 100%;
+    border: 0;
+    margin: 0 auto;
+}
+
+.danger-zone-event {
+    margin-top: 6vh;
+}
+
+.danger-zone-event h1{
+    font-size: 1.6vw;
+    font-weight: 500;
+    color: #ff6b6b;
+    font-style: italic;
+}
+
+.danger-box-event {    
+    width: 90%;
+    padding: 3vh 2.4vw;
+    background-color: #ff6b6b;
+    border-radius: 7px;
+    margin-top: 2vh;
+    color: #fff;
+}
+
+.danger-box-event h2 {
+    font-size: 1.6vw;
+    font-weight: 600;
+}
+
+.danger-box-event p.dangerP {
+    font-size: 1vw;
+    color: #fff;
+    margin: 1vh 0 3vh 0;
+}
+.danger-box-event button {
+    padding: 1.4vh 4vw;
+    background: #fff;
+    color: #ff6b6b;
+    font-size: 1vw;
+    border-radius: 4px;
+    box-shadow: 0 10px 100px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+.danger-box-event button:hover {
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.14);
+}
+
+.right-event{
+    width: 25vw;
+}
+
+.right-event {
+    width: 25vw;
+}
+
+.right-event h3 {
+    font-size: 1.5vw;
+    font-weight: 500;
+}
+
+.right-event span {
+    font-size: 1vw;
+    color: #9c9c9c;
+}
+
+.button-event .createEventButton {
+    width: 25vw;
+    height: 7vh;
+    background: #4678f9;
+    border: none;
+    border-radius: 4.28558px;
+    color: white;
+    font-family: Poppins;
+    font-size: 1.2vw;
+}

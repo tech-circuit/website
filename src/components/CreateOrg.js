@@ -105,7 +105,7 @@ const CreateOrg = () => {
           <h3>Name of Organisation *</h3>
           <input
             type="text"
-            name="title"
+            name="name"
             autoComplete="off"
             placeholder="Code Warriors"
             required="true"
@@ -113,7 +113,7 @@ const CreateOrg = () => {
           <h3>Institute name *</h3>
           <input
             type="text"
-            name="title"
+            name="institute"
             autoComplete="off"
             placeholder="Delhi Public School, Vasant Kunj"
             required="true"
@@ -123,7 +123,7 @@ const CreateOrg = () => {
           <input 
           type="radio" 
           className="indi-radio"
-          name="indipendant-org"
+          name="isIndependant"
           value="html"
           ></input>
           </div>
@@ -136,7 +136,7 @@ const CreateOrg = () => {
           <h3>Organisation website *</h3>
           <input
             type="text"
-            name="collaborators"
+            name="website_url"
             autoComplete="off"
             placeholder="Your Mom, Ribhav Sharma"
           ></input>
@@ -278,8 +278,7 @@ const CreateOrg = () => {
           </div>
 
           <div className="buttons button-org">
-            <button className="createProjectButton">Create</button>
-            <button className="saveDraft">Save Draft</button>
+            <button className="createOrgButton">Create Organisation</button>
           </div>
         </div>
       </div>

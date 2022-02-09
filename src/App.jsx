@@ -10,7 +10,8 @@ import Events from "./components/Events";
 import About from "./components/About";
 import Work from "./components/Work";
 import CreateOrg from "./components/CreateOrg";
-import Organize from "./components/Organize";
+import CreateEvent from "./components/CreateEvent";
+import EditEvent from "./components/EditEvent";
 import Profile from "./components/Profile";
 import UserFlow from "./components/UserFlow";
 // import Soon from "./components/Soon";
@@ -67,8 +68,12 @@ const App = () => {
                     <CreateOrg />
                     {/* <Soon /> */}
                 </Route>
-                <Route exact path="/organize">
-                    <Organize />
+                <Route exact path="/create-event">
+                    <CreateEvent />
+                    {/* <Soon /> */}
+                </Route>
+                <Route exact path="/edit-event">
+                    <EditEvent />
                     {/* <Soon /> */}
                 </Route>
                 <Route exact path="/profile">
