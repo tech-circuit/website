@@ -1,40 +1,51 @@
 import "../styles/profile-info.css";
-import {
-    FaGithub,
-    FaLink,
-    FaLinkedin,
-    FaPencilAlt,
-    FaPlusCircle,
-    FaTrash,
-} from "react-icons/fa";
+import { FaLink, FaPencilAlt, FaPlusCircle, FaTrash } from "react-icons/fa";
 import "../styles/add.css";
 import { useState, useEffect } from "react";
 import BASE_API_URL from "../constants";
+import getLinkLogo from "../getLinkLogo";
+import { Notyf } from "notyf";
+const notyf = new Notyf({
+    duration: 2500,
+    position: {
+        x: "left",
+        y: "bottom",
+    },
+    types: [
+        {
+            type: "error",
+            background: "#FF6B6B",
+            dismissible: true,
+            icon: {
+                className: "material-icons",
+                tagName: "i",
+                text: "cancel",
+                color: "#ffffff",
+            },
+        },
+        {
+            type: "success",
+            background: "#85D49C",
+            dismissible: true,
+            icon: {
+                className: "material-icons",
+                tagName: "i",
+                text: "check_circle",
+                color: "#ffffff",
+            },
+        },
+    ],
+});
 
 const ProfileInfo = () => {
     const [links, setLinks] = useState([]);
     const [linksObj, setLinksObj] = useState({});
     const [user, setUser] = useState({});
     const authToken = localStorage.getItem("authToken");
+    const [pfp, setPfp] = useState("");
     let oldE;
 
     let typeTimeout;
-
-    const getLinkLogo = (link) => {
-        let logo = <FaLink className="create-link-brand" />;
-        const platforms = {
-            github: <FaGithub className="create-link-brand" />,
-            linkedin: <FaLinkedin className="create-link-brand" />,
-        };
-
-        for (let platform of Object.keys(platforms)) {
-            if (link.includes(platform)) {
-                logo = platforms[platform];
-            }
-        }
-
-        return logo;
-    };
 
     const addLink = async () => {
         if (document.querySelector("#add-link-inp").value !== "") {
@@ -103,6 +114,25 @@ const ProfileInfo = () => {
         }, 2000);
     };
 
+    const getPfp = async () => {
+        try {
+            const pfpData = await fetch(
+                `${BASE_API_URL}/user/auth-pfp?access_token=${authToken}`
+            );
+            const pfpJson = await pfpData.json();
+
+            if (pfpJson.pfp) {
+                setPfp(pfpJson.pfp);
+            }
+        } catch (err) {
+            notyf.error("Some error occured");
+        }
+    };
+
+    useEffect(() => {
+        getPfp();
+    });
+
     useEffect(() => {
         fetch(`${BASE_API_URL}/user/info?access_token=${authToken}`).then(
             async (data) => {
@@ -160,10 +190,7 @@ const ProfileInfo = () => {
             <div className="profileInfo">
                 <div className="fields">
                     <div className="pfp-sec">
-                        <img
-                            src={`${BASE_API_URL}/user/pfp?access_token=${authToken}`}
-                            alt="pfp"
-                        />
+                        <img src={pfp} alt="pfp" />
                         <p>We recommend an image of 500x500px</p>
                         <div className="pfp-opts">
                             <button id="edit-pfp">

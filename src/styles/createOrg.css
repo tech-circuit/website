@@ -1,4 +1,4 @@
-.create-org-cont {    
+.create-org-cont {
     margin-top: 13vh;
     padding: 0 15vw;
     display: flex;
@@ -7,9 +7,17 @@
     transition: all 0.3s;
     margin-bottom: 2vh;
 }
+.create-org-cont h1,
+.create-org-cont label,
+.create-org-cont p,
+.create-org-cont h3,
+.create-org-cont input,
+.create-org-cont textarea {
+    color: #29313d !important;
+}
 
 .left-org {
-    width: 60%; 
+    width: 60%;
 }
 
 .create-org-cont .left-org h1 {
@@ -23,20 +31,20 @@
 }
 
 .create-org-cont .left-org h3 {
-    font-size: 1.3vw;
+    font-size: 1vw;
     font-weight: 500;
     margin-top: 2.9vh;
 }
 
 .left-org input {
     width: 75%;
-    height: 6vh;
+    height: 5vh;
     border: 2px solid #c4c4c4;
     box-sizing: border-box;
     border-radius: 5px;
-    font-size: 1.1vw;
+    font-size: 1vw;
     font-family: Poppins;
-    color: #747474;
+    color: #29313d;
     padding: 2vh 1.5vh;
     margin-top: 0.5vh;
 }
@@ -49,7 +57,7 @@
     display: flex;
 }
 
-input[type = radio] {
+input[type="checkbox"] {
     width: 1.3vw;
     height: 1.3vw;
     display: flex;
@@ -108,7 +116,7 @@ input[type = radio] {
 #delete-icon {
     color: #c4c4c4;
     margin-left: 1vw;
-    font-size: 1.1vw
+    font-size: 1.1vw;
 }
 
 #delete-icon:hover {
@@ -135,9 +143,9 @@ input[type = radio] {
     font-size: 1vw;
     color: #747474;
     margin-top: 10px;
-} 
+}
 
-.org-mod-text{
+.org-mod-text {
     font-size: 1vw;
     color: #9c9c9c;
     font-weight: 400;
@@ -204,8 +212,48 @@ input[type="text"].mod-input {
     margin-top: 1.5vh;
 }
 
-.drop-file-wrap {
-    margin-top: 50%;
+.image-area label {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.org-logo-uploaded {
+    border: none;
+}
+.org-logo-uploaded label {
+    display: none !important;
+}
+
+.left-org .create-links {
+    flex-direction: column;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.mod-input-wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mod-input {
+    margin-right: 1vw !important;
+}
+.addMemIcon {
+    font-size: 1.5vw;
+    color: #4678f9;
+    margin-left: 1vw;
+    cursor: pointer;
+}
+.removeMemIcon {
+    font-size: 1.5vw;
+    color: #ff6b6b;
+    margin-left: 1vw;
+    cursor: pointer;
 }
 
 #file-add-icon {
@@ -245,6 +293,10 @@ input[type="text"].mod-input {
     color: white;
     font-family: Poppins;
     font-size: 1.2vw;
+    transition: all 0.3s;
+}
+.button-org .createOrgButton:hover {
+    background: #2d53b3;
 }
 
 .saveDraft:hover,

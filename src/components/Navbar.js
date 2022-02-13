@@ -26,6 +26,8 @@ const Navbar = () => {
                         setLoggedIn(true);
                     }
                     const pfpJson = await res.json();
+
+                    console.log(pfpJson.pfp);
                     setpfpUrl(pfpJson.pfp);
                 })
                 .catch((err) => console.log(err));
@@ -76,7 +78,7 @@ const Navbar = () => {
     };
 
     const onFailure = (res) => {
-        // console.log("Login failed: res:", res);
+        console.log("Login failed: res:", res);
     };
 
     const logout = () => {
@@ -197,11 +199,14 @@ const Navbar = () => {
                     <>
                         <a href="/profile">
                             <img
-                                src={pfpUrl}
+                                src={
+                                    pfpUrl === ""
+                                        ? "/assets/userFlowIcon.svg"
+                                        : pfpUrl
+                                }
                                 className={hamActive ? "pfp pfp-active" : "pfp"}
                                 alt="pfp"
-                            >
-                            </img>
+                            ></img>
                         </a>
                         <button
                             className={

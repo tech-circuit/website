@@ -334,6 +334,7 @@
     align-items: center;
     opacity: 0.6;
     transition: all 0.3s;
+    color: #29313d;
 }
 .share-opt:hover {
     opacity: 1;

@@ -9,7 +9,7 @@ import Post from "./components/Post";
 import Events from "./components/Events";
 import About from "./components/About";
 import Work from "./components/Work";
-import CreateOrg from "./components/CreateOrg";
+import CreateOrg from "./components/CreateOrg.jsx";
 import CreateEvent from "./components/CreateEvent";
 import EditEvent from "./components/EditEvent";
 import Profile from "./components/Profile";

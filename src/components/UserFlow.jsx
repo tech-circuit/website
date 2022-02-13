@@ -3,13 +3,13 @@ import { Notyf } from "notyf";
 import BASE_API_URL from "../constants";
 import { Redirect, Link } from "react-router-dom";
 import "../styles/user-flow.css";
+import getLinkLogo from "../getLinkLogo";
 import {
-    FaGithub,
     FaLink,
-    FaLinkedin,
     FaPlusCircle,
     FaTrash,
-    FaInstagram,
+    FaPen,
+    FaTrashAlt,
 } from "react-icons/fa";
 const notyf = new Notyf({
     duration: 2500,
@@ -58,12 +58,14 @@ const Component = ({ pfp }) => {
         "skjdncsnckjdncdc",
         "software",
     ];
+    const [pfpLink, setPfpLink] = useState("");
     const [user, setUser] = useState({});
     const topNavLineStyle = {
         width: `${
             page === 5 ? page * 100 : page === 1 ? page * 100 : page * 100 - 50
         }%`,
     };
+    const [orgs, setOrgs] = useState([]);
 
     const handleSkill = (e) => {
         const card = e.target.classList.contains("skill-card")
@@ -115,7 +117,6 @@ const Component = ({ pfp }) => {
                 .classList.add("skill-cards-searching");
 
             const matches = getMatches(search);
-            // console.log(matches);
             for (let match of matches) {
                 for (let card of cards) {
                     if (
@@ -127,22 +128,6 @@ const Component = ({ pfp }) => {
                 }
             }
         }
-    };
-
-    const getLinkLogo = (link) => {
-        let logo = <FaLink className="create-link-brand" />;
-        const platforms = {
-            github: <FaGithub className="create-link-brand" />,
-            linkedin: <FaLinkedin className="create-link-brand" />,
-        };
-
-        for (let platform of Object.keys(platforms)) {
-            if (link.includes(platform)) {
-                logo = platforms[platform];
-            }
-        }
-
-        return logo;
     };
 
     const addLink = async () => {
@@ -174,6 +159,65 @@ const Component = ({ pfp }) => {
         setLinks(linkList);
     };
 
+    const imgUpload = (file) => {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            const b64 = reader.result.split("base64,")[1];
+            fetch(`${BASE_API_URL}/image/upload`, {
+                // Adding method type
+                method: "POST",
+
+                // Adding body or contents to send
+                body: JSON.stringify({
+                    b64,
+                }),
+
+                // Adding headers to the request
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                    "Access-Control-Allow-Origin": "*",
+                },
+            })
+                .then(async (response) => {
+                    const resp = await response.json();
+                    setPfpLink(resp.link.toString());
+                })
+                .catch((error) => console.log(error));
+        };
+    };
+
+    const imgCheck = (e) => {
+        const inputFile = e.target.files[0];
+        const allowedExt = ["png", "jpg", "jpeg", "gif"];
+
+        if (allowedExt.includes(inputFile.name.split(".")[1])) {
+            imgUpload(inputFile);
+            document.querySelector("#pfpUpload").src =
+                URL.createObjectURL(inputFile);
+        } else {
+            notyf.error("Invalid file type");
+        }
+    };
+
+    const requestOrgJoin = async (id) => {
+        const res = await fetch(
+            `${BASE_API_URL}/org/req/${id}?access_token=${localStorage.getItem(
+                "authToken"
+            )}`,
+            { method: "POST", headers: { "Content-Type": "application/json" } }
+        );
+        const data = await res.json();
+
+        if (data.already) {
+            notyf.error("Already Requested to this Org");
+        } else if (data.done) {
+            setPage(page + 1);
+        } else {
+            notyf.error("Some Error has Occurred");
+        }
+    };
+
     useEffect(() => {
         const getUser = async () => {
             const res = await fetch(
@@ -188,6 +232,18 @@ const Component = ({ pfp }) => {
                 window.location.href = "/";
         };
         getUser();
+
+        const getOrgs = async () => {
+            const res = await fetch(
+                `${BASE_API_URL}/org?access_token=${localStorage.getItem(
+                    "authToken"
+                )}`
+            );
+            const data = await res.json();
+
+            setOrgs(data.orgs);
+        };
+        getOrgs();
     }, []);
     useEffect(() => {
         if (skills.length >= 6) {
@@ -239,6 +295,7 @@ const Component = ({ pfp }) => {
                 about,
                 skills: skills,
                 links: links,
+                pfp_url: pfpLink === "" ? user.pfp_url : pfpLink,
             };
             const submittedJSon = await fetch(
                 `${BASE_API_URL}/user/update?access_token=${localStorage.getItem(
@@ -270,7 +327,7 @@ const Component = ({ pfp }) => {
             submit();
         }
         if (page === 6) setPage(5);
-    }, [page, links, skills]);
+    }, [page, links, skills, pfpLink, user]);
 
     return (
         <div className="user-flow-cont">
@@ -385,17 +442,38 @@ const Component = ({ pfp }) => {
                         <textarea
                             type="text"
                             name="about"
-                            value={user.about}
+                            defaultValue={user.about ? user.about : ""}
                             placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictum eu, aenean porta neque ante tellus. Ipsum consequat semper amet nullam proin. Pretium eget ut et blandit cursus. Mattis malesuada at semper cursus."
                         ></textarea>
                     </div>
                 </div>
                 <div className="basic-right">
-                    <img src={pfp} alt="pfp" />
+                    <img src={pfp} alt="pfp" id="pfpUpload" />
                     <p>We recommend an image of 500x500px</p>
                     <div className="basic-btn-hold">
-                        <button className="pfp-edit">Edit</button>
-                        <button className="pfp-delete">Delete</button>
+                        <label className="pfp-edit" htmlFor="pfpInp">
+                            <FaPen />
+                            Edit
+                        </label>
+                        <input
+                            type="file"
+                            name="pfp"
+                            id="pfpInp"
+                            style={{ display: "none" }}
+                            onChange={(eve) => imgCheck(eve)}
+                            accept=".gif,.jpg,.jpeg,.png"
+                        />
+                        <button
+                            className="pfp-delete"
+                            onClick={() => {
+                                setPfpLink("/assets/userFlowIcon.svg");
+                                document.querySelector("#pfpUpload").src =
+                                    "/assets/userFlowIcon.svg";
+                            }}
+                        >
+                            <FaTrashAlt />
+                            Delete
+                        </button>
                     </div>
                 </div>
             </div>
@@ -502,222 +580,52 @@ const Component = ({ pfp }) => {
                 }
             >
                 <div className="coms">
-                    <div className="com">
-                        <img src="/assets/sample-banner.jpg" alt="alt" />
-                        <h2>Coding Wars</h2>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <div className="socials">
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                        </div>
-                        <button className="view">Request to join</button>
-                    </div>
-                    <div className="com">
-                        <img src="/assets/sample-banner.jpg" alt="alt" />
-                        <h2>Code Wars</h2>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <div className="socials">
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                        </div>
-                        <button className="view">Request to join</button>
-                    </div>
-                    <div className="com">
-                        <img src="/assets/sample-banner.jpg" alt="alt" />
-                        <h2>Code Wars</h2>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <div className="socials">
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                        </div>
-                        <button className="view">Request to join</button>
-                    </div>
-                    <div className="com">
-                        <img src="/assets/sample-banner.jpg" alt="alt" />
-                        <h2>Code Wars</h2>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <div className="socials">
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                        </div>
-                        <button className="view">Request to join</button>
-                    </div>
-                    <div className="com">
-                        <img src="/assets/sample-banner.jpg" alt="alt" />
-                        <h2>Code Wars</h2>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <div className="socials">
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                        </div>
-                        <button className="view">Request to join</button>
-                    </div>
-                    <div className="com">
-                        <img src="/assets/sample-banner.jpg" alt="alt" />
-                        <h2>Code Wars</h2>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <div className="socials">
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                        </div>
-                        <button className="view">Request to join</button>
-                    </div>
-                    <div className="com">
-                        <img src="/assets/sample-banner.jpg" alt="alt" />
-                        <h2>Code Wars</h2>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <div className="socials">
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                        </div>
-                        <button className="view">Request to join</button>
-                    </div>
-                    <div className="com">
-                        <img src="/assets/sample-banner.jpg" alt="alt" />
-                        <h2>Code Wars</h2>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <div className="socials">
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                        </div>
-                        <button className="view">Request to join</button>
-                    </div>
-                    <div className="com">
-                        <img src="/assets/sample-banner.jpg" alt="alt" />
-                        <h2>Code Wars</h2>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <div className="socials">
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                        </div>
-                        <button className="view">Request to join</button>
-                    </div>
-                    <div className="com">
-                        <img src="/assets/sample-banner.jpg" alt="alt" />
-                        <h2>Code Wars</h2>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <div className="socials">
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                        </div>
-                        <button className="view">Request to join</button>
-                    </div>
-                    <div className="com">
-                        <img src="/assets/sample-banner.jpg" alt="alt" />
-                        <h2>Code Wars</h2>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <div className="socials">
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                        </div>
-                        <button className="view">Request to join</button>
-                    </div>
-                    <div className="com">
-                        <img src="/assets/sample-banner.jpg" alt="alt" />
-                        <h2>Code Wars</h2>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <p>Delhi Public School, Vasant Kunj</p>
-                        <div className="socials">
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                            <a href="/">
-                                <FaInstagram />
-                            </a>
-                        </div>
-                        <button className="view">Request to join</button>
-                    </div>
+                    {orgs
+                        ? orgs.map((org) => {
+                              return (
+                                  <div className="com">
+                                      <img src={org.logo_url} alt="alt" />
+                                      <h2>{org.name}</h2>
+                                      <p>
+                                          {org.isIndependant
+                                              ? ""
+                                              : org.institute}
+                                      </p>
+                                      {/* <p>{org.description}</p> */}
+                                      <div className="socials">
+                                          {/* <a href="/">
+                                              <FaInstagram />
+                                          </a>
+                                          <a href="/">
+                                              <FaInstagram />
+                                          </a>
+                                          <a href="/">
+                                              <FaInstagram />
+                                          </a> */}
+                                          {org.links.map((link) => {
+                                              return (
+                                                  <a
+                                                      href={link}
+                                                      target="_blank"
+                                                      rel="noreferrer"
+                                                  >
+                                                      {getLinkLogo(link)}
+                                                  </a>
+                                              );
+                                          })}
+                                      </div>
+                                      <button
+                                          className="view"
+                                          onClick={() =>
+                                              requestOrgJoin(org._id)
+                                          }
+                                      >
+                                          Request to join
+                                      </button>
+                                  </div>
+                              );
+                          })
+                        : ""}
                     <div className="org-page-ded"></div>
                 </div>
             </div>

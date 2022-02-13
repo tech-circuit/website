@@ -96,7 +96,7 @@ const Profile = () => {
     );
 
     return authenticated === "checking" ? (
-        ""
+        <></>
     ) : authenticated ? (
         profilePage
     ) : (
