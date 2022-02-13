@@ -299,6 +299,9 @@
 .org-page {
     overflow-y: scroll;
 }
+.org-page .coms {
+    width: 100%;
+}
 .org-page .com {
     width: 23%;
     margin-bottom: 4vh;
