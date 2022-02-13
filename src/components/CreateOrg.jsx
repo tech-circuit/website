@@ -101,7 +101,6 @@ const CreateOrg = () => {
                 })
                     .then(async (response) => {
                         const resp = await response.json();
-                        console.log(resp.link);
                         document.getElementById(
                             "img-area"
                         ).style.backgroundImage = `url('${resp.link}')`;
@@ -144,9 +143,9 @@ const CreateOrg = () => {
 
     const submit = async () => {
         const name = document.querySelector("input[name='name']").value;
-        const institute = document.querySelector(
-            "input[name='institute']"
-        ).value;
+        const institute = document.querySelector("input[name='institute']")
+            ? document.querySelector("input[name='institute']").value
+            : "";
         const description = document.querySelector(
             "textarea[name='description']"
         ).value;
@@ -205,7 +204,7 @@ const CreateOrg = () => {
                         name="name"
                         autoComplete="off"
                         placeholder="Code Warriors"
-                        required="true"
+                        required
                     ></input>
                     <div className="indi-wrap">
                         <h3>Independant Organisation</h3>
@@ -227,7 +226,7 @@ const CreateOrg = () => {
                                 name="institute"
                                 autoComplete="off"
                                 placeholder="Delhi Public School, Vasant Kunj"
-                                required="true"
+                                required
                             ></input>
                         </>
                     ) : (
@@ -315,7 +314,7 @@ const CreateOrg = () => {
                                         className="mod-input"
                                     ></input>
                                     <FaTrashAlt
-                                        class="removeMemIcon"
+                                        className="removeMemIcon"
                                         onClick={() => removeMember(member)}
                                     />
                                 </div>
@@ -340,7 +339,7 @@ const CreateOrg = () => {
                                 className="mod-input"
                             ></input>
                             <FaPlusCircle
-                                class="addMemIcon"
+                                className="addMemIcon"
                                 onClick={addMember}
                             />
                         </div>
