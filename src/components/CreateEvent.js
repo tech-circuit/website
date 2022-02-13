@@ -8,7 +8,7 @@ import { FileDrop } from "react-file-drop";
 const CreateEvent = () => { 
   const [links, setLinks] = useState([]);
   const [title, setTitle] = useState("");
-  const [fieldsText, setFieldsText] = useState("");
+  // const [fieldsText, setFieldsText] = useState("");
   const [tags, setTags] = useState("");
   const [imgUrl, setImgUrl] = useState("");
 
@@ -58,10 +58,10 @@ const CreateEvent = () => {
     setLinks(newArray);
   };
 
-  const addField = (field) => {
-    console.log(field);
-    setFieldsText(fieldsText + ", " + field);
-  };
+  // const addField = (field) => {
+  //   console.log(field);
+  //   setFieldsText(fieldsText + ", " + field);
+  // };
 
   const editTags = (tag) => {
     // console.log(tag)
