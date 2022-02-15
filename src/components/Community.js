@@ -4,11 +4,45 @@ import { FaInstagram } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import BASE_API_URL from "../constants";
 import { Notyf } from "notyf";
+import getLinkogo from "../getLinkLogo";
+
+const notyf = new Notyf({
+    duration: 2500,
+    position: {
+        x: "left",
+        y: "bottom",
+    },
+    types: [
+        {
+            type: "error",
+            background: "#FF6B6B",
+            dismissible: true,
+            icon: {
+                className: "material-icons",
+                tagName: "i",
+                text: "cancel",
+                color: "#ffffff",
+            },
+        },
+        {
+            type: "success",
+            background: "#85D49C",
+            dismissible: true,
+            icon: {
+                className: "material-icons",
+                tagName: "i",
+                text: "check_circle",
+                color: "#ffffff",
+            },
+        },
+    ],
+});
 
 const Community = () => {
     document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
     const [page, setPage] = useState("orgs");
     const [users, setUsers] = useState([]);
+    const [orgs, setOrgs] = useState([]);
 
     // document.addEventListener("scroll", () => {
     //   if (document.querySelector(".comSearch")) {
@@ -28,43 +62,9 @@ const Community = () => {
     };
 
     useEffect(() => {
-        const notyf = new Notyf({
-            duration: 2500,
-            position: {
-                x: "left",
-                y: "bottom",
-            },
-            types: [
-                {
-                    type: "error",
-                    background: "#FF6B6B",
-                    dismissible: true,
-                    icon: {
-                        className: "material-icons",
-                        tagName: "i",
-                        text: "cancel",
-                        color: "#ffffff",
-                    },
-                },
-                {
-                    type: "success",
-                    background: "#85D49C",
-                    dismissible: true,
-                    icon: {
-                        className: "material-icons",
-                        tagName: "i",
-                        text: "check_circle",
-                        color: "#ffffff",
-                    },
-                },
-            ],
-        });
-
         const getUsers = async () => {
             const userDataJson = await fetch(`${BASE_API_URL}/user/get`);
             const userData = await userDataJson.json();
-
-            console.log(userData);
 
             if (userData.users) {
                 setUsers(userData.users);
@@ -73,7 +73,19 @@ const Community = () => {
             }
         };
 
+        const getOrgs = async () => {
+            const orgDataJson = await fetch(`${BASE_API_URL}/org`);
+            const orgData = await orgDataJson.json();
+
+            if (orgData.orgs) {
+                setOrgs(orgData.orgs);
+            } else {
+                notyf.error("Some error occured");
+            }
+        };
+
         try {
+            getOrgs();
             getUsers();
         } catch (err) {
             notyf.error("some error occured");
@@ -120,14 +132,13 @@ const Community = () => {
                     <button>Sort by Region</button>
                 </div>
                 <div className="comRight">
-                    <button
+                    <a
+                        href="/create-org"
                         className={page === "orgs" ? "" : "hide"}
                         id="newOrg"
                     >
-                        <a href="/create-org">
-                            Create New Org
-                        </a>
-                    </button>
+                        Create New Org
+                    </a>
                 </div>
             </div>
 
@@ -136,226 +147,41 @@ const Community = () => {
                     page === "orgs" ? "coms container" : "coms container hide"
                 }
             >
-                <div className="com">
-                    <img src="/assets/sample-banner.jpg" alt="alt" />
-                    <h2>Coding Wars</h2>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <div className="socials">
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                    </div>
-                    <Link className="view" to="/org">
-                        View Page
-                    </Link>
-                </div>
-                <div className="com">
-                    <img src="/assets/sample-banner.jpg" alt="alt" />
-                    <h2>Code Wars</h2>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <div className="socials">
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                    </div>
-                    <Link className="view" to="/org">
-                        View Page
-                    </Link>
-                </div>
-                <div className="com">
-                    <img src="/assets/sample-banner.jpg" alt="alt" />
-                    <h2>Code Wars</h2>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <div className="socials">
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                    </div>
-                    <Link className="view" to="/org">
-                        View Page
-                    </Link>
-                </div>
-                <div className="com">
-                    <img src="/assets/sample-banner.jpg" alt="alt" />
-                    <h2>Code Wars</h2>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <div className="socials">
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                    </div>
-                    <Link className="view" to="/org">
-                        View Page
-                    </Link>
-                </div>
-                <div className="com">
-                    <img src="/assets/sample-banner.jpg" alt="alt" />
-                    <h2>Code Wars</h2>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <div className="socials">
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                    </div>
-                    <Link className="view" to="/org">
-                        View Page
-                    </Link>
-                </div>
-                <div className="com">
-                    <img src="/assets/sample-banner.jpg" alt="alt" />
-                    <h2>Code Wars</h2>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <div className="socials">
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                    </div>
-                    <Link className="view" to="/org">
-                        View Page
-                    </Link>
-                </div>
-                <div className="com">
-                    <img src="/assets/sample-banner.jpg" alt="alt" />
-                    <h2>Code Wars</h2>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <div className="socials">
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                    </div>
-                    <Link className="view" to="/org">
-                        View Page
-                    </Link>
-                </div>
-                <div className="com">
-                    <img src="/assets/sample-banner.jpg" alt="alt" />
-                    <h2>Code Wars</h2>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <div className="socials">
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                    </div>
-                    <Link className="view" to="/org">
-                        View Page
-                    </Link>
-                </div>
-                <div className="com">
-                    <img src="/assets/sample-banner.jpg" alt="alt" />
-                    <h2>Code Wars</h2>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <div className="socials">
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                    </div>
-                    <Link className="view" to="/org">
-                        View Page
-                    </Link>
-                </div>
-                <div className="com">
-                    <img src="/assets/sample-banner.jpg" alt="alt" />
-                    <h2>Code Wars</h2>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <div className="socials">
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                    </div>
-                    <Link className="view" to="/org">
-                        View Page
-                    </Link>
-                </div>
-                <div className="com">
-                    <img src="/assets/sample-banner.jpg" alt="alt" />
-                    <h2>Code Wars</h2>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <p>Delhi Public School, Vasant Kunj</p>
-                    <div className="socials">
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                    </div>
-                    <Link className="view" to="/org">
-                        View Page
-                    </Link>
-                </div>
+                {orgs.map((org) => {
+                    return (
+                        <div className="com">
+                            <img src={org.logo_url} alt="alt" />
+                            <h2>{org.name}</h2>
+                            <p>
+                                {org.isIndependant
+                                    ? "Independant"
+                                    : org.institute}
+                            </p>
+                            {/* <p>Delhi Public School, Vasant Kunj</p> */}
+                            <div className="socials">
+                                {org.links
+                                    ? org.links
+                                          .slice(0)
+                                          .reverse()
+                                          .map((link) => {
+                                              return (
+                                                  <a
+                                                      href={link}
+                                                      target="_blank"
+                                                      rel="noreferrer"
+                                                  >
+                                                      {getLinkogo(link)}
+                                                  </a>
+                                              );
+                                          })
+                                    : ""}
+                            </div>
+                            <Link className="view" to="/org">
+                                View Page
+                            </Link>
+                        </div>
+                    );
+                })}
             </div>
 
             <div
@@ -370,8 +196,8 @@ const Community = () => {
                                 <img src={user.pfp_url} alt="alt" />
                                 <h2>{user.name}</h2>
                                 <p>{user.title}</p>
-                                {/* <p>Delhi Public School, Vasant Kunj</p> */}
-                                {/* <div className="socials">
+                                <p>{user.username}</p>
+                                <div className="socials">
                                     <a href="/">
                                         <FaInstagram />
                                     </a>
@@ -381,7 +207,7 @@ const Community = () => {
                                     <a href="/">
                                         <FaInstagram />
                                     </a>
-                                </div> */}
+                                </div>
                             </a>
                         </div>
                     );

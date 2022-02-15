@@ -27,7 +27,6 @@ const Navbar = () => {
                     }
                     const pfpJson = await res.json();
 
-                    console.log(pfpJson.pfp);
                     setpfpUrl(pfpJson.pfp);
                 })
                 .catch((err) => console.log(err));
