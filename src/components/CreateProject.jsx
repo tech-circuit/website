@@ -1,7 +1,6 @@
-import "../styles/createOrg.css";
 import React, { useState, useEffect } from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { FaLink, FaPlusCircle, FaTrash, FaTrashAlt } from "react-icons/fa";
+import { FaLink, FaPlusCircle, FaTrash } from "react-icons/fa";
 import BASE_API_URL from "../constants";
 import { Notyf } from "notyf";
 import getLinkLogo from "../getLinkLogo";
@@ -37,13 +36,10 @@ const notyf = new Notyf({
     ],
 });
 
-const CreateOrg = () => {
+const CreateProject = () => {
     const [links, setLinks] = useState([]);
     const [imgUrl, setImgUrl] = useState("/assets/userFlowIcon.svg");
     const [linksObj, setLinksObj] = useState({});
-    const [members, setMembers] = useState([]);
-    const [independent, setIndependent] = useState(false);
-    const [users, setUsers] = useState([]);
 
     const addLink = async () => {
         if (document.querySelector("#add-link-inp").value !== "") {
@@ -125,29 +121,6 @@ const CreateOrg = () => {
             .classList.remove("org-logo-uploaded");
     };
 
-    const addMember = () => {
-        const name = document.getElementById("addModName").value;
-        const pos = document.getElementById("addModPos").value;
-
-        if (name.trim() !== "") {
-            const member = {
-                name,
-                pos,
-            };
-
-            document.getElementById("addModName").value = "";
-            document.getElementById("addModPos").value = "member";
-
-            setMembers([...members, member]);
-        } else {
-            notyf.error("Add a Name for the member");
-        }
-    };
-
-    const removeMember = (member) => {
-        setMembers(members.filter((mem) => mem !== member));
-    };
-
     const submit = async () => {
         const name = document.querySelector("input[name='name']").value;
         const institute = document.querySelector("input[name='institute']")
@@ -162,27 +135,16 @@ const CreateOrg = () => {
         const logo_url = imgUrl;
         const admins = [];
 
-        for (let member of members) {
-            if (member.pos === "admin") admins.push(member);
-        }
-
-        if (name === "" || description === "") {
+        if (name === "" || description === "" || links.length === 0) {
             notyf.error("Please fill all required fields");
             return;
-        } else if (!independent) {
-            if (institute === "") {
-                notyf.error("Please fill all required fields");
-                return;
-            }
         } else {
             const body = {
                 name,
                 institute,
-                isIndependant: independent,
                 description,
                 website_url,
                 links,
-                members,
                 logo_url,
                 admins,
             };
@@ -216,78 +178,36 @@ const CreateOrg = () => {
         setLinksObj(theObj);
     }, [links]);
 
-    useEffect(() => {
-        const getUsers = async () => {
-            const userDataJson = await fetch(`${BASE_API_URL}/user/get`);
-            const userData = await userDataJson.json();
-
-            if (userData.users) {
-                setUsers(userData.users);
-            } else {
-                notyf.error("Some error occured");
-            }
-        };
-
-        try {
-            getUsers();
-        } catch (err) {
-            notyf.error("Some Error occurred");
-        }
-    }, []);
-
     return (
         <>
             <div className="create-org-cont">
                 <div className="left-org">
-                    <h1>Create an Organisation</h1>
-                    <h3>Name of Organisation *</h3>
+                    <h1>Create a Project</h1>
+                    <p style={{ color: "#c4c4c4 !important" }}>
+                        Start building your project to showcase on techCircuit.
+                    </p>
+                    <h3>Title *</h3>
                     <input
                         type="text"
                         name="name"
                         autoComplete="off"
-                        placeholder="Code Warriors"
+                        placeholder="Arena | Chess Platform Concept"
                         required
                     ></input>
-                    <div className="indi-wrap">
-                        <h3>Independant Organisation</h3>
-                        <input
-                            type="checkbox"
-                            className="indi-radio"
-                            name="isIndependant"
-                            value="html"
-                            onChange={() => {
-                                setIndependent(!independent);
-                            }}
-                        ></input>
-                    </div>
-                    {!independent ? (
-                        <>
-                            <h3>Institute name *</h3>
-                            <input
-                                type="text"
-                                name="institute"
-                                autoComplete="off"
-                                placeholder="Delhi Public School, Vasant Kunj"
-                                required
-                            ></input>
-                        </>
-                    ) : (
-                        ""
-                    )}
-                    <h3>Organisation info *</h3>
+                    <h3>Decription *</h3>
                     <textarea
                         name="description"
                         autoComplete="off"
                         placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictum eu, aenean porta neque ante tellus. Ipsum consequat semper amet nullam proin. "
                     ></textarea>
-                    <h3>Organisation website</h3>
+                    <h3>Collaborators</h3>
                     <input
                         type="text"
-                        name="website_url"
+                        name="collaborators"
                         autoComplete="off"
-                        placeholder="Your Mom, Ribhav Sharma"
+                        placeholder="Ishaan Das, Ribhav Sharma"
                     ></input>
-                    <h3>Add social links</h3>
+                    <h3>Add links *</h3>
                     <div className="create-links input">
                         <div className="link-unit" id="add-link-unit">
                             <FaLink className="create-link-brand" />
@@ -332,84 +252,26 @@ const CreateOrg = () => {
                             );
                         })}
                     </div>
-                    <h3>
-                        Organisation Moderators
-                        <span className="org-mod-text">Add maximum of 5</span>
-                    </h3>
-                    <div className="mod-wrap">
-                        <div className="mod-input-wrap">
-                            <select
-                                id="addModName"
-                                placeholder="Name"
-                                className="mod-input"
-                            >
-                                <option value="">Username</option>
-                                {users.map((user) => {
-                                    return (
-                                        <option key={user._id}>
-                                            {user.username}
-                                        </option>
-                                    );
-                                })}
-                            </select>
-                            <select
-                                id="addModPos"
-                                placeholder="Position"
-                                className="mod-input"
-                            >
-                                <option value="member">Member</option>
-                                <option value="admin">Admin</option>
-                                <option value="alumni">Alumni</option>
-                            </select>
-                            <FaPlusCircle
-                                className="addMemIcon"
-                                onClick={addMember}
-                            />
-                        </div>
-                    </div>
-                    {members.map((member) => {
-                        return (
-                            <div className="mod-wrap">
-                                <div className="mod-input-wrap">
-                                    <input
-                                        type="text"
-                                        name="mod-name"
-                                        autoComplete="off"
-                                        value={member.name}
-                                        readonly
-                                        className="mod-input"
-                                    ></input>
-                                    <input
-                                        type="text"
-                                        name="mod-pos"
-                                        autoComplete="off"
-                                        value={member.pos}
-                                        style={{
-                                            "text-transform": "capitalize",
-                                        }}
-                                        readonly
-                                        className="mod-input"
-                                    ></input>
-                                    <FaTrashAlt
-                                        className="removeMemIcon"
-                                        onClick={() => removeMember(member)}
-                                    />
-                                </div>
-                            </div>
-                        );
-                    })}
+                    <h3>Was this for an Event? Mention one!</h3>
+                    <input
+                        type="text"
+                        name="event"
+                        autoComplete="off"
+                        placeholder="Enter name of event and the year"
+                        required
+                    ></input>
                 </div>
 
                 <div className="right">
                     <div className="top-inline">
-                        <h3>Organisation Image Upload</h3>
+                        <h3>Project Image Upload</h3>
                         <i
                             className="fas fa-trash"
                             id="delete-icon"
                             onClick={deleteImage}
                         ></i>
                         <span>
-                            This image will be displayed on community page.
+                            This image will be displayed on Work page.
                             Recommended size 500x500px
                         </span>
                     </div>
@@ -477,4 +339,4 @@ const CreateOrg = () => {
     );
 };
 
-export default CreateOrg;
+export default CreateProject;

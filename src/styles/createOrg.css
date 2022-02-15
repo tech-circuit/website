@@ -5,14 +5,15 @@
     text-decoration: none;
     font-size: 1vw;
     transition: all 0.3s;
-    margin-bottom: 2vh;
+    margin-bottom: 10vh;
 }
 .create-org-cont h1,
 .create-org-cont label,
 .create-org-cont p,
 .create-org-cont h3,
 .create-org-cont input,
-.create-org-cont textarea {
+.create-org-cont textarea,
+.create-org-cont select {
     color: #29313d !important;
 }
 
@@ -36,10 +37,12 @@
     margin-top: 2.9vh;
 }
 
-.left-org input {
+.left-org input,
+.left-org select,
+.left-org textarea {
     width: 75%;
     height: 5vh;
-    border: 2px solid #c4c4c4;
+    border: 2px solid #eee;
     box-sizing: border-box;
     border-radius: 5px;
     font-size: 1vw;
@@ -47,10 +50,21 @@
     color: #29313d;
     padding: 2vh 1.5vh;
     margin-top: 0.5vh;
+    transition: all 0.3s;
+}
+.left-org select {
+    cursor: pointer;
+    padding: 1vh;
+}
+.left-org textarea {
+    height: 20vh;
 }
 
-.create-org-cont .left-org input:focus {
+.create-org-cont .left-org input:focus,
+.create-org-cont .left-org select:focus,
+.create-org-cont .left-org textarea:focus {
     outline: none;
+    border: 2px solid #4678f9;
 }
 
 .indi-wrap {
@@ -63,19 +77,6 @@ input[type="checkbox"] {
     display: flex;
     margin-top: 1.7vw;
     margin-left: 1vw;
-}
-
-.left-org textarea {
-    width: 75%;
-    height: 20vh;
-    border: 2px solid #c4c4c4;
-    box-sizing: border-box;
-    border-radius: 5px;
-    font-size: 1.1vw;
-    font-family: Poppins;
-    padding: 2vh 1.5vh;
-    color: #747474;
-    margin-top: 0.5vh;
 }
 
 .left-org textarea:focus {
@@ -123,19 +124,6 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
-.left-org select {
-    width: 75%;
-    height: 6vh;
-    border: 2px solid #c4c4c4;
-    box-sizing: border-box;
-    border-radius: 5px;
-    font-size: 1vw;
-    font-family: Poppins;
-    color: #747474;
-    padding: 1vh;
-    margin-top: 0.5vh;
-}
-
 .below-input {
     width: 75%;
     font-style: normal;
@@ -172,7 +160,8 @@ input[type="checkbox"] {
     justify-content: space-between;
 }
 
-input[type="text"].mod-input {
+input[type="text"].mod-input,
+select.mod-input {
     margin: auto 0;
     vertical-align: middle;
     width: 47%;
@@ -195,6 +184,7 @@ input[type="text"].mod-input {
 
 .right span {
     font-size: 1vw;
+    margin: 1vh 0;
     color: #9c9c9c;
 }
 
@@ -286,13 +276,13 @@ input[type="text"].mod-input {
 
 .button-org .createOrgButton {
     width: 25vw;
-    height: 7vh;
     background: #4678f9;
     border: none;
-    border-radius: 4.28558px;
+    border-radius: 5px;
+    padding: 1.4vh 0 !important;
     color: white;
     font-family: Poppins;
-    font-size: 1.2vw;
+    font-size: 1vw;
     transition: all 0.3s;
 }
 .button-org .createOrgButton:hover {

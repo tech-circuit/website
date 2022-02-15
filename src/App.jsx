@@ -1,7 +1,7 @@
 import "./styles/all.css";
 import Navbar from "./components/Navbar";
 import Index from "./components/Index";
-import CreateProject from "./components/CreateProject";
+import CreateProject from "./components/CreateProject.jsx";
 import Community from "./components/Community";
 import Resources from "./components/Resources";
 import Forums from "./components/Forum";
