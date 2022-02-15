@@ -1,9 +1,67 @@
 import "../styles/user.css";
 import { FaInstagram, FaChevronLeft } from "react-icons/fa";
-import { Link } from "react-router-dom"
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import { Link, useParams } from "react-router-dom"
+import { useState, useEffect } from "react";
+import BASE_API_URL from "../constants";
+import { Notyf } from "notyf";
+// import getLinkogo from "../getLinkLogo";
+
+const notyf = new Notyf({
+    duration: 2500,
+    position: {
+        x: "left",
+        y: "bottom",
+    },
+    types: [
+        {
+            type: "error",
+            background: "#FF6B6B",
+            dismissible: true,
+            icon: {
+                className: "material-icons",
+                tagName: "i",
+                text: "cancel",
+                color: "#ffffff",
+            },
+        },
+        {
+            type: "success",
+            background: "#85D49C",
+            dismissible: true,
+            icon: {
+                className: "material-icons",
+                tagName: "i",
+                text: "check_circle",
+                color: "#ffffff",
+            },
+        },
+    ],
+});
 
 const User = () => {
+    document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
+    const [user, setUser] = useState([]);
+    const userId = useParams();
+
+    useEffect(() => {
+        const getUser = async () => {
+            const userDataJson = await fetch(`${BASE_API_URL}/user/${userId}`);
+            const userData = await userDataJson.json();
+
+            if (userData.user) {
+                setUser(userData.user);
+            } else {
+                notyf.error("Some error occured");
+            }
+        };
+
+        try {
+            getUser();
+        } catch (err) {
+            notyf.error("some error occured");
+        }
+    }, [userId]);
+    
     return (
         <>
             <section className="user-cont">

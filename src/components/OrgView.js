@@ -1,8 +1,69 @@
 import "../styles/org.css";
-import { FaInstagram, FaChevronLeft } from "react-icons/fa";
-import { Link } from "react-router-dom"
+import { FaChevronLeft } from "react-icons/fa";
+import { Link, useParams } from "react-router-dom"
+import { useState, useEffect } from "react";
+import BASE_API_URL from "../constants";
+import { Notyf } from "notyf";
+import getLinkogo from "../getLinkLogo";
+
+const notyf = new Notyf({
+    duration: 2500,
+    position: {
+        x: "left",
+        y: "bottom",
+    },
+    types: [
+        {
+            type: "error",
+            background: "#FF6B6B",
+            dismissible: true,
+            icon: {
+                className: "material-icons",
+                tagName: "i",
+                text: "cancel",
+                color: "#ffffff",
+            },
+        },
+        {
+            type: "success",
+            background: "#85D49C",
+            dismissible: true,
+            icon: {
+                className: "material-icons",
+                tagName: "i",
+                text: "check_circle",
+                color: "#ffffff",
+            },
+        },
+    ],
+});
 
 const OrgView = () => {
+    document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
+    const [org, setOrg] = useState([]);
+    const {orgId} = useParams()
+
+    useEffect(() => {
+
+        const getOrg = async () => {
+            const orgDataJson = await fetch(`${BASE_API_URL}/org/${orgId}`);
+            const orgData = await orgDataJson.json();
+
+            if (orgData.org) {
+                setOrg(orgData.org);
+            } else {
+                notyf.error("Some error occured");
+            }
+        };
+
+        try {
+            getOrg();
+            // getUsers();
+        } catch (err) {
+            notyf.error("some error occured");
+        }
+    }, [orgId]);
+
     return(
         <section className="org-cont">
             <Link className="org-back" to="/forum">
@@ -11,62 +72,74 @@ const OrgView = () => {
             </Link>
             <div className="org-wrap">
                 <div className="main-info">
-                    <h1>Tech Syndicate</h1>
-                    <p>Amity International School Sector-46, Gurgaon, Haryana</p>
-                    <img src="/assets/samvr.jpeg" className="org-pfp" alt="alt" />
-                    <p className="site"><a href="/">www.techsyndicate.co</a></p>
-                    <div className="org-links">                    
-                        <h4>Visit</h4>
-                        <div className="orglink-icons">
-                            <a href="/">
-                            <FaInstagram />
+                    <div className="main-box">
+                        <h1>{org.name}</h1>
+                        <p>
+                            {org.isIndependant
+                            ? "Independant"
+                            : org.institute}
+                        </p>
+                        <img src={org.logo_url} className="org-pfp" alt="alt" />
+                        <p className="site">
+                            <a 
+                                target="_blank" 
+                                rel="noreferrer"
+                                href={org.website_url}
+                            >{org.website_url}
                             </a>
-                            <a href="/">
-                            <FaInstagram />
-                            </a>
-                            <a href="/">
-                            <FaInstagram />
-                            </a>
-                        </div>                  
+                        </p>
+                        <div className="org-links">   
+                            <h4>
+                                {org.links > 0 //galat hai
+                                ? "Visit"
+                                : ""}
+                            </h4>
+                            <div className="orglink-icons">               
+                            {org.links
+                                ? org.links
+                                        .slice(0)
+                                        .reverse()
+                                        .map((link) => {
+                                            return (
+                                                <a
+                                                    href={link}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                >
+                                                    {getLinkogo(link)}
+                                                </a>
+                                            );
+                                        })
+                                        : ""}
+                            </div>                  
+                        </div>
+                        <button className="ReqJoinButton">Request to Join</button>                  
                     </div>
-                    <button className="ReqJoinButton">Request to Join</button>
                 </div>
                 <div className="other-info">                
                     <div className="org-div aboutorg">
                         <h3>Organisation Info</h3>
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque 
-                        pellentesque mauris at accumsan. Nullam nec pulvinar ante. Quisque sed 
-                        risus quis elit pretium sollicitudin. 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque 
-                        pellentesque mauris at accumsan. Nullam nec pulvinar ante. Quisque sed 
-                        risus quis elit pretium sollicitudin. 
-                        </p>
+                        <p>{org.description}</p>
                     </div>
                     <div className="org-div current-mods">
-                        <h3>Current Moderators (24)</h3>
+                        <h3>Current Members ({org.members ? org.members.length : ""})</h3>
                         <div>
-                            <div className="mod-div">
-                                <img src="/assets/samvr.jpeg" alt="alt" />
-                                <div className="mod-text">
-                                    <h4>Laxya Pahuja</h4>
-                                    <p>Admin</p>
-                                </div>
-                            </div>
-                            <div className="mod-div">
-                                <img src="/assets/samvr.jpeg" alt="alt" />
-                                <div className="mod-text">
-                                    <h4>Laxya Pahuja</h4>
-                                    <p>Admin</p>
-                                </div>
-                            </div>
-                            <div className="mod-div">
-                                <img src="/assets/samvr.jpeg" alt="alt" />
-                                <div className="mod-text">
-                                    <h4>Laxya Pahuja</h4>
-                                    <p>Admin</p>
-                                </div>
-                            </div>
+                            {org.members
+                                ? org.members
+                                        .slice(0)
+                                        .reverse()
+                                        .map((member) => {
+                                            return (                                                  
+                                            <div className="mod-div">
+                                                <img src="/assets/samvr.jpeg" alt="alt" />
+                                                <div className="mod-text">
+                                                    <h4>{member.name}</h4>
+                                                    <p>{member.pos}</p>
+                                                </div>
+                                                </div>
+                                            );
+                                        })
+                                : ""}
                         </div>
                     </div>
                     <div className="org-div hosted-events">

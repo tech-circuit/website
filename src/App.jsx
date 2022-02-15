@@ -49,10 +49,6 @@ const App = () => {
                     <Community />
                     {/* <Soon /> */}
                 </Route>
-                <Route exact path="/user">
-                    <User />
-                    {/* <Soon /> */}
-                </Route>
                 <Route exact path="/org">
                     <OrgView />
                     {/* <Soon /> */}
@@ -84,6 +80,8 @@ const App = () => {
                     <UserFlow />
                 </Route>
                 <Route exact path="/forum/post/:postId" component={Post} />
+                <Route exact path="/org/:orgId" component={OrgView} />
+                <Route exact path="/user/:userId" component={User} />
                 <Route path="*">
                     <Error />
                 </Route>

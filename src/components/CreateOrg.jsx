@@ -333,8 +333,7 @@ const CreateOrg = () => {
                         })}
                     </div>
                     <h3>
-                        Organisation Moderators
-                        <span className="org-mod-text">Add maximum of 5</span>
+                        Organisation Members
                     </h3>
                     <div className="mod-wrap">
                         <div className="mod-input-wrap">

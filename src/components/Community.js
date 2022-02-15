@@ -176,7 +176,7 @@ const Community = () => {
                                           })
                                     : ""}
                             </div>
-                            <Link className="view" to="/org">
+                            <Link className="view" to={`org/${org._id}`}>
                                 View Page
                             </Link>
                         </div>
@@ -192,23 +192,25 @@ const Community = () => {
                 {users.map((user) => {
                     return (
                         <div className="com user">
-                            <a href="/user">
-                                <img src={user.pfp_url} alt="alt" />
-                                <h2>{user.name}</h2>
-                                <p>{user.title}</p>
-                                <p>{user.username}</p>
-                                <div className="socials">
-                                    <a href="/">
-                                        <FaInstagram />
-                                    </a>
-                                    <a href="/">
-                                        <FaInstagram />
-                                    </a>
-                                    <a href="/">
-                                        <FaInstagram />
-                                    </a>
-                                </div>
-                            </a>
+                            <Link to={`user/${user._id}`}>
+                                <a href="/user">
+                                    <img src={user.pfp_url} alt="alt" />
+                                    <h2>{user.name}</h2>
+                                    <p>{user.title}</p>
+                                    <p>{user.username}</p>
+                                    <div className="socials">
+                                        <a href="/">
+                                            <FaInstagram />
+                                        </a>
+                                        <a href="/">
+                                            <FaInstagram />
+                                        </a>
+                                        <a href="/">
+                                            <FaInstagram />
+                                        </a>
+                                    </div>
+                                </a>
+                            </Link>
                         </div>
                     );
                 })}
