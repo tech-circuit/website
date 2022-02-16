@@ -50,6 +50,7 @@ const User = () => {
 
             if (userData.user) {
                 setUser(userData.user);
+                console.log(user)
             } else {
                 notyf.error("Some error occured");
             }
@@ -60,7 +61,7 @@ const User = () => {
         } catch (err) {
             notyf.error("some error occured");
         }
-    }, [userId]);
+    }, [userId, user]);
     
     return (
         <>

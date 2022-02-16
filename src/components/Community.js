@@ -63,7 +63,7 @@ const Community = () => {
 
     useEffect(() => {
         const getUsers = async () => {
-            const userDataJson = await fetch(`${BASE_API_URL}/user/get`);
+            const userDataJson = await fetch(`${BASE_API_URL}/user/all`);
             const userData = await userDataJson.json();
 
             if (userData.users) {

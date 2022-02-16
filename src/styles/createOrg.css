@@ -14,7 +14,7 @@
 .create-org-cont input,
 .create-org-cont textarea,
 .create-org-cont select {
-    color: #29313d !important;
+    color: #29313d;
 }
 
 .left-org {
@@ -51,6 +51,7 @@
     padding: 2vh 1.5vh;
     margin-top: 0.5vh;
     transition: all 0.3s;
+    font-weight: 300;
 }
 .left-org select {
     cursor: pointer;

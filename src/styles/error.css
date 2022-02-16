@@ -20,6 +20,10 @@
     width: auto;
     padding-left: 2vw;
     padding-right: 2vw;
+    cursor: pointer;
+}
+.error-main .hero-btn:hover {
+    background: #2951b4;
 }
 .error-main .hero-btn img {
     width: 1.4vw;
@@ -31,6 +35,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
+    z-index: -1;
 }
 .err-illus img {
     width: 38%;

@@ -4,7 +4,9 @@ import { useHistory } from "react-router-dom";
 
 const Error = () => {
     let history = useHistory();
+
     const goToPreviousPath = () => {
+        console.log("h");
         history.goBack();
     };
 

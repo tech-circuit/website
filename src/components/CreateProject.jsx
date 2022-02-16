@@ -4,6 +4,8 @@ import { FaLink, FaPlusCircle, FaTrash } from "react-icons/fa";
 import BASE_API_URL from "../constants";
 import { Notyf } from "notyf";
 import getLinkLogo from "../getLinkLogo";
+import "../styles/createProject.css";
+
 const notyf = new Notyf({
     duration: 2500,
     position: {
@@ -40,6 +42,7 @@ const CreateProject = () => {
     const [links, setLinks] = useState([]);
     const [imgUrl, setImgUrl] = useState("/assets/userFlowIcon.svg");
     const [linksObj, setLinksObj] = useState({});
+    const [tags, setTags] = useState([]);
 
     const addLink = async () => {
         if (document.querySelector("#add-link-inp").value !== "") {
@@ -119,6 +122,24 @@ const CreateProject = () => {
         document
             .getElementById("img-area")
             .classList.remove("org-logo-uploaded");
+    };
+
+    const addTag = (e) => {
+        if (
+            e.keyCode === 32 &&
+            e.target.value.trim() !== "" &&
+            tags.length !== 5
+        ) {
+            setTags([...tags, e.target.value.trim()]);
+            e.target.value = "";
+            setTimeout(() => {
+                e.target.value = "";
+            }, 10);
+        }
+    };
+
+    const removeTag = (inpTag) => {
+        setTags(tags.filter((tag) => tag !== inpTag));
     };
 
     const submit = async () => {
@@ -252,6 +273,62 @@ const CreateProject = () => {
                             );
                         })}
                     </div>
+                    <h3>Fields</h3>
+                    <div className="field-hold">
+                        <div className="field-box">
+                            <div className="field-box-top">
+                                <h1>Select Fields</h1>
+                                <button>clear all</button>
+                            </div>
+                            <div className="fields">
+                                <button className="field">
+                                    
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Tags</h3>
+                    <div className="tags-hold">
+                        {tags.map((tag) => {
+                            return (
+                                <div className="tag">
+                                    {tag}
+                                    <img
+                                        src="/assets/tag-cross.svg"
+                                        alt="tag-cross"
+                                        className="tag-cross"
+                                        onClick={() => removeTag(tag)}
+                                    />
+                                </div>
+                            );
+                        })}
+                        {tags.length !== 5 ? (
+                            <input
+                                type="text"
+                                id="tags"
+                                name="tags"
+                                autoComplete="off"
+                                onKeyDown={(eve) => addTag(eve)}
+                                onFocus={(e) => {
+                                    e.target.parentElement.classList.add(
+                                        "tags-hold-focus"
+                                    );
+                                }}
+                                onBlur={(e) => {
+                                    e.target.parentElement.classList.remove(
+                                        "tags-hold-focus"
+                                    );
+                                }}
+                            />
+                        ) : (
+                            document
+                                .querySelector(".tags-hold")
+                                .classList.remove("tags-hold-focus")
+                        )}
+                    </div>
+                    <p className="input-sub-text">
+                        Upto 5 tags, Use space to separate
+                    </p>
                     <h3>Was this for an Event? Mention one!</h3>
                     <input
                         type="text"

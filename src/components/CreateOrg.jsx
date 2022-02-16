@@ -169,12 +169,13 @@ const CreateOrg = () => {
         if (name === "" || description === "") {
             notyf.error("Please fill all required fields");
             return;
-        } else if (!independent) {
-            if (institute === "") {
-                notyf.error("Please fill all required fields");
-                return;
-            }
         } else {
+            if (!independent) {
+                if (institute === "") {
+                    notyf.error("Please fill all required fields");
+                    return;
+                }
+            }
             const body = {
                 name,
                 institute,
@@ -218,7 +219,7 @@ const CreateOrg = () => {
 
     useEffect(() => {
         const getUsers = async () => {
-            const userDataJson = await fetch(`${BASE_API_URL}/user/get`);
+            const userDataJson = await fetch(`${BASE_API_URL}/user/all`);
             const userData = await userDataJson.json();
 
             if (userData.users) {
@@ -332,9 +333,7 @@ const CreateOrg = () => {
                             );
                         })}
                     </div>
-                    <h3>
-                        Organisation Members
-                    </h3>
+                    <h3>Organisation Members</h3>
                     <div className="mod-wrap">
                         <div className="mod-input-wrap">
                             <select
