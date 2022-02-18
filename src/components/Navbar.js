@@ -17,7 +17,7 @@ const Navbar = () => {
         setActivePage(location.pathname);
         if (localStorage.getItem("authToken") !== null) {
             fetch(
-                `${BASE_API_URL}/user/auth-pfp?access_token=${localStorage.getItem(
+                `${BASE_API_URL}/user/info?access_token=${localStorage.getItem(
                     "authToken"
                 )}`
             )
@@ -27,7 +27,7 @@ const Navbar = () => {
                     }
                     const pfpJson = await res.json();
 
-                    setpfpUrl(pfpJson.pfp);
+                    setpfpUrl(pfpJson.user.pfp_url);
                 })
                 .catch((err) => console.log(err));
         }

@@ -10,13 +10,13 @@ const Profile = () => {
 
     const checkIfAuthenticated = async () => {
         const authedJson = await fetch(
-            `${BASE_API_URL}/user/auth-pfp?access_token=${localStorage.getItem(
+            `${BASE_API_URL}/user/info?access_token=${localStorage.getItem(
                 "authToken"
             )}`
         );
         const authed = await authedJson.json();
 
-        if (authed.pfp) {
+        if (authed.user) {
             setAuthenticated(true);
         } else {
             setAuthenticated(false);

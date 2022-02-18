@@ -46,7 +46,7 @@ const OrgView = () => {
     useEffect(() => {
 
         const getOrg = async () => {
-            const orgDataJson = await fetch(`${BASE_API_URL}/org/${orgId}`);
+            const orgDataJson = await fetch(`${BASE_API_URL}/org/id/${orgId}`);
             const orgData = await orgDataJson.json();
 
             if (orgData.org) {

@@ -43,7 +43,7 @@ const notyf = new Notyf({
     ],
 });
 
-const Component = ({ pfp }) => {
+const Component = ({ pfp, user }) => {
     const [page, setPage] = useState(1);
     const [skills, setSkills] = useState([]);
     const [links, setLinks] = useState([]);
@@ -59,7 +59,6 @@ const Component = ({ pfp }) => {
         "software",
     ];
     const [pfpLink, setPfpLink] = useState("");
-    const [user, setUser] = useState({});
     const topNavLineStyle = {
         width: `${
             page === 5 ? page * 100 : page === 1 ? page * 100 : page * 100 - 50
@@ -219,19 +218,8 @@ const Component = ({ pfp }) => {
     };
 
     useEffect(() => {
-        const getUser = async () => {
-            const res = await fetch(
-                `${BASE_API_URL}/user/info?access_token=${localStorage.getItem(
-                    "authToken"
-                )}`
-            );
-            const data = await res.json();
-            setUser(data.user);
-
-            if (data.user.skills.length !== 0 || data.user.links.length !== 0)
-                window.location.href = "/";
-        };
-        getUser();
+        if (user.skills.length !== 0 || user.links.length !== 0)
+            window.location.href = "/";
 
         const getOrgs = async () => {
             const res = await fetch(
@@ -244,7 +232,7 @@ const Component = ({ pfp }) => {
             setOrgs(data.orgs);
         };
         getOrgs();
-    }, []);
+    }, [user]);
     useEffect(() => {
         if (skills.length >= 6) {
             for (let card of document.querySelectorAll(".skill-card")) {
@@ -680,17 +668,19 @@ const Component = ({ pfp }) => {
 const UserFlow = () => {
     const [pfp, setPfp] = useState(false);
     const [auth, setAuth] = useState("undefined");
+    const [user, setUser] = useState({});
     const authToken = localStorage.getItem("authToken");
 
     const getPfp = async () => {
         try {
             const pfpData = await fetch(
-                `${BASE_API_URL}/user/auth-pfp?access_token=${authToken}`
+                `${BASE_API_URL}/user/info?access_token=${authToken}`
             );
             const pfpJson = await pfpData.json();
 
-            if (pfpJson.pfp) {
-                setPfp(pfpJson.pfp);
+            if (pfpJson.user) {
+                setPfp(pfpJson.user.pfp_url);
+                setUser(pfpJson.user);
                 setAuth(true);
             } else {
                 setAuth(false);
@@ -708,7 +698,7 @@ const UserFlow = () => {
     return auth === "undefined" ? (
         ""
     ) : auth === true ? (
-        <Component pfp={pfp} />
+        <Component pfp={pfp} user={user} />
     ) : (
         <Redirect to="/" />
     );
