@@ -44,6 +44,7 @@ const CreateProject = () => {
     const [linksObj, setLinksObj] = useState({});
     const [tags, setTags] = useState([]);
     const [fields, setFields] = useState([]);
+    const [comments, setComments] = useState(false);
     const staticfields = [
         "UI/UX",
         "Web Development",
@@ -155,35 +156,33 @@ const CreateProject = () => {
     };
 
     const submit = async () => {
-        const name = document.querySelector("input[name='name']").value;
-        const institute = document.querySelector("input[name='institute']")
-            ? document.querySelector("input[name='institute']").value
-            : "";
+        const title = document.querySelector("input[name='title']").value;
         const description = document.querySelector(
             "textarea[name='description']"
         ).value;
-        const website_url = document.querySelector(
-            "input[name='website_url']"
+        const event = document.querySelector("input[name='event']").value;
+        const collaborators = document.querySelector(
+            "input[name='collaborators']"
         ).value;
-        const logo_url = imgUrl;
-        const admins = [];
 
-        if (name === "" || description === "" || links.length === 0) {
+        if (title === "" || description === "") {
             notyf.error("Please fill all required fields");
             return;
         } else {
             const body = {
-                name,
-                institute,
+                title,
                 description,
-                website_url,
                 links,
-                logo_url,
-                admins,
+                fields,
+                tags,
+                comments,
+                event,
+                collaborators,
+                cover_image: imgUrl,
             };
 
             const submittedJson = await fetch(
-                `${BASE_API_URL}/org/add?access_token=${localStorage.getItem(
+                `${BASE_API_URL}/project/add?access_token=${localStorage.getItem(
                     "authToken"
                 )}`,
                 {
@@ -195,7 +194,7 @@ const CreateProject = () => {
             const submitted = await submittedJson.json();
 
             if (submitted.done) {
-                window.location.href = "/community";
+                window.location.href = "/work";
             } else {
                 notyf.error("Some Error has occurred");
                 return;
@@ -234,7 +233,7 @@ const CreateProject = () => {
                     <h3>Title *</h3>
                     <input
                         type="text"
-                        name="name"
+                        name="title"
                         autoComplete="off"
                         placeholder="Arena | Chess Platform Concept"
                         required
@@ -252,7 +251,7 @@ const CreateProject = () => {
                         autoComplete="off"
                         placeholder="Ishaan Das, Ribhav Sharma"
                     ></input>
-                    <h3>Add links *</h3>
+                    <h3>Add links</h3>
                     <div className="create-links input">
                         <div className="link-unit" id="add-link-unit">
                             <FaLink className="create-link-brand" />
@@ -418,6 +417,19 @@ const CreateProject = () => {
                         placeholder="Enter name of event and the year"
                         required
                     ></input>
+
+                    <div className="indi-wrap">
+                        <h3>Enable public comments?</h3>
+                        <input
+                            type="checkbox"
+                            className="indi-radio"
+                            name="comments"
+                            value="html"
+                            onChange={() => {
+                                setComments(!comments);
+                            }}
+                        ></input>
+                    </div>
                 </div>
 
                 <div className="right">
@@ -488,7 +500,7 @@ const CreateProject = () => {
 
                     <div className="buttons button-org">
                         <button className="createOrgButton" onClick={submit}>
-                            Create Organisation
+                            Create Project
                         </button>
                     </div>
                 </div>
