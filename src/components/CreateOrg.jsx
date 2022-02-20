@@ -2,7 +2,7 @@ import "../styles/createOrg.css";
 import React, { useState, useEffect } from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { FaLink, FaPlusCircle, FaTrash, FaTrashAlt } from "react-icons/fa";
-import BASE_API_URL from "../constants/constants";
+import BASE_API_URL from "../constants";
 import { Notyf } from "notyf";
 import getLinkLogo from "../getLinkLogo";
 const notyf = new Notyf({

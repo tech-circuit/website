@@ -10,7 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import { Notyf } from "notyf";
 import "notyf/notyf.min.css";
-import BASE_API_URL from "../constants/constants";
+import BASE_API_URL from "../constants";
 
 const notyf = new Notyf({
     duration: 2500,

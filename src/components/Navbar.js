@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
-import BASE_API_URL from "../constants/constants";
+import BASE_API_URL from "../constants";
 const clientId =
     "884360040700-4093n49it73naktrttlljb9ad6ga4jjo.apps.googleusercontent.com";
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Notyf } from "notyf";
-import BASE_API_URL from "../constants/constants";
+import BASE_API_URL from "../constants";
 import { Redirect, Link } from "react-router-dom";
 import "../styles/user-flow.css";
 import getLinkLogo from "../getLinkLogo";

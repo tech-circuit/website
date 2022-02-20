@@ -2,7 +2,7 @@ import "../styles/profile.css";
 import ProfileInfo from "./ProfileInfo";
 import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
-import BASE_API_URL from "../constants/constants";
+import BASE_API_URL from "../constants";
 
 const Profile = () => {
     const [tab, setTab] = useState("Your Info");
