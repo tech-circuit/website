@@ -2,7 +2,7 @@ import "../styles/profile-info.css";
 import { FaLink, FaPencilAlt, FaPlusCircle, FaTrash } from "react-icons/fa";
 import "../styles/add.css";
 import { useState, useEffect } from "react";
-import BASE_API_URL from "../constants";
+import BASE_API_URL from "../constants/constants";
 import getLinkLogo from "../getLinkLogo";
 
 const ProfileInfo = () => {

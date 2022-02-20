@@ -2,7 +2,7 @@ import "../styles/community.css";
 import { Link } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
 import { useState, useEffect } from "react";
-import BASE_API_URL from "../constants";
+import BASE_API_URL from "../../constants/constants";
 import { Notyf } from "notyf";
 import getLinkogo from "../getLinkLogo";
 

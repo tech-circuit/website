@@ -17,7 +17,7 @@ import { Notyf } from "notyf";
 import "notyf/notyf.min.css";
 import TimeAgo from "react-timeago";
 import { ClipLoader } from "react-spinners";
-import BASE_API_URL from "../constants";
+import BASE_API_URL from "../constants/constants";
 
 ReactModal.defaultStyles = {};
 const authToken = localStorage.getItem("authToken");

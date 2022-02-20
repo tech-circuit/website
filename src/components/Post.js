@@ -15,7 +15,7 @@ import { Notyf } from "notyf";
 import { useParams } from "react-router-dom";
 import { SRLWrapper } from "simple-react-lightbox";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
-import BASE_API_URL from "../constants";
+import BASE_API_URL from "../constants/constants";
 
 const authToken = localStorage.getItem("authToken");
 

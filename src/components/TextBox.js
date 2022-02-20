@@ -2,7 +2,7 @@ import React from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { Notyf } from "notyf";
 import "notyf/notyf.min.css";
-import BASE_API_URL from "../constants";
+import BASE_API_URL from "../constants/constants";
 
 const notyf = new Notyf({
     duration: 2500,

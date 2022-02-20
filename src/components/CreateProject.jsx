@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { FaLink, FaPlusCircle, FaTrash } from "react-icons/fa";
-import BASE_API_URL from "../constants";
+import BASE_API_URL from "../constants/constants";
 import { Notyf } from "notyf";
 import getLinkLogo from "../getLinkLogo";
 import "../styles/createProject.css";
