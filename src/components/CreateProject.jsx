@@ -43,6 +43,18 @@ const CreateProject = () => {
     const [imgUrl, setImgUrl] = useState("/assets/userFlowIcon.svg");
     const [linksObj, setLinksObj] = useState({});
     const [tags, setTags] = useState([]);
+    const [fields, setFields] = useState([]);
+    const staticfields = [
+        "UI/UX",
+        "Web Development",
+        "Cryptic",
+        "Blockchain",
+        "3D Dev",
+        "Dlor",
+        "Lorem",
+        "Sit",
+        "Amet",
+    ];
 
     const addLink = async () => {
         if (document.querySelector("#add-link-inp").value !== "") {
@@ -199,6 +211,18 @@ const CreateProject = () => {
         setLinksObj(theObj);
     }, [links]);
 
+    useEffect(() => {
+        if (fields.length === 5) {
+            for (let f of document.querySelectorAll(".field")) {
+                f.classList.add("field-disabled");
+            }
+        } else {
+            for (let f of document.querySelectorAll(".field")) {
+                f.classList.remove("field-disabled");
+            }
+        }
+    }, [fields]);
+
     return (
         <>
             <div className="create-org-cont">
@@ -275,16 +299,73 @@ const CreateProject = () => {
                     </div>
                     <h3>Fields</h3>
                     <div className="field-hold">
+                        <input
+                            type="text"
+                            value={fields.join(", ")}
+                            readOnly
+                            style={{ color: "#4678f9" }}
+                            onClick={() =>
+                                document
+                                    .querySelector(".field-box")
+                                    .classList.toggle("field-box-active")
+                            }
+                        />
                         <div className="field-box">
                             <div className="field-box-top">
-                                <h1>Select Fields</h1>
-                                <button>clear all</button>
-                            </div>
-                            <div className="fields">
-                                <button className="field">
-                                    
+                                <h1>Project Fields</h1>
+                                <button onClick={() => setFields([])}>
+                                    clear all
                                 </button>
                             </div>
+                            <div className="fields">
+                                {staticfields.map((field) => {
+                                    return (
+                                        <button
+                                            className={
+                                                fields.includes(field)
+                                                    ? "field field-active"
+                                                    : "field"
+                                            }
+                                            key={field}
+                                            onClick={() => {
+                                                if (fields.length !== 5) {
+                                                    if (!fields.includes(field))
+                                                        setFields([
+                                                            ...fields,
+                                                            field,
+                                                        ]);
+                                                    else
+                                                        setFields(
+                                                            fields.filter(
+                                                                (fl) =>
+                                                                    fl !== field
+                                                            )
+                                                        );
+                                                } else {
+                                                    setFields(
+                                                        fields.filter(
+                                                            (fl) => fl !== field
+                                                        )
+                                                    );
+                                                }
+                                            }}
+                                        >
+                                            {field}
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                            <button
+                                className="close"
+                                style={{ color: "#747474" }}
+                                onClick={() => {
+                                    document
+                                        .querySelector(".field-box")
+                                        .classList.remove("field-box-active");
+                                }}
+                            >
+                                Close
+                            </button>
                         </div>
                     </div>
                     <h3>Tags</h3>

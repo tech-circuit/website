@@ -52,4 +52,68 @@
 }
 
 /* FIELDS ------------------------------------------------------------------------------------ */
-
+.field-hold {
+    position: relative;
+}
+.field-box {
+    position: absolute;
+    top: 110%;
+    left: 20%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+    background-color: #fff;
+    border: 1px solid #c4c4c4;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 1.8vh 1.6vw;
+    min-width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    transition: all 0.4s;
+}
+.field-box-active {
+    left: 0;
+    opacity: 1;
+    pointer-events: all;
+}
+.field-box-top {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-start;
+    margin-bottom: 2vh;
+}
+.field-box-top h1,
+.field-box-top button {
+    margin-right: 1vw;
+    color: #747474 !important;
+}
+.field-box-top h1 {
+    font-size: 1.2vw !important;
+}
+.fields {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 20vh;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.field {
+    margin-top: 1.4vh;
+    margin-right: 1%;
+    font-size: 0.9vw;
+    width: 33.333%;
+    text-align: left;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+.field-disabled {
+    color: #747474;
+}
+.field-active {
+    color: #4678f9;
+}

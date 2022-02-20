@@ -30,11 +30,6 @@
     padding: 0 3vw;
     text-align: center;
 }
-.fields {
-    display: flex;
-    width: 100%;
-    margin-bottom: 6vh;
-}
 .fields input {
     transition: all 0.3s ease-in-out;
 }
