@@ -175,43 +175,49 @@ const Work = () => {
                     C0D1NG5&nbsp;<a href="/">View All</a>
                 </h1>
                 {/* <div className="workSort">
-          <button
-            className={workSort === "Coding" ? "workSortActive" : ""}
-            onClick={(e) => sortWork(e)}
-          >
-            Coding
-          </button>
-          <button
-            className={workSort === "UI" ? "workSortActive" : ""}
-            onClick={(e) => sortWork(e)}
-          >
-            UI
-          </button>
-          <button
-            className={workSort === "Design" ? "workSortActive" : ""}
-            onClick={(e) => sortWork(e)}
-          >
-            Design
-          </button>
-          <button
-            className={workSort === "MOm" ? "workSortActive" : ""}
-            onClick={(e) => sortWork(e)}
-          >
-            MOm
-          </button>
-          <button
-            className={workSort === "Dard" ? "workSortActive" : ""}
-            onClick={(e) => sortWork(e)}
-          >
-            Dard
-          </button>
-          <button
-            className={workSort === "Dasness" ? "workSortActive" : ""}
-            onClick={(e) => sortWork(e)}
-          >
-            Dasness
-          </button>
-        </div> */}
+                    <button
+                        className={
+                            workSort === "Coding" ? "workSortActive" : ""
+                        }
+                        onClick={(e) => sortWork(e)}
+                    >
+                        Coding
+                    </button>
+                    <button
+                        className={workSort === "UI" ? "workSortActive" : ""}
+                        onClick={(e) => sortWork(e)}
+                    >
+                        UI
+                    </button>
+                    <button
+                        className={
+                            workSort === "Design" ? "workSortActive" : ""
+                        }
+                        onClick={(e) => sortWork(e)}
+                    >
+                        Design
+                    </button>
+                    <button
+                        className={workSort === "MOm" ? "workSortActive" : ""}
+                        onClick={(e) => sortWork(e)}
+                    >
+                        MOm
+                    </button>
+                    <button
+                        className={workSort === "Dard" ? "workSortActive" : ""}
+                        onClick={(e) => sortWork(e)}
+                    >
+                        Dard
+                    </button>
+                    <button
+                        className={
+                            workSort === "Dasness" ? "workSortActive" : ""
+                        }
+                        onClick={(e) => sortWork(e)}
+                    >
+                        Dasness
+                    </button>
+                </div> */}
                 <div className="workCards">
                     <Link to="/" className="workCard">
                         <img src="/assets/sample-banner.jpg" alt="" />

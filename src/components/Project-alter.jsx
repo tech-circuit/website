@@ -231,7 +231,7 @@ const ProjectAlter = ({ edit }) => {
 
     useEffect(() => {
         const getProject = async () => {
-            const dataJson = await fetch(`${BASE_API_URL}/project/${id}`);
+            const dataJson = await fetch(`${BASE_API_URL}/project/${id}?access_token=${localStorage.getItem("authToken")}`);
             const data = await dataJson.json();
 
             if (data.project) {
@@ -247,6 +247,8 @@ const ProjectAlter = ({ edit }) => {
                 document
                     .getElementById("img-area")
                     .classList.add("org-logo-uploaded");
+            } else {
+                window.location.href = "/404";
             }
         };
 
