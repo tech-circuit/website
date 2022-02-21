@@ -77,9 +77,9 @@ const CreateOrg = () => {
     const setImage = async (inputFile) => {
         console.log("haa");
         if (
-            inputFile.name.endsWith(".png") ||
-            inputFile.name.endsWith(".jpg") ||
-            inputFile.name.endsWith(".jpeg")
+            inputFile.name.toLowerCase().endsWith(".png") ||
+            inputFile.name.toLowerCase().endsWith(".jpg") ||
+            inputFile.name.toLowerCase().endsWith(".jpeg")
         ) {
             notyf.success("Uploading...");
             let reader = new FileReader();
@@ -123,6 +123,7 @@ const CreateOrg = () => {
         document
             .getElementById("img-area")
             .classList.remove("org-logo-uploaded");
+        document.querySelector("input[name='org-logo']").value = "";
     };
 
     const addMember = () => {

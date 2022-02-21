@@ -143,9 +143,10 @@ button.workSortActive::after {
 /* CARDS */
 .workCards {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
+  width: 100%;
 }
 .workCard {
   width: 12%;
@@ -167,7 +168,7 @@ button.workSortActive::after {
   font-weight: 500;
 }
 .workCard h3 {
-  font-size: 0.9vw;
+  font-size: 0.75vw;
   color: #747474;
 }
 

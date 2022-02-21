@@ -1,7 +1,7 @@
 import "./styles/all.css";
 import Navbar from "./components/Navbar";
 import Index from "./components/Index";
-import CreateProject from "./components/CreateProject.jsx";
+import ProjectAlter from "./components/Project-alter";
 import Community from "./components/Community";
 import Resources from "./components/Resources";
 import Forums from "./components/Forum";
@@ -42,8 +42,11 @@ const App = () => {
                     {/* <Soon /> */}
                 </Route>
                 <Route exact path="/create-project">
-                    <CreateProject />
+                    <ProjectAlter edit={false} />
                     {/* <Soon /> */}
+                </Route>
+                <Route exact path="/edit-project/:id">
+                    <ProjectAlter edit={true} />
                 </Route>
                 <Route exact path="/community">
                     <Community />

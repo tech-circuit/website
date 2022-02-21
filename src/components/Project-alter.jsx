@@ -4,6 +4,7 @@ import { FaLink, FaPlusCircle, FaTrash } from "react-icons/fa";
 import BASE_API_URL from "../constants";
 import { Notyf } from "notyf";
 import getLinkLogo from "../getLinkLogo";
+import { useParams } from "react-router-dom";
 import "../styles/createProject.css";
 
 const notyf = new Notyf({
@@ -38,13 +39,14 @@ const notyf = new Notyf({
     ],
 });
 
-const CreateProject = () => {
+const ProjectAlter = ({ edit }) => {
     const [links, setLinks] = useState([]);
     const [imgUrl, setImgUrl] = useState("/assets/userFlowIcon.svg");
     const [linksObj, setLinksObj] = useState({});
     const [tags, setTags] = useState([]);
     const [fields, setFields] = useState([]);
     const [comments, setComments] = useState(false);
+    const [project, setProject] = useState({});
     const staticfields = [
         "UI/UX",
         "Web Development",
@@ -56,6 +58,7 @@ const CreateProject = () => {
         "Sit",
         "Amet",
     ];
+    const { id } = useParams();
 
     const addLink = async () => {
         if (document.querySelector("#add-link-inp").value !== "") {
@@ -87,11 +90,11 @@ const CreateProject = () => {
     };
 
     const setImage = async (inputFile) => {
-        console.log("haa");
+        console.log("doing");
         if (
-            inputFile.name.endsWith(".png") ||
-            inputFile.name.endsWith(".jpg") ||
-            inputFile.name.endsWith(".jpeg")
+            inputFile.name.toLowerCase().endsWith(".jpg") ||
+            inputFile.name.toLowerCase().endsWith(".png") ||
+            inputFile.name.toLowerCase().endsWith(".jpeg")
         ) {
             notyf.success("Uploading...");
             let reader = new FileReader();
@@ -115,7 +118,6 @@ const CreateProject = () => {
                 })
                     .then(async (response) => {
                         const resp = await response.json();
-                        console.log(resp);
                         document.getElementById(
                             "img-area"
                         ).style.backgroundImage = `url('${resp.link}')`;
@@ -132,6 +134,7 @@ const CreateProject = () => {
     const deleteImage = () => {
         document.getElementById("img-area").style.backgroundImage = `url('')`;
         setImgUrl("");
+        document.querySelector("input[name='org-logo']").value = "";
         document
             .getElementById("img-area")
             .classList.remove("org-logo-uploaded");
@@ -181,21 +184,25 @@ const CreateProject = () => {
                 cover_image: imgUrl,
             };
 
-            const submittedJson = await fetch(
-                `${BASE_API_URL}/project/add?access_token=${localStorage.getItem(
-                    "authToken"
-                )}`,
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(body),
-                }
-            );
+            const fetchUrl = edit
+                ? `${BASE_API_URL}/project/edit/${
+                      project._id
+                  }?access_token=${localStorage.getItem("authToken")}`
+                : `${BASE_API_URL}/project/add?access_token=${localStorage.getItem(
+                      "authToken"
+                  )}`;
+            const fetchMethod = edit ? "PUT" : "POST";
+            const submittedJson = await fetch(fetchUrl, {
+                method: fetchMethod,
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body),
+            });
             const submitted = await submittedJson.json();
 
             if (submitted.done) {
                 window.location.href = "/work";
             } else {
+                console.log(submitted);
                 notyf.error("Some Error has occurred");
                 return;
             }
@@ -222,11 +229,37 @@ const CreateProject = () => {
         }
     }, [fields]);
 
+    useEffect(() => {
+        const getProject = async () => {
+            const dataJson = await fetch(`${BASE_API_URL}/project/${id}`);
+            const data = await dataJson.json();
+
+            if (data.project) {
+                setImgUrl(data.project.cover_image);
+                setLinks(data.project.links);
+                setTags(data.project.tags);
+                setFields(data.project.fields);
+                setProject(data.project);
+
+                document.getElementById(
+                    "img-area"
+                ).style.backgroundImage = `url('${data.project.cover_image}')`;
+                document
+                    .getElementById("img-area")
+                    .classList.add("org-logo-uploaded");
+            }
+        };
+
+        if (edit) {
+            getProject();
+        }
+    }, [id, edit]);
+
     return (
         <>
             <div className="create-org-cont">
                 <div className="left-org">
-                    <h1>Create a Project</h1>
+                    <h1>{edit ? "Edit" : "Create a"} Project</h1>
                     <p style={{ color: "#c4c4c4 !important" }}>
                         Start building your project to showcase on techCircuit.
                     </p>
@@ -237,11 +270,13 @@ const CreateProject = () => {
                         autoComplete="off"
                         placeholder="Arena | Chess Platform Concept"
                         required
+                        defaultValue={project ? project.title : ""}
                     ></input>
                     <h3>Decription *</h3>
                     <textarea
                         name="description"
                         autoComplete="off"
+                        defaultValue={project ? project.description : ""}
                         placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictum eu, aenean porta neque ante tellus. Ipsum consequat semper amet nullam proin. "
                     ></textarea>
                     <h3>Collaborators</h3>
@@ -250,6 +285,7 @@ const CreateProject = () => {
                         name="collaborators"
                         autoComplete="off"
                         placeholder="Ishaan Das, Ribhav Sharma"
+                        defaultValue={project ? project.collaborators : ""}
                     ></input>
                     <h3>Add links</h3>
                     <div className="create-links input">
@@ -269,14 +305,14 @@ const CreateProject = () => {
                         </div>
                         {links.map((link) => {
                             return (
-                                <div className="link-unit">
+                                <div className="link-unit" key={link}>
                                     {linksObj[link]}
                                     <input
                                         maxLength="200"
                                         type="text"
                                         placeholder="example: https://github.com/kevin"
                                         value={link}
-                                        readonly
+                                        readOnly
                                         key={`link-${links.indexOf(link)}`}
                                         id={`link-${links.indexOf(link)}`}
                                     />
@@ -371,7 +407,7 @@ const CreateProject = () => {
                     <div className="tags-hold">
                         {tags.map((tag) => {
                             return (
-                                <div className="tag">
+                                <div className="tag" key={tag}>
                                     {tag}
                                     <img
                                         src="/assets/tag-cross.svg"
@@ -413,6 +449,7 @@ const CreateProject = () => {
                     <input
                         type="text"
                         name="event"
+                        defaultValue={project ? project.event : ""}
                         autoComplete="off"
                         placeholder="Enter name of event and the year"
                         required
@@ -500,7 +537,7 @@ const CreateProject = () => {
 
                     <div className="buttons button-org">
                         <button className="createOrgButton" onClick={submit}>
-                            Create Project
+                            {edit ? "Finish Editing" : "Create Project"}
                         </button>
                     </div>
                 </div>
@@ -509,4 +546,4 @@ const CreateProject = () => {
     );
 };
 
-export default CreateProject;
+export default ProjectAlter;
