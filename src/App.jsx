@@ -17,6 +17,7 @@ import UserFlow from "./components/UserFlow";
 // import Soon from "./components/Soon";
 import User from "./components/User";
 import OrgView from "./components/OrgView";
+import EventView from "./components/EventView";
 import Error from "./components/Error";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
@@ -74,6 +75,9 @@ const App = () => {
                 <Route exact path="/edit-event">
                     <EditEvent />
                     {/* <Soon /> */}
+                </Route>
+                <Route exact path="/view-event">
+                    <EventView />
                 </Route>
                 <Route exact path="/profile">
                     <Profile />

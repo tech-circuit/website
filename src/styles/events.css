@@ -446,3 +446,16 @@ nav {
   font-size: 1vw;
   font-weight: 300;
 }
+
+/* Separate View Page Styles */
+
+.ViewEventWrap {  
+  /* background-color: yellow; */
+  width: 90%;
+  min-height: 120vh;
+  padding: 4vh 5vw;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  margin: 0 auto;
+}
