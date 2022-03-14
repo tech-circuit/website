@@ -61,7 +61,7 @@ const EventView = () => {
                     </p>
                 </div>
 
-                <div className=" eventAddInfo eventOrganizers">
+                <div className=" eventAddInfo">
                     <div className="fullEventUnit fullEventUnitOrg">
                         <h4>Event Tags</h4>
                         <p class="tags">All-in-one, Inter-school, International, hackathon, designathon, quizing, crossword</p>
