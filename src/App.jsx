@@ -6,7 +6,7 @@ import Community from "./components/Community";
 import Resources from "./components/Resources";
 import Forums from "./components/Forum";
 import Post from "./components/Post";
-import Events from "./components/Events";
+import Events from "./components/Events.jsx";
 import About from "./components/About";
 import Work from "./components/Work";
 import CreateOrg from "./components/CreateOrg.jsx";
