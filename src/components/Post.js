@@ -302,7 +302,7 @@ const Post = () => {
                                 className="post-content"
                             ></div>
                         </SRLWrapper>
-                        <br></br>
+                        <br></br>   
                         <br></br>
                         <div className="card-options">
                             <div className="l-opts">

@@ -178,3 +178,248 @@ button.workSortActive::after {
 .workCard:hover > h3 {
     text-decoration: underline;
 }
+
+/* Popup  */
+
+.project-back {
+    display: flex;
+    align-items: center;
+    color: #747474;
+    text-decoration: none;
+    font-size: 1vw;
+    transition: all 0.3s;
+    margin-bottom: 2vh;
+  }
+
+.return {
+    width: 25%;
+    text-align: left;
+    font-size: 1.4vw;
+    color: #747474;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+
+.fullProjectBanneri {
+    width: 100%;
+    height: 35vh;
+    border-radius: 8px;
+    margin-bottom: 3vh;
+}
+
+.fullProjectBanneri{
+  width: 100%;
+  height: 42vh;
+  border-radius: 8px;
+  margin-bottom: 3vh;
+}
+
+.projectOrg {
+    display: flex;
+    justify-content: space-between;
+}
+
+.projectOrg h1 {  
+  font-weight: 500;
+  font-size: 1.9vw;
+}
+
+.projectOrg a{  
+  font-weight: 300;
+  font-size: 1vw;
+  color: #4678f9;
+}
+
+.proj-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.share-wrap{
+    color: #747474;
+}
+
+.share-wrap a {
+    color: #747474;
+    margin-left: 0.5vw;
+}
+
+.view-proj{
+    border: 1px #4678f9 solid;
+    color: #4678f9;
+    padding: 1vh 2vw;
+    font-size: 1vw;
+    font-weight: 300;
+    background: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: #fff;
+    transition: all 0.3s;
+    margin: auto 0;
+}
+
+.view-proj:hover {
+    background: #4678f9;
+    color: #fff
+}
+
+.projectOrg .share-wrap{
+    margin: auto 0;
+    color: #4678f9;
+    font-size: 0.8vw;
+}
+
+.projectOrg .share-wrap a {
+    margin-left: 0.5vw;
+    color: #4678f9;
+}
+
+.projectAddInfo {
+    display: flex;
+    margin: 0;
+    margin-top: 0;
+}
+
+.projectAddInfo > * {
+    width: 50%;
+}
+
+.fullProjectUnit {
+    margin-top: 5vh;
+}
+.fullProjectUnit h4 {
+    font-weight: 400;
+    font-size: 1.4vw;
+}
+.fullProjectUnit p {
+    color: #747474;
+    font-size: 1vw;
+    font-weight: 300;
+    margin-top: 0.6vh;
+}
+
+.fullProjectUnitOrg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.fullProjectUnitOrg p {
+    max-width: 80%;
+}
+
+.fullProjectUnitOrg .tags, .fullProjectUnitOrg .pFields{
+    color: #4678f9
+}
+
+.projectEvent {    
+    color: #4678f9;
+    font-size: 1vw;
+    font-weight: 300;
+}
+
+.fullProjectUnit .comment-text {
+    width: 100%;
+    height: 20vh;
+    border: 1px solid #c4c4c4;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: Poppins;
+    padding: 2vh 1.5vh;
+    margin-top: 0.5vh;
+    color: #747474;
+    font-size: 1vw;
+    font-weight: 300;
+}
+
+.fullProjectButtons {
+    margin-top: 1vh;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.post-pcomment-btn {
+    border: 1px #4678f9 solid;
+    color: #fff;
+    padding: 1vh 1vw;
+    font-size: 1vw;
+    font-weight: 300;
+    background: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: #4678f9;
+    align-self: right;
+}
+
+.post-pcancel-btn {
+    border: 1px #c4c4c4 solid;
+    color: #747474;
+    padding: 1vh 1.8vw;
+    font-size: 1vw;
+    font-weight: 300;
+    background: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-left: 0.5vw;
+}
+
+.proj-com-card {
+    display: flex;
+    margin-top: 3vh;
+}
+
+.proj-com-card img {
+    border-radius: 100%;
+    width: 4vw;
+}
+
+.proj-com-text {
+    margin: auto 0;
+    margin-left: 1vw;
+}
+
+.proj-com-text h4 {
+    font-size: 1.1vw;
+    font-weight: 500;
+    color: #4678f9
+}
+
+.proj-com-text p {
+    color: #747474;
+    font-size: 1vw;
+    font-weight: 300;
+}
+
+.more-com-wrap {
+    display: flex;
+    color: #4678f9;
+    font-size: 1vw;
+    justify-content: center;
+    margin-top: 1.5vh;
+}
+
+.more-com {
+    color: #4678f9;
+}
+
+.caret-down {
+    margin: auto 0;
+}
+
+/* Separate page styles */
+
+.ViewProjectWrap {
+    width: 70%;
+    min-height: 120vh;
+    padding: 4vh 5vw;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    margin: 4vw auto 2vw auto;    
+}

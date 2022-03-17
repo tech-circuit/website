@@ -18,6 +18,7 @@ import UserFlow from "./components/UserFlow";
 import User from "./components/User";
 import OrgView from "./components/OrgView";
 import EventView from "./components/EventView";
+import ProjectView from "./components/ProjectView";
 import Error from "./components/Error";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
@@ -78,6 +79,9 @@ const App = () => {
                 </Route>
                 <Route exact path="/view-event">
                     <EventView />
+                </Route>
+                <Route exact path="/view-project">
+                    <ProjectView />
                 </Route>
                 <Route exact path="/profile">
                     <Profile />

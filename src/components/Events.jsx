@@ -3,7 +3,7 @@ import "../styles/events.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
-import { FaPlus, FaChevronLeft } from "react-icons/fa";
+import { FaPlus, FaChevronLeft, FaShareAlt } from "react-icons/fa";
 
 const Events = () => {
     const [fullView, setfullView] = useState(false);
@@ -558,18 +558,26 @@ const Events = () => {
             <section
                 className={fullView ? "fullEvent fullEventActive" : "fullEvent"}
             >
-                <button className="return" onClick={close}>
-                    <FaChevronLeft />
-                    &nbsp;&nbsp;Back
-                </button>
+                <div className="event-top">
+                    <Link className="event-back" to="/">
+                        <FaChevronLeft />
+                        Back
+                    </Link>
+                    <div className="share-wrap">      
+                        <FaShareAlt />                  
+                        <a className="share">Share</a>
+                    </div>
+                </div>
 
-                <div className="fullEventBanner">
-                    <img src="/assets/sample-banner.jpg" alt="alt" />
-                    <h1>Event Banner</h1>
-                    <h3>
-                        Organised by{" "}
-                        <Link to="/">nCrypt DPS Sushant Lok Gurgaon</Link>
-                    </h3>
+                <img src="/assets/sample-banner.jpg" alt="alt" className="fullEventBanneri" />
+
+                <div className="eventOrg">
+                    <div>
+                        <h1>alphaNode 2022</h1>
+                        <h3>Organised by 
+                        <Link to="/"> nCrypt DPS Sushant Lok Gurgaon</Link>
+                        </h3>
+                    </div>
                 </div>
 
                 <div className="eventRegis">

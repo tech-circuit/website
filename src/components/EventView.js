@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "../styles/events.css";
-import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronLeft, FaShareAlt } from "react-icons/fa";
 // import { useEffect } from "react";
 
 const EventView = () => {
@@ -8,18 +8,26 @@ const EventView = () => {
         <>
         <div className="viewContainer">
             <section className="ViewEventWrap">
-                <Link className="event-back" to="/">
-                    <FaChevronLeft />
-                    Back
-                </Link>
+                <div className="event-top">
+                    <Link className="event-back" to="/">
+                        <FaChevronLeft />
+                        Back
+                    </Link>
+                    <div className="share-wrap">      
+                        <FaShareAlt />                  
+                        <a className="share">Share</a>
+                    </div>
+                </div>
 
                 <img src="/assets/sample-banner.jpg" alt="alt" className="fullEventBannerImg" />
 
                 <div className="eventOrg">
-                    <h1>alphaNode 2022</h1>
-                    <h3>Organised by 
-                    <Link to="/"> nCrypt DPS Sushant Lok Gurgaon</Link>
-                    </h3>
+                    <div>
+                        <h1>alphaNode 2022</h1>
+                        <h3>Organised by 
+                        <Link to="/"> nCrypt DPS Sushant Lok Gurgaon</Link>
+                        </h3>
+                    </div>
                 </div>
 
                 

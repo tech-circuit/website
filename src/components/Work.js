@@ -1,5 +1,5 @@
 import "../styles/work.css";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaShareAlt, FaBehance, FaCaretDown } from "react-icons/fa";
 import { useState, useRef, useEffect } from "react";
 import OwlCarousel from "react-owl-carousel2";
 import { Link } from "react-router-dom";
@@ -302,47 +302,51 @@ const Work = () => {
             <section
                 className={fullView ? "fullEvent fullEventActive" : "fullEvent"}
             >
-                <button className="return" onClick={close}>
-                    <FaChevronLeft />
-                    &nbsp;&nbsp;Back
-                </button>
-
-                <div className="fullEventBanner">
-                    <img src="/assets/sample-banner.jpg" alt="alt" />
-                    <h1>Event Banner</h1>
-                    <h3>
-                        Organised by{" "}
-                        <Link to="/">nCrypt DPS Sushant Lok Gurgaon</Link>
-                    </h3>
-                </div>
-
-                <div className="eventRegis">
-                    <p>Registeration Open till 13th May 11:59pm</p>
-                    <button>Register</button>
-                </div>
-
-                <div className="fullEventUnit">
-                    <h4>Eligibility Criteria</h4>
-                    <p>For students of Class XI - XII across India</p>
-                </div>
-
-                <div className="fullEventInfo">
-                    <div className="fullEventUnit">
-                        <h4>Starts</h4>
-                        <p>15th May, 2021</p>
-                    </div>
-                    <div className="fullEventUnit">
-                        <h4>Starts</h4>
-                        <p>15th May, 2021</p>
-                    </div>
-                    <div className="fullEventUnit">
-                        <h4>Starts</h4>
-                        <p>15th May, 2021</p>
+            <div className="proj-top">
+                    <button className="return" onClick={close}>
+                        <FaChevronLeft />
+                        &nbsp;&nbsp;Back
+                    </button>
+                    <div className="share-wrap">      
+                        <FaShareAlt />                  
+                        <a className="share">Share</a>
                     </div>
                 </div>
 
-                <div className="fullEventUnit">
-                    <h4>About event</h4>
+                <img src="/assets/sample-banner.jpg" alt="alt" className="fullProjectBanneri" />
+            
+                <div className="projectOrg">
+                    <div>
+                        <h1>Axus Gaming- Brand Identity Study</h1>
+                        <h3>
+                        <Link to="/"> Ishaan Das, </Link><Link to="/"> Ribhav Sharma</Link>
+                        </h3>
+                    </div>
+                        <button className="view-proj">View Project</button>    
+                </div>
+
+                <div className="eventAddInfo">
+                    <div className="fullProjectUnit fullProjectUnitOrg">
+                        <h4>Fields</h4>
+                        <p class="pFields">
+                            UI/UX, Game Design, Branding, Chess                            
+                        </p>
+                    </div>
+                    <div className="fullProjectUnit fullProjectUnitOrg">
+                        <h4>Project Tags</h4>
+                        <p class="tags">
+                            UI/UX, Design, Branding
+                        </p>
+                    </div>
+                </div>
+
+                <div className="fullProjectUnit">
+                    <h4>View it on</h4>
+                    <FaBehance />
+                </div>
+
+                <div className="fullProjectUnit">
+                    <h4>About</h4>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Aliquam turpis diam enim odio. Faucibus sagittis, non
@@ -354,64 +358,49 @@ const Work = () => {
                     </p>
                 </div>
 
-                <div className=" eventAddInfo">
-                    <div className="fullEventUnit fullEventUnitOrg">
-                        <h4>Event Tags</h4>
-                        <p class="tags">
-                            All-in-one, Inter-school, International, hackathon,
-                            designathon, quizing, crossword
-                        </p>
-                    </div>
-                    <div className="fullEventUnit fullEventUnitOrg">
-                        <h4>Location</h4>
-                        <div class="location">
-                            <p>Delhi NCR, India</p>
-                        </div>
+                <div className="fullProjectUnit">
+                    <h4>For Event</h4>
+                    <Link to="/" className="projectEvent">Tech Syndicate: Intech'21 (2021)</Link>
+                </div>
+
+                <div className="fullProjectUnit">
+                    <h4>Comments (42)</h4>
+                    <textarea
+                        name="comments"
+                        autoComplete="off"
+                        className="comment-text"
+                        placeholder="Post some critique or review regarding their work!"
+                    ></textarea>
+                    <div className="fullProjectButtons">
+                        <button className="post-pcomment-btn">Post Comment</button>
+                        <button className="post-pcancel-btn">Cancel</button>
                     </div>
                 </div>
 
-                <div className="eventOrganizers">
-                    <div className="fullEventUnit fullEventUnitOrg">
-                        <h4>Mode of conductance</h4>
-                        <p>Completely Online</p>
-                    </div>
-                    <div className="eventClub">
-                        <div className="eventClubLeft">
-                            <img src="/assets/sample-banner.jpg" alt="alt" />
-                        </div>
-                        <div className="eventClubRight fullEventUnit">
-                            <h4>
-                                <Link to="/">View club page</Link>
-                            </h4>
-                            <p>
-                                nCrypt: Tech Club of Delhi Public School Sushant
-                                Lok Gurgaon
-                            </p>
+                <div className="proj-com-cont">
+                    <div className="proj-com-card">
+                        <img src="/assets/samvr.jpeg" alt="alt"/>
+                        <div className="proj-com-text">
+                            <h4>Samvrant Samanstrueya</h4>
+                            <p>Wonderful project loved it woah woah woah</p>
                         </div>
                     </div>
-                </div>
-
-                <div className="eventContact">
-                    <div className="eventLinks fullEventUnit">
-                        <h4>Important Links</h4>
-                        <div className="eventPlats">
-                            <a href="/">
-                                <img src="/assets/disc.svg" alt="" />
-                            </a>
-                            <a href="/">
-                                <img src="/assets/disc.svg" alt="" />
-                            </a>
-                            <a href="/">
-                                <img src="/assets/disc.svg" alt="" />
-                            </a>
+                    <div className="proj-com-card">
+                        <img src="/assets/samvr.jpeg" alt="alt"/>
+                        <div className="proj-com-text">
+                            <h4>Ishaan Das</h4>
+                            <p>Wonderful project loved it woah woah woah</p>
                         </div>
                     </div>
-
-                    <div className="eventContactLinks">
-                        <div className="fullEventUnit">
-                            <h4>Contact</h4>
-                            <a href="/">https://the.the/the/the</a>
+                    <div className="proj-com-card">
+                        <img src="/assets/samvr.jpeg" alt="alt"/>
+                        <div className="proj-com-text">
+                            <h4>Laxya pahuja</h4>
+                            <p>Wonderful project loved it woah woah woah</p>
                         </div>
+                    </div>
+                    <div className="more-com-wrap">
+                        <p className="more-com">More Comments</p><FaCaretDown className="caret-down" />
                     </div>
                 </div>
             </section>
