@@ -613,7 +613,10 @@ const Events = () => {
                 <div className=" eventAddInfo">
                     <div className="fullEventUnit fullEventUnitOrg">
                         <h4>Event Tags</h4>
-                        <p class="tags">All-in-one, Inter-school, International, hackathon, designathon, quizing, crossword</p>
+                        <p class="tags">
+                            All-in-one, Inter-school, International, hackathon,
+                            designathon, quizing, crossword
+                        </p>
                     </div>
                     <div className="fullEventUnit fullEventUnitOrg">
                         <h4>Location</h4>
