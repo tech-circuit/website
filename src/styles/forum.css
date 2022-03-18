@@ -803,6 +803,7 @@ i {
     width: 1vw;
     height: 1vw;
     cursor: pointer;
+    margin: 1vh 0 !important;
 }
 .report-opt label {
     margin-left: 1vw;

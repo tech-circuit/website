@@ -479,7 +479,7 @@ const Forums = () => {
             <div className="container forumCardHold">
                 <div className="forumCards">
                     <ClipLoader />
-                    {posts.map((post, index) => (
+                    {posts.map((post) => (
                         <div className="forumCard">
                             <a
                                 href={`forum/post/${post.id}`}
