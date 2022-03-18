@@ -15,7 +15,7 @@ const EventView = () => {
                     </Link>
                     <div className="share-wrap">      
                         <FaShareAlt />                  
-                        <a className="share">Share</a>
+                        <a className="share" href="/">Share</a>
                     </div>
                 </div>
 

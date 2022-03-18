@@ -1,5 +1,11 @@
 import "../styles/work.css";
-import { FaChevronLeft, FaChevronRight, FaShareAlt, FaBehance, FaCaretDown } from "react-icons/fa";
+import {
+    FaChevronLeft,
+    FaChevronRight,
+    FaShareAlt,
+    FaBehance,
+    FaCaretDown,
+} from "react-icons/fa";
 import { useState, useRef, useEffect } from "react";
 import OwlCarousel from "react-owl-carousel2";
 import { Link } from "react-router-dom";
@@ -302,41 +308,46 @@ const Work = () => {
             <section
                 className={fullView ? "fullEvent fullEventActive" : "fullEvent"}
             >
-            <div className="proj-top">
+                <div className="proj-top">
                     <button className="return" onClick={close}>
                         <FaChevronLeft />
                         &nbsp;&nbsp;Back
                     </button>
-                    <div className="share-wrap">      
-                        <FaShareAlt />                  
-                        <a className="share">Share</a>
+                    <div className="share-wrap">
+                        <FaShareAlt />
+                        <a className="share" href="/">
+                            Share
+                        </a>
                     </div>
                 </div>
 
-                <img src="/assets/sample-banner.jpg" alt="alt" className="fullProjectBanneri" />
-            
+                <img
+                    src="/assets/sample-banner.jpg"
+                    alt="alt"
+                    className="fullProjectBanneri"
+                />
+
                 <div className="projectOrg">
                     <div>
                         <h1>Axus Gaming- Brand Identity Study</h1>
                         <h3>
-                        <Link to="/"> Ishaan Das, </Link><Link to="/"> Ribhav Sharma</Link>
+                            <Link to="/"> Ishaan Das, </Link>
+                            <Link to="/"> Ribhav Sharma</Link>
                         </h3>
                     </div>
-                        <button className="view-proj">View Project</button>    
+                    <button className="view-proj">View Project</button>
                 </div>
 
                 <div className="eventAddInfo">
                     <div className="fullProjectUnit fullProjectUnitOrg">
                         <h4>Fields</h4>
                         <p class="pFields">
-                            UI/UX, Game Design, Branding, Chess                            
+                            UI/UX, Game Design, Branding, Chess
                         </p>
                     </div>
                     <div className="fullProjectUnit fullProjectUnitOrg">
                         <h4>Project Tags</h4>
-                        <p class="tags">
-                            UI/UX, Design, Branding
-                        </p>
+                        <p class="tags">UI/UX, Design, Branding</p>
                     </div>
                 </div>
 
@@ -360,7 +371,9 @@ const Work = () => {
 
                 <div className="fullProjectUnit">
                     <h4>For Event</h4>
-                    <Link to="/" className="projectEvent">Tech Syndicate: Intech'21 (2021)</Link>
+                    <Link to="/" className="projectEvent">
+                        Tech Syndicate: Intech'21 (2021)
+                    </Link>
                 </div>
 
                 <div className="fullProjectUnit">
@@ -372,35 +385,38 @@ const Work = () => {
                         placeholder="Post some critique or review regarding their work!"
                     ></textarea>
                     <div className="fullProjectButtons">
-                        <button className="post-pcomment-btn">Post Comment</button>
+                        <button className="post-pcomment-btn">
+                            Post Comment
+                        </button>
                         <button className="post-pcancel-btn">Cancel</button>
                     </div>
                 </div>
 
                 <div className="proj-com-cont">
                     <div className="proj-com-card">
-                        <img src="/assets/samvr.jpeg" alt="alt"/>
+                        <img src="/assets/samvr.jpeg" alt="alt" />
                         <div className="proj-com-text">
                             <h4>Samvrant Samanstrueya</h4>
                             <p>Wonderful project loved it woah woah woah</p>
                         </div>
                     </div>
                     <div className="proj-com-card">
-                        <img src="/assets/samvr.jpeg" alt="alt"/>
+                        <img src="/assets/samvr.jpeg" alt="alt" />
                         <div className="proj-com-text">
                             <h4>Ishaan Das</h4>
                             <p>Wonderful project loved it woah woah woah</p>
                         </div>
                     </div>
                     <div className="proj-com-card">
-                        <img src="/assets/samvr.jpeg" alt="alt"/>
+                        <img src="/assets/samvr.jpeg" alt="alt" />
                         <div className="proj-com-text">
                             <h4>Laxya pahuja</h4>
                             <p>Wonderful project loved it woah woah woah</p>
                         </div>
                     </div>
                     <div className="more-com-wrap">
-                        <p className="more-com">More Comments</p><FaCaretDown className="caret-down" />
+                        <p className="more-com">More Comments</p>
+                        <FaCaretDown className="caret-down" />
                     </div>
                 </div>
             </section>

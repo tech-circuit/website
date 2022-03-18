@@ -563,19 +563,26 @@ const Events = () => {
                         <FaChevronLeft />
                         Back
                     </Link>
-                    <div className="share-wrap">      
-                        <FaShareAlt />                  
-                        <a className="share">Share</a>
+                    <div className="share-wrap">
+                        <FaShareAlt />
+                        <a className="share" href="/">
+                            Share
+                        </a>
                     </div>
                 </div>
 
-                <img src="/assets/sample-banner.jpg" alt="alt" className="fullEventBanneri" />
+                <img
+                    src="/assets/sample-banner.jpg"
+                    alt="alt"
+                    className="fullEventBanneri"
+                />
 
                 <div className="eventOrg">
                     <div>
                         <h1>alphaNode 2022</h1>
-                        <h3>Organised by 
-                        <Link to="/"> nCrypt DPS Sushant Lok Gurgaon</Link>
+                        <h3>
+                            Organised by
+                            <Link to="/"> nCrypt DPS Sushant Lok Gurgaon</Link>
                         </h3>
                     </div>
                 </div>

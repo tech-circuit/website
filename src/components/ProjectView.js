@@ -1,5 +1,5 @@
 import "../styles/work.css";
-import { FaChevronLeft, FaChevronRight, FaShareAlt, FaBehance, FaCaretDown } from "react-icons/fa";
+import { FaChevronLeft, FaShareAlt, FaBehance, FaCaretDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const ProjectView = () => {
@@ -12,7 +12,7 @@ const ProjectView = () => {
                 </Link>
                 <div className="share-wrap">      
                     <FaShareAlt />                  
-                    <a className="share">Share</a>
+                    <a className="share" href="/">Share</a>
                 </div>
             </div>
         
