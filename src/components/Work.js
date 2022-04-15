@@ -10,7 +10,9 @@ import { useState, useRef, useEffect } from "react";
 import OwlCarousel from "react-owl-carousel2";
 import { Link } from "react-router-dom";
 import BASE_API_URL from "../constants";
+import ProjectCard from "./utility/ProjectCard"
 import { Notyf } from "notyf";
+
 const notyf = new Notyf({
     duration: 2500,
     position: {
@@ -240,68 +242,10 @@ const Work = () => {
                         Dasness
                     </button>
                 </div> */}
-                <div className="workCards">
-                    <div to="/" className="workCard" onClick={view}>
-                        <img src="/assets/sample-banner.jpg" alt="" />
-                        <h2>Arena | Chess Platform Concept</h2>
-                        <h3>Isam</h3>
-                    </div>
-                    <div to="/" className="workCard" onClick={view}>
-                        <img src="/assets/sample-banner.jpg" alt="" />
-                        <h2>Arena | Chess Platform Concept</h2>
-                        <h3>Isam</h3>
-                    </div>
-                    <div to="/" className="workCard" onClick={view}>
-                        <img src="/assets/sample-banner.jpg" alt="" />
-                        <h2>Arena | Chess Platform Concept</h2>
-                        <h3>Isam</h3>
-                    </div>
-                    <div to="/" className="workCard" onClick={view}>
-                        <img src="/assets/sample-banner.jpg" alt="" />
-                        <h2>Arena | Chess Platform Concept</h2>
-                        <h3>Isam</h3>
-                    </div>
-                    <div to="/" className="workCard" onClick={view}>
-                        <img src="/assets/sample-banner.jpg" alt="" />
-                        <h2>Arena | Chess Platform Concept</h2>
-                        <h3>Isam</h3>
-                    </div>
-                    <div to="/" className="workCard" onClick={view}>
-                        <img src="/assets/sample-banner.jpg" alt="" />
-                        <h2>Arena | Chess Platform Concept</h2>
-                        <h3>Isam</h3>
-                    </div>
-                    <div to="/" className="workCard" onClick={view}>
-                        <img src="/assets/sample-banner.jpg" alt="" />
-                        <h2>Arena | Chess Platform Concept</h2>
-                        <h3>Isam</h3>
-                    </div>
-                    <div to="/" className="workCard" onClick={view}>
-                        <img src="/assets/sample-banner.jpg" alt="" />
-                        <h2>Arena | Chess Platform Concept</h2>
-                        <h3>Isam</h3>
-                    </div>
-                    <div to="/" className="workCard" onClick={view}>
-                        <img src="/assets/sample-banner.jpg" alt="" />
-                        <h2>Arena | Chess Platform Concept</h2>
-                        <h3>Isam</h3>
-                    </div>
-                    <div to="/" className="workCard" onClick={view}>
-                        <img src="/assets/sample-banner.jpg" alt="" />
-                        <h2>Arena | Chess Platform Concept</h2>
-                        <h3>Isam</h3>
-                    </div>
-                    <div to="/" className="workCard" onClick={view}>
-                        <img src="/assets/sample-banner.jpg" alt="" />
-                        <h2>Arena | Chess Platform Concept</h2>
-                        <h3>Isam</h3>
-                    </div>
-
-                    <div to="/" className="workCard" onClick={view}>
-                        <img src="/assets/sample-banner.jpg" alt="" />
-                        <h2>Arena | Chess Platform Concept</h2>
-                        <h3>Isam</h3>
-                    </div>
+                <div className="workCards">                    
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(() => {
+                    return <ProjectCard />;
+                })}
                 </div>
             </section>
 

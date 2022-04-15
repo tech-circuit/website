@@ -5,9 +5,11 @@ import { useState, useEffect } from "react";
 import BASE_API_URL from "../constants";
 import { Notyf } from "notyf";
 import getLinkogo from "../getLinkLogo";
+import UserCard from './utility/UserCard'
+import OrgCard from './utility/OrgCard'
 
 const notyf = new Notyf({
-    duration: 2500,
+    duration: 2500, 
     position: {
         x: "left",
         y: "bottom",
@@ -182,6 +184,9 @@ const Community = () => {
                         </div>
                     );
                 })}
+                {[1, 2, 3, 4, 5].map(() => {
+                    return <OrgCard />;
+                })}
             </div>
 
             <div
@@ -213,6 +218,9 @@ const Community = () => {
                             </Link>
                         </div>
                     );
+                })}
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => {
+                    return <UserCard />;
                 })}
             </div>
         </>
