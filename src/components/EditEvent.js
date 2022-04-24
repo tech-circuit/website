@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import "../styles/createEvent.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { FileDrop } from "react-file-drop";
+import DangerBox from './utility/Danger'
 
 const CreateEvent = () => {
     const [links, setLinks] = useState([]);
@@ -357,16 +358,7 @@ const CreateEvent = () => {
                             placeholder="Your Mom, Ribhav Sharma"
                         ></input>
                     </div>
-                    <div className="danger-zone-event">
-                        <h1>Danger zone</h1>
-                        <div className="danger-box-event">
-                            <h2>Delete your Account</h2>
-                            <p className="dangerP">
-                                This will permanently delete this event from tC.
-                            </p>
-                            <button id="delete-event">Delete</button>
-                        </div>
-                    </div>
+                    <DangerBox name="event"/>
                 </div>
 
                 <div className="right-event">

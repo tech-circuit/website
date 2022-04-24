@@ -4,6 +4,7 @@ import "../styles/add.css";
 import { useState, useEffect } from "react";
 import BASE_API_URL from "../constants";
 import getLinkLogo from "../getLinkLogo";
+import DangerBox from './utility/Danger'
 
 const ProfileInfo = () => {
     const [links, setLinks] = useState([]);
@@ -633,19 +634,7 @@ const ProfileInfo = () => {
                             </select>
                         </div>
 
-                        <div className="danger-zone">
-                            <h1>Danger zone</h1>
-                            <div className="danger-box">
-                                <h2>Delete your Account</h2>
-                                <p>
-                                    This will permanently delete your account
-                                    and all your info on techCircuit.
-                                </p>
-                                <button id="delete-account">
-                                    Delete account
-                                </button>
-                            </div>
-                        </div>
+                        <DangerBox name="account" />
                     </div>
                 </div>
             </div>

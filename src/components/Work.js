@@ -7,11 +7,12 @@ import {
     FaCaretDown,
 } from "react-icons/fa";
 import { useState, useRef, useEffect } from "react";
-import OwlCarousel from "react-owl-carousel2";
+// import OwlCarousel from "react-owl-carousel2";
 import { Link } from "react-router-dom";
 import BASE_API_URL from "../constants";
 import ProjectCard from "./utility/ProjectCard"
 import { Notyf } from "notyf";
+import WorkCarousel from "./utility/WorkCarousel";
 
 const notyf = new Notyf({
     duration: 2500,
@@ -44,15 +45,6 @@ const notyf = new Notyf({
         },
     ],
 });
-
-const options = {
-    items: 9,
-    rewind: true,
-    autoplay: true,
-    loop: true,
-    autoplayTimeout: 3000,
-    nav: false,
-};
 
 const Work = () => {
     // const [workSort, setWorkSort] = useState("Coding");
@@ -112,20 +104,7 @@ const Work = () => {
                         >
                             <FaChevronRight />
                         </button>
-                        <OwlCarousel ref={sortRef} options={options}>
-                            <h1>Web Development</h1>
-                            <h1>UI/UX Design</h1>
-                            <h1>Web Dev</h1>
-                            <h1>Web Dev</h1>
-                            <h1>UI/UX Design</h1>
-                            <h1>Machine Learning</h1>
-                            <h1>Web Dev</h1>
-                            <h1>UI/UX Design</h1>
-                            <h1>Web Dev</h1>
-                            <h1>Web Dev</h1>
-                            <h1>UI/UX Design</h1>
-                            <h1>Web Dev</h1>
-                        </OwlCarousel>
+                        <WorkCarousel />
                     </div>
                 </div>
             </header>
