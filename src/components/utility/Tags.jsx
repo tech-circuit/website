@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Tags = () => {    
+const Tags = ({ updateTags }) => {    
     const [tags, setTags] = useState([]);
 
     const addTag = (e) => {
@@ -10,6 +10,7 @@ const Tags = () => {
             tags.length !== 5
         ) {
             setTags([...tags, e.target.value.trim()]);
+            updateTags([...tags, e.target.value.trim()])
             e.target.value = "";
             setTimeout(() => {
                 e.target.value = "";
@@ -19,6 +20,7 @@ const Tags = () => {
 
     const removeTag = (inpTag) => {
         setTags(tags.filter((tag) => tag !== inpTag));
+        updateTags(tags.filter((tag) => tag !== inpTag))
     };
 
     return(

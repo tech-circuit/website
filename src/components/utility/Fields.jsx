@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/all.css";
 
-const Fields = (props) => {
+const Fields = ({ updateFields }) => {
     const [fields, setFields] = useState([]);
     const staticfields = [
         "UI/UX",
@@ -14,6 +14,23 @@ const Fields = (props) => {
         "Sit",
         "Amet",
     ];
+
+    const updateLocalFields = (fields) => {
+        setFields(fields)
+        updateFields(fields)
+    }
+
+    useEffect(() => {
+        if (fields.length === 5) {
+            for (let f of document.querySelectorAll(".field")) {
+                f.classList.add("field-disabled");
+            }
+        } else {
+            for (let f of document.querySelectorAll(".field")) {
+                f.classList.remove("field-disabled");
+            }
+        }
+    }, [fields]);
 
     return(
         <>          
@@ -33,7 +50,7 @@ const Fields = (props) => {
                 <div className="field-box">
                     <div className="field-box-top">
                         <h1>Project Fields</h1>
-                        <button onClick={() => setFields([])}>
+                        <button onClick={() => updateLocalFields([])}>
                             clear all
                         </button>
                     </div>
@@ -50,19 +67,19 @@ const Fields = (props) => {
                                     onClick={() => {
                                         if (fields.length !== 5) {
                                             if (!fields.includes(field))
-                                                setFields([
+                                                updateLocalFields([
                                                     ...fields,
                                                     field,
                                                 ]);
                                             else
-                                                setFields(
+                                                updateLocalFields(
                                                     fields.filter(
                                                         (fl) =>
                                                             fl !== field
                                                     )
                                                 );
                                         } else {
-                                            setFields(
+                                            updateLocalFields(
                                                 fields.filter(
                                                     (fl) => fl !== field
                                                 )

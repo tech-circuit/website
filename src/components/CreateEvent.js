@@ -4,12 +4,14 @@ import React, { useState } from "react";
 import "../styles/createEvent.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { FileDrop } from "react-file-drop";
+import Tags from "./utility/Tags";
 
 const CreateEvent = () => {
     const [links, setLinks] = useState([]);
     const [title, setTitle] = useState("");
     // const [fieldsText, setFieldsText] = useState("");
-    const [tags, setTags] = useState("");
+    const [tags, setTags] = useState([]);
+    console.log(tags);
     const [imgUrl, setImgUrl] = useState("");
 
     const logos = {
@@ -62,11 +64,6 @@ const CreateEvent = () => {
     //   console.log(field);
     //   setFieldsText(fieldsText + ", " + field);
     // };
-
-    const editTags = (tag) => {
-        // console.log(tag)
-        setTags(tag);
-    };
 
     const setImage = async (inputFile) => {
         if (
@@ -284,14 +281,7 @@ const CreateEvent = () => {
                             </select>
                         </div>
                     </div>
-                    <h3>Tags</h3>
-                    <input
-                        type="text"
-                        name="title"
-                        autoComplete="off"
-                        value={tags}
-                        onChange={(event) => editTags(event.target.value)}
-                    ></input>
+                    <Tags updateTags={setTags}/>
                     <h5 className="below-input">
                         Tags help users to find your event. You can use upto 8
                         tags.

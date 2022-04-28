@@ -6,7 +6,7 @@ const EventCard = ({ view }) => {
             <img src="/assets/sample-banner.jpg" alt="alt" />
             <div className="eventBody">
                 <div className="head">
-                    <h1>nCRYPT 2021 Lorem </h1>
+                    <h1>nfRYPT 2021 Lorem </h1>
                     <h2>
                         Organised by <Link to="/">DUGUY</Link>
                     </h2>

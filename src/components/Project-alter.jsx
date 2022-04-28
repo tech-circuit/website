@@ -6,6 +6,8 @@ import { Notyf } from "notyf";
 import getLinkLogo from "../getLinkLogo";
 import { useParams } from "react-router-dom";
 import "../styles/createProject.css";
+import Tags from "./utility/Tags";
+import Fields from "./utility/Fields";
 
 const notyf = new Notyf({
     duration: 2500,
@@ -47,17 +49,6 @@ const ProjectAlter = ({ edit }) => {
     const [fields, setFields] = useState([]);
     const [comments, setComments] = useState(false);
     const [project, setProject] = useState({});
-    const staticfields = [
-        "UI/UX",
-        "Web Development",
-        "Cryptic",
-        "Blockchain",
-        "3D Dev",
-        "Dlor",
-        "Lorem",
-        "Sit",
-        "Amet",
-    ];
     const { id } = useParams();
 
     const addLink = async () => {
@@ -140,24 +131,6 @@ const ProjectAlter = ({ edit }) => {
             .classList.remove("org-logo-uploaded");
     };
 
-    const addTag = (e) => {
-        if (
-            e.keyCode === 32 &&
-            e.target.value.trim() !== "" &&
-            tags.length !== 5
-        ) {
-            setTags([...tags, e.target.value.trim()]);
-            e.target.value = "";
-            setTimeout(() => {
-                e.target.value = "";
-            }, 10);
-        }
-    };
-
-    const removeTag = (inpTag) => {
-        setTags(tags.filter((tag) => tag !== inpTag));
-    };
-
     const submit = async () => {
         const title = document.querySelector("input[name='title']").value;
         const description = document.querySelector(
@@ -217,17 +190,6 @@ const ProjectAlter = ({ edit }) => {
         setLinksObj(theObj);
     }, [links]);
 
-    useEffect(() => {
-        if (fields.length === 5) {
-            for (let f of document.querySelectorAll(".field")) {
-                f.classList.add("field-disabled");
-            }
-        } else {
-            for (let f of document.querySelectorAll(".field")) {
-                f.classList.remove("field-disabled");
-            }
-        }
-    }, [fields]);
 
     useEffect(() => {
         const getProject = async () => {
@@ -334,116 +296,8 @@ const ProjectAlter = ({ edit }) => {
                             );
                         })}
                     </div>
-                    <h3>Fields</h3>
-                    <div className="field-hold">
-                        <input
-                            type="text"
-                            value={fields.join(", ")}
-                            readOnly
-                            style={{ color: "#4678f9" }}
-                            onClick={() =>
-                                document
-                                    .querySelector(".field-box")
-                                    .classList.toggle("field-box-active")
-                            }
-                        />
-                        <div className="field-box">
-                            <div className="field-box-top">
-                                <h1>Project Fields</h1>
-                                <button onClick={() => setFields([])}>
-                                    clear all
-                                </button>
-                            </div>
-                            <div className="fields">
-                                {staticfields.map((field) => {
-                                    return (
-                                        <button
-                                            className={
-                                                fields.includes(field)
-                                                    ? "field field-active"
-                                                    : "field"
-                                            }
-                                            key={field}
-                                            onClick={() => {
-                                                if (fields.length !== 5) {
-                                                    if (!fields.includes(field))
-                                                        setFields([
-                                                            ...fields,
-                                                            field,
-                                                        ]);
-                                                    else
-                                                        setFields(
-                                                            fields.filter(
-                                                                (fl) =>
-                                                                    fl !== field
-                                                            )
-                                                        );
-                                                } else {
-                                                    setFields(
-                                                        fields.filter(
-                                                            (fl) => fl !== field
-                                                        )
-                                                    );
-                                                }
-                                            }}
-                                        >
-                                            {field}
-                                        </button>
-                                    );
-                                })}
-                            </div>
-                            <button
-                                className="close"
-                                style={{ color: "#747474" }}
-                                onClick={() => {
-                                    document
-                                        .querySelector(".field-box")
-                                        .classList.remove("field-box-active");
-                                }}
-                            >
-                                Close
-                            </button>
-                        </div>
-                    </div>
-                    <h3>Tags</h3>
-                    <div className="tags-hold">
-                        {tags.map((tag) => {
-                            return (
-                                <div className="tag" key={tag}>
-                                    {tag}
-                                    <img
-                                        src="/assets/tag-cross.svg"
-                                        alt="tag-cross"
-                                        className="tag-cross"
-                                        onClick={() => removeTag(tag)}
-                                    />
-                                </div>
-                            );
-                        })}
-                        {tags.length !== 5 ? (
-                            <input
-                                type="text"
-                                id="tags"
-                                name="tags"
-                                autoComplete="off"
-                                onKeyDown={(eve) => addTag(eve)}
-                                onFocus={(e) => {
-                                    e.target.parentElement.classList.add(
-                                        "tags-hold-focus"
-                                    );
-                                }}
-                                onBlur={(e) => {
-                                    e.target.parentElement.classList.remove(
-                                        "tags-hold-focus"
-                                    );
-                                }}
-                            />
-                        ) : (
-                            document
-                                .querySelector(".tags-hold")
-                                .classList.remove("tags-hold-focus")
-                        )}
-                    </div>
+                    <Fields updateFields={setFields}/>
+                    <Tags updateTags={setTags}/>
                     <p className="input-sub-text">
                         Upto 5 tags, Use space to separate
                     </p>

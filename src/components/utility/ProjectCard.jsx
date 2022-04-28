@@ -1,13 +1,21 @@
 import "../../styles/work.css";
 
-const ProjectCard = ({view}) => {
+const ProjectCard = ({project, view}) => {
     return(
         <>
-        <div to="/" className="workCard" onClick={view}>
-            <img src="/assets/sample-banner.jpg" alt="" />
-            <h2>Arena | Chess Platform Concept</h2>
-            <h3>Isam</h3>
-        </div>
+            <div
+                onClick={view}
+                key={project._id}
+                to={`/edit-project/${project._id}`}
+                className="workCard"
+            >
+                <img
+                    src={project.cover_image}
+                    alt="project img"
+                />
+                <h2>{project.title}</h2>
+                <h3>{project.collaborators}</h3>
+            </div>
         </>
     )
 }

@@ -1,10 +1,7 @@
 import "../styles/community.css";
-import { Link } from "react-router-dom";
-import { FaInstagram } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import BASE_API_URL from "../constants";
 import { Notyf } from "notyf";
-import getLinkogo from "../getLinkLogo";
 import UserCard from './utility/UserCard'
 import OrgCard from './utility/OrgCard'
 
@@ -151,41 +148,8 @@ const Community = () => {
             >
                 {orgs.map((org) => {
                     return (
-                        <div className="com">
-                            <img src={org.logo_url} alt="alt" />
-                            <h2>{org.name}</h2>
-                            <p>
-                                {org.isIndependant
-                                    ? "Independant"
-                                    : org.institute}
-                            </p>
-                            {/* <p>Delhi Public School, Vasant Kunj</p> */}
-                            <div className="socials">
-                                {org.links
-                                    ? org.links
-                                          .slice(0)
-                                          .reverse()
-                                          .map((link) => {
-                                              return (
-                                                  <a
-                                                      href={link}
-                                                      target="_blank"
-                                                      rel="noreferrer"
-                                                  >
-                                                      {getLinkogo(link)}
-                                                  </a>
-                                              );
-                                          })
-                                    : ""}
-                            </div>
-                            <Link className="view" to={`org/${org._id}`}>
-                                View Page
-                            </Link>
-                        </div>
+                        <OrgCard org={org}/>
                     );
-                })}
-                {[1, 2, 3, 4, 5].map(() => {
-                    return <OrgCard />;
                 })}
             </div>
 
@@ -196,31 +160,8 @@ const Community = () => {
             >
                 {users.map((user) => {
                     return (
-                        <div className="com user">
-                            <Link to={`user/${user._id}`}>
-                                <a href="/user">
-                                    <img src={user.pfp_url} alt="alt" />
-                                    <h2>{user.name}</h2>
-                                    <p>{user.title}</p>
-                                    <p>{user.username}</p>
-                                    <div className="socials">
-                                        <a href="/">
-                                            <FaInstagram />
-                                        </a>
-                                        <a href="/">
-                                            <FaInstagram />
-                                        </a>
-                                        <a href="/">
-                                            <FaInstagram />
-                                        </a>
-                                    </div>
-                                </a>
-                            </Link>
-                        </div>
+                        <UserCard user={user}/>
                     );
-                })}
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => {
-                    return <UserCard />;
                 })}
             </div>
         </>

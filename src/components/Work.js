@@ -155,19 +155,7 @@ const Work = () => {
                 <div className="workCards">
                     {projects.map((project) => {
                         return (
-                            <div
-                                onClick={view}
-                                key={project._id}
-                                to={`/edit-project/${project._id}`}
-                                className="workCard"
-                            >
-                                <img
-                                    src={project.cover_image}
-                                    alt="project img"
-                                />
-                                <h2>{project.title}</h2>
-                                <h3>{project.collaborators}</h3>
-                            </div>
+                            <ProjectCard project={project} view={view}/>
                         );
                     })}
                 </div>
@@ -221,10 +209,12 @@ const Work = () => {
                         Dasness
                     </button>
                 </div> */}
-                <div className="workCards">                    
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(() => {
-                    return <ProjectCard />;
-                })}
+                <div className="workCards">  
+                    {projects.map((project) => {
+                        return (
+                            <ProjectCard project={project} view={view}/>
+                        );
+                    })}                  
                 </div>
             </section>
 
