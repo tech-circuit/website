@@ -1,53 +1,20 @@
 import React, { useState, useEffect } from "react";
-import "@fortawesome/fontawesome-free/css/all.min.css";
 import { FaLink, FaPlusCircle, FaTrash } from "react-icons/fa";
 import BASE_API_URL from "../constants";
-import { Notyf } from "notyf";
+import notyf from "../tcNotyf";
 import getLinkLogo from "../getLinkLogo";
 import { useParams } from "react-router-dom";
 import "../styles/createProject.css";
 import Tags from "./utility/Tags";
 import Fields from "./utility/Fields";
 
-const notyf = new Notyf({
-    duration: 2500,
-    position: {
-        x: "left",
-        y: "bottom",
-    },
-    types: [
-        {
-            type: "error",
-            background: "#FF6B6B",
-            dismissible: true,
-            icon: {
-                className: "material-icons",
-                tagName: "i",
-                text: "cancel",
-                color: "#ffffff",
-            },
-        },
-        {
-            type: "success",
-            background: "#85D49C",
-            dismissible: true,
-            icon: {
-                className: "material-icons",
-                tagName: "i",
-                text: "check_circle",
-                color: "#ffffff",
-            },
-        },
-    ],
-});
-
-const ProjectAlter = ({ edit }) => {
+const EventAlter = ({ edit }) => {
     const [links, setLinks] = useState([]);
     const [imgUrl, setImgUrl] = useState("/assets/userFlowIcon.svg");
     const [linksObj, setLinksObj] = useState({});
     const [tags, setTags] = useState([]);
     const [fields, setFields] = useState([]);
-    const [comments, setComments] = useState(false);
+    const [indi, setIndi] = useState(false);
     const [project, setProject] = useState({});
     const { id } = useParams();
 
@@ -125,7 +92,7 @@ const ProjectAlter = ({ edit }) => {
     const deleteImage = () => {
         document.getElementById("img-area").style.backgroundImage = `url('')`;
         setImgUrl("");
-        document.querySelector("input[name='org-logo']").value = "";
+        document.querySelector("input[name='event-banner']").value = "";
         document
             .getElementById("img-area")
             .classList.remove("org-logo-uploaded");
@@ -151,7 +118,7 @@ const ProjectAlter = ({ edit }) => {
                 links,
                 fields,
                 tags,
-                comments,
+                indi,
                 event,
                 collaborators,
                 cover_image: imgUrl,
@@ -182,6 +149,7 @@ const ProjectAlter = ({ edit }) => {
         }
     };
 
+    // SET LINK LOGOS
     useEffect(() => {
         let theObj = {};
         for (let link of links) {
@@ -190,10 +158,13 @@ const ProjectAlter = ({ edit }) => {
         setLinksObj(theObj);
     }, [links]);
 
-
     useEffect(() => {
         const getProject = async () => {
-            const dataJson = await fetch(`${BASE_API_URL}/project/${id}?access_token=${localStorage.getItem("authToken")}`);
+            const dataJson = await fetch(
+                `${BASE_API_URL}/project/${id}?access_token=${localStorage.getItem(
+                    "authToken"
+                )}`
+            );
             const data = await dataJson.json();
 
             if (data.project) {
@@ -223,11 +194,13 @@ const ProjectAlter = ({ edit }) => {
         <>
             <div className="create-org-cont">
                 <div className="left-org">
-                    <h1>{edit ? "Edit" : "Create a"} Project</h1>
+                    <h1>{edit ? "Edit" : "Organize an"} Event</h1>
                     <p style={{ color: "#c4c4c4 !important" }}>
-                        Start building your project to showcase on techCircuit.
+                        {edit
+                            ? ""
+                            : "Start building your project to showcase on techCircuit."}
                     </p>
-                    <h3>Title *</h3>
+                    <h3>Name of Event *</h3>
                     <input
                         type="text"
                         name="title"
@@ -236,21 +209,140 @@ const ProjectAlter = ({ edit }) => {
                         required
                         defaultValue={project ? project.title : ""}
                     ></input>
-                    <h3>Decription *</h3>
+
+                    <h3 id="grey-on">Name of Organising institute *</h3>
+                    <input
+                        type="text"
+                        name="institute"
+                        autoComplete="off"
+                        placeholder="DPS VK"
+                        required
+                        id="grey-on"
+                        defaultValue={project ? project.institute : ""}
+                    ></input>
+
+                    <div className="indi-wrap">
+                        <h3>Independant Event</h3>
+                        <input
+                            type="checkbox"
+                            className="indi-radio"
+                            name="independant"
+                            defaultChecked={
+                                project ? project.independant : false
+                            }
+                            onChange={() => {
+                                setIndi(!indi);
+
+                                const greys =
+                                    document.querySelectorAll("#grey-on");
+                                for (let grey of greys) {
+                                    grey.classList.toggle("grey-on");
+                                    if (grey.value) grey.value = "";
+                                    grey.disabled
+                                        ? (grey.disabled = false)
+                                        : (grey.disabled = true);
+                                }
+                            }}
+                        ></input>
+                    </div>
+
+                    <h3>Decription of the Event *</h3>
                     <textarea
                         name="description"
                         autoComplete="off"
+                        required
                         defaultValue={project ? project.description : ""}
                         placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictum eu, aenean porta neque ante tellus. Ipsum consequat semper amet nullam proin. "
                     ></textarea>
-                    <h3>Collaborators</h3>
+
+                    <h3>Add Website Link *</h3>
                     <input
                         type="text"
-                        name="collaborators"
+                        required
+                        name="website"
                         autoComplete="off"
-                        placeholder="Ishaan Das, Ribhav Sharma"
-                        defaultValue={project ? project.collaborators : ""}
+                        placeholder="https://code-warriors.org/"
+                        defaultValue={project ? project.website : ""}
                     ></input>
+
+                    <h3>Registration Link</h3>
+                    <input
+                        type="text"
+                        name="reg-link"
+                        autoComplete="off"
+                        placeholder="https://code-warriors.org/"
+                        defaultValue={project ? project.regLink : ""}
+                    ></input>
+
+                    <h3>Last date to register</h3>
+                    <input
+                        type="date"
+                        name="last-date"
+                        defaultValue={project ? project.lastDate : new Date()}
+                    />
+
+                    <h3>How are you hosting your Event?</h3>
+                    <div className="rads">
+                        <div className="rad">
+                            <span>Online</span>
+                            <input
+                                type="radio"
+                                id="host"
+                                name="host"
+                                value="online"
+                            />
+                        </div>
+                        <div className="rad">
+                            <span>Onsite</span>
+                            <input
+                                type="radio"
+                                id="host"
+                                name="host"
+                                value="onsite"
+                            />
+                        </div>
+                        <div className="rad">
+                            <span>Both</span>
+                            <input
+                                type="radio"
+                                id="host"
+                                name="host"
+                                value="both"
+                            />
+                        </div>
+                    </div>
+
+                    <h3>Eligibility Criteria</h3>
+                    <textarea
+                        name="eligibility"
+                        autoComplete="off"
+                        required
+                        defaultValue={project ? project.eligibility : ""}
+                        placeholder="Describe who all can take part in this event"
+                    ></textarea>
+
+                    <h3>Event Start date</h3>
+                    <input
+                        type="date"
+                        name="start-date"
+                        defaultValue={project ? project.startDate : new Date()}
+                    />
+
+                    <h3>Event End date</h3>
+                    <input
+                        type="date"
+                        name="end-date"
+                        defaultValue={project ? project.endDate : new Date()}
+                    />
+
+                    <Fields updateFields={setFields} />
+                    <p className="input-sub-text">Upto 5 Fields</p>
+
+                    <Tags updateTags={setTags} />
+                    <p className="input-sub-text">
+                        Upto 5 tags, Use space to separate
+                    </p>
+
                     <h3>Add links</h3>
                     <div className="create-links input">
                         <div className="link-unit" id="add-link-unit">
@@ -296,45 +388,33 @@ const ProjectAlter = ({ edit }) => {
                             );
                         })}
                     </div>
-                    <Fields updateFields={setFields}/>
-                    <Tags updateTags={setTags}/>
-                    <p className="input-sub-text">
-                        Upto 5 tags, Use space to separate
-                    </p>
-                    <h3>Was this for an Event? Mention one!</h3>
-                    <input
-                        type="text"
-                        name="event"
-                        defaultValue={project ? project.event : ""}
-                        autoComplete="off"
-                        placeholder="Enter name of event and the year"
-                        required
-                    ></input>
 
-                    <div className="indi-wrap">
-                        <h3>Enable public comments?</h3>
-                        <input
-                            type="checkbox"
-                            className="indi-radio"
-                            name="comments"
-                            value="html"
-                            onChange={() => {
-                                setComments(!comments);
-                            }}
-                        ></input>
-                    </div>
+                    <h3>Phone (Event Contact)</h3>
+                    <input
+                        type="number"
+                        name="phone"
+                        placeholder="1234567890"
+                        defaultValue={project ? project.phone : ""}
+                    />
+                    <h3>Email (Event Contact)</h3>
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="yourmom@myhouse.cum"
+                        defaultValue={project ? project.email : ""}
+                    />
                 </div>
 
                 <div className="right">
                     <div className="top-inline">
-                        <h3>Project Image Upload</h3>
+                        <h3>Event Banner Upload</h3>
                         <i
                             className="fas fa-trash"
                             id="delete-icon"
                             onClick={deleteImage}
                         ></i>
                         <span>
-                            This image will be displayed on Work page.
+                            This image will be displayed on Event page.
                             Recommended size 500x500px
                         </span>
                     </div>
@@ -348,23 +428,6 @@ const ProjectAlter = ({ edit }) => {
                             backgroundPosition: "center",
                         }}
                     >
-                        {/* {imgUrl === "" ? (
-                            <FileDrop
-                                onDrop={(files, event) => setImage(files[0])}
-                            >
-                               <div className="drop-file-wrap">
-                                <i
-                                    className="fas fa-plus-circle"
-                                    id="file-add-icon"
-                                ></i>
-                                <h5>Drag Files</h5>
-                                <p>1920 x 1080 (JPG, PNG)</p>
-                            </div>
-                            </FileDrop>
-                        ) : (
-                            ""
-                        )} */}
-
                         <label
                             htmlFor="org-logo"
                             style={{ cursor: "pointer" }}
@@ -385,7 +448,7 @@ const ProjectAlter = ({ edit }) => {
                             type="file"
                             accept="image/*"
                             id="org-logo"
-                            name="org-logo"
+                            name="event-banner"
                             onChange={(e) => setImage(e.target.files[0])}
                             style={{ display: "none" }}
                         />
@@ -393,7 +456,7 @@ const ProjectAlter = ({ edit }) => {
 
                     <div className="buttons button-org">
                         <button className="createOrgButton" onClick={submit}>
-                            {edit ? "Finish Editing" : "Create Project"}
+                            {edit ? "Finish Editing" : "Create Event"}
                         </button>
                     </div>
                 </div>
@@ -402,4 +465,4 @@ const ProjectAlter = ({ edit }) => {
     );
 };
 
-export default ProjectAlter;
+export default EventAlter;

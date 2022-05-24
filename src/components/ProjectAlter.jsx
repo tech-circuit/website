@@ -1,17 +1,22 @@
-import "../styles/createOrg.css";
 import React, { useState, useEffect } from "react";
-import { FaLink, FaPlusCircle, FaTrash, FaTrashAlt } from "react-icons/fa";
+import { FaLink, FaPlusCircle, FaTrash } from "react-icons/fa";
 import BASE_API_URL from "../constants";
 import notyf from "../tcNotyf";
 import getLinkLogo from "../getLinkLogo";
+import { useParams } from "react-router-dom";
+import "../styles/createProject.css";
+import Tags from "./utility/Tags";
+import Fields from "./utility/Fields";
 
-const CreateOrg = () => {
+const ProjectAlter = ({ edit }) => {
     const [links, setLinks] = useState([]);
     const [imgUrl, setImgUrl] = useState("/assets/userFlowIcon.svg");
     const [linksObj, setLinksObj] = useState({});
-    const [members, setMembers] = useState([]);
-    const [independent, setIndependent] = useState(false);
-    const [users, setUsers] = useState([]);
+    const [tags, setTags] = useState([]);
+    const [fields, setFields] = useState([]);
+    const [comments, setComments] = useState(false);
+    const [project, setProject] = useState({});
+    const { id } = useParams();
 
     const addLink = async () => {
         if (document.querySelector("#add-link-inp").value !== "") {
@@ -43,10 +48,10 @@ const CreateOrg = () => {
     };
 
     const setImage = async (inputFile) => {
-        console.log("haa");
+        console.log("doing");
         if (
-            inputFile.name.toLowerCase().endsWith(".png") ||
             inputFile.name.toLowerCase().endsWith(".jpg") ||
+            inputFile.name.toLowerCase().endsWith(".png") ||
             inputFile.name.toLowerCase().endsWith(".jpeg")
         ) {
             notyf.success("Uploading...");
@@ -71,7 +76,6 @@ const CreateOrg = () => {
                 })
                     .then(async (response) => {
                         const resp = await response.json();
-                        console.log(resp);
                         document.getElementById(
                             "img-area"
                         ).style.backgroundImage = `url('${resp.link}')`;
@@ -88,98 +92,57 @@ const CreateOrg = () => {
     const deleteImage = () => {
         document.getElementById("img-area").style.backgroundImage = `url('')`;
         setImgUrl("");
+        document.querySelector("input[name='org-logo']").value = "";
         document
             .getElementById("img-area")
             .classList.remove("org-logo-uploaded");
-        document.querySelector("input[name='org-logo']").value = "";
-    };
-
-    const addMember = () => {
-        const name = document
-            .getElementById("addModName")
-            .value.split("-thvdnta-")[0];
-        const pfp = document
-            .getElementById("addModName")
-            .value.split("-thvdnta-")[1];
-        const pos = document.getElementById("addModPos").value;
-
-        if (name.trim() !== "") {
-            const member = {
-                name,
-                pfp,
-                pos,
-            };
-
-            console.log(member);
-
-            document.getElementById("addModName").value = "";
-            document.getElementById("addModPos").value = "member";
-
-            setMembers([...members, member]);
-        } else {
-            notyf.error("Add a Name for the member");
-        }
-    };
-
-    const removeMember = (member) => {
-        setMembers(members.filter((mem) => mem !== member));
     };
 
     const submit = async () => {
-        const name = document.querySelector("input[name='name']").value;
-        const institute = document.querySelector("input[name='institute']")
-            ? document.querySelector("input[name='institute']").value
-            : "";
+        const title = document.querySelector("input[name='title']").value;
         const description = document.querySelector(
             "textarea[name='description']"
         ).value;
-        const website_url = document.querySelector(
-            "input[name='website_url']"
+        const event = document.querySelector("input[name='event']").value;
+        const collaborators = document.querySelector(
+            "input[name='collaborators']"
         ).value;
-        const logo_url = imgUrl;
-        const admins = [];
 
-        for (let member of members) {
-            if (member.pos === "admin") admins.push(member);
-        }
-
-        if (name === "" || description === "") {
+        if (title === "" || description === "") {
             notyf.error("Please fill all required fields");
             return;
         } else {
-            if (!independent) {
-                if (institute === "") {
-                    notyf.error("Please fill all required fields");
-                    return;
-                }
-            }
             const body = {
-                name,
-                institute,
-                isIndependant: independent,
+                title,
                 description,
-                website_url,
                 links,
-                members,
-                logo_url,
-                admins,
+                fields,
+                tags,
+                comments,
+                event,
+                collaborators,
+                cover_image: imgUrl,
             };
 
-            const submittedJson = await fetch(
-                `${BASE_API_URL}/org/add?access_token=${localStorage.getItem(
-                    "authToken"
-                )}`,
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(body),
-                }
-            );
+            const fetchUrl = edit
+                ? `${BASE_API_URL}/project/edit/${
+                      project._id
+                  }?access_token=${localStorage.getItem("authToken")}`
+                : `${BASE_API_URL}/project/add?access_token=${localStorage.getItem(
+                      "authToken"
+                  )}`;
+            const fetchMethod = edit ? "PUT" : "POST";
+            const submittedJson = await fetch(fetchUrl, {
+                method: fetchMethod,
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body),
+            });
             const submitted = await submittedJson.json();
 
             if (submitted.done) {
-                window.location.href = "/community";
+                window.location.href = "/work";
             } else {
+                console.log(submitted);
                 notyf.error("Some Error has occurred");
                 return;
             }
@@ -194,78 +157,68 @@ const CreateOrg = () => {
         setLinksObj(theObj);
     }, [links]);
 
-    useEffect(() => {
-        const getUsers = async () => {
-            const userDataJson = await fetch(`${BASE_API_URL}/user/all`);
-            const userData = await userDataJson.json();
 
-            if (userData.users) {
-                setUsers(userData.users);
+    useEffect(() => {
+        const getProject = async () => {
+            const dataJson = await fetch(`${BASE_API_URL}/project/${id}?access_token=${localStorage.getItem("authToken")}`);
+            const data = await dataJson.json();
+
+            if (data.project) {
+                setImgUrl(data.project.cover_image);
+                setLinks(data.project.links);
+                setTags(data.project.tags);
+                setFields(data.project.fields);
+                setProject(data.project);
+
+                document.getElementById(
+                    "img-area"
+                ).style.backgroundImage = `url('${data.project.cover_image}')`;
+                document
+                    .getElementById("img-area")
+                    .classList.add("org-logo-uploaded");
             } else {
-                notyf.error("Some error occured");
+                window.location.href = "/404";
             }
         };
 
-        try {
-            getUsers();
-        } catch (err) {
-            notyf.error("Some Error occurred");
+        if (edit) {
+            getProject();
         }
-    }, []);
+    }, [id, edit]);
 
     return (
         <>
             <div className="create-org-cont">
                 <div className="left-org">
-                    <h1>Create an Organisation</h1>
-                    <h3>Name of Organisation *</h3>
+                    <h1>{edit ? "Edit" : "Create a"} Project</h1>
+                    <p style={{ color: "#c4c4c4 !important" }}>
+                        Start building your project to showcase on techCircuit.
+                    </p>
+                    <h3>Title *</h3>
                     <input
                         type="text"
-                        name="name"
+                        name="title"
                         autoComplete="off"
-                        placeholder="Code Warriors"
+                        placeholder="Arena | Chess Platform Concept"
                         required
+                        defaultValue={project ? project.title : ""}
                     ></input>
-                    <div className="indi-wrap">
-                        <h3>Independant Organisation</h3>
-                        <input
-                            type="checkbox"
-                            className="indi-radio"
-                            name="isIndependant"
-                            value="html"
-                            onChange={() => {
-                                setIndependent(!independent);
-                            }}
-                        ></input>
-                    </div>
-                    {!independent ? (
-                        <>
-                            <h3>Institute name *</h3>
-                            <input
-                                type="text"
-                                name="institute"
-                                autoComplete="off"
-                                placeholder="Delhi Public School, Vasant Kunj"
-                                required
-                            ></input>
-                        </>
-                    ) : (
-                        ""
-                    )}
-                    <h3>Organisation info *</h3>
+                    <h3>Decription *</h3>
                     <textarea
                         name="description"
                         autoComplete="off"
+                        defaultValue={project ? project.description : ""}
                         placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictum eu, aenean porta neque ante tellus. Ipsum consequat semper amet nullam proin. "
                     ></textarea>
-                    <h3>Organisation website</h3>
+                    <h3>Collaborators</h3>
                     <input
                         type="text"
-                        name="website_url"
+                        name="collaborators"
                         autoComplete="off"
-                        placeholder="Your Mom, Ribhav Sharma"
+                        placeholder="Ishaan Das, Ribhav Sharma"
+                        defaultValue={project ? project.collaborators : ""}
                     ></input>
-                    <h3>Add social links</h3>
+                    <h3>Add links</h3>
                     <div className="create-links input">
                         <div className="link-unit" id="add-link-unit">
                             <FaLink className="create-link-brand" />
@@ -283,16 +236,13 @@ const CreateOrg = () => {
                         </div>
                         {links.map((link) => {
                             return (
-                                <div
-                                    className="link-unit"
-                                    key={links.indexOf(link)}
-                                >
+                                <div className="link-unit" key={link}>
                                     {linksObj[link]}
                                     <input
                                         maxLength="200"
                                         type="text"
                                         placeholder="example: https://github.com/kevin"
-                                        defaultValue={link}
+                                        value={link}
                                         readOnly
                                         key={`link-${links.indexOf(link)}`}
                                         id={`link-${links.indexOf(link)}`}
@@ -313,84 +263,45 @@ const CreateOrg = () => {
                             );
                         })}
                     </div>
-                    <h3>Organisation Members</h3>
-                    <div className="mod-wrap">
-                        <div className="mod-input-wrap">
-                            <select
-                                id="addModName"
-                                placeholder="Name"
-                                className="mod-input"
-                            >
-                                <option value="">Username</option>
-                                {users.map((user) => {
-                                    return (
-                                        <option
-                                            key={user._id}
-                                            value={`${user.username}-thvdnta-${user.pfp_url}`}
-                                        >
-                                            {user.username}
-                                        </option>
-                                    );
-                                })}
-                            </select>
-                            <select
-                                id="addModPos"
-                                placeholder="Position"
-                                className="mod-input"
-                            >
-                                <option value="member">Member</option>
-                                <option value="admin">Admin</option>
-                                <option value="alumni">Alumni</option>
-                            </select>
-                            <FaPlusCircle
-                                className="addMemIcon"
-                                onClick={addMember}
-                            />
-                        </div>
+                    <Fields updateFields={setFields}/>
+                    <Tags updateTags={setTags}/>
+                    <p className="input-sub-text">
+                        Upto 5 tags, Use space to separate
+                    </p>
+                    <h3>Was this for an Event? Mention one!</h3>
+                    <input
+                        type="text"
+                        name="event"
+                        defaultValue={project ? project.event : ""}
+                        autoComplete="off"
+                        placeholder="Enter name of event and the year"
+                        required
+                    ></input>
+
+                    <div className="indi-wrap">
+                        <h3>Enable public comments?</h3>
+                        <input
+                            type="checkbox"
+                            className="indi-radio"
+                            name="comments"
+                            value="html"
+                            onChange={() => {
+                                setComments(!comments);
+                            }}
+                        ></input>
                     </div>
-                    {members.map((member) => {
-                        return (
-                            <div className="mod-wrap" key={member.name}>
-                                <div className="mod-input-wrap">
-                                    <input
-                                        type="text"
-                                        name="mod-name"
-                                        autoComplete="off"
-                                        defaultValue={member.name}
-                                        readOnly
-                                        className="mod-input"
-                                    ></input>
-                                    <input
-                                        type="text"
-                                        name="mod-pos"
-                                        autoComplete="off"
-                                        defaultValue={member.pos}
-                                        style={{
-                                            textTransform: "capitalize",
-                                        }}
-                                        readOnly
-                                        className="mod-input"
-                                    ></input>
-                                    <FaTrashAlt
-                                        className="removeMemIcon"
-                                        onClick={() => removeMember(member)}
-                                    />
-                                </div>
-                            </div>
-                        );
-                    })}
                 </div>
 
                 <div className="right">
                     <div className="top-inline">
-                        <h3>Organisation Image Upload</h3>
+                        <h3>Project Image Upload</h3>
                         <i
                             className="fas fa-trash"
                             id="delete-icon"
                             onClick={deleteImage}
                         ></i>
                         <span>
-                            This image will be displayed on community page.
+                            This image will be displayed on Work page.
                             Recommended size 500x500px
                         </span>
                     </div>
@@ -449,7 +360,7 @@ const CreateOrg = () => {
 
                     <div className="buttons button-org">
                         <button className="createOrgButton" onClick={submit}>
-                            Create Organisation
+                            {edit ? "Finish Editing" : "Create Project"}
                         </button>
                     </div>
                 </div>
@@ -458,4 +369,4 @@ const CreateOrg = () => {
     );
 };
 
-export default CreateOrg;
+export default ProjectAlter;

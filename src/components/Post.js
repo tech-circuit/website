@@ -11,45 +11,13 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import TimeAgo from "react-timeago";
-import { Notyf } from "notyf";
+import notyf from "../tcNotyf";
 import { useParams } from "react-router-dom";
 import { SRLWrapper } from "simple-react-lightbox";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 import BASE_API_URL from "../constants";
 
 const authToken = localStorage.getItem("authToken");
-
-const notyf = new Notyf({
-    duration: 2500,
-    position: {
-        x: "left",
-        y: "bottom",
-    },
-    types: [
-        {
-            type: "error",
-            background: "#FF6B6B",
-            dismissible: true,
-            icon: {
-                className: "material-icons",
-                tagName: "i",
-                text: "cancel",
-                color: "#ffffff",
-            },
-        },
-        {
-            type: "success",
-            background: "#85D49C",
-            dismissible: true,
-            icon: {
-                className: "material-icons",
-                tagName: "i",
-                text: "check_circle",
-                color: "#ffffff",
-            },
-        },
-    ],
-});
 
 const Post = () => {
     const [response, setResponse] = React.useState({});
@@ -302,7 +270,7 @@ const Post = () => {
                                 className="post-content"
                             ></div>
                         </SRLWrapper>
-                        <br></br>   
+                        <br></br>
                         <br></br>
                         <div className="card-options">
                             <div className="l-opts">

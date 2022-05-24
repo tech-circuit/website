@@ -9,40 +9,7 @@ import {
     FaCheck,
 } from "react-icons/fa";
 import Footer from "./Footer";
-import { Notyf } from "notyf";
-import "notyf/notyf.min.css";
-
-const notyf = new Notyf({
-    duration: 2500,
-    position: {
-        x: "left",
-        y: "bottom",
-    },
-    types: [
-        {
-            type: "error",
-            background: "#FF6B6B",
-            dismissible: true,
-            icon: {
-                className: "material-icons",
-                tagName: "i",
-                text: "cancel",
-                color: "#ffffff",
-            },
-        },
-        {
-            type: "success",
-            background: "#85D49C",
-            dismissible: true,
-            icon: {
-                className: "material-icons",
-                tagName: "i",
-                text: "check_circle",
-                color: "#ffffff",
-            },
-        },
-    ],
-});
+import notyf from "../tcNotyf";
 
 const About = () => {
     document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";

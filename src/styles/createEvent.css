@@ -9,7 +9,7 @@
 }
 
 .left-event {
-    width: 60%; 
+    width: 60%;
 }
 
 .create-event-cont .left-event h1 {
@@ -49,14 +49,6 @@
     display: flex;
 }
 
-input[type = radio] {
-    width: 1.3vw;
-    height: 1.3vw;
-    display: flex;
-    margin-top: 1.7vw;
-    margin-left: 1vw;
-}
-
 .left-event textarea {
     width: 75%;
     height: 20vh;
@@ -74,7 +66,7 @@ input[type = radio] {
     outline: none;
 }
 
-input[type = date].lastDate {
+input[type="date"].lastDate {
     width: 14vw;
 }
 
@@ -110,11 +102,11 @@ input[type = date].lastDate {
     margin-right: 1.5vw;
 }
 
-.date-cont input[type="date"]{
+.date-cont input[type="date"] {
     width: 14vw;
 }
 
-.date-cont input[type="time"]{
+.date-cont input[type="time"] {
     width: 14vw;
     margin-bottom: 2.9vh;
 }
@@ -187,14 +179,14 @@ input[type = date].lastDate {
     margin-top: 6vh;
 }
 
-.danger-zone-event h1{
+.danger-zone-event h1 {
     font-size: 1.6vw;
     font-weight: 500;
     color: #ff6b6b;
     font-style: italic;
 }
 
-.danger-box-event {    
+.danger-box-event {
     width: 90%;
     padding: 3vh 2.4vw;
     background-color: #ff6b6b;
@@ -226,7 +218,7 @@ input[type = date].lastDate {
     box-shadow: 0 20px 70px rgba(0, 0, 0, 0.14);
 }
 
-.right-event{
+.right-event {
     width: 25vw;
 }
 

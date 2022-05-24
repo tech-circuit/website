@@ -3,40 +3,8 @@ import { FaInstagram, FaChevronLeft } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom"
 import { useState, useEffect } from "react";
 import BASE_API_URL from "../constants";
-import { Notyf } from "notyf";
+import notyf from "../tcNotyf";
 // import getLinkogo from "../getLinkLogo";
-
-const notyf = new Notyf({
-    duration: 2500,
-    position: {
-        x: "left",
-        y: "bottom",
-    },
-    types: [
-        {
-            type: "error",
-            background: "#FF6B6B",
-            dismissible: true,
-            icon: {
-                className: "material-icons",
-                tagName: "i",
-                text: "cancel",
-                color: "#ffffff",
-            },
-        },
-        {
-            type: "success",
-            background: "#85D49C",
-            dismissible: true,
-            icon: {
-                className: "material-icons",
-                tagName: "i",
-                text: "check_circle",
-                color: "#ffffff",
-            },
-        },
-    ],
-});
 
 const User = () => {
     document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Notyf } from "notyf";
+import notyf from "../tcNotyf";
 import BASE_API_URL from "../constants";
 import { Redirect, Link } from "react-router-dom";
 import "../styles/user-flow.css";
@@ -11,37 +11,6 @@ import {
     FaPen,
     FaTrashAlt,
 } from "react-icons/fa";
-const notyf = new Notyf({
-    duration: 2500,
-    position: {
-        x: "left",
-        y: "bottom",
-    },
-    types: [
-        {
-            type: "error",
-            background: "#FF6B6B",
-            dismissible: true,
-            icon: {
-                className: "material-icons",
-                tagName: "i",
-                text: "cancel",
-                color: "#ffffff",
-            },
-        },
-        {
-            type: "success",
-            background: "#85D49C",
-            dismissible: true,
-            icon: {
-                className: "material-icons",
-                tagName: "i",
-                text: "check_circle",
-                color: "#ffffff",
-            },
-        },
-    ],
-});
 
 const Component = ({ pfp, user }) => {
     const [page, setPage] = useState(1);

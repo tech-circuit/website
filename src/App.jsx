@@ -1,7 +1,7 @@
 import "./styles/all.css";
 import Navbar from "./components/Navbar";
 import Index from "./components/Index";
-import ProjectAlter from "./components/Project-alter";
+import ProjectAlter from "./components/ProjectAlter";
 import Community from "./components/Community";
 import Resources from "./components/Resources";
 import Forums from "./components/Forum";
@@ -10,8 +10,7 @@ import Events from "./components/Events.jsx";
 import About from "./components/About";
 import Work from "./components/Work";
 import CreateOrg from "./components/CreateOrg.jsx";
-import CreateEvent from "./components/CreateEvent";
-import EditEvent from "./components/EditEvent";
+import EventAlter from "./components/EventAlter";
 import Profile from "./components/Profile";
 import UserFlow from "./components/UserFlow";
 // import Soon from "./components/Soon";
@@ -22,6 +21,7 @@ import ProjectView from "./components/ProjectView";
 import Error from "./components/Error";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const App = () => {
     return (
@@ -58,6 +58,7 @@ const App = () => {
                     <OrgView />
                     {/* <Soon /> */}
                 </Route>
+                <Route exact path="/org/:orgId" component={OrgView} />
                 <Route exact path="/resources">
                     <Resources />
                     {/* <Soon /> */}
@@ -70,11 +71,11 @@ const App = () => {
                     {/* <Soon /> */}
                 </Route>
                 <Route exact path="/create-event">
-                    <CreateEvent />
+                    <EventAlter edit={false} />
                     {/* <Soon /> */}
                 </Route>
                 <Route exact path="/edit-event">
-                    <EditEvent />
+                    <EventAlter />
                     {/* <Soon /> */}
                 </Route>
                 <Route exact path="/view-event">
@@ -91,7 +92,6 @@ const App = () => {
                     <UserFlow />
                 </Route>
                 <Route exact path="/forum/post/:postId" component={Post} />
-                <Route exact path="/org/:orgId" component={OrgView} />
                 <Route exact path="/user/:userId" component={User} />
                 <Route path="*">
                     <Error />

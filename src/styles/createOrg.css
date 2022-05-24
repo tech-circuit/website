@@ -296,3 +296,28 @@ select.mod-input {
 .createProjectButton:hover {
     cursor: pointer;
 }
+
+.grey-on {
+    opacity: 0.6;
+}
+
+.rads {
+    display: flex;
+    margin-top: 1vh;
+    margin-bottom: 4vh;
+}
+.rad {
+    display: flex;
+    align-items: center;
+    margin-right: 2vw;
+}
+.rad span {
+    font-weight: 300;
+    color: #747474;
+}
+.rad input[type="radio"]#host {
+    width: 1vw;
+    height: 1vw;
+    margin-left: 0.5vw;
+    margin-top: 0.1vh;
+}

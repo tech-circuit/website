@@ -4,41 +4,9 @@ import { useState, useRef, useEffect } from "react";
 // import OwlCarousel from "react-owl-carousel2";
 import BASE_API_URL from "../constants";
 import ProjectCard from "./utility/ProjectCard";
-import { Notyf } from "notyf";
+import notyf from "../tcNotyf";
 import WorkCarousel from "./utility/WorkCarousel";
 import FullProject from "./utility/FullProject";
-
-const notyf = new Notyf({
-    duration: 2500,
-    position: {
-        x: "left",
-        y: "bottom",
-    },
-    types: [
-        {
-            type: "error",
-            background: "#FF6B6B",
-            dismissible: true,
-            icon: {
-                className: "material-icons",
-                tagName: "i",
-                text: "cancel",
-                color: "#ffffff",
-            },
-        },
-        {
-            type: "success",
-            background: "#85D49C",
-            dismissible: true,
-            icon: {
-                className: "material-icons",
-                tagName: "i",
-                text: "check_circle",
-                color: "#ffffff",
-            },
-        },
-    ],
-});
 
 const Work = () => {
     // const [workSort, setWorkSort] = useState("Coding");

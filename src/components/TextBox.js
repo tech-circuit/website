@@ -1,40 +1,7 @@
 import React from "react";
 import { Editor } from "@tinymce/tinymce-react";
-import { Notyf } from "notyf";
-import "notyf/notyf.min.css";
+import notyf from "../tcNotyf";
 import BASE_API_URL from "../constants";
-
-const notyf = new Notyf({
-    duration: 2500,
-    position: {
-        x: "left",
-        y: "bottom",
-    },
-    types: [
-        {
-            type: "error",
-            background: "#FF6B6B",
-            dismissible: true,
-            icon: {
-                className: "material-icons",
-                tagName: "i",
-                text: "cancel",
-                color: "#ffffff",
-            },
-        },
-        {
-            type: "success",
-            background: "#85D49C",
-            dismissible: true,
-            icon: {
-                className: "material-icons",
-                tagName: "i",
-                text: "check_circle",
-                color: "#ffffff",
-            },
-        },
-    ],
-});
 
 const TextBox = (props) => {
     const handleEditorChange = (e) => {
@@ -133,7 +100,7 @@ const TextBox = (props) => {
                                 },
                             });
                         },
-                        skin_url: `${process.env.PUBLIC_URL}/assets/textbox-custom`,
+                        // skin_url: `${process.env.PUBLIC_URL}/assets/textbox-custom`,
                         min_height: 250,
                         max_height: 300,
                         width: "100%",
