@@ -14,6 +14,7 @@ const Work = () => {
     const [projects, setProjects] = useState([]);
     const sortRef = useRef("sort");
     const [fullView, setfullView] = useState(false);
+    const [id, setId] = useState("");
 
     const view = () => {
         setfullView(true);
@@ -34,8 +35,32 @@ const Work = () => {
         }
     };
 
+    const getId = async () => {
+        try {
+            const authToken = localStorage.getItem("authToken");
+
+            if (authToken) {
+                const dataJson = await fetch(
+                    `${BASE_API_URL}/user/info?access_token=${authToken}`
+                );
+                const data = await dataJson.json();
+
+                if (data.user) {
+                    setId(data.user._id);
+                } else {
+                    notyf.error("some error occured");
+                }
+            } else {
+                setId("");
+            }
+        } catch (err) {
+            notyf.error("some error occured");
+        }
+    };
+
     useEffect(() => {
         getProjects();
+        getId();
     }, []);
 
     return (
@@ -66,7 +91,7 @@ const Work = () => {
                         >
                             <FaChevronRight />
                         </button>
-                        <WorkCarousel />
+                        <WorkCarousel sortRef={sortRef} />
                     </div>
                 </div>
             </header>
@@ -116,7 +141,14 @@ const Work = () => {
                 </h1>
                 <div className="workCards">
                     {projects.map((project) => {
-                        return <ProjectCard project={project} view={view} />;
+                        return (
+                            <ProjectCard
+                                project={project}
+                                view={view}
+                                key={project._id}
+                                id={id}
+                            />
+                        );
                     })}
                 </div>
             </section>
@@ -171,7 +203,14 @@ const Work = () => {
                 </div> */}
                 <div className="workCards">
                     {projects.map((project) => {
-                        return <ProjectCard project={project} view={view} />;
+                        return (
+                            <ProjectCard
+                                project={project}
+                                view={view}
+                                key={project._id}
+                                id={id}
+                            />
+                        );
                     })}
                 </div>
             </section>

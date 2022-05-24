@@ -16,6 +16,7 @@ const ProjectAlter = ({ edit }) => {
     const [fields, setFields] = useState([]);
     const [comments, setComments] = useState(false);
     const [project, setProject] = useState({});
+    const [delBox, setDelBox] = useState(false);
     const { id } = useParams();
 
     const addLink = async () => {
@@ -149,6 +150,32 @@ const ProjectAlter = ({ edit }) => {
         }
     };
 
+    const deleteProj = () => {
+        fetch(
+            `${BASE_API_URL}/project/delete/${id}?access_token=${localStorage.getItem(
+                "authToken"
+            )}`,
+            {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+            }
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                if (data.done) {
+                    window.location.href = "/work";
+                } else {
+                    notyf.error("Some Error has occurred");
+                    return;
+                }
+            })
+            .catch((err) => {
+                notyf.error("Some Error has occurred");
+                return;
+            });
+    };
+
     useEffect(() => {
         let theObj = {};
         for (let link of links) {
@@ -157,10 +184,13 @@ const ProjectAlter = ({ edit }) => {
         setLinksObj(theObj);
     }, [links]);
 
-
     useEffect(() => {
         const getProject = async () => {
-            const dataJson = await fetch(`${BASE_API_URL}/project/${id}?access_token=${localStorage.getItem("authToken")}`);
+            const dataJson = await fetch(
+                `${BASE_API_URL}/project/${id}?access_token=${localStorage.getItem(
+                    "authToken"
+                )}`
+            );
             const data = await dataJson.json();
 
             if (data.project) {
@@ -188,6 +218,30 @@ const ProjectAlter = ({ edit }) => {
 
     return (
         <>
+            {delBox ? (
+                <div className="delete-confirm">
+                    <div
+                        className="del-trans"
+                        onClick={() => setDelBox(false)}
+                    ></div>
+                    <div className="delete-con-box">
+                        <h3>Are you sure you want to delete this project?</h3>
+                        <div className="btns">
+                            <button
+                                id="del-can"
+                                onClick={() => setDelBox(false)}
+                            >
+                                Cancel
+                            </button>
+                            <button id="del-del" onClick={deleteProj}>
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            ) : (
+                ""
+            )}
             <div className="create-org-cont">
                 <div className="left-org">
                     <h1>{edit ? "Edit" : "Create a"} Project</h1>
@@ -263,8 +317,8 @@ const ProjectAlter = ({ edit }) => {
                             );
                         })}
                     </div>
-                    <Fields updateFields={setFields}/>
-                    <Tags updateTags={setTags}/>
+                    <Fields updateFields={setFields} />
+                    <Tags updateTags={setTags} />
                     <p className="input-sub-text">
                         Upto 5 tags, Use space to separate
                     </p>
@@ -362,6 +416,16 @@ const ProjectAlter = ({ edit }) => {
                         <button className="createOrgButton" onClick={submit}>
                             {edit ? "Finish Editing" : "Create Project"}
                         </button>
+                        {edit ? (
+                            <button
+                                className="deleteOrgBtn"
+                                onClick={() => setDelBox(true)}
+                            >
+                                Delete Project
+                            </button>
+                        ) : (
+                            ""
+                        )}
                     </div>
                 </div>
             </div>

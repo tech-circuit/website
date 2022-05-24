@@ -191,14 +191,14 @@ const Events = () => {
                 <div className=" eventAddInfo">
                     <div className="fullEventUnit fullEventUnitOrg">
                         <h4>Event Tags</h4>
-                        <p class="tags">
+                        <p className="tags">
                             All-in-one, Inter-school, International, hackathon,
                             designathon, quizing, crossword
                         </p>
                     </div>
                     <div className="fullEventUnit fullEventUnitOrg">
                         <h4>Location</h4>
-                        <div class="location">
+                        <div className="location">
                             <p>Delhi NCR, India</p>
                         </div>
                     </div>

@@ -1,41 +1,10 @@
 import "../styles/community.css";
 import { useState, useEffect } from "react";
 import BASE_API_URL from "../constants";
-import { Notyf } from "notyf";
-import UserCard from './utility/UserCard'
-import OrgCard from './utility/OrgCard'
-
-const notyf = new Notyf({
-    duration: 2500, 
-    position: {
-        x: "left",
-        y: "bottom",
-    },
-    types: [
-        {
-            type: "error",
-            background: "#FF6B6B",
-            dismissible: true,
-            icon: {
-                className: "material-icons",
-                tagName: "i",
-                text: "cancel",
-                color: "#ffffff",
-            },
-        },
-        {
-            type: "success",
-            background: "#85D49C",
-            dismissible: true,
-            icon: {
-                className: "material-icons",
-                tagName: "i",
-                text: "check_circle",
-                color: "#ffffff",
-            },
-        },
-    ],
-});
+import notyf from "../tcNotyf";
+import UserCard from "./utility/UserCard";
+import OrgCard from "./utility/OrgCard";
+import { Link } from "react-router-dom";
 
 const Community = () => {
     document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
@@ -131,13 +100,13 @@ const Community = () => {
                     <button>Sort by Region</button>
                 </div>
                 <div className="comRight">
-                    <a
-                        href="/create-org"
+                    <Link
+                        to="/create-org"
                         className={page === "orgs" ? "" : "hide"}
                         id="newOrg"
                     >
                         Create New Org
-                    </a>
+                    </Link>
                 </div>
             </div>
 
@@ -147,9 +116,7 @@ const Community = () => {
                 }
             >
                 {orgs.map((org) => {
-                    return (
-                        <OrgCard org={org}/>
-                    );
+                    return <OrgCard org={org} />;
                 })}
             </div>
 
@@ -159,9 +126,7 @@ const Community = () => {
                 }
             >
                 {users.map((user) => {
-                    return (
-                        <UserCard user={user}/>
-                    );
+                    return <UserCard user={user} />;
                 })}
             </div>
         </>

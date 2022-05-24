@@ -42,11 +42,13 @@ const FullProject = ({ close }) => {
             <div className="eventAddInfo">
                 <div className="fullProjectUnit fullProjectUnitOrg">
                     <h4>Fields</h4>
-                    <p class="pFields">UI/UX, Game Design, Branding, Chess</p>
+                    <p className="pFields">
+                        UI/UX, Game Design, Branding, Chess
+                    </p>
                 </div>
                 <div className="fullProjectUnit fullProjectUnitOrg">
                     <h4>Project Tags</h4>
-                    <p class="tags">UI/UX, Design, Branding</p>
+                    <p className="tags">UI/UX, Design, Branding</p>
                 </div>
             </div>
 

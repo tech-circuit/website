@@ -268,8 +268,9 @@ select.mod-input {
     color: #747474;
 }
 
-.buttons-org {
+.button-org {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     /* margin-top: 25px; */
@@ -277,7 +278,7 @@ select.mod-input {
 }
 
 .button-org .createOrgButton {
-    width: 25vw;
+    width: 100%;
     background: #4678f9;
     border: none;
     border-radius: 5px;
@@ -320,4 +321,70 @@ select.mod-input {
     height: 1vw;
     margin-left: 0.5vw;
     margin-top: 0.1vh;
+}
+
+/* DELETE BOX --------- */
+.deleteOrgBtn {
+    width: 25vw;
+    background: #ff6b6b;
+    border: none;
+    border-radius: 5px;
+    padding: 1.4vh 0 !important;
+    color: white;
+    font-family: Poppins;
+    font-size: 1vw;
+    transition: all 0.3s;
+    margin-top: 2vh;
+}
+.button-org .deleteOrgBtn:hover {
+    background: #d85656;
+}
+.delete-confirm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.del-trans {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10001;
+    background: rgba(41, 49, 61, 0.7);
+}
+.delete-con-box {
+    width: 25vw;
+    padding: 3vh 3vw;
+    z-index: 10002;
+    background: #fff;
+    border-radius: 10px;
+}
+.delete-con-box h3 {
+    text-align: center;
+    color: #29313d;
+    font-size: 1.4vw;
+}
+.delete-con-box .btns {
+    display: flex;
+    width: 100%;
+    margin-top: 2vh;
+}
+.delete-con-box button {
+    width: 50%;
+    border-radius: 6px;
+    font-size: 1vw;
+    padding: 1vh 0;
+    background: #4678f9;
+    color: #fff;
+    margin: 0 0.3vw;
+}
+#del-del {
+    background: #ff6b6b;
 }

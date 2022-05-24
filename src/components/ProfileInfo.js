@@ -4,7 +4,7 @@ import "../styles/add.css";
 import { useState, useEffect } from "react";
 import BASE_API_URL from "../constants";
 import getLinkLogo from "../getLinkLogo";
-import DangerBox from './utility/Danger'
+import DangerBox from "./utility/Danger";
 
 const ProfileInfo = () => {
     const [links, setLinks] = useState([]);
