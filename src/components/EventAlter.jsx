@@ -15,7 +15,7 @@ const EventAlter = ({ edit }) => {
     const [tags, setTags] = useState([]);
     const [fields, setFields] = useState([]);
     const [indi, setIndi] = useState(false);
-    const [project, setProject] = useState({});
+    const [event, setEvent] = useState({});
     const { id } = useParams();
 
     const addLink = async () => {
@@ -99,38 +99,82 @@ const EventAlter = ({ edit }) => {
     };
 
     const submit = async () => {
-        const title = document.querySelector("input[name='title']").value;
+        const name = document.querySelector("input[name='name']").value;
+        const institute = document.querySelector(
+            "input[name='institute']"
+        ).value;
         const description = document.querySelector(
             "textarea[name='description']"
         ).value;
-        const event = document.querySelector("input[name='event']").value;
-        const collaborators = document.querySelector(
-            "input[name='collaborators']"
+        const website = document.querySelector("input[name='website']").value;
+        const regLink = document.querySelector("input[name='reg-link']").value;
+        const lastDate = document.querySelector("input[name='last-date']").value
+            ? document.querySelector("input[name='last-date']").value
+            : new Date();
+        const hosts = document.querySelectorAll("input[name='host']");
+        const eligibility = document.querySelector(
+            "textarea[name='eligibility']"
         ).value;
+        const startDate = document.querySelector("input[name='start-date']")
+            .value
+            ? document.querySelector("input[name='start-date']").value
+            : new Date();
+        const endDate = document.querySelector("input[name='end-date']").value
+            ? document.querySelector("input[name='end-date']").value
+            : new Date();
+        const phone = document.querySelector("input[name='phone']").value;
+        const email = document.querySelector("input[name='email']").value;
+        let host;
 
-        if (title === "" || description === "") {
+        for (let radio of hosts) {
+            if (radio.checked) {
+                host = radio.value;
+            }
+        }
+
+        console.log(startDate, endDate);
+
+        if (
+            name === "" ||
+            description === "" ||
+            website === "" ||
+            regLink === "" ||
+            !host ||
+            indi
+                ? true
+                : institute === ""
+        ) {
             notyf.error("Please fill all required fields");
             return;
         } else {
             const body = {
-                title,
-                description,
-                links,
-                fields,
-                tags,
-                indi,
-                event,
-                collaborators,
                 cover_image: imgUrl,
+                name,
+                institute: institute !== "" ? institute : false,
+                description,
+                website,
+                regLink,
+                lastDate,
+                host,
+                eligibility,
+                startDate,
+                endDate,
+                phone,
+                email,
+                tags,
+                fields,
+                indi,
+                links,
             };
 
             const fetchUrl = edit
-                ? `${BASE_API_URL}/project/edit/${
-                      project._id
+                ? `${BASE_API_URL}/event/edit/${
+                      event._id
                   }?access_token=${localStorage.getItem("authToken")}`
-                : `${BASE_API_URL}/project/add?access_token=${localStorage.getItem(
+                : `${BASE_API_URL}/event/add?access_token=${localStorage.getItem(
                       "authToken"
                   )}`;
+
             const fetchMethod = edit ? "PUT" : "POST";
             const submittedJson = await fetch(fetchUrl, {
                 method: fetchMethod,
@@ -140,7 +184,7 @@ const EventAlter = ({ edit }) => {
             const submitted = await submittedJson.json();
 
             if (submitted.done) {
-                window.location.href = "/work";
+                window.location.href = "/events";
             } else {
                 console.log(submitted);
                 notyf.error("Some Error has occurred");
@@ -159,20 +203,21 @@ const EventAlter = ({ edit }) => {
     }, [links]);
 
     useEffect(() => {
-        const getProject = async () => {
+        const getEvent = async () => {
             const dataJson = await fetch(
-                `${BASE_API_URL}/project/${id}?access_token=${localStorage.getItem(
+                `${BASE_API_URL}/event/getForEdit/${id}?access_token=${localStorage.getItem(
                     "authToken"
                 )}`
             );
             const data = await dataJson.json();
 
-            if (data.project) {
-                setImgUrl(data.project.cover_image);
-                setLinks(data.project.links);
-                setTags(data.project.tags);
-                setFields(data.project.fields);
-                setProject(data.project);
+            if (data.event) {
+                setImgUrl(data.event.cover_image);
+                setLinks(data.event.links);
+                setTags(data.event.tags);
+                setFields(data.event.fields);
+                setIndi(data.event.isIndependant);
+                setEvent(data.event);
 
                 document.getElementById(
                     "img-area"
@@ -186,7 +231,7 @@ const EventAlter = ({ edit }) => {
         };
 
         if (edit) {
-            getProject();
+            getEvent();
         }
     }, [id, edit]);
 
@@ -198,16 +243,17 @@ const EventAlter = ({ edit }) => {
                     <p style={{ color: "#c4c4c4 !important" }}>
                         {edit
                             ? ""
-                            : "Start building your project to showcase on techCircuit."}
+                            : "Oraganize an event on the most loved platform"}
                     </p>
+
                     <h3>Name of Event *</h3>
                     <input
                         type="text"
-                        name="title"
+                        name="name"
                         autoComplete="off"
-                        placeholder="Arena | Chess Platform Concept"
+                        placeholder="EXUN 2022"
                         required
-                        defaultValue={project ? project.title : ""}
+                        defaultValue={event ? event.name : ""}
                     ></input>
 
                     <h3 id="grey-on">Name of Organising institute *</h3>
@@ -218,7 +264,7 @@ const EventAlter = ({ edit }) => {
                         placeholder="DPS VK"
                         required
                         id="grey-on"
-                        defaultValue={project ? project.institute : ""}
+                        defaultValue={event ? event.institute : ""}
                     ></input>
 
                     <div className="indi-wrap">
@@ -227,9 +273,7 @@ const EventAlter = ({ edit }) => {
                             type="checkbox"
                             className="indi-radio"
                             name="independant"
-                            defaultChecked={
-                                project ? project.independant : false
-                            }
+                            defaultChecked={event ? event.isIndependant : false}
                             onChange={() => {
                                 setIndi(!indi);
 
@@ -251,7 +295,7 @@ const EventAlter = ({ edit }) => {
                         name="description"
                         autoComplete="off"
                         required
-                        defaultValue={project ? project.description : ""}
+                        defaultValue={event ? event.description : ""}
                         placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictum eu, aenean porta neque ante tellus. Ipsum consequat semper amet nullam proin. "
                     ></textarea>
 
@@ -262,26 +306,26 @@ const EventAlter = ({ edit }) => {
                         name="website"
                         autoComplete="off"
                         placeholder="https://code-warriors.org/"
-                        defaultValue={project ? project.website : ""}
+                        defaultValue={event ? event.website : ""}
                     ></input>
 
-                    <h3>Registration Link</h3>
+                    <h3>Registration Link *</h3>
                     <input
                         type="text"
                         name="reg-link"
                         autoComplete="off"
                         placeholder="https://code-warriors.org/"
-                        defaultValue={project ? project.regLink : ""}
+                        defaultValue={event ? event.regLink : ""}
                     ></input>
 
                     <h3>Last date to register</h3>
                     <input
                         type="date"
                         name="last-date"
-                        defaultValue={project ? project.lastDate : new Date()}
+                        defaultValue={event ? event.lastDate : new Date()}
                     />
 
-                    <h3>How are you hosting your Event?</h3>
+                    <h3>How are you hosting your Event? *</h3>
                     <div className="rads">
                         <div className="rad">
                             <span>Online</span>
@@ -290,6 +334,9 @@ const EventAlter = ({ edit }) => {
                                 id="host"
                                 name="host"
                                 value="online"
+                                defaultChecked={
+                                    event.host === "online" ? true : false
+                                }
                             />
                         </div>
                         <div className="rad">
@@ -299,6 +346,9 @@ const EventAlter = ({ edit }) => {
                                 id="host"
                                 name="host"
                                 value="onsite"
+                                defaultChecked={
+                                    event.host === "onsite" ? true : false
+                                }
                             />
                         </div>
                         <div className="rad">
@@ -308,6 +358,9 @@ const EventAlter = ({ edit }) => {
                                 id="host"
                                 name="host"
                                 value="both"
+                                defaultChecked={
+                                    event.host === "both" ? true : false
+                                }
                             />
                         </div>
                     </div>
@@ -317,7 +370,7 @@ const EventAlter = ({ edit }) => {
                         name="eligibility"
                         autoComplete="off"
                         required
-                        defaultValue={project ? project.eligibility : ""}
+                        defaultValue={event ? event.eligibility : ""}
                         placeholder="Describe who all can take part in this event"
                     ></textarea>
 
@@ -325,14 +378,14 @@ const EventAlter = ({ edit }) => {
                     <input
                         type="date"
                         name="start-date"
-                        defaultValue={project ? project.startDate : new Date()}
+                        defaultValue={event ? event.startDate : new Date()}
                     />
 
                     <h3>Event End date</h3>
                     <input
                         type="date"
                         name="end-date"
-                        defaultValue={project ? project.endDate : new Date()}
+                        defaultValue={event ? event.endDate : new Date()}
                     />
 
                     <Fields updateFields={setFields} />
@@ -394,14 +447,14 @@ const EventAlter = ({ edit }) => {
                         type="number"
                         name="phone"
                         placeholder="1234567890"
-                        defaultValue={project ? project.phone : ""}
+                        defaultValue={event ? event.phone : ""}
                     />
                     <h3>Email (Event Contact)</h3>
                     <input
                         type="email"
                         name="email"
                         placeholder="yourmom@myhouse.cum"
-                        defaultValue={project ? project.email : ""}
+                        defaultValue={event ? event.email : ""}
                     />
                 </div>
 

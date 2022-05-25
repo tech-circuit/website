@@ -1,21 +1,50 @@
 import { Link } from "react-router-dom";
 import "../styles/events.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { FaPlus, FaChevronLeft, FaShareAlt } from "react-icons/fa";
 import EventCard from "./utility/EventCard";
+import BASE_API_URL from "../constants";
+import notyf from "../tcNotyf";
 
 const Events = () => {
     const [fullView, setfullView] = useState(false);
+    const [events, setEvents] = useState([]);
+    const [id, setId] = useState("");
 
     const view = () => {
         setfullView(true);
     };
-
     const close = () => {
         setfullView(false);
     };
+
+    useEffect(() => {
+        const getEvents = async () => {
+            const dataJson = await fetch(`${BASE_API_URL}/event`);
+            const data = await dataJson.json();
+
+            data.events
+                ? setEvents(data.events)
+                : notyf.error("Some error occurred");
+        };
+        const getUser = async () => {
+            const dataJson = await fetch(
+                `${BASE_API_URL}/user/info?access_token=${localStorage.getItem(
+                    "authToken"
+                )}`
+            );
+            const data = await dataJson.json();
+
+            data.user
+                ? setId(data.user._id)
+                : notyf.error("Some error occurred");
+        };
+
+        getUser();
+        getEvents();
+    }, []);
 
     return (
         <>
@@ -112,8 +141,15 @@ const Events = () => {
                     </h1>
                 </div>
                 <div className="events container">
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => {
-                        return <EventCard view={view} />;
+                    {events.map((event) => {
+                        return (
+                            <EventCard
+                                view={view}
+                                event={event}
+                                key={event._id}
+                                id={id}
+                            />
+                        );
                     })}
                 </div>
             </section>

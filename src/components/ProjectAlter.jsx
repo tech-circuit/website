@@ -187,7 +187,7 @@ const ProjectAlter = ({ edit }) => {
     useEffect(() => {
         const getProject = async () => {
             const dataJson = await fetch(
-                `${BASE_API_URL}/project/${id}?access_token=${localStorage.getItem(
+                `${BASE_API_URL}/project/getForEdit/${id}?access_token=${localStorage.getItem(
                     "authToken"
                 )}`
             );
