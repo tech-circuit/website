@@ -119,7 +119,7 @@ const ProjectAlter = ({ edit }) => {
                 links,
                 fields,
                 tags,
-                comments,
+                commentsEnabled: comments,
                 event,
                 collaborators,
                 cover_image: imgUrl,
@@ -317,8 +317,8 @@ const ProjectAlter = ({ edit }) => {
                             );
                         })}
                     </div>
-                    <Fields updateFields={setFields} />
-                    <Tags updateTags={setTags} />
+                    <Fields setFields={setFields} fields={fields} />
+                    <Tags setTags={setTags} tags={tags} />
                     <p className="input-sub-text">
                         Upto 5 tags, Use space to separate
                     </p>
@@ -338,7 +338,9 @@ const ProjectAlter = ({ edit }) => {
                             type="checkbox"
                             className="indi-radio"
                             name="comments"
-                            value="html"
+                            defaultChecked={
+                                project ? project.commentsEnabled : false
+                            }
                             onChange={() => {
                                 setComments(!comments);
                             }}

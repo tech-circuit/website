@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "../../styles/all.css";
 
-const Fields = ({ updateFields }) => {
-    const [fields, setFields] = useState([]);
+const Fields = ({ fields, setFields }) => {
     const staticfields = [
         "UI/UX",
         "Web Development",
@@ -14,11 +13,6 @@ const Fields = ({ updateFields }) => {
         "Sit",
         "Amet",
     ];
-
-    const updateLocalFields = (fields) => {
-        setFields(fields)
-        updateFields(fields)
-    }
 
     useEffect(() => {
         if (fields.length === 5) {
@@ -32,8 +26,8 @@ const Fields = ({ updateFields }) => {
         }
     }, [fields]);
 
-    return(
-        <>          
+    return (
+        <>
             <h3>Fields</h3>
             <div className="field-hold">
                 <input
@@ -50,9 +44,7 @@ const Fields = ({ updateFields }) => {
                 <div className="field-box">
                     <div className="field-box-top">
                         <h1>Project Fields</h1>
-                        <button onClick={() => updateLocalFields([])}>
-                            clear all
-                        </button>
+                        <button onClick={() => setFields([])}>clear all</button>
                     </div>
                     <div className="fields">
                         {staticfields.map((field) => {
@@ -67,19 +59,15 @@ const Fields = ({ updateFields }) => {
                                     onClick={() => {
                                         if (fields.length !== 5) {
                                             if (!fields.includes(field))
-                                                updateLocalFields([
-                                                    ...fields,
-                                                    field,
-                                                ]);
+                                                setFields([...fields, field]);
                                             else
-                                                updateLocalFields(
+                                                setFields(
                                                     fields.filter(
-                                                        (fl) =>
-                                                            fl !== field
+                                                        (fl) => fl !== field
                                                     )
                                                 );
                                         } else {
-                                            updateLocalFields(
+                                            setFields(
                                                 fields.filter(
                                                     (fl) => fl !== field
                                                 )
@@ -106,7 +94,7 @@ const Fields = ({ updateFields }) => {
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
 export default Fields;

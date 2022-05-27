@@ -15,7 +15,9 @@ const EventAlter = ({ edit }) => {
     const [tags, setTags] = useState([]);
     const [fields, setFields] = useState([]);
     const [indi, setIndi] = useState(false);
+    const [host, setHost] = useState("online");
     const [event, setEvent] = useState({});
+    const [delBox, setDelBox] = useState(false);
     const { id } = useParams();
 
     const addLink = async () => {
@@ -98,6 +100,31 @@ const EventAlter = ({ edit }) => {
             .classList.remove("org-logo-uploaded");
     };
 
+    const deleteEvent = () => {
+        fetch(
+            `${BASE_API_URL}/event/delete/${id}?access_token=${localStorage.getItem(
+                "authToken"
+            )}`,
+            {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+            }
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.done) {
+                    window.location.href = "/events";
+                } else {
+                    notyf.error("Some Error has occurred");
+                    return;
+                }
+            })
+            .catch((err) => {
+                notyf.error("Some Error has occurred");
+                return;
+            });
+    };
+
     const submit = async () => {
         const name = document.querySelector("input[name='name']").value;
         const institute = document.querySelector(
@@ -111,7 +138,6 @@ const EventAlter = ({ edit }) => {
         const lastDate = document.querySelector("input[name='last-date']").value
             ? document.querySelector("input[name='last-date']").value
             : new Date();
-        const hosts = document.querySelectorAll("input[name='host']");
         const eligibility = document.querySelector(
             "textarea[name='eligibility']"
         ).value;
@@ -124,33 +150,26 @@ const EventAlter = ({ edit }) => {
             : new Date();
         const phone = document.querySelector("input[name='phone']").value;
         const email = document.querySelector("input[name='email']").value;
-        let host;
-
-        for (let radio of hosts) {
-            if (radio.checked) {
-                host = radio.value;
-            }
-        }
-
-        console.log(startDate, endDate);
 
         if (
             name === "" ||
             description === "" ||
             website === "" ||
             regLink === "" ||
-            !host ||
-            indi
-                ? true
-                : institute === ""
+            !host
         ) {
             notyf.error("Please fill all required fields");
             return;
         } else {
+            if (!indi && institute === "") {
+                notyf.error("Please fill all required fields");
+                return;
+            }
+
             const body = {
                 cover_image: imgUrl,
                 name,
-                institute: institute !== "" ? institute : false,
+                institute,
                 description,
                 website,
                 regLink,
@@ -163,7 +182,7 @@ const EventAlter = ({ edit }) => {
                 email,
                 tags,
                 fields,
-                indi,
+                isIndependant: indi,
                 links,
             };
 
@@ -193,7 +212,7 @@ const EventAlter = ({ edit }) => {
         }
     };
 
-    // SET LINK LOGOS
+    // Set link logos
     useEffect(() => {
         let theObj = {};
         for (let link of links) {
@@ -201,6 +220,14 @@ const EventAlter = ({ edit }) => {
         }
         setLinksObj(theObj);
     }, [links]);
+
+    // Set individual event
+    useEffect(() => {
+        const grey = document.querySelector("#grey-on");
+        indi ? grey.classList.add("grey-on") : grey.classList.remove("grey-on");
+        if (indi) grey.value = "";
+        indi ? (grey.disabled = true) : (grey.disabled = false);
+    }, [indi]);
 
     useEffect(() => {
         const getEvent = async () => {
@@ -217,11 +244,44 @@ const EventAlter = ({ edit }) => {
                 setTags(data.event.tags);
                 setFields(data.event.fields);
                 setIndi(data.event.isIndependant);
+                setHost(data.event.host);
                 setEvent(data.event);
+
+                const checkZeroInMonth = (month) => {
+                    if (month.toString().length === 1) {
+                        return `0${month}`;
+                    } else {
+                        return month;
+                    }
+                };
+
+                document.querySelector(
+                    "input[name='last-date']"
+                ).value = `${new Date(
+                    data.event.lastDate
+                ).getFullYear()}-${checkZeroInMonth(
+                    new Date(data.event.lastDate).getMonth() + 1
+                )}-${new Date(data.event.lastDate).getDate()}`;
+
+                document.querySelector(
+                    "input[name='start-date']"
+                ).value = `${new Date(
+                    data.event.startDate
+                ).getFullYear()}-${checkZeroInMonth(
+                    new Date(data.event.startDate).getMonth() + 1
+                )}-${new Date(data.event.startDate).getDate()}`;
+
+                document.querySelector(
+                    "input[name='end-date']"
+                ).value = `${new Date(
+                    data.event.endDate
+                ).getFullYear()}-${checkZeroInMonth(
+                    new Date(data.event.endDate).getMonth() + 1
+                )}-${new Date(data.event.endDate).getDate()}`;
 
                 document.getElementById(
                     "img-area"
-                ).style.backgroundImage = `url('${data.project.cover_image}')`;
+                ).style.backgroundImage = `url('${data.event.cover_image}')`;
                 document
                     .getElementById("img-area")
                     .classList.add("org-logo-uploaded");
@@ -237,6 +297,30 @@ const EventAlter = ({ edit }) => {
 
     return (
         <>
+            {delBox ? (
+                <div className="delete-confirm">
+                    <div
+                        className="del-trans"
+                        onClick={() => setDelBox(false)}
+                    ></div>
+                    <div className="delete-con-box">
+                        <h3>Are you sure you want to delete this project?</h3>
+                        <div className="btns">
+                            <button
+                                id="del-can"
+                                onClick={() => setDelBox(false)}
+                            >
+                                Cancel
+                            </button>
+                            <button id="del-del" onClick={deleteEvent}>
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            ) : (
+                ""
+            )}
             <div className="create-org-cont">
                 <div className="left-org">
                     <h1>{edit ? "Edit" : "Organize an"} Event</h1>
@@ -256,7 +340,7 @@ const EventAlter = ({ edit }) => {
                         defaultValue={event ? event.name : ""}
                     ></input>
 
-                    <h3 id="grey-on">Name of Organising institute *</h3>
+                    <h3>Name of Organising institute *</h3>
                     <input
                         type="text"
                         name="institute"
@@ -273,19 +357,9 @@ const EventAlter = ({ edit }) => {
                             type="checkbox"
                             className="indi-radio"
                             name="independant"
-                            defaultChecked={event ? event.isIndependant : false}
+                            checked={indi}
                             onChange={() => {
                                 setIndi(!indi);
-
-                                const greys =
-                                    document.querySelectorAll("#grey-on");
-                                for (let grey of greys) {
-                                    grey.classList.toggle("grey-on");
-                                    if (grey.value) grey.value = "";
-                                    grey.disabled
-                                        ? (grey.disabled = false)
-                                        : (grey.disabled = true);
-                                }
                             }}
                         ></input>
                     </div>
@@ -319,11 +393,7 @@ const EventAlter = ({ edit }) => {
                     ></input>
 
                     <h3>Last date to register</h3>
-                    <input
-                        type="date"
-                        name="last-date"
-                        defaultValue={event ? event.lastDate : new Date()}
-                    />
+                    <input type="date" name="last-date" />
 
                     <h3>How are you hosting your Event? *</h3>
                     <div className="rads">
@@ -334,9 +404,8 @@ const EventAlter = ({ edit }) => {
                                 id="host"
                                 name="host"
                                 value="online"
-                                defaultChecked={
-                                    event.host === "online" ? true : false
-                                }
+                                checked={host === "online" ? true : false}
+                                onChange={() => setHost("online")}
                             />
                         </div>
                         <div className="rad">
@@ -346,9 +415,8 @@ const EventAlter = ({ edit }) => {
                                 id="host"
                                 name="host"
                                 value="onsite"
-                                defaultChecked={
-                                    event.host === "onsite" ? true : false
-                                }
+                                checked={host === "onsite" ? true : false}
+                                onChange={() => setHost("onsite")}
                             />
                         </div>
                         <div className="rad">
@@ -358,9 +426,8 @@ const EventAlter = ({ edit }) => {
                                 id="host"
                                 name="host"
                                 value="both"
-                                defaultChecked={
-                                    event.host === "both" ? true : false
-                                }
+                                checked={host === "both" ? true : false}
+                                onChange={() => setHost("both")}
                             />
                         </div>
                     </div>
@@ -375,23 +442,15 @@ const EventAlter = ({ edit }) => {
                     ></textarea>
 
                     <h3>Event Start date</h3>
-                    <input
-                        type="date"
-                        name="start-date"
-                        defaultValue={event ? event.startDate : new Date()}
-                    />
+                    <input type="date" name="start-date" />
 
                     <h3>Event End date</h3>
-                    <input
-                        type="date"
-                        name="end-date"
-                        defaultValue={event ? event.endDate : new Date()}
-                    />
+                    <input type="date" name="end-date" />
 
-                    <Fields updateFields={setFields} />
+                    <Fields setFields={setFields} fields={fields} />
                     <p className="input-sub-text">Upto 5 Fields</p>
 
-                    <Tags updateTags={setTags} />
+                    <Tags setTags={setTags} tags={tags} />
                     <p className="input-sub-text">
                         Upto 5 tags, Use space to separate
                     </p>
@@ -511,6 +570,16 @@ const EventAlter = ({ edit }) => {
                         <button className="createOrgButton" onClick={submit}>
                             {edit ? "Finish Editing" : "Create Event"}
                         </button>
+                        {edit ? (
+                            <button
+                                className="deleteOrgBtn"
+                                onClick={() => setDelBox(true)}
+                            >
+                                Delete Project
+                            </button>
+                        ) : (
+                            ""
+                        )}
                     </div>
                 </div>
             </div>

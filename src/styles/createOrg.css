@@ -370,6 +370,7 @@ select.mod-input {
     text-align: center;
     color: #29313d;
     font-size: 1.4vw;
+    font-weight: 400;
 }
 .delete-con-box .btns {
     display: flex;
