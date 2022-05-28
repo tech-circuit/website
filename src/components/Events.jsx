@@ -42,7 +42,7 @@ const Events = () => {
                 : notyf.error("Some error occurred");
         };
 
-        getUser();
+        if (localStorage.getItem("authToken")) getUser();
         getEvents();
     }, []);
 

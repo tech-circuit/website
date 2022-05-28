@@ -37,7 +37,7 @@ const Community = () => {
             if (userData.users) {
                 setUsers(userData.users);
             } else {
-                notyf.error("Some error occured");
+                notyf.error("Some error occured")
             }
         };
 
