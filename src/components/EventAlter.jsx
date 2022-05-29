@@ -186,7 +186,7 @@ const EventAlter = ({ edit }) => {
                 email,
                 tags,
                 fields,
-                isIndependant: indi,
+                isIndependent: indi,
                 links,
                 country,
                 state,
@@ -249,7 +249,7 @@ const EventAlter = ({ edit }) => {
                 setLinks(data.event.links);
                 setTags(data.event.tags);
                 setFields(data.event.fields);
-                setIndi(data.event.isIndependant);
+                setIndi(data.event.isIndependent);
                 setHost(data.event.host);
                 setCountry(data.event.country);
                 setState(data.event.state);
@@ -351,11 +351,11 @@ const EventAlter = ({ edit }) => {
                     ></input>
 
                     <div className="indi-wrap">
-                        <h3>Independant Event</h3>
+                        <h3>Independent Event</h3>
                         <input
                             type="checkbox"
                             className="indi-radio"
-                            name="independant"
+                            name="independent"
                             checked={indi}
                             onChange={() => {
                                 setIndi(!indi);

@@ -156,7 +156,7 @@ const CreateOrg = () => {
             const body = {
                 name,
                 institute,
-                isIndependant: independent,
+                isIndependent: independent,
                 description,
                 website_url,
                 links,
@@ -227,11 +227,11 @@ const CreateOrg = () => {
                         required
                     ></input>
                     <div className="indi-wrap">
-                        <h3>Independant Organisation</h3>
+                        <h3>Independent Organisation</h3>
                         <input
                             type="checkbox"
                             className="indi-radio"
-                            name="isIndependant"
+                            name="isIndependent"
                             value="html"
                             onChange={() => {
                                 setIndependent(!independent);

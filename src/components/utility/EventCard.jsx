@@ -32,8 +32,8 @@ const EventCard = ({ view, event, id }) => {
                     <h1>{event.name}</h1>
                     <h2>
                         Organised{" "}
-                        {event.isIndependant
-                            ? "independantly"
+                        {event.isIndependent
+                            ? "independently"
                             : `by ${event.institute}`}
                     </h2>
                 </div>

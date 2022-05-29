@@ -544,7 +544,7 @@ const Component = ({ pfp, user }) => {
                                       <img src={org.logo_url} alt="alt" />
                                       <h2>{org.name}</h2>
                                       <p>
-                                          {org.isIndependant
+                                          {org.isIndependent
                                               ? ""
                                               : org.institute}
                                       </p>

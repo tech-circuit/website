@@ -42,7 +42,9 @@ const OrgView = () => {
                     <div className="main-box">
                         <h1>{org.name}</h1>
                         <p>
-                            {org.isIndependant ? "Independant" : org.institute}
+                            {org.isIndependent
+                                ? "Independent"
+                                : org.institute}
                         </p>
                         <img src={org.logo_url} className="org-pfp" alt="alt" />
                         <p className="site">
