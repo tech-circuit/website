@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import "../styles/createProject.css";
 import Tags from "./utility/Tags";
 import Fields from "./utility/Fields";
+import checkLoggedIn from "./utility/checkLoggedIn";
 
 const ProjectAlter = ({ edit }) => {
     const [links, setLinks] = useState([]);
@@ -213,6 +214,8 @@ const ProjectAlter = ({ edit }) => {
 
         if (edit) {
             getProject();
+        } else {
+            checkLoggedIn("/work");
         }
     }, [id, edit]);
 

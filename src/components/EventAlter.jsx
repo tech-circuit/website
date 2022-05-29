@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 import "../styles/createProject.css";
 import Tags from "./utility/Tags";
 import Fields from "./utility/Fields";
+import { Country, State } from "./utility/Options";
+import checkLoggedIn from "./utility/checkLoggedIn";
 
 const EventAlter = ({ edit }) => {
     const [links, setLinks] = useState([]);
@@ -18,6 +20,8 @@ const EventAlter = ({ edit }) => {
     const [host, setHost] = useState("online");
     const [event, setEvent] = useState({});
     const [delBox, setDelBox] = useState(false);
+    const [country, setCountry] = useState("India");
+    const [state, setState] = useState("");
     const { id } = useParams();
 
     const addLink = async () => {
@@ -184,6 +188,8 @@ const EventAlter = ({ edit }) => {
                 fields,
                 isIndependant: indi,
                 links,
+                country,
+                state,
             };
 
             const fetchUrl = edit
@@ -245,6 +251,8 @@ const EventAlter = ({ edit }) => {
                 setFields(data.event.fields);
                 setIndi(data.event.isIndependant);
                 setHost(data.event.host);
+                setCountry(data.event.country);
+                setState(data.event.state);
                 setEvent(data.event);
 
                 const checkZeroInMonth = (month) => {
@@ -292,6 +300,8 @@ const EventAlter = ({ edit }) => {
 
         if (edit) {
             getEvent();
+        } else {
+            checkLoggedIn("/events");
         }
     }, [id, edit]);
 
@@ -340,17 +350,6 @@ const EventAlter = ({ edit }) => {
                         defaultValue={event ? event.name : ""}
                     ></input>
 
-                    <h3>Name of Organising institute *</h3>
-                    <input
-                        type="text"
-                        name="institute"
-                        autoComplete="off"
-                        placeholder="DPS VK"
-                        required
-                        id="grey-on"
-                        defaultValue={event ? event.institute : ""}
-                    ></input>
-
                     <div className="indi-wrap">
                         <h3>Independant Event</h3>
                         <input
@@ -364,6 +363,17 @@ const EventAlter = ({ edit }) => {
                         ></input>
                     </div>
 
+                    <h3>Name of Organising institute *</h3>
+                    <input
+                        type="text"
+                        name="institute"
+                        autoComplete="off"
+                        placeholder="DPS VK"
+                        required
+                        id="grey-on"
+                        defaultValue={event ? event.institute : ""}
+                    ></input>
+
                     <h3>Decription of the Event *</h3>
                     <textarea
                         name="description"
@@ -372,6 +382,44 @@ const EventAlter = ({ edit }) => {
                         defaultValue={event ? event.description : ""}
                         placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictum eu, aenean porta neque ante tellus. Ipsum consequat semper amet nullam proin. "
                     ></textarea>
+
+                    <h3>Country *</h3>
+                    <select
+                        type="text"
+                        name="country"
+                        autoComplete="off"
+                        placeholder="India"
+                        required
+                        onChange={(e) => {
+                            setCountry(e.target.value);
+                            if (e.target.value !== "India") {
+                                setState("");
+                            }
+                        }}
+                        value={country}
+                    >
+                        <Country />
+                    </select>
+
+                    <h3 className={country === "India" ? "" : "grey-on"}>
+                        State (Indian states only)
+                    </h3>
+                    <select
+                        type="text"
+                        name="state"
+                        id="state"
+                        className={country === "India" ? "" : "grey-on"}
+                        autoComplete="off"
+                        placeholder="Indian states"
+                        required
+                        disabled={country === "India" ? false : true}
+                        onChange={(e) => {
+                            setState(e.target.value);
+                        }}
+                        value={state}
+                    >
+                        <State />
+                    </select>
 
                     <h3>Add Website Link *</h3>
                     <input

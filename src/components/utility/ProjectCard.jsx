@@ -2,7 +2,6 @@ import "../../styles/work.css";
 import { Link } from "react-router-dom";
 
 const ProjectCard = ({ project, view, id }) => {
-    console.log(project.uploader.toString() === id);
     return (
         <Link
             onClick={project.uploader.toString() === id ? null : view}
