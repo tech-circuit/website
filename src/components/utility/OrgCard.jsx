@@ -1,8 +1,8 @@
 import "../../styles/community.css";
-import { Link } from "react-router-dom";
 import getLinkogo from "../../getLinkLogo";
+import { Link } from "react-router-dom";
 
-const OrgCard = ({ org }) => {
+const OrgCard = ({ org, id }) => {
     return (
         <>
             <div className="com">
@@ -28,9 +28,16 @@ const OrgCard = ({ org }) => {
                               })
                         : ""}
                 </div>
-                <Link className="view" to={`org/${org._id}`}>
-                    View Page
-                </Link>
+
+                {org.admins.includes(id) ? (
+                    <Link to={`/edit-org/${org._id}`} className="view">
+                        Edit Event
+                    </Link>
+                ) : (
+                    <Link to={`/org/${org._id}`} className="view">
+                        View Event
+                    </Link>
+                )}
             </div>
         </>
     );

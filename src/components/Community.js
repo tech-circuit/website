@@ -11,6 +11,7 @@ const Community = () => {
     const [page, setPage] = useState("orgs");
     const [users, setUsers] = useState([]);
     const [orgs, setOrgs] = useState([]);
+    const [id, setId] = useState("");
 
     // document.addEventListener("scroll", () => {
     //   if (document.querySelector(".comSearch")) {
@@ -37,7 +38,7 @@ const Community = () => {
             if (userData.users) {
                 setUsers(userData.users);
             } else {
-                notyf.error("Some error occured")
+                notyf.error("Some error occured");
             }
         };
 
@@ -52,9 +53,33 @@ const Community = () => {
             }
         };
 
+        const getId = async () => {
+            try {
+                const authToken = localStorage.getItem("authToken");
+
+                if (authToken) {
+                    const dataJson = await fetch(
+                        `${BASE_API_URL}/user/info?access_token=${authToken}`
+                    );
+                    const data = await dataJson.json();
+
+                    if (data.user) {
+                        setId(data.user._id);
+                    } else {
+                        notyf.error("some error occured");
+                    }
+                } else {
+                    setId("");
+                }
+            } catch (err) {
+                notyf.error("some error occured");
+            }
+        };
+
         try {
             getOrgs();
             getUsers();
+            getId();
         } catch (err) {
             notyf.error("some error occured");
         }
@@ -116,7 +141,7 @@ const Community = () => {
                 }
             >
                 {orgs.map((org) => {
-                    return <OrgCard org={org} />;
+                    return <OrgCard key={org._id} org={org} id={id} />;
                 })}
             </div>
 
@@ -126,7 +151,7 @@ const Community = () => {
                 }
             >
                 {users.map((user) => {
-                    return <UserCard user={user} />;
+                    return <UserCard key={user._id} user={user} />;
                 })}
             </div>
         </>

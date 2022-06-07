@@ -245,6 +245,7 @@ const ProjectAlter = ({ edit }) => {
             ) : (
                 ""
             )}
+
             <div className="create-org-cont">
                 <div className="left-org">
                     <h1>{edit ? "Edit" : "Create a"} Project</h1>

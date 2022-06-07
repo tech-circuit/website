@@ -1,4 +1,4 @@
-const dev = process.env.REACT_APP_NODE_ENV === "dev";
+const dev = process.env.REACT_APP_NODE_ENV === "prod";
 
 const BASE_API_URL = dev
     ? "http://localhost:4000"

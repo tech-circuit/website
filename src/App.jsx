@@ -9,7 +9,7 @@ import Post from "./components/Post";
 import Events from "./components/Events.jsx";
 import About from "./components/About";
 import Work from "./components/Work";
-import CreateOrg from "./components/CreateOrg.jsx";
+import OrgAlter from "./components/OrgAlter";
 import EventAlter from "./components/EventAlter";
 import Profile from "./components/Profile";
 import UserFlow from "./components/UserFlow";
@@ -67,7 +67,11 @@ const App = () => {
                     <Forums />
                 </Route>
                 <Route exact path="/create-org">
-                    <CreateOrg />
+                    <OrgAlter edit={false} />
+                    {/* <Soon /> */}
+                </Route>
+                <Route exact path="/edit-org/:id">
+                    <OrgAlter edit={true} />
                     {/* <Soon /> */}
                 </Route>
                 <Route exact path="/create-event">

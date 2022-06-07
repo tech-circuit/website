@@ -4,14 +4,24 @@ import { FaLink, FaPlusCircle, FaTrash, FaTrashAlt } from "react-icons/fa";
 import BASE_API_URL from "../constants";
 import notyf from "../tcNotyf";
 import getLinkLogo from "../getLinkLogo";
+import checkLoggedIn from "./utility/checkLoggedIn";
+import { useParams } from "react-router-dom";
+import SelectUser from "./utility/SelectUser";
 
-const CreateOrg = () => {
+const OrgAlter = ({ edit }) => {
     const [links, setLinks] = useState([]);
     const [imgUrl, setImgUrl] = useState("/assets/userFlowIcon.svg");
     const [linksObj, setLinksObj] = useState({});
     const [members, setMembers] = useState([]);
+    const [admins, setAdmins] = useState([]);
+    const [alumni, setAlumni] = useState([]);
+    const [persons, setPersons] = useState([]);
     const [independent, setIndependent] = useState(false);
     const [users, setUsers] = useState([]);
+    const [org, setOrg] = useState({});
+    const [delBox, setDelBox] = useState(false);
+    const [select, setSelect] = useState(false);
+    const { id } = useParams();
 
     const addLink = async () => {
         if (document.querySelector("#add-link-inp").value !== "") {
@@ -94,37 +104,6 @@ const CreateOrg = () => {
         document.querySelector("input[name='org-logo']").value = "";
     };
 
-    const addMember = () => {
-        const name = document
-            .getElementById("addModName")
-            .value.split("-thvdnta-")[0];
-        const pfp = document
-            .getElementById("addModName")
-            .value.split("-thvdnta-")[1];
-        const pos = document.getElementById("addModPos").value;
-
-        if (name.trim() !== "") {
-            const member = {
-                name,
-                pfp,
-                pos,
-            };
-
-            console.log(member);
-
-            document.getElementById("addModName").value = "";
-            document.getElementById("addModPos").value = "member";
-
-            setMembers([...members, member]);
-        } else {
-            notyf.error("Add a Name for the member");
-        }
-    };
-
-    const removeMember = (member) => {
-        setMembers(members.filter((mem) => mem !== member));
-    };
-
     const submit = async () => {
         const name = document.querySelector("input[name='name']").value;
         const institute = document.querySelector("input[name='institute']")
@@ -137,11 +116,6 @@ const CreateOrg = () => {
             "input[name='website_url']"
         ).value;
         const logo_url = imgUrl;
-        const admins = [];
-
-        for (let member of members) {
-            if (member.pos === "admin") admins.push(member);
-        }
 
         if (name === "" || description === "") {
             notyf.error("Please fill all required fields");
@@ -163,14 +137,19 @@ const CreateOrg = () => {
                 members,
                 logo_url,
                 admins,
+                alumni,
             };
 
             const submittedJson = await fetch(
-                `${BASE_API_URL}/org/add?access_token=${localStorage.getItem(
-                    "authToken"
-                )}`,
+                !edit
+                    ? `${BASE_API_URL}/org/add?access_token=${localStorage.getItem(
+                          "authToken"
+                      )}`
+                    : `${BASE_API_URL}/org/edit/${id}?access_token=${localStorage.getItem(
+                          "authToken"
+                      )}`,
                 {
-                    method: "POST",
+                    method: edit ? "PUT" : "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(body),
                 }
@@ -186,6 +165,62 @@ const CreateOrg = () => {
         }
     };
 
+    const deleteOrg = async () => {
+        try {
+            const dataJson = await fetch(
+                `${BASE_API_URL}/org/delete/:id?access_token=${localStorage.getItem(
+                    "authToken"
+                )}`
+            );
+            const data = await dataJson.json();
+
+            if (data.done) {
+                window.location.href = "/community";
+            } else {
+                notyf.error("Some Error has occurred");
+                return;
+            }
+        } catch (err) {
+            notyf.error("Some error has occurred");
+        }
+    };
+
+    const addPerson = () => {
+        const pos = document.querySelector("#addModPos").value;
+        const personName = document.querySelector("#addModName").value;
+        const person = users.find((user) => user.name === personName);
+
+        if (person._id) {
+            pos === "admin"
+                ? setAdmins([...admins, person._id])
+                : pos === "member"
+                ? setMembers([...members, person._id])
+                : setAlumni([...alumni, person._id]);
+
+            const personForUI = users.find((user) => user._id === person._id);
+            personForUI.pos = pos;
+
+            setPersons([...persons, personForUI]);
+            document.querySelector("#addModName").value = "";
+            document.querySelector("#addModPos").value = "member";
+        } else {
+            notyf.error("Please fill all required fields");
+        }
+    };
+
+    const removePerson = (id) => {
+        const person = users.find((user) => user._id === id);
+        const pos = person.pos;
+
+        pos === "admin"
+            ? setAdmins(admins.filter((admin) => admin._id !== id))
+            : pos === "member"
+            ? setMembers(members.filter((member) => member._id !== id))
+            : setAlumni(alumni.filter((alum) => alum._id !== id));
+
+        setPersons(persons.filter((person) => person._id !== id));
+    };
+
     useEffect(() => {
         let theObj = {};
         for (let link of links) {
@@ -196,28 +231,87 @@ const CreateOrg = () => {
 
     useEffect(() => {
         const getUsers = async () => {
-            const userDataJson = await fetch(`${BASE_API_URL}/user/all`);
-            const userData = await userDataJson.json();
+            try {
+                const userDataJson = await fetch(`${BASE_API_URL}/user/all`);
+                const userData = await userDataJson.json();
 
-            if (userData.users) {
-                setUsers(userData.users);
-            } else {
-                notyf.error("Some error occured");
+                if (userData.users) {
+                    setUsers(userData.users);
+                } else {
+                    notyf.error("Some error occured");
+                }
+            } catch (err) {
+                notyf.error("Some Error has occurred");
             }
         };
 
-        try {
-            getUsers();
-        } catch (err) {
-            notyf.error("Some Error occurred");
+        const getOrg = async () => {
+            const dataJson = await fetch(
+                `${BASE_API_URL}/org/getForEdit/${id}?access_token=${localStorage.getItem(
+                    "authToken"
+                )}`
+            );
+            const data = await dataJson.json();
+
+            if (data.org) {
+                setOrg(data.org);
+                setIndependent(data.org.isIndependent);
+                setLinks(data.org.links);
+                setImgUrl(data.org.logo_url);
+                setMembers(data.org.members);
+                setAlumni(data.org.alumni);
+                setAdmins(data.org.admins);
+
+                document.getElementById(
+                    "img-area"
+                ).style.backgroundImage = `url('${data.org.logo_url}')`;
+                document
+                    .getElementById("img-area")
+                    .classList.add("org-logo-uploaded");
+            } else {
+                notyf.error("Some error occured");
+                window.location.href = "/404";
+            }
+        };
+
+        if (edit) {
+            getOrg();
+        } else {
+            checkLoggedIn("/community");
         }
-    }, []);
+        getUsers();
+    }, [id, edit]);
 
     return (
         <>
+            {delBox ? (
+                <div className="delete-confirm">
+                    <div
+                        className="del-trans"
+                        onClick={() => setDelBox(false)}
+                    ></div>
+                    <div className="delete-con-box">
+                        <h3>Are you sure you want to delete this project?</h3>
+                        <div className="btns">
+                            <button
+                                id="del-can"
+                                onClick={() => setDelBox(false)}
+                            >
+                                Cancel
+                            </button>
+                            <button id="del-del" onClick={deleteOrg}>
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            ) : (
+                ""
+            )}
+
             <div className="create-org-cont">
                 <div className="left-org">
-                    <h1>Create an Organisation</h1>
+                    <h1>{edit ? "Edit" : "Create an"} Organisation</h1>
                     <h3>Name of Organisation *</h3>
                     <input
                         type="text"
@@ -225,6 +319,7 @@ const CreateOrg = () => {
                         autoComplete="off"
                         placeholder="Code Warriors"
                         required
+                        defaultValue={org ? org.name : ""}
                     ></input>
                     <div className="indi-wrap">
                         <h3>Independent Organisation</h3>
@@ -232,30 +327,30 @@ const CreateOrg = () => {
                             type="checkbox"
                             className="indi-radio"
                             name="isIndependent"
-                            value="html"
+                            value={independent}
                             onChange={() => {
                                 setIndependent(!independent);
                             }}
                         ></input>
                     </div>
-                    {!independent ? (
-                        <>
-                            <h3>Institute name *</h3>
-                            <input
-                                type="text"
-                                name="institute"
-                                autoComplete="off"
-                                placeholder="Delhi Public School, Vasant Kunj"
-                                required
-                            ></input>
-                        </>
-                    ) : (
-                        ""
-                    )}
+
+                    <h3>Institute name *</h3>
+                    <input
+                        type="text"
+                        name="institute"
+                        autoComplete="off"
+                        placeholder="Delhi Public School, Vasant Kunj"
+                        required
+                        defaultValue={org ? org.institute : ""}
+                        disabled={independent}
+                        className={independent ? "grey-on" : ""}
+                    ></input>
+
                     <h3>Organisation info *</h3>
                     <textarea
                         name="description"
                         autoComplete="off"
+                        defaultValue={org ? org.description : ""}
                         placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictum eu, aenean porta neque ante tellus. Ipsum consequat semper amet nullam proin. "
                     ></textarea>
                     <h3>Organisation website</h3>
@@ -264,6 +359,7 @@ const CreateOrg = () => {
                         name="website_url"
                         autoComplete="off"
                         placeholder="Your Mom, Ribhav Sharma"
+                        defaultValue={org ? org.website_url : ""}
                     ></input>
                     <h3>Add social links</h3>
                     <div className="create-links input">
@@ -316,23 +412,24 @@ const CreateOrg = () => {
                     <h3>Organisation Members</h3>
                     <div className="mod-wrap">
                         <div className="mod-input-wrap">
-                            <select
+                            <input
                                 id="addModName"
                                 placeholder="Name"
                                 className="mod-input"
-                            >
-                                <option value="">Username</option>
-                                {users.map((user) => {
-                                    return (
-                                        <option
-                                            key={user._id}
-                                            value={`${user.username}-thvdnta-${user.pfp_url}`}
-                                        >
-                                            {user.username}
-                                        </option>
-                                    );
-                                })}
-                            </select>
+                                type="text"
+                                readOnly
+                                style={{ cursor: "pointer" }}
+                                onClick={() => setSelect(!select)}
+                            />
+                            {select ? (
+                                <SelectUser
+                                    inp={document.querySelector("#addModName")}
+                                    users={users}
+                                    setSelect={setSelect}
+                                />
+                            ) : (
+                                ""
+                            )}
                             <select
                                 id="addModPos"
                                 placeholder="Position"
@@ -344,19 +441,19 @@ const CreateOrg = () => {
                             </select>
                             <FaPlusCircle
                                 className="addMemIcon"
-                                onClick={addMember}
+                                onClick={addPerson}
                             />
                         </div>
                     </div>
-                    {members.map((member) => {
+                    {persons.map((person) => {
                         return (
-                            <div className="mod-wrap" key={member.name}>
+                            <div className="mod-wrap" key={person.name}>
                                 <div className="mod-input-wrap">
                                     <input
                                         type="text"
                                         name="mod-name"
                                         autoComplete="off"
-                                        defaultValue={member.name}
+                                        defaultValue={person.name}
                                         readOnly
                                         className="mod-input"
                                     ></input>
@@ -364,7 +461,7 @@ const CreateOrg = () => {
                                         type="text"
                                         name="mod-pos"
                                         autoComplete="off"
-                                        defaultValue={member.pos}
+                                        defaultValue={person.pos}
                                         style={{
                                             textTransform: "capitalize",
                                         }}
@@ -373,7 +470,7 @@ const CreateOrg = () => {
                                     ></input>
                                     <FaTrashAlt
                                         className="removeMemIcon"
-                                        onClick={() => removeMember(member)}
+                                        onClick={() => removePerson(person._id)}
                                     />
                                 </div>
                             </div>
@@ -451,6 +548,16 @@ const CreateOrg = () => {
                         <button className="createOrgButton" onClick={submit}>
                             Create Organisation
                         </button>
+                        {edit ? (
+                            <button
+                                className="deleteOrgBtn"
+                                onClick={() => setDelBox(true)}
+                            >
+                                Delete Organisation
+                            </button>
+                        ) : (
+                            ""
+                        )}
                     </div>
                 </div>
             </div>
@@ -458,4 +565,4 @@ const CreateOrg = () => {
     );
 };
 
-export default CreateOrg;
+export default OrgAlter;
