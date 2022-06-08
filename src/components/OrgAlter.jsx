@@ -168,9 +168,13 @@ const OrgAlter = ({ edit }) => {
     const deleteOrg = async () => {
         try {
             const dataJson = await fetch(
-                `${BASE_API_URL}/org/delete/:id?access_token=${localStorage.getItem(
+                `${BASE_API_URL}/org/delete/${id}?access_token=${localStorage.getItem(
                     "authToken"
-                )}`
+                )}`,
+                {
+                    method: "DELETE",
+                    headers: { "Content-Type": "application/json" },
+                }
             );
             const data = await dataJson.json();
 
@@ -208,17 +212,19 @@ const OrgAlter = ({ edit }) => {
         }
     };
 
-    const removePerson = (id) => {
-        const person = users.find((user) => user._id === id);
+    const removePerson = (remId) => {
+        const person = users.find((user) => user._id === remId);
         const pos = person.pos;
 
-        pos === "admin"
-            ? setAdmins(admins.filter((admin) => admin._id !== id))
-            : pos === "member"
-            ? setMembers(members.filter((member) => member._id !== id))
-            : setAlumni(alumni.filter((alum) => alum._id !== id));
+        console.log(remId);
 
-        setPersons(persons.filter((person) => person._id !== id));
+        pos === "admin"
+            ? setAdmins(admins.filter((admin) => admin !== remId))
+            : pos === "member"
+            ? setMembers(members.filter((member) => member !== remId))
+            : setAlumni(alumni.filter((alum) => alum !== remId));
+
+        setPersons(persons.filter((person) => person._id !== remId));
     };
 
     useEffect(() => {
@@ -230,6 +236,43 @@ const OrgAlter = ({ edit }) => {
     }, [links]);
 
     useEffect(() => {
+        if (edit) {
+            if (admins.length !== 0 && users.length !== 0) {
+                const getPersons = (arr, pos) => {
+                    const perArr = [];
+
+                    if (arr.length !== 0) {
+                        for (let ar of arr) {
+                            const personToAppend = users.find(
+                                (user) => user._id.toString() === ar.toString()
+                            );
+                            if (personToAppend) {
+                                personToAppend.pos = pos;
+                                perArr.push(personToAppend);
+                            }
+                        }
+                    }
+
+                    return perArr;
+                };
+
+                const personAdmins = getPersons(admins, "admin");
+                const personAlumni = getPersons(alumni, "alumni");
+                const personMembers = getPersons(members, "member");
+
+                const finalArr = personAdmins.concat(
+                    personAlumni,
+                    personMembers
+                );
+
+                setPersons(finalArr);
+            }
+        }
+    }, [admins, members, alumni, users, edit]);
+
+    useEffect(() => {
+        checkLoggedIn("/community");
+
         const getUsers = async () => {
             try {
                 const userDataJson = await fetch(`${BASE_API_URL}/user/all`);
@@ -276,8 +319,6 @@ const OrgAlter = ({ edit }) => {
 
         if (edit) {
             getOrg();
-        } else {
-            checkLoggedIn("/community");
         }
         getUsers();
     }, [id, edit]);
@@ -327,7 +368,7 @@ const OrgAlter = ({ edit }) => {
                             type="checkbox"
                             className="indi-radio"
                             name="isIndependent"
-                            value={independent}
+                            checked={independent}
                             onChange={() => {
                                 setIndependent(!independent);
                             }}
@@ -546,7 +587,7 @@ const OrgAlter = ({ edit }) => {
 
                     <div className="buttons button-org">
                         <button className="createOrgButton" onClick={submit}>
-                            Create Organisation
+                            {edit ? "Finish editing" : "Create organisation"}
                         </button>
                         {edit ? (
                             <button
