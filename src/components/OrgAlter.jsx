@@ -7,6 +7,7 @@ import getLinkLogo from "../getLinkLogo";
 import checkLoggedIn from "./utility/checkLoggedIn";
 import { useParams } from "react-router-dom";
 import SelectUser from "./utility/SelectUser";
+import validate from "../validate";
 
 const OrgAlter = ({ edit }) => {
     const [links, setLinks] = useState([]);
@@ -102,67 +103,6 @@ const OrgAlter = ({ edit }) => {
             .getElementById("img-area")
             .classList.remove("org-logo-uploaded");
         document.querySelector("input[name='org-logo']").value = "";
-    };
-
-    const submit = async () => {
-        const name = document.querySelector("input[name='name']").value;
-        const institute = document.querySelector("input[name='institute']")
-            ? document.querySelector("input[name='institute']").value
-            : "";
-        const description = document.querySelector(
-            "textarea[name='description']"
-        ).value;
-        const website_url = document.querySelector(
-            "input[name='website_url']"
-        ).value;
-        const logo_url = imgUrl;
-
-        if (name === "" || description === "") {
-            notyf.error("Please fill all required fields");
-            return;
-        } else {
-            if (!independent) {
-                if (institute === "") {
-                    notyf.error("Please fill all required fields");
-                    return;
-                }
-            }
-            const body = {
-                name,
-                institute,
-                isIndependent: independent,
-                description,
-                website_url,
-                links,
-                members,
-                logo_url,
-                admins,
-                alumni,
-            };
-
-            const submittedJson = await fetch(
-                !edit
-                    ? `${BASE_API_URL}/org/add?access_token=${localStorage.getItem(
-                          "authToken"
-                      )}`
-                    : `${BASE_API_URL}/org/edit/${id}?access_token=${localStorage.getItem(
-                          "authToken"
-                      )}`,
-                {
-                    method: edit ? "PUT" : "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(body),
-                }
-            );
-            const submitted = await submittedJson.json();
-
-            if (submitted.done) {
-                window.location.href = "/community";
-            } else {
-                notyf.error("Some Error has occurred");
-                return;
-            }
-        }
     };
 
     const deleteOrg = async () => {
@@ -281,6 +221,63 @@ const OrgAlter = ({ edit }) => {
             : setAlumni(alumni.filter((alum) => alum !== remId));
 
         setPersons(persons.filter((person) => person._id !== remId));
+    };
+
+    const submit = async () => {
+        const name = document.querySelector("input[name='name']").value;
+        const institute = document.querySelector("input[name='institute']")
+            ? document.querySelector("input[name='institute']").value
+            : "";
+        const description = document.querySelector(
+            "textarea[name='description']"
+        ).value;
+        const website_url = document.querySelector(
+            "input[name='website_url']"
+        ).value;
+        const logo_url = imgUrl;
+
+        const reqList = ["name", "description"];
+        !independent ? reqList.push("institute") : console.log("indi");
+        if (!validate(reqList)) {
+            notyf.error("Please fill all required fields");
+            return;
+        } else {
+            const body = {
+                name,
+                institute,
+                isIndependent: independent,
+                description,
+                website_url,
+                links,
+                members,
+                logo_url,
+                admins,
+                alumni,
+            };
+
+            const submittedJson = await fetch(
+                !edit
+                    ? `${BASE_API_URL}/org/add?access_token=${localStorage.getItem(
+                          "authToken"
+                      )}`
+                    : `${BASE_API_URL}/org/edit/${id}?access_token=${localStorage.getItem(
+                          "authToken"
+                      )}`,
+                {
+                    method: edit ? "PUT" : "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(body),
+                }
+            );
+            const submitted = await submittedJson.json();
+
+            if (submitted.done) {
+                window.location.href = "/community";
+            } else {
+                notyf.error("Some Error has occurred");
+                return;
+            }
+        }
     };
 
     useEffect(() => {

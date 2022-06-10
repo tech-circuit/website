@@ -8,6 +8,7 @@ import "../styles/createProject.css";
 import Tags from "./utility/Tags";
 import Fields from "./utility/Fields";
 import checkLoggedIn from "./utility/checkLoggedIn";
+import validate from "../validate";
 
 const ProjectAlter = ({ edit }) => {
     const [links, setLinks] = useState([]);
@@ -110,10 +111,8 @@ const ProjectAlter = ({ edit }) => {
             "input[name='collaborators']"
         ).value;
 
-        if (title === "" || description === "") {
-            notyf.error("Please fill all required fields");
-            return;
-        } else {
+        const reqList = ["title", "description"];
+        if (validate(reqList)) {
             const body = {
                 title,
                 description,
@@ -148,6 +147,9 @@ const ProjectAlter = ({ edit }) => {
                 notyf.error("Some Error has occurred");
                 return;
             }
+        } else {
+            notyf.error("Please fill all required fields");
+            return;
         }
     };
 

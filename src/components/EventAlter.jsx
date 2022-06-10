@@ -9,6 +9,7 @@ import Tags from "./utility/Tags";
 import Fields from "./utility/Fields";
 import { Country, State } from "./utility/Options";
 import checkLoggedIn from "./utility/checkLoggedIn";
+import validate from "../validate";
 
 const EventAlter = ({ edit }) => {
     const [links, setLinks] = useState([]);
@@ -155,13 +156,9 @@ const EventAlter = ({ edit }) => {
         const phone = document.querySelector("input[name='phone']").value;
         const email = document.querySelector("input[name='email']").value;
 
-        if (
-            name === "" ||
-            description === "" ||
-            website === "" ||
-            regLink === "" ||
-            !host
-        ) {
+        const reqList = ["name", "description", "website", "reg-link"];
+        !indi ? reqList.push("institute") : console.log("indi");
+        if (!validate(reqList)) {
             notyf.error("Please fill all required fields");
             return;
         } else {
