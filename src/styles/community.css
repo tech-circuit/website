@@ -164,7 +164,7 @@
     background: #4678f9;
 }
 .hide {
-    display: none;
+    display: none !important;
 }
 .user {
     width: 23%;

@@ -410,6 +410,11 @@ select.mod-input {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.171);
     z-index: 100;
 }
+.select-user .css-q3o1l2 {
+    position: static;
+    margin-top: 9vh;
+    width: 4vh;
+}
 .user-cell {
     display: flex;
     width: 100%;

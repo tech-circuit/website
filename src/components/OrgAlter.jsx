@@ -189,12 +189,67 @@ const OrgAlter = ({ edit }) => {
         }
     };
 
+    const getMatches = (input) => {
+        let matchList = [];
+
+        for (let i = 0; i < users.length; i++) {
+            if (
+                users[i].name
+                    .trim()
+                    .toLowerCase()
+                    .indexOf(input.toLowerCase()) !== -1
+            ) {
+                matchList.push(users[i].name.trim().toLowerCase());
+            }
+        }
+
+        return matchList;
+    };
+
+    const search = () => {
+        const searchVal = document
+            .querySelector("#addModName")
+            .value.trim()
+            .toLowerCase();
+
+        let matches = getMatches(searchVal);
+
+        if (searchVal === "") {
+            for (let cell of document.querySelectorAll(".user-cell")) {
+                cell.classList.remove("hide");
+            }
+        } else {
+            for (let cell of document.querySelectorAll(".user-cell")) {
+                cell.classList.add("hide");
+            }
+
+            for (let match of matches) {
+                for (let { name } of users) {
+                    if (match === name.trim().toLowerCase()) {
+                        for (let cellName of document.querySelectorAll(
+                            ".user-cell h4"
+                        )) {
+                            if (
+                                cellName.textContent.trim().toLowerCase() ===
+                                name.trim().toLowerCase()
+                            ) {
+                                cellName.parentElement.classList.remove("hide");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    };
+
     const addPerson = () => {
         const pos = document.querySelector("#addModPos").value;
-        const personName = document.querySelector("#addModName").value;
-        const person = users.find((user) => user.name === personName);
+        const personId = document
+            .querySelector("#addModName")
+            .getAttribute("data-user");
+        const person = users.find((user) => user._id === personId);
 
-        if (person._id) {
+        if (person) {
             pos === "admin"
                 ? setAdmins([...admins, person._id])
                 : pos === "member"
@@ -206,9 +261,10 @@ const OrgAlter = ({ edit }) => {
 
             setPersons([...persons, personForUI]);
             document.querySelector("#addModName").value = "";
+            document.querySelector("#addModName").setAttribute("data-user", "");
             document.querySelector("#addModPos").value = "member";
         } else {
-            notyf.error("Please fill all required fields");
+            notyf.error("Please select a user");
         }
     };
 
@@ -458,8 +514,8 @@ const OrgAlter = ({ edit }) => {
                                 placeholder="Name"
                                 className="mod-input"
                                 type="text"
-                                readOnly
                                 style={{ cursor: "pointer" }}
+                                onChange={search}
                                 onClick={() => setSelect(!select)}
                             />
                             {select ? (
