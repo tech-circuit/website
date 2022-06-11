@@ -211,9 +211,6 @@ const Component = ({ pfp, user }) => {
     };
 
     useEffect(() => {
-        if (user.skills.length !== 0 || user.links.length !== 0)
-            window.location.href = "/";
-
         const getOrgs = async () => {
             const res = await fetch(
                 `${BASE_API_URL}/org?access_token=${localStorage.getItem(
