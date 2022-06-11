@@ -338,14 +338,14 @@
     width: 30%;
     margin-top: 5vh;
 }
-.finish-btns a {
+.finish-btns button {
     color: #4678f9;
     padding: 1vh 3vw;
     border: 1px solid #4678f9;
     border-radius: 5px;
     transition: all 0.3s;
 }
-.finish-btns a:hover {
+.finish-btns button:hover {
     background-color: #4678f9;
     color: #fff;
 }

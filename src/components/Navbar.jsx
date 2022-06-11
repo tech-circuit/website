@@ -26,8 +26,13 @@ const Navbar = () => {
                         setLoggedIn(true);
                     }
                     const pfpJson = await res.json();
-
                     setpfpUrl(pfpJson.user.pfp_url);
+                    const { setUp } = pfpJson.user;
+                    if (!setUp) {
+                        window.location.href.split("/").pop() === "sign-up"
+                            ? console.log("Please sign up")
+                            : (window.location.href = "/sign-up");
+                    }
                 })
                 .catch((err) => console.log(err));
         }
@@ -66,12 +71,18 @@ const Navbar = () => {
                 "Content-type": "application/json; charset=UTF-8",
             },
         })
-            .then((response) => {
+            .then(async (response) => {
                 setLoggedIn(true);
                 setpfpUrl(`${BASE_API_URL}/user/pfp?access_token=${authToken}`);
-                setTimeout(() => {
-                    window.location.reload();
-                }, 100);
+                const res = await response.json();
+                const { setUp } = res.user;
+                if (!setUp) {
+                    window.location.href = "/sign-up";
+                } else {
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 100);
+                }
             })
             .catch((error) => console.log(error));
     };

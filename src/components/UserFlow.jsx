@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import notyf from "../tcNotyf";
 import BASE_API_URL from "../constants";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import "../styles/user-flow.css";
 import getLinkLogo from "../getLinkLogo";
 import {
@@ -183,6 +183,30 @@ const Component = ({ pfp, user }) => {
             setPage(page + 1);
         } else {
             notyf.error("Some Error has Occurred");
+        }
+    };
+
+    const finish = async (work) => {
+        const updatedJson = await fetch(
+            `${BASE_API_URL}/user/update?access_token=${localStorage.getItem(
+                "authToken"
+            )}`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    setUp: true,
+                }),
+            }
+        );
+        const updated = await updatedJson.json();
+
+        if (updated.done) {
+            work
+                ? (window.location.href = "/work")
+                : (window.location.href = "/");
         }
     };
 
@@ -368,7 +392,7 @@ const Component = ({ pfp, user }) => {
                             type="text"
                             name="username"
                             placeholder="theVedanta_1"
-                            value={user.username}
+                            defaultValue={user.username}
                         />
                     </div>
                     <div className="flow-basic-unit">
@@ -377,7 +401,7 @@ const Component = ({ pfp, user }) => {
                             type="text"
                             name="title"
                             placeholder="Web Developer, Designer, Blockchain Dev"
-                            value={user.title}
+                            defaultValue={user.title}
                         />
                     </div>
                     <div className="flow-double-cont">
@@ -499,7 +523,7 @@ const Component = ({ pfp, user }) => {
                     </div>
                     {links.map((link) => {
                         return (
-                            <div className="link-unit">
+                            <div className="link-unit" key={link}>
                                 {linksObj[link]}
                                 <input
                                     maxLength="200"
@@ -540,7 +564,7 @@ const Component = ({ pfp, user }) => {
                     {orgs
                         ? orgs.map((org) => {
                               return (
-                                  <div className="com">
+                                  <div className="com" key={org._id}>
                                       <img src={org.logo_url} alt="alt" />
                                       <h2>{org.name}</h2>
                                       <p>
@@ -604,10 +628,13 @@ const Component = ({ pfp, user }) => {
                 </p>
 
                 <div className="finish-btns">
-                    <Link to="/">Skip for now</Link>
-                    <Link className="finish-create" to="/">
+                    <button onClick={() => finish(false)}>Skip for now</button>
+                    <button
+                        className="finish-create"
+                        onClick={() => finish(true)}
+                    >
                         Create
-                    </Link>
+                    </button>
                 </div>
             </div>
 
