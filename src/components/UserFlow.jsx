@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import notyf from "../tcNotyf";
 import BASE_API_URL from "../constants";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import "../styles/user-flow.css";
 import getLinkLogo from "../getLinkLogo";
 import {
@@ -222,30 +222,6 @@ const Component = ({ pfp, user }) => {
         }
     };
 
-    const finish = async (work) => {
-        const updatedJson = await fetch(
-            `${BASE_API_URL}/user/update?access_token=${localStorage.getItem(
-                "authToken"
-            )}`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    setUp: true,
-                }),
-            }
-        );
-        const updated = await updatedJson.json();
-
-        if (updated.done) {
-            work
-                ? (window.location.href = "/work")
-                : (window.location.href = "/");
-        }
-    };
-
     useEffect(() => {
         const getOrgs = async () => {
             const res = await fetch(
@@ -310,6 +286,7 @@ const Component = ({ pfp, user }) => {
                 skills: skills,
                 links: links,
                 pfp_url: pfpLink === "" ? user.pfp_url : pfpLink,
+                setUp: true,
             };
             const submittedJSon = await fetch(
                 `${BASE_API_URL}/user/update?access_token=${localStorage.getItem(
@@ -677,13 +654,10 @@ const Component = ({ pfp, user }) => {
                 </p>
 
                 <div className="finish-btns">
-                    <button onClick={() => finish(false)}>Skip for now</button>
-                    <button
-                        className="finish-create"
-                        onClick={() => finish(true)}
-                    >
+                    <Link to="/">Skip for now</Link>
+                    <Link to="/work" className="finish-create">
                         Create
-                    </button>
+                    </Link>
                 </div>
             </div>
 
