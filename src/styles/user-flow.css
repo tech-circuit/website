@@ -190,12 +190,23 @@
 }
 .basic-btn-hold {
     display: flex;
-    width: 30%;
+    width: 60%;
     margin-top: 2vh;
     justify-content: space-between;
 }
 .basic-btn-hold button {
     font-size: 1vw;
+}
+.pfp-edit,
+.pfp-delete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.pfp-edit svg,
+.pfp-delete svg {
+    margin-right: 1vw;
 }
 .pfp-edit {
     color: #4678f9;
@@ -364,4 +375,16 @@
 .exit-flow-t {
     transform: translateY(-110%);
     box-shadow: none;
+}
+.load-cont {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.load-cont .css-q3o1l2 {
+    position: static;
+    width: 80px !important;
+    height: 80px !important;
 }

@@ -11,12 +11,15 @@ import {
     FaPen,
     FaTrashAlt,
 } from "react-icons/fa";
+import { ClipLoader } from "react-spinners";
+import { shake, validate } from "../validate";
 
 const Component = ({ pfp, user }) => {
     const [page, setPage] = useState(1);
     const [skills, setSkills] = useState([]);
     const [links, setLinks] = useState([]);
     const [linksObj, setLinksObj] = useState({});
+    const [usernameTaken, setUsernameTaken] = useState(false);
     const tcSkills = [
         "Web Dev",
         "UI Design",
@@ -186,6 +189,39 @@ const Component = ({ pfp, user }) => {
         }
     };
 
+    const checkUsernameTaken = async () => {
+        try {
+            const username = document
+                .querySelector("input[name='username']")
+                .value.trim();
+            const usernameUpdateJson = await fetch(
+                `${BASE_API_URL}/user/update?access_token=${localStorage.getItem(
+                    "authToken"
+                )}`,
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username }),
+                }
+            );
+            const usernameUpdated = await usernameUpdateJson.json();
+
+            console.log(usernameUpdated.done);
+
+            if (usernameUpdated.done) {
+                setUsernameTaken(false);
+            } else {
+                setPage(1);
+                setUsernameTaken(true);
+                shake(document.querySelector("input[name='username']"));
+            }
+        } catch (err) {
+            setPage(1);
+            setUsernameTaken(true);
+            shake(document.querySelector("input[name='username']"));
+        }
+    };
+
     const finish = async (work) => {
         const updatedJson = await fetch(
             `${BASE_API_URL}/user/update?access_token=${localStorage.getItem(
@@ -292,6 +328,14 @@ const Component = ({ pfp, user }) => {
             }
         };
 
+        if (page === 2) {
+            if (!validate(["username", "title", "about"], false)) {
+                setPage(1);
+            } else {
+                checkUsernameTaken();
+            }
+        }
+
         if (page === 4) {
             document.querySelector(".next-page").textContent = "Done";
         } else {
@@ -300,8 +344,6 @@ const Component = ({ pfp, user }) => {
 
         if (page === 5) {
             document.querySelector(".bottom-nav").classList.add("exit-flow");
-            // document.querySelector(".top-nav").classList.add("exit-flow-t");
-
             submit();
         }
         if (page === 6) setPage(5);
@@ -384,19 +426,28 @@ const Component = ({ pfp, user }) => {
                         <div className="flow-email">{user.email}</div>
                     </div>
                     <div className="flow-basic-unit">
-                        <label htmlFor="username">Username</label>
+                        <label htmlFor="username">Username *</label>
                         <input
                             type="text"
                             name="username"
+                            required
                             placeholder="theVedanta_1"
                             defaultValue={user.username}
                         />
+                        {usernameTaken ? (
+                            <p style={{ color: "#ff6b6b" }}>
+                                Username is taken
+                            </p>
+                        ) : (
+                            ""
+                        )}
                     </div>
                     <div className="flow-basic-unit">
-                        <label htmlFor="title">Title</label>
+                        <label htmlFor="title">Title *</label>
                         <input
                             type="text"
                             name="title"
+                            required
                             placeholder="Web Developer, Designer, Blockchain Dev"
                             defaultValue={user.title}
                         />
@@ -404,20 +455,21 @@ const Component = ({ pfp, user }) => {
                     <div className="flow-double-cont">
                         <div className="flow-basic-unit">
                             <label htmlFor="country">Country</label>
-                            <select name="country">
+                            <select name="country" required>
                                 <option value="">None</option>
                             </select>
                         </div>
                         <div className="flow-basic-unit">
                             <label htmlFor="state">State</label>
-                            <select name="state">
+                            <select name="state" required>
                                 <option value="">None</option>
                             </select>
                         </div>
                     </div>
                     <div className="flow-basic-unit">
-                        <label htmlFor="about">About me</label>
+                        <label htmlFor="about">About me *</label>
                         <textarea
+                            required
                             type="text"
                             name="about"
                             defaultValue={user.about ? user.about : ""}
@@ -662,34 +714,40 @@ const UserFlow = () => {
     const [pfp, setPfp] = useState(false);
     const [auth, setAuth] = useState("undefined");
     const [user, setUser] = useState({});
-    const authToken = localStorage.getItem("authToken");
-
-    const getPfp = async () => {
-        try {
-            const pfpData = await fetch(
-                `${BASE_API_URL}/user/info?access_token=${authToken}`
-            );
-            const pfpJson = await pfpData.json();
-
-            if (pfpJson.user) {
-                setPfp(pfpJson.user.pfp_url);
-                setUser(pfpJson.user);
-                setAuth(true);
-            } else {
-                setAuth(false);
-            }
-        } catch (err) {
-            notyf.error("Some Error Occured");
-            setAuth(false);
-        }
-    };
 
     useEffect(() => {
+        const getPfp = async () => {
+            try {
+                const pfpData = await fetch(
+                    `${BASE_API_URL}/user/info?access_token=${localStorage.getItem(
+                        "authToken"
+                    )}`
+                );
+                const pfpJson = await pfpData.json();
+
+                if (pfpJson.user) {
+                    setPfp(pfpJson.user.pfp_url);
+                    setUser(pfpJson.user);
+                    setAuth(true);
+                    pfpJson.user.setUp
+                        ? (window.location.href = "/404")
+                        : console.log("Please sign up");
+                } else {
+                    setAuth(false);
+                }
+            } catch (err) {
+                notyf.error("Some Error Occured");
+                setAuth(false);
+            }
+        };
+
         getPfp();
-    });
+    }, []);
 
     return auth === "undefined" ? (
-        ""
+        <div className="load-cont">
+            <ClipLoader />
+        </div>
     ) : auth === true ? (
         <Component pfp={pfp} user={user} />
     ) : (

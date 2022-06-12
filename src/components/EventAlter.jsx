@@ -9,7 +9,7 @@ import Tags from "./utility/Tags";
 import Fields from "./utility/Fields";
 import { Country, State } from "./utility/Options";
 import checkLoggedIn from "./utility/checkLoggedIn";
-import validate from "../validate";
+import { validate } from "../validate";
 
 const EventAlter = ({ edit }) => {
     const [links, setLinks] = useState([]);

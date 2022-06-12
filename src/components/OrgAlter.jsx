@@ -7,7 +7,7 @@ import getLinkLogo from "../getLinkLogo";
 import checkLoggedIn from "./utility/checkLoggedIn";
 import { useParams } from "react-router-dom";
 import SelectUser from "./utility/SelectUser";
-import validate from "../validate";
+import { validate } from "../validate";
 
 const OrgAlter = ({ edit }) => {
     const [links, setLinks] = useState([]);
