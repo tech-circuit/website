@@ -7,11 +7,15 @@ import ProjectCard from "./utility/ProjectCard";
 import notyf from "../tcNotyf";
 import WorkCarousel from "./utility/WorkCarousel";
 import FullProject from "./utility/FullProject";
+import Search from "./utility/Search";
 
 const Work = () => {
     // const [workSort, setWorkSort] = useState("Coding");
     const [sortHover, setSortHover] = useState(false);
     const [projects, setProjects] = useState([]);
+    const [searchProjects, setSearchProjects] = useState([]);
+    const [searching, setSearching] = useState(false);
+    const [searchLoading, setSearchLoading] = useState(false);
     const sortRef = useRef("sort");
     const [fullView, setfullView] = useState(false);
     const [id, setId] = useState("");
@@ -58,6 +62,35 @@ const Work = () => {
         }
     };
 
+    const search = async (inp) => {
+        if (inp !== "") {
+            setSearchLoading(true);
+            const resJson = await fetch(`${BASE_API_URL}/project/search`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ search: inp }),
+            });
+            const res = await resJson.json();
+
+            if (res.projects) {
+                setSearchProjects(res.projects);
+                setSearching(true);
+                res.projects.length === 0 && notyf.error("No results");
+            } else {
+                notyf.error("Some Error occurred");
+                setSearching(false);
+            }
+
+            setSearchLoading(false);
+        } else {
+            setSearchLoading(false);
+            setSearchProjects([]);
+            setSearching(false);
+        }
+    };
+
     useEffect(() => {
         getProjects();
         getId();
@@ -97,10 +130,11 @@ const Work = () => {
             </header>
             <header className="head-2 eventHead container eventHead2 workHead">
                 <div className="eventSearch">
-                    <div className="input">
-                        <img src="/assets/magnifying-glass.svg" alt="alt" />
-                        <input type="text" placeholder="Search" />
-                    </div>
+                    <Search
+                        func={search}
+                        loading={searchLoading}
+                        placeholder="Search for amazing projects"
+                    />
                     <button
                         onMouseEnter={() => setSortHover(true)}
                         onMouseLeave={() => setSortHover(false)}
@@ -140,78 +174,27 @@ const Work = () => {
                     Popular & Trending&nbsp;<a href="/">View All</a>
                 </h1>
                 <div className="workCards">
-                    {projects.map((project) => {
-                        return (
-                            <ProjectCard
-                                project={project}
-                                view={view}
-                                key={project._id}
-                                id={id}
-                            />
-                        );
-                    })}
-                </div>
-            </section>
-
-            <section className="projects container">
-                <h1>
-                    C0D1NG5&nbsp;<a href="/">View All</a>
-                </h1>
-                {/* <div className="workSort">
-                    <button
-                        className={
-                            workSort === "Coding" ? "workSortActive" : ""
-                        }
-                        onClick={(e) => sortWork(e)}
-                    >
-                        Coding
-                    </button>
-                    <button
-                        className={workSort === "UI" ? "workSortActive" : ""}
-                        onClick={(e) => sortWork(e)}
-                    >
-                        UI
-                    </button>
-                    <button
-                        className={
-                            workSort === "Design" ? "workSortActive" : ""
-                        }
-                        onClick={(e) => sortWork(e)}
-                    >
-                        Design
-                    </button>
-                    <button
-                        className={workSort === "MOm" ? "workSortActive" : ""}
-                        onClick={(e) => sortWork(e)}
-                    >
-                        MOm
-                    </button>
-                    <button
-                        className={workSort === "Dard" ? "workSortActive" : ""}
-                        onClick={(e) => sortWork(e)}
-                    >
-                        Dard
-                    </button>
-                    <button
-                        className={
-                            workSort === "Dasness" ? "workSortActive" : ""
-                        }
-                        onClick={(e) => sortWork(e)}
-                    >
-                        Dasness
-                    </button>
-                </div> */}
-                <div className="workCards">
-                    {projects.map((project) => {
-                        return (
-                            <ProjectCard
-                                project={project}
-                                view={view}
-                                key={project._id}
-                                id={id}
-                            />
-                        );
-                    })}
+                    {searching
+                        ? searchProjects.map((project) => {
+                              return (
+                                  <ProjectCard
+                                      project={project}
+                                      view={view}
+                                      key={project._id}
+                                      id={id}
+                                  />
+                              );
+                          })
+                        : projects.map((project) => {
+                              return (
+                                  <ProjectCard
+                                      project={project}
+                                      view={view}
+                                      key={project._id}
+                                      id={id}
+                                  />
+                              );
+                          })}
                 </div>
             </section>
 
