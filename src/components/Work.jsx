@@ -8,14 +8,15 @@ import notyf from "../tcNotyf";
 import WorkCarousel from "./utility/WorkCarousel";
 import FullProject from "./utility/FullProject";
 import Search from "./utility/Search";
+import Filter from "./utility/Filter";
 
 const Work = () => {
-    // const [workSort, setWorkSort] = useState("Coding");
-    const [sortHover, setSortHover] = useState(false);
+    // const [workSort, setWorkSort] = useState("Coding")
     const [projects, setProjects] = useState([]);
     const [searchProjects, setSearchProjects] = useState([]);
     const [searching, setSearching] = useState(false);
     const [searchLoading, setSearchLoading] = useState(false);
+    const [fields, setFields] = useState([]);
     const sortRef = useRef("sort");
     const [fullView, setfullView] = useState(false);
     const [id, setId] = useState("");
@@ -92,6 +93,39 @@ const Work = () => {
     };
 
     useEffect(() => {
+        const getFieldProjects = async () => {
+            setSearchLoading(true);
+            const fieldProjectsJson = await fetch(
+                `${BASE_API_URL}/project/field`,
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ field: fields[0] }),
+                }
+            );
+            const fieldProjects = await fieldProjectsJson.json();
+
+            if (fieldProjects.projects) {
+                setSearchProjects(fieldProjects.projects);
+                setSearching(true);
+            } else {
+                notyf.error("Some Error occurred");
+                setSearching(false);
+            }
+
+            setSearchLoading(false);
+        };
+
+        if (fields.length !== 0) {
+            getFieldProjects();
+        } else {
+            setSearchLoading(false);
+            setSearchProjects([]);
+            setSearching(false);
+        }
+    }, [fields]);
+
+    useEffect(() => {
         getProjects();
         getId();
     }, []);
@@ -135,31 +169,7 @@ const Work = () => {
                         loading={searchLoading}
                         placeholder="Search for amazing projects"
                     />
-                    <button
-                        onMouseEnter={() => setSortHover(true)}
-                        onMouseLeave={() => setSortHover(false)}
-                        className="eventFilter"
-                    >
-                        <img
-                            style={
-                                sortHover
-                                    ? { display: "inline" }
-                                    : { display: "none" }
-                            }
-                            src="/assets/filter2.svg"
-                            alt="alt"
-                        />
-                        <img
-                            style={
-                                sortHover
-                                    ? { display: "none" }
-                                    : { display: "inline" }
-                            }
-                            src="/assets/filter.svg"
-                            alt="alt"
-                        />
-                        &nbsp;&nbsp;&nbsp;&nbsp;Filter Categories
-                    </button>
+                    <Filter fields={fields} setFields={setFields} />
                 </div>
                 <div className="addEvent">
                     <a href="/create-project">
@@ -169,34 +179,41 @@ const Work = () => {
                 </div>
             </header>
 
-            <section className="projects container firstProjSec">
-                <h1>
-                    Popular & Trending&nbsp;<a href="/">View All</a>
-                </h1>
-                <div className="workCards">
-                    {searching
-                        ? searchProjects.map((project) => {
-                              return (
-                                  <ProjectCard
-                                      project={project}
-                                      view={view}
-                                      key={project._id}
-                                      id={id}
-                                  />
-                              );
-                          })
-                        : projects.map((project) => {
-                              return (
-                                  <ProjectCard
-                                      project={project}
-                                      view={view}
-                                      key={project._id}
-                                      id={id}
-                                  />
-                              );
-                          })}
-                </div>
-            </section>
+            {searching ? (
+                <section className="projects container firstProjSec">
+                    <h1>Top results</h1>
+                    <div className="workCards">
+                        {searchProjects.map((project) => {
+                            return (
+                                <ProjectCard
+                                    project={project}
+                                    view={view}
+                                    key={project._id}
+                                    id={id}
+                                />
+                            );
+                        })}
+                    </div>
+                </section>
+            ) : (
+                <section className="projects container firstProjSec">
+                    <h1>
+                        Popular & Trending&nbsp;<a href="/">View All</a>
+                    </h1>
+                    <div className="workCards">
+                        {projects.map((project) => {
+                            return (
+                                <ProjectCard
+                                    project={project}
+                                    view={view}
+                                    key={project._id}
+                                    id={id}
+                                />
+                            );
+                        })}
+                    </div>
+                </section>
+            )}
 
             <section
                 className={fullView ? "fullEvent fullEventActive" : "fullEvent"}

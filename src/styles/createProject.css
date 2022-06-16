@@ -57,11 +57,11 @@
 }
 .field-box {
     position: absolute;
-    top: 110%;
-    left: 20%;
+    top: 200%;
+    left: 0;
     opacity: 0;
     pointer-events: none;
-    z-index: 10;
+    z-index: 20;
     background-color: #fff;
     border: 1px solid #c4c4c4;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -73,8 +73,11 @@
     align-items: flex-end;
     transition: all 0.4s;
 }
+.filter-hold .field-box {
+    width: 30vw;
+}
 .field-box-active {
-    left: 0;
+    top: 110%;
     opacity: 1;
     pointer-events: all;
 }

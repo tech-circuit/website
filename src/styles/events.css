@@ -12,9 +12,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-.eventHead * {
-    filter: drop-shadow(0px 4px 22px rgba(0, 0, 0, 0.25));
+    overflow: visible;
 }
 .eventSearch {
     display: flex;
@@ -22,7 +20,7 @@
     align-items: center;
     width: 56%;
 }
-.eventSearch button {
+.eventFilter {
     padding: 1.4vh 2vw;
     color: #fff;
     background: transparent;
@@ -525,4 +523,20 @@ nav {
 
 .eventAddInfo > * {
     width: 50%;
+}
+
+/* FILTER */
+.filter-hold {
+    position: relative;
+}
+.eventFilter {
+    display: flex;
+    align-items: center;
+}
+.eventFilter .filter-icon {
+    font-size: 1.4vw;
+}
+.eventFilter:hover {
+    background: #fff;
+    color: #29313d;
 }
