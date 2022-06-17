@@ -5,6 +5,7 @@ import notyf from "../tcNotyf";
 import UserCard from "./utility/UserCard";
 import OrgCard from "./utility/OrgCard";
 import { Link } from "react-router-dom";
+import Search from "./utility/Search";
 
 const Community = () => {
     document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
@@ -12,6 +13,9 @@ const Community = () => {
     const [users, setUsers] = useState([]);
     const [orgs, setOrgs] = useState([]);
     const [id, setId] = useState("");
+    const [searchData, setSearchData] = useState([]);
+    const [searching, setSearching] = useState(false);
+    const [searchLoading, setSearchLoading] = useState(false);
 
     // document.addEventListener("scroll", () => {
     //   if (document.querySelector(".comSearch")) {
@@ -28,6 +32,38 @@ const Community = () => {
         eve.target.classList.add("sortComAct");
         setPage(page === "orgs" ? "users" : "orgs");
         window.scrollTo(0, 0);
+    };
+
+    const search = async (inp) => {
+        if (inp !== "") {
+            setSearchLoading(true);
+            const resJson = await fetch(
+                `${BASE_API_URL}/${page === "orgs" ? "org" : "user"}/search`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ search: inp }),
+                }
+            );
+            const res = await resJson.json();
+
+            if (res.data) {
+                setSearchData(res.data);
+                setSearching(true);
+                res.data.length === 0 && notyf.error("No results");
+            } else {
+                notyf.error("Some Error occurred");
+                setSearching(false);
+            }
+
+            setSearchLoading(false);
+        } else {
+            setSearchLoading(false);
+            setSearchData([]);
+            setSearching(false);
+        }
     };
 
     useEffect(() => {
@@ -118,11 +154,16 @@ const Community = () => {
 
             <div className="comSearch container">
                 <div className="comLeft">
-                    <div className="input">
+                    {/* <div className="input">
                         <img src="/assets/magnifying-glass.svg" alt="alt" />
                         <input type="text" placeholder="Search Organisations" />
                     </div>
-                    <button>Sort by Region</button>
+                    <button>Sort by Region</button> */}
+                    <Search
+                        func={search}
+                        loading={searchLoading}
+                        placeholder={`Search for ${page}`}
+                    />
                 </div>
                 <div className="comRight">
                     <Link
@@ -135,25 +176,31 @@ const Community = () => {
                 </div>
             </div>
 
-            <div
-                className={
-                    page === "orgs" ? "coms container" : "coms container hide"
-                }
-            >
-                {orgs.map((org) => {
-                    return <OrgCard key={org._id} org={org} id={id} />;
-                })}
-            </div>
-
-            <div
-                className={
-                    page === "users" ? "coms container" : "coms container hide"
-                }
-            >
-                {users.map((user) => {
-                    return <UserCard key={user._id} user={user} />;
-                })}
-            </div>
+            {page === "orgs" ? (
+                <div className={"coms container"}>
+                    {searching
+                        ? searchData.map((org) => {
+                              return (
+                                  <OrgCard key={org._id} org={org} id={id} />
+                              );
+                          })
+                        : orgs.map((org) => {
+                              return (
+                                  <OrgCard key={org._id} org={org} id={id} />
+                              );
+                          })}
+                </div>
+            ) : (
+                <div className={"coms container"}>
+                    {searching
+                        ? searchData.map((user) => {
+                              return <UserCard key={user._id} user={user} />;
+                          })
+                        : users.map((user) => {
+                              return <UserCard key={user._id} user={user} />;
+                          })}
+                </div>
+            )}
         </>
     );
 };

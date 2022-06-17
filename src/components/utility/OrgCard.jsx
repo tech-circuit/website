@@ -2,9 +2,9 @@ import "../../styles/community.css";
 import getLinkogo from "../../getLinkLogo";
 import { Link } from "react-router-dom";
 
-const OrgCard = ({ org, id, key }) => {
+const OrgCard = ({ org, id }) => {
     return (
-        <div className="com" key={key}>
+        <div className="com">
             <img src={org.logo_url} alt="alt" />
             <h2>{org.name}</h2>
             <p>{org.isIndependent ? "Independent" : org.institute}</p>

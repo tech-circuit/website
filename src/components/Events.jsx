@@ -7,17 +7,52 @@ import { FaPlus, FaChevronLeft, FaShareAlt } from "react-icons/fa";
 import EventCard from "./utility/EventCard";
 import BASE_API_URL from "../constants";
 import notyf from "../tcNotyf";
+import Search from "./utility/Search";
+import Filter from "./utility/Filter";
 
 const Events = () => {
     const [fullView, setfullView] = useState(false);
     const [events, setEvents] = useState([]);
     const [id, setId] = useState("");
+    const [searchEvents, setSearchEvents] = useState([]);
+    const [searching, setSearching] = useState(false);
+    const [searchLoading, setSearchLoading] = useState(false);
+    const [fields, setFields] = useState([]);
 
     const view = () => {
         setfullView(true);
     };
     const close = () => {
         setfullView(false);
+    };
+
+    const search = async (inp) => {
+        if (inp !== "") {
+            setSearchLoading(true);
+            const resJson = await fetch(`${BASE_API_URL}/event/search`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ search: inp }),
+            });
+            const res = await resJson.json();
+
+            if (res.events) {
+                setSearchEvents(res.events);
+                setSearching(true);
+                res.events.length === 0 && notyf.error("No results");
+            } else {
+                notyf.error("Some Error occurred");
+                setSearching(false);
+            }
+
+            setSearchLoading(false);
+        } else {
+            setSearchLoading(false);
+            setSearchEvents([]);
+            setSearching(false);
+        }
     };
 
     useEffect(() => {
@@ -46,6 +81,36 @@ const Events = () => {
         getEvents();
     }, []);
 
+    useEffect(() => {
+        const getFieldEvents = async () => {
+            setSearchLoading(true);
+            const fieldEventsJson = await fetch(`${BASE_API_URL}/event/field`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ field: fields[0] }),
+            });
+            const fieldEvents = await fieldEventsJson.json();
+
+            if (fieldEvents.events) {
+                setSearchEvents(fieldEvents.events);
+                setSearching(true);
+            } else {
+                notyf.error("Some Error occurred");
+                setSearching(false);
+            }
+
+            setSearchLoading(false);
+        };
+
+        if (fields.length !== 0) {
+            getFieldEvents();
+        } else {
+            setSearchLoading(false);
+            setSearchEvents([]);
+            setSearching(false);
+        }
+    }, [fields]);
+
     return (
         <>
             <div
@@ -65,14 +130,12 @@ const Events = () => {
             </header>
             <header className="eventHead2 head-2 eventHead container">
                 <div className="eventSearch">
-                    <div className="input">
-                        <img src="/assets/magnifying-glass.svg" alt="alt" />
-                        <input type="text" placeholder="Search" />
-                    </div>
-                    <button className="eventFilter">
-                        <img src="/assets/filter.svg" alt="alt" />
-                        &nbsp;&nbsp;&nbsp;&nbsp;Filter Region
-                    </button>
+                    <Search
+                        func={search}
+                        loading={searchLoading}
+                        placeholder="Search for events"
+                    />
+                    <Filter fields={fields} setFields={setFields} />
                 </div>
                 <div className="addEvent">
                     <a href="/create-event">
@@ -82,77 +145,115 @@ const Events = () => {
                 </div>
             </header>
 
-            <section className="showcase container">
-                <Carousel
-                    className="eventCarousel"
-                    interval="3000"
-                    autoPlay={true}
-                    showArrows={true}
-                    infiniteLoop={true}
-                    showThumbs={false}
-                    showStatus={false}
-                >
-                    <div>
-                        <div className="imgHold">
-                            <img src="/assets/sample-banner.jpg" alt="alt" />
-                            <div className="imgShadow"></div>
+            {searching ? (
+                <>
+                    <section className="whole-event-hold">
+                        <div className="container">
+                            <h1
+                                id="event-card-heading"
+                                className="search-heading"
+                            >
+                                Top results
+                            </h1>
                         </div>
-                        <div className="event-banner-text">
-                            <h1>Alphanode 2021 by N.O.D.E.</h1>
-                            <h2>
-                                Lorem ipsum dolor inter-school tech event hosted
-                                by DPS Gurgaon{" "}
-                            </h2>
+                        <div className="events container">
+                            {searchEvents.map((event) => {
+                                return (
+                                    <EventCard
+                                        view={view}
+                                        event={event}
+                                        key={event._id}
+                                        id={id}
+                                    />
+                                );
+                            })}
                         </div>
-                    </div>
-                    <div>
-                        <div className="imgHold">
-                            <img src="/assets/sample-banner.jpg" alt="alt" />
-                            <div className="imgShadow"></div>
-                        </div>
-                        <div className="event-banner-text">
-                            <h1>Alphanode 2021 by N.O.D.E.</h1>
-                            <h2>
-                                Lorem ipsum dolor inter-school tech event hosted
-                                by DPS Gurgaon{" "}
-                            </h2>
-                        </div>
-                    </div>
-                    <div>
-                        <div className="imgHold">
-                            <img src="/assets/sample-banner.jpg" alt="alt" />
-                            <div className="imgShadow"></div>
-                        </div>
-                        <div className="event-banner-text">
-                            <h1>Alphanode 2021 by N.O.D.E.</h1>
-                            <h2>
-                                Lorem ipsum dolor inter-school tech event hosted
-                                by DPS Gurgaon
-                            </h2>
-                        </div>
-                    </div>
-                </Carousel>
-            </section>
+                    </section>
+                </>
+            ) : (
+                <>
+                    <section className="showcase container">
+                        <Carousel
+                            className="eventCarousel"
+                            interval="3000"
+                            autoPlay={true}
+                            showArrows={true}
+                            infiniteLoop={true}
+                            showThumbs={false}
+                            showStatus={false}
+                        >
+                            <div>
+                                <div className="imgHold">
+                                    <img
+                                        src="/assets/sample-banner.jpg"
+                                        alt="alt"
+                                    />
+                                    <div className="imgShadow"></div>
+                                </div>
+                                <div className="event-banner-text">
+                                    <h1>Alphanode 2021 by N.O.D.E.</h1>
+                                    <h2>
+                                        Lorem ipsum dolor inter-school tech
+                                        event hosted by DPS Gurgaon{" "}
+                                    </h2>
+                                </div>
+                            </div>
+                            <div>
+                                <div className="imgHold">
+                                    <img
+                                        src="/assets/sample-banner.jpg"
+                                        alt="alt"
+                                    />
+                                    <div className="imgShadow"></div>
+                                </div>
+                                <div className="event-banner-text">
+                                    <h1>Alphanode 2021 by N.O.D.E.</h1>
+                                    <h2>
+                                        Lorem ipsum dolor inter-school tech
+                                        event hosted by DPS Gurgaon{" "}
+                                    </h2>
+                                </div>
+                            </div>
+                            <div>
+                                <div className="imgHold">
+                                    <img
+                                        src="/assets/sample-banner.jpg"
+                                        alt="alt"
+                                    />
+                                    <div className="imgShadow"></div>
+                                </div>
+                                <div className="event-banner-text">
+                                    <h1>Alphanode 2021 by N.O.D.E.</h1>
+                                    <h2>
+                                        Lorem ipsum dolor inter-school tech
+                                        event hosted by DPS Gurgaon
+                                    </h2>
+                                </div>
+                            </div>
+                        </Carousel>
+                    </section>
 
-            <section className="whole-event-hold">
-                <div className="container">
-                    <h1 id="event-card-heading">
-                        Upcoming Events&nbsp;<a href="/">View All</a>
-                    </h1>
-                </div>
-                <div className="events container">
-                    {events.map((event) => {
-                        return (
-                            <EventCard
-                                view={view}
-                                event={event}
-                                key={event._id}
-                                id={id}
-                            />
-                        );
-                    })}
-                </div>
-            </section>
+                    <section className="whole-event-hold">
+                        <div className="container">
+                            <h1 id="event-card-heading">
+                                Upcoming Events&nbsp;<a href="/">View All</a>
+                            </h1>
+                        </div>
+                        <div className="events container">
+                            {events.map((event) => {
+                                return (
+                                    <EventCard
+                                        view={view}
+                                        event={event}
+                                        key={event._id}
+                                        id={id}
+                                    />
+                                );
+                            })}
+                        </div>
+                    </section>
+                </>
+            )}
 
             <section
                 className={fullView ? "fullEvent fullEventActive" : "fullEvent"}

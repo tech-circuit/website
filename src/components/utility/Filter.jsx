@@ -20,7 +20,7 @@ const Filter = ({ fields, setFields }) => {
         <div className="field-hold filter-hold">
             <button className="eventFilter" onClick={() => setActive(!active)}>
                 <IoFilter className="filter-icon" />
-                &nbsp;&nbsp;&nbsp;&nbsp;Filter Region
+                &nbsp;&nbsp;&nbsp;&nbsp;Filter fields
             </button>
 
             <div className={`field-box ${active && "field-box-active"}`}>

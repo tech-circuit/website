@@ -12,7 +12,7 @@ html {
 body {
     width: 100vw;
     overflow: overlay;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 }
 
 img {
