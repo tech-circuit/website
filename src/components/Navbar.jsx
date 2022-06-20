@@ -101,6 +101,16 @@ const Navbar = () => {
         }
     };
 
+    const notif = () => {
+        console.log("coming here");
+        let el = document.getElementsByClassName('notif-card')[0]
+        if (el.style.display !== 'none') {
+            el.style.display = 'none'
+        } else {
+            el.style.display = 'block'
+        }
+    }
+
     return (
         <nav className="container nav">
             <div className="nav-left">
@@ -207,6 +217,15 @@ const Navbar = () => {
             <div className="nav-right">
                 {loggedIn ? (
                     <>
+                        <button
+                            className={
+                                hamActive ? "logout logout-active" : "logout"
+                            }
+                            onClick={notif}
+                            style={{ marginRight: "1.2vw" }}
+                        >
+                            <img src="/assets/bell.png" alt="logout" style={{ width: "1.1vw" }}/>
+                        </button>
                         <a href="/profile">
                             <img
                                 src={
@@ -256,7 +275,83 @@ const Navbar = () => {
                     <div className="line"></div>
                 </div>
             </div>
+            <div className="notif-card">
+                <p>Your notifications</p>
+                <div className="notif-card-body">
+                    <div className="notif">
+                        <div className="left">
+                            <img src="https://github.com/laxyapahuja.png" alt="notif-img" className="notif-img"/>
+                        </div>
+                        <div className="right">
+                            <p>New comment on your post 'Mapcident' by JohnDoe</p>
+                            <p id="time">A day ago</p>
+                        </div>
+                        <hr></hr>
+                    </div>
+                    <div className="notif">
+                        <div className="left">
+                            <img src="https://github.com/laxyapahuja.png" alt="notif-img" className="notif-img"/>
+                        </div>
+                        <div className="right">
+                            <p>New comment on your post 'Mapcident' by JohnDoe</p>
+                            <p id="time">A day ago</p>
+                        </div>
+                        <hr></hr>
+                    </div>
+                    <div className="notif">
+                        <div className="left">
+                            <img src="https://github.com/laxyapahuja.png" alt="notif-img" className="notif-img"/>
+                        </div>
+                        <div className="right">
+                            <p>New comment on your post 'Mapcident' by JohnDoe</p>
+                            <p id="time">A day ago</p>
+                        </div>
+                        <hr></hr>
+                    </div>
+                    <div className="notif">
+                        <div className="left">
+                            <img src="https://github.com/laxyapahuja.png" alt="notif-img" className="notif-img"/>
+                        </div>
+                        <div className="right">
+                            <p>New comment on your post 'Mapcident' by JohnDoe</p>
+                            <p id="time">A day ago</p>
+                        </div>
+                        <hr></hr>
+                    </div>
+                    <div className="notif">
+                        <div className="left">
+                            <img src="https://github.com/laxyapahuja.png" alt="notif-img" className="notif-img"/>
+                        </div>
+                        <div className="right">
+                            <p>New comment on your post 'Mapcident' by JohnDoe</p>
+                            <p id="time">A day ago</p>
+                        </div>
+                        <hr></hr>
+                    </div>
+                    <div className="notif">
+                        <div className="left">
+                            <img src="https://github.com/laxyapahuja.png" alt="notif-img" className="notif-img"/>
+                        </div>
+                        <div className="right">
+                            <p>New comment on your post 'Mapcident' by JohnDoe</p>
+                            <p id="time">A day ago</p>
+                        </div>
+                        <hr></hr>
+                    </div>
+                    <div className="notif">
+                        <div className="left">
+                            <img src="https://github.com/laxyapahuja.png" alt="notif-img" className="notif-img"/>
+                        </div>
+                        <div className="right">
+                            <p>New comment on your post 'Mapcident' by JohnDoe</p>
+                            <p id="time">A day ago</p>
+                        </div>
+                        <hr></hr>
+                    </div>
+                </div>
+            </div>
         </nav>
+        
     );
 };
 
