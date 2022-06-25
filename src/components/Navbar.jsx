@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import BASE_API_URL from "../constants";
+import TimeAgo from "react-timeago";
 const clientId =
     "884360040700-4093n49it73naktrttlljb9ad6ga4jjo.apps.googleusercontent.com";
 
@@ -12,6 +13,7 @@ const Navbar = () => {
     const [hamActive, setHam] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
     const [pfpUrl, setpfpUrl] = useState("");
+    const [notifs, setNotifs] = useState([]);
 
     useEffect(() => {
         setActivePage(location.pathname);
@@ -102,13 +104,27 @@ const Navbar = () => {
     };
 
     const notif = () => {
-        console.log("coming here");
         let el = document.getElementsByClassName('notif-card')[0]
-        if (el.style.display !== 'none') {
+        if (el.style.display === 'none') { // opening the bar
+            if (localStorage.getItem("authToken") !== null) {
+                fetchNotifs()
+            } else {
+                el.style.display = 'block'
+            }
+        } else { // closing the bar
             el.style.display = 'none'
-        } else {
-            el.style.display = 'block'
         }
+    }
+
+    const fetchNotifs = () => {
+        let el = document.getElementsByClassName('notif-card')[0]
+        fetch(`${BASE_API_URL}/notifs?access_token=${localStorage.getItem("authToken")}`)
+        .then(async (res) => {
+            const { notifs } = await res.json()
+            setNotifs(notifs)
+            el.style.display = 'block'
+        })
+        .catch((err) => console.log(err))
     }
 
     return (
@@ -275,83 +291,27 @@ const Navbar = () => {
                     <div className="line"></div>
                 </div>
             </div>
-            <div className="notif-card">
+            <div className="notif-card" style={{ display: 'none' }}>
                 <p>Your notifications</p>
                 <div className="notif-card-body">
-                    <div className="notif">
-                        <div className="left">
-                            <img src="https://github.com/laxyapahuja.png" alt="notif-img" className="notif-img"/>
+                    {notifs.length === 0 ? (
+                        <p id="no-notifs">No notifications</p>
+                    ) : null}
+                    {notifs.map((notif) => (
+                        <div className="notif">
+                            <div className="left">
+                                <img src={notif.meta.img} alt="notif-img" className="notif-img"/>
+                            </div>
+                            <div className="right">
+                                <p>{notif.meta.description}</p>
+                                <p id="time"><TimeAgo date={notif.createdAt} /></p>
+                            </div>
+                            <hr></hr>
                         </div>
-                        <div className="right">
-                            <p>New comment on your post 'Mapcident' by JohnDoe</p>
-                            <p id="time">A day ago</p>
-                        </div>
-                        <hr></hr>
-                    </div>
-                    <div className="notif">
-                        <div className="left">
-                            <img src="https://github.com/laxyapahuja.png" alt="notif-img" className="notif-img"/>
-                        </div>
-                        <div className="right">
-                            <p>New comment on your post 'Mapcident' by JohnDoe</p>
-                            <p id="time">A day ago</p>
-                        </div>
-                        <hr></hr>
-                    </div>
-                    <div className="notif">
-                        <div className="left">
-                            <img src="https://github.com/laxyapahuja.png" alt="notif-img" className="notif-img"/>
-                        </div>
-                        <div className="right">
-                            <p>New comment on your post 'Mapcident' by JohnDoe</p>
-                            <p id="time">A day ago</p>
-                        </div>
-                        <hr></hr>
-                    </div>
-                    <div className="notif">
-                        <div className="left">
-                            <img src="https://github.com/laxyapahuja.png" alt="notif-img" className="notif-img"/>
-                        </div>
-                        <div className="right">
-                            <p>New comment on your post 'Mapcident' by JohnDoe</p>
-                            <p id="time">A day ago</p>
-                        </div>
-                        <hr></hr>
-                    </div>
-                    <div className="notif">
-                        <div className="left">
-                            <img src="https://github.com/laxyapahuja.png" alt="notif-img" className="notif-img"/>
-                        </div>
-                        <div className="right">
-                            <p>New comment on your post 'Mapcident' by JohnDoe</p>
-                            <p id="time">A day ago</p>
-                        </div>
-                        <hr></hr>
-                    </div>
-                    <div className="notif">
-                        <div className="left">
-                            <img src="https://github.com/laxyapahuja.png" alt="notif-img" className="notif-img"/>
-                        </div>
-                        <div className="right">
-                            <p>New comment on your post 'Mapcident' by JohnDoe</p>
-                            <p id="time">A day ago</p>
-                        </div>
-                        <hr></hr>
-                    </div>
-                    <div className="notif">
-                        <div className="left">
-                            <img src="https://github.com/laxyapahuja.png" alt="notif-img" className="notif-img"/>
-                        </div>
-                        <div className="right">
-                            <p>New comment on your post 'Mapcident' by JohnDoe</p>
-                            <p id="time">A day ago</p>
-                        </div>
-                        <hr></hr>
-                    </div>
+                    ))}
                 </div>
             </div>
         </nav>
-        
     );
 };
 
