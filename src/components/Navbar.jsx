@@ -37,7 +37,7 @@ const Navbar = ({ socket }) => {
                 setRead(false)
             }
         }
-    })
+    }, [])
 
     useEffect(() => {
         const idFilterer = (id) => {
