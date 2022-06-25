@@ -55,6 +55,7 @@ const Post = ({ socket }) => {
                 let res = await response.json();
                 if (res.success === true) {
                     updateComments();
+                    console.log(res.receivers)
                     socket.emit('notif', res.receivers);
                 } else {
                     if (res.error === "User not found.") {
