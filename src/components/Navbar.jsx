@@ -7,13 +7,58 @@ import TimeAgo from "react-timeago";
 const clientId =
     "884360040700-4093n49it73naktrttlljb9ad6ga4jjo.apps.googleusercontent.com";
 
-const Navbar = () => {
+const Navbar = ({ socket }) => {
     const location = useLocation();
     const [activePage, setActivePage] = useState(location.pathname);
     const [hamActive, setHam] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
+    const [read, setRead] = useState(true);
     const [pfpUrl, setpfpUrl] = useState("");
     const [notifs, setNotifs] = useState([]);
+
+    if (localStorage.getItem('tcUserID') === null) {
+        fetch(`${BASE_API_URL}/user/info?access_token=${localStorage.getItem("authToken")}`)
+        .then(async (res) => {
+            const response = await res.json()
+            localStorage.setItem('tcUserID', response.user._id)
+            return localStorage.getItem('tcUserID')
+        })
+        .catch((err) => console.log(err))
+    }
+    
+    useEffect(() => {
+        if (localStorage.getItem('tcNotifsRead') === null) {
+            localStorage.setItem('tcNotifsRead', 'true')
+        } else {
+            console.log(localStorage.getItem('tcNotifsRead'));
+            if (localStorage.getItem('tcNotifsRead') === "true") {
+                setRead(true)
+            } else {
+                setRead(false)
+            }
+        }
+    })
+
+    useEffect(() => {
+        const idFilterer = (id) => {
+            let userID = localStorage.getItem('tcUserID')
+            if (id === userID) {
+                console.log("true");
+                // change icon if not bar not open
+                let el = document.getElementsByClassName('notif-card')[0]
+                if (el.style.display === "none") {
+                    setRead(false)
+                    localStorage.setItem('tcNotifsRead', 'false')
+                } else {
+                    fetchNotifs()
+                }
+            } else {
+                console.log("false");
+                // dont change
+            }
+        }
+        socket.on('notif', idFilterer);
+    }, [socket, read])
 
     useEffect(() => {
         setActivePage(location.pathname);
@@ -108,6 +153,8 @@ const Navbar = () => {
         if (el.style.display === 'none') { // opening the bar
             if (localStorage.getItem("authToken") !== null) {
                 fetchNotifs()
+                setRead(true)
+                localStorage.setItem('tcNotifsRead', 'true')
             } else {
                 el.style.display = 'block'
             }
@@ -240,7 +287,7 @@ const Navbar = () => {
                             onClick={notif}
                             style={{ marginRight: "1.2vw" }}
                         >
-                            <img src="/assets/bell.png" alt="logout" style={{ width: "1.1vw" }}/>
+                            <img src={read ? "/assets/bell.png" : "/assets/unread-bell.png"} alt="logout" style={read ? { width: "1.1vw" } : { width: "1.4vw" }}/>
                         </button>
                         <a href="/profile">
                             <img

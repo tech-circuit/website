@@ -22,12 +22,23 @@ import Error from "./components/Error";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import io from 'socket.io-client';
+import { useEffect, useState } from 'react';
+import BASE_API_URL from "./constants";
 
 const App = () => {
+    const [socket, setSocket] = useState(null);
+
+    useEffect(() => {
+        const newSocket = io(`${BASE_API_URL}`);
+        setSocket(newSocket);
+        return () => newSocket.close();
+    }, [setSocket]);
+
     return (
         <Router>
             <ScrollToTop />
-            <Navbar />
+            {socket ? <Navbar socket={socket}/> : null}
             <Switch>
                 <Route exact path="/">
                     <Index />
@@ -95,7 +106,9 @@ const App = () => {
                 <Route exact path="/sign-up">
                     <UserFlow />
                 </Route>
-                <Route exact path="/forum/post/:postId" component={Post} />
+                <Route exact path="/forum/post/:postId">
+                    {socket ? <Post socket={socket}/> : null}
+                </Route>
                 <Route exact path="/user/:userId" component={User} />
                 <Route path="*">
                     <Error />
