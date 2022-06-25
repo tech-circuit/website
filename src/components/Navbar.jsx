@@ -41,6 +41,7 @@ const Navbar = ({ socket }) => {
 
     useEffect(() => {
         const idFilterer = (id) => {
+            console.log("socketIncoming", id)
             let userID = localStorage.getItem('tcUserID')
             if (id === userID) {
                 console.log("true");
