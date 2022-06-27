@@ -1,5 +1,5 @@
 import "../../styles/user.css";
-import getLinkogo from "../../getLinkLogo";
+// import getLinkogo from "../../getLinkLogo";
 // import { FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
