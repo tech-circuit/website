@@ -5,10 +5,12 @@ import { useState, useEffect } from "react";
 import BASE_API_URL from "../constants";
 import notyf from "../tcNotyf";
 import getLinkogo from "../getLinkLogo";
+import MemberCard from "./utility/MemberCard";
 
 const OrgView = () => {
     document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
-    const [org, setOrg] = useState([]);
+    const [org, setOrg] = useState({});
+    const [members, setMembers] = useState([]);
     const { orgId } = useParams();
 
     useEffect(() => {
@@ -30,6 +32,62 @@ const OrgView = () => {
             notyf.error("some error occured");
         }
     }, [orgId]);
+
+    const getUser = async (userId) => {
+        const userDataJson = await fetch(`${BASE_API_URL}/user/id/${userId}`);
+        const userData = await userDataJson.json();
+
+        if (userData.user) {
+            return userData.user
+        } else {
+            console.log("error")
+        }
+    };
+
+    const addPostToMembers = (admins, members, alumni) => {
+        const membersToAdd = [];
+        admins.forEach((admin) => {
+            membersToAdd.push({id: admin, post: "Admin"});
+        }
+        );
+        members.forEach((member) => {
+            membersToAdd.push({id: member, post: "Member"});
+        }
+        );
+        alumni.forEach((alumni) => {
+            membersToAdd.push({id: alumni, post: "Alumni"});
+        }
+        );
+        return membersToAdd;
+    }
+
+    useEffect(() => {
+        if (org.admins) {
+            let allMembers = addPostToMembers(org.admins, org.members, org.alumni);
+            console.log(members.length)
+            if (members.length < allMembers.length) {
+                const membersToInflate = []
+                allMembers.forEach(async (member) => {
+                    let user = await getUser(member.id)
+                    membersToInflate.push({user: user, post: member.post});
+                    if (membersToInflate.length === allMembers.length) {
+                        let sortedList = []
+                        allMembers.forEach(member => {
+                            membersToInflate.forEach(memberToInflate => {
+                                if (memberToInflate.user._id === member.id) {
+                                    sortedList.push(memberToInflate)
+                                    if (sortedList.length === allMembers.length) {
+                                        console.log(sortedList)
+                                        setMembers(sortedList)
+                                    }
+                                }
+                            })
+                        })
+                    }
+                })
+            }
+        }
+    }, [org, members])
 
     return (
         <section className="org-cont">
@@ -93,26 +151,16 @@ const OrgView = () => {
                     </div>
                     <div className="org-div current-mods">
                         <h3>
-                            Current Members (
-                            {org.members ? org.members.length : ""})
+                            Members (
+                            {org.admins ? org.members.length + org.admins.length + org.alumni.length : ""})
                         </h3>
-                        <div>
-                            {org.members
-                                ? org.members
+                        <div className="members">
+                            {members
+                                ? members
                                       .slice(0)
-                                      .reverse()
                                       .map((member) => {
                                           return (
-                                              <div className="mod-div">
-                                                  <img
-                                                      src={member.pfp}
-                                                      alt="alt"
-                                                  />
-                                                  <div className="mod-text">
-                                                      <h4>{member.name}</h4>
-                                                      <p>{member.pos}</p>
-                                                  </div>
-                                              </div>
+                                            <MemberCard key={member.user._id} user={member.user} post={member.post}/>
                                           );
                                       })
                                 : ""}

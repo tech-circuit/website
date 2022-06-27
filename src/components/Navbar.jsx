@@ -153,9 +153,9 @@ const Navbar = ({ socket }) => {
         let el = document.getElementsByClassName('notif-card')[0]
         if (el.style.display === 'none') { // opening the bar
             if (localStorage.getItem("authToken") !== null) {
-                fetchNotifs()
                 setRead(true)
                 localStorage.setItem('tcNotifsRead', 'true')
+                fetchNotifs()
             } else {
                 el.style.display = 'block'
             }
@@ -173,6 +173,22 @@ const Navbar = ({ socket }) => {
             el.style.display = 'block'
         })
         .catch((err) => console.log(err))
+    }
+
+    const notifLinkGenerator = (notif) => {
+        if (notif.type === "comment") {
+            if (notif.typeDetails.type === "project") {
+                return `/project/${notif.typeDetails.typeID}`
+            } else if (notif.typeDetails.type === "post") {
+                return `/forum/post/${notif.typeDetails.typeID}`
+            }
+        } else if (notif.type === "request") {
+            if (notif.typeDetails.type === "orgJoin") {
+                // return some link
+            } else if (notif.typeDetails.type === "eventOrgHost") {
+                // return some link
+            }
+        }
     }
 
     return (
@@ -342,20 +358,23 @@ const Navbar = ({ socket }) => {
             <div className="notif-card" style={{ display: 'none' }}>
                 <p>Your notifications</p>
                 <div className="notif-card-body">
+                    {notifs ? null : <p id="no-notifs">Loading notifications...</p>}
                     {notifs.length === 0 ? (
                         <p id="no-notifs">No notifications</p>
                     ) : null}
                     {notifs.map((notif) => (
-                        <div className="notif">
-                            <div className="left">
-                                <img src={notif.meta.img} alt="notif-img" className="notif-img"/>
+                        <Link to={notifLinkGenerator(notif)}>
+                            <div className="notif">
+                                <div className="left">
+                                    <img src={notif.meta.img} alt="notif-img" className="notif-img"/>
+                                </div>
+                                <div className="right">
+                                    <p>{notif.meta.description}</p>
+                                    <p id="time"><TimeAgo date={notif.createdAt} /></p>
+                                </div>
+                                <hr></hr>
                             </div>
-                            <div className="right">
-                                <p>{notif.meta.description}</p>
-                                <p id="time"><TimeAgo date={notif.createdAt} /></p>
-                            </div>
-                            <hr></hr>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>
