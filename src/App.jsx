@@ -93,12 +93,8 @@ const App = () => {
                     <EventAlter edit={true} />
                     {/* <Soon /> */}
                 </Route>
-                <Route exact path="/view-event">
-                    <EventView />
-                </Route>
-                <Route exact path="/view-project">
-                    <ProjectView />
-                </Route>
+                <Route exact path="/event/:eventId" component={EventView} />
+                <Route exact path="/project/:projectId" component={ProjectView} />
                 <Route exact path="/profile">
                     <Profile />
                     {/* <Soon /> */}

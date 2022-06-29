@@ -81,6 +81,7 @@ const EventCard = ({ view, event, id }) => {
                 >
                     {id.toString() === event.uploader ? "Edit" : "View"} Event
                 </Link>
+                <a href={`event/${event._id}`}>View on sep page</a> 
             </div>
         </div>
     );

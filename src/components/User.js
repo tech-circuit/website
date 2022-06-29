@@ -77,7 +77,7 @@ const User = () => {
                                 ? user.skills
                                     .map((skill) => {
                                         return (
-                                            <span>{skill}, </span>
+                                            <span>{skill} </span>
                                         );
                                     })
                                 : "No skills to display"}
