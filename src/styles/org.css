@@ -1,4 +1,4 @@
-.org-cont {    
+.org-cont {
     margin-top: 13vh;
     padding: 0 15vw;
 }
@@ -13,15 +13,14 @@
     width: 20vh;
 }
 
-.org-cont h1, 
-.org-cont h2, 
-.org-cont h3, 
+.org-cont h1,
+.org-cont h2,
+.org-cont h3,
 .org-cont h4 {
     font-weight: 500;
 }
 
 .org-cont p {
-    color: #747474;
     font-size: 0.9vw;
 }
 
@@ -40,11 +39,8 @@
     text-align: center;
 }
 
-.main-box {    
-    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
-    border-radius: 1vw;
-    width: fit-content;
-    padding: 1.5vw
+.main-box {
+    padding: 1.5vw;
 }
 
 .other-info {
@@ -52,7 +48,7 @@
 }
 
 .main-info h1 {
-    font-size: 1.8vw
+    font-size: 1.8vw;
 }
 
 .main-info p {
@@ -60,7 +56,7 @@
     margin: 1vh 0 2.5vh 0;
 }
 
-.main-info .org-pfp {    
+.main-info .org-pfp {
     height: 20vh;
     width: 20vh;
     border-radius: 100%;
@@ -70,18 +66,18 @@
     color: #4678f9;
 }
 
-.main-info .site {    
+.main-info .site {
     margin: 2vh 0;
 }
 
-.main-info .orglink-icons  {
+.main-info .orglink-icons {
     margin-top: 1vh;
     font-size: 4.2vh;
 }
 
-.main-info .orglink-icons a{
+.main-info .orglink-icons a {
     margin: 0 0.5vw;
-    color: black
+    color: black;
 }
 
 .ReqJoinButton {
@@ -95,7 +91,6 @@
     font-size: 1.1vw;
     margin-top: 2.8vh;
 }
-
 
 .other-info .org-div {
     margin-bottom: 2.5vh;
@@ -122,14 +117,14 @@
 .org-div .mod-div .mod-text {
     margin: auto 0;
     margin-left: 1vw;
-} 
+}
 
 .org-div .mod-div .h4 {
-    font-size: 0.8vw
+    font-size: 0.8vw;
 }
 
 .org-div .mod-div p {
-    font-size: 0.9vw
+    font-size: 0.9vw;
 }
 
 .org-div table {

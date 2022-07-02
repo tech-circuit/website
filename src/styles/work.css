@@ -189,7 +189,7 @@ button.workSortActive::after {
     font-size: 1vw;
     transition: all 0.3s;
     margin-bottom: 2vh;
-  }
+}
 
 .return {
     width: 25%;
@@ -210,11 +210,11 @@ button.workSortActive::after {
     margin-bottom: 3vh;
 }
 
-.fullProjectBanneri{
-  width: 100%;
-  height: 42vh;
-  border-radius: 8px;
-  margin-bottom: 3vh;
+.fullProjectBanneri {
+    width: 100%;
+    height: 42vh;
+    border-radius: 8px;
+    margin-bottom: 3vh;
 }
 
 .projectOrg {
@@ -222,20 +222,20 @@ button.workSortActive::after {
     justify-content: space-between;
 }
 
-.projectOrg h1 {  
-  font-weight: 500;
-  font-size: 1.9vw;
+.projectOrg h1 {
+    font-weight: 500;
+    font-size: 1.9vw;
 }
-.projectOrg h3 {  
-  font-weight: 300;
-  color: #4678f9;
-  font-size: 1vw;
+.projectOrg h3 {
+    font-weight: 300;
+    color: #4678f9;
+    font-size: 1vw;
 }
 
-.projectOrg a{  
-  font-weight: 300;
-  font-size: 1vw;
-  color: #4678f9;
+.projectOrg a {
+    font-weight: 300;
+    font-size: 1vw;
+    color: #4678f9;
 }
 
 .proj-top {
@@ -243,7 +243,7 @@ button.workSortActive::after {
     justify-content: space-between;
 }
 
-.share-wrap{
+.share-wrap {
     color: #747474;
 }
 
@@ -252,7 +252,7 @@ button.workSortActive::after {
     margin-left: 0.5vw;
 }
 
-.view-proj{
+.view-proj {
     border: 1px #4678f9 solid;
     color: #4678f9;
     padding: 1vh 2vw;
@@ -269,10 +269,10 @@ button.workSortActive::after {
 
 .view-proj:hover {
     background: #4678f9;
-    color: #fff
+    color: #fff;
 }
 
-.projectOrg .share-wrap{
+.projectOrg .share-wrap {
     margin: auto 0;
     color: #4678f9;
     font-size: 0.8vw;
@@ -301,7 +301,6 @@ button.workSortActive::after {
     font-size: 1.4vw;
 }
 .fullProjectUnit p {
-    color: #747474;
     font-size: 1vw;
     font-weight: 300;
     margin-top: 0.6vh;
@@ -317,11 +316,12 @@ button.workSortActive::after {
     max-width: 80%;
 }
 
-.fullProjectUnitOrg .tags, .fullProjectUnitOrg .pFields{
-    color: #4678f9
+.fullProjectUnitOrg .tags,
+.fullProjectUnitOrg .pFields {
+    color: #4678f9;
 }
 
-.projectEvent {    
+.projectEvent {
     color: #4678f9;
     font-size: 1vw;
     font-weight: 300;
@@ -392,7 +392,7 @@ button.workSortActive::after {
 .proj-com-text h4 {
     font-size: 1.1vw;
     font-weight: 500;
-    color: #4678f9
+    color: #4678f9;
 }
 
 .proj-com-text p {
@@ -426,5 +426,5 @@ button.workSortActive::after {
     display: flex;
     flex-direction: column;
     border-radius: 16px;
-    margin: 4vw auto 2vw auto;    
+    margin: 4vw auto 2vw auto;
 }

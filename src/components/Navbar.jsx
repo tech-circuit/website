@@ -328,7 +328,7 @@ const Navbar = ({ socket }) => {
                                 }
                             />
                         </button>
-                        <Link href="/profile">
+                        <Link to="/profile">
                             <img
                                 src={
                                     pfpUrl === ""

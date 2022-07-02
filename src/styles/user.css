@@ -3,15 +3,14 @@
     padding: 0 15vw;
 }
 
-.user-cont h1, 
-.user-cont h2, 
-.user-cont h3, 
+.user-cont h1,
+.user-cont h2,
+.user-cont h3,
 .user-cont h4 {
     font-weight: 500;
 }
 
 .user-cont p {
-    color: #747474;
     font-size: 0.9vw;
 }
 
@@ -37,7 +36,7 @@
     border-radius: 100%;
 }
 
-.user-cont .profile-info .text{
+.user-cont .profile-info .text {
     margin-left: 2vw;
     display: flex;
     flex-direction: column;
@@ -57,7 +56,7 @@
     font-size: 3.5vh;
 }
 
-.user-cont .user-links a{
+.user-cont .user-links a {
     margin-right: 1.2vw;
 }
 
@@ -114,8 +113,8 @@
     font-size: 1vw;
 }
 
-.user-projects .proj h4{
-    max-width: 25vh
+.user-projects .proj h4 {
+    max-width: 25vh;
 }
 
 .proj img {
