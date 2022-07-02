@@ -3,15 +3,67 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import BASE_API_URL from "../constants";
+import TimeAgo from "react-timeago";
 const clientId =
     "884360040700-4093n49it73naktrttlljb9ad6ga4jjo.apps.googleusercontent.com";
 
-const Navbar = () => {
+const Navbar = ({ socket }) => {
     const location = useLocation();
     const [activePage, setActivePage] = useState(location.pathname);
     const [hamActive, setHam] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
+    const [read, setRead] = useState(true);
     const [pfpUrl, setpfpUrl] = useState("");
+    const [notifs, setNotifs] = useState([]);
+
+    if (localStorage.getItem("tcUserID") === null) {
+        fetch(
+            `${BASE_API_URL}/user/info?access_token=${localStorage.getItem(
+                "authToken"
+            )}`
+        )
+            .then(async (res) => {
+                const response = await res.json();
+                localStorage.setItem("tcUserID", response.user._id);
+                return localStorage.getItem("tcUserID");
+            })
+            .catch((err) => console.log(err));
+    }
+
+    useEffect(() => {
+        if (localStorage.getItem("tcNotifsRead") === null) {
+            localStorage.setItem("tcNotifsRead", "true");
+        } else {
+            console.log(localStorage.getItem("tcNotifsRead"));
+            if (localStorage.getItem("tcNotifsRead") === "true") {
+                setRead(true);
+            } else {
+                setRead(false);
+            }
+        }
+    }, []);
+
+    useEffect(() => {
+        const idFilterer = (id) => {
+            console.log("socketIncoming", id);
+            let userID = localStorage.getItem("tcUserID");
+            if (id === userID) {
+                console.log("true");
+                // change icon if not bar not open
+                let el = document.getElementsByClassName("notif-card")[0];
+                if (el.style.display === "none") {
+                    setRead(false);
+                    localStorage.setItem("tcNotifsRead", "false");
+                } else {
+                    fetchNotifs();
+                }
+            } else {
+                console.log("false");
+                // dont change
+            }
+        };
+        socket.on("notif", idFilterer);
+    }, [socket, read]);
 
     useEffect(() => {
         setActivePage(location.pathname);
@@ -98,6 +150,54 @@ const Navbar = () => {
             setpfpUrl("");
             setLoggedIn(false);
             window.location.reload();
+        }
+    };
+
+    const notif = () => {
+        let el = document.getElementsByClassName("notif-card")[0];
+        if (el.style.display === "none") {
+            // opening the bar
+            if (localStorage.getItem("authToken") !== null) {
+                setRead(true);
+                localStorage.setItem("tcNotifsRead", "true");
+                fetchNotifs();
+            } else {
+                el.style.display = "block";
+            }
+        } else {
+            // closing the bar
+            el.style.display = "none";
+        }
+    };
+
+    const fetchNotifs = () => {
+        let el = document.getElementsByClassName("notif-card")[0];
+        fetch(
+            `${BASE_API_URL}/notifs?access_token=${localStorage.getItem(
+                "authToken"
+            )}`
+        )
+            .then(async (res) => {
+                const { notifs } = await res.json();
+                setNotifs(notifs);
+                el.style.display = "block";
+            })
+            .catch((err) => console.log(err));
+    };
+
+    const notifLinkGenerator = (notif) => {
+        if (notif.type === "comment") {
+            if (notif.typeDetails.type === "project") {
+                return `/project/${notif.typeDetails.typeID}`;
+            } else if (notif.typeDetails.type === "post") {
+                return `/forum/post/${notif.typeDetails.typeID}`;
+            }
+        } else if (notif.type === "request") {
+            if (notif.typeDetails.type === "orgJoin") {
+                // return some link
+            } else if (notif.typeDetails.type === "eventOrgHost") {
+                // return some link
+            }
         }
     };
 
@@ -207,7 +307,28 @@ const Navbar = () => {
             <div className="nav-right">
                 {loggedIn ? (
                     <>
-                        <Link to="/profile">
+                        <button
+                            className={
+                                hamActive ? "logout logout-active" : "logout"
+                            }
+                            onClick={notif}
+                            style={{ marginRight: "1.2vw" }}
+                        >
+                            <img
+                                src={
+                                    read
+                                        ? "/assets/bell.png"
+                                        : "/assets/unread-bell.png"
+                                }
+                                alt="logout"
+                                style={
+                                    read
+                                        ? { width: "1.1vw" }
+                                        : { width: "1.4vw" }
+                                }
+                            />
+                        </button>
+                        <Link href="/profile">
                             <img
                                 src={
                                     pfpUrl === ""
@@ -254,6 +375,37 @@ const Navbar = () => {
                     onClick={() => setHam(!hamActive)}
                 >
                     <div className="line"></div>
+                </div>
+            </div>
+            <div className="notif-card" style={{ display: "none" }}>
+                <p>Your notifications</p>
+                <div className="notif-card-body">
+                    {notifs ? null : (
+                        <p id="no-notifs">Loading notifications...</p>
+                    )}
+                    {notifs.length === 0 ? (
+                        <p id="no-notifs">No notifications</p>
+                    ) : null}
+                    {notifs.map((notif) => (
+                        <Link to={notifLinkGenerator(notif)}>
+                            <div className="notif">
+                                <div className="left">
+                                    <img
+                                        src={notif.meta.img}
+                                        alt="notif-img"
+                                        className="notif-img"
+                                    />
+                                </div>
+                                <div className="right">
+                                    <p>{notif.meta.description}</p>
+                                    <p id="time">
+                                        <TimeAgo date={notif.createdAt} />
+                                    </p>
+                                </div>
+                                <hr></hr>
+                            </div>
+                        </Link>
+                    ))}
                 </div>
             </div>
         </nav>

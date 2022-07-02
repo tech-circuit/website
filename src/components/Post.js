@@ -19,7 +19,7 @@ import BASE_API_URL from "../constants";
 
 const authToken = localStorage.getItem("authToken");
 
-const Post = () => {
+const Post = ({ socket }) => {
     const [response, setResponse] = React.useState({});
     const [comments, setComments] = React.useState([]);
     const [commentContent, setCommentContent] = React.useState("");
@@ -55,6 +55,8 @@ const Post = () => {
                 let res = await response.json();
                 if (res.success === true) {
                     updateComments();
+                    console.log(res.receivers)
+                    socket.emit('notif', res.receivers);
                 } else {
                     if (res.error === "User not found.") {
                         notyf.error("Please log in to comment");

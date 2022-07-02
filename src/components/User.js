@@ -1,19 +1,19 @@
 import "../styles/user.css";
-import { FaInstagram, FaChevronLeft } from "react-icons/fa";
+import { FaChevronLeft } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom"
 import { useState, useEffect } from "react";
 import BASE_API_URL from "../constants";
 import notyf from "../tcNotyf";
-// import getLinkogo from "../getLinkLogo";
+import getLinkogo from "../getLinkLogo";
 
 const User = () => {
     document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
     const [user, setUser] = useState([]);
-    const userId = useParams();
+    const { userId } = useParams();
 
     useEffect(() => {
         const getUser = async () => {
-            const userDataJson = await fetch(`${BASE_API_URL}/user/${userId}`);
+            const userDataJson = await fetch(`${BASE_API_URL}/user/id/${userId}`);
             const userData = await userDataJson.json();
 
             if (userData.user) {
@@ -39,38 +39,48 @@ const User = () => {
                     Back
                 </Link>
                 <div className="profile-info">
-                        <img src="/assets/samvr.jpeg" className="user-pfp" alt="alt" />
+                        <img src={user.pfp_url} className="user-pfp" alt="alt" />
                     <div className="text">
                         <div className="e">                            
-                            <h3>Samvrant Samantaray</h3>
-                            <p className="field">Student, Designer</p>                            
+                            <h3>{user.name}</h3>
+                            <p className="field">{user.title}</p>                            
                         </div>
-                            <p className="email">ishaan2310@gmail.com</p>
+                            <p className="email">{user.email}</p>
                         <div className="user-links">
-                            <a href="/">
-                            <FaInstagram />
-                            </a>
-                            <a href="/">
-                            <FaInstagram />
-                            </a>
-                            <a href="/">
-                            <FaInstagram />
-                            </a>
+                            {user.links
+                                ? user.links
+                                    .slice(0)
+                                    .reverse()
+                                    .map((link) => {
+                                        return (
+                                            <a
+                                                href={link}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                            >
+                                                {getLinkogo(link)}
+                                            </a>
+                                        );
+                                    })
+                                : ""}
                         </div>
                     </div>
                 </div>
                 <div className="user-div aboutme">
                     <h3>About Me</h3>
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque 
-                    pellentesque mauris at accumsan. Nullam nec pulvinar ante. Quisque sed 
-                    risus quis elit pretium sollicitudin. 
-                    </p>
+                    <p>{user.about}</p>
                 </div>
                 <div className="user-div skills">
                     <h3>Skills</h3>
                     <p>
-                    UI/UX, Illustration, interface design, 3D Design
+                        {user.skills
+                                ? user.skills
+                                    .map((skill) => {
+                                        return (
+                                            <span>{skill} </span>
+                                        );
+                                    })
+                                : "No skills to display"}
                     </p>
                 </div>
                 <div className="user-div current-org">

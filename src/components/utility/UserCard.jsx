@@ -1,5 +1,6 @@
 import "../../styles/user.css";
-import { FaInstagram } from "react-icons/fa";
+import getLinkogo from "../../getLinkLogo";
+// import { FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const UserCard = ({ user }) => {
@@ -13,17 +14,23 @@ const UserCard = ({ user }) => {
                     <p>{user.title}</p>
                     <p>{user.username}</p>
                     <div className="socials">
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
-                        <a href="/">
-                            <FaInstagram />
-                        </a>
+                            {user.links
+                                ? user.links
+                                    .slice(0)
+                                    .reverse()
+                                    .map((link) => {
+                                        return (
+                                            <a
+                                                href={link}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                            >
+                                                {getLinkogo(link)}
+                                            </a>
+                                        );
+                                    })
+                                : ""}
                     </div>
-                    {/* </a> */}
                 </Link>
             </div>
         </>

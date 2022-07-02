@@ -2,12 +2,39 @@ import "../styles/work.css";
 import {
     FaChevronLeft,
     FaShareAlt,
-    FaBehance,
     FaCaretDown,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useParams} from "react-router-dom";
+import { useState, useEffect } from "react";
+import notyf from "../tcNotyf";
+import getLinkogo from "../getLinkLogo";
+import BASE_API_URL from "../constants";
 
-const ProjectView = () => {
+const ProjectView = () => {    
+    document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
+    const [project, setProject] = useState([]);
+    const { projectId } = useParams();
+
+    useEffect(() => {
+        const getProject = async () => {
+            const projectDataJson = await fetch(`${BASE_API_URL}/project/${projectId}`);
+            const projectData = await projectDataJson.json();
+
+            if (projectData.project) {
+                setProject(projectData.project);
+                console.log(project)
+            } else {
+                notyf.error("Some error occured");
+            }
+        };
+
+        try {
+            getProject();
+        } catch (err) {
+            notyf.error("some error occured");
+        }
+    }, [projectId, project]);
+
     return (
         <section className="ViewProjectWrap">
             <div className="proj-top">
@@ -24,17 +51,16 @@ const ProjectView = () => {
             </div>
 
             <img
-                src="/assets/sample-banner.jpg"
+                src={project.cover_image}
                 alt="alt"
                 className="fullProjectBanneri"
             />
 
             <div className="projectOrg">
                 <div>
-                    <h1>Axus Gaming- Brand Identity Study</h1>
+                    <h1>{project.title}</h1>
                     <h3>
-                        <Link to="/"> Ishaan Das, </Link>
-                        <Link to="/"> Ribhav Sharma</Link>
+                        {project.collaborators}
                     </h3>
                 </div>
                 <button className="view-proj">View Project</button>
@@ -44,37 +70,62 @@ const ProjectView = () => {
                 <div className="fullProjectUnit fullProjectUnitOrg">
                     <h4>Fields</h4>
                     <p className="pFields">
-                        UI/UX, Game Design, Branding, Chess
+                        {project.fields
+                                ? project.fields
+                                    .map((field) => {
+                                        return (
+                                            <span>{field} </span>
+                                        );
+                                    })
+                                : "No fields to display"}
                     </p>
                 </div>
                 <div className="fullProjectUnit fullProjectUnitOrg">
                     <h4>Project Tags</h4>
-                    <p className="tags">UI/UX, Design, Branding</p>
+                    <p className="tags">                        
+                        {project.tags
+                                    ? project.tags
+                                        .map((tag) => {
+                                            return (
+                                                <span>{tag} </span>
+                                            );
+                                        })
+                                    : "No tags to display"}
+                    </p>
                 </div>
             </div>
 
             <div className="fullProjectUnit">
                 <h4>View it on</h4>
-                <FaBehance />
+                    {project.links
+                        ? project.links
+                            .slice(0)
+                            .reverse()
+                            .map((link) => {
+                                return (
+                                    <a
+                                        href={link}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        {getLinkogo(link)}
+                                    </a>
+                                );
+                            })
+                        : "No links to display"}
             </div>
 
             <div className="fullProjectUnit">
                 <h4>About</h4>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aliquam turpis diam enim odio. Faucibus sagittis, non enim
-                    nibh. Diam consectetur maecenas varius nibh at. Porttitor
-                    nunc nascetur ultricies vulputate. Egestas at egestas ut mi
-                    lectus morbi nam lacus viverra. Sed purus praesent viverra
-                    posuere ridiculus tempor. Enim habitasse dictum tristique
-                    duis ac sagittis viverra.
+                    {project.description}
                 </p>
             </div>
 
             <div className="fullProjectUnit">
                 <h4>For Event</h4>
                 <Link to="/" className="projectEvent">
-                    Tech Syndicate: Intech'21 (2021)
+                    {project.event ? project.event : "No event to display"}
                 </Link>
             </div>
 

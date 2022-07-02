@@ -1,9 +1,61 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../styles/events.css";
 import { FaChevronLeft, FaShareAlt } from "react-icons/fa";
-// import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import notyf from "../tcNotyf";
+import getLinkogo from "../getLinkLogo";
+import BASE_API_URL from "../constants";
+
 
 const EventView = () => {
+    document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
+    const [event, setEvents] = useState([]);
+    const { eventId } = useParams();
+
+    const isDateInPast = (firstDate, secondDate) => {
+        if (firstDate.setHours(0, 0, 0, 0) <= secondDate.setHours(0, 0, 0, 0)) {
+            return true;
+        }
+
+        return false;
+    };   
+
+    const monthNames = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ];
+
+    useEffect(() => {
+        const getEvent = async () => {
+            const eventDataJson = await fetch(`${BASE_API_URL}/event/${eventId}`);
+            const eventData = await eventDataJson.json();
+
+            if (eventData.event) {
+                setEvents(eventData.event);
+                console.log(event)
+            } else {
+                notyf.error("Some error occured");
+            }
+        };
+
+        try {
+            getEvent();
+        } catch (err) {
+            notyf.error("some error occured");
+        }
+    }, [eventId, event]);
+
+
     return (
         <>
             <div className="viewContainer">
@@ -22,60 +74,81 @@ const EventView = () => {
                     </div>
 
                     <img
-                        src="/assets/sample-banner.jpg"
+                        src={event.cover_image}
                         alt="alt"
                         className="fullEventBannerImg"
                     />
 
                     <div className="eventOrg">
                         <div>
-                            <h1>alphaNode 2022</h1>
+                            <h1>{event.name}</h1>
                             <h3>
-                                Organised by
+                                Organised
                                 <Link to="/">
-                                    {" "}
-                                    nCrypt DPS Sushant Lok Gurgaon
+                                    {event.institute 
+                                    ? ` by ${event.institute}` : " Indipendantly"}
                                 </Link>
                             </h3>
                         </div>
                     </div>
 
                     <div className="eventRegis">
-                        <p>Registeration Open till 13th May 11:59pm</p>
-                        <button>Register</button>
+                        {!isDateInPast(new Date(event.lastDate), new Date())
+                            ? `${Math.abs(
+                                Math.floor(
+                                    (new Date().getTime() -
+                                        new Date(event.lastDate).getTime()) /
+                                        (1000 * 3600 * 24)
+                                )
+                            )} Days left | `
+                            : ``}
+                        Registrations{" "}
+                        {isDateInPast(new Date(event.lastDate), new Date())
+                            ? "closed"
+                            : "open"}
+                        
+                        {isDateInPast(new Date(event.lastDate), new Date())
+                            ? <button src={event.regLink}>Register</button>                            
+                            : ""}
                     </div>
 
                     <div className="fullEventUnit">
                         <h4>Eligibility Criteria</h4>
-                        <p>For students of Class XI - XII across India</p>
+                        <p>{event.eligibility}</p>
                     </div>
 
                     <div className="fullEventInfo">
                         <div className="fullEventUnit">
-                            <h4>Starts</h4>
-                            <p>15th May, 2021</p>
+                            <h4>Event starts</h4>
+                            <p>
+                                {`${
+                                    monthNames[new Date(event.startDate).getMonth()]
+                            } ${new Date(event.startDate).getDate()}, ${new Date(
+                                event.startDate
+                            ).getFullYear()}`}
+                            </p>
                         </div>
                         <div className="fullEventUnit">
-                            <h4>Starts</h4>
-                            <p>15th May, 2021</p>
+                            <h4>Event ends</h4>
+                            <p>
+                                {`${
+                                    monthNames[new Date(event.endDate).getMonth()]
+                                } ${new Date(event.endDate).getDate()}, ${new Date(
+                                    event.endDate
+                                ).getFullYear()}`}
+                            </p>
                         </div>
                         <div className="fullEventUnit">
-                            <h4>Starts</h4>
-                            <p>15th May, 2021</p>
+                            <h4>Visit event website</h4>
+                            <p>
+                                <Link to={event.website}>{event.website}</Link>
+                            </p>
                         </div>
                     </div>
 
                     <div className="fullEventUnit">
                         <h4>About event</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Aliquam turpis diam enim odio. Faucibus
-                            sagittis, non enim nibh. Diam consectetur maecenas
-                            varius nibh at. Porttitor nunc nascetur ultricies
-                            vulputate. Egestas at egestas ut mi lectus morbi nam
-                            lacus viverra. Sed purus praesent viverra posuere
-                            ridiculus tempor. Enim habitasse dictum tristique
-                            duis ac sagittis viverra.
+                        <p>{event.description ? event.description : "No description" }
                         </p>
                     </div>
 
@@ -83,14 +156,20 @@ const EventView = () => {
                         <div className="fullEventUnit fullEventUnitOrg">
                             <h4>Event Tags</h4>
                             <p className="tags">
-                                All-in-one, Inter-school, International,
-                                hackathon, designathon, quizing, crossword
+                                {event.tags
+                                    ? event.tags
+                                        .map((tag) => {
+                                            return (
+                                                <span>{tag} </span>
+                                            );
+                                        })
+                                    : "No tags to display"}
                             </p>
                         </div>
                         <div className="fullEventUnit fullEventUnitOrg">
                             <h4>Location</h4>
                             <div className="location">
-                                <p>Delhi NCR, India</p>
+                                <p>Delhi NCR</p>
                             </div>
                         </div>
                     </div>
@@ -123,22 +202,30 @@ const EventView = () => {
                         <div className="eventLinks fullEventUnit">
                             <h4>Important Links</h4>
                             <div className="eventPlats">
-                                <a href="/">
-                                    <img src="/assets/disc.svg" alt="" />
-                                </a>
-                                <a href="/">
-                                    <img src="/assets/disc.svg" alt="" />
-                                </a>
-                                <a href="/">
-                                    <img src="/assets/disc.svg" alt="" />
-                                </a>
+                                {event.links
+                                    ? event.links
+                                        .slice(0)
+                                        .reverse()
+                                        .map((link) => {
+                                            return (
+                                                <a
+                                                    href={link}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                >
+                                                    {getLinkogo(link)}
+                                                </a>
+                                            );
+                                        })
+                                    : ""}
                             </div>
                         </div>
 
                         <div className="eventContactLinks">
                             <div className="fullEventUnit">
                                 <h4>Contact</h4>
-                                <a href="/">https://the.the/the/the</a>
+                                <p>Phone: {event.phone ? event.phone : "Not provided"}</p>
+                                <p>Email: {event.email ? event.email : "Not provided"}</p>
                             </div>
                         </div>
                     </div>

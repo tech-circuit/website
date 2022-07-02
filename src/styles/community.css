@@ -140,6 +140,7 @@
 }
 .com .socials {
     display: flex;
+    justify-content: center;
     padding: 2vh 0;
     font-size: 1.6vw;
     margin-bottom: 2vh;
