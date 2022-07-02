@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import BASE_API_URL from "../constants";
 import getLinkLogo from "../getLinkLogo";
 import DangerBox from "./utility/Danger";
+import notyf from "../tcNotyf";
 
 const ProfileInfo = () => {
     const [links, setLinks] = useState([]);
@@ -82,6 +83,92 @@ const ProfileInfo = () => {
         }, 2000);
     };
 
+    const updatePfp = async (url) => {
+        const updatedJson = await fetch(
+            `${BASE_API_URL}/user/pfp?access_token=${localStorage.getItem(
+                "authToken"
+            )}`,
+            {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ pfp: url }),
+            }
+        );
+        const updated = await updatedJson.json();
+
+        if (updated.user) {
+            setUser(updated.user);
+        } else {
+            notyf.error("Some error occurred");
+        }
+
+        document
+            .querySelector(".delete-modal")
+            .classList.remove("delete-modal-active");
+        removeBodyOpacity();
+    };
+
+    const setImage = async (inputFile) => {
+        if (
+            inputFile.name.toLowerCase().endsWith(".jpg") ||
+            inputFile.name.toLowerCase().endsWith(".png") ||
+            inputFile.name.toLowerCase().endsWith(".jpeg")
+        ) {
+            notyf.success("Uploading...");
+            let reader = new FileReader();
+            reader.readAsDataURL(inputFile);
+            reader.onload = () => {
+                const b64 = reader.result.split("base64,")[1];
+                fetch(`${BASE_API_URL}/image/upload`, {
+                    // Adding method type
+                    method: "POST",
+
+                    // Adding body or contents to send
+                    body: JSON.stringify({
+                        b64,
+                    }),
+
+                    // Adding headers to the request
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8",
+                        "Access-Control-Allow-Origin": "*",
+                    },
+                })
+                    .then(async (response) => {
+                        const resp = await response.json();
+                        updatePfp(resp.link);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        notyf.error("Some error has occurred");
+                    });
+            };
+        }
+    };
+
+    const deletePfp = async () => {
+        const updatedJson = await fetch(
+            `${BASE_API_URL}/user/pfp?access_token=${localStorage.getItem(
+                "authToken"
+            )}`,
+            {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+            }
+        );
+        const updated = await updatedJson.json();
+
+        if (updated.user) {
+            setUser(updated.user);
+        } else {
+            notyf.error("An Error occurred");
+        }
+        document
+            .querySelector(".delete-modal")
+            .classList.remove("delete-modal-active");
+        removeBodyOpacity();
+    };
+
     useEffect(() => {
         fetch(`${BASE_API_URL}/user/info?access_token=${authToken}`).then(
             async (data) => {
@@ -128,10 +215,7 @@ const ProfileInfo = () => {
                     >
                         No
                     </button>
-                    <button
-                        // onClick={(e) => deleteCurrentPost()}
-                        className="delete-submit"
-                    >
+                    <button className="delete-submit" onClick={deletePfp}>
                         Yes
                     </button>
                 </div>
@@ -139,16 +223,25 @@ const ProfileInfo = () => {
             <div className="profileInfo">
                 <div className="fields">
                     <div className="pfp-sec">
-                        <img
-                            src={`${BASE_API_URL}/user/pfp?access_token=${authToken}`}
-                            alt="pfp"
-                        />
+                        <img src={user.pfp_url} alt="pfp" />
                         <p>We recommend an image of 500x500px</p>
                         <div className="pfp-opts">
-                            <button id="edit-pfp">
+                            <label
+                                style={{ cursor: "pointer" }}
+                                htmlFor="pfp-edit"
+                                id="edit-pfp"
+                            >
                                 <FaPencilAlt />
                                 &nbsp;&nbsp;Edit
-                            </button>
+                            </label>
+                            <input
+                                type="file"
+                                accept="image/*"
+                                id="pfp-edit"
+                                name="pfp-edit"
+                                onChange={(e) => setImage(e.target.files[0])}
+                                style={{ display: "none" }}
+                            />
                             <button id="remove-pfp" onClick={deleteBtn}>
                                 <FaTrash />
                                 &nbsp;&nbsp;Delete
@@ -211,16 +304,17 @@ const ProfileInfo = () => {
                                     onClick={addLink}
                                 />
                             </div>
-                            {links.map((link) => {
+                            {links.map((link, i) => {
                                 return (
-                                    <div className="link-unit">
+                                    <div className="link-unit" key={i}>
                                         {linksObj[link]}
                                         <input
                                             maxLength="200"
                                             type="text"
                                             placeholder="example: https://github.com/kevin"
                                             value={link}
-                                            readonly
+                                            readOnly
+                                            disabled
                                             key={`link-${links.indexOf(link)}`}
                                             id={`link-${links.indexOf(link)}`}
                                         />

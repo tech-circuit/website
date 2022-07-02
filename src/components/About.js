@@ -511,7 +511,7 @@ const About = () => {
                     </div>
                     <div className="member">
                         <img
-                            src="https://code-warriors.org/img/c3f085fc-5e72-4a00-a5ce-298aefded73d-1617915473562.jpg"
+                            src="/assets/thevedan.jpeg"
                             alt="Vedanta Somnathe"
                         />
                         <h3>Vedanta Somnathe</h3>

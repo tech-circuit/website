@@ -207,7 +207,7 @@ const Navbar = () => {
             <div className="nav-right">
                 {loggedIn ? (
                     <>
-                        <a href="/profile">
+                        <Link to="/profile">
                             <img
                                 src={
                                     pfpUrl === ""
@@ -217,7 +217,7 @@ const Navbar = () => {
                                 className={hamActive ? "pfp pfp-active" : "pfp"}
                                 alt="pfp"
                             ></img>
-                        </a>
+                        </Link>
                         <button
                             className={
                                 hamActive ? "logout logout-active" : "logout"
