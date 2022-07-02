@@ -30,19 +30,11 @@ const OrgCard = ({ org, id }) => {
 
             {org.admins.includes(id) ? (
                 <Link to={`/edit-org/${org._id}`} className="view">
-<<<<<<< HEAD
                     Edit Organization
                 </Link>
             ) : (
                 <Link to={`/org/${org._id}`} className="view">
                     View Organization
-=======
-                    Edit Organisation
-                </Link>
-            ) : (
-                <Link to={`/org/${org._id}`} className="view">
-                    View Organisation
->>>>>>> 760dcb762211f05e751a8594dac773aae452a24b
                 </Link>
             )}
         </div>
