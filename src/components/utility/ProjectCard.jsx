@@ -2,13 +2,20 @@ import "../../styles/work.css";
 import { Link } from "react-router-dom";
 
 const ProjectCard = ({ project, view, id }) => {
+    const openProject = (e)=>{
+        e.preventDefault();
+        if(project.uploader.toString() !== id){
+             view(project)
+        }
+        return false;
+     }
     return (
         <>
         <Link
-            onClick={project.uploader.toString() === id ? null : view}
+            onClick={openProject} 
             to={
-                project.uploader.toString() === id
-                    ? `/edit-project/${project._id}`
+                project.uploader.toString() !== id
+                    ? `project/${project._id}`
                     : "#"
             }
             className="workCard"
@@ -17,7 +24,7 @@ const ProjectCard = ({ project, view, id }) => {
             <h2>{project.title}</h2>    
             <h3>{project.collaborators}</h3>
         </Link>
-        <a href={`project/${project._id}`}>View on sep page</a> 
+        {/* <a href={`project/${project._id}`}>View on sep page</a>  */}
         </>
     );
 };

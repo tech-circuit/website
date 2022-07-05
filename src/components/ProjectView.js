@@ -22,7 +22,6 @@ const ProjectView = () => {
 
             if (projectData.project) {
                 setProject(projectData.project);
-                console.log(project)
             } else {
                 notyf.error("Some error occured");
             }
@@ -148,21 +147,21 @@ const ProjectView = () => {
                     <img src="/assets/samvr.jpeg" alt="alt" />
                     <div className="proj-com-text">
                         <h4>Samvrant Samanstrueya</h4>
-                        <p>Wonderful project loved it woah woah woah</p>
+                        <p>Wonderful project loved it!</p>
                     </div>
                 </div>
                 <div className="proj-com-card">
-                    <img src="/assets/samvr.jpeg" alt="alt" />
+                    <img src="/assets/thevedan.jpeg" alt="alt" />
                     <div className="proj-com-text">
                         <h4>Ishaan Das</h4>
-                        <p>Wonderful project loved it woah woah woah</p>
+                        <p>Great! Keep it going.</p>
                     </div>
                 </div>
                 <div className="proj-com-card">
-                    <img src="/assets/samvr.jpeg" alt="alt" />
+                    <img src="/assets/ishana.jpg" alt="alt" />
                     <div className="proj-com-text">
                         <h4>Laxya pahuja</h4>
-                        <p>Wonderful project loved it woah woah woah</p>
+                        <p>Amazing! Loved the idea.</p>
                     </div>
                 </div>
                 <div className="more-com-wrap">

@@ -20,8 +20,10 @@ const Work = () => {
     const sortRef = useRef("sort");
     const [fullView, setfullView] = useState(false);
     const [id, setId] = useState("");
+    const [selectedProject,setSelectedProject] = useState({});
 
-    const view = () => {
+    const view = (project) => {
+        setSelectedProject(project);
         setfullView(true);
     };
 
@@ -218,7 +220,7 @@ const Work = () => {
             <section
                 className={fullView ? "fullEvent fullEventActive" : "fullEvent"}
             >
-                <FullProject close={close} />
+                <FullProject project={selectedProject} close={close} />
             </section>
         </>
     );

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
     FaShareAlt,
     FaBehance,
@@ -5,8 +6,23 @@ import {
     FaChevronLeft,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import getLinkLogo from "../../getLinkLogo";
 
-const FullProject = ({ close }) => {
+const FullProject = ({ project, close }) => {
+
+
+    const collabList = () => {
+        if (project.collaborators) {
+            let collabList = project.collaborators.split(',');
+            let linkArray = collabList.map((collab,n)=>{
+                return(
+                    <Link to="/" key={n}>{collab}{n===collabList.length-1?'':','}</Link>
+                )
+            })
+            return linkArray;
+        }
+        return <></>;
+    }
     return (
         <>
             <div className="proj-top">
@@ -23,17 +39,16 @@ const FullProject = ({ close }) => {
             </div>
 
             <img
-                src="/assets/sample-banner.jpg"
+                src={project?.cover_image||'/assets/sample-banner.jpg'}
                 alt="alt"
                 className="fullProjectBanneri"
             />
 
             <div className="projectOrg">
                 <div>
-                    <h1>Axus Gaming- Brand Identity Study</h1>
+                    <h1>{project?.title}</h1>
                     <h3>
-                        <Link to="/"> Ishaan Das, </Link>
-                        <Link to="/"> Ribhav Sharma</Link>
+                        {collabList()}
                     </h3>
                 </div>
                 <button className="view-proj">View Project</button>
@@ -43,39 +58,49 @@ const FullProject = ({ close }) => {
                 <div className="fullProjectUnit fullProjectUnitOrg">
                     <h4>Fields</h4>
                     <p className="pFields">
-                        UI/UX, Game Design, Branding, Chess
+                       {project.fields?.join(', ')||"No fields to display"}
                     </p>
                 </div>
                 <div className="fullProjectUnit fullProjectUnitOrg">
                     <h4>Project Tags</h4>
-                    <p className="tags">UI/UX, Design, Branding</p>
+                    <p className="tags">{project.tags?.join(', ')||'No tags to display'}</p>
                 </div>
             </div>
 
             <div className="fullProjectUnit">
                 <h4>View it on</h4>
-                <FaBehance />
+                {project.links
+                        ? project.links
+                            .slice(0)
+                            .reverse()
+                            .map((link) => {
+                                return (
+                                    <a
+                                        href={link}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        {getLinkLogo(link)}
+                                    </a>
+                                );
+                            })
+                        : "No links to display"}
             </div>
 
             <div className="fullProjectUnit">
                 <h4>About</h4>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aliquam turpis diam enim odio. Faucibus sagittis, non enim
-                    nibh. Diam consectetur maecenas varius nibh at. Porttitor
-                    nunc nascetur ultricies vulputate. Egestas at egestas ut mi
-                    lectus morbi nam lacus viverra. Sed purus praesent viverra
-                    posuere ridiculus tempor. Enim habitasse dictum tristique
-                    duis ac sagittis viverra.
+                {project.description}
+
                 </p>
             </div>
 
-            <div className="fullProjectUnit">
+            {project.event?.length?<div className="fullProjectUnit">
                 <h4>For Event</h4>
                 <Link to="/" className="projectEvent">
                     Tech Syndicate: Intech'21 (2021)
                 </Link>
-            </div>
+            </div>:<></>}
 
             <div className="fullProjectUnit">
                 <h4>Comments (42)</h4>
@@ -92,25 +117,25 @@ const FullProject = ({ close }) => {
             </div>
 
             <div className="proj-com-cont">
-                <div className="proj-com-card">
+            <div className="proj-com-card">
                     <img src="/assets/samvr.jpeg" alt="alt" />
                     <div className="proj-com-text">
                         <h4>Samvrant Samanstrueya</h4>
-                        <p>Wonderful project loved it woah woah woah</p>
+                        <p>Wonderful project loved it!</p>
                     </div>
                 </div>
                 <div className="proj-com-card">
-                    <img src="/assets/samvr.jpeg" alt="alt" />
+                    <img src="/assets/thevedan.jpeg" alt="alt" />
                     <div className="proj-com-text">
                         <h4>Ishaan Das</h4>
-                        <p>Wonderful project loved it woah woah woah</p>
+                        <p>Great! Keep it going.</p>
                     </div>
                 </div>
                 <div className="proj-com-card">
-                    <img src="/assets/samvr.jpeg" alt="alt" />
+                    <img src="/assets/ishana.jpg" alt="alt" />
                     <div className="proj-com-text">
                         <h4>Laxya pahuja</h4>
-                        <p>Wonderful project loved it woah woah woah</p>
+                        <p>Amazing! Loved the idea.</p>
                     </div>
                 </div>
                 <div className="more-com-wrap">
