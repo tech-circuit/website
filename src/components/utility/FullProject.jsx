@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import {
     FaShareAlt,
-    FaBehance,
     FaCaretDown,
     FaChevronLeft,
 } from "react-icons/fa";
