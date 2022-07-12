@@ -86,7 +86,7 @@ const EventView = () => {
                                 Organised
                                 <Link to="/">
                                     {event.institute 
-                                    ? ` by ${event.institute}` : " Indipendantly"}
+                                    ? ` by ${event.institute}` : " Independently"}
                                 </Link>
                             </h3>
                         </div>

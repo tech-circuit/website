@@ -267,6 +267,7 @@ nav {
     position: fixed;
     top: 10vh;
     left: 50%;
+    overscroll-behavior-y: contain;
     transform: translate(-50%, 0);
     width: 70vw;
     height: 90vh;

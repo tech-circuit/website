@@ -9,6 +9,13 @@ const EventCard = ({ view, event, id }) => {
         return false;
     };
 
+    const openEvent = (e)=>{
+        e.preventDefault();
+        if(event.uploader.toString() !== id){
+             view(event)
+        }
+        return false;
+     }
     const monthNames = [
         "January",
         "February",
@@ -25,7 +32,16 @@ const EventCard = ({ view, event, id }) => {
     ];
 
     return (
-        <div className="event">
+        <Link
+        to={
+            id.toString() !== event.uploader
+                ? `/event/${event._id}`
+                : "#"
+        }
+        className="event"
+        onClick={openEvent}
+    >
+        <div >
             <img src={event.cover_image} alt="alt" />
             <div className="eventBody">
                 <div className="head">
@@ -72,18 +88,18 @@ const EventCard = ({ view, event, id }) => {
                 </div>
                 <Link
                     to={
-                        id.toString() === event.uploader
-                            ? `/edit-event/${event._id}`
+                        id.toString() !== event.uploader
+                            ? `/event/${event._id}`
                             : "#"
                     }
                     className="view"
-                    onClick={view}
+                    onClick={openEvent}
                 >
                     {id.toString() === event.uploader ? "Edit" : "View"} Event
                 </Link>
-                <a href={`event/${event._id}`}>View on sep page</a> 
             </div>
         </div>
+        </Link>
     );
 };
 
