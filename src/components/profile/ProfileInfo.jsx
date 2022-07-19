@@ -1,11 +1,11 @@
-import "../styles/profile-info.css";
+import "../../styles/profile-info.css";
 import { FaLink, FaPencilAlt, FaPlusCircle, FaTrash } from "react-icons/fa";
-import "../styles/add.css";
+import "../../styles/add.css";
 import { useState, useEffect } from "react";
-import BASE_API_URL from "../constants";
-import getLinkLogo from "../getLinkLogo";
-import DangerBox from "./utility/Danger";
-import notyf from "../tcNotyf";
+import BASE_API_URL from "../../constants";
+import getLinkLogo from "../../getLinkLogo";
+import DangerBox from "../utility/Danger";
+import notyf from "../../tcNotyf";
 
 const ProfileInfo = () => {
     const [links, setLinks] = useState([]);
