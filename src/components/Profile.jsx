@@ -4,6 +4,7 @@ import Projects from "./profile/Projects";
 import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import BASE_API_URL from "../constants";
+import Posts from "./profile/Posts";
 
 const Profile = () => {
     const [tab, setTab] = useState("Your Info");
@@ -13,6 +14,7 @@ const Profile = () => {
     const pages = {
         "Your Info": <ProfileInfo />,
         Projects: <Projects userId={userId} />,
+        "Your Posts": <Posts userId={userId} />,
     };
 
     useEffect(() => {

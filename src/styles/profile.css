@@ -49,3 +49,6 @@
 .profile-tab-active::after {
     width: 100% !important;
 }
+.profile-forum-hold {
+    padding-bottom: 6vh;
+}
