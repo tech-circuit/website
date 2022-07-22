@@ -140,7 +140,7 @@ const ProjectAlter = ({ edit }) => {
             });
             const submitted = await submittedJson.json();
 
-            if (submitted.done) {
+            if (submitted.success) {
                 window.location.href = "/work";
             } else {
                 console.log(submitted);
@@ -166,7 +166,7 @@ const ProjectAlter = ({ edit }) => {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
-                if (data.done) {
+                if (data.success) {
                     window.location.href = "/work";
                 } else {
                     notyf.error("Some Error has occurred");
