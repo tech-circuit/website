@@ -206,9 +206,7 @@ const Component = ({ pfp, user }) => {
             );
             const usernameUpdated = await usernameUpdateJson.json();
 
-            console.log(usernameUpdated.done);
-
-            if (usernameUpdated.done) {
+            if (usernameUpdated.success) {
                 setUsernameTaken(false);
             } else {
                 setPage(1);
