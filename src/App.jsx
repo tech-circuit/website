@@ -1,5 +1,7 @@
 import "./styles/all.css";
 import Navbar from "./components/Navbar";
+import SignUp from "./components/SignUp";
+import SignIn from "./components/SignIn";
 import Index from "./components/Index";
 import ProjectAlter from "./components/ProjectAlter";
 import Community from "./components/Community";
@@ -101,6 +103,12 @@ const App = () => {
                 </Route>
                 <Route exact path="/sign-up">
                     <UserFlow />
+                </Route>
+                <Route exact path="/create-account">
+                    <SignUp />
+                </Route>
+                <Route exact path="/sign-in">
+                    <SignIn />
                 </Route>
                 <Route exact path="/forum/post/:postId">
                     {socket ? <Post socket={socket}/> : null}
