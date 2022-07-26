@@ -24,8 +24,8 @@ import Error from "./components/Error";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import io from 'socket.io-client';
-import { useEffect, useState } from 'react';
+import io from "socket.io-client";
+import { useEffect, useState } from "react";
 import BASE_API_URL from "./constants";
 
 const App = () => {
@@ -40,7 +40,7 @@ const App = () => {
     return (
         <Router>
             <ScrollToTop />
-            {socket ? <Navbar socket={socket}/> : null}
+            {socket ? <Navbar socket={socket} /> : null}
             <Switch>
                 <Route exact path="/">
                     <Index />
@@ -96,22 +96,26 @@ const App = () => {
                     {/* <Soon /> */}
                 </Route>
                 <Route exact path="/event/:eventId" component={EventView} />
-                <Route exact path="/project/:projectId" component={ProjectView} />
+                <Route
+                    exact
+                    path="/project/:projectId"
+                    component={ProjectView}
+                />
                 <Route exact path="/profile">
                     <Profile />
                     {/* <Soon /> */}
                 </Route>
-                <Route exact path="/sign-up">
+                <Route exact path="/profile-setup">
                     <UserFlow />
                 </Route>
-                <Route exact path="/create-account">
+                <Route exact path="/sign-up">
                     <SignUp />
                 </Route>
                 <Route exact path="/sign-in">
                     <SignIn />
                 </Route>
                 <Route exact path="/forum/post/:postId">
-                    {socket ? <Post socket={socket}/> : null}
+                    {socket ? <Post socket={socket} /> : null}
                 </Route>
                 <Route exact path="/user/:userId" component={User} />
                 <Route path="*">

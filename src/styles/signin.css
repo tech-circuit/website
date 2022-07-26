@@ -65,8 +65,11 @@
 
 .signup-span {
     display: flex;
-    margin: 0;
     justify-content: center;
+    align-items: center;
+}
+.signup-span input {
+    margin: 0 !important;
 }
 
 .signup-span p {
@@ -80,7 +83,18 @@
 
 .sign-fields {
     flex-direction: row !important;
+    height: auto !important;
 }
 .signup-cont .fields .sign-username {
     margin-bottom: 1vh;
+}
+.signup-cont .signup-main .signup-fields input {
+    margin: 1vh 0;
+    height: auto;
+    padding: 1.6vh 1vw;
+    border: 2px solid #ccc;
+}
+.signup-cont .signup-main .signup-fields input:hover,
+.signup-cont .signup-main .signup-fields input:focus {
+    border-color: #4678f9;
 }

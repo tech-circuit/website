@@ -1,4 +1,4 @@
-    import React from 'react'
+import React from "react";
 import "../styles/signin.css";
 import "../styles/all.css";
 import Footer from "./Footer";
@@ -14,8 +14,8 @@ function SignUp() {
                             alt="logo"
                             className="logo"
                         />
-                        <h2>Sign up</h2>    
-                        <div className="fields">
+                        <h2>Sign up</h2>
+                        <div className="fields sign-fields signup-fields">
                             <input
                                 type="text"
                                 name="first-name"
@@ -36,7 +36,7 @@ function SignUp() {
                                 autoComplete="off"
                                 placeholder="Username"
                                 required="true"
-                            ></input>                        
+                            ></input>
                             <input
                                 type="text"
                                 name="email"
@@ -54,23 +54,47 @@ function SignUp() {
                         </div>
                         <button className="hero-btn">Sign Up</button>
                         <div className="align-p">
-                            <a className="underlined-link" href="/">Forgot Password?</a>
+                            <a className="underlined-link" href="/">
+                                Forgot Password?
+                            </a>
                         </div>
                         <button>google btn daalo</button>
-                    </div>                    
+                    </div>
                     <div className="text">
-                        <p>Already have an account? <a className="underlined-link" href="/sign-in">Login</a></p>
-                        <p>By clicking Sign Up, you agree to our <span className="underlined-link">Privacy Poicy</span> and <span className="underlined-link">Terms of Service</span></p>   
+                        <p>
+                            Already have an account?{" "}
+                            <a className="underlined-link" href="/sign-in">
+                                Login
+                            </a>
+                        </p>
+                        <p>
+                            By clicking Sign Up, you agree to our{" "}
+                            <span className="underlined-link">
+                                Privacy Poicy
+                            </span>{" "}
+                            and{" "}
+                            <span className="underlined-link">
+                                Terms of Service
+                            </span>
+                        </p>
                         <div className="signup-span">
-                            <input type="checkbox" id="updates" name="updates" />
-                            <p> Recieve ocassional updates and content from techCircuit via e-mail.</p>
+                            <input
+                                type="checkbox"
+                                id="updates"
+                                name="updates"
+                            />
+                            &nbsp; &nbsp;
+                            <p>
+                                Recieve ocassional updates and content from
+                                techCircuit via e-mail.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
             <Footer />
         </>
-    )
+    );
 }
 
-export default SignUp   
+export default SignUp;

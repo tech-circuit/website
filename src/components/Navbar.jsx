@@ -81,9 +81,10 @@ const Navbar = ({ socket }) => {
                     setpfpUrl(pfpJson.user.pfp_url);
                     const { setUp } = pfpJson.user;
                     if (!setUp) {
-                        window.location.href.split("/").pop() === "sign-up"
+                        window.location.href.split("/").pop() ===
+                        "profile-setup"
                             ? console.log("Please sign up")
-                            : (window.location.href = "/sign-up");
+                            : (window.location.href = "/profile-setup");
                     }
                 })
                 .catch((err) => console.log(err));
