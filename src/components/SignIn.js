@@ -14,7 +14,7 @@ function SignIn() {
                             alt="logo"
                             className="logo"
                         />
-                        <h2>Login</h2>
+                        <h2>Sign In</h2>
                         <div className="fields sign-fields">
                             <input
                                 type="text"

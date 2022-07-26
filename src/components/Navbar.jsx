@@ -362,7 +362,7 @@ const Navbar = ({ socket }) => {
                                 onClick={renderProps.onClick}
                                 disabled={renderProps.disabled}
                             >
-                                Login
+                                Sign-in
                             </button>
                         )}
                         onSuccess={onSuccess}
