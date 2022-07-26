@@ -3,7 +3,7 @@
     /* height: 90vh; */
     display: flex;
     justify-content: center;
-    flex-direction: column;   
+    flex-direction: column;
 }
 
 .signup-wrap {
@@ -16,7 +16,7 @@
 }
 
 .signup-cont .signup-main {
-    padding: 0 9vw
+    padding: 0 9vw;
 }
 
 .signup-cont img {
@@ -29,7 +29,7 @@
 }
 
 .signup-cont .fields {
-    display:flex;
+    display: flex;
     flex-direction: column;
     margin: 0;
 }
@@ -76,4 +76,11 @@
 .signup-span input {
     margin: auto 0;
     margin-right: 0.5vw;
+}
+
+.sign-fields {
+    flex-direction: row !important;
+}
+.signup-cont .fields .sign-username {
+    margin-bottom: 1vh;
 }
