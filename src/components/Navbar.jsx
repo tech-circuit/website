@@ -1,11 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { GoogleLogin } from "react-google-login";
 import BASE_API_URL from "../constants";
 import TimeAgo from "react-timeago";
-const clientId =
-    "884360040700-4093n49it73naktrttlljb9ad6ga4jjo.apps.googleusercontent.com";
 
 const Navbar = ({ socket }) => {
     const location = useLocation();
@@ -100,49 +97,6 @@ const Navbar = ({ socket }) => {
             }
         }
     }, [hamActive]);
-
-    const onSuccess = (res) => {
-        const { email, familyName, givenName, googleId, imageUrl, name } =
-            res.profileObj;
-        const authToken = res.tokenObj.access_token;
-        localStorage.removeItem("authToken");
-        localStorage.removeItem("pfp");
-        localStorage.setItem("pfp", imageUrl);
-        localStorage.setItem("authToken", authToken);
-        fetch(`${BASE_API_URL}/user/gauth`, {
-            method: "POST",
-            body: JSON.stringify({
-                email,
-                familyName,
-                givenName,
-                googleId,
-                imageUrl,
-                name,
-                access_token: authToken,
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8",
-            },
-        })
-            .then(async (response) => {
-                setLoggedIn(true);
-                setpfpUrl(`${BASE_API_URL}/user/pfp?access_token=${authToken}`);
-                const res = await response.json();
-                const { setUp } = res.user;
-                if (!setUp) {
-                    window.location.href = "/sign-up";
-                } else {
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 100);
-                }
-            })
-            .catch((error) => console.log(error));
-    };
-
-    const onFailure = (res) => {
-        console.log("Login failed: res:", res);
-    };
 
     const logout = () => {
         if (localStorage.getItem("authToken") !== null) {
@@ -350,26 +304,16 @@ const Navbar = ({ socket }) => {
                         </button>
                     </>
                 ) : (
-                    <GoogleLogin
-                        clientId={clientId}
-                        render={(renderProps) => (
-                            <button
-                                className={
-                                    hamActive
-                                        ? "login-btn login-btn-active"
-                                        : "login-btn"
-                                }
-                                onClick={renderProps.onClick}
-                                disabled={renderProps.disabled}
-                            >
-                                Sign-in
-                            </button>
-                        )}
-                        onSuccess={onSuccess}
-                        onFailure={onFailure}
-                        cookiePolicy={"single_host_origin"}
-                        isSignedIn={false}
-                    />
+                    <button
+                        className={
+                            hamActive
+                                ? "login-btn login-btn-active"
+                                : "login-btn"
+                        }
+                        onClick={() => window.location.href = "/login"}
+                    >
+                        Login
+                    </button>
                 )}
                 <div
                     className={hamActive ? "ham ham-active" : "ham"}

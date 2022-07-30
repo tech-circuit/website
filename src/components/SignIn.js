@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/signin.css";
 import "../styles/all.css";
 import Footer from "./Footer";
+import GoogleLoginButton from "./GoogleLoginButton";
 
 function SignIn() {
     return (
@@ -14,7 +15,7 @@ function SignIn() {
                             alt="logo"
                             className="logo"
                         />
-                        <h2>Sign In</h2>
+                        <h3 style={{ fontWeight: "normal" }}>Login</h3>
                         <div className="fields sign-fields">
                             <input
                                 type="text"
@@ -32,20 +33,20 @@ function SignIn() {
                                 required="true"
                             ></input>
                         </div>
-                        <button className="hero-btn">Sign Up</button>
+                        <button className="hero-btn">Login</button>
                         <div className="align-p">
                             <a className="underlined-link" href="/">
                                 Forgot Password?
                             </a>
                         </div>
-                        <button>google btn daalo</button>
+                        <GoogleLoginButton/>
                     </div>
                     <div className="text">
                         <p>
                             Don't have an account?{" "}
                             <a
                                 className="underlined-link"
-                                href="/create-account"
+                                href="/register"
                             >
                                 Sign up{" "}
                             </a>

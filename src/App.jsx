@@ -108,10 +108,10 @@ const App = () => {
                 <Route exact path="/profile-setup">
                     <UserFlow />
                 </Route>
-                <Route exact path="/sign-up">
+                <Route exact path="/register">
                     <SignUp />
                 </Route>
-                <Route exact path="/sign-in">
+                <Route exact path="/login">
                     <SignIn />
                 </Route>
                 <Route exact path="/forum/post/:postId">
