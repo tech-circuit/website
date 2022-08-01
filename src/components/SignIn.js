@@ -21,7 +21,7 @@ function SignIn() {
                                 type="text"
                                 name="email"
                                 autoComplete="off"
-                                placeholder="E-mail pr username"
+                                placeholder="E-mail or username"
                                 required="true"
                                 className="sign-username"
                             ></input>
