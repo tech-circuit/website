@@ -17,16 +17,6 @@ const Community = () => {
     const [searching, setSearching] = useState(false);
     const [searchLoading, setSearchLoading] = useState(false);
 
-    // document.addEventListener("scroll", () => {
-    //   if (document.querySelector(".comSearch")) {
-    //     if (document.querySelector(".comSearch").offsetTop !== 386) {
-    //       document.querySelector(".comSearch").classList.add("sha");
-    //     } else {
-    //       document.querySelector(".comSearch").classList.remove("sha");
-    //     }
-    //   }
-    // });
-
     const switchPage = (eve) => {
         document.querySelector(".sortComAct").classList.remove("sortComAct");
         eve.target.classList.add("sortComAct");

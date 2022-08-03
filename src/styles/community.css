@@ -101,14 +101,13 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: stretch;
     padding-top: 6vh;
     padding-bottom: 6vh;
 }
 .com {
     background: red;
     width: 28%;
-    min-height: 40vh;
     background: #ffffff;
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
@@ -175,5 +174,5 @@
 }
 .user .socials {
     margin-top: 2vh;
-    margin-bottom: 0vw;
+    margin-bottom: 0;
 }

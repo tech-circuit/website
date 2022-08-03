@@ -12,6 +12,7 @@ const OrgView = () => {
     const [org, setOrg] = useState({});
     const [members, setMembers] = useState([]);
     const { orgId } = useParams();
+    const [id, setId] = useState("");
 
     useEffect(() => {
         const getOrg = async () => {
@@ -38,56 +39,93 @@ const OrgView = () => {
         const userData = await userDataJson.json();
 
         if (userData.user) {
-            return userData.user
+            return userData.user;
         } else {
-            console.log("error")
+            console.log("error");
         }
     };
 
     const addPostToMembers = (admins, members, alumni) => {
         const membersToAdd = [];
         admins.forEach((admin) => {
-            membersToAdd.push({id: admin, post: "Admin"});
-        }
-        );
+            membersToAdd.push({ id: admin, post: "Admin" });
+        });
         members.forEach((member) => {
-            membersToAdd.push({id: member, post: "Member"});
-        }
-        );
+            membersToAdd.push({ id: member, post: "Member" });
+        });
         alumni.forEach((alumni) => {
-            membersToAdd.push({id: alumni, post: "Alumni"});
-        }
-        );
+            membersToAdd.push({ id: alumni, post: "Alumni" });
+        });
         return membersToAdd;
-    }
+    };
 
     useEffect(() => {
         if (org.admins) {
-            let allMembers = addPostToMembers(org.admins, org.members, org.alumni);
-            console.log(members.length)
+            let allMembers = addPostToMembers(
+                org.admins,
+                org.members,
+                org.alumni
+            );
+
             if (members.length < allMembers.length) {
-                const membersToInflate = []
+                const membersToInflate = [];
+
                 allMembers.forEach(async (member) => {
-                    let user = await getUser(member.id)
-                    membersToInflate.push({user: user, post: member.post});
+                    let user = await getUser(member.id);
+                    membersToInflate.push({ user: user, post: member.post });
+
                     if (membersToInflate.length === allMembers.length) {
-                        let sortedList = []
-                        allMembers.forEach(member => {
-                            membersToInflate.forEach(memberToInflate => {
+                        let sortedList = [];
+
+                        allMembers.forEach((member) => {
+                            membersToInflate.forEach((memberToInflate) => {
                                 if (memberToInflate.user._id === member.id) {
-                                    sortedList.push(memberToInflate)
-                                    if (sortedList.length === allMembers.length) {
-                                        console.log(sortedList)
-                                        setMembers(sortedList)
+                                    sortedList.push(memberToInflate);
+                                    if (
+                                        sortedList.length === allMembers.length
+                                    ) {
+                                        console.log(sortedList);
+                                        setMembers(sortedList);
                                     }
                                 }
-                            })
-                        })
+                            });
+                        });
                     }
-                })
+                });
             }
         }
-    }, [org, members])
+    }, [org, members]);
+
+    useEffect(() => {
+        const getId = async () => {
+            try {
+                const authToken = localStorage.getItem("authToken");
+
+                if (authToken) {
+                    const dataJson = await fetch(
+                        `${BASE_API_URL}/user/info?access_token=${authToken}`
+                    );
+                    const data = await dataJson.json();
+
+                    if (data.user) {
+                        setId(data.user._id);
+                    } else {
+                        notyf.error("some error occured");
+                    }
+                } else {
+                    setId("");
+                }
+            } catch (err) {
+                notyf.error("some error occured");
+            }
+        };
+
+        try {
+            getId();
+        } catch (err) {
+            notyf.error("some error occured");
+        }
+    }, []);
 
     return (
         <section className="org-cont">
@@ -100,9 +138,7 @@ const OrgView = () => {
                     <div className="main-box">
                         <h1>{org.name}</h1>
                         <p>
-                            {org.isIndependent
-                                ? "Independent"
-                                : org.institute}
+                            {org.isIndependent ? "Independent" : org.institute}
                         </p>
                         <img src={org.logo_url} className="org-pfp" alt="alt" />
                         <p className="site">
@@ -129,6 +165,7 @@ const OrgView = () => {
                                               return (
                                                   <a
                                                       href={link}
+                                                      key={link}
                                                       target="_blank"
                                                       rel="noreferrer"
                                                   >
@@ -139,9 +176,18 @@ const OrgView = () => {
                                     : ""}
                             </div>
                         </div>
-                        <button className="ReqJoinButton">
-                            Request to Join
-                        </button>
+                        {org.admins && org.admins.includes(id) ? (
+                            <Link
+                                to={`/edit-org/${orgId}`}
+                                className="edit-org-btn"
+                            >
+                                Edit organisation
+                            </Link>
+                        ) : (
+                            <button className="ReqJoinButton">
+                                Request to Join
+                            </button>
+                        )}
                     </div>
                 </div>
                 <div className="other-info">
@@ -152,17 +198,24 @@ const OrgView = () => {
                     <div className="org-div current-mods">
                         <h3>
                             Members (
-                            {org.admins ? org.members.length + org.admins.length + org.alumni.length : ""})
+                            {org.admins
+                                ? org.members.length +
+                                  org.admins.length +
+                                  org.alumni.length
+                                : ""}
+                            )
                         </h3>
                         <div className="members">
                             {members
-                                ? members
-                                      .slice(0)
-                                      .map((member) => {
-                                          return (
-                                            <MemberCard key={member.user._id} user={member.user} post={member.post}/>
-                                          );
-                                      })
+                                ? members.slice(0).map((member) => {
+                                      return (
+                                          <MemberCard
+                                              key={member.user._id}
+                                              user={member.user}
+                                              post={member.post}
+                                          />
+                                      );
+                                  })
                                 : ""}
                         </div>
                     </div>

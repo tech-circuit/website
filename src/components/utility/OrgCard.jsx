@@ -8,7 +8,6 @@ const OrgCard = ({ org, id }) => {
             <img src={org.logo_url} alt="alt" />
             <h2>{org.name}</h2>
             <p>{org.isIndependent ? "Independent" : org.institute}</p>
-            {/* <p>Delhi Public School, Vasant Kunj</p> */}
             <div className="socials">
                 {org.links
                     ? org.links
@@ -29,7 +28,7 @@ const OrgCard = ({ org, id }) => {
             </div>
 
             {org.admins.includes(id) ? (
-                <Link to={`/edit-org/${org._id}`} className="view">
+                <Link to={`/org/admin/${org._id}`} className="view">
                     Edit Organization
                 </Link>
             ) : (

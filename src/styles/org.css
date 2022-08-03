@@ -67,11 +67,12 @@
 }
 
 .main-info .site {
-    margin: 2vh 0;
+    margin: 1.6vh 0;
 }
 
 .main-info .orglink-icons {
     margin-top: 1vh;
+    margin-bottom: 2vh;
     font-size: 4.2vh;
 }
 
@@ -142,4 +143,15 @@
     display: flex;
     flex-flow: row wrap;
     align-items: center;
+}
+.main-info .main-box a.edit-org-btn {
+    color: #fff;
+    padding: 1.6vh 2vw;
+    background: #4678f9;
+    border-radius: 10px;
+    margin-top: 10vh;
+    transition: all 0.3s;
+}
+.main-info .main-box a.edit-org-btn:hover {
+    background: #2a51b2;
 }

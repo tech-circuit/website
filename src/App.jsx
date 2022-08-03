@@ -72,6 +72,7 @@ const App = () => {
                     {/* <Soon /> */}
                 </Route>
                 <Route exact path="/org/:orgId" component={OrgView} />
+                <Route exact path="/org/admin/:orgId" component={OrgView} />
                 <Route exact path="/resources">
                     <Resources />
                     {/* <Soon /> */}
