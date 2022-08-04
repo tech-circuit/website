@@ -1,6 +1,6 @@
 .org-cont {
-    margin-top: 13vh;
-    padding: 0 15vw;
+    margin-top: 4vh;
+    padding: 0 10vw;
 }
 
 .org-wrap {
@@ -141,12 +141,13 @@
 .members {
     width: 120%;
     display: flex;
-    flex-flow: row wrap;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
 }
 .main-info .main-box a.edit-org-btn {
     color: #fff;
-    padding: 1.6vh 2vw;
+    padding: 1.6vh 2.4vw;
     background: #4678f9;
     border-radius: 10px;
     margin-top: 10vh;
@@ -154,4 +155,35 @@
 }
 .main-info .main-box a.edit-org-btn:hover {
     background: #2a51b2;
+}
+.leave-org {
+    color: #ff6b6b;
+    border: 1px #ff6b6b solid;
+    border-radius: 10px;
+    padding: 1.6vh 2.4vw;
+    cursor: pointer;
+    margin-top: 2.6vh;
+}
+.member-reqs {
+    padding: 2vh 10vw;
+    margin-top: 3vh;
+}
+.member-reqs h1 {
+    color: #29313d;
+    font-size: 1.6vw;
+    font-weight: 600;
+}
+.invite-mem {
+    width: 60%;
+}
+.invite-mem input,
+.invite-mem select {
+    border: 2px solid rgba(116, 116, 116, 0.3);
+    font-size: 1vw;
+    border-radius: 5px;
+    padding: 1.2vh 1.2vw;
+    font-weight: 300;
+}
+.sent-reqs {
+    margin-top: 5vh;
 }
