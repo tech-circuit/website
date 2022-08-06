@@ -21,7 +21,7 @@ import OrgView from "./components/OrgView";
 import EventView from "./components/EventView";
 import ProjectView from "./components/ProjectView";
 import Error from "./components/Error";
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import io from "socket.io-client";
