@@ -46,7 +46,7 @@ const App = () => {
                     <Index />
                 </Route>
                 <Route exact path="/work">
-                    <Work />
+                    <Work socket={socket} />
                     {/* <Soon /> */}
                 </Route>
                 <Route exact path="/about">

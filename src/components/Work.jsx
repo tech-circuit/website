@@ -10,7 +10,7 @@ import FullProject from "./utility/FullProject";
 import Search from "./utility/Search";
 import Filter from "./utility/Filter";
 
-const Work = () => {
+const Work = ({ socket }) => {
     // const [workSort, setWorkSort] = useState("Coding")
     const [projects, setProjects] = useState([]);
     const [searchProjects, setSearchProjects] = useState([]);
@@ -20,7 +20,7 @@ const Work = () => {
     const sortRef = useRef("sort");
     const [fullView, setfullView] = useState(false);
     const [id, setId] = useState("");
-    const [selectedProject,setSelectedProject] = useState({});
+    const [selectedProject, setSelectedProject] = useState({});
 
     const view = (project) => {
         setSelectedProject(project);
@@ -220,7 +220,13 @@ const Work = () => {
             <section
                 className={fullView ? "fullEvent fullEventActive" : "fullEvent"}
             >
-                <FullProject project={selectedProject} close={close} />
+                {fullView && (
+                    <FullProject
+                        socket={socket}
+                        project={selectedProject}
+                        close={close}
+                    />
+                )}
             </section>
         </>
     );
