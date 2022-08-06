@@ -171,7 +171,7 @@
 .member-reqs h1 {
     color: #29313d;
     font-size: 1.6vw;
-    font-weight: 600;
+    font-weight: 500;
 }
 .invite-mem {
     width: 60%;
@@ -186,4 +186,61 @@
 }
 .sent-reqs {
     margin-top: 5vh;
+}
+.sent-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-bottom: 4vh;
+    margin-top: 3vh;
+}
+.sent-card {
+    width: 23%;
+    margin: 0 1px;
+    margin-bottom: 4vh;
+    padding: 4vh 2vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 0px 30px rgba(41, 49, 61, 0.1);
+    color: #29313d;
+    text-align: center;
+}
+.sent-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.sent-card h4 {
+    font-weight: 500;
+    font-size: 1.4vw;
+    margin-top: 1.4vh;
+    margin-bottom: 0.4vh;
+}
+.sent-card h5 {
+    font-size: 1vw;
+    font-weight: 400;
+    color: rgba(116, 116, 116, 0.8);
+    margin-bottom: 2vh;
+}
+.sent-links {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1vh;
+}
+.sent-link {
+    font-size: 2vw;
+}
+.accept-mem,
+.decline-mem {
+    font-size: 1.8vw;
+    margin: 0 0.6vw;
+}
+.accept-mem {
+    color: #85d49c;
+}
+.decline-mem {
+    color: #ff6b6b;
 }

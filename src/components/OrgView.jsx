@@ -1,5 +1,6 @@
 import "../styles/org.css";
-import { FaBehanceSquare, FaChevronLeft } from "react-icons/fa";
+import { FaBehanceSquare, FaChevronLeft, FaTimesCircle } from "react-icons/fa";
+import { BsFillCheckCircleFill } from "react-icons/bs";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FaPlusCircle } from "react-icons/fa";
@@ -15,7 +16,7 @@ const OrgView = () => {
     const [members, setMembers] = useState([]);
     const { orgId } = useParams();
     const [id, setId] = useState("");
-    const [tab, setTab] = useState("Org Info");
+    const [tab, setTab] = useState("Membership requests");
 
     function changeTab(e) {
         setTab(e.target.textContent);
@@ -477,16 +478,29 @@ const MemReqs = () => {
             <div className="sent-reqs">
                 <h1>Review membership requests</h1>
                 <div className="sent-cards">
-                    <div className="sent-card">
-                        <img src="/assets/account.png" alt="acc" />
-                        <h4>Ishaan Das</h4>
-                        <h5>Highschool student, Filmmaker, UI/UX Designer</h5>
-                        <div className="sent-links">
-                            <a href="/" className="sent-link">
-                                <FaBehanceSquare />
-                            </a>
+                    {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+                        <div className="sent-card" key={i}>
+                            <img src="/assets/ishana.jpg" alt="acc" />
+                            <h4>Ishaan Das</h4>
+                            <h5>
+                                Highschool student, Filmmaker, UI/UX Designer
+                            </h5>
+                            <div className="sent-links">
+                                <a href="/" className="sent-link">
+                                    <FaBehanceSquare />
+                                </a>
+                            </div>
+
+                            <div className="decide-mem">
+                                <button className="accept-mem">
+                                    <BsFillCheckCircleFill />
+                                </button>
+                                <button className="decline-mem">
+                                    <FaTimesCircle />
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </section>
