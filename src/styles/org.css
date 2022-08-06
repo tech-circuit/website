@@ -6,6 +6,7 @@
 .org-wrap {
     margin-top: 3vh;
     display: flex;
+    width: 100%;
 }
 
 .org-cont img {
@@ -45,6 +46,7 @@
 
 .other-info {
     margin-left: 4vw;
+    width: 100%;
 }
 
 .main-info h1 {
@@ -95,6 +97,7 @@
 
 .other-info .org-div {
     margin-bottom: 2.5vh;
+    margin-top: 4vh;
     /* max-width: 65%; */
 }
 
@@ -243,4 +246,16 @@
 }
 .decline-mem {
     color: #ff6b6b;
+}
+.members {
+    width: 100%;
+    margin-top: 3vh;
+    justify-content: space-between;
+}
+.org-user-card {
+    width: 31%;
+}
+.org-user-card img {
+    width: 170px;
+    height: 170px;
 }

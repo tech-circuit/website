@@ -134,6 +134,8 @@ const FullProject = ({ project, close, socket }) => {
         checkIfAuthenticated();
     }, [project, project._id]);
 
+    console.log(authenticated);
+
     return (
         <>
             <div className="proj-top">
