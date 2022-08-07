@@ -160,7 +160,9 @@ const FullProject = ({ project, close, socket }) => {
                     <h1>{project?.title}</h1>
                     <h3>{collabList()}</h3>
                 </div>
-                <button className="view-proj">View Project</button>
+                <Link to={`/project/${project._id}`} className="view-proj">
+                    View Project
+                </Link>
             </div>
 
             <div className="eventAddInfo">
@@ -216,25 +218,37 @@ const FullProject = ({ project, close, socket }) => {
 
             <div className="fullProjectUnit">
                 <h4>Comments ({totalComments})</h4>
-                <textarea
-                    name="comments"
-                    autoComplete="off"
-                    className="comment-text"
-                    id="comment-input-area"
-                    placeholder="Post some critique or review regarding their work!"
-                    onChange={(e) => setCommentContent(e.target.value)}
-                    value={commentContent}
-                ></textarea>
-                <div className="fullProjectButtons">
-                    <button
-                        className="post-pcomment-btn"
-                        id="work-comment-btn"
-                        onClick={createComment}
-                        disabled={creatingComment}
-                    >
-                        {creatingComment ? "Loading..." : "Post Comment"}
-                    </button>
-                    <button className="post-pcancel-btn">Cancel</button>
+                <div className="add-comment">
+                    <div className="add-comm-top">
+                        <img
+                            src={
+                                authenticated
+                                    ? `${BASE_API_URL}/user/pfp?access_token=${authToken}`
+                                    : "/assets/accounticon.png"
+                            }
+                            alt="alt"
+                        />
+                        <textarea
+                            name="comments"
+                            autoComplete="off"
+                            className="comment-text"
+                            id="comment-input-area"
+                            placeholder="Post some critique or review regarding their work!"
+                            onChange={(e) => setCommentContent(e.target.value)}
+                            value={commentContent}
+                        ></textarea>
+                    </div>
+                    <div className="fullProjectButtons">
+                        <button
+                            className="post-pcomment-btn"
+                            id="work-comment-btn"
+                            onClick={createComment}
+                            disabled={creatingComment}
+                        >
+                            {creatingComment ? "Loading..." : "Post Comment"}
+                        </button>
+                        <button className="post-pcancel-btn">Cancel</button>
+                    </div>
                 </div>
             </div>
 
@@ -272,7 +286,7 @@ const FullProject = ({ project, close, socket }) => {
                         </p>
                         <FaCaretDown className="caret-down" />
                     </div>
-                )}{" "}
+                )}
             </div>
         </>
     );
