@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 const ProjectCard = ({ project, view, id }) => {
     const openProject = (e) => {
         e.preventDefault();
-        if (project.uploader.toString() !== id) {
-            view(project);
-        }
+        view(project);
         // return false;
     };
     return (
