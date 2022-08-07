@@ -13,11 +13,7 @@ const ProjectCard = ({ project, view, id }) => {
         <>
             <Link
                 onClick={openProject}
-                to={
-                    project.uploader.toString() !== id
-                        ? `/project/${project._id}`
-                        : "#"
-                }
+                to={`/project/${project._id}`}
                 className="workCard"
             >
                 <img src={project.cover_image} alt="project img" />
