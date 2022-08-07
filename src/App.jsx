@@ -101,11 +101,9 @@ const App = () => {
                     {/* <Soon /> */}
                 </Route>
                 <Route exact path="/event/:eventId" component={EventView} />
-                <Route
-                    exact
-                    path="/project/:projectId"
-                    component={ProjectView}
-                />
+                <Route exact path="/project/:projectId">
+                    <ProjectView socket={socket} />
+                </Route>
                 <Route exact path="/profile">
                     <Profile />
                     {/* <Soon /> */}

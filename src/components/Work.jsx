@@ -23,11 +23,13 @@ const Work = ({ socket }) => {
     const [selectedProject, setSelectedProject] = useState({});
 
     const view = (project) => {
+        window.history.pushState({}, "", `/project/${project._id}`);
         setSelectedProject(project);
         setfullView(true);
     };
 
     const close = () => {
+        window.history.pushState({}, "", `/work`);
         setfullView(false);
     };
 
