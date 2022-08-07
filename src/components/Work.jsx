@@ -138,7 +138,10 @@ const Work = ({ socket }) => {
                 className={
                     fullView ? "event-cover event-cover-active" : "event-cover"
                 }
-                onClick={close}
+                onClick={() => {
+                    window.history.pushState({}, "", "/work");
+                    close();
+                }}
             ></div>
             <header className="forumHeader head-1">
                 <div className="container">

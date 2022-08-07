@@ -20,7 +20,9 @@ const Projects = ({ userId }) => {
 
     useEffect(() => {
         const getProjects = async () => {
-            const dataJson = await fetch(`${BASE_API_URL}/project/user/${userId}`);
+            const dataJson = await fetch(
+                `${BASE_API_URL}/project/user/${userId}`
+            );
             const data = await dataJson.json();
 
             if (data.projects) {
