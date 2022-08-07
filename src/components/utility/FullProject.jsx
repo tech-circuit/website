@@ -137,13 +137,7 @@ const FullProject = ({ project, close, socket }) => {
     return (
         <>
             <div className="proj-top">
-                <button
-                    className="return"
-                    onClick={() => {
-                        window.history.pushState({}, "", "/work");
-                        close();
-                    }}
-                >
+                <button className="return" onClick={close}>
                     <FaChevronLeft />
                     &nbsp;&nbsp;Back
                 </button>

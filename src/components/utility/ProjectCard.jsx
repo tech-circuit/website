@@ -5,7 +5,6 @@ const ProjectCard = ({ project, view, id }) => {
     const openProject = (e) => {
         e.preventDefault();
         if (project.uploader.toString() !== id) {
-            window.history.pushState({}, "", `/project/${project._id}`);
             view(project);
         }
         // return false;

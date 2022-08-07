@@ -23,11 +23,13 @@ const Work = ({ socket }) => {
     const [selectedProject, setSelectedProject] = useState({});
 
     const view = (project) => {
+        window.history.pushState({}, "", `/project/${project._id}`);
         setSelectedProject(project);
         setfullView(true);
     };
 
     const close = () => {
+        window.history.pushState({}, "", `/work`);
         setfullView(false);
     };
 
@@ -138,10 +140,7 @@ const Work = ({ socket }) => {
                 className={
                     fullView ? "event-cover event-cover-active" : "event-cover"
                 }
-                onClick={() => {
-                    window.history.pushState({}, "", "/work");
-                    close();
-                }}
+                onClick={close}
             ></div>
             <header className="forumHeader head-1">
                 <div className="container">

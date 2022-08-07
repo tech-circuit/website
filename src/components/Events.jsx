@@ -18,13 +18,15 @@ const Events = () => {
     const [searching, setSearching] = useState(false);
     const [searchLoading, setSearchLoading] = useState(false);
     const [fields, setFields] = useState([]);
-    const [selectedEvent,setSelectedEvent] = useState({});
+    const [selectedEvent, setSelectedEvent] = useState({});
 
     const view = (event) => {
+        window.history.pushState({}, "", `/event/${event._id}`);
         setSelectedEvent(event);
         setfullView(true);
     };
     const close = () => {
+        window.history.pushState({}, "", `/events`);
         setfullView(false);
     };
 
@@ -260,7 +262,7 @@ const Events = () => {
             <section
                 className={fullView ? "fullEvent fullEventActive" : "fullEvent"}
             >
-              <FullEvent event={selectedEvent} close={close}/>
+                <FullEvent event={selectedEvent} close={close} />
             </section>
         </>
     );
