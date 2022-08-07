@@ -32,6 +32,7 @@ const OrgView = () => {
                 setOrg(orgToSet);
             } else {
                 notyf.error("Some error occured");
+                console.log("err");
             }
         };
 
