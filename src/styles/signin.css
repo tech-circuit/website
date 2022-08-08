@@ -98,3 +98,8 @@
 .signup-cont .signup-main .signup-fields input:focus {
     border-color: #4678f9;
 }
+
+.signup-main p.error-msg {
+    color: red;
+    margin: 0.5vw
+}
