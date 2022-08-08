@@ -27,7 +27,9 @@ function SignUp() {
         e.preventDefault()
         setFormErrors(validate(formValues));
         setIsSubmit(true);
-        notyf.success("Registered successfully!")
+        if (formErrors.length === 0) {
+            notyf.success("Registered successfully!");
+        }
     }
 
     useEffect(() => {
