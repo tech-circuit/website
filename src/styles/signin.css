@@ -6,8 +6,8 @@
     flex-direction: column;
 }
 
-h3 {
-    margin-bottom: 0.2vh;
+.sign-fields input:first-child {
+Margin-top: 0.1vh;
 }
 
 .signup-wrap {
