@@ -7,7 +7,7 @@
 }
 
 .sign-fields input:first-child {
-Margin-top: 0.1vh;
+    margin-top: 0.1vh;
 }
 
 .signup-wrap {
@@ -30,6 +30,7 @@ Margin-top: 0.1vh;
 .signup-cont h2 {
     font-weight: 500;
     font-size: 1.5vw;
+    margin: 2vh 0;
 }
 
 .signup-cont .fields {
@@ -105,5 +106,21 @@ Margin-top: 0.1vh;
 
 .signup-main p.error-msg {
     color: red;
-    margin: 0.5vw
+    margin: 0.5vw;
+}
+.google-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1vw;
+    margin: 1vh 0;
+    margin-top: 2vh;
+    box-shadow: 0 0 7px rgba(116, 116, 116, 0.24);
+    border-radius: 10px;
+    padding: 1.8vh 0;
+}
+.google-btn img {
+    width: 26px;
+    height: 26px;
 }
