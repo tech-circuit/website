@@ -9,6 +9,7 @@ import WorkCarousel from "./utility/WorkCarousel";
 import FullProject from "./utility/FullProject";
 import Search from "./utility/Search";
 import Filter from "./utility/Filter";
+import { useFieldsAvailable } from "./utility/useFieldsAvailable";
 
 const Work = ({ socket }) => {
     // const [workSort, setWorkSort] = useState("Coding")
@@ -16,11 +17,10 @@ const Work = ({ socket }) => {
     const [searching, setSearching] = useState(false);
     const [searchLoading, setSearchLoading] = useState(false);
     const [currentField, setCurrentField] = useState(null);
-    const sortRef = useRef("sort");
+    const sortRef = useRef(null);
+    const [searchInput, setSearchInput] = useState("");
+    const fieldsAvailable = useFieldsAvailable();
     const [fullView, setfullView] = useState(false);
-    const [fieldsAvailable, setFieldsAvailable] = useState(
-        /** @type {string[]} */ []
-    );
     const [id, setId] = useState("");
     const [selectedProject, setSelectedProject] = useState({});
 
@@ -59,6 +59,7 @@ const Work = ({ socket }) => {
     };
 
     const search = async (inp) => {
+        setSearchInput(inp);
         if (inp !== "") {
             setSearchLoading(true);
             const resJson = await fetch(`${BASE_API_URL}/project/search`, {
@@ -84,21 +85,6 @@ const Work = ({ socket }) => {
             setSearchLoading(false);
             setSearchProjects([]);
             setSearching(false);
-        }
-    };
-
-    const getFieldsAvailable = async () => {
-        const res = await fetch(`${BASE_API_URL}/project/fields`).then((r) =>
-            r.json()
-        );
-
-        if (res.fields) {
-            // converts type of `data/fields.js` (Record<string, Record<string, string>>) to a flat array of fields (Array<string>)
-            setFieldsAvailable(
-                Object.values(res.fields).flatMap(Object.values)
-            );
-        } else {
-            notyf.error("Some Error occurred");
         }
     };
 
@@ -137,7 +123,6 @@ const Work = ({ socket }) => {
 
     useEffect(() => {
         getId();
-        getFieldsAvailable();
     }, []);
 
     return (
@@ -168,7 +153,11 @@ const Work = ({ socket }) => {
                         >
                             <FaChevronRight />
                         </button>
-                        <WorkCarousel sortRef={sortRef} />
+                        <WorkCarousel
+                            fieldsAvailable={fieldsAvailable}
+                            sortRef={sortRef}
+                            setCurrentField={setCurrentField}
+                        />
                     </div>
                 </div>
             </header>
@@ -195,7 +184,14 @@ const Work = ({ socket }) => {
 
             {searching ? (
                 <section className="projects container firstProjSec">
-                    <h1>{currentField} Projects</h1>
+                    {searchInput ? (
+                        <h1>
+                            {searchProjects.length} projects found in "
+                            {searchInput.toUpperCase()}"
+                        </h1>
+                    ) : (
+                        <h1>{currentField} Projects</h1>
+                    )}
                     <div className="workCards">
                         {searchProjects.map((project) => {
                             return (

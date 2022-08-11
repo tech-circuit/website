@@ -1,18 +1,9 @@
 import { useEffect } from "react";
 import "../../styles/all.css";
+import { useFieldsAvailable } from "./useFieldsAvailable";
 
 const Fields = ({ fields, setFields }) => {
-    const staticfields = [
-        "UI/UX",
-        "Web Development",
-        "Cryptic",
-        "Blockchain",
-        "3D Dev",
-        "Dlor",
-        "Lorem",
-        "Sit",
-        "Amet",
-    ];
+    const fieldsAvailable = useFieldsAvailable();
 
     useEffect(() => {
         if (fields.length === 5) {
@@ -47,7 +38,7 @@ const Fields = ({ fields, setFields }) => {
                         <button onClick={() => setFields([])}>clear all</button>
                     </div>
                     <div className="fields">
-                        {staticfields.map((field) => {
+                        {fieldsAvailable.map((field) => {
                             return (
                                 <button
                                     className={

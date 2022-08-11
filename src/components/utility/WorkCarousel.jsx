@@ -1,6 +1,6 @@
 import OwlCarousel from "react-owl-carousel2";
-import { useState, useEffect } from "react";
-import BASE_API_URL from "../../constants";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 const options = {
     items: 9,
@@ -11,33 +11,53 @@ const options = {
     nav: false,
 };
 
-const WorkCarousel = ({ sortRef }) => {
-    const [fieldsAvailable, setFieldsAvailable] = useState(
-        /** @type {string[]} */ []
-    );
-
-    const getFieldsAvailable = async () => {
-        const res = await fetch(`${BASE_API_URL}/project/fields`).then((r) =>
-            r.json()
-        );
-
-        // converts type of `data/fields.js` (Record<string, Record<string, string>>) to a flat array of fields (Array<string>)
-        setFieldsAvailable(Object.values(res.fields).flatMap(Object.values));
-    };
-
-    useEffect(() => {
-        getFieldsAvailable();
-    }, []);
-
+const WorkCarousel = ({ sortRef, fieldsAvailable, setCurrentField }) => {
     return (
         <>
             <OwlCarousel ref={sortRef} options={options}>
                 {fieldsAvailable.map((field) => (
-                    <h1>{field}</h1>
+                    <CarouselItem
+                        key={field}
+                        field={field}
+                        setCurrentField={setCurrentField}
+                    />
                 ))}
             </OwlCarousel>
         </>
     );
 };
+
+function CarouselItem({ field, setCurrentField }) {
+    const ref = useRef();
+
+    // Add event listener to owl carousel's div element rather than h1
+    // allows to click anywhere inside the element rather than just on text
+    // useEffect(() => {
+    //     let parentEl = ref.current.parentElement;
+    //     const handleClick = (e) => {
+    //         setCurrentField((currentField) =>
+    //             field === currentField ? null : field
+    //         );
+    //     };
+    //     parentEl.addEventListener("click", handleClick);
+
+    //     return () => {
+    //         parentEl.removeEventListener("click", handleClick);
+    //     };
+    // }, [setCurrentField, field]);
+
+    return (
+        <h1
+            ref={ref}
+            onClick={(e) => {
+                setCurrentField((currentField) =>
+                    field === currentField ? null : field
+                );
+            }}
+        >
+            {field}
+        </h1>
+    );
+}
 
 export default WorkCarousel;

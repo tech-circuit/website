@@ -68,13 +68,14 @@
     border-radius: 5px;
     padding: 1.8vh 1.6vw;
     min-width: 75%;
+    width: fit-content;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     transition: all 0.4s;
 }
 .filter-hold .field-box {
-    width: 30vw;
+    min-width: 30vw;
 }
 .field-box-active {
     top: 110%;
@@ -101,7 +102,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    height: 20vh;
+    max-height: 29vh;
     flex-wrap: wrap;
     width: 100%;
 }
@@ -109,7 +110,7 @@
     margin-top: 1.4vh;
     margin-right: 1%;
     font-size: 0.9vw;
-    width: 33.333%;
+    /* width: 33.333%; */
     text-align: left;
     transition: all 0.2s;
     white-space: nowrap;
