@@ -1,6 +1,5 @@
 import OwlCarousel from "react-owl-carousel2";
 import { useRef } from "react";
-import { useEffect } from "react";
 
 const options = {
     items: 9,
