@@ -3,77 +3,77 @@ import "../styles/signin.css";
 import "../styles/all.css";
 import Footer from "./Footer";
 import { useState, useEffect } from "react";
-import GoogleLoginButton from "./GoogleLoginButton";  
+import GoogleLoginButton from "./GoogleLoginButton";
 import notyf from "../tcNotyf";
 
 function SignUp() {
     const initialValues = {
-        fname: '',
-        lname: '',
-        username: '',
-        email: '',
-        password: ''
-    }
+        fname: "",
+        lname: "",
+        username: "",
+        email: "",
+        password: "",
+    };
     const [formValues, setFormValues] = useState(initialValues);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormValues({...formValues, [name]: value});
-    }
+        setFormValues({ ...formValues, [name]: value });
+    };
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         setFormErrors(validate(formValues));
         setIsSubmit(true);
         if (formErrors.length === 0) {
             notyf.success("Registered successfully!");
         }
-    }
+    };
 
     useEffect(() => {
         console.log(formErrors);
-        if(Object.keys(formErrors).length === 0 && isSubmit) {
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
             console.log(formValues);
         }
-    }, [formErrors, formValues, isSubmit])
+    }, [formErrors, formValues, isSubmit]);
 
     const validate = (values) => {
-        const errors = {}
-        const regex = RegExp(
-            /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-          );
-        
+        const errors = {};
+        const regex = RegExp(
+            /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+        );
+
         if (!values.fname) {
             errors.fname = "First name is required!";
         }
-        
+
         if (!values.lname) {
             errors.lname = "Last name is required!";
         }
-        
+
         if (!values.username) {
             errors.username = "Username is required!";
         }
-        
+
         if (!values.email) {
             errors.email = "Email is required!";
         }
-        
+
         if (!regex.test(values.email)) {
             errors.email = "This is not a valid email!";
         }
-        
+
         if (!values.password) {
             errors.password = "Password is required!";
         }
-        
+
         if (values.password.length < 4) {
             errors.password = "Password must be more than 4 characters!";
         }
         return errors;
-    }
+    };
 
     return (
         <>
@@ -86,7 +86,7 @@ function SignUp() {
                             alt="logo"
                             className="logo"
                         />
-                        <h3 style={{ fontWeight: "normal" }}>Sign Up</h3>
+                        <h2 style={{ fontWeight: "normal" }}>Sign Up</h2>
                         <div className="fields sign-fields signup-fields">
                             <input
                                 type="text"
@@ -95,7 +95,6 @@ function SignUp() {
                                 placeholder="First Name"
                                 value={formValues.fname}
                                 onChange={handleChange}
-
                             ></input>
                             <p className="error-msg">{formErrors.fname}</p>
                             <input
@@ -120,7 +119,7 @@ function SignUp() {
                                 type="text"
                                 name="email"
                                 autoComplete="off"
-                                placeholder="Email"                                
+                                placeholder="Email"
                                 value={formValues.email}
                                 onChange={handleChange}
                             ></input>
@@ -141,7 +140,7 @@ function SignUp() {
                                 Forgot Password?
                             </a>
                         </div>
-                        <GoogleLoginButton/>
+                        <GoogleLoginButton />
                     </form>
                     <div className="text">
                         <p>

@@ -61,11 +61,11 @@
     height: 20vh;
 }
 
-.create-org-cont .left-org input:focus,
-.create-org-cont .left-org select:focus,
-.create-org-cont .left-org textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
     outline: none;
-    border: 2px solid #4678f9;
+    border: 2px solid #4678f9 !important;
 }
 
 .indi-wrap {
