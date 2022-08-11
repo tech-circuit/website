@@ -61,6 +61,7 @@ const Work = ({ socket }) => {
     const search = async (inp) => {
         setSearchInput(inp);
         if (inp !== "") {
+            sortRef.current.scrollIntoView({ behavior: "smooth" });
             setSearchLoading(true);
             const resJson = await fetch(`${BASE_API_URL}/project/search`, {
                 method: "POST",
