@@ -9,10 +9,12 @@ import notyf from "../tcNotyf";
 import Search from "./utility/Search";
 import Filter from "./utility/Filter";
 import FullEvent from "./FullEvent";
+import { useFieldsAvailable } from "./utility/useFieldsAvailable";
 
 const Events = () => {
     const [fullView, setfullView] = useState(false);
     const [events, setEvents] = useState([]);
+    const fieldsAvailable = useFieldsAvailable();
     const [id, setId] = useState("");
     const [searchEvents, setSearchEvents] = useState([]);
     const [searching, setSearching] = useState(false);
@@ -139,7 +141,11 @@ const Events = () => {
                         loading={searchLoading}
                         placeholder="Search for events"
                     />
-                    <Filter fields={fields} setFields={setFields} />
+                    <Filter
+                        fieldsAvailable={fieldsAvailable}
+                        fields={fields}
+                        setFields={setFields}
+                    />
                 </div>
                 <div className="addEvent">
                     <a href="/create-event">
