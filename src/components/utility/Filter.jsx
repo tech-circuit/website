@@ -1,20 +1,8 @@
 import { useState } from "react";
 import { IoFilter } from "react-icons/io5";
 
-const Filter = ({ fields, setFields }) => {
+const Filter = ({ field, setField, fieldsAvailable }) => {
     const [active, setActive] = useState(false);
-
-    const staticfields = [
-        "UI/UX",
-        "Web Development",
-        "Cryptic",
-        "Blockchain",
-        "3D Dev",
-        "Dlor",
-        "Lorem",
-        "Sit",
-        "Amet",
-    ];
 
     return (
         <div className="field-hold filter-hold">
@@ -25,19 +13,15 @@ const Filter = ({ fields, setFields }) => {
 
             <div className={`field-box ${active && "field-box-active"}`}>
                 <div className="fields">
-                    {staticfields.map((i) => {
+                    {fieldsAvailable.map((i) => {
                         return (
                             <button
                                 className={
-                                    fields.includes(i)
-                                        ? "field field-active"
-                                        : "field"
+                                    field === i ? "field field-active" : "field"
                                 }
                                 key={i}
                                 onClick={() => {
-                                    !fields.includes(i)
-                                        ? setFields([i])
-                                        : setFields([]);
+                                    setField(field === i ? null : i);
                                 }}
                             >
                                 {i}

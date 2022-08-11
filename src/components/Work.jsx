@@ -12,15 +12,17 @@ import Filter from "./utility/Filter";
 
 const Work = () => {
     // const [workSort, setWorkSort] = useState("Coding")
-    const [projects, setProjects] = useState([]);
     const [searchProjects, setSearchProjects] = useState([]);
     const [searching, setSearching] = useState(false);
     const [searchLoading, setSearchLoading] = useState(false);
-    const [fields, setFields] = useState([]);
+    const [currentField, setCurrentField] = useState(null);
     const sortRef = useRef("sort");
     const [fullView, setfullView] = useState(false);
+    const [fieldsAvailable, setFieldsAvailable] = useState(
+        /** @type {string[]} */ []
+    );
     const [id, setId] = useState("");
-    const [selectedProject,setSelectedProject] = useState({});
+    const [selectedProject, setSelectedProject] = useState({});
 
     const view = (project) => {
         setSelectedProject(project);
@@ -29,17 +31,6 @@ const Work = () => {
 
     const close = () => {
         setfullView(false);
-    };
-
-    const getProjects = async () => {
-        const dataJson = await fetch(`${BASE_API_URL}/project`);
-        const data = await dataJson.json();
-
-        if (data.projects) {
-            setProjects(data.projects);
-        } else {
-            notyf.error("Some Error occurred");
-        }
     };
 
     const getId = async () => {
@@ -73,7 +64,7 @@ const Work = () => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ search: inp }),
+                body: JSON.stringify({ search: inp, field: currentField }),
             });
             const res = await resJson.json();
 
@@ -94,6 +85,21 @@ const Work = () => {
         }
     };
 
+    const getFieldsAvailable = async () => {
+        const res = await fetch(`${BASE_API_URL}/project/fields`).then((r) =>
+            r.json()
+        );
+
+        if (res.fields) {
+            // converts type of `data/fields.js` (Record<string, Record<string, string>>) to a flat array of fields (Array<string>)
+            setFieldsAvailable(
+                Object.values(res.fields).flatMap(Object.values)
+            );
+        } else {
+            notyf.error("Some Error occurred");
+        }
+    };
+
     useEffect(() => {
         const getFieldProjects = async () => {
             setSearchLoading(true);
@@ -102,7 +108,7 @@ const Work = () => {
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ field: fields[0] }),
+                    body: JSON.stringify({ field: currentField }),
                 }
             );
             const fieldProjects = await fieldProjectsJson.json();
@@ -118,18 +124,18 @@ const Work = () => {
             setSearchLoading(false);
         };
 
-        if (fields.length !== 0) {
+        if (currentField != null) {
             getFieldProjects();
         } else {
             setSearchLoading(false);
             setSearchProjects([]);
             setSearching(false);
         }
-    }, [fields]);
+    }, [currentField]);
 
     useEffect(() => {
-        getProjects();
         getId();
+        getFieldsAvailable();
     }, []);
 
     return (
@@ -171,7 +177,11 @@ const Work = () => {
                         loading={searchLoading}
                         placeholder="Search for amazing projects"
                     />
-                    <Filter fields={fields} setFields={setFields} />
+                    <Filter
+                        fieldsAvailable={fieldsAvailable}
+                        field={currentField}
+                        setField={setCurrentField}
+                    />
                 </div>
                 <div className="addEvent">
                     <a href="/create-project">
@@ -183,7 +193,7 @@ const Work = () => {
 
             {searching ? (
                 <section className="projects container firstProjSec">
-                    <h1>Top results</h1>
+                    <h1>{currentField} Projects</h1>
                     <div className="workCards">
                         {searchProjects.map((project) => {
                             return (
@@ -198,23 +208,11 @@ const Work = () => {
                     </div>
                 </section>
             ) : (
-                <section className="projects container firstProjSec">
-                    <h1>
-                        Popular & Trending&nbsp;<a href="/">View All</a>
-                    </h1>
-                    <div className="workCards">
-                        {projects.map((project) => {
-                            return (
-                                <ProjectCard
-                                    project={project}
-                                    view={view}
-                                    key={project._id}
-                                    id={id}
-                                />
-                            );
-                        })}
-                    </div>
-                </section>
+                <ProjectView
+                    fieldsAvailable={fieldsAvailable}
+                    view={view}
+                    id={id}
+                />
             )}
 
             <section
@@ -229,5 +227,75 @@ const Work = () => {
     //   setWorkSort(eve.target.textContent);
     // }
 };
+
+function ProjectView({ view, id, fieldsAvailable }) {
+    const [projects, setProjects] = useState([]);
+    const newProjects = [...projects]
+        .sort((p1, p2) => new Date(p2.createdAt) - new Date(p1.createdAt))
+        .slice(0, 10);
+    const projectsByFields = fieldsAvailable.map((field) => {
+        return {
+            title: field,
+            projects: projects
+                .filter((project) => project.fields.includes(field))
+                .slice(0, 6),
+        };
+    });
+
+    const getProjects = async () => {
+        const dataJson = await fetch(`${BASE_API_URL}/project`);
+        const data = await dataJson.json();
+
+        if (data.projects) {
+            setProjects(data.projects);
+        } else {
+            notyf.error("Some Error occurred");
+        }
+    };
+
+    useEffect(() => {
+        getProjects();
+    }, []);
+
+    return (
+        <>
+            <section className="projects container firstProjSec">
+                <h1>New</h1>
+                <div className="workCards">
+                    {newProjects.map((project) => {
+                        return (
+                            <ProjectCard
+                                project={project}
+                                view={view}
+                                key={project._id}
+                                id={id}
+                            />
+                        );
+                    })}
+                </div>
+            </section>
+            {projectsByFields.map((field) => (
+                <section
+                    key={field.title}
+                    className="projects container firstProjSec"
+                >
+                    <h1>{field.title}</h1>
+                    <div className="workCards">
+                        {field.projects.map((project) => {
+                            return (
+                                <ProjectCard
+                                    project={project}
+                                    view={view}
+                                    key={project._id}
+                                    id={id}
+                                />
+                            );
+                        })}
+                    </div>
+                </section>
+            ))}
+        </>
+    );
+}
 
 export default Work;
