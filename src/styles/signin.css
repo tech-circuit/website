@@ -6,6 +6,10 @@
     flex-direction: column;
 }
 
+.sign-fields input:first-child {
+    margin-top: 0.1vh;
+}
+
 .signup-wrap {
     background-color: white;
     width: 48vw;
@@ -26,6 +30,7 @@
 .signup-cont h2 {
     font-weight: 500;
     font-size: 1.5vw;
+    margin: 2vh 0;
 }
 
 .signup-cont .fields {
@@ -37,7 +42,7 @@
 .signup-cont .fields input {
     border: 1px solid #747474;
     height: 7vh;
-    margin: 2vh 0;
+    margin: 0.3vh 0;
 }
 
 .signup-cont .hero-btn {
@@ -89,12 +94,33 @@
     margin-bottom: 1vh;
 }
 .signup-cont .signup-main .signup-fields input {
-    margin: 1vh 0;
+    margin: 0.3vh 0;
     height: auto;
-    padding: 1.6vh 1vw;
+    padding: 1.2vh 1vw;
     border: 2px solid #ccc;
 }
 .signup-cont .signup-main .signup-fields input:hover,
 .signup-cont .signup-main .signup-fields input:focus {
     border-color: #4678f9;
+}
+
+.signup-main p.error-msg {
+    color: red;
+    margin: 0.5vw;
+}
+.google-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1vw;
+    margin: 1vh 0;
+    margin-top: 2vh;
+    box-shadow: 0 0 7px rgba(116, 116, 116, 0.24);
+    border-radius: 10px;
+    padding: 1.8vh 0;
+}
+.google-btn img {
+    width: 26px;
+    height: 26px;
 }

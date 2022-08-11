@@ -1,9 +1,9 @@
-
 import React from "react";
 import { GoogleLogin } from "react-google-login";
 import BASE_API_URL from "../constants";
 
-const clientId = "884360040700-4093n49it73naktrttlljb9ad6ga4jjo.apps.googleusercontent.com";
+const clientId =
+    "884360040700-4093n49it73naktrttlljb9ad6ga4jjo.apps.googleusercontent.com";
 
 function GoogleLoginButton() {
     const onSuccess = (res) => {
@@ -36,7 +36,7 @@ function GoogleLoginButton() {
                     window.location.href = "/profile-setup";
                 } else {
                     setTimeout(() => {
-                        window.location.href = '/'
+                        window.location.href = "/";
                     }, 100);
                 }
             })
@@ -52,11 +52,12 @@ function GoogleLoginButton() {
             clientId={clientId}
             render={(renderProps) => (
                 <button
-                    className={"hero-btn"}
+                    className="google-btn"
                     onClick={renderProps.onClick}
                     disabled={renderProps.disabled}
                 >
-                    Login with Google
+                    <img src="/assets/google.png" alt="Google icon" />
+                    &nbsp; Sign in with Google
                 </button>
             )}
             onSuccess={onSuccess}
@@ -64,7 +65,7 @@ function GoogleLoginButton() {
             cookiePolicy={"single_host_origin"}
             isSignedIn={false}
         />
-    )
+    );
 }
 
 export default GoogleLoginButton;

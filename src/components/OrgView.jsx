@@ -15,8 +15,8 @@ const OrgView = () => {
     const [org, setOrg] = useState({});
     const [members, setMembers] = useState([]);
     const { orgId } = useParams();
-    const [id, setId] = useState("");
-    const [tab, setTab] = useState("Membership requests");
+    const [id, setId] = useState();
+    const [tab, setTab] = useState("Org Info");
 
     function changeTab(e) {
         setTab(e.target.textContent);
@@ -32,6 +32,7 @@ const OrgView = () => {
                 setOrg(orgToSet);
             } else {
                 notyf.error("Some error occured");
+                console.log("err");
             }
         };
 

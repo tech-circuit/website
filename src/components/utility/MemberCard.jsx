@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const UserCard = ({ user, post }) => {
     return (
         <>
-            <div className="com user" style={{ width: "30%", height: "fit-content", marginRight: "3vh", marginTop: "1vh" }}>
+            <div className="com user org-user-card">
                 <Link to={`/user/${user._id}`}>
                     {/* <a href={`user/${user._id}`}> */}
                     <img src={user.pfp_url} alt="alt" />

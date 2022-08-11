@@ -46,7 +46,7 @@ const App = () => {
                     <Index />
                 </Route>
                 <Route exact path="/work">
-                    <Work />
+                    <Work socket={socket} />
                     {/* <Soon /> */}
                 </Route>
                 <Route exact path="/about">
@@ -71,8 +71,12 @@ const App = () => {
                     <OrgView />
                     {/* <Soon /> */}
                 </Route>
-                <Route exact path="/org/:orgId" component={OrgView} />
-                <Route exact path="/org/admin/:orgId" component={OrgView} />
+                <Route exact path="/org/:orgId">
+                    <OrgView />
+                </Route>
+                <Route exact path="/org/admin/:orgId">
+                    <OrgView />
+                </Route>
                 <Route exact path="/resources">
                     <Resources />
                     {/* <Soon /> */}
@@ -97,11 +101,9 @@ const App = () => {
                     {/* <Soon /> */}
                 </Route>
                 <Route exact path="/event/:eventId" component={EventView} />
-                <Route
-                    exact
-                    path="/project/:projectId"
-                    component={ProjectView}
-                />
+                <Route exact path="/project/:projectId">
+                    <ProjectView socket={socket} />
+                </Route>
                 <Route exact path="/profile">
                     <Profile />
                     {/* <Soon /> */}
