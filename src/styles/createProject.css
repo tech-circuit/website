@@ -121,3 +121,21 @@
 .field-active {
     color: #4678f9;
 }
+
+/* IMGS */
+.project-imgs {
+    display: flex;
+    flex-wrap: wrap;
+}
+.project-img {
+    width: 30%;
+    height: 130px;
+    margin: 0 1%;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: grab;
+}

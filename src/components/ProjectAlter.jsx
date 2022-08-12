@@ -9,10 +9,11 @@ import Tags from "./utility/Tags";
 import Fields from "./utility/Fields";
 import checkLoggedIn from "./utility/checkLoggedIn";
 import { validate } from "../validate";
+import { Reorder } from "framer-motion/dist/framer-motion";
 
 const ProjectAlter = ({ edit }) => {
     const [links, setLinks] = useState([]);
-    const [imgUrl, setImgUrl] = useState("/assets/userFlowIcon.svg");
+    const [imgUrls, setImgUrls] = useState([]);
     const [linksObj, setLinksObj] = useState({});
     const [tags, setTags] = useState([]);
     const [fields, setFields] = useState([]);
@@ -51,54 +52,50 @@ const ProjectAlter = ({ edit }) => {
     };
 
     const setImage = async (inputFile) => {
-        console.log("doing");
-        if (
-            inputFile.name.toLowerCase().endsWith(".jpg") ||
-            inputFile.name.toLowerCase().endsWith(".png") ||
-            inputFile.name.toLowerCase().endsWith(".jpeg")
-        ) {
-            notyf.success("Uploading...");
-            let reader = new FileReader();
-            reader.readAsDataURL(inputFile);
-            reader.onload = () => {
-                const b64 = reader.result.split("base64,")[1];
-                fetch(`${BASE_API_URL}/image/upload`, {
-                    // Adding method type
-                    method: "POST",
+        if (imgUrls.length < 7) {
+            if (
+                inputFile.name.toLowerCase().endsWith(".jpg") ||
+                inputFile.name.toLowerCase().endsWith(".png") ||
+                inputFile.name.toLowerCase().endsWith(".jpeg")
+            ) {
+                notyf.success("Uploading...");
+                let reader = new FileReader();
+                reader.readAsDataURL(inputFile);
+                reader.onload = () => {
+                    const b64 = reader.result.split("base64,")[1];
+                    fetch(`${BASE_API_URL}/image/upload`, {
+                        // Adding method type
+                        method: "POST",
 
-                    // Adding body or contents to send
-                    body: JSON.stringify({
-                        b64,
-                    }),
+                        // Adding body or contents to send
+                        body: JSON.stringify({
+                            b64,
+                        }),
 
-                    // Adding headers to the request
-                    headers: {
-                        "Content-type": "application/json; charset=UTF-8",
-                        "Access-Control-Allow-Origin": "*",
-                    },
-                })
-                    .then(async (response) => {
-                        const resp = await response.json();
-                        document.getElementById(
-                            "img-area"
-                        ).style.backgroundImage = `url('${resp.link}')`;
-                        document
-                            .getElementById("img-area")
-                            .classList.add("org-logo-uploaded");
-                        setImgUrl(resp.link);
+                        // Adding headers to the request
+                        headers: {
+                            "Content-type": "application/json; charset=UTF-8",
+                            "Access-Control-Allow-Origin": "*",
+                        },
                     })
-                    .catch((error) => console.log(error));
-            };
+                        .then(async (response) => {
+                            const resp = await response.json();
+                            setImgUrls([...imgUrls, resp.link]);
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                            notyf.error("Some Error has occurred");
+                        });
+                };
+            }
+        } else {
+            notyf.error("Only 6 images allowed");
         }
     };
 
     const deleteImage = () => {
-        document.getElementById("img-area").style.backgroundImage = `url('')`;
-        setImgUrl("");
+        setImgUrls([]);
         document.querySelector("input[name='org-logo']").value = "";
-        document
-            .getElementById("img-area")
-            .classList.remove("org-logo-uploaded");
     };
 
     const submit = async () => {
@@ -122,7 +119,10 @@ const ProjectAlter = ({ edit }) => {
                 commentsEnabled: comments,
                 event,
                 collaborators,
-                cover_image: imgUrl,
+                imgs:
+                    imgUrls.length === 0
+                        ? ["/assets/userFlowIcon.svg"]
+                        : imgUrls,
             };
 
             const fetchUrl = edit
@@ -197,18 +197,11 @@ const ProjectAlter = ({ edit }) => {
             const data = await dataJson.json();
 
             if (data.project) {
-                setImgUrl(data.project.cover_image);
+                setImgUrls(data.project.imgs);
                 setLinks(data.project.links);
                 setTags(data.project.tags);
                 setFields(data.project.fields);
                 setProject(data.project);
-
-                document.getElementById(
-                    "img-area"
-                ).style.backgroundImage = `url('${data.project.cover_image}')`;
-                document
-                    .getElementById("img-area")
-                    .classList.add("org-logo-uploaded");
             } else {
                 window.location.href = "/404";
             }
@@ -367,15 +360,42 @@ const ProjectAlter = ({ edit }) => {
                             Recommended size 500x500px
                         </span>
                     </div>
+                    {/* <div className="project-imgs">
+                        {imgUrls.map((imgUrl, i) => (
+                            <img
+                                className="project-img"
+                                src={imgUrl}
+                                alt="img"
+                                key={i}
+                            />
+                        ))}
+                    </div> */}
+
+                    <Reorder.Group
+                        values={imgUrls}
+                        onReorder={setImgUrls}
+                        className="project-imgs"
+                    >
+                        {imgUrls.map((imgUrl, i) => (
+                            <Reorder.Item
+                                drag
+                                key={imgUrl}
+                                value={imgUrl}
+                                className="project-img"
+                                style={{ backgroundImage: `url(${imgUrl})` }}
+                            ></Reorder.Item>
+                        ))}
+                    </Reorder.Group>
+
                     <div
                         className="image-area"
                         id="img-area"
-                        style={{
-                            backgroundImage: "url(" + { imgUrl } + ")",
-                            backgroundSize: "contain",
-                            backgroundRepeat: "no-repeat",
-                            backgroundPosition: "center",
-                        }}
+                        // style={{
+                        //     backgroundImage: "url(" + { imgUrls } + ")",
+                        //     backgroundSize: "contain",
+                        //     backgroundRepeat: "no-repeat",
+                        //     backgroundPosition: "center",
+                        // }}
                     >
                         {/* {imgUrl === "" ? (
                             <FileDrop

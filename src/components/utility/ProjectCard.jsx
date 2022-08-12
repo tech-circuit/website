@@ -14,7 +14,7 @@ const ProjectCard = ({ project, view, id }) => {
                 to={`/project/${project._id}`}
                 className="workCard"
             >
-                <img src={project.cover_image} alt="project img" />
+                <img src={project.imgs[0]} alt="project img" />
                 <h2>{project.title}</h2>
                 <h3>{project.collaborators}</h3>
             </Link>
