@@ -18,6 +18,7 @@ const Work = ({ socket }) => {
     const [searchLoading, setSearchLoading] = useState(false);
     const [currentField, setCurrentField] = useState(null);
     const sortRef = useRef(null);
+    const carouselRef = useRef(null);
     const [searchInput, setSearchInput] = useState("");
     const fieldsAvailable = useFieldsAvailable();
     const [fullView, setfullView] = useState(false);
@@ -61,7 +62,7 @@ const Work = ({ socket }) => {
     const search = async (inp) => {
         setSearchInput(inp);
         if (inp !== "") {
-            sortRef.current.scrollIntoView({ behavior: "smooth" });
+            carouselRef.current.scrollIntoView({ behavior: "smooth" });
             setSearchLoading(true);
             const resJson = await fetch(`${BASE_API_URL}/project/search`, {
                 method: "POST",
@@ -141,7 +142,7 @@ const Work = ({ socket }) => {
                         the&nbsp;
                         <strong>techCircuit</strong>&nbsp;Community!
                     </h1>
-                    <div className="carHold">
+                    <div className="carHold" ref={carouselRef}>
                         <button
                             id="carPrev"
                             onClick={() => sortRef.current.prev()}
