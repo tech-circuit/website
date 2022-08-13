@@ -376,7 +376,7 @@ const ProjectAlter = ({ edit }) => {
                         onReorder={setImgUrls}
                         className="project-imgs"
                     >
-                        {imgUrls.map((imgUrl, i) => (
+                        {imgUrls.map((imgUrl) => (
                             <Reorder.Item
                                 drag
                                 key={imgUrl}

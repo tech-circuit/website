@@ -2,6 +2,7 @@ import "../../styles/work.css";
 import { Link } from "react-router-dom";
 
 const ProjectCard = ({ project, view, id }) => {
+    console.log(project);
     const openProject = (e) => {
         e.preventDefault();
         view(project);
@@ -14,7 +15,14 @@ const ProjectCard = ({ project, view, id }) => {
                 to={`/project/${project._id}`}
                 className="workCard"
             >
-                <img src={project.imgs[0]} alt="project img" />
+                <img
+                    src={
+                        project.imgs[0]
+                            ? project.imgs[0]
+                            : "/assets/userFlowIcon.svg"
+                    }
+                    alt="project img"
+                />
                 <h2>{project.title}</h2>
                 <h3>{project.collaborators}</h3>
             </Link>
