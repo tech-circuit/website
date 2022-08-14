@@ -436,7 +436,6 @@ const ProjectAlter = ({ edit }) => {
                             id="org-logo"
                             name="org-logo"
                             onChange={(e) => setImage(e.target.files[0])}
-                            style={{ display: "none" }}
                         />
                     </div>
 

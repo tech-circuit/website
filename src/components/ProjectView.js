@@ -1,5 +1,11 @@
 import "../styles/work.css";
-import { FaChevronLeft, FaShareAlt, FaCaretDown } from "react-icons/fa";
+import {
+    FaChevronLeft,
+    FaShareAlt,
+    FaCaretDown,
+    FaPen,
+    FaHome,
+} from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import notyf from "../tcNotyf";
@@ -20,6 +26,7 @@ const ProjectView = ({ socket }) => {
     const [totalComments, setTotalComments] = useState(0);
     const [project, setProject] = useState([]);
     const [authenticated, setAuthenticated] = useState(false);
+    const [userId, setUserId] = useState("");
     const { projectId } = useParams();
 
     const PAGINATION_LIMIT = 5;
@@ -101,6 +108,30 @@ const ProjectView = ({ socket }) => {
         }
     };
 
+    const getId = async () => {
+        try {
+            const authToken = localStorage.getItem("authToken");
+
+            if (authToken) {
+                const dataJson = await fetch(
+                    `${BASE_API_URL}/user/info?access_token=${authToken}`
+                );
+                const data = await dataJson.json();
+                console.log(data);
+
+                if (data.user) {
+                    setUserId(data.user._id);
+                } else {
+                    notyf.error("some error occured");
+                }
+            } else {
+                setUserId("");
+            }
+        } catch (err) {
+            notyf.error("some error occured");
+        }
+    };
+
     useEffect(() => {
         console.log("USE EFFECT RUNNING");
         const getProject = async () => {
@@ -108,6 +139,7 @@ const ProjectView = ({ socket }) => {
                 `${BASE_API_URL}/project/${projectId}`
             );
             const projectData = await projectDataJson.json();
+            console.log(projectData);
 
             if (projectData.project) {
                 setProject(projectData.project);
@@ -136,168 +168,207 @@ const ProjectView = ({ socket }) => {
 
         try {
             getProject();
+            getId();
         } catch (err) {
             notyf.error("some error occured");
         }
     }, [projectId]);
 
     return (
-        <section className="ViewProjectWrap">
-            <div className="proj-top">
-                <Link className="project-back" to="/forum">
-                    <FaChevronLeft />
-                    Back
-                </Link>
-                <div className="share-wrap">
-                    <FaShareAlt />
-                    <a className="share" href="/">
-                        Share
+        <>
+            <div className="black-banner"></div>
+            <section className="ViewProjectWrap">
+                <div className="proj-top">
+                    <Link className="project-back" to="/forum">
+                        <FaChevronLeft />
+                        Go Back
+                    </Link>
+                    {userId && project && userId === project.uploader && (
+                        <div className="edit-wrap">
+                            <FaPen />
+                            <a className="edit" href="/">
+                                Edit Project
+                            </a>
+                        </div>
+                    )}{" "}
+                </div>
+
+                <img
+                    src={project.cover_image}
+                    alt="alt"
+                    className="fullProjectBanneri"
+                />
+
+                <div className="projectOrg">
+                    <div>
+                        <h1>{project.title}</h1>
+                        <h3>{project.collaborators}</h3>
+                    </div>
+                    <a
+                        href={project.links ? project.links[0] : ""}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <button className="view-proj">View Project</button>
                     </a>
                 </div>
-            </div>
 
-            <img
-                src={project.cover_image}
-                alt="alt"
-                className="fullProjectBanneri"
-            />
-
-            <div className="projectOrg">
-                <div>
-                    <h1>{project.title}</h1>
-                    <h3>{project.collaborators}</h3>
-                </div>
-                <button className="view-proj">View Project</button>
-            </div>
-
-            <div className="projectAddInfo">
-                <div className="fullProjectUnit fullProjectUnitOrg">
-                    <h4>Fields</h4>
-                    <p className="pFields">
-                        {project.fields
-                            ? project.fields.map((field) => {
-                                  return <span>{field} </span>;
-                              })
-                            : "No fields to display"}
-                    </p>
-                </div>
-                <div className="fullProjectUnit fullProjectUnitOrg">
-                    <h4>Project Tags</h4>
-                    <p className="tags">
-                        {project.tags
-                            ? project.tags.map((tag) => {
-                                  return <span>{tag} </span>;
-                              })
-                            : "No tags to display"}
-                    </p>
-                </div>
-            </div>
-
-            <div className="fullProjectUnit">
-                <h4>View it on</h4>
-                {project.links
-                    ? project.links
-                          .slice(0)
-                          .reverse()
-                          .map((link) => {
-                              return (
-                                  <a
-                                      href={link}
-                                      target="_blank"
-                                      rel="noreferrer"
-                                  >
-                                      {getLinkogo(link)}
-                                  </a>
-                              );
-                          })
-                    : "No links to display"}
-            </div>
-
-            <div className="fullProjectUnit">
-                <h4>About</h4>
-                <p>{project.description}</p>
-            </div>
-
-            <div className="fullProjectUnit">
-                <h4>For Event</h4>
-                <Link to="/" className="projectEvent">
-                    {project.event ? project.event : "No event to display"}
-                </Link>
-            </div>
-
-            <div className="fullProjectUnit">
-                <h4>Comments ({totalComments})</h4>
-                <div className="add-comment">
-                    <div className="add-comm-top">
-                        <img
-                            src={
-                                authenticated
-                                    ? `${BASE_API_URL}/user/pfp?access_token=${authToken}`
-                                    : "/assets/accounticon.png"
-                            }
-                            alt="alt"
-                        />
-                        <textarea
-                            name="comments"
-                            autoComplete="off"
-                            className="comment-text"
-                            id="comment-input-area"
-                            placeholder="Post some critique or review regarding their work!"
-                            onChange={(e) => setCommentContent(e.target.value)}
-                            value={commentContent}
-                        ></textarea>
-                    </div>
-                    <div className="fullProjectButtons">
-                        <button
-                            className="post-pcomment-btn"
-                            id="work-comment-btn"
-                            onClick={createComment}
-                            disabled={creatingComment}
-                        >
-                            {creatingComment ? "Loading..." : "Post Comment"}
-                        </button>
-                        <button className="post-pcancel-btn">Cancel</button>
-                    </div>
-                </div>
-            </div>
-
-            <div className="proj-com-cont">
-                {comments.map((comment, index) => (
-                    <div className="proj-com-card" key={index}>
-                        <img src={comment.author_pfp_url} alt="alt" />
-                        <div className="proj-com-text">
-                            <h4>{comment.author_username}</h4>
-                            <p>{comment.comment}</p>
+                <div className="project-body">
+                    <div className="project-content">
+                        <div className="fullProjectUnit project-about">
+                            <h3>About</h3>
+                            <p>{project.description}</p>
+                        </div>
+                        <div className="fullProjectUnit fullProjectUnitOrg">
+                            <h3>Fields</h3>
+                            <p className="pFields">
+                                {project.fields
+                                    ? project.fields.map((field) => {
+                                          return (
+                                              <div className="project-field">
+                                                  {field}
+                                              </div>
+                                          );
+                                      })
+                                    : "No fields to display"}
+                            </p>
+                        </div>
+                        <div className="fullProjectUnit fullProjectUnitOrg">
+                            <h3>Project Tags</h3>
+                            <p className="tags">
+                                {project.tags
+                                    ? project.tags.map((tag) => {
+                                          return (
+                                              <div className="project-tag">
+                                                  {tag}
+                                              </div>
+                                          );
+                                      })
+                                    : "No tags to display"}
+                            </p>
                         </div>
                     </div>
-                ))}
-                <div
-                    style={{
-                        width: "full",
-                        display: "flex",
-                        justifyContent: "center",
-                    }}
-                >
-                    <ClipLoader
-                        cssOverride={{
-                            position: "static",
-                            display: "block",
-                            margin: "0 auto",
-                        }}
-                        size={20}
-                        loading={loading}
-                    />
-                </div>
-                {moreComments && (
-                    <div className="more-com-wrap">
-                        <p className="more-com" onClick={loadMoreComments}>
-                            More Comments
-                        </p>
-                        <FaCaretDown className="caret-down" />
+                    <div className="project-showoff">
+                        <div className="fullProjectUnit project-about">
+                            <h3>Project Media</h3>
+                            <div className="project-images">
+                                {project.imgs &&
+                                    project.imgs.map((img) => (
+                                        <img src={img} alt={img} />
+                                    ))}
+                            </div>
+                        </div>
+                        <div className="fullProjectUnit">
+                            <h3>View it on</h3>
+                            <div className="project-links">
+                                {project.links
+                                    ? project.links
+                                          .slice(0)
+                                          .reverse()
+                                          .map((link) => {
+                                              return (
+                                                  <a
+                                                      href={link}
+                                                      target="_blank"
+                                                      rel="noreferrer"
+                                                      className="project-link"
+                                                  >
+                                                      {getLinkogo(link)}
+                                                  </a>
+                                              );
+                                          })
+                                    : "No links to display"}
+                            </div>
+                        </div>
+                        {project.event && (
+                            <div className="fullProjectUnit">
+                                <h3>For Event</h3>
+                                <Link to="/" className="projectEvent">
+                                    {project.event}
+                                </Link>
+                            </div>
+                        )}
                     </div>
-                )}
-            </div>
-        </section>
+                </div>
+
+                <div className="fullProjectUnit project-comments">
+                    <h3>Comments ({totalComments})</h3>
+                    <div className="add-comment">
+                        <div className="add-comm-top">
+                            <img
+                                src={
+                                    authenticated
+                                        ? `${BASE_API_URL}/user/pfp?access_token=${authToken}`
+                                        : "/assets/accounticon.png"
+                                }
+                                alt="alt"
+                            />
+                            <textarea
+                                name="comments"
+                                autoComplete="off"
+                                className="comment-text"
+                                id="comment-input-area"
+                                placeholder="Post some critique or review regarding their work!"
+                                onChange={(e) =>
+                                    setCommentContent(e.target.value)
+                                }
+                                value={commentContent}
+                            ></textarea>
+                        </div>
+                        <div className="fullProjectButtons">
+                            <button
+                                className="post-pcomment-btn"
+                                id="work-comment-btn"
+                                onClick={createComment}
+                                disabled={creatingComment}
+                            >
+                                {creatingComment
+                                    ? "Loading..."
+                                    : "Post Comment"}
+                            </button>
+                            <button className="post-pcancel-btn">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="proj-com-cont">
+                    {comments.map((comment, index) => (
+                        <div className="proj-com-card" key={index}>
+                            <img src={comment.author_pfp_url} alt="alt" />
+                            <div className="proj-com-text">
+                                <h4>{comment.author_username}</h4>
+                                <p>{comment.comment}</p>
+                            </div>
+                        </div>
+                    ))}
+                    <div
+                        style={{
+                            width: "full",
+                            display: "flex",
+                            justifyContent: "center",
+                        }}
+                    >
+                        <ClipLoader
+                            cssOverride={{
+                                position: "static",
+                                display: "block",
+                                margin: "0 auto",
+                            }}
+                            size={20}
+                            loading={loading}
+                        />
+                    </div>
+                    {moreComments && (
+                        <div className="more-com-wrap">
+                            <p className="more-com" onClick={loadMoreComments}>
+                                More Comments
+                            </p>
+                            <FaCaretDown className="caret-down" />
+                        </div>
+                    )}
+                </div>
+            </section>
+        </>
     );
 };
 
