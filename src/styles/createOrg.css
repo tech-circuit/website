@@ -65,7 +65,6 @@ input:focus,
 select:focus,
 textarea:focus {
     outline: none;
-    border: 2px solid #4678f9 !important;
 }
 
 .indi-wrap {
