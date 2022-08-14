@@ -166,57 +166,83 @@ const FullProject = ({ project, close, socket }) => {
                     View Project
                 </Link>
             </div>
-
-            <div className="eventAddInfo">
-                <div className="fullProjectUnit fullProjectUnitOrg">
-                    <h4>Fields</h4>
-                    <p className="pFields">
-                        {project.fields?.join(", ") || "No fields to display"}
-                    </p>
+            <div className="project-body">
+                <div className="project-content">
+                    <div className="fullProjectUnit project-about">
+                        <h3>About</h3>
+                        <p>{project.description}</p>
+                    </div>
+                    <div className="fullProjectUnit fullProjectUnitOrg">
+                        <h3>Fields</h3>
+                        <p className="pFields">
+                            {project.fields
+                                ? project.fields.map((field) => {
+                                      return (
+                                          <div className="project-field">
+                                              {field}
+                                          </div>
+                                      );
+                                  })
+                                : "No fields to display"}
+                        </p>
+                    </div>
+                    <div className="fullProjectUnit fullProjectUnitOrg">
+                        <h3>Project Tags</h3>
+                        <p className="tags">
+                            {project.tags
+                                ? project.tags.map((tag) => {
+                                      return (
+                                          <div className="project-tag">
+                                              {tag}
+                                          </div>
+                                      );
+                                  })
+                                : "No tags to display"}
+                        </p>
+                    </div>
                 </div>
-                <div className="fullProjectUnit fullProjectUnitOrg">
-                    <h4>Project Tags</h4>
-                    <p className="tags">
-                        {project.tags?.join(", ") || "No tags to display"}
-                    </p>
+                <div className="project-showoff">
+                    <div className="fullProjectUnit project-about">
+                        <h3>Project Media</h3>
+                        <div className="project-images">
+                            {project.imgs &&
+                                project.imgs.map((img) => (
+                                    <img src={img} alt={img} />
+                                ))}
+                        </div>
+                    </div>
+                    <div className="fullProjectUnit">
+                        <h3>View it on</h3>
+                        <div className="project-links">
+                            {project.links
+                                ? project.links
+                                      .slice(0)
+                                      .reverse()
+                                      .map((link) => {
+                                          return (
+                                              <a
+                                                  href={link}
+                                                  target="_blank"
+                                                  rel="noreferrer"
+                                                  className="project-link"
+                                              >
+                                                  {getLinkLogo(link)}
+                                              </a>
+                                          );
+                                      })
+                                : "No links to display"}
+                        </div>
+                    </div>
+                    {project.event && (
+                        <div className="fullProjectUnit">
+                            <h3>For Event</h3>
+                            <Link to="/" className="projectEvent">
+                                {project.event}
+                            </Link>
+                        </div>
+                    )}
                 </div>
             </div>
-
-            <div className="fullProjectUnit">
-                <h4>View it on</h4>
-                {project.links
-                    ? project.links
-                          .slice(0)
-                          .reverse()
-                          .map((link) => {
-                              return (
-                                  <a
-                                      href={link}
-                                      target="_blank"
-                                      rel="noreferrer"
-                                  >
-                                      {getLinkLogo(link)}
-                                  </a>
-                              );
-                          })
-                    : "No links to display"}
-            </div>
-
-            <div className="fullProjectUnit">
-                <h4>About</h4>
-                <p>{project.description}</p>
-            </div>
-
-            {project.event?.length ? (
-                <div className="fullProjectUnit">
-                    <h4>For Event</h4>
-                    <Link to="/" className="projectEvent">
-                        Tech Syndicate: Intech'21 (2021)
-                    </Link>
-                </div>
-            ) : (
-                <></>
-            )}
 
             <div className="fullProjectUnit">
                 <h4>Comments ({totalComments})</h4>
