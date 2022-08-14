@@ -329,7 +329,7 @@ const EventAlter = ({ edit }) => {
                 ""
             )}
             <div className="create-org-cont">
-                <div className="left-org">
+                <div className="left-org border-input-form">
                     <h1>{edit ? "Edit" : "Organize an"} Event</h1>
                     <p style={{ color: "#c4c4c4 !important" }}>
                         {edit

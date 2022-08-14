@@ -44,6 +44,14 @@ select,
 textarea {
     outline: none !important;
 }
+.border-input-form input:focus,
+.border-input-form select:focus,
+.border-input-form textarea:focus {
+    border: 2px solid #4678f9 !important;
+}
+.tags-hold input#tags:focus {
+    border: none !important;
+}
 #root {
     width: 100vw;
     overflow: hidden;

@@ -404,7 +404,7 @@ const OrgAlter = ({ edit }) => {
             )}
 
             <div className="create-org-cont">
-                <div className="left-org">
+                <div className="left-org border-input-form">
                     <h1>{edit ? "Edit" : "Create an"} Organisation</h1>
                     <h3>Name of Organisation *</h3>
                     <input
