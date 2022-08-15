@@ -326,6 +326,7 @@ button.workSortActive::after {
 .fullProjectUnitOrg .pFields {
     color: #4678f9;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .projectEvent {
@@ -448,7 +449,7 @@ button.workSortActive::after {
 .project-body {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin-top: 12px;
+    margin-top: 70px;
 }
 
 .project-body > div:first-child {
@@ -478,9 +479,10 @@ button.workSortActive::after {
     padding: 8px 12px;
     border: 2px solid #4678f9;
     background: #f0f4ff;
-    box-shadow: 0px 0.9060693979263306px 8.154624938964844px 0px #00000040;
+    box-shadow: 0px 0.9060693979263306px 8.154624938964844px 0px
+        rgba(0, 0, 0, 0.25);
     border-radius: 7.25px;
-    margin-right: 12px;
+    margin: 4px 12px 4px 0;
 }
 
 .project-tag {
@@ -488,6 +490,7 @@ button.workSortActive::after {
     border-radius: 26px;
     border: 2px solid #4678f9;
     margin-right: 12px;
+    margin: 4px 12px 4px 0;
 }
 
 .project-images {
@@ -504,11 +507,19 @@ button.workSortActive::after {
     margin-top: 12px;
 }
 
-.project-link {
+.project-link-wrapper {
+    width: 55px;
+    height: 55px;
     background-color: #29313d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-link {
     color: white;
-    padding: 8px;
     border-radius: 4px;
+    margin: 0 !important;
 }
 
 .project-comments {

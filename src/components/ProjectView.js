@@ -261,14 +261,16 @@ const ProjectView = ({ socket }) => {
                                           .reverse()
                                           .map((link) => {
                                               return (
-                                                  <a
-                                                      href={link}
-                                                      target="_blank"
-                                                      rel="noreferrer"
-                                                      className="project-link"
-                                                  >
-                                                      {getLinkogo(link)}
-                                                  </a>
+                                                  <div className="project-link-wrapper">
+                                                      <a
+                                                          href={link}
+                                                          target="_blank"
+                                                          rel="noreferrer"
+                                                          className="project-link"
+                                                      >
+                                                          {getLinkogo(link)}
+                                                      </a>
+                                                  </div>
                                               );
                                           })
                                     : "No links to display"}
