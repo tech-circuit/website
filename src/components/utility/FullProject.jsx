@@ -162,9 +162,13 @@ const FullProject = ({ project, close, socket }) => {
                     <h1>{project?.title}</h1>
                     <h3>{collabList()}</h3>
                 </div>
-                <Link to={`/project/${project._id}`} className="view-proj">
-                    View Project
-                </Link>
+                <a
+                    href={project.links ? project.links[0] : ""}
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <button className="view-proj">View Project</button>
+                </a>
             </div>
             <div className="project-body">
                 <div className="project-content">
@@ -220,14 +224,16 @@ const FullProject = ({ project, close, socket }) => {
                                       .reverse()
                                       .map((link) => {
                                           return (
-                                              <a
-                                                  href={link}
-                                                  target="_blank"
-                                                  rel="noreferrer"
-                                                  className="project-link"
-                                              >
-                                                  {getLinkLogo(link)}
-                                              </a>
+                                              <div className="project-link-wrapper">
+                                                  <a
+                                                      href={link}
+                                                      target="_blank"
+                                                      rel="noreferrer"
+                                                      className="project-link"
+                                                  >
+                                                      {getLinkLogo(link)}
+                                                  </a>
+                                              </div>
                                           );
                                       })
                                 : "No links to display"}

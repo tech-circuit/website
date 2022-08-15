@@ -260,6 +260,7 @@ const ProjectView = ({ socket }) => {
                                     ))}
                             </div>
                         </div>
+<<<<<<< HEAD:src/components/ProjectView.jsx
                         {project.links && project.links.length > 0 && (
                             <div className="fullProjectUnit">
                                 <h3>View it on</h3>
@@ -270,11 +271,24 @@ const ProjectView = ({ socket }) => {
                                               .reverse()
                                               .map((link, i) => {
                                                   return (
+=======
+                        <div className="fullProjectUnit">
+                            <h3>View it on</h3>
+                            <div className="project-links">
+                                {project.links
+                                    ? project.links
+                                          .slice(0)
+                                          .reverse()
+                                          .map((link) => {
+                                              return (
+                                                  <div className="project-link-wrapper">
+>>>>>>> bd83d28d09889aee2046877684401846b7c33a47:src/components/ProjectView.js
                                                       <a
                                                           href={link}
                                                           target="_blank"
                                                           rel="noreferrer"
                                                           className="project-link"
+<<<<<<< HEAD:src/components/ProjectView.jsx
                                                           key={i}
                                                       >
                                                           {getLinkogo(link)}
@@ -283,6 +297,15 @@ const ProjectView = ({ socket }) => {
                                               })
                                         : "No links to display"}
                                 </div>
+=======
+                                                      >
+                                                          {getLinkogo(link)}
+                                                      </a>
+                                                  </div>
+                                              );
+                                          })
+                                    : "No links to display"}
+>>>>>>> bd83d28d09889aee2046877684401846b7c33a47:src/components/ProjectView.js
                             </div>
                         )}
                         {project.event && (
