@@ -1,11 +1,5 @@
 import "../styles/work.css";
-import {
-    FaChevronLeft,
-    FaShareAlt,
-    FaCaretDown,
-    FaPen,
-    FaHome,
-} from "react-icons/fa";
+import { FaChevronLeft, FaCaretDown, FaPen } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import notyf from "../tcNotyf";
