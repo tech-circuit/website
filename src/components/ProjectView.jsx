@@ -1,11 +1,5 @@
 import "../styles/work.css";
-import {
-    FaChevronLeft,
-    FaShareAlt,
-    FaCaretDown,
-    FaPen,
-    FaHome,
-} from "react-icons/fa";
+import { FaChevronLeft, FaCaretDown, FaPen } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import notyf from "../tcNotyf";
@@ -24,7 +18,7 @@ const ProjectView = ({ socket }) => {
     const [moreComments, setMoreComments] = useState(false);
     const [loading, setLoading] = useState(false);
     const [totalComments, setTotalComments] = useState(0);
-    const [project, setProject] = useState([]);
+    const [project, setProject] = useState({});
     const [authenticated, setAuthenticated] = useState(false);
     const [userId, setUserId] = useState("");
     const { projectId } = useParams();
@@ -133,7 +127,6 @@ const ProjectView = ({ socket }) => {
     };
 
     useEffect(() => {
-        console.log("USE EFFECT RUNNING");
         const getProject = async () => {
             const projectDataJson = await fetch(
                 `${BASE_API_URL}/project/${projectId}`
@@ -179,28 +172,30 @@ const ProjectView = ({ socket }) => {
             <div className="black-banner"></div>
             <section className="ViewProjectWrap">
                 <div className="proj-top">
-                    <Link className="project-back" to="/forum">
+                    <Link className="project-back" to="/work">
                         <FaChevronLeft />
                         Go Back
                     </Link>
-                    {userId && project && userId === project.uploader && (
+                    {userId === project.uploader ? (
                         <div className="edit-wrap">
                             <FaPen />
                             <a className="edit" href="/">
                                 Edit Project
                             </a>
                         </div>
-                    )}{" "}
+                    ) : (
+                        ""
+                    )}
                 </div>
 
                 <img
-                    src={project.cover_image}
+                    src={project.imgs && project.imgs[0]}
                     alt="alt"
                     className="fullProjectBanneri"
                 />
 
                 <div className="projectOrg">
-                    <div>
+                    <div className="project-head">
                         <h1>{project.title}</h1>
                         <h3>{project.collaborators}</h3>
                     </div>
@@ -208,8 +203,9 @@ const ProjectView = ({ socket }) => {
                         href={project.links ? project.links[0] : ""}
                         target="_blank"
                         rel="noreferrer"
+                        className="view-proj"
                     >
-                        <button className="view-proj">View Project</button>
+                        Main link to Project
                     </a>
                 </div>
 
@@ -223,9 +219,12 @@ const ProjectView = ({ socket }) => {
                             <h3>Fields</h3>
                             <p className="pFields">
                                 {project.fields
-                                    ? project.fields.map((field) => {
+                                    ? project.fields.map((field, i) => {
                                           return (
-                                              <div className="project-field">
+                                              <div
+                                                  className="project-field"
+                                                  key={i}
+                                              >
                                                   {field}
                                               </div>
                                           );
@@ -237,9 +236,12 @@ const ProjectView = ({ socket }) => {
                             <h3>Project Tags</h3>
                             <p className="tags">
                                 {project.tags
-                                    ? project.tags.map((tag) => {
+                                    ? project.tags.map((tag, i) => {
                                           return (
-                                              <div className="project-tag">
+                                              <div
+                                                  className="project-tag"
+                                                  key={i}
+                                              >
                                                   {tag}
                                               </div>
                                           );
@@ -254,32 +256,35 @@ const ProjectView = ({ socket }) => {
                             <div className="project-images">
                                 {project.imgs &&
                                     project.imgs.map((img) => (
-                                        <img src={img} alt={img} />
+                                        <img src={img} alt={img} key={img} />
                                     ))}
                             </div>
                         </div>
-                        <div className="fullProjectUnit">
-                            <h3>View it on</h3>
-                            <div className="project-links">
-                                {project.links
-                                    ? project.links
-                                          .slice(0)
-                                          .reverse()
-                                          .map((link) => {
-                                              return (
-                                                  <a
-                                                      href={link}
-                                                      target="_blank"
-                                                      rel="noreferrer"
-                                                      className="project-link"
-                                                  >
-                                                      {getLinkogo(link)}
-                                                  </a>
-                                              );
-                                          })
-                                    : "No links to display"}
+                        {project.links && project.links.length > 0 && (
+                            <div className="fullProjectUnit">
+                                <h3>View it on</h3>
+                                <div className="project-links">
+                                    {project.links
+                                        ? project.links
+                                              .slice(0)
+                                              .reverse()
+                                              .map((link, i) => {
+                                                  return (
+                                                      <a
+                                                          href={link}
+                                                          target="_blank"
+                                                          rel="noreferrer"
+                                                          className="project-link"
+                                                          key={i}
+                                                      >
+                                                          {getLinkogo(link)}
+                                                      </a>
+                                                  );
+                                              })
+                                        : "No links to display"}
+                                </div>
                             </div>
-                        </div>
+                        )}
                         {project.event && (
                             <div className="fullProjectUnit">
                                 <h3>For Event</h3>

@@ -220,14 +220,16 @@ button.workSortActive::after {
 .projectOrg {
     display: flex;
     justify-content: space-between;
-    padding: 60px;
+    padding: 40px 60px;
     box-shadow: 0px 4px 30px 0px #00000026;
     border-radius: 10px;
+    margin-bottom: 3vh;
 }
 
 .projectOrg h1 {
     font-weight: 400;
     font-size: 2.5vw;
+    margin-bottom: 2vh;
 }
 .projectOrg h3 {
     font-weight: 300;
@@ -267,10 +269,11 @@ button.workSortActive::after {
     transition: all 0.3s;
     transition: all 0.3s;
     margin: auto 0;
+    border: 1px solid #4678f9;
 }
 
 .view-proj:hover {
-    background: #fff;
+    background: #fff !important;
     color: #4678f9;
 }
 
@@ -326,6 +329,7 @@ button.workSortActive::after {
 .fullProjectUnitOrg .pFields {
     color: #4678f9;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .projectEvent {
@@ -343,7 +347,7 @@ button.workSortActive::after {
     font-family: Poppins;
     padding: 2vh 1.5vh;
     margin-top: 1em;
-    color: #747474;
+    color: #29313d;
     font-size: 1vw;
     font-weight: 300;
 }
@@ -452,13 +456,13 @@ button.workSortActive::after {
 }
 
 .project-body > div:first-child {
-    border-right: 0.5px solid #c4c4c4;
+    border-right: 1px solid #c4c4c4;
     padding-right: 12px;
 }
 
 .project-body > div:last-child {
     border-left: 0.5px solid #c4c4c4;
-    padding-left: 12px;
+    padding-left: 50px;
 }
 
 @media (max-width: 800px) {
@@ -478,26 +482,30 @@ button.workSortActive::after {
     padding: 8px 12px;
     border: 2px solid #4678f9;
     background: #f0f4ff;
-    box-shadow: 0px 0.9060693979263306px 8.154624938964844px 0px #00000040;
     border-radius: 7.25px;
     margin-right: 12px;
+    margin-bottom: 10px;
 }
 
 .project-tag {
-    padding: 8px 16px;
-    border-radius: 26px;
+    padding: 6px 18px;
+    border-radius: 1000px;
     border: 2px solid #4678f9;
     margin-right: 12px;
 }
 
 .project-images {
     display: flex;
+    margin-top: 2vh;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .project-images img {
-    width: 250px;
-    margin: 0 16px 16px 0;
+    width: 150px;
+    height: 150px;
+    margin: 1vh;
+    border-radius: 10px;
 }
 
 .project-links {
@@ -509,10 +517,13 @@ button.workSortActive::after {
     color: white;
     padding: 8px;
     border-radius: 4px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .project-comments {
-    padding: 16px 48px;
-    box-shadow: 0px 4.0126261711120605px 30.094696044921875px 0px
-        rgba(0, 0, 0, 0.15);
+    padding: 36px 48px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.07);
+    border-radius: 20px;
 }
