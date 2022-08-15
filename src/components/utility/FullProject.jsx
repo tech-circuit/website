@@ -163,11 +163,12 @@ const FullProject = ({ project, close, socket }) => {
                     <h3>{collabList()}</h3>
                 </div>
                 <a
-                    href={project.links ? project.links[0] : ""}
+                    href={project._id ? `/project/${project._id}` : "/work"}
                     target="_blank"
                     rel="noreferrer"
+                    className="view-proj"
                 >
-                    <button className="view-proj">View Project</button>
+                    View Project
                 </a>
             </div>
             <div className="project-body">

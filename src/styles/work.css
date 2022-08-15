@@ -482,16 +482,13 @@ button.workSortActive::after {
     padding: 8px 12px;
     border: 2px solid #4678f9;
     background: #f0f4ff;
-<<<<<<< HEAD
     border-radius: 7.25px;
     margin-right: 12px;
     margin-bottom: 10px;
-=======
     box-shadow: 0px 0.9060693979263306px 8.154624938964844px 0px
         rgba(0, 0, 0, 0.25);
     border-radius: 7.25px;
     margin: 4px 12px 4px 0;
->>>>>>> bd83d28d09889aee2046877684401846b7c33a47
 }
 
 .project-tag {
@@ -530,15 +527,12 @@ button.workSortActive::after {
 }
 
 .project-link {
-    color: white;
-    border-radius: 4px;
-<<<<<<< HEAD
+    color: #29313d;
+    border-radius: 10px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-=======
     margin: 0 !important;
->>>>>>> bd83d28d09889aee2046877684401846b7c33a47
 }
 
 .project-comments {
