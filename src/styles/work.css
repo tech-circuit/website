@@ -450,19 +450,24 @@ button.workSortActive::after {
 }
 
 .project-body {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     margin-top: 70px;
+    display: flex;
+}
+.project-body h3 {
+    font-weight: 400 !important;
+    font-size: 3vh;
 }
 
 .project-body > div:first-child {
     border-right: 1px solid #c4c4c4;
     padding-right: 12px;
+    width: 60%;
 }
 
 .project-body > div:last-child {
-    border-left: 0.5px solid #c4c4c4;
+    border-left: 1px solid #c4c4c4;
     padding-left: 50px;
+    width: 40%;
 }
 
 @media (max-width: 800px) {
@@ -501,7 +506,7 @@ button.workSortActive::after {
 
 .project-images {
     display: flex;
-    margin-top: 2vh;
+    margin-top: 0.4vh;
     flex-wrap: wrap;
     align-items: center;
 }
@@ -539,4 +544,10 @@ button.workSortActive::after {
     padding: 36px 48px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.07);
     border-radius: 20px;
+}
+
+.project-comments h3 {
+    font-weight: 400;
+    font-size: 3vh;
+    margin-bottom: 3vh;
 }
