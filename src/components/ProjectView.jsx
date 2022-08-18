@@ -334,43 +334,46 @@ const ProjectView = ({ socket }) => {
                             <button className="post-pcancel-btn">Cancel</button>
                         </div>
                     </div>
-                </div>
 
-                <div className="proj-com-cont">
-                    {comments.map((comment, index) => (
-                        <div className="proj-com-card" key={index}>
-                            <img src={comment.author_pfp_url} alt="alt" />
-                            <div className="proj-com-text">
-                                <h4>{comment.author_username}</h4>
-                                <p>{comment.comment}</p>
+                    <div className="proj-com-cont">
+                        {comments.map((comment, index) => (
+                            <div className="proj-com-card" key={index}>
+                                <img src={comment.author_pfp_url} alt="alt" />
+                                <div className="proj-com-text">
+                                    <h4>{comment.author_username}</h4>
+                                    <p>{comment.comment}</p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
-                    <div
-                        style={{
-                            width: "full",
-                            display: "flex",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <ClipLoader
-                            cssOverride={{
-                                position: "static",
-                                display: "block",
-                                margin: "0 auto",
+                        ))}
+                        <div
+                            style={{
+                                width: "full",
+                                display: "flex",
+                                justifyContent: "center",
                             }}
-                            size={20}
-                            loading={loading}
-                        />
-                    </div>
-                    {moreComments && (
-                        <div className="more-com-wrap">
-                            <p className="more-com" onClick={loadMoreComments}>
-                                More Comments
-                            </p>
-                            <FaCaretDown className="caret-down" />
+                        >
+                            <ClipLoader
+                                cssOverride={{
+                                    position: "static",
+                                    display: "block",
+                                    margin: "0 auto",
+                                }}
+                                size={20}
+                                loading={loading}
+                            />
                         </div>
-                    )}
+                        {moreComments && (
+                            <div className="more-com-wrap">
+                                <p
+                                    className="more-com"
+                                    onClick={loadMoreComments}
+                                >
+                                    More Comments
+                                </p>
+                                <FaCaretDown className="caret-down" />
+                            </div>
+                        )}
+                    </div>
                 </div>
             </section>
         </>

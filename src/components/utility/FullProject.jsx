@@ -252,7 +252,7 @@ const FullProject = ({ project, close, socket }) => {
             </div>
 
             <div className="fullProjectUnit">
-                <h4>Comments ({totalComments})</h4>
+                <h3>Comments ({totalComments})</h3>
                 <div className="add-comment">
                     <div className="add-comm-top">
                         <img
