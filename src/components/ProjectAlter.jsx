@@ -93,9 +93,13 @@ const ProjectAlter = ({ edit }) => {
         }
     };
 
-    const deleteImage = () => {
+    const deleteImages = () => {
         setImgUrls([]);
         document.querySelector("input[name='org-logo']").value = "";
+    };
+
+    const removeImg = (url) => {
+        setImgUrls(imgUrls.filter((img) => img !== url));
     };
 
     const submit = async () => {
@@ -349,14 +353,16 @@ const ProjectAlter = ({ edit }) => {
 
                 <div className="right">
                     <div className="top-inline">
-                        <h3>Project Image Upload</h3>
-                        <i
-                            className="fas fa-trash"
-                            id="delete-icon"
-                            onClick={deleteImage}
-                        ></i>
+                        <h3>
+                            Project Media{" "}
+                            <i
+                                className="fas fa-trash"
+                                id="delete-icon"
+                                onClick={deleteImages}
+                            ></i>
+                        </h3>
                         <span>
-                            This image will be displayed on Work page.
+                            This images will be displayed on Work page.
                             Recommended size 500x500px
                         </span>
                     </div>
@@ -383,7 +389,15 @@ const ProjectAlter = ({ edit }) => {
                                 value={imgUrl}
                                 className="project-img"
                                 style={{ backgroundImage: `url(${imgUrl})` }}
-                            ></Reorder.Item>
+                            >
+                                {/* <FaTimesCircle className="remove-img" /> */}
+                                <img
+                                    src="/assets/img-remove.png"
+                                    alt="img-remove"
+                                    className="remove-img"
+                                    onClick={() => removeImg(imgUrl)}
+                                />
+                            </Reorder.Item>
                         ))}
                     </Reorder.Group>
 

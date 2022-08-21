@@ -1,11 +1,27 @@
 import "../styles/work.css";
-import { FaChevronLeft, FaCaretDown, FaPen } from "react-icons/fa";
+import {
+    FaChevronLeft,
+    FaCaretDown,
+    FaPen,
+    FaWhatsapp,
+    FaEnvelope,
+    FaFacebookF,
+    FaRedditAlien,
+    FaTwitter,
+} from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import notyf from "../tcNotyf";
-import getLinkogo from "../getLinkLogo";
+import getLinkLogo from "../getLinkLogo";
 import BASE_API_URL from "../constants";
 import { ClipLoader } from "react-spinners";
+import {
+    EmailShareButton,
+    FacebookShareButton,
+    RedditShareButton,
+    TwitterShareButton,
+    WhatsappShareButton,
+} from "react-share";
 
 const authToken = localStorage.getItem("authToken");
 
@@ -270,21 +286,54 @@ const ProjectView = ({ socket }) => {
                                               .reverse()
                                               .map((link, i) => {
                                                   return (
-                                                      <a
-                                                          href={link}
-                                                          target="_blank"
-                                                          rel="noreferrer"
-                                                          className="project-link"
-                                                          key={i}
-                                                      >
-                                                          {getLinkogo(link)}
-                                                      </a>
+                                                      <div className="project-link-wrapper">
+                                                          <a
+                                                              href={link}
+                                                              target="_blank"
+                                                              rel="noreferrer"
+                                                              className="project-link"
+                                                          >
+                                                              {getLinkLogo(
+                                                                  link
+                                                              )}
+                                                          </a>
+                                                      </div>
                                                   );
                                               })
                                         : "No links to display"}
                                 </div>
                             </div>
                         )}
+
+                        <h3>Share Project</h3>
+                        <div className="share-links">
+                            <EmailShareButton url={window.location.href}>
+                                <div className="share-link">
+                                    <FaEnvelope />
+                                </div>
+                            </EmailShareButton>
+                            <FacebookShareButton url={window.location.href}>
+                                <div className="share-link">
+                                    <FaFacebookF />
+                                </div>
+                            </FacebookShareButton>
+                            <RedditShareButton url={window.location.href}>
+                                <div className="share-link">
+                                    <FaRedditAlien />
+                                </div>
+                            </RedditShareButton>
+                            <WhatsappShareButton url={window.location.href}>
+                                <div className="share-link">
+                                    <FaWhatsapp />
+                                </div>
+                            </WhatsappShareButton>
+                            <TwitterShareButton url={window.location.href}>
+                                <div className="share-link">
+                                    <FaTwitter />
+                                </div>
+                            </TwitterShareButton>
+                        </div>
+
                         {project.event && (
                             <div className="fullProjectUnit">
                                 <h3>For Event</h3>

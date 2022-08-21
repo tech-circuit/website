@@ -133,9 +133,17 @@
     margin: 0 1%;
     margin-bottom: 8px;
     border-radius: 10px;
-    overflow: hidden;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     cursor: grab;
+    display: flex;
+    justify-content: flex-end;
+}
+.remove-img {
+    transform: translate(7px, -7px);
+    color: #ff6b6b;
+    cursor: pointer;
+    width: 26px;
+    height: 26px;
 }
