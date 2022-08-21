@@ -1,11 +1,27 @@
 import "../styles/work.css";
-import { FaChevronLeft, FaCaretDown, FaPen } from "react-icons/fa";
+import {
+    FaChevronLeft,
+    FaCaretDown,
+    FaPen,
+    FaWhatsapp,
+    FaEnvelope,
+    FaFacebookF,
+    FaRedditAlien,
+    FaTwitter,
+} from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import notyf from "../tcNotyf";
-import getLinkogo from "../getLinkLogo";
+import getLinkLogo from "../getLinkLogo";
 import BASE_API_URL from "../constants";
 import { ClipLoader } from "react-spinners";
+import {
+    EmailShareButton,
+    FacebookShareButton,
+    RedditShareButton,
+    TwitterShareButton,
+    WhatsappShareButton,
+} from "react-share";
 
 const authToken = localStorage.getItem("authToken");
 
@@ -18,7 +34,7 @@ const ProjectView = ({ socket }) => {
     const [moreComments, setMoreComments] = useState(false);
     const [loading, setLoading] = useState(false);
     const [totalComments, setTotalComments] = useState(0);
-    const [project, setProject] = useState([]);
+    const [project, setProject] = useState({});
     const [authenticated, setAuthenticated] = useState(false);
     const [userId, setUserId] = useState("");
     const { projectId } = useParams();
@@ -127,7 +143,6 @@ const ProjectView = ({ socket }) => {
     };
 
     useEffect(() => {
-        console.log("USE EFFECT RUNNING");
         const getProject = async () => {
             const projectDataJson = await fetch(
                 `${BASE_API_URL}/project/${projectId}`
@@ -173,28 +188,30 @@ const ProjectView = ({ socket }) => {
             <div className="black-banner"></div>
             <section className="ViewProjectWrap">
                 <div className="proj-top">
-                    <Link className="project-back" to="/forum">
+                    <Link className="project-back" to="/work">
                         <FaChevronLeft />
                         Go Back
                     </Link>
-                    {userId && project && userId === project.uploader && (
+                    {userId === project.uploader ? (
                         <div className="edit-wrap">
                             <FaPen />
                             <a className="edit" href="/">
                                 Edit Project
                             </a>
                         </div>
-                    )}{" "}
+                    ) : (
+                        ""
+                    )}
                 </div>
 
                 <img
-                    src={project.cover_image}
+                    src={project.imgs && project.imgs[0]}
                     alt="alt"
                     className="fullProjectBanneri"
                 />
 
                 <div className="projectOrg">
-                    <div>
+                    <div className="project-head">
                         <h1>{project.title}</h1>
                         <h3>{project.collaborators}</h3>
                     </div>
@@ -202,8 +219,9 @@ const ProjectView = ({ socket }) => {
                         href={project.links ? project.links[0] : ""}
                         target="_blank"
                         rel="noreferrer"
+                        className="view-proj"
                     >
-                        <button className="view-proj">View Project</button>
+                        Main link to Project
                     </a>
                 </div>
 
@@ -217,9 +235,12 @@ const ProjectView = ({ socket }) => {
                             <h3>Fields</h3>
                             <p className="pFields">
                                 {project.fields
-                                    ? project.fields.map((field) => {
+                                    ? project.fields.map((field, i) => {
                                           return (
-                                              <div className="project-field">
+                                              <div
+                                                  className="project-field"
+                                                  key={i}
+                                              >
                                                   {field}
                                               </div>
                                           );
@@ -231,9 +252,12 @@ const ProjectView = ({ socket }) => {
                             <h3>Project Tags</h3>
                             <p className="tags">
                                 {project.tags
-                                    ? project.tags.map((tag) => {
+                                    ? project.tags.map((tag, i) => {
                                           return (
-                                              <div className="project-tag">
+                                              <div
+                                                  className="project-tag"
+                                                  key={i}
+                                              >
                                                   {tag}
                                               </div>
                                           );
@@ -248,34 +272,68 @@ const ProjectView = ({ socket }) => {
                             <div className="project-images">
                                 {project.imgs &&
                                     project.imgs.map((img) => (
-                                        <img src={img} alt={img} />
+                                        <img src={img} alt={img} key={img} />
                                     ))}
                             </div>
                         </div>
-                        <div className="fullProjectUnit">
-                            <h3>View it on</h3>
-                            <div className="project-links">
-                                {project.links
-                                    ? project.links
-                                          .slice(0)
-                                          .reverse()
-                                          .map((link) => {
-                                              return (
-                                                  <div className="project-link-wrapper">
-                                                      <a
-                                                          href={link}
-                                                          target="_blank"
-                                                          rel="noreferrer"
-                                                          className="project-link"
-                                                      >
-                                                          {getLinkogo(link)}
-                                                      </a>
-                                                  </div>
-                                              );
-                                          })
-                                    : "No links to display"}
+                        {project.links && project.links.length > 0 && (
+                            <div className="fullProjectUnit">
+                                <h3>View it on</h3>
+                                <div className="project-links">
+                                    {project.links
+                                        ? project.links
+                                              .slice(0)
+                                              .reverse()
+                                              .map((link, i) => {
+                                                  return (
+                                                      <div className="project-link-wrapper">
+                                                          <a
+                                                              href={link}
+                                                              target="_blank"
+                                                              rel="noreferrer"
+                                                              className="project-link"
+                                                          >
+                                                              {getLinkLogo(
+                                                                  link
+                                                              )}
+                                                          </a>
+                                                      </div>
+                                                  );
+                                              })
+                                        : "No links to display"}
+                                </div>
                             </div>
+                        )}
+
+                        <h3>Share Project</h3>
+                        <div className="share-links">
+                            <EmailShareButton url={window.location.href}>
+                                <div className="share-link">
+                                    <FaEnvelope />
+                                </div>
+                            </EmailShareButton>
+                            <FacebookShareButton url={window.location.href}>
+                                <div className="share-link">
+                                    <FaFacebookF />
+                                </div>
+                            </FacebookShareButton>
+                            <RedditShareButton url={window.location.href}>
+                                <div className="share-link">
+                                    <FaRedditAlien />
+                                </div>
+                            </RedditShareButton>
+                            <WhatsappShareButton url={window.location.href}>
+                                <div className="share-link">
+                                    <FaWhatsapp />
+                                </div>
+                            </WhatsappShareButton>
+                            <TwitterShareButton url={window.location.href}>
+                                <div className="share-link">
+                                    <FaTwitter />
+                                </div>
+                            </TwitterShareButton>
                         </div>
+
                         {project.event && (
                             <div className="fullProjectUnit">
                                 <h3>For Event</h3>
@@ -325,43 +383,46 @@ const ProjectView = ({ socket }) => {
                             <button className="post-pcancel-btn">Cancel</button>
                         </div>
                     </div>
-                </div>
 
-                <div className="proj-com-cont">
-                    {comments.map((comment, index) => (
-                        <div className="proj-com-card" key={index}>
-                            <img src={comment.author_pfp_url} alt="alt" />
-                            <div className="proj-com-text">
-                                <h4>{comment.author_username}</h4>
-                                <p>{comment.comment}</p>
+                    <div className="proj-com-cont">
+                        {comments.map((comment, index) => (
+                            <div className="proj-com-card" key={index}>
+                                <img src={comment.author_pfp_url} alt="alt" />
+                                <div className="proj-com-text">
+                                    <h4>{comment.author_username}</h4>
+                                    <p>{comment.comment}</p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
-                    <div
-                        style={{
-                            width: "full",
-                            display: "flex",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <ClipLoader
-                            cssOverride={{
-                                position: "static",
-                                display: "block",
-                                margin: "0 auto",
+                        ))}
+                        <div
+                            style={{
+                                width: "full",
+                                display: "flex",
+                                justifyContent: "center",
                             }}
-                            size={20}
-                            loading={loading}
-                        />
-                    </div>
-                    {moreComments && (
-                        <div className="more-com-wrap">
-                            <p className="more-com" onClick={loadMoreComments}>
-                                More Comments
-                            </p>
-                            <FaCaretDown className="caret-down" />
+                        >
+                            <ClipLoader
+                                cssOverride={{
+                                    position: "static",
+                                    display: "block",
+                                    margin: "0 auto",
+                                }}
+                                size={20}
+                                loading={loading}
+                            />
                         </div>
-                    )}
+                        {moreComments && (
+                            <div className="more-com-wrap">
+                                <p
+                                    className="more-com"
+                                    onClick={loadMoreComments}
+                                >
+                                    More Comments
+                                </p>
+                                <FaCaretDown className="caret-down" />
+                            </div>
+                        )}
+                    </div>
                 </div>
             </section>
         </>
