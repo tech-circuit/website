@@ -2,9 +2,10 @@ import React from "react";
 import "../styles/signin.css";
 import "../styles/all.css";
 import Footer from "./Footer";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import GoogleLoginButton from "./GoogleLoginButton";
 import notyf from "../tcNotyf";
+import BASE_API_URL from "../constants";
 
 function SignUp() {
     const initialValues = {
@@ -21,23 +22,48 @@ function SignUp() {
         setFormValues({ ...formValues, [name]: value });
     };
     const [formErrors, setFormErrors] = useState({});
-    const [isSubmit, setIsSubmit] = useState(false);
+    const [loading, setLoading] = useState();
+    const [message, setMessage] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("submitting");
+        setLoading(true);
         setFormErrors(validate(formValues));
-        setIsSubmit(true);
-        if (formErrors.length === 0) {
-            notyf.success("Registered successfully!");
+        if (Object.keys(formErrors).length === 0) {
+            try {
+                const res = await (
+                    await fetch(`${BASE_API_URL}/auth/signup`, {
+                        method: "POST",
+                        headers: {
+                            "Content-type": "application/json; charset=UTF-8",
+                        },
+                        body: JSON.stringify({
+                            ...formValues,
+                            firstname: formValues.fname,
+                            lastname: formValues.lname,
+                        }),
+                    })
+                ).json();
+                if (!res.success) {
+                    setMessage(res.message);
+                    return notyf.error(res.message);
+                }
+                setMessage(
+                    "Registered successfully! Check your email for verification"
+                );
+                notyf.success(
+                    "Registered successfully! Check your email for verification"
+                );
+            } catch (err) {
+                setMessage(err.toString());
+                notyf.error(err.toString());
+            }
+        } else {
+            setMessage(formErrors[0]);
         }
+        setLoading(false);
     };
-
-    useEffect(() => {
-        console.log(formErrors);
-        if (Object.keys(formErrors).length === 0 && isSubmit) {
-            console.log(formValues);
-        }
-    }, [formErrors, formValues, isSubmit]);
 
     const validate = (values) => {
         const errors = {};
@@ -72,6 +98,7 @@ function SignUp() {
         if (values.password.length < 4) {
             errors.password = "Password must be more than 4 characters!";
         }
+        console.log(errors);
         return errors;
     };
 
@@ -87,6 +114,7 @@ function SignUp() {
                             className="logo"
                         />
                         <h2 style={{ fontWeight: "normal" }}>Sign Up</h2>
+                        <p>{message}</p>
                         <div className="fields sign-fields signup-fields">
                             <input
                                 type="text"
@@ -134,7 +162,13 @@ function SignUp() {
                             ></input>
                             <p className="error-msg">{formErrors.password}</p>
                         </div>
-                        <button className="hero-btn">Register</button>
+                        <button
+                            disabled={loading}
+                            type="submit"
+                            className="hero-btn"
+                        >
+                            Register
+                        </button>
                         <div className="align-p">
                             <a className="underlined-link" href="/">
                                 Forgot Password?

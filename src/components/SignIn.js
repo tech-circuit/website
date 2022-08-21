@@ -2,9 +2,10 @@ import React from "react";
 import "../styles/signin.css";
 import "../styles/all.css";
 import Footer from "./Footer";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import GoogleLoginButton from "./GoogleLoginButton";
 import notyf from "../tcNotyf";
+import BASE_API_URL from "../constants";
 
 function SignIn() {
     const initialValues = {
@@ -18,35 +19,53 @@ function SignIn() {
         setFormValues({ ...formValues, [name]: value });
     };
     const [formErrors, setFormErrors] = useState({});
-    const [isSubmit, setIsSubmit] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [message, setMessage] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
-        setIsSubmit(true);
-        if (formErrors.length === 0) {
-            notyf.success("Logged In successfully!");
+        setIsLoading(true);
+        if (Object.keys(formErrors).length === 0) {
+            try {
+                const res = await (
+                    await fetch(`${BASE_API_URL}/auth/login`, {
+                        method: "POST",
+                        headers: {
+                            "Content-type": "application/json; charset=UTF-8",
+                        },
+                        body: JSON.stringify(formValues),
+                    })
+                ).json();
+                if (!res.success) {
+                    setMessage(res.message);
+                    return notyf.error(res.message);
+                }
+                localStorage.removeItem("authToken");
+                localStorage.removeItem("pfp");
+                localStorage.setItem("pfp", res.user.pfp_url);
+                localStorage.setItem("authToken", res.user.access_token);
+                const { setUp } = res.user;
+                if (!setUp) {
+                    window.location.href = "/profile-setup";
+                } else {
+                    setTimeout(() => {
+                        window.location.href = "/";
+                    }, 100);
+                }
+            } catch (err) {
+                setMessage(err.toString());
+                notyf.error(err.toString());
+            }
+        } else {
+            setMessage(formErrors[0]);
         }
     };
 
-    useEffect(() => {
-        console.log(formErrors);
-        if (Object.keys(formErrors).length === 0 && isSubmit) {
-            console.log(formValues);
-        }
-    }, [formErrors, formValues, isSubmit]);
-
     const validate = (values) => {
         const errors = {};
-        const regex = RegExp(
-            /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-        );
         if (!values.email) {
-            errors.email = "Email is required!";
-        }
-
-        if (!regex.test(values.email)) {
-            errors.email = "This is not a valid email!";
+            errors.email = "Email or Username is required!";
         }
 
         if (!values.password) {
@@ -71,6 +90,7 @@ function SignIn() {
                             className="logo"
                         />
                         <h2 style={{ fontWeight: "normal" }}>Login</h2>
+                        <p>{message}</p>
                         <div className="fields sign-fields">
                             <input
                                 type="text"
@@ -92,7 +112,9 @@ function SignIn() {
                             ></input>
                             <p className="error-msg">{formErrors.password}</p>
                         </div>
-                        <button className="hero-btn">Login</button>
+                        <button disabled={isLoading} className="hero-btn">
+                            Login
+                        </button>
                         <div className="align-p">
                             <a className="underlined-link" href="/">
                                 Forgot Password?
