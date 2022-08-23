@@ -96,9 +96,8 @@ const ProjectAlter = ({ edit }) => {
         }
     };
 
-    const deleteImages = () => {
-        setImgUrls([]);
-        document.querySelector("input[name='org-logo']").value = "";
+    const deleteCover = () => {
+        setCover("");
     };
 
     const removeImg = (url) => {
@@ -126,6 +125,7 @@ const ProjectAlter = ({ edit }) => {
                 commentsEnabled: comments,
                 event,
                 collaborators,
+                cover,
                 imgs:
                     imgUrls.length === 0
                         ? ["/assets/userFlowIcon.svg"]
@@ -205,6 +205,7 @@ const ProjectAlter = ({ edit }) => {
 
             if (data.project) {
                 setImgUrls(data.project.imgs);
+                setCover(data.project.cover);
                 setLinks(data.project.links);
                 setTags(data.project.tags);
                 setFields(data.project.fields);
@@ -294,7 +295,7 @@ const ProjectAlter = ({ edit }) => {
                             }}
                         >
                             <label
-                                htmlFor="org-logo"
+                                htmlFor="project-imgs"
                                 style={{ cursor: "pointer" }}
                                 onDragOver={(e) => e.preventDefault()}
                                 onDrop={(e) => {
@@ -312,8 +313,8 @@ const ProjectAlter = ({ edit }) => {
                             <input
                                 type="file"
                                 accept="image/*"
-                                id="org-logo"
-                                name="org-logo"
+                                id="project-imgs"
+                                name="project-imgs"
                                 style={{ display: "none" }}
                                 onChange={(e) =>
                                     setImage(e.target.files[0], false)
@@ -421,7 +422,7 @@ const ProjectAlter = ({ edit }) => {
                             <i
                                 className="fas fa-trash"
                                 id="delete-icon"
-                                onClick={deleteImages}
+                                onClick={deleteCover}
                             ></i>
                         </h3>
                         <span>
@@ -443,9 +444,13 @@ const ProjectAlter = ({ edit }) => {
                     <div
                         className="image-area"
                         id="img-area"
-                        style={{
-                            overflow: "hidden",
-                        }}
+                        style={
+                            cover
+                                ? {
+                                      border: "none",
+                                  }
+                                : { overflow: "hidden" }
+                        }
                     >
                         {/* {imgUrl === "" ? (
                             <FileDrop

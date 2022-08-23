@@ -346,7 +346,6 @@ button.workSortActive::after {
     border-radius: 5px;
     font-family: Poppins;
     padding: 2vh 1.5vh;
-    margin-top: 1em;
     color: #29313d;
     font-size: 1vw;
     font-weight: 300;
@@ -616,4 +615,13 @@ button.workSortActive::after {
 }
 .share-link:hover {
     filter: brightness(0.7);
+}
+.project-comment-section {
+    margin-top: 3vh;
+}
+.project-comment-section h3 {
+    font-size: 2vh;
+}
+.proj-com-cont {
+    margin-bottom: 5vh;
 }

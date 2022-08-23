@@ -17,8 +17,8 @@ const ProjectCard = ({ project, view, id }) => {
             >
                 <img
                     src={
-                        project.imgs[0]
-                            ? project.imgs[0]
+                        project.cover
+                            ? project.cover
                             : "/assets/userFlowIcon.svg"
                     }
                     alt="project img"

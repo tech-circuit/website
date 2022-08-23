@@ -156,7 +156,9 @@ const FullProject = ({ project, close, socket }) => {
             </div>
 
             <img
-                src={project?.cover_image || "/assets/sample-banner.jpg"}
+                src={
+                    project.cover ? project.cover : "/assets/sample-banner.jpg"
+                }
                 alt="alt"
                 className="fullProjectBanneri"
             />
@@ -255,7 +257,7 @@ const FullProject = ({ project, close, socket }) => {
                 </div>
             </div>
 
-            <div className="fullProjectUnit">
+            <div className="fullProjectUnit project-comment-section">
                 <h3>Comments ({totalComments})</h3>
                 <div className="add-comment">
                     <div className="add-comm-top">
