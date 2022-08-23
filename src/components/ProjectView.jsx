@@ -1,27 +1,12 @@
 import "../styles/work.css";
-import {
-    FaChevronLeft,
-    FaCaretDown,
-    FaPen,
-    FaWhatsapp,
-    FaEnvelope,
-    FaFacebookF,
-    FaRedditAlien,
-    FaTwitter,
-} from "react-icons/fa";
+import { FaChevronLeft, FaCaretDown, FaPen } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import notyf from "../tcNotyf";
 import getLinkLogo from "../getLinkLogo";
 import BASE_API_URL from "../constants";
 import { ClipLoader } from "react-spinners";
-import {
-    EmailShareButton,
-    FacebookShareButton,
-    RedditShareButton,
-    TwitterShareButton,
-    WhatsappShareButton,
-} from "react-share";
+import Share from "../components/utility/Share";
 
 const authToken = localStorage.getItem("authToken");
 
@@ -305,34 +290,7 @@ const ProjectView = ({ socket }) => {
                             </div>
                         )}
 
-                        <h3>Share Project</h3>
-                        <div className="share-links">
-                            <EmailShareButton url={window.location.href}>
-                                <div className="share-link">
-                                    <FaEnvelope />
-                                </div>
-                            </EmailShareButton>
-                            <FacebookShareButton url={window.location.href}>
-                                <div className="share-link">
-                                    <FaFacebookF />
-                                </div>
-                            </FacebookShareButton>
-                            <RedditShareButton url={window.location.href}>
-                                <div className="share-link">
-                                    <FaRedditAlien />
-                                </div>
-                            </RedditShareButton>
-                            <WhatsappShareButton url={window.location.href}>
-                                <div className="share-link">
-                                    <FaWhatsapp />
-                                </div>
-                            </WhatsappShareButton>
-                            <TwitterShareButton url={window.location.href}>
-                                <div className="share-link">
-                                    <FaTwitter />
-                                </div>
-                            </TwitterShareButton>
-                        </div>
+                        <Share />
 
                         {project.event && (
                             <div className="fullProjectUnit">

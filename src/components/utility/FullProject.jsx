@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import BASE_API_URL from "../../constants";
 import notyf from "../../tcNotyf";
 import { ClipLoader } from "react-spinners";
+import Share from "./Share";
 
 const authToken = localStorage.getItem("authToken");
 
@@ -17,6 +18,7 @@ const FullProject = ({ project, close, socket }) => {
     const [moreComments, setMoreComments] = useState(false);
     const [loading, setLoading] = useState(false);
     const [totalComments, setTotalComments] = useState(0);
+    const [share, setShare] = useState(false);
 
     const PAGINATION_LIMIT = 5;
 
@@ -144,10 +146,12 @@ const FullProject = ({ project, close, socket }) => {
                     &nbsp;&nbsp;Back
                 </button>
                 <div className="share-wrap">
-                    <FaShareAlt />
-                    <a className="share" href="/">
-                        Share
-                    </a>
+                    <button className="share" onClick={() => setShare(!share)}>
+                        <FaShareAlt />
+                        &nbsp; Share
+                    </button>
+
+                    {share && <Share fixed={true} />}
                 </div>
             </div>
 
