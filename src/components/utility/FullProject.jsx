@@ -1,4 +1,4 @@
-import { FaShareAlt, FaCaretDown, FaChevronLeft } from "react-icons/fa";
+import { FaCaretDown, FaChevronLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import getLinkLogo from "../../getLinkLogo";
 import { useState, useEffect } from "react";
@@ -18,7 +18,7 @@ const FullProject = ({ project, close, socket }) => {
     const [moreComments, setMoreComments] = useState(false);
     const [loading, setLoading] = useState(false);
     const [totalComments, setTotalComments] = useState(0);
-    const [share, setShare] = useState(false);
+    // const [share, setShare] = useState(false);
 
     const PAGINATION_LIMIT = 5;
 
@@ -145,14 +145,14 @@ const FullProject = ({ project, close, socket }) => {
                     <FaChevronLeft />
                     &nbsp;&nbsp;Back
                 </button>
-                <div className="share-wrap">
+                {/* <div className="share-wrap">
                     <button className="share" onClick={() => setShare(!share)}>
                         <FaShareAlt />
                         &nbsp; Share
                     </button>
 
                     {share && <Share fixed={true} />}
-                </div>
+                </div> */}
             </div>
 
             <img
@@ -254,6 +254,7 @@ const FullProject = ({ project, close, socket }) => {
                             </Link>
                         </div>
                     )}
+                    <Share />
                 </div>
             </div>
 

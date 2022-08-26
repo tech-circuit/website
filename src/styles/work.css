@@ -571,7 +571,7 @@ button.workSortActive::after {
     border-radius: 14px;
     padding: 20px 26px;
     padding-right: 46px;
-    box-shadow: 0 3px 30px rgba(41, 49, 61, 0.1);
+    box-shadow: 0 4px 30px rgba(41, 49, 61, 0.08);
     margin-top: 3vh;
     width: fit-content;
 }
@@ -598,7 +598,6 @@ button.workSortActive::after {
 .share-links {
     display: flex;
     margin-top: 1.4vh;
-    flex-wrap: wrap;
     margin-bottom: 1vh;
 }
 .share-link {
@@ -610,7 +609,7 @@ button.workSortActive::after {
     font-size: 28px;
     justify-content: center;
     align-items: center;
-    margin: 0 0.4vw;
+    margin: 0 0.3vw;
     transition: all 0.2s;
 }
 .share-link:hover {
