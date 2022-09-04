@@ -14,6 +14,7 @@ import { Reorder } from "framer-motion/dist/framer-motion";
 const ProjectAlter = ({ edit }) => {
     const [links, setLinks] = useState([]);
     const [imgUrls, setImgUrls] = useState([]);
+    const [cover, setCover] = useState("");
     const [linksObj, setLinksObj] = useState({});
     const [tags, setTags] = useState([]);
     const [fields, setFields] = useState([]);
@@ -51,7 +52,7 @@ const ProjectAlter = ({ edit }) => {
         setLinks(linkList);
     };
 
-    const setImage = async (inputFile) => {
+    const setImage = async (inputFile, isCover) => {
         if (imgUrls.length < 7) {
             if (
                 inputFile.name.toLowerCase().endsWith(".jpg") ||
@@ -80,7 +81,9 @@ const ProjectAlter = ({ edit }) => {
                     })
                         .then(async (response) => {
                             const resp = await response.json();
-                            setImgUrls([...imgUrls, resp.link]);
+                            isCover
+                                ? setCover(resp.link)
+                                : setImgUrls([...imgUrls, resp.link]);
                         })
                         .catch((error) => {
                             console.log(error);
@@ -93,9 +96,8 @@ const ProjectAlter = ({ edit }) => {
         }
     };
 
-    const deleteImages = () => {
-        setImgUrls([]);
-        document.querySelector("input[name='org-logo']").value = "";
+    const deleteCover = () => {
+        setCover("");
     };
 
     const removeImg = (url) => {
@@ -123,6 +125,7 @@ const ProjectAlter = ({ edit }) => {
                 commentsEnabled: comments,
                 event,
                 collaborators,
+                cover,
                 imgs:
                     imgUrls.length === 0
                         ? ["/assets/userFlowIcon.svg"]
@@ -202,6 +205,7 @@ const ProjectAlter = ({ edit }) => {
 
             if (data.project) {
                 setImgUrls(data.project.imgs);
+                setCover(data.project.cover);
                 setLinks(data.project.links);
                 setTags(data.project.tags);
                 setFields(data.project.fields);
@@ -275,6 +279,66 @@ const ProjectAlter = ({ edit }) => {
                         placeholder="Ishaan Das, Ribhav Sharma"
                         defaultValue={project ? project.collaborators : ""}
                     ></input>
+                    <h3>Project Media</h3>
+                    <p className="img-sub-heading">Images should be PNG/JPG</p>
+
+                    <Reorder.Group
+                        values={imgUrls}
+                        onReorder={setImgUrls}
+                        className="project-imgs"
+                    >
+                        <div
+                            className="image-area mini-img-area"
+                            id="img-area"
+                            style={{
+                                overflow: "hidden",
+                            }}
+                        >
+                            <label
+                                htmlFor="project-imgs"
+                                style={{ cursor: "pointer" }}
+                                onDragOver={(e) => e.preventDefault()}
+                                onDrop={(e) => {
+                                    e.preventDefault();
+                                    setImage(e.dataTransfer.files[0], false);
+                                }}
+                            >
+                                <i
+                                    className="fas fa-plus-circle"
+                                    id="file-add-icon"
+                                ></i>
+                                <h5>Drag File</h5>
+                                <p>PNG / JPG</p>
+                            </label>
+                            <input
+                                type="file"
+                                accept="image/*"
+                                id="project-imgs"
+                                name="project-imgs"
+                                style={{ display: "none" }}
+                                onChange={(e) =>
+                                    setImage(e.target.files[0], false)
+                                }
+                            />
+                        </div>
+                        {imgUrls.map((imgUrl) => (
+                            <Reorder.Item
+                                drag
+                                key={imgUrl}
+                                value={imgUrl}
+                                className="project-img"
+                                style={{ backgroundImage: `url(${imgUrl})` }}
+                            >
+                                <img
+                                    src="/assets/img-remove.png"
+                                    alt="img-remove"
+                                    className="remove-img"
+                                    onClick={() => removeImg(imgUrl)}
+                                />
+                            </Reorder.Item>
+                        ))}
+                    </Reorder.Group>
+
                     <h3>Add links</h3>
                     <div className="create-links input">
                         <div className="link-unit" id="add-link-unit">
@@ -354,15 +418,15 @@ const ProjectAlter = ({ edit }) => {
                 <div className="right">
                     <div className="top-inline">
                         <h3>
-                            Project Media{" "}
+                            Project Cover image{" "}
                             <i
                                 className="fas fa-trash"
                                 id="delete-icon"
-                                onClick={deleteImages}
+                                onClick={deleteCover}
                             ></i>
                         </h3>
                         <span>
-                            This images will be displayed on Work page.
+                            This image will be displayed on Work page.
                             Recommended size 500x500px
                         </span>
                     </div>
@@ -377,39 +441,16 @@ const ProjectAlter = ({ edit }) => {
                         ))}
                     </div> */}
 
-                    <Reorder.Group
-                        values={imgUrls}
-                        onReorder={setImgUrls}
-                        className="project-imgs"
-                    >
-                        {imgUrls.map((imgUrl) => (
-                            <Reorder.Item
-                                drag
-                                key={imgUrl}
-                                value={imgUrl}
-                                className="project-img"
-                                style={{ backgroundImage: `url(${imgUrl})` }}
-                            >
-                                {/* <FaTimesCircle className="remove-img" /> */}
-                                <img
-                                    src="/assets/img-remove.png"
-                                    alt="img-remove"
-                                    className="remove-img"
-                                    onClick={() => removeImg(imgUrl)}
-                                />
-                            </Reorder.Item>
-                        ))}
-                    </Reorder.Group>
-
                     <div
                         className="image-area"
                         id="img-area"
-                        // style={{
-                        //     backgroundImage: "url(" + { imgUrls } + ")",
-                        //     backgroundSize: "contain",
-                        //     backgroundRepeat: "no-repeat",
-                        //     backgroundPosition: "center",
-                        // }}
+                        style={
+                            cover
+                                ? {
+                                      border: "none",
+                                  }
+                                : { overflow: "hidden" }
+                        }
                     >
                         {/* {imgUrl === "" ? (
                             <FileDrop
@@ -428,29 +469,39 @@ const ProjectAlter = ({ edit }) => {
                             ""
                         )} */}
 
-                        <label
-                            htmlFor="org-logo"
-                            style={{ cursor: "pointer" }}
-                            onDragOver={(e) => e.preventDefault()}
-                            onDrop={(e) => {
-                                e.preventDefault();
-                                setImage(e.dataTransfer.files[0]);
-                            }}
-                        >
-                            <i
-                                className="fas fa-plus-circle"
-                                id="file-add-icon"
-                            ></i>
-                            <h5>Drag Files</h5>
-                            <p>1920 x 1080 (JPG, PNG)</p>
-                        </label>
+                        {cover !== "" && (
+                            <img
+                                src={cover}
+                                alt="cover"
+                                className="cover-img"
+                            />
+                        )}
+
+                        {cover === "" && (
+                            <label
+                                htmlFor="org-logo"
+                                style={{ cursor: "pointer" }}
+                                onDragOver={(e) => e.preventDefault()}
+                                onDrop={(e) => {
+                                    e.preventDefault();
+                                    setImage(e.dataTransfer.files[0], true);
+                                }}
+                            >
+                                <i
+                                    className="fas fa-plus-circle"
+                                    id="file-add-icon"
+                                ></i>
+                                <h5>Drag File</h5>
+                                <p>500 x 500 (JPG, PNG)</p>
+                            </label>
+                        )}
                         <input
                             type="file"
                             accept="image/*"
                             id="org-logo"
                             name="org-logo"
                             style={{ display: "none" }}
-                            onChange={(e) => setImage(e.target.files[0])}
+                            onChange={(e) => setImage(e.target.files[0], true)}
                         />
                     </div>
 

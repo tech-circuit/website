@@ -1,10 +1,11 @@
-import { FaShareAlt, FaCaretDown, FaChevronLeft } from "react-icons/fa";
+import { FaCaretDown, FaChevronLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import getLinkLogo from "../../getLinkLogo";
 import { useState, useEffect } from "react";
 import BASE_API_URL from "../../constants";
 import notyf from "../../tcNotyf";
 import { ClipLoader } from "react-spinners";
+import Share from "./Share";
 
 const authToken = localStorage.getItem("authToken");
 
@@ -17,6 +18,7 @@ const FullProject = ({ project, close, socket }) => {
     const [moreComments, setMoreComments] = useState(false);
     const [loading, setLoading] = useState(false);
     const [totalComments, setTotalComments] = useState(0);
+    // const [share, setShare] = useState(false);
 
     const PAGINATION_LIMIT = 5;
 
@@ -143,16 +145,20 @@ const FullProject = ({ project, close, socket }) => {
                     <FaChevronLeft />
                     &nbsp;&nbsp;Back
                 </button>
-                <div className="share-wrap">
-                    <FaShareAlt />
-                    <a className="share" href="/">
-                        Share
-                    </a>
-                </div>
+                {/* <div className="share-wrap">
+                    <button className="share" onClick={() => setShare(!share)}>
+                        <FaShareAlt />
+                        &nbsp; Share
+                    </button>
+
+                    {share && <Share fixed={true} />}
+                </div> */}
             </div>
 
             <img
-                src={project?.cover_image || "/assets/sample-banner.jpg"}
+                src={
+                    project.cover ? project.cover : "/assets/sample-banner.jpg"
+                }
                 alt="alt"
                 className="fullProjectBanneri"
             />
@@ -248,10 +254,11 @@ const FullProject = ({ project, close, socket }) => {
                             </Link>
                         </div>
                     )}
+                    <Share />
                 </div>
             </div>
 
-            <div className="fullProjectUnit">
+            <div className="fullProjectUnit project-comment-section">
                 <h3>Comments ({totalComments})</h3>
                 <div className="add-comment">
                     <div className="add-comm-top">

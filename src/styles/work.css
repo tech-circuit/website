@@ -346,7 +346,6 @@ button.workSortActive::after {
     border-radius: 5px;
     font-family: Poppins;
     padding: 2vh 1.5vh;
-    margin-top: 1em;
     color: #29313d;
     font-size: 1vw;
     font-weight: 300;
@@ -558,10 +557,48 @@ button.workSortActive::after {
 .fullProjectUnit h3 {
     margin-bottom: 1vh;
 }
+
+/* SHARE */
+.share {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 2vh;
+    font-weight: 400;
+    opacity: 0.6;
+}
+.share-box {
+    border-radius: 14px;
+    padding: 20px 26px;
+    padding-right: 46px;
+    box-shadow: 0 4px 30px rgba(41, 49, 61, 0.08);
+    margin-top: 3vh;
+    width: fit-content;
+}
+.share-wrap {
+    position: relative;
+}
+.share-box-fixed {
+    position: absolute;
+    right: 0;
+    background: #fff;
+    box-shadow: 0 0 20px rgba(41, 49, 61, 0.2);
+    width: max-content;
+    padding-right: 26px;
+}
+.share-box-fixed h3 {
+    font-size: 2vh;
+    margin-left: 0.4vw;
+}
+.share-box h3 {
+    margin-top: 0;
+    color: #29313d;
+    font-weight: 500;
+}
 .share-links {
     display: flex;
-    margin-top: 1vh;
-    flex-wrap: wrap;
+    margin-top: 1.4vh;
+    margin-bottom: 1vh;
 }
 .share-link {
     border-radius: 12px;
@@ -572,5 +609,18 @@ button.workSortActive::after {
     font-size: 28px;
     justify-content: center;
     align-items: center;
-    margin-right: 0.4vw;
+    margin: 0 0.3vw;
+    transition: all 0.2s;
+}
+.share-link:hover {
+    filter: brightness(0.7);
+}
+.project-comment-section {
+    margin-top: 3vh;
+}
+.project-comment-section h3 {
+    font-size: 2vh;
+}
+.proj-com-cont {
+    margin-bottom: 5vh;
 }
