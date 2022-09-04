@@ -280,26 +280,28 @@ function ProjectView({ view, id, fieldsAvailable }) {
                     })}
                 </div>
             </section>
-            {projectsByFields.map((field) => (
-                <section
-                    key={field.title}
-                    className="projects container firstProjSec"
-                >
-                    <h1>{field.title}</h1>
-                    <div className="workCards">
-                        {field.projects.map((project) => {
-                            return (
-                                <ProjectCard
-                                    project={project}
-                                    view={view}
-                                    key={project._id}
-                                    id={id}
-                                />
-                            );
-                        })}
-                    </div>
-                </section>
-            ))}
+            {projectsByFields.map((field) =>
+                field.projects.length !== 0 ? (
+                    <section
+                        key={field.title}
+                        className="projects container firstProjSec"
+                    >
+                        <h1>{field.title}</h1>
+                        <div className="workCards">
+                            {field.projects.map((project) => {
+                                return (
+                                    <ProjectCard
+                                        project={project}
+                                        view={view}
+                                        key={project._id}
+                                        id={id}
+                                    />
+                                );
+                            })}
+                        </div>
+                    </section>
+                ) : null
+            )}
         </>
     );
 }

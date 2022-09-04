@@ -1,19 +1,29 @@
 import OwlCarousel from "react-owl-carousel2";
-import { useRef } from "react";
-
-const options = {
-    items: 9,
-    rewind: true,
-    autoplay: true,
-    loop: true,
-    autoplayTimeout: 3000,
-    nav: false,
-};
+import { useEffect, useRef } from "react";
 
 const WorkCarousel = ({ sortRef, fieldsAvailable, setCurrentField }) => {
+    useEffect(() => {
+        // remove last empty element from carousel
+        for (const item of document.querySelectorAll(".owl-item")) {
+            for (const stage of item.querySelectorAll(".owl-stage")) {
+                stage.style.display = "none";
+            }
+        }
+    });
+
     return (
         <>
-            <OwlCarousel ref={sortRef} options={options}>
+            <OwlCarousel
+                ref={sortRef}
+                options={{
+                    rewind: true,
+                    autoplay: true,
+                    loop: true,
+                    autoplayTimeout: 3000,
+                    nav: false,
+                    items: 9,
+                }}
+            >
                 {fieldsAvailable.map((field) => (
                     <CarouselItem
                         key={field}

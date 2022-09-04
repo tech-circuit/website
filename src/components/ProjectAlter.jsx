@@ -9,7 +9,7 @@ import Tags from "./utility/Tags";
 import Fields from "./utility/Fields";
 import checkLoggedIn from "./utility/checkLoggedIn";
 import { validate } from "../validate";
-import { Reorder } from "framer-motion/dist/framer-motion";
+import { Reorder } from "framer-motion";
 
 const ProjectAlter = ({ edit }) => {
     const [links, setLinks] = useState([]);

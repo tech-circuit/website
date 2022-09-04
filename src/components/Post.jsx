@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import TimeAgo from "react-timeago";
 import notyf from "../tcNotyf";
 import { useParams } from "react-router-dom";
-import { SRLWrapper } from "simple-react-lightbox";
+// import { SRLWrapper } from "simple-react-lightbox";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 import BASE_API_URL from "../constants";
 
@@ -55,8 +55,8 @@ const Post = ({ socket }) => {
                 let res = await response.json();
                 if (res.success === true) {
                     updateComments();
-                    console.log(res.receivers)
-                    socket.emit('notif', res.receivers);
+                    console.log(res.receivers);
+                    socket.emit("notif", res.receivers);
                 } else {
                     if (res.error === "User not found.") {
                         notyf.error("Please log in to comment");
@@ -264,14 +264,14 @@ const Post = ({ socket }) => {
                             posted <TimeAgo date={response.date} /> by{" "}
                             <h4 href="/">{response.author}</h4>
                         </h3>
-                        <SRLWrapper options={options}>
+                        {/* <SRLWrapper options={options}>
                             <div
                                 dangerouslySetInnerHTML={{
                                     __html: response.content,
                                 }}
                                 className="post-content"
                             ></div>
-                        </SRLWrapper>
+                        </SRLWrapper> */}
                         <br></br>
                         <br></br>
                         <div className="card-options">

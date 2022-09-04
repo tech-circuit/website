@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "../styles/index.css";
 import { Link } from "react-router-dom";
 import { FaChevronDown, FaCommentAlt, FaCheck } from "react-icons/fa";
-import Footer from "../components/Footer";
+import Footer from "./Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import notyf from "../tcNotyf";

@@ -2,11 +2,9 @@
     "name": "website",
     "version": "0.1.0",
     "private": true,
+    "type": "module",
     "dependencies": {
         "@fortawesome/react-fontawesome": "^0.1.14",
-        "@testing-library/jest-dom": "^5.11.10",
-        "@testing-library/react": "^11.2.6",
-        "@testing-library/user-event": "^12.8.3",
         "@tinymce/tinymce-react": "^3.12.6",
         "aos": "^2.3.4",
         "axios": "^0.21.4",
@@ -28,7 +26,6 @@
         "react-radio-buttons": "^1.2.2",
         "react-responsive-carousel": "^3.2.18",
         "react-router-dom": "^5.2.0",
-        "react-scripts": "4.0.3",
         "react-share": "^4.4.0",
         "react-spinners": "^0.11.0",
         "react-timeago": "^6.2.1",
@@ -37,10 +34,9 @@
         "web-vitals": "^1.1.1"
     },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
     },
     "eslintConfig": {
         "extends": [
@@ -62,6 +58,10 @@
     },
     "devDependencies": {
         "@fortawesome/fontawesome-free": "^5.15.3",
-        "react-error-overlay": "^6.0.9"
+        "react-error-overlay": "^6.0.9",
+        "@types/react": "^18.0.17",
+        "@types/react-dom": "^18.0.6",
+        "@vitejs/plugin-react": "^2.0.1",
+        "vite": "^3.0.9"
     }
 }

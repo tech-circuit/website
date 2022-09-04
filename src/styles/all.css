@@ -55,7 +55,13 @@ textarea {
 #root {
     width: 100vw;
     overflow: hidden;
+    min-height: 100vh;
 }
+
+/* .owl-item:has(* > .owl-stage) {
+    display: none !important;
+} */
+
 .App {
     font-family: Inter;
     text-align: center;
