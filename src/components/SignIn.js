@@ -38,8 +38,8 @@ function SignIn() {
                     })
                 ).json();
                 if (!res.success) {
-                    setMessage(res.message);
-                    return notyf.error(res.message);
+                    setMessage(res.error);
+                    return notyf.error(res.error);
                 }
                 localStorage.removeItem("authToken");
                 localStorage.removeItem("pfp");
@@ -90,7 +90,7 @@ function SignIn() {
                             className="logo"
                         />
                         <h2 style={{ fontWeight: "normal" }}>Login</h2>
-                        <p>{message}</p>
+                        <p style={{ color: "red" }}>{message}</p>
                         <div className="fields sign-fields">
                             <input
                                 type="text"
