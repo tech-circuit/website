@@ -46,8 +46,8 @@ function SignUp() {
                     })
                 ).json();
                 if (!res.success) {
-                    setMessage(res.message);
-                    return notyf.error(res.message);
+                    setMessage(res.error);
+                    return notyf.error(res.error);
                 }
                 setMessage(
                     "Registered successfully! Check your email for verification"
