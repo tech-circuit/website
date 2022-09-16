@@ -221,6 +221,54 @@ const Index = () => {
             .addEventListener("click", msgClickHandler);
     };
 
+    const [mailingListEmail, setMailingListEmail] = useState("");
+
+    const editMailingListEmail = (val) => {
+        setMailingListEmail(val);
+    };
+
+    const mailingListFormSubmit = () => {
+        let emailValid = true;
+        if (
+            !mailingListEmail.includes("@") ||
+            !mailingListEmail.includes(".")
+        ) {
+            emailValid = false;
+        }
+        mailingListEmail
+            .trim()
+            .split("@")
+            .forEach((p) => {
+                if (p.trim().length === 0) {
+                    emailValid = false;
+                }
+            });
+        if (mailingListEmail.trim().length === 0 || emailValid === false) {
+            notyf.open({
+                type: "error",
+                message: "Please enter a valid email.",
+            });
+        } else {
+            fetch(`${BASE_API_URL}/ml/subscribe`, {
+                method: "POST",
+                body: JSON.stringify({
+                    email: mailingListEmail,
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                },
+            })
+                .then((response) => {
+                    // console.log(response.success);
+                    setMailingListEmail("");
+                    notyf.open({
+                        type: "success",
+                        message: "Joined successfully!",
+                    });
+                })
+                .catch((error) => console.log(error));
+        }
+    };
     return (
         <main style={{ position: "relative" }}>
             <div className="msg-opaq-layer"></div>
@@ -317,12 +365,28 @@ const Index = () => {
                             &nbsp;takes place.
                         </h1>
                         <p data-aos="fade-right" data-aos-delay="200">
-                            Be it meeting talented people from the tech
-                            industry, looking at amazing projects created by
-                            professionals, connecting with new people,
-                            participating in events, or even organizing your own
-                            -- techCircuit is the place to be.
+                          Join our mailing list to be notifed about the latest updates on techCircuit, get information about events,
+                          and to be the first to know when our web platform launches!
                         </p>
+                        <div className="mail">
+                            <div className="input">
+                                <img src="/assets/mail.svg" alt="alt" />
+                                <input
+                                    type="text"
+                                    placeholder="Email Address"
+                                    value={mailingListEmail}
+                                    onChange={(event) =>
+                                        editMailingListEmail(event.target.value)
+                                    }
+                                />
+                            </div>
+                            <button
+                                className="btn"
+                                onClick={() => mailingListFormSubmit()}
+                            >
+                                Submit
+                            </button>
+                        </div>
                         <a
                             data-aos="fade-up"
                             data-aos-delay="300"
@@ -331,7 +395,7 @@ const Index = () => {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            Join us Now&nbsp;&nbsp;
+                            Join Discord Server &nbsp;&nbsp;
                             <img src="/assets/Right_Arrow.svg" alt="" />
                         </a>
                         <div className="scroll-more-hold">
@@ -351,20 +415,18 @@ const Index = () => {
                 <div className="abt-left">
                     <div className="container">
                         <h1 data-aos="fade-right">
-                            What is <strong>techCircuit?</strong>
+                            What is techCircuit?
                         </h1>
                         <p data-aos="fade-right" data-aos-delay="300">
-                            In simple words, techCircuit is a hub for tech
-                            enthusiasts around the world. The platform allows
-                            users to surf through a plethora of projects,
-                            ranging from code to design, built by experts in
-                            their respective fields. techCircuit allows users to
-                            also browse through events and meetups being
-                            organized, and sign up for the same really easily.
+                            This is a place where a community of technology enthusiast students and individuals can network,
+                            get feedback on projects, and participate in and host events, and gain access to curated educational
+                            resources for numerous fields in the realm of technology, design, entrepreneurship, and more.
                             <br />
                             <br />
-                            Organizations or individuals can also post events of
-                            their own, and get traction instantly.
+                            Tech Circuit (techCircuit) is a <i><strong>community of high school and college students</strong></i>
+                            passionate about numerous various domains of technology, ranging from <i><strong>computer science to digital design</strong></i>.
+                            It is the place to be to connect and network with like minded tech enthusiasts, share your projects with
+                            the community, and to promote your *hackathons* and events independently or through your school/university or club.
                         </p>
                         <img src="/assets/abt.svg" alt="About Banner" />
                         <p className="illuBy">
@@ -404,7 +466,7 @@ const Index = () => {
             </section>
 
             <section className="feats">
-                {/* <div className="clubs container">
+                <div className="clubs container">
                     <div className="club-left">
                         <h2 data-aos="fade-right">
                             Home to the most influential
@@ -416,57 +478,33 @@ const Index = () => {
                             including Exun, CW, TS and more have tested and
                             approved of the features that techCircuit offers.
                         </p>
-                        <Link data-aos="fade-right" to="/" className="club-btn">
-                            View Clubs&nbsp;&nbsp;
-                            <img src="/assets/Right_Arrow.svg" alt="" />
-                        </Link>
                     </div>
                     <div className="club-right">
                         <div className="club-logos">
                             <img
                                 data-aos="zoom-in"
-                                src="/assets/exun.svg"
+                                src="/assets/exun.png"
                                 alt="alt"
                                 className="club-logo"
                             />
                             <img
                                 data-aos="zoom-in"
                                 data-aos-delay="200"
-                                src="/assets/exun.svg"
+                                src="/assets/cw.jpeg"
                                 alt="alt"
                                 className="club-logo"
                             />
                             <img
                                 data-aos="zoom-in"
                                 data-aos-delay="300"
-                                src="/assets/exun.svg"
+                                src="/assets/ts.png"
                                 alt="alt"
                                 className="club-logo"
-                            />
-                            <img
-                                data-aos="zoom-in"
-                                data-aos-delay="400"
-                                src="/assets/exun.svg"
-                                alt="alt"
-                                className="club-logo"
-                            />
-                            <img
-                                data-aos="zoom-in"
-                                data-aos-delay="500"
-                                src="/assets/exun.svg"
-                                alt="alt"
-                                className="club-logo"
-                            />
-                            <img
-                                data-aos="zoom-in"
-                                data-aos-delay="600"
-                                src="/assets/exun.svg"
-                                alt="alt"
-                                className="club-logo"
+                                style={{ backgroundColor: "#0E0C0C" }}
                             />
                         </div>
                     </div>
-                </div> */}
+                </div>
 
                 <div className="feat container first-feat">
                     <div className="feat-banner">

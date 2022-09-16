@@ -144,7 +144,43 @@
     animation: none;
 }
 #title {
-    color: #4678f9;
+    /* color: #4678f9; */
+    text-decoration: underline;
+}
+
+.mail {
+  display: flex;
+  box-shadow: 0px 4.5px 33.75px 0px #00000026;
+  margin-top: 20px;
+}
+
+.mail .input {
+  padding: 16px 0 16px 12px;
+}
+
+.mail .input img {
+  width: 24px;
+  margin-right: 2px;
+}
+
+.input input {
+  font-size: 12px !important;
+}
+
+.mail .btn {
+  padding: 0 3vw;
+  font-size: 12px;
+  font-weight: 300;
+  border: none;
+  background: #29313D;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4.5px;
+  transition: all 0.3s;
+}
+
+.mail .btn:hover {
+  background: #3d495a;
 }
 .hero {
     display: flex;
@@ -194,9 +230,10 @@
 }
 
 .hero-btn {
-    font-size: 1.2vw;
+    align-self: flex-start;
+    font-size: 14px;
     font-weight: 400;
-    padding: 1vh 0;
+    padding: 16px 20px;
     border-radius: 6px;
     background: #4678f9;
     color: #fff;
@@ -204,8 +241,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 6.4vh;
-    width: 40%;
     margin-top: 4vh;
     margin-bottom: 10vh;
     transition: all 0.3s !important;
@@ -376,6 +411,8 @@
     width: 26%;
     margin: 1%;
     background: #4678f9;
+    border-radius: 12px;
+    box-shadow: 0px 5.664000034332275px 52.39200210571289px 0px #0000004D;
 }
 
 /* Write ---------------------------------------------------------------------------------------------------------- */
@@ -643,9 +680,9 @@
         margin-bottom: 4vh;
     }
     .hero-btn {
-        margin: 0;
-        font-size: 2.4vw;
-        width: 33%;
+        margin: 12px 0;
+        align-self: center;
+        /* font-size: 2.4vw; */
     }
     .scroll-more-hold {
         display: none;
@@ -824,9 +861,9 @@
         margin-bottom: 4vh;
     }
     .hero-btn {
-        margin: 0;
-        font-size: 3.4vw;
-        width: 43%;
+        margin: 12px 0;
+        /* font-size: 3.4vw; */
+        /* width: 43%; */
     }
 
     .about {
@@ -987,5 +1024,10 @@
 
     #not-final-img {
         margin-left: 0;
+    }
+
+    .mail {
+      justify-content: space-between;
+      width: 100%;
     }
 }

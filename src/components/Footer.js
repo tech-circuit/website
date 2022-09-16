@@ -158,7 +158,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="foot-bottom container">
-                <p className="footCopy">&copy; 2021 techCircuit</p>
+                <p className="footCopy">&copy; {new Date().getFullYear()} techCircuit</p>
                 <div>
                     <a href="mailto:contact@techcircuit.co">
                         <p className="footEmail">contact@techcircuit.co</p>
