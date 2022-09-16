@@ -10,17 +10,50 @@ import getLinkogo from "../getLinkLogo";
 import MemberCard from "./utility/MemberCard";
 import SelectUser from "./utility/SelectUser";
 
-const OrgView = () => {
+const OrgView = ({ socket }) => {
     document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
     const [org, setOrg] = useState({});
     const [members, setMembers] = useState([]);
     const { orgId } = useParams();
     const [id, setId] = useState();
     const [tab, setTab] = useState("Org Info");
+    const [invited, setInvited] = useState(false);
+    const [reqSent, setReqSent] = useState(false);
 
     function changeTab(e) {
         setTab(e.target.textContent);
     }
+
+    useEffect(() => {
+        const getId = async () => {
+            try {
+                const authToken = localStorage.getItem("authToken");
+
+                if (authToken) {
+                    const dataJson = await fetch(
+                        `${BASE_API_URL}/user/info?access_token=${authToken}`
+                    );
+                    const data = await dataJson.json();
+
+                    if (data.user) {
+                        setId(data.user._id);
+                    } else {
+                        notyf.error("some error occured");
+                    }
+                } else {
+                    setId("");
+                }
+            } catch (err) {
+                notyf.error("some error occured");
+            }
+        };
+
+        try {
+            getId();
+        } catch (err) {
+            notyf.error("some error occured");
+        }
+    }, []);
 
     useEffect(() => {
         const getOrg = async () => {
@@ -30,6 +63,11 @@ const OrgView = () => {
 
             if (orgToSet) {
                 setOrg(orgToSet);
+                if (orgToSet.requests.includes(id)) {
+                    setReqSent(true);
+                } else if (orgToSet.invites.includes(id)) {
+                    setInvited(true);
+                }
             } else {
                 notyf.error("Some error occured");
                 console.log("err");
@@ -38,10 +76,16 @@ const OrgView = () => {
 
         try {
             getOrg();
+            const url = new URL(window.location.href);
+            const params = new URLSearchParams(url.search);
+            const req = params.get("requests");
+            if (req) {
+                setTab("Membership requests");
+            }
         } catch (err) {
             notyf.error("some error occured");
         }
-    }, [orgId]);
+    }, [orgId, id]);
 
     const getUser = async (userId) => {
         const userDataJson = await fetch(`${BASE_API_URL}/user/id/${userId}`);
@@ -104,37 +148,6 @@ const OrgView = () => {
             }
         }
     }, [org, members]);
-
-    useEffect(() => {
-        const getId = async () => {
-            try {
-                const authToken = localStorage.getItem("authToken");
-
-                if (authToken) {
-                    const dataJson = await fetch(
-                        `${BASE_API_URL}/user/info?access_token=${authToken}`
-                    );
-                    const data = await dataJson.json();
-
-                    if (data.user) {
-                        setId(data.user._id);
-                    } else {
-                        notyf.error("some error occured");
-                    }
-                } else {
-                    setId("");
-                }
-            } catch (err) {
-                notyf.error("some error occured");
-            }
-        };
-
-        try {
-            getId();
-        } catch (err) {
-            notyf.error("some error occured");
-        }
-    }, []);
 
     return (
         <>
@@ -199,14 +212,34 @@ const OrgView = () => {
             )}
 
             {tab === "Org Info" && (
-                <OrgInfo org={org} id={id} orgId={orgId} members={members} />
+                <OrgInfo org={org} id={id} orgId={orgId} members={members} reqSent={reqSent} invited={invited} socket={socket}/>
             )}
-            {tab === "Membership requests" && <MemReqs />}
+            {tab === "Membership requests" && <MemReqs orgId={orgId} socket={socket} />}
         </>
     );
 };
 
-const OrgInfo = ({ org, id, orgId, members }) => {
+const OrgInfo = ({ org, id, orgId, members, reqSent, invited, socket }) => {
+    const requestOrgJoin = async (id) => {
+        const res = await fetch(
+            `${BASE_API_URL}/org/req/${id}?access_token=${localStorage.getItem(
+                "authToken"
+            )}`,
+            { method: "POST", headers: { "Content-Type": "application/json" } }
+        );
+        const data = await res.json();
+
+        if (data.already) {
+            notyf.error("Already Requested to this Org");
+        } else if (data.done) {
+            socket.emit("notif", data.receivers);
+            notyf.success("Request sent");
+            window.location.reload();
+        } else {
+            notyf.error("Some Error has Occurred");
+        }
+    };
+    
     return (
         <section className="org-cont">
             <Link className="org-back" to="/community">
@@ -269,9 +302,35 @@ const OrgInfo = ({ org, id, orgId, members }) => {
                                 </button>
                             </>
                         ) : (
-                            <button className="ReqJoinButton">
-                                Request to Join
-                            </button>
+                            <>
+                                {invited ? (
+                                    <>
+                                        <p>You have been invited to join this organisation! Accept/Reject the offer</p>
+                                        <div className="decide-mem">
+                                            <button className="accept-mem">
+                                                <BsFillCheckCircleFill />
+                                            </button>
+                                            <button className="decline-mem">
+                                                <FaTimesCircle />
+                                            </button>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <>
+                                        {reqSent ? (
+                                            <button className="ReqJoinButton" disabled style={{ opacity: 0.6 }}>
+                                                Already Requested
+                                            </button>
+                                        ) : (
+                                            <button className="ReqJoinButton" onClick={() =>
+                                                requestOrgJoin(orgId)
+                                            }>
+                                                Request to Join
+                                            </button> 
+                                        )}
+                                    </>
+                                )}
+                            </>                        
                         )}
                     </div>
                 </div>
@@ -327,7 +386,7 @@ const OrgInfo = ({ org, id, orgId, members }) => {
     );
 };
 
-const MemReqs = () => {
+const MemReqs = ({ orgId, socket }) => {
     const [users, setUsers] = useState([]);
     const [select, setSelect] = useState(false);
     const [members, setMembers] = useState([]);
@@ -407,27 +466,35 @@ const MemReqs = () => {
         }
     };
 
+    const inviteOrgJoin = async (orgId, inviteId) => {
+        const res = await fetch(
+            `${BASE_API_URL}/org/invite/${orgId}?access_token=${localStorage.getItem(
+                "authToken"
+            )}`,
+            { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ invite: inviteId }) }
+        );
+        const data = await res.json();
+
+        if (data.already) {
+            notyf.error("Already Invited to this Org");
+        } else if (data.done) {
+            socket.emit("notif", data.receivers);
+            notyf.success("Invited to this Org");
+        } else {
+            notyf.error("Some Error has Occurred");
+        }
+    };
+
     const addPerson = () => {
-        const pos = document.querySelector("#addModPos").value;
         const personId = document
             .querySelector("#addModName")
             .getAttribute("data-user");
         const person = users.find((user) => user._id === personId);
-
         if (person) {
-            pos === "admin"
-                ? setAdmins([...admins, person._id])
-                : pos === "member"
-                ? setMembers([...members, person._id])
-                : setAlumni([...alumni, person._id]);
-
-            const personForUI = users.find((user) => user._id === person._id);
-            personForUI.pos = pos;
-
-            setPersons([...persons, personForUI]);
             document.querySelector("#addModName").value = "";
             document.querySelector("#addModName").setAttribute("data-user", "");
-            document.querySelector("#addModPos").value = "member";
+            const personId = person._id
+            inviteOrgJoin(orgId, personId);
         } else {
             notyf.error("Please select a user");
         }
@@ -458,15 +525,6 @@ const MemReqs = () => {
                             ) : (
                                 ""
                             )}
-                            <select
-                                id="addModPos"
-                                placeholder="Position"
-                                className="mod-input"
-                            >
-                                <option value="member">Member</option>
-                                <option value="admin">Admin</option>
-                                <option value="alumni">Alumni</option>
-                            </select>
                             <FaPlusCircle
                                 className="addMemIcon"
                                 onClick={addPerson}

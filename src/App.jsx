@@ -68,14 +68,14 @@ const App = () => {
                     {/* <Soon /> */}
                 </Route>
                 <Route exact path="/org">
-                    <OrgView />
+                    <OrgView socket={socket} />
                     {/* <Soon /> */}
                 </Route>
                 <Route exact path="/org/:orgId">
-                    <OrgView />
+                    <OrgView socket={socket} />
                 </Route>
                 <Route exact path="/org/admin/:orgId">
-                    <OrgView />
+                    <OrgView socket={socket} />
                 </Route>
                 <Route exact path="/resources">
                     <Resources />
@@ -109,7 +109,7 @@ const App = () => {
                     {/* <Soon /> */}
                 </Route>
                 <Route exact path="/profile-setup">
-                    <UserFlow />
+                    <UserFlow socket={socket}/>
                 </Route>
                 <Route exact path="/register">
                     <SignUp />

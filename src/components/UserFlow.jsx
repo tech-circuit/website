@@ -14,7 +14,7 @@ import {
 import { ClipLoader } from "react-spinners";
 import { shake, validate } from "../validate";
 
-const Component = ({ pfp, user }) => {
+const Component = ({ pfp, user, socket }) => {
     const [page, setPage] = useState(1);
     const [skills, setSkills] = useState([]);
     const [links, setLinks] = useState([]);
@@ -183,6 +183,7 @@ const Component = ({ pfp, user }) => {
         if (data.already) {
             notyf.error("Already Requested to this Org");
         } else if (data.done) {
+            socket.emit("notif", data.receivers);
             setPage(page + 1);
         } else {
             notyf.error("Some Error has Occurred");
@@ -682,7 +683,7 @@ const Component = ({ pfp, user }) => {
     );
 };
 
-const UserFlow = () => {
+const UserFlow = ({ socket }) => {
     const [pfp, setPfp] = useState(false);
     const [auth, setAuth] = useState("undefined");
     const [user, setUser] = useState({});
@@ -721,7 +722,7 @@ const UserFlow = () => {
             <ClipLoader />
         </div>
     ) : auth === true ? (
-        <Component pfp={pfp} user={user} />
+        <Component pfp={pfp} user={user} socket={socket}/>
     ) : (
         <Redirect to="/" />
     );
