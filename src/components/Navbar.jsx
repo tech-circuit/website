@@ -188,17 +188,6 @@ const Navbar = ({ socket }) => {
                     }
                 >
                     <Link
-                        to="/forum"
-                        onClick={(e) => setActivePage("/forum")}
-                        className={
-                            activePage === "/forum"
-                                ? "nav-link nav-link-active"
-                                : "nav-link"
-                        }
-                    >
-                        Forum
-                    </Link>
-                    <Link
                         to="/about"
                         onClick={(e) => setActivePage("/about")}
                         className={
@@ -210,49 +199,60 @@ const Navbar = ({ socket }) => {
                         About
                     </Link>
                     <Link
-                        to="/work"
-                        onClick={(e) => setActivePage("/work")}
+                        to="/forum"
+                        onClick={(e) => setActivePage("/forum")}
                         className={
-                            activePage === "/work"
+                            activePage === "/forum"
                                 ? "nav-link nav-link-active"
                                 : "nav-link"
                         }
                     >
-                        Work
+                        Forum
                     </Link>
-                    <Link
-                        to="/events"
-                        onClick={(e) => setActivePage("/events")}
-                        className={
-                            activePage === "/events"
-                                ? "nav-link nav-link-active"
-                                : "nav-link"
-                        }
-                    >
-                        Events
-                    </Link>
-                    <Link
-                        to="/community"
-                        onClick={(e) => setActivePage("/community")}
-                        className={
-                            activePage === "/community"
-                                ? "nav-link nav-link-active"
-                                : "nav-link"
-                        }
-                    >
-                        Community
-                    </Link>
-                    <Link
-                        to="/resources"
-                        onClick={(e) => setActivePage("/resources")}
-                        className={
-                            activePage === "/resources"
-                                ? "nav-link nav-link-active"
-                                : "nav-link"
-                        }
-                    >
-                        Resources
-                    </Link>
+                    {/* <Link */}
+                    {/*     to="/work" */}
+                    {/*     onClick={(e) => setActivePage("/work")} */}
+                    {/*     className={ */}
+                    {/*         activePage === "/work" */}
+                    {/*             ? "nav-link nav-link-active" */}
+                    {/*             : "nav-link" */}
+                    {/*     } */}
+                    {/* > */}
+                    {/*     Work */}
+                    {/* </Link> */}
+                    {/* <Link */}
+                    {/*     to="/events" */}
+                    {/*     onClick={(e) => setActivePage("/events")} */}
+                    {/*     className={ */}
+                    {/*         activePage === "/events" */}
+                    {/*             ? "nav-link nav-link-active" */}
+                    {/*             : "nav-link" */}
+                    {/*     } */}
+                    {/* > */}
+                    {/*     Events */}
+                    {/* </Link> */}
+                    {/* <Link */}
+                    {/*     to="/community" */}
+                    {/*     onClick={(e) => setActivePage("/community")} */}
+                    {/*     className={ */}
+                    {/*         activePage === "/community" */}
+                    {/*             ? "nav-link nav-link-active" */}
+                    {/*             : "nav-link" */}
+                    {/*     } */}
+                    {/* > */}
+                    {/*     Community */}
+                    {/* </Link> */}
+                    {/* <Link */}
+                    {/*     to="/resources" */}
+                    {/*     onClick={(e) => setActivePage("/resources")} */}
+                    {/*     className={ */}
+                    {/*         activePage === "/resources" */}
+                    {/*             ? "nav-link nav-link-active" */}
+                    {/*             : "nav-link" */}
+                    {/*     } */}
+                    {/* > */}
+                    {/*     Resources */}
+                    {/* </Link> */}
                     <a
                         href="https://dsc.gg/techcircuit"
                         className="disc-btn"

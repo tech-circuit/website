@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import Footer from "./Footer";
 import notyf from "../tcNotyf";
+import members from "../data/members";
 
 const About = () => {
     document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
@@ -199,14 +200,14 @@ const About = () => {
                 <img src="/assets/fulllogo.png" alt="logo" />
                 <h3>The place where everything takes place</h3>
                 <p>
-                    We’re a team of developers and designers but most
-                    importantly creators who have all experienced our own
-                    difficulties when trying to build a better understanding of
-                    the tech circuit in general. While we believe we live in an
-                    era full of opportunity, we feel much of this passes us by.
-                    Given our abundant and constant access to useful resources,
-                    we felt that we should do out part in helping fellow tech
-                    enthusiasts.
+                    We’re a team of developers, designers and technology lovers
+                    who have all experienced our own difficulties when trying to
+                    build a better understanding of the tech circuit in general.
+                    While we believe we live in an era full of opportunity and
+                    resources, much of it remains challenging to a lot of students to
+                    access. Given our abundant and constant access to valuable
+                    resources, we felt that we should do out part in helping
+                    fellow tech enthusiasts.
                     <br />
                     <br />
                     Since long, the{" "}
@@ -493,38 +494,16 @@ const About = () => {
                     </div>
                 </div>
                 <div className="members">
-                    <div className="member">
-                        <img
-                            src="/assets/samvr.jpeg"
-                            alt="Samvrant Samantaray"
-                        />
-                        <h3>Samvrant Samantaray</h3>
-                        <h4>Design Head</h4>
-                    </div>
-                    <div className="member">
-                        <img
-                            src="https://github.com/sheldor1510.png"
-                            alt="Anshul Saha"
-                        />
-                        <h3>Anshul Saha</h3>
-                        <h4>Development Head</h4>
-                    </div>
-                    <div className="member">
-                        <img
-                            src="/assets/thevedan.jpeg"
-                            alt="Vedanta Somnathe"
-                        />
-                        <h3>Vedanta Somnathe</h3>
-                        <h4>Developer</h4>
-                    </div>
-                    <div className="member">
-                        <img
-                            src="https://github.com/ribhavsharma.png"
-                            alt="Ribhav Sharma"
-                        />
-                        <h3>Ribhav Sharma</h3>
-                        <h4>Logistics</h4>
-                    </div>
+                    {members.map(({ name, image, position }) => (
+                      <div className="member">
+                          <img
+                              src={image}
+                              alt={name}
+                          />
+                          <h3>{name}</h3>
+                          <h4>{position}</h4>
+                      </div>
+                    ))}
                 </div>
             </div>
 
