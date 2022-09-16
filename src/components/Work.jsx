@@ -189,7 +189,7 @@ const Work = ({ socket }) => {
                     {searchInput ? (
                         <h1>
                             {searchProjects.length} projects found in "
-                            {searchInput.toUpperCase()}"
+                            {searchInput}"
                         </h1>
                     ) : (
                         <h1>{currentField} Projects</h1>

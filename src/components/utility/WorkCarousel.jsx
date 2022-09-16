@@ -1,38 +1,27 @@
 import OwlCarousel from "react-owl-carousel2";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 const WorkCarousel = ({ sortRef, fieldsAvailable, setCurrentField }) => {
-    useEffect(() => {
-        // remove last empty element from carousel
-        for (const item of document.querySelectorAll(".owl-item")) {
-            for (const stage of item.querySelectorAll(".owl-stage")) {
-                stage.style.display = "none";
-            }
-        }
-    });
-
     return (
-        <>
-            <OwlCarousel
-                ref={sortRef}
-                options={{
-                    rewind: true,
-                    autoplay: true,
-                    loop: true,
-                    autoplayTimeout: 3000,
-                    nav: false,
-                    items: 9,
-                }}
-            >
-                {fieldsAvailable.map((field) => (
-                    <CarouselItem
-                        key={field}
-                        field={field}
-                        setCurrentField={setCurrentField}
-                    />
-                ))}
-            </OwlCarousel>
-        </>
+        <OwlCarousel
+            ref={sortRef}
+            options={{
+                rewind: true,
+                autoplay: true,
+                loop: true,
+                autoplayTimeout: 3000,
+                nav: false,
+                items: 9,
+            }}
+        >
+            {fieldsAvailable.map((field) => (
+                <CarouselItem
+                    key={field}
+                    field={field}
+                    setCurrentField={setCurrentField}
+                />
+            ))}
+        </OwlCarousel>
     );
 };
 
@@ -58,7 +47,7 @@ function CarouselItem({ field, setCurrentField }) {
     return (
         <h1
             ref={ref}
-            onClick={(e) => {
+            onClick={() => {
                 setCurrentField((currentField) =>
                     field === currentField ? null : field
                 );

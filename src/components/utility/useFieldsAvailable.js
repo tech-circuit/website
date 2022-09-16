@@ -8,15 +8,23 @@ export function useFieldsAvailable() {
     );
 
     const getFieldsAvailable = async () => {
-        const res = await fetch(`${BASE_API_URL}/project/fields`).then((r) =>
-            r.json()
-        );
+        const resJSON = await fetch(`${BASE_API_URL}/project/fields`);
+        const res = await resJSON.json();
 
         if (res.fields) {
             // converts type of `data/fields.js` (Record<string, Record<string, string>>) to a flat array of fields (Array<string>)
-            setFieldsAvailable(
-                Object.values(res.fields).flatMap(Object.values)
-            );
+            // const fields = Object.keys(res.fields).map(fieldGrp => {
+            //     return Object.values(res.fields[fieldGrp])
+            // })
+
+            let fields = [];
+            for (let fieldGrp of Object.keys(res.fields)) {
+                for (let field of Object.values(res.fields[fieldGrp])) {
+                    fields.push(field);
+                }
+            }
+
+            setFieldsAvailable(fields);
         } else {
             notyf.error("Some Error occurred");
         }

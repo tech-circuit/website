@@ -10,6 +10,7 @@ import Fields from "./utility/Fields";
 import { Country, State } from "./utility/Options";
 import checkLoggedIn from "./utility/checkLoggedIn";
 import { validate } from "../validate";
+import SelectOrg from "./utility/SelectOrg";
 
 const EventAlter = ({ edit }) => {
     const [links, setLinks] = useState([]);
@@ -361,7 +362,7 @@ const EventAlter = ({ edit }) => {
                     </div>
 
                     <h3>Name of Organising institute *</h3>
-                    <input
+                    {/* <input
                         type="text"
                         name="institute"
                         autoComplete="off"
@@ -369,7 +370,8 @@ const EventAlter = ({ edit }) => {
                         required
                         id="grey-on"
                         defaultValue={event ? event.institute : ""}
-                    ></input>
+                    ></input> */}
+                    <SelectOrg />
 
                     <h3>Decription of the Event *</h3>
                     <textarea

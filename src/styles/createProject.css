@@ -98,12 +98,9 @@
     font-size: 1.2vw !important;
 }
 .fields {
-    grid-template-columns: 1fr 1fr;
-    display: grid;
-    max-height: 29vh;
-    overflow: scroll;
-    flex-wrap: wrap;
     width: 100%;
+    display: flex;
+    justify-content: space-around;
 }
 .field {
     margin-top: 1.4vh;

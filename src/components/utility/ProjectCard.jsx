@@ -2,7 +2,6 @@ import "../../styles/work.css";
 import { Link } from "react-router-dom";
 
 const ProjectCard = ({ project, view, id }) => {
-    console.log(project);
     const openProject = (e) => {
         e.preventDefault();
         view(project);
