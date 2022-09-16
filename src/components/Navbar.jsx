@@ -149,7 +149,11 @@ const Navbar = ({ socket }) => {
             }
         } else if (notif.type === "request") {
             if (notif.typeDetails.type === "orgJoin") {
-                // return some link
+                if (notif.meta.description.includes("invited")) {
+                    return `/org/${notif.typeDetails.typeID}`;
+                } else {
+                    return `/org/${notif.typeDetails.typeID}?requests=h`;
+                }
             } else if (notif.typeDetails.type === "eventOrgHost") {
                 // return some link
             }
