@@ -209,50 +209,50 @@ const Navbar = ({ socket }) => {
                     >
                         Forum
                     </Link>
-                    {/* <Link */}
-                    {/*     to="/work" */}
-                    {/*     onClick={(e) => setActivePage("/work")} */}
-                    {/*     className={ */}
-                    {/*         activePage === "/work" */}
-                    {/*             ? "nav-link nav-link-active" */}
-                    {/*             : "nav-link" */}
-                    {/*     } */}
-                    {/* > */}
-                    {/*     Work */}
-                    {/* </Link> */}
-                    {/* <Link */}
-                    {/*     to="/events" */}
-                    {/*     onClick={(e) => setActivePage("/events")} */}
-                    {/*     className={ */}
-                    {/*         activePage === "/events" */}
-                    {/*             ? "nav-link nav-link-active" */}
-                    {/*             : "nav-link" */}
-                    {/*     } */}
-                    {/* > */}
-                    {/*     Events */}
-                    {/* </Link> */}
-                    {/* <Link */}
-                    {/*     to="/community" */}
-                    {/*     onClick={(e) => setActivePage("/community")} */}
-                    {/*     className={ */}
-                    {/*         activePage === "/community" */}
-                    {/*             ? "nav-link nav-link-active" */}
-                    {/*             : "nav-link" */}
-                    {/*     } */}
-                    {/* > */}
-                    {/*     Community */}
-                    {/* </Link> */}
-                    {/* <Link */}
-                    {/*     to="/resources" */}
-                    {/*     onClick={(e) => setActivePage("/resources")} */}
-                    {/*     className={ */}
-                    {/*         activePage === "/resources" */}
-                    {/*             ? "nav-link nav-link-active" */}
-                    {/*             : "nav-link" */}
-                    {/*     } */}
-                    {/* > */}
-                    {/*     Resources */}
-                    {/* </Link> */}
+                    <Link
+                        to="/work"
+                        onClick={(e) => setActivePage("/work")}
+                        className={
+                            activePage === "/work"
+                                ? "nav-link nav-link-active"
+                                : "nav-link"
+                        }
+                    >
+                        Work
+                    </Link>
+                    <Link
+                        to="/events"
+                        onClick={(e) => setActivePage("/events")}
+                        className={
+                            activePage === "/events"
+                                ? "nav-link nav-link-active"
+                                : "nav-link"
+                        }
+                    >
+                        Events
+                    </Link>
+                    <Link
+                        to="/community"
+                        onClick={(e) => setActivePage("/community")}
+                        className={
+                            activePage === "/community"
+                                ? "nav-link nav-link-active"
+                                : "nav-link"
+                        }
+                    >
+                        Community
+                    </Link>
+                    <Link
+                        to="/resources"
+                        onClick={(e) => setActivePage("/resources")}
+                        className={
+                            activePage === "/resources"
+                                ? "nav-link nav-link-active"
+                                : "nav-link"
+                        }
+                    >
+                        Resources
+                    </Link>
                     <a
                         href="https://dsc.gg/techcircuit"
                         className="disc-btn"
@@ -314,7 +314,7 @@ const Navbar = ({ socket }) => {
                                 ? "login-btn login-btn-active"
                                 : "login-btn"
                         }
-                        onClick={() => window.location.href = "/login"}
+                        onClick={() => (window.location.href = "/login")}
                     >
                         Login
                     </button>
