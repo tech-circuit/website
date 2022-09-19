@@ -57,6 +57,10 @@
     ]
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.3"
+    "@ampproject/remapping": "^2.2.0",
+    "@babel/helper-environment-visitor": "^7.18.9",
+    "@babel/helper-string-parser": "^7.18.10",
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@jridgewell/gen-mapping": "^0.3.2"
   }
 }
