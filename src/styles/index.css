@@ -188,10 +188,10 @@
 }
 
 .hero .container {
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: hidden;
 }
 
 .hero-left,
@@ -260,7 +260,6 @@
     width: 100%;
     flex-direction: column;
     align-items: center;
-    transform: translateY(4vh);
 }
 
 .scroll-more {
