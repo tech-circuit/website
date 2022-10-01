@@ -149,38 +149,34 @@
 }
 
 .mail {
-  display: flex;
-  box-shadow: 0px 4.5px 33.75px 0px #00000026;
-  margin-top: 20px;
+    display: flex;
+    box-shadow: 0px 4.5px 33.75px 0px #00000026;
+    margin-top: 20px;
 }
 
 .mail .input {
-  padding: 16px 0 16px 12px;
+    padding: 16px 0 16px 12px;
 }
 
 .mail .input img {
-  width: 24px;
-  margin-right: 2px;
-}
-
-.input input {
-  font-size: 12px !important;
+    width: 24px;
+    margin-right: 2px;
 }
 
 .mail .btn {
-  padding: 0 3vw;
-  font-size: 12px;
-  font-weight: 300;
-  border: none;
-  background: #29313D;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 4.5px;
-  transition: all 0.3s;
+    padding: 0 3vw;
+    font-size: 12px;
+    font-weight: 300;
+    border: none;
+    background: #29313d;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4.5px;
+    transition: all 0.3s;
 }
 
 .mail .btn:hover {
-  background: #3d495a;
+    background: #3d495a;
 }
 .hero {
     display: flex;
@@ -412,7 +408,7 @@
     margin: 1%;
     background: #4678f9;
     border-radius: 12px;
-    box-shadow: 0px 5.664000034332275px 52.39200210571289px 0px #0000004D;
+    box-shadow: 0px 5.664000034332275px 52.39200210571289px 0px #0000004d;
 }
 
 /* Write ---------------------------------------------------------------------------------------------------------- */
@@ -1027,7 +1023,7 @@
     }
 
     .mail {
-      justify-content: space-between;
-      width: 100%;
+        justify-content: space-between;
+        width: 100%;
     }
 }

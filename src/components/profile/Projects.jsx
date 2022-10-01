@@ -3,9 +3,10 @@ import BASE_API_URL from "../../constants";
 import notyf from "../../tcNotyf";
 import ProjectCard from "../utility/ProjectCard";
 import FullProject from "../utility/FullProject";
+import { RotateLoader } from "react-spinners";
 
 const Projects = ({ userId }) => {
-    const [projects, setProjects] = useState([]);
+    const [projects, setProjects] = useState(["loading"]);
     const [fullView, setfullView] = useState(false);
     const [selectedProject, setSelectedProject] = useState({});
 
@@ -40,16 +41,26 @@ const Projects = ({ userId }) => {
             <br />
 
             <div className="workCards">
-                {projects.map((project) => {
-                    return (
-                        <ProjectCard
-                            project={project}
-                            view={view}
-                            key={project._id}
-                            id={userId}
-                        />
-                    );
-                })}
+                {projects[0] === "loading" ? (
+                    <div className="load-container">
+                        <RotateLoader />
+                    </div>
+                ) : projects.length === 0 ? (
+                    <div className="load-container">
+                        <label>No Projects here!</label>
+                    </div>
+                ) : (
+                    projects.map((project) => {
+                        return (
+                            <ProjectCard
+                                project={project}
+                                view={view}
+                                key={project._id}
+                                id={userId}
+                            />
+                        );
+                    })
+                )}
             </div>
             <section
                 className={fullView ? "fullEvent fullEventActive" : "fullEvent"}

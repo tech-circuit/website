@@ -248,13 +248,9 @@ button.workSortActive::after {
     justify-content: space-between;
 }
 
-.edit-wrap {
-    color: #747474;
-}
-
+.edit-wrap,
 .edit-wrap a {
-    color: #747474;
-    margin-left: 0.5vw;
+    color: #fff;
 }
 
 .view-proj {

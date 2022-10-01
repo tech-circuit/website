@@ -5,16 +5,18 @@ import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import BASE_API_URL from "../constants";
 import Posts from "./profile/Posts";
+import Events from "./profile/Events";
 
 const Profile = () => {
-    const [tab, setTab] = useState("Your Info");
+    const [tab, setTab] = useState("Info");
     const [authenticated, setAuthenticated] = useState("checking");
     const [userId, setUserId] = useState("");
 
     const pages = {
-        "Your Info": <ProfileInfo />,
+        Info: <ProfileInfo />,
         Projects: <Projects userId={userId} />,
-        "Your Posts": <Posts userId={userId} />,
+        Posts: <Posts userId={userId} />,
+        Events: <Events userId={userId} />,
     };
 
     useEffect(() => {
@@ -47,11 +49,9 @@ const Profile = () => {
                 <div className="left-tabs">
                     <h3
                         onClick={(eve) => changeTab(eve)}
-                        className={
-                            tab === "Your Info" ? "profile-tab-active" : ""
-                        }
+                        className={tab === "Info" ? "profile-tab-active" : ""}
                     >
-                        Your Info
+                        Info
                     </h3>
                     <h3
                         className={
@@ -62,12 +62,16 @@ const Profile = () => {
                         Projects
                     </h3>
                     <h3
-                        className={
-                            tab === "Your Posts" ? "profile-tab-active" : ""
-                        }
+                        className={tab === "Posts" ? "profile-tab-active" : ""}
                         onClick={(eve) => changeTab(eve)}
                     >
-                        Your Posts
+                        Posts
+                    </h3>
+                    <h3
+                        className={tab === "Events" ? "profile-tab-active" : ""}
+                        onClick={(eve) => changeTab(eve)}
+                    >
+                        Events
                     </h3>
                     {/* <h3
                         className={tab === "Drafts" ? "profile-tab-active" : ""}

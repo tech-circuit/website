@@ -1,16 +1,24 @@
 import "../../styles/profile-info.css";
-import { FaLink, FaPencilAlt, FaPlusCircle, FaTrash } from "react-icons/fa";
+import {
+    FaLink,
+    FaPencilAlt,
+    FaPlusCircle,
+    FaRegArrowAltCircleRight,
+    FaTrash,
+} from "react-icons/fa";
 import "../../styles/add.css";
 import { useState, useEffect } from "react";
 import BASE_API_URL from "../../constants";
 import getLinkLogo from "../../getLinkLogo";
 import DangerBox from "../utility/Danger";
 import notyf from "../../tcNotyf";
+import { Link } from "react-router-dom";
 
 const ProfileInfo = () => {
     const [links, setLinks] = useState([]);
     const [linksObj, setLinksObj] = useState({});
     const [user, setUser] = useState({});
+    const [orgs, setOrgs] = useState([]);
     const authToken = localStorage.getItem("authToken");
     let oldE;
 
@@ -170,20 +178,22 @@ const ProfileInfo = () => {
     };
 
     useEffect(() => {
-        fetch(`${BASE_API_URL}/user/info?access_token=${authToken}`).then(
-            async (data) => {
-                const gotUser = await data.json();
-                const user = gotUser.user;
+        fetch(
+            `${BASE_API_URL}/user/info?access_token=${authToken}&&org=true`
+        ).then(async (data) => {
+            const gotUser = await data.json();
+            const user = gotUser.user;
+            const orgs = gotUser.orgs;
 
-                // Links
-                if (user.links) {
-                    setLinks(user.links);
-                }
-
-                // SET
-                setUser(user);
+            // Links
+            if (user.links) {
+                setLinks(user.links);
             }
-        );
+
+            // SET
+            setUser(user);
+            setOrgs(orgs);
+        });
     }, [authToken]);
 
     useEffect(() => {
@@ -192,7 +202,6 @@ const ProfileInfo = () => {
         for (let link of links) {
             theObj[link] = getLinkLogo(link);
         }
-
         setLinksObj(theObj);
     }, [links]);
 
@@ -222,6 +231,7 @@ const ProfileInfo = () => {
             </div>
             <div className="profileInfo">
                 <div className="fields">
+                    <div className="pfp-null"></div>
                     <div className="pfp-sec">
                         <img src={user.pfp_url} alt="pfp" />
                         <p>We recommend an image of 500x500px</p>
@@ -333,6 +343,13 @@ const ProfileInfo = () => {
                                     </div>
                                 );
                             })}
+                        </div>
+
+                        <div className="input profile-clubs">
+                            <label>Organizations</label>
+                            {orgs.map((org) => (
+                                <OrgCard key={org._id} org={org} />
+                            ))}
                         </div>
 
                         <div className="input">
@@ -729,6 +746,8 @@ const ProfileInfo = () => {
                         </div>
 
                         <DangerBox name="account" />
+                        <br />
+                        <br />
                     </div>
                 </div>
             </div>
@@ -766,6 +785,26 @@ const ProfileInfo = () => {
     function removeBodyOpacity() {
         document.body.classList.remove("report-modal-body");
     }
+};
+
+const OrgCard = ({ org }) => {
+    return (
+        <div className="profile-org-card">
+            <div className="profile-org-img">
+                <img src={org.logo_url} alt="org-logo" />
+            </div>
+            <div className="profile-org-info">
+                <Link to={`/org/${org._id}`}>{org.name}</Link>
+                <p>{org.description}</p>
+            </div>
+            <div className="leave-opt">
+                <button>
+                    <FaRegArrowAltCircleRight />
+                    &nbsp;&nbsp;Leave
+                </button>
+            </div>
+        </div>
+    );
 };
 
 export default ProfileInfo;

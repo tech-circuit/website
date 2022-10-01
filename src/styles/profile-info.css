@@ -1,7 +1,6 @@
 .profileInfo {
     display: flex;
     width: 100%;
-    height: 132vh;
 }
 .pInfo,
 .pfp-sec {
@@ -11,16 +10,18 @@
     margin-left: 4vw;
     margin-top: 6vh;
 }
-.pfp-sec {
+.pfp-null {
     width: 25%;
 }
 .pfp-sec {
+    width: 25%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    height: 50vh;
     margin-top: 5vh;
+    position: fixed;
+    left: 10%;
 }
 .pfp-sec img {
     width: 14vw;
@@ -172,4 +173,62 @@
 }
 .danger-box-event button:hover {
     box-shadow: 0 20px 70px rgba(0, 0, 0, 0.14);
+}
+
+/* CLUB INFO */
+.profile-org-card {
+    display: flex;
+    align-items: center;
+    margin: 2vh 0;
+    width: 100%;
+}
+.profile-org-img {
+    margin-right: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-org-img img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+.profile-org-info {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+.profile-org-info a {
+    font-weight: 400;
+    font-size: 1.2vw;
+    color: #4678f9;
+}
+.profile-org-card .profile-org-info p {
+    font-size: 0.8vw;
+    margin-top: 0.1vh;
+}
+.profile-org-card .leave-opt button {
+    color: #ff6b6b;
+    font-size: 0.9vw;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile-org-card .leave-opt svg {
+    font-size: 1.1vw;
+    color: #ff6b6b;
+}
+.load-container {
+    width: 100vw;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.load-container label {
+    font-size: 2vw;
+    font-weight: 500;
 }

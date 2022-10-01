@@ -9,13 +9,13 @@ const EventCard = ({ view, event, id }) => {
         return false;
     };
 
-    const openEvent = (e)=>{
+    const openEvent = (e) => {
         e.preventDefault();
-        if(event.uploader.toString() !== id){
-             view(event)
+        if (event.uploader.toString() !== id) {
+            view(event);
         }
         return false;
-     }
+    };
     const monthNames = [
         "January",
         "February",
@@ -33,72 +33,75 @@ const EventCard = ({ view, event, id }) => {
 
     return (
         <Link
-        to={
-            id.toString() !== event.uploader
-                ? `/event/${event._id}`
-                : "#"
-        }
-        className="event"
-        onClick={openEvent}
-    >
-        <div >
-            <img src={event.cover_image} alt="alt" />
-            <div className="eventBody">
-                <div className="head">
-                    <h1>{event.name}</h1>
-                    <h2>
-                        Organised{" "}
-                        {event.isIndependent
-                            ? "independently"
-                            : `by ${event.institute}`}
-                    </h2>
+            to={
+                id.toString() !== event.uploader
+                    ? `/event/${event._id}`
+                    : `/event/${event._id}`
+            }
+            className="event"
+            // onClick={openEvent}
+        >
+            <div>
+                <img src={event.cover_image} alt="alt" />
+                <div className="eventBody">
+                    <div className="head">
+                        <h1>{event.name}</h1>
+                        <h2>
+                            Organised{" "}
+                            {event.isIndependent
+                                ? "independently"
+                                : `by ${event.institute}`}
+                        </h2>
+                    </div>
+                    <h3 className="ava">
+                        {!isDateInPast(new Date(event.lastDate), new Date())
+                            ? `${Math.abs(
+                                  Math.floor(
+                                      (new Date().getTime() -
+                                          new Date(event.lastDate).getTime()) /
+                                          (1000 * 3600 * 24)
+                                  )
+                              )} Days left | `
+                            : ``}
+                        Registrations{" "}
+                        {isDateInPast(new Date(event.lastDate), new Date())
+                            ? "closed"
+                            : "open"}
+                    </h3>
+                    <div className="details">
+                        <h4>
+                            Happening{" "}
+                            {event.host === "both"
+                                ? "online/onsite"
+                                : event.host}
+                        </h4>
+                        <p>Starts</p>
+                        <h5>{`${
+                            monthNames[new Date(event.startDate).getMonth()]
+                        } ${new Date(event.startDate).getDate()}, ${new Date(
+                            event.startDate
+                        ).getFullYear()}`}</h5>
+                        <p>Ends</p>
+                        <h5>{`${
+                            monthNames[new Date(event.endDate).getMonth()]
+                        } ${new Date(event.endDate).getDate()}, ${new Date(
+                            event.endDate
+                        ).getFullYear()}`}</h5>
+                    </div>
+                    <button
+                        // to={
+                        //     id.toString() !== event.uploader
+                        //         ? `/event/${event._id}`
+                        //         : "#"
+                        // }
+                        className="view"
+                        // onClick={openEvent}
+                    >
+                        {id.toString() === event.uploader ? "Edit" : "View"}{" "}
+                        Event
+                    </button>
                 </div>
-                <h3 className="ava">
-                    {!isDateInPast(new Date(event.lastDate), new Date())
-                        ? `${Math.abs(
-                              Math.floor(
-                                  (new Date().getTime() -
-                                      new Date(event.lastDate).getTime()) /
-                                      (1000 * 3600 * 24)
-                              )
-                          )} Days left | `
-                        : ``}
-                    Registrations{" "}
-                    {isDateInPast(new Date(event.lastDate), new Date())
-                        ? "closed"
-                        : "open"}
-                </h3>
-                <div className="details">
-                    <h4>
-                        Happening{" "}
-                        {event.host === "both" ? "online/onsite" : event.host}
-                    </h4>
-                    <p>Starts</p>
-                    <h5>{`${
-                        monthNames[new Date(event.startDate).getMonth()]
-                    } ${new Date(event.startDate).getDate()}, ${new Date(
-                        event.startDate
-                    ).getFullYear()}`}</h5>
-                    <p>Ends</p>
-                    <h5>{`${
-                        monthNames[new Date(event.endDate).getMonth()]
-                    } ${new Date(event.endDate).getDate()}, ${new Date(
-                        event.endDate
-                    ).getFullYear()}`}</h5>
-                </div>
-                <Link
-                    to={
-                        id.toString() !== event.uploader
-                            ? `/event/${event._id}`
-                            : "#"
-                    }
-                    className="view"
-                    onClick={openEvent}
-                >
-                    {id.toString() === event.uploader ? "Edit" : "View"} Event
-                </Link>
             </div>
-        </div>
         </Link>
     );
 };

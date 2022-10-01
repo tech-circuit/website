@@ -20,7 +20,7 @@
 
 .profile-tabs h3 {
     cursor: pointer;
-    padding: 2.4vh 1.5vw;
+    padding: 2.4vh 3vw;
     color: #c4c4c4;
     font-size: 1vw;
     font-weight: 400;
@@ -34,8 +34,8 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 0;
-    height: 4px;
+    width: 100%;
+    height: 0;
     border-radius: 5px 5px 0 0;
     background: #85d49c;
     transition: all 0.3s;
@@ -47,7 +47,7 @@
     color: #85d49c !important;
 }
 .profile-tab-active::after {
-    width: 100% !important;
+    height: 6px !important;
 }
 .profile-forum-hold {
     padding-bottom: 6vh;

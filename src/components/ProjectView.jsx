@@ -179,10 +179,13 @@ const ProjectView = ({ socket }) => {
                     </Link>
                     {userId === project.uploader ? (
                         <div className="edit-wrap">
-                            <FaPen />
-                            <a className="edit" href="/">
-                                Edit Project
-                            </a>
+                            <Link
+                                className="edit"
+                                to={`/edit-project/${project._id}`}
+                            >
+                                <FaPen />
+                                &nbsp; Edit Project
+                            </Link>
                         </div>
                     ) : (
                         ""
@@ -190,7 +193,7 @@ const ProjectView = ({ socket }) => {
                 </div>
 
                 <img
-                    src={project.imgs && project.imgs[0]}
+                    src={project.cover && project.cover}
                     alt="alt"
                     className="fullProjectBanneri"
                 />
