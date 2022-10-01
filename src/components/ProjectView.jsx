@@ -306,85 +306,92 @@ const ProjectView = ({ socket }) => {
                     </div>
                 </div>
 
-                <div className="fullProjectUnit project-comments">
-                    <h3>Comments ({totalComments})</h3>
-                    <div className="add-comment">
-                        <div className="add-comm-top">
-                            <img
-                                src={
-                                    authenticated
-                                        ? `${BASE_API_URL}/user/pfp?access_token=${authToken}`
-                                        : "/assets/accounticon.png"
-                                }
-                                alt="alt"
-                            />
-                            <textarea
-                                name="comments"
-                                autoComplete="off"
-                                className="comment-text"
-                                id="comment-input-area"
-                                placeholder="Post some critique or review regarding their work!"
-                                onChange={(e) =>
-                                    setCommentContent(e.target.value)
-                                }
-                                value={commentContent}
-                            ></textarea>
-                        </div>
-                        <div className="fullProjectButtons">
-                            <button
-                                className="post-pcomment-btn"
-                                id="work-comment-btn"
-                                onClick={createComment}
-                                disabled={creatingComment}
-                            >
-                                {creatingComment
-                                    ? "Loading..."
-                                    : "Post Comment"}
-                            </button>
-                            <button className="post-pcancel-btn">Cancel</button>
-                        </div>
-                    </div>
-
-                    <div className="proj-com-cont">
-                        {comments.map((comment, index) => (
-                            <div className="proj-com-card" key={index}>
-                                <img src={comment.author_pfp_url} alt="alt" />
-                                <div className="proj-com-text">
-                                    <h4>{comment.author_username}</h4>
-                                    <p>{comment.comment}</p>
-                                </div>
+                {project.commentsEnabled && (
+                    <div className="fullProjectUnit project-comments">
+                        <h3>Comments ({totalComments})</h3>
+                        <div className="add-comment">
+                            <div className="add-comm-top">
+                                <img
+                                    src={
+                                        authenticated
+                                            ? `${BASE_API_URL}/user/pfp?access_token=${authToken}`
+                                            : "/assets/accounticon.png"
+                                    }
+                                    alt="alt"
+                                />
+                                <textarea
+                                    name="comments"
+                                    autoComplete="off"
+                                    className="comment-text"
+                                    id="comment-input-area"
+                                    placeholder="Post some critique or review regarding their work!"
+                                    onChange={(e) =>
+                                        setCommentContent(e.target.value)
+                                    }
+                                    value={commentContent}
+                                ></textarea>
                             </div>
-                        ))}
-                        <div
-                            style={{
-                                width: "full",
-                                display: "flex",
-                                justifyContent: "center",
-                            }}
-                        >
-                            <ClipLoader
-                                cssOverride={{
-                                    position: "static",
-                                    display: "block",
-                                    margin: "0 auto",
-                                }}
-                                size={20}
-                                loading={loading}
-                            />
-                        </div>
-                        {moreComments && (
-                            <div className="more-com-wrap">
-                                <p
-                                    className="more-com"
-                                    onClick={loadMoreComments}
+                            <div className="fullProjectButtons">
+                                <button
+                                    className="post-pcomment-btn"
+                                    id="work-comment-btn"
+                                    onClick={createComment}
+                                    disabled={creatingComment}
                                 >
-                                    More Comments
-                                </p>
-                                <FaCaretDown className="caret-down" />
+                                    {creatingComment
+                                        ? "Loading..."
+                                        : "Post Comment"}
+                                </button>
+                                <button className="post-pcancel-btn">
+                                    Cancel
+                                </button>
                             </div>
-                        )}
+                        </div>
+
+                        <div className="proj-com-cont">
+                            {comments.map((comment, index) => (
+                                <div className="proj-com-card" key={index}>
+                                    <img
+                                        src={comment.author_pfp_url}
+                                        alt="alt"
+                                    />
+                                    <div className="proj-com-text">
+                                        <h4>{comment.author_username}</h4>
+                                        <p>{comment.comment}</p>
+                                    </div>
+                                </div>
+                            ))}
+                            <div
+                                style={{
+                                    width: "full",
+                                    display: "flex",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                <ClipLoader
+                                    cssOverride={{
+                                        position: "static",
+                                        display: "block",
+                                        margin: "0 auto",
+                                    }}
+                                    size={20}
+                                    loading={loading}
+                                />
+                            </div>
+                            {moreComments && (
+                                <div className="more-com-wrap">
+                                    <p
+                                        className="more-com"
+                                        onClick={loadMoreComments}
+                                    >
+                                        More Comments
+                                    </p>
+                                    <FaCaretDown className="caret-down" />
+                                </div>
+                            )}
+                        </div>
                     </div>
-                </div>
+                )}
             </section>
         </>
     );

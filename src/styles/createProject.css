@@ -75,7 +75,7 @@
     transition: all 0.4s;
 }
 .filter-hold .field-box {
-    min-width: 30vw;
+    width: 40vw;
 }
 .field-box-active {
     top: 110%;
@@ -100,13 +100,15 @@
 .fields {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 .field {
     margin-top: 1.4vh;
     margin-right: 1%;
     font-size: 0.9vw;
-    /* width: 33.333%; */
+    width: 30%;
     text-align: left;
     transition: all 0.2s;
     white-space: nowrap;

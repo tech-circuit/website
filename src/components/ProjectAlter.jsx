@@ -126,10 +126,7 @@ const ProjectAlter = ({ edit }) => {
                 event,
                 collaborators,
                 cover,
-                imgs:
-                    imgUrls.length === 0
-                        ? ["/assets/userFlowIcon.svg"]
-                        : imgUrls,
+                imgs: imgUrls,
             };
 
             const fetchUrl = edit

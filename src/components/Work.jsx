@@ -10,6 +10,7 @@ import FullProject from "./utility/FullProject";
 import Search from "./utility/Search";
 import Filter from "./utility/Filter";
 import { useFieldsAvailable } from "./utility/useFieldsAvailable";
+import { useSwiper } from "swiper/react";
 
 const Work = ({ socket }) => {
     // const [workSort, setWorkSort] = useState("Coding")
@@ -143,18 +144,14 @@ const Work = ({ socket }) => {
                         <strong>techCircuit</strong>&nbsp;Community!
                     </h1>
                     <div className="carHold" ref={carouselRef}>
-                        <button
-                            id="carPrev"
-                            onClick={() => sortRef.current.prev()}
-                        >
-                            <FaChevronLeft />
-                        </button>
-                        <button
-                            id="carNext"
-                            onClick={() => sortRef.current.next()}
-                        >
-                            <FaChevronRight />
-                        </button>
+                        <div className="owl-controls">
+                            <button id="carPrev">
+                                <FaChevronLeft />
+                            </button>
+                            <button id="carNext">
+                                <FaChevronRight />
+                            </button>
+                        </div>
                         <WorkCarousel
                             fieldsAvailable={fieldsAvailable}
                             sortRef={sortRef}

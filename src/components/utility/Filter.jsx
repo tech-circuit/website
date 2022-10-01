@@ -8,7 +8,7 @@ const Filter = ({ field, setField, fieldsAvailable }) => {
         <div className="field-hold filter-hold">
             <button className="eventFilter" onClick={() => setActive(!active)}>
                 <IoFilter className="filter-icon" />
-                &nbsp;&nbsp;&nbsp;&nbsp;{field ?? "Filter fields"}
+                &nbsp;&nbsp;&nbsp;&nbsp;Filter fields
             </button>
 
             <div className={`field-box ${active && "field-box-active"}`}>

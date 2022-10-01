@@ -19,17 +19,7 @@
 #carNext {
     left: 99.5%;
 }
-.owl-stage-outer {
-    overflow: hidden;
-}
-.owl-stage {
-    display: flex;
-}
-.owl-prev,
-.owl-next {
-    display: none;
-}
-.owl-item {
+.work-car-item {
     max-width: 8.3vw !important;
     height: 4.5vw !important;
     border: 2px solid #85d49c;
@@ -43,7 +33,7 @@
     cursor: pointer;
     transition: all 0.3s;
 }
-.owl-item h1 {
+.work-car-item h1 {
     font-size: 0.8vw;
     font-weight: 500;
     color: #85d49c;
@@ -51,10 +41,10 @@
     transition: all 0.3s;
     text-align: center;
 }
-.owl-item:hover {
+.work-car-item:hover {
     background: #85d49c;
 }
-.owl-item:hover h1 {
+.work-car-item:hover h1 {
     /* color: #fff; */
     color: #29313d;
 }
@@ -595,6 +585,7 @@ button.workSortActive::after {
     display: flex;
     margin-top: 1.4vh;
     margin-bottom: 1vh;
+    flex-wrap: wrap;
 }
 .share-link {
     border-radius: 12px;
@@ -602,10 +593,11 @@ button.workSortActive::after {
     color: #fff;
     display: flex;
     padding: 12px;
-    font-size: 28px;
+    font-size: 26px;
     justify-content: center;
     align-items: center;
     margin: 0 0.3vw;
+    margin-bottom: 0.6vw;
     transition: all 0.2s;
 }
 .share-link:hover {
