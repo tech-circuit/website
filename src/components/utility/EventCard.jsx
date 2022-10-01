@@ -39,7 +39,7 @@ const EventCard = ({ view, event, id }) => {
                     : `/event/${event._id}`
             }
             className="event"
-            // onClick={openEvent}
+            onClick={openEvent}
         >
             <div>
                 <img src={event.cover_image} alt="alt" />
@@ -88,18 +88,18 @@ const EventCard = ({ view, event, id }) => {
                             event.endDate
                         ).getFullYear()}`}</h5>
                     </div>
-                    <button
-                        // to={
-                        //     id.toString() !== event.uploader
-                        //         ? `/event/${event._id}`
-                        //         : "#"
-                        // }
+                    <Link
+                        to={
+                            id.toString() !== event.uploader
+                                ? `/event/${event._id}`
+                                : "#"
+                        }
                         className="view"
-                        // onClick={openEvent}
+                        onClick={openEvent}
                     >
                         {id.toString() === event.uploader ? "Edit" : "View"}{" "}
                         Event
-                    </button>
+                    </Link>
                 </div>
             </div>
         </Link>
