@@ -166,6 +166,11 @@
     padding: 1.6vh 2.4vw;
     cursor: pointer;
     margin-top: 2.6vh;
+    transition: all 0.3s;
+}
+.leave-org:hover {
+    background-color: #ff6b6b;
+    color: #fff;
 }
 .member-reqs {
     padding: 2vh 10vw;

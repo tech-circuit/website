@@ -1,6 +1,12 @@
 .user-cont {
     margin-top: 13vh;
-    padding: 0 24vw;
+    padding: 0 20vw;
+    margin-bottom: 6vh;
+}
+.user-cont-box {
+    box-shadow: 0 0 10px rgba(18, 22, 30, 0.2);
+    padding: 3vh 4vw;
+    border-radius: 18px;
 }
 
 .user-cont h1,
