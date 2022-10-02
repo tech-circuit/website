@@ -1,18 +1,12 @@
 import "../../styles/profile-info.css";
-import {
-    FaLink,
-    FaPencilAlt,
-    FaPlusCircle,
-    FaRegArrowAltCircleRight,
-    FaTrash,
-} from "react-icons/fa";
+import { FaLink, FaPencilAlt, FaPlusCircle, FaTrash } from "react-icons/fa";
 import "../../styles/add.css";
 import { useState, useEffect } from "react";
 import BASE_API_URL from "../../constants";
 import getLinkLogo from "../../getLinkLogo";
 import DangerBox from "../utility/Danger";
 import notyf from "../../tcNotyf";
-import { Link } from "react-router-dom";
+import MiniOrgCard from "../utility/MiniOrgCard";
 
 const ProfileInfo = () => {
     const [links, setLinks] = useState([]);
@@ -348,7 +342,11 @@ const ProfileInfo = () => {
                         <div className="input profile-clubs">
                             <label>Organizations</label>
                             {orgs.map((org) => (
-                                <OrgCard key={org._id} org={org} />
+                                <MiniOrgCard
+                                    key={org._id}
+                                    org={org}
+                                    leave={true}
+                                />
                             ))}
                         </div>
 
@@ -785,26 +783,6 @@ const ProfileInfo = () => {
     function removeBodyOpacity() {
         document.body.classList.remove("report-modal-body");
     }
-};
-
-const OrgCard = ({ org }) => {
-    return (
-        <div className="profile-org-card">
-            <div className="profile-org-img">
-                <img src={org.logo_url} alt="org-logo" />
-            </div>
-            <div className="profile-org-info">
-                <Link to={`/org/${org._id}`}>{org.name}</Link>
-                <p>{org.description}</p>
-            </div>
-            <div className="leave-opt">
-                <button>
-                    <FaRegArrowAltCircleRight />
-                    &nbsp;&nbsp;Leave
-                </button>
-            </div>
-        </div>
-    );
 };
 
 export default ProfileInfo;

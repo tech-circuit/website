@@ -40,6 +40,13 @@ const Projects = ({ userId }) => {
         <>
             <br />
 
+            <div
+                className={
+                    fullView ? "event-cover event-cover-active" : "event-cover"
+                }
+                onClick={close}
+            ></div>
+
             <div className="workCards">
                 {projects[0] === "loading" ? (
                     <div className="load-container">
