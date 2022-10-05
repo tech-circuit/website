@@ -49,9 +49,9 @@ const App = () => {
                     {/* <Resources /> */}
                     <Soon />
                 </Route>
-                <Route exact path="/forum">
+                {/* <Route exact path="/forum">
                     <Forums />
-                </Route>
+                </Route> */}
                 <Route exact path="/create-post">
                     {/* <CreatePost /> */}
                     <Soon />
@@ -64,7 +64,7 @@ const App = () => {
                     {/* <Profile /> */}
                     <Soon />
                 </Route>
-                <Route exact path="/forum/post/:postId" component={Post} />
+                {/* <Route exact path="/forum/post/:postId" component={Post} /> */}
                 <Route path="*">
                     <Error />
                 </Route>
