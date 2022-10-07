@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "../styles/index.css";
+import "../styles/forum.css";
 import { Link } from "react-router-dom";
 import { FaChevronDown, FaCommentAlt, FaCheck } from "react-icons/fa";
 import Footer from "../components/Footer";
@@ -501,9 +502,8 @@ const Index = () => {
                     </div>
                     <div className="club-right">
                         <div className="club-logos">
-                            <div className="logo-shrink">
+                            <div className="logo-shrink" data-aos="zoom-in">
                                 <img
-                                    data-aos="zoom-in"
                                     src="/assets/exun.png"
                                     alt="alt"
                                     className="club-logo"
@@ -524,9 +524,8 @@ const Index = () => {
                                 className="club-logo"
                                 style={{ backgroundColor: "#0E0C0C" }}
                             />
-                            <div className="logo-shrink">
+                            <div className="logo-shrink" data-aos="zoom-in">
                                 <img
-                                    data-aos="zoom-in"
                                     src="/assets/core.png"
                                     alt="alt"
                                     className="club-logo"
@@ -542,10 +541,10 @@ const Index = () => {
                             <div
                                 className="logo-shrink"
                                 style={{ backgroundColor: "#31435e" }}
+                                data-aos="zoom-in"
+                                data-aos-delay="300"
                             >
                                 <img
-                                    data-aos="zoom-in"
-                                    data-aos-delay="300"
                                     src="/assets/beta.png"
                                     alt="alt"
                                     className="club-logo"

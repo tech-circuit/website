@@ -128,7 +128,7 @@ const Navbar = () => {
                     >
                         About
                     </Link>
-                    <Link
+                    {/* <Link
                         to="/forum"
                         onClick={(e) => setActivePage("/forum")}
                         className={
@@ -138,7 +138,7 @@ const Navbar = () => {
                         }
                     >
                         Forum
-                    </Link>
+                    </Link> */}
                     {/* <Link */}
                     {/*     to="/work" */}
                     {/*     onClick={(e) => setActivePage("/work")} */}

@@ -311,7 +311,7 @@
   align-items: center;
   width: 100%;
   flex-wrap: wrap;
-  gap: calc(20.85px + 8vh) 0;
+  gap: calc(20.85px + 4vh) 0;
 }
 
 /* REVIEWS */
@@ -655,10 +655,10 @@
   .about-clubs .club-logos {
     width: 100%;
   }
-  .club-logo {
+  /* .club-logo {
     width: 22vw !important;
     height: 22vw !important;
-  }
+  } */
   .faqs-cont h1 {
     font-size: 5.6vw;
     margin-bottom: 3vh;
@@ -708,7 +708,7 @@
   }
   .member {
     width: 100%;
-    margin-bottom: 6vh;
+    margin-bottom: 2vh;
     white-space: nowrap;
   }
   .member-cont h1 {

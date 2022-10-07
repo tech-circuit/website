@@ -230,7 +230,6 @@
 }
 
 .hero-btn {
-    align-self: flex-start;
     font-weight: 400;
     font-size: 1vw;
     padding: 16px 26px;
@@ -244,6 +243,12 @@
     margin-top: 4vh;
     margin-bottom: 10vh;
     transition: all 0.3s !important;
+}
+.hero-left .hero-btn {
+    align-self: flex-start;
+}
+.error-main .hero-btn {
+    z-index: 100000;
 }
 
 .hero-btn img {
@@ -267,6 +272,17 @@
     margin-bottom: 1vh;
     color: #747474;
     font-size: 1vw;
+}
+.hero .input {
+    display: flex;
+    align-items: center;
+    padding: 1vh 1.4vw;
+}
+.hero .hero-left .input input {
+    border: none;
+    padding: 1vh 1vw;
+    font-size: 1vw;
+    width: 100%;
 }
 
 /* About --------------------------------------------------------------------------------------- */
@@ -337,6 +353,7 @@
     align-items: center;
     flex-wrap: wrap;
     padding-top: 4vh;
+    padding-bottom: 4vh;
     background: #29313d;
 }
 
@@ -406,7 +423,8 @@
     align-items: center;
     flex-wrap: wrap;
 }
-.club-logo {
+.club-logo,
+.logo-shrink {
     width: 23%;
     margin: 2%;
     background: #4678f9;
@@ -423,7 +441,7 @@
     box-shadow: 0px 5.664000034332275px 52.39200210571289px 0px #0000004d;
 }
 .logo-shrink .club-logo {
-    width: 100%;
+    width: 100% !important;
     margin: 0;
     box-shadow: none;
 }
@@ -644,6 +662,9 @@
     #c-im {
         width: 8%;
     }
+    .hero .hero-left .input img {
+        width: 18px;
+    }
 }
 @media (max-width: 1100px) {
     .cursor {
@@ -693,12 +714,31 @@
         margin-bottom: 4vh;
     }
     .hero-btn {
-        margin: 12px 0;
+        margin: 2vh 0;
         align-self: center;
-        /* font-size: 2.4vw; */
+        font-size: 1.6vw;
+        padding: 1.6vh 2vw;
     }
     .scroll-more-hold {
         display: none;
+    }
+    .hero-btn {
+        align-self: center !important;
+    }
+    .hero .hero-left .mail {
+        width: 50%;
+    }
+    .hero .hero-left .btn {
+        font-size: 1.6vw;
+    }
+    .hero .hero-left .input {
+        padding: 1vh 1.6vw;
+    }
+    .hero .hero-left .input input {
+        border: none;
+        padding: 0.6vh 1vw;
+        font-size: 1.6vw;
+        width: 100%;
     }
 
     .about {
@@ -728,6 +768,7 @@
 
     .clubs {
         flex-direction: column-reverse;
+        padding-bottom: 8vh;
     }
     .club-left,
     .club-right {
@@ -741,9 +782,10 @@
         width: 70%;
         height: 60%;
     }
-    .club-logo {
-        width: 25%;
-        margin: 1.8%;
+    .club-logo,
+    .logo-shrink {
+        width: 20%;
+        margin: 2%;
     }
     .club-left {
         padding-bottom: 1vh;
@@ -926,9 +968,13 @@
     .club-logos {
         width: 90%;
     }
-    .club-logo {
-        width: 27%;
+    .club-logo,
+    .logo-shrink {
         margin: 2%;
+        width: 25% !important;
+    }
+    .logo-shrink .club-logo {
+        height: auto;
     }
     .club-left {
         padding-bottom: 1vh;
@@ -1039,9 +1085,29 @@
         margin-left: 0;
     }
 
-    .mail {
-        justify-content: space-between;
+    .hero-btn {
+        margin: 2vh 0;
+        font-size: 3vw;
+        padding: 1.6vh 5vw;
+    }
+    .scroll-more-hold {
+        display: none;
+    }
+    .hero .hero-left .mail {
+        width: 90%;
+    }
+    .hero .hero-left .mail .btn {
+        font-size: 3vw;
+        padding-left: 7vw;
+        padding-right: 7vw;
+    }
+    .hero .hero-left .input {
+        padding: 1vh 4vw;
+    }
+    .hero .hero-left .input input {
+        border: none;
+        padding: 0.6vh 2vw;
+        font-size: 3vw;
         width: 100%;
-        margin: 5px 0 20px 0;
     }
 }
