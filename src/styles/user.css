@@ -4,7 +4,7 @@
     margin-bottom: 6vh;
 }
 .user-cont-box {
-    box-shadow: 0 0 10px rgba(18, 22, 30, 0.2);
+    box-shadow: 0 0 10px rgba(18, 22, 30, 0.08);
     padding: 3vh 4vw;
     border-radius: 18px;
 }

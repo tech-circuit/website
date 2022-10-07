@@ -6,9 +6,9 @@ import { useState, useEffect } from "react";
 import { FaPlusCircle } from "react-icons/fa";
 import BASE_API_URL from "../constants";
 import notyf from "../tcNotyf";
-import getLinkogo from "../getLinkLogo";
 import MemberCard from "./utility/MemberCard";
 import SelectUser from "./utility/SelectUser";
+import getLinkLogo from "../getLinkLogo";
 
 const OrgView = ({ socket }) => {
     document.getElementsByTagName("html")[0].style.scrollBehavior = "initial";
@@ -137,7 +137,6 @@ const OrgView = ({ socket }) => {
                                     if (
                                         sortedList.length === allMembers.length
                                     ) {
-                                        console.log(sortedList);
                                         setMembers(sortedList);
                                     }
                                 }
@@ -212,9 +211,19 @@ const OrgView = ({ socket }) => {
             )}
 
             {tab === "Org Info" && (
-                <OrgInfo org={org} id={id} orgId={orgId} members={members} reqSent={reqSent} invited={invited} socket={socket}/>
+                <OrgInfo
+                    org={org}
+                    id={id}
+                    orgId={orgId}
+                    members={members}
+                    reqSent={reqSent}
+                    invited={invited}
+                    socket={socket}
+                />
             )}
-            {tab === "Membership requests" && <MemReqs orgId={orgId} socket={socket} />}
+            {tab === "Membership requests" && (
+                <MemReqs orgId={orgId} socket={socket} org={org} />
+            )}
         </>
     );
 };
@@ -239,7 +248,7 @@ const OrgInfo = ({ org, id, orgId, members, reqSent, invited, socket }) => {
             notyf.error("Some Error has Occurred");
         }
     };
-    
+
     return (
         <section className="org-cont">
             <Link className="org-back" to="/community">
@@ -282,7 +291,7 @@ const OrgInfo = ({ org, id, orgId, members, reqSent, invited, socket }) => {
                                                       target="_blank"
                                                       rel="noreferrer"
                                                   >
-                                                      {getLinkogo(link)}
+                                                      {getLinkLogo(link)}
                                                   </a>
                                               );
                                           })
@@ -305,7 +314,11 @@ const OrgInfo = ({ org, id, orgId, members, reqSent, invited, socket }) => {
                             <>
                                 {invited ? (
                                     <>
-                                        <p>You have been invited to join this organisation! Accept/Reject the offer</p>
+                                        <p>
+                                            You have been invited to join this
+                                            organisation! Accept/Reject the
+                                            offer
+                                        </p>
                                         <div className="decide-mem">
                                             <button className="accept-mem">
                                                 <BsFillCheckCircleFill />
@@ -318,19 +331,26 @@ const OrgInfo = ({ org, id, orgId, members, reqSent, invited, socket }) => {
                                 ) : (
                                     <>
                                         {reqSent ? (
-                                            <button className="ReqJoinButton" disabled style={{ opacity: 0.6 }}>
+                                            <button
+                                                className="ReqJoinButton"
+                                                disabled
+                                                style={{ opacity: 0.6 }}
+                                            >
                                                 Already Requested
                                             </button>
                                         ) : (
-                                            <button className="ReqJoinButton" onClick={() =>
-                                                requestOrgJoin(orgId)
-                                            }>
+                                            <button
+                                                className="ReqJoinButton"
+                                                onClick={() =>
+                                                    requestOrgJoin(orgId)
+                                                }
+                                            >
                                                 Request to Join
-                                            </button> 
+                                            </button>
                                         )}
                                     </>
                                 )}
-                            </>                        
+                            </>
                         )}
                     </div>
                 </div>
@@ -386,13 +406,10 @@ const OrgInfo = ({ org, id, orgId, members, reqSent, invited, socket }) => {
     );
 };
 
-const MemReqs = ({ orgId, socket }) => {
+const MemReqs = ({ orgId, socket, org }) => {
     const [users, setUsers] = useState([]);
+    const [reqs, setReqs] = useState([]);
     const [select, setSelect] = useState(false);
-    const [members, setMembers] = useState([]);
-    const [admins, setAdmins] = useState([]);
-    const [alumni, setAlumni] = useState([]);
-    const [persons, setPersons] = useState([]);
 
     useEffect(() => {
         const getUsers = async () => {
@@ -409,7 +426,21 @@ const MemReqs = ({ orgId, socket }) => {
                 notyf.error("Some Error has occurred");
             }
         };
+        const makeUsersFromId = async (requests) => {
+            const gotUsersJson = await fetch(
+                `${BASE_API_URL}/org/get-requests`,
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ requests }),
+                }
+            );
+            const gotUsers = await gotUsersJson.json();
 
+            gotUsers.users.length !== 0 && setReqs(gotUsers.users);
+        };
+
+        makeUsersFromId(org.requests);
         getUsers();
     }, []);
 
@@ -471,7 +502,11 @@ const MemReqs = ({ orgId, socket }) => {
             `${BASE_API_URL}/org/invite/${orgId}?access_token=${localStorage.getItem(
                 "authToken"
             )}`,
-            { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ invite: inviteId }) }
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ invite: inviteId }),
+            }
         );
         const data = await res.json();
 
@@ -493,7 +528,7 @@ const MemReqs = ({ orgId, socket }) => {
         if (person) {
             document.querySelector("#addModName").value = "";
             document.querySelector("#addModName").setAttribute("data-user", "");
-            const personId = person._id
+            const personId = person._id;
             inviteOrgJoin(orgId, personId);
         } else {
             notyf.error("Please select a user");
@@ -537,17 +572,19 @@ const MemReqs = ({ orgId, socket }) => {
             <div className="sent-reqs">
                 <h1>Review membership requests</h1>
                 <div className="sent-cards">
-                    {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+                    {reqs.map((req, i) => (
                         <div className="sent-card" key={i}>
-                            <img src="/assets/ishana.jpg" alt="acc" />
-                            <h4>Ishaan Das</h4>
-                            <h5>
-                                Highschool student, Filmmaker, UI/UX Designer
-                            </h5>
+                            <Link to={`/user/${req._id}`}>
+                                <img src={req.pfp_url} alt="acc" />
+                                <h4>{req.name}</h4>
+                                <h5>{req.title}</h5>
+                            </Link>
                             <div className="sent-links">
-                                <a href="/" className="sent-link">
-                                    <FaBehanceSquare />
-                                </a>
+                                {req.links.map((link) => (
+                                    <a href={link} className="sent-link">
+                                        {getLinkLogo(link)}
+                                    </a>
+                                ))}
                             </div>
 
                             <div className="decide-mem">

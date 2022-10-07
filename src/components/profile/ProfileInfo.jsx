@@ -7,12 +7,14 @@ import getLinkLogo from "../../getLinkLogo";
 import DangerBox from "../utility/Danger";
 import notyf from "../../tcNotyf";
 import MiniOrgCard from "../utility/MiniOrgCard";
+import Fields from "../utility/Fields";
 
 const ProfileInfo = () => {
     const [links, setLinks] = useState([]);
     const [linksObj, setLinksObj] = useState({});
     const [user, setUser] = useState({});
     const [orgs, setOrgs] = useState([]);
+    const [skills, setSkills] = useState([]);
     const authToken = localStorage.getItem("authToken");
     let oldE;
 
@@ -178,15 +180,15 @@ const ProfileInfo = () => {
             const gotUser = await data.json();
             const user = gotUser.user;
             const orgs = gotUser.orgs;
+            const gotSkills = gotUser.user.skills;
 
             // Links
-            if (user.links) {
-                setLinks(user.links);
-            }
+            user.links && setLinks(user.links);
 
             // SET
             setUser(user);
             setOrgs(orgs);
+            setSkills(gotSkills);
         });
     }, [authToken]);
 
@@ -198,6 +200,24 @@ const ProfileInfo = () => {
         }
         setLinksObj(theObj);
     }, [links]);
+
+    useEffect(() => {
+        const updateSkills = async () => {
+            const updatedJson = await fetch(
+                `${BASE_API_URL}/user/update?access_token=${authToken}`,
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ skills }),
+                }
+            );
+            const updated = await updatedJson.json();
+
+            !updated.success && notyf.error("Some error occurred");
+        };
+
+        updateSkills();
+    }, [skills]);
 
     return (
         <>
@@ -292,6 +312,12 @@ const ProfileInfo = () => {
                                 placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictum eu, aenean porta neque ante tellus. Ipsum consequat semper amet nullam proin. Pretium eget ut et blandit cursus. Mattis malesuada at semper cursus."
                             ></textarea>
                         </div>
+
+                        <Fields
+                            setFields={setSkills}
+                            fields={skills}
+                            skill={true}
+                        />
 
                         <div className="create-links input">
                             <label>Add Links</label>

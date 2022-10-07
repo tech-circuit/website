@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import "../../styles/all.css";
 import { useFieldsAvailable } from "./useFieldsAvailable";
 
-const Fields = ({ fields, setFields }) => {
+const Fields = ({ fields, setFields, skill = false }) => {
     const fieldsAvailable = useFieldsAvailable();
 
     useEffect(() => {
@@ -19,12 +19,14 @@ const Fields = ({ fields, setFields }) => {
 
     return (
         <>
-            <h3>Fields</h3>
-            <div className="field-hold">
+            {!skill && <h3>Fields</h3>}
+            <div className={`field-hold ${skill && "skill-hold"}`}>
+                {skill && <label htmlFor="fields">My skills</label>}
                 <input
                     type="text"
-                    value={fields.join(", ")}
+                    value={fields && fields.join(", ")}
                     readOnly
+                    name="fields"
                     style={{ color: "#4678f9" }}
                     onClick={() =>
                         document
@@ -42,7 +44,7 @@ const Fields = ({ fields, setFields }) => {
                             return (
                                 <button
                                     className={
-                                        fields.includes(field)
+                                        fields && fields.includes(field)
                                             ? "field field-active"
                                             : "field"
                                     }

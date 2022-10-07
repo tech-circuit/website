@@ -55,6 +55,10 @@
 .field-hold {
     position: relative;
 }
+.skill-hold {
+    width: 95%;
+    margin-top: 3vh;
+}
 .field-box {
     position: absolute;
     top: 200%;
@@ -76,6 +80,9 @@
 }
 .filter-hold .field-box {
     width: 40vw;
+}
+.field-box .close {
+    margin-top: 2vh;
 }
 .field-box-active {
     top: 110%;

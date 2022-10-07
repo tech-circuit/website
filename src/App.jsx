@@ -16,7 +16,7 @@ import EventAlter from "./components/EventAlter";
 import Profile from "./components/Profile";
 import UserFlow from "./components/UserFlow";
 // import Soon from "./components/Soon";
-    import User from "./components/User";
+import User from "./components/User";
 import OrgView from "./components/OrgView";
 import EventView from "./components/EventView";
 import ProjectView from "./components/ProjectView";
@@ -109,7 +109,7 @@ const App = () => {
                     {/* <Soon /> */}
                 </Route>
                 <Route exact path="/profile-setup">
-                    <UserFlow socket={socket}/>
+                    <UserFlow socket={socket} />
                 </Route>
                 <Route exact path="/register">
                     <SignUp />
