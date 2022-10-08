@@ -311,8 +311,7 @@
     align-items: center;
     width: 100%;
     flex-wrap: nowrap;
-    gap: calc(20.85px + 8vh) 0;
-
+    /* gap: calc(20.85px + 8vh) 0; */
 }
 
 /* REVIEWS */

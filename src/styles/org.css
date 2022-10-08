@@ -241,16 +241,27 @@
 .sent-link {
     font-size: 2vw;
 }
+.decide-mem {
+    display: flex;
+    align-items: center;
+}
 .accept-mem,
 .decline-mem {
     font-size: 1.8vw;
     margin: 0 0.6vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .accept-mem {
     color: #85d49c;
 }
 .decline-mem {
-    color: #ff6b6b;
+    padding: 0.06vh;
+    font-size: 1.7vw;
+    border-radius: 50%;
+    background: #ff6b6b;
+    color: #fff;
 }
 .members {
     width: 100%;

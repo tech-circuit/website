@@ -1,6 +1,6 @@
 import "../styles/org.css";
 import { FaBehanceSquare, FaChevronLeft, FaTimesCircle } from "react-icons/fa";
-import { BsFillCheckCircleFill } from "react-icons/bs";
+import { BsFillCheckCircleFill, BsX } from "react-icons/bs";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FaPlusCircle } from "react-icons/fa";
@@ -535,6 +535,30 @@ const MemReqs = ({ orgId, socket, org }) => {
         }
     };
 
+    const decideMem = async (add, mem) => {
+        const body = add
+            ? { members: [...org.members, mem._id], admins: org.admins }
+            : {
+                  requests: reqs.filter((req) => req !== mem),
+                  admins: org.admins,
+              };
+        const acceptJson = await fetch(
+            `${BASE_API_URL}/org/edit/${orgId}?access_token=${localStorage.getItem(
+                "authToken"
+            )}`,
+            {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body),
+            }
+        );
+        const accept = await acceptJson.json();
+
+        accept.done
+            ? setReqs(reqs.filter((req) => req !== mem))
+            : notyf.error("Some error occurred");
+    };
+
     return (
         <section className="member-reqs">
             <div className="invite-mem">
@@ -588,11 +612,17 @@ const MemReqs = ({ orgId, socket, org }) => {
                             </div>
 
                             <div className="decide-mem">
-                                <button className="accept-mem">
+                                <button
+                                    className="accept-mem"
+                                    onClick={() => decideMem(true, req)}
+                                >
                                     <BsFillCheckCircleFill />
                                 </button>
-                                <button className="decline-mem">
-                                    <FaTimesCircle />
+                                <button
+                                    className="decline-mem"
+                                    onClick={() => decideMem(false, req)}
+                                >
+                                    <BsX />
                                 </button>
                             </div>
                         </div>
