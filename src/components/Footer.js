@@ -158,25 +158,47 @@ const Footer = () => {
                 </div>
             </div>
             <div className="foot-bottom container">
-                <p className="footCopy">&copy; {new Date().getFullYear()} techCircuit</p>
+                <p className="footCopy">
+                    &copy; {new Date().getFullYear()} techCircuit
+                </p>
                 <div>
                     <a href="mailto:contact@techcircuit.co">
                         <p className="footEmail">contact@techcircuit.co</p>
                     </a>
                     <div className="socials">
-                        <a href="http://linkedin.com/company/tech-circuit/">
+                        <a
+                            target="_blank"
+                            rel="noreferrer"
+                            href="http://linkedin.com/company/tech-circuit/"
+                        >
                             <FaLinkedin />
                         </a>
-                        <a href="http://github.com/tech-circuit">
+                        <a
+                            target="_blank"
+                            rel="noreferrer"
+                            href="http://github.com/tech-circuit"
+                        >
                             <FaGithub />
                         </a>
-                        <a href="http://instagram.com/techcircuit_/?hl=en">
+                        <a
+                            target="_blank"
+                            rel="noreferrer"
+                            href="https://www.instagram.com/techcircuit.co/"
+                        >
                             <FaInstagram />
                         </a>
-                        <a href="https://www.behance.net/techCircuit">
+                        <a
+                            target="_blank"
+                            rel="noreferrer"
+                            href="https://www.behance.net/techCircuit"
+                        >
                             <FaBehanceSquare />
                         </a>
-                        <a href="https://twitter.com/techCircuit_">
+                        <a
+                            target="_blank"
+                            rel="noreferrer"
+                            href="https://twitter.com/techCircuit_"
+                        >
                             <FaTwitterSquare />
                         </a>
                     </div>
