@@ -30,11 +30,6 @@ const members = [
         position: "Developer",
     },
     {
-        image: "/assets/kavin.jpeg",
-        name: "Kavin Valli",
-        position: "Developer",
-    },
-    {
         image: "/assets/inesh.jpeg",
         name: "Inesh Tickoo",
         position: "Outreach and Design",
@@ -43,11 +38,6 @@ const members = [
         image: "/assets/abhishree.jpg",
         name: "Abhishree Bhardwaj",
         position: "Designer",
-    },
-    {
-        image: "/assets/volo.jpeg",
-        name: "Kabir Bhalla",
-        position: "Outreach",
     },
 ];
 

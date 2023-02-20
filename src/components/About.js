@@ -12,7 +12,7 @@ import Footer from "./Footer";
 import { Notyf } from "notyf";
 import "notyf/notyf.min.css";
 // import notyf from "../tcNotyf";
-import members from "../data/members";
+// import members from "../data/members";
 
 const notyf = new Notyf({
   duration: 2500,
@@ -480,7 +480,7 @@ const About = () => {
         </Link>
       </div>
 
-      <div className="member-cont container">
+      {/* <div className="member-cont container">
         <h1>Team behind techCircuit</h1>
         <div className="members">
           {members.map(({ name, image, position }) => (
@@ -491,7 +491,7 @@ const About = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
 
       <Footer />
     </>
