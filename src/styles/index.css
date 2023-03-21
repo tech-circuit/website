@@ -150,12 +150,14 @@
 
 .mail {
     display: flex;
-    box-shadow: 0px 4.5px 33.75px 0px #00000026;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
+    border-radius: 4px;
 }
 
 .mail .input {
-    padding: 16px 0 16px 12px;
+    padding: 16px 20px;
+    border-radius: 4px;
 }
 
 .mail .input img {
@@ -165,16 +167,14 @@
 
 .mail .btn {
     padding: 0 3vw;
-    font-size: 12px;
     font-weight: 300;
     border: none;
     background: #29313d;
     color: #fff;
     cursor: pointer;
-    border-radius: 4.5px;
+    border-radius: 4px;
     transition: all 0.3s;
 }
-
 .mail .btn:hover {
     background: #3d495a;
 }

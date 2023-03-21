@@ -17,10 +17,10 @@
     font-size: 2vw;
 }
 .error-main .hero-btn {
-    width: auto;
     padding-left: 2vw;
     padding-right: 2vw;
     cursor: pointer;
+    align-self: center;
 }
 .error-main .hero-btn:hover {
     background: #2951b4;

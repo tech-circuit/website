@@ -63,6 +63,7 @@ const Work = ({ socket }) => {
     const search = async (inp) => {
         setSearchInput(inp);
         if (inp !== "") {
+            if (inp.length < 4) return notyf.error("Query too short");
             carouselRef.current.scrollIntoView({ behavior: "smooth" });
             setSearchLoading(true);
             const resJson = await fetch(`${BASE_API_URL}/project/search`, {
@@ -79,6 +80,7 @@ const Work = ({ socket }) => {
                 setSearching(true);
                 res.projects.length === 0 && notyf.error("No results");
             } else {
+                console.log(res);
                 notyf.error("Some Error occurred");
                 setSearching(false);
             }
@@ -199,6 +201,7 @@ const Work = ({ socket }) => {
                                     view={view}
                                     key={project._id}
                                     id={id}
+                                    x
                                 />
                             );
                         })}

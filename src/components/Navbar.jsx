@@ -198,7 +198,7 @@ const Navbar = ({ socket }) => {
                     >
                         About
                     </Link>
-                    <Link
+                    {/* <Link
                         to="/forum"
                         onClick={(e) => setActivePage("/forum")}
                         className={
@@ -208,7 +208,7 @@ const Navbar = ({ socket }) => {
                         }
                     >
                         Forum
-                    </Link>
+                    </Link> */}
                     <Link
                         to="/work"
                         onClick={(e) => setActivePage("/work")}

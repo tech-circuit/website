@@ -38,9 +38,8 @@ const WorkCarousel = ({ sortRef, fieldsAvailable, setCurrentField }) => {
             }}
         >
             {fieldsAvailable.map((field) => (
-                <SwiperSlide>
+                <SwiperSlide key={field}>
                     <CarouselItem
-                        key={field}
                         field={field}
                         setCurrentField={setCurrentField}
                     />

@@ -333,8 +333,10 @@ const Index = () => {
                             &nbsp;takes place.
                         </h1>
                         <p data-aos="fade-right" data-aos-delay="200">
-                          Join our mailing list to be notifed about the latest updates on techCircuit, get information about events,
-                          and to be the first to know when our web platform launches!
+                            Join our mailing list to be notifed about the latest
+                            updates on techCircuit, get information about
+                            events, and to be the first to know when our web
+                            platform launches!
                         </p>
                         <div className="mail">
                             <div className="input">
@@ -382,19 +384,35 @@ const Index = () => {
             <section id="abt" className="about">
                 <div className="abt-left">
                     <div className="container">
-                        <h1 data-aos="fade-right">
-                            What is techCircuit?
-                        </h1>
+                        <h1 data-aos="fade-right">What is techCircuit?</h1>
                         <p data-aos="fade-right" data-aos-delay="300">
-                            This is a place where a community of technology enthusiast students and individuals can network,
-                            get feedback on projects, and participate in and host events, and gain access to curated educational
-                            resources for numerous fields in the realm of technology, design, entrepreneurship, and more.
+                            This is a place where a community of technology
+                            enthusiast students and individuals can network, get
+                            feedback on projects, and participate in and host
+                            events, and gain access to curated educational
+                            resources for numerous fields in the realm of
+                            technology, design, entrepreneurship, and more.
                             <br />
                             <br />
-                            Tech Circuit (techCircuit) is a <i><strong>community of high school and college students</strong></i>
-                            passionate about numerous various domains of technology, ranging from <i><strong>computer science to digital design</strong></i>.
-                            It is the place to be to connect and network with like minded tech enthusiasts, share your projects with
-                            the community, and to promote your *hackathons* and events independently or through your school/university or club.
+                            Tech Circuit (techCircuit) is a{" "}
+                            <i>
+                                <strong>
+                                    community of high school and college
+                                    students
+                                </strong>
+                            </i>
+                            passionate about numerous various domains of
+                            technology, ranging from{" "}
+                            <i>
+                                <strong>
+                                    computer science to digital design
+                                </strong>
+                            </i>
+                            . It is the place to be to connect and network with
+                            like minded tech enthusiasts, share your projects
+                            with the community, and to promote your *hackathons*
+                            and events independently or through your
+                            school/university or club.
                         </p>
                         <img src="/assets/abt.svg" alt="About Banner" />
                         <p className="illuBy">

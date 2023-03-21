@@ -81,9 +81,9 @@ const App = () => {
                     <Resources />
                     {/* <Soon /> */}
                 </Route>
-                <Route exact path="/forum">
+                {/* <Route exact path="/forum">
                     <Forums />
-                </Route>
+                </Route> */}
                 <Route exact path="/create-org">
                     <OrgAlter edit={false} />
                     {/* <Soon /> */}
