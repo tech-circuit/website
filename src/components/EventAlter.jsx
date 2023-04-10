@@ -499,7 +499,7 @@ const EventAlter = ({ edit }) => {
 
                     <Tags setTags={setTags} tags={tags} />
                     <p className="input-sub-text">
-                        Upto 5 tags, Use space to separate
+                        Upto 5 tags, Use <u>space</u> to separate
                     </p>
 
                     <h3>Add links</h3>

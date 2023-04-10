@@ -219,12 +219,12 @@ button.workSortActive::after {
 .projectOrg h1 {
     font-weight: 400;
     font-size: 2.5vw;
-    margin-bottom: 2vh;
 }
 .projectOrg h3 {
     font-weight: 300;
     color: #4678f9;
     font-size: 1vw;
+    margin-top: 2vh;
 }
 
 /* .projectOrg a { */
@@ -506,16 +506,10 @@ button.workSortActive::after {
 
 .project-links {
     margin-top: 12px;
+    display: flex;
 }
 
 .project-link-wrapper {
-    width: 55px;
-    height: 55px;
-    background-color: #29313d;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 12px;
     margin-right: 0.4vw;
 }
 
@@ -525,6 +519,13 @@ button.workSortActive::after {
     justify-content: center;
     align-items: center;
     margin: 0 !important;
+    width: 55px;
+    height: 55px;
+    background-color: #29313d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
 }
 
 .project-comments {

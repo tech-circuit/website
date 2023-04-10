@@ -384,7 +384,7 @@ const ProjectAlter = ({ edit }) => {
                     <Fields setFields={setFields} fields={fields} />
                     <Tags setTags={setTags} tags={tags} />
                     <p className="input-sub-text">
-                        Upto 5 tags, Use space to separate
+                        Upto 5 tags, Use <u>space</u> to separate
                     </p>
                     <h3>Was this for an Event? Mention one!</h3>
                     <input

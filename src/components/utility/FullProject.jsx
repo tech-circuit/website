@@ -35,7 +35,7 @@ const FullProject = ({ project, close, socket }) => {
             });
             return linkArray;
         }
-        return <></>;
+        return false;
     };
 
     const createComment = () => {
@@ -165,8 +165,9 @@ const FullProject = ({ project, close, socket }) => {
 
             <div className="projectOrg">
                 <div>
-                    <h1>{project?.title}</h1>
-                    <h3>{collabList()}</h3>
+                    <h1>{project && project.title}</h1>
+                    {console.log(collabList())}
+                    {collabList() && <h3>{collabList()}</h3>}
                 </div>
                 <a
                     href={project._id ? `/project/${project._id}` : "/work"}
@@ -179,53 +180,61 @@ const FullProject = ({ project, close, socket }) => {
             </div>
             <div className="project-body">
                 <div className="project-content">
-                    <div className="fullProjectUnit project-about">
-                        <h3>About</h3>
-                        <p>{project.description}</p>
-                    </div>
-                    <div className="fullProjectUnit fullProjectUnitOrg">
-                        <h3>Fields</h3>
-                        <p className="pFields">
-                            {project.fields
-                                ? project.fields.map((field) => {
-                                      return (
-                                          <div className="project-field">
-                                              {field}
-                                          </div>
-                                      );
-                                  })
-                                : "No fields to display"}
-                        </p>
-                    </div>
-                    <div className="fullProjectUnit fullProjectUnitOrg">
-                        <h3>Project Tags</h3>
-                        <p className="tags">
-                            {project.tags
-                                ? project.tags.map((tag) => {
-                                      return (
-                                          <div className="project-tag">
-                                              {tag}
-                                          </div>
-                                      );
-                                  })
-                                : "No tags to display"}
-                        </p>
-                    </div>
+                    {project.description && (
+                        <div className="fullProjectUnit project-about">
+                            <h3>About</h3>
+                            <p>{project.description}</p>
+                        </div>
+                    )}
+                    {project.fields && project.fields.length !== 0 && (
+                        <div className="fullProjectUnit fullProjectUnitOrg">
+                            <h3>Fields</h3>
+                            <p className="pFields">
+                                {project.fields
+                                    ? project.fields.map((field) => {
+                                          return (
+                                              <div className="project-field">
+                                                  {field}
+                                              </div>
+                                          );
+                                      })
+                                    : "No fields to display"}
+                            </p>
+                        </div>
+                    )}
+                    {project.tags && project.tags.length !== 0 && (
+                        <div className="fullProjectUnit fullProjectUnitOrg">
+                            <h3>Project Tags</h3>
+                            <p className="tags">
+                                {project.tags
+                                    ? project.tags.map((tag) => {
+                                          return (
+                                              <div className="project-tag">
+                                                  {tag}
+                                              </div>
+                                          );
+                                      })
+                                    : "No tags to display"}
+                            </p>
+                        </div>
+                    )}
                 </div>
                 <div className="project-showoff">
-                    <div className="fullProjectUnit project-about">
-                        <h3>Project Media</h3>
-                        <div className="project-images">
-                            {project.imgs &&
-                                project.imgs.map((img) => (
-                                    <img src={img} alt={img} />
-                                ))}
+                    {project.imgs && project.imgs.length !== 0 && (
+                        <div className="fullProjectUnit project-about">
+                            <h3>Project Media</h3>
+                            <div className="project-images">
+                                {project.imgs &&
+                                    project.imgs.map((img) => (
+                                        <img src={img} alt={img} />
+                                    ))}
+                            </div>
                         </div>
-                    </div>
+                    )}
                     <div className="fullProjectUnit">
                         <h3>View it on</h3>
                         <div className="project-links">
-                            {project.links
+                            {project.links && project.links.length !== 0
                                 ? project.links
                                       .slice(0)
                                       .reverse()

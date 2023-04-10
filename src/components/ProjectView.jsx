@@ -201,7 +201,9 @@ const ProjectView = ({ socket }) => {
                 <div className="projectOrg">
                     <div className="project-head">
                         <h1>{project.title}</h1>
-                        <h3>{project.collaborators}</h3>
+                        {project && project.collaborators && (
+                            <h3>{project.collaborators}</h3>
+                        )}
                     </div>
                     <a
                         href={project.links ? project.links[0] : ""}
@@ -215,80 +217,89 @@ const ProjectView = ({ socket }) => {
 
                 <div className="project-body">
                     <div className="project-content">
-                        <div className="fullProjectUnit project-about">
-                            <h3>About</h3>
-                            <p>{project.description}</p>
-                        </div>
-                        <div className="fullProjectUnit fullProjectUnitOrg">
-                            <h3>Fields</h3>
-                            <p className="pFields">
-                                {project.fields
-                                    ? project.fields.map((field, i) => {
-                                          return (
-                                              <div
-                                                  className="project-field"
-                                                  key={i}
-                                              >
-                                                  {field}
-                                              </div>
-                                          );
-                                      })
-                                    : "No fields to display"}
-                            </p>
-                        </div>
-                        <div className="fullProjectUnit fullProjectUnitOrg">
-                            <h3>Project Tags</h3>
-                            <p className="tags">
-                                {project.tags
-                                    ? project.tags.map((tag, i) => {
-                                          return (
-                                              <div
-                                                  className="project-tag"
-                                                  key={i}
-                                              >
-                                                  {tag}
-                                              </div>
-                                          );
-                                      })
-                                    : "No tags to display"}
-                            </p>
-                        </div>
+                        {project && project.description && (
+                            <div className="fullProjectUnit project-about">
+                                <h3>About</h3>
+                                <p>{project.description}</p>
+                            </div>
+                        )}
+                        {project.fields && project.fields.length !== 0 && (
+                            <div className="fullProjectUnit fullProjectUnitOrg">
+                                <h3>Fields</h3>
+                                <p className="pFields">
+                                    {project.fields
+                                        ? project.fields.map((field, i) => {
+                                              return (
+                                                  <div
+                                                      className="project-field"
+                                                      key={i}
+                                                  >
+                                                      {field}
+                                                  </div>
+                                              );
+                                          })
+                                        : "No fields to display"}
+                                </p>
+                            </div>
+                        )}
+                        {project.tags && project.tags.length !== 0 && (
+                            <div className="fullProjectUnit fullProjectUnitOrg">
+                                <h3>Project Tags</h3>
+                                <p className="tags">
+                                    {project.tags
+                                        ? project.tags.map((tag, i) => {
+                                              return (
+                                                  <div
+                                                      className="project-tag"
+                                                      key={i}
+                                                  >
+                                                      {tag}
+                                                  </div>
+                                              );
+                                          })
+                                        : "No tags to display"}
+                                </p>
+                            </div>
+                        )}
                     </div>
                     <div className="project-showoff">
-                        <div className="fullProjectUnit project-about">
-                            <h3>Project Media</h3>
-                            <div className="project-images">
-                                {project.imgs &&
-                                    project.imgs.map((img) => (
-                                        <img src={img} alt={img} key={img} />
-                                    ))}
+                        {project.imgs && project.imgs.length !== 0 && (
+                            <div className="fullProjectUnit project-about">
+                                <h3>Project Media</h3>
+                                <div className="project-images">
+                                    {project.imgs &&
+                                        project.imgs.map((img) => (
+                                            <img
+                                                src={img}
+                                                alt={img}
+                                                key={img}
+                                            />
+                                        ))}
+                                </div>
                             </div>
-                        </div>
+                        )}
                         {project.links && project.links.length > 0 && (
                             <div className="fullProjectUnit">
                                 <h3>View it on</h3>
                                 <div className="project-links">
-                                    {project.links
-                                        ? project.links
-                                              .slice(0)
-                                              .reverse()
-                                              .map((link, i) => {
-                                                  return (
-                                                      <div className="project-link-wrapper">
-                                                          <a
-                                                              href={link}
-                                                              target="_blank"
-                                                              rel="noreferrer"
-                                                              className="project-link"
-                                                          >
-                                                              {getLinkLogo(
-                                                                  link
-                                                              )}
-                                                          </a>
-                                                      </div>
-                                                  );
-                                              })
-                                        : "No links to display"}
+                                    {project.links &&
+                                        project.links
+                                            .slice(0)
+                                            .reverse()
+                                            .map((link, i) => {
+                                                return (
+                                                    <div className="project-link-wrapper">
+                                                        <a
+                                                            href={link}
+                                                            target="_blank"
+                                                            rel="noreferrer"
+                                                            className="project-link"
+                                                        >
+                                                            {getLinkLogo(link)}
+                                                        </a>
+                                                    </div>
+                                                );
+                                            })}
                                 </div>
                             </div>
                         )}

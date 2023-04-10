@@ -10,7 +10,6 @@ import FullProject from "./utility/FullProject";
 import Search from "./utility/Search";
 import Filter from "./utility/Filter";
 import { useFieldsAvailable } from "./utility/useFieldsAvailable";
-import { useSwiper } from "swiper/react";
 
 const Work = ({ socket }) => {
     // const [workSort, setWorkSort] = useState("Coding")
@@ -47,6 +46,8 @@ const Work = ({ socket }) => {
                 );
                 const data = await dataJson.json();
 
+                console.log(data);
+
                 if (data.user) {
                     setId(data.user._id);
                 } else {
@@ -80,7 +81,6 @@ const Work = ({ socket }) => {
                 setSearching(true);
                 res.projects.length === 0 && notyf.error("No results");
             } else {
-                console.log(res);
                 notyf.error("Some Error occurred");
                 setSearching(false);
             }
