@@ -141,9 +141,9 @@ const FullProject = ({ project, close, socket }) => {
     return (
         <>
             <div className="proj-top">
-                <button className="return" onClick={close}>
+                <button className="event-back" onClick={close}>
                     <FaChevronLeft />
-                    &nbsp;&nbsp;Back
+                    Back
                 </button>
                 {/* <div className="share-wrap">
                     <button className="share" onClick={() => setShare(!share)}>

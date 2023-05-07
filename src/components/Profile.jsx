@@ -61,7 +61,7 @@ const Profile = () => {
                     >
                         Projects
                     </h3>
-                    <h3
+                    {/* <h3
                         className={tab === "Posts" ? "profile-tab-active" : ""}
                         onClick={(eve) => changeTab(eve)}
                     >
@@ -72,7 +72,7 @@ const Profile = () => {
                         onClick={(eve) => changeTab(eve)}
                     >
                         Events
-                    </h3>
+                    </h3> */}
                     {/* <h3
                         className={tab === "Drafts" ? "profile-tab-active" : ""}
                         onClick={(eve) => changeTab(eve)}

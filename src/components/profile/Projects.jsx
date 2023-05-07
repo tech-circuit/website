@@ -64,6 +64,7 @@ const Projects = ({ userId }) => {
                                 view={view}
                                 key={project._id}
                                 id={userId}
+                                user={true}
                             />
                         );
                     })

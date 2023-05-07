@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { FaLink, FaPlusCircle, FaTrash } from "react-icons/fa";
+import { FaChevronLeft, FaLink, FaPlusCircle, FaTrash } from "react-icons/fa";
 import BASE_API_URL from "../constants";
 import notyf from "../tcNotyf";
 import getLinkLogo from "../getLinkLogo";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import "../styles/createProject.css";
 import Tags from "./utility/Tags";
 import Fields from "./utility/Fields";
@@ -22,6 +22,7 @@ const ProjectAlter = ({ edit }) => {
     const [project, setProject] = useState({});
     const [delBox, setDelBox] = useState(false);
     const { id } = useParams();
+    let history = useHistory();
 
     const addLink = async () => {
         if (document.querySelector("#add-link-inp").value !== "") {
@@ -248,6 +249,13 @@ const ProjectAlter = ({ edit }) => {
 
             <div className="create-org-cont">
                 <div className="left-org border-input-form">
+                    <button
+                        className="event-back"
+                        onClick={() => history.goBack()}
+                    >
+                        <FaChevronLeft />
+                        Back
+                    </button>
                     <h1>{edit ? "Edit" : "Create a"} Project</h1>
                     <p style={{ color: "#c4c4c4 !important" }}>
                         Start building your project to showcase on techCircuit.
@@ -384,7 +392,7 @@ const ProjectAlter = ({ edit }) => {
                     <Fields setFields={setFields} fields={fields} />
                     <Tags setTags={setTags} tags={tags} />
                     <p className="input-sub-text">
-                        Upto 5 tags, Use <u>space</u> to separate
+                        Upto 5 tags, Use <u>space</u> to create
                     </p>
                     <h3>Was this for an Event? Mention one!</h3>
                     <input
@@ -415,12 +423,15 @@ const ProjectAlter = ({ edit }) => {
                 <div className="right">
                     <div className="top-inline">
                         <h3>
-                            Project Cover image{" "}
-                            <i
-                                className="fas fa-trash"
-                                id="delete-icon"
-                                onClick={deleteCover}
-                            ></i>
+                            Project Cover image *
+                            {cover && (
+                                <i
+                                    className="fas fa-trash"
+                                    style={{ color: "#" }}
+                                    id="delete-icon"
+                                    onClick={deleteCover}
+                                ></i>
+                            )}
                         </h3>
                         <span>
                             This image will be displayed on Work page.

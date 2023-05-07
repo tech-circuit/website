@@ -20,7 +20,7 @@
     justify-content: flex-start;
     align-items: center;
     margin-top: 5vh;
-    position: fixed;
+    position: absolute;
     left: 10%;
     top: 18%;
 }
@@ -36,6 +36,12 @@
 }
 .fields input {
     transition: all 0.3s ease-in-out;
+}
+.fields input:focus,
+.fields input:active,
+.fields textarea:focus,
+.fields textarea:active {
+    border-color: #4678f9;
 }
 .pfp-opts {
     display: flex;

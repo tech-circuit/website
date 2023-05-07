@@ -1,17 +1,21 @@
 import "../../styles/work.css";
 import { Link } from "react-router-dom";
 
-const ProjectCard = ({ project, view, id }) => {
+const ProjectCard = ({ project, view, id, user = false }) => {
     const openProject = (e) => {
         e.preventDefault();
         view(project);
-        // return false;
     };
+
     return (
         <>
             <Link
-                onClick={openProject}
-                to={`/project/${project._id}`}
+                onClick={!user && openProject}
+                to={
+                    user
+                        ? `/edit-project/${project._id}`
+                        : `/project/${project._id}`
+                }
                 className="workCard"
             >
                 <img

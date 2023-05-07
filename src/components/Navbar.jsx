@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import BASE_API_URL from "../constants";
-import TimeAgo from "react-timeago";
+// import TimeAgo from "react-timeago";
 
 const Navbar = ({ socket }) => {
     const location = useLocation();
@@ -266,7 +266,7 @@ const Navbar = ({ socket }) => {
             <div className="nav-right">
                 {loggedIn ? (
                     <>
-                        <button
+                        {/* <button
                             className={
                                 hamActive ? "logout logout-active" : "logout"
                             }
@@ -286,7 +286,7 @@ const Navbar = ({ socket }) => {
                                         : { width: "1.4vw" }
                                 }
                             />
-                        </button>
+                        </button> */}
                         <Link to="/profile">
                             <img
                                 src={
@@ -326,7 +326,7 @@ const Navbar = ({ socket }) => {
                     <div className="line"></div>
                 </div>
             </div>
-            <div className="notif-card" style={{ display: "none" }}>
+            {/* <div className="notif-card" style={{ display: "none" }}>
                 <p>Your notifications</p>
                 <div className="notif-card-body">
                     {notifs ? null : (
@@ -356,7 +356,7 @@ const Navbar = ({ socket }) => {
                         </Link>
                     ))}
                 </div>
-            </div>
+            </div> */}
         </nav>
     );
 };

@@ -17,7 +17,6 @@ const Work = ({ socket }) => {
     const [searching, setSearching] = useState(false);
     const [searchLoading, setSearchLoading] = useState(false);
     const [currentField, setCurrentField] = useState(null);
-    const sortRef = useRef(null);
     const carouselRef = useRef(null);
     const [searchInput, setSearchInput] = useState("");
     const fieldsAvailable = useFieldsAvailable();
@@ -156,8 +155,8 @@ const Work = ({ socket }) => {
                         </div>
                         <WorkCarousel
                             fieldsAvailable={fieldsAvailable}
-                            sortRef={sortRef}
                             setCurrentField={setCurrentField}
+                            currentField={currentField}
                         />
                     </div>
                 </div>
@@ -169,11 +168,11 @@ const Work = ({ socket }) => {
                         loading={searchLoading}
                         placeholder="Search for amazing projects"
                     />
-                    <Filter
+                    {/* <Filter
                         fieldsAvailable={fieldsAvailable}
                         field={currentField}
                         setField={setCurrentField}
-                    />
+                    /> */}
                 </div>
                 <div className="addEvent">
                     <a href="/create-project">

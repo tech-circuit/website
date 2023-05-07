@@ -17,7 +17,6 @@ const ProfileInfo = () => {
     const [skills, setSkills] = useState([]);
     const authToken = localStorage.getItem("authToken");
     let oldE;
-
     let typeTimeout;
 
     const addLink = async () => {
@@ -365,7 +364,7 @@ const ProfileInfo = () => {
                             })}
                         </div>
 
-                        <div className="input profile-clubs">
+                        {/* <div className="input profile-clubs">
                             <label>Organizations</label>
                             {orgs.map((org) => (
                                 <MiniOrgCard
@@ -374,7 +373,7 @@ const ProfileInfo = () => {
                                     leave={true}
                                 />
                             ))}
-                        </div>
+                        </div> */}
 
                         <div className="input">
                             <label htmlFor="country">Country</label>

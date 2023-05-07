@@ -4,7 +4,7 @@ import { Autoplay, Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/autoplay";
 
-const WorkCarousel = ({ sortRef, fieldsAvailable, setCurrentField }) => {
+const WorkCarousel = ({ fieldsAvailable, setCurrentField, currentField }) => {
     return (
         // <OwlCarousel
         //     ref={sortRef}
@@ -42,6 +42,7 @@ const WorkCarousel = ({ sortRef, fieldsAvailable, setCurrentField }) => {
                     <CarouselItem
                         field={field}
                         setCurrentField={setCurrentField}
+                        currentField={currentField}
                     />
                 </SwiperSlide>
             ))}
@@ -49,7 +50,7 @@ const WorkCarousel = ({ sortRef, fieldsAvailable, setCurrentField }) => {
     );
 };
 
-function CarouselItem({ field, setCurrentField }) {
+function CarouselItem({ field, setCurrentField, currentField }) {
     const ref = useRef();
 
     // Add event listener to owl carousel's div element rather than h1
@@ -69,7 +70,11 @@ function CarouselItem({ field, setCurrentField }) {
     // }, [setCurrentField, field]);
 
     return (
-        <div className="work-car-item">
+        <div
+            className={`work-car-item ${
+                currentField === field && "work-car-item-active"
+            }`}
+        >
             <h1
                 ref={ref}
                 onClick={() => {
