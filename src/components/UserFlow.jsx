@@ -33,7 +33,7 @@ const Component = ({ pfp, user, socket }) => {
     const [pfpLink, setPfpLink] = useState("");
     const topNavLineStyle = {
         width: `${
-            page === 5 ? page * 100 : page === 1 ? page * 100 : page * 100 - 50
+            page === 4 ? page * 100 : page === 1 ? page * 100 : page * 100 - 50
         }%`,
     };
     const [orgs, setOrgs] = useState([]);
@@ -171,24 +171,24 @@ const Component = ({ pfp, user, socket }) => {
         }
     };
 
-    const requestOrgJoin = async (id) => {
-        const res = await fetch(
-            `${BASE_API_URL}/org/req/${id}?access_token=${localStorage.getItem(
-                "authToken"
-            )}`,
-            { method: "POST", headers: { "Content-Type": "application/json" } }
-        );
-        const data = await res.json();
+    // const requestOrgJoin = async (id) => {
+    //     const res = await fetch(
+    //         `${BASE_API_URL}/org/req/${id}?access_token=${localStorage.getItem(
+    //             "authToken"
+    //         )}`,
+    //         { method: "POST", headers: { "Content-Type": "application/json" } }
+    //     );
+    //     const data = await res.json();
 
-        if (data.already) {
-            notyf.error("Already Requested to this Org");
-        } else if (data.done) {
-            socket.emit("notif", data.receivers);
-            setPage(page + 1);
-        } else {
-            notyf.error("Some Error has Occurred");
-        }
-    };
+    //     if (data.already) {
+    //         notyf.error("Already Requested to this Org");
+    //     } else if (data.done) {
+    //         socket.emit("notif", data.receivers);
+    //         setPage(page + 1);
+    //     } else {
+    //         notyf.error("Some Error has Occurred");
+    //     }
+    // };
 
     const checkUsernameTaken = async () => {
         try {
@@ -264,17 +264,17 @@ const Component = ({ pfp, user, socket }) => {
     }, [links]);
     useEffect(() => {
         const submit = async () => {
-            const username = document.querySelector(
-                "input[name='username']"
-            ).value;
+            const username = document
+                .querySelector("input[name='username']")
+                .value.trim();
             const title = document.querySelector("input[name='title']").value;
-            const country = document.querySelector(
-                "select[name='country']"
-            ).value;
+            const country = document
+                .querySelector("select[name='country']")
+                .value.trim();
             const state = document.querySelector("select[name='state']").value;
-            const about = document.querySelector(
-                "textarea[name='about']"
-            ).value;
+            const about = document
+                .querySelector("textarea[name='about']")
+                .value.trim();
 
             const body = {
                 username,
@@ -305,24 +305,24 @@ const Component = ({ pfp, user, socket }) => {
         };
 
         if (page === 2) {
-            if (!validate(["username", "title", "about"], false)) {
+            if (!validate(["username", "title"], false)) {
                 setPage(1);
             } else {
                 checkUsernameTaken();
             }
         }
 
-        if (page === 4) {
+        if (page === 3) {
             document.querySelector(".next-page").textContent = "Done";
         } else {
             document.querySelector(".next-page").textContent = "Proceed";
         }
 
-        if (page === 5) {
+        if (page === 4) {
             document.querySelector(".bottom-nav").classList.add("exit-flow");
             submit();
         }
-        if (page === 6) setPage(5);
+        if (page === 5) setPage(4);
     }, [page, links, skills, pfpLink, user]);
 
     return (
@@ -362,7 +362,7 @@ const Component = ({ pfp, user, socket }) => {
                 >
                     Links
                 </div>
-                <div
+                {/* <div
                     className={
                         page === 4
                             ? "progress-indicator pi-active"
@@ -372,12 +372,12 @@ const Component = ({ pfp, user, socket }) => {
                     }
                 >
                     Clubs
-                </div>
+                </div> */}
                 <div
                     className={
-                        page === 5
+                        page === 4
                             ? "progress-indicator pi-active"
-                            : page > 5
+                            : page > 4
                             ? "progress-indicator pi-finished"
                             : "progress-indicator"
                     }
@@ -443,9 +443,8 @@ const Component = ({ pfp, user, socket }) => {
                         </div>
                     </div>
                     <div className="flow-basic-unit">
-                        <label htmlFor="about">About me *</label>
+                        <label htmlFor="about">About me</label>
                         <textarea
-                            required
                             type="text"
                             name="about"
                             defaultValue={user.about ? user.about : ""}
@@ -575,7 +574,7 @@ const Component = ({ pfp, user, socket }) => {
                 </div>
             </div>
 
-            <div
+            {/* <div
                 id="page-4"
                 className={
                     page === 4
@@ -597,17 +596,17 @@ const Component = ({ pfp, user, socket }) => {
                                               ? ""
                                               : org.institute}
                                       </p>
-                                      {/* <p>{org.description}</p> */}
+                                      <p>{org.description}</p>
                                       <div className="socials">
-                                          {/* <a href="/">
-                                              <FaInstagram />
-                                          </a>
                                           <a href="/">
                                               <FaInstagram />
                                           </a>
                                           <a href="/">
                                               <FaInstagram />
-                                          </a> */}
+                                          </a>
+                                          <a href="/">
+                                              <FaInstagram />
+                                          </a>
                                           {org.links.map((link) => {
                                               return (
                                                   <a
@@ -634,14 +633,14 @@ const Component = ({ pfp, user, socket }) => {
                         : ""}
                     <div className="org-page-ded"></div>
                 </div>
-            </div>
+            </div> */}
 
             <div
-                id="page-5"
+                id="page-4"
                 className={
-                    page === 5
+                    page === 4
                         ? "flow-page finish-page flow-page-active"
-                        : page > 5
+                        : page > 4
                         ? "flow-page finish-page passed"
                         : "flow-page finish-page toCome"
                 }
@@ -654,7 +653,7 @@ const Component = ({ pfp, user, socket }) => {
 
                 <div className="finish-btns">
                     <Link to="/">Skip for now</Link>
-                    <Link to="/work" className="finish-create">
+                    <Link to="/projects" className="finish-create">
                         Create
                     </Link>
                 </div>
@@ -722,7 +721,7 @@ const UserFlow = ({ socket }) => {
             <ClipLoader />
         </div>
     ) : auth === true ? (
-        <Component pfp={pfp} user={user} socket={socket}/>
+        <Component pfp={pfp} user={user} socket={socket} />
     ) : (
         <Redirect to="/" />
     );

@@ -90,7 +90,7 @@ const Footer = () => {
                     <h3>Explore</h3>
                     <ul>
                         <li>
-                            <Link to="/work">Work</Link>
+                            <Link to="/projects">Work</Link>
                         </li>
                         <li>
                             <Link to="/events">Events</Link>
@@ -125,7 +125,9 @@ const Footer = () => {
                 </div>
             </div>
             <div className="foot-bottom container">
-                <p className="footCopy">&copy; {new Date().getFullYear()} techCircuit</p>
+                <p className="footCopy">
+                    &copy; {new Date().getFullYear()} techCircuit
+                </p>
                 <div>
                     <a href="mailto:contact@techcircuit.co">
                         <p className="footEmail">contact@techcircuit.co</p>

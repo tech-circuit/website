@@ -146,7 +146,7 @@ const ProjectAlter = ({ edit }) => {
             const submitted = await submittedJson.json();
 
             if (submitted.success) {
-                window.location.href = "/work";
+                window.location.href = "/projects";
             } else {
                 console.log(submitted);
                 notyf.error("Some Error has occurred");
@@ -172,7 +172,7 @@ const ProjectAlter = ({ edit }) => {
             .then((data) => {
                 console.log(data);
                 if (data.success) {
-                    window.location.href = "/work";
+                    window.location.href = "/projects";
                 } else {
                     notyf.error("Some Error has occurred");
                     return;
@@ -216,7 +216,7 @@ const ProjectAlter = ({ edit }) => {
         if (edit) {
             getProject();
         } else {
-            checkLoggedIn("/work");
+            checkLoggedIn("/projects");
         }
     }, [id, edit]);
 

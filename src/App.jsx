@@ -10,12 +10,12 @@ import Forums from "./components/Forum";
 import Post from "./components/Post";
 import Events from "./components/Events.jsx";
 import About from "./components/About";
-import Work from "./components/Work";
+import Projects from "./components/Projects";
 import OrgAlter from "./components/OrgAlter";
 import EventAlter from "./components/EventAlter";
 import Profile from "./components/Profile";
 import UserFlow from "./components/UserFlow";
-// import Soon from "./components/Soon";
+import Soon from "./components/Soon";
 import User from "./components/User";
 import OrgView from "./components/OrgView";
 import EventView from "./components/EventView";
@@ -45,68 +45,20 @@ const App = () => {
                 <Route exact path="/">
                     <Index />
                 </Route>
-                <Route exact path="/work">
-                    <Work socket={socket} />
-                    {/* <Soon /> */}
+                <Route exact path="/projects">
+                    <Projects socket={socket} />
                 </Route>
                 <Route exact path="/about">
                     <About />
                 </Route>
-                <Route exact path="/events">
-                    <Events />
-                    {/* <Soon /> */}
-                </Route>
                 <Route exact path="/create-project">
                     <ProjectAlter edit={false} />
-                    {/* <Soon /> */}
                 </Route>
                 <Route exact path="/edit-project/:id">
                     <ProjectAlter edit={true} />
                 </Route>
-                <Route exact path="/community">
-                    <Community />
-                    {/* <Soon /> */}
-                </Route>
-                <Route exact path="/org">
-                    <OrgView socket={socket} />
-                    {/* <Soon /> */}
-                </Route>
-                <Route exact path="/org/:orgId">
-                    <OrgView socket={socket} />
-                </Route>
-                <Route exact path="/org/admin/:orgId">
-                    <OrgView socket={socket} />
-                </Route>
-                <Route exact path="/resources">
-                    <Resources />
-                    {/* <Soon /> */}
-                </Route>
-                {/* <Route exact path="/forum">
-                    <Forums />
-                </Route> */}
-                <Route exact path="/create-org">
-                    <OrgAlter edit={false} />
-                    {/* <Soon /> */}
-                </Route>
-                <Route exact path="/edit-org/:id">
-                    <OrgAlter edit={true} />
-                    {/* <Soon /> */}
-                </Route>
-                <Route exact path="/create-event">
-                    <EventAlter edit={false} />
-                    {/* <Soon /> */}
-                </Route>
-                <Route exact path="/edit-event/:id">
-                    <EventAlter edit={true} />
-                    {/* <Soon /> */}
-                </Route>
-                <Route exact path="/event/:eventId" component={EventView} />
-                <Route exact path="/project/:projectId">
-                    <ProjectView socket={socket} />
-                </Route>
                 <Route exact path="/profile">
                     <Profile />
-                    {/* <Soon /> */}
                 </Route>
                 <Route exact path="/profile-setup">
                     <UserFlow socket={socket} />
@@ -117,13 +69,62 @@ const App = () => {
                 <Route exact path="/login">
                     <SignIn />
                 </Route>
-                <Route exact path="/forum/post/:postId">
-                    {socket ? <Post socket={socket} /> : null}
-                </Route>
                 <Route exact path="/user/:userId" component={User} />
+                <Route exact path="/project/:projectId">
+                    <ProjectView socket={socket} />
+                </Route>
+
+                {/* 404 ERROR ------ No routes below this mark */}
                 <Route path="*">
                     <Error />
                 </Route>
+
+                {/* <Route exact path="/events">
+                    <Events />
+                    <Soon />
+                </Route>
+                <Route exact path="/community">
+                    <Community />
+                    <Soon />
+                </Route>
+                <Route exact path="/org">
+                    <OrgView socket={socket} />
+                    <Soon />
+                </Route>
+                <Route exact path="/org/:orgId">
+                    <OrgView socket={socket} />
+                </Route>
+                <Route exact path="/org/admin/:orgId">
+                    <OrgView socket={socket} />
+                </Route>
+                <Route exact path="/resources">
+                    <Resources />
+                    <Soon />
+                </Route>
+                <Route exact path="/forum">
+                    <Forums />
+                </Route>
+                <Route exact path="/create-org">
+                    <OrgAlter edit={false} />
+                    <Soon />
+                </Route>
+                <Route exact path="/edit-org/:id">
+                    <OrgAlter edit={true} />
+                    <Soon />
+                </Route>
+                <Route exact path="/create-event">
+                    <EventAlter edit={false} />
+                    <Soon />
+                </Route>
+                <Route exact path="/edit-event/:id">
+                    <EventAlter edit={true} />
+                    <Soon />
+                </Route>
+                <Route exact path="/event/:eventId" component={EventView} />
+
+                <Route exact path="/forum/post/:postId">
+                    {socket ? <Post socket={socket} /> : null}
+                </Route> */}
             </Switch>
         </Router>
     );

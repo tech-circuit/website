@@ -9,6 +9,7 @@
 .sign-fields input:first-child {
     margin-top: 0.1vh;
 }
+
 .signup-main .sign-fields {
     max-height: none;
 }

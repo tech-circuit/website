@@ -11,7 +11,7 @@ import Search from "./utility/Search";
 import Filter from "./utility/Filter";
 import { useFieldsAvailable } from "./utility/useFieldsAvailable";
 
-const Work = ({ socket }) => {
+const Projects = ({ socket }) => {
     // const [workSort, setWorkSort] = useState("Coding")
     const [searchProjects, setSearchProjects] = useState([]);
     const [searching, setSearching] = useState(false);
@@ -31,7 +31,7 @@ const Work = ({ socket }) => {
     };
 
     const close = () => {
-        window.history.pushState({}, "", `/work`);
+        window.history.pushState({}, "", `/projects`);
         setfullView(false);
     };
 
@@ -305,4 +305,4 @@ function ProjectView({ view, id, fieldsAvailable }) {
     );
 }
 
-export default Work;
+export default Projects;

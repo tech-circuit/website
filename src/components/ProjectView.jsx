@@ -173,7 +173,7 @@ const ProjectView = ({ socket }) => {
             <div className="black-banner"></div>
             <section className="ViewProjectWrap">
                 <div className="proj-top">
-                    <Link className="project-back" to="/work">
+                    <Link className="project-back" to="/projects">
                         <FaChevronLeft />
                         Go Back
                     </Link>

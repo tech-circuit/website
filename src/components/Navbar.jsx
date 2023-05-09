@@ -84,7 +84,10 @@ const Navbar = ({ socket }) => {
                             : (window.location.href = "/profile-setup");
                     }
                 })
-                .catch((err) => console.log(err));
+                .catch((err) => {
+                    localStorage.removeItem("authToken");
+                    console.log(err);
+                });
         }
     }, [location]);
 
@@ -140,25 +143,25 @@ const Navbar = ({ socket }) => {
             .catch((err) => console.log(err));
     };
 
-    const notifLinkGenerator = (notif) => {
-        if (notif.type === "comment") {
-            if (notif.typeDetails.type === "project") {
-                return `/project/${notif.typeDetails.typeID}`;
-            } else if (notif.typeDetails.type === "post") {
-                return `/forum/post/${notif.typeDetails.typeID}`;
-            }
-        } else if (notif.type === "request") {
-            if (notif.typeDetails.type === "orgJoin") {
-                if (notif.meta.description.includes("invited")) {
-                    return `/org/${notif.typeDetails.typeID}`;
-                } else {
-                    return `/org/${notif.typeDetails.typeID}?requests=h`;
-                }
-            } else if (notif.typeDetails.type === "eventOrgHost") {
-                // return some link
-            }
-        }
-    };
+    // const notifLinkGenerator = (notif) => {
+    //     if (notif.type === "comment") {
+    //         if (notif.typeDetails.type === "project") {
+    //             return `/project/${notif.typeDetails.typeID}`;
+    //         } else if (notif.typeDetails.type === "post") {
+    //             return `/forum/post/${notif.typeDetails.typeID}`;
+    //         }
+    //     } else if (notif.type === "request") {
+    //         if (notif.typeDetails.type === "orgJoin") {
+    //             if (notif.meta.description.includes("invited")) {
+    //                 return `/org/${notif.typeDetails.typeID}`;
+    //             } else {
+    //                 return `/org/${notif.typeDetails.typeID}?requests=h`;
+    //             }
+    //         } else if (notif.typeDetails.type === "eventOrgHost") {
+    //             // return some link
+    //         }
+    //     }
+    // };
 
     return (
         <nav className="container nav">
@@ -210,17 +213,17 @@ const Navbar = ({ socket }) => {
                         Forum
                     </Link> */}
                     <Link
-                        to="/work"
-                        onClick={(e) => setActivePage("/work")}
+                        to="/projects"
+                        onClick={(e) => setActivePage("/projects")}
                         className={
-                            activePage === "/work"
+                            activePage === "/projects"
                                 ? "nav-link nav-link-active"
                                 : "nav-link"
                         }
                     >
-                        Work
+                        Projects
                     </Link>
-                    <Link
+                    {/* <Link
                         to="/events"
                         onClick={(e) => setActivePage("/events")}
                         className={
@@ -252,7 +255,7 @@ const Navbar = ({ socket }) => {
                         }
                     >
                         Resources
-                    </Link>
+                    </Link> */}
                     <a
                         href="https://dsc.gg/techcircuit"
                         className="disc-btn"

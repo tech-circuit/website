@@ -170,7 +170,7 @@ const FullProject = ({ project, close, socket }) => {
                     {collabList() && <h3>{collabList()}</h3>}
                 </div>
                 <a
-                    href={project._id ? `/project/${project._id}` : "/work"}
+                    href={project._id ? `/project/${project._id}` : "/projects"}
                     target="_blank"
                     rel="noreferrer"
                     className="view-proj"
