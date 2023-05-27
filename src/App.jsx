@@ -27,6 +27,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import io from "socket.io-client";
 import { useEffect, useState } from "react";
 import BASE_API_URL from "./constants";
+import "yet-another-react-lightbox/styles.css";
 
 const App = () => {
     const [socket, setSocket] = useState(null);

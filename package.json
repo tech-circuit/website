@@ -29,10 +29,10 @@
         "react-share": "^4.4.0",
         "react-spinners": "^0.11.0",
         "react-timeago": "^6.2.1",
-        "simple-react-lightbox": "^3.6.9-0",
         "socket.io-client": "4.4.0",
         "swiper": "^8.4.2",
-        "web-vitals": "^1.1.1"
+        "web-vitals": "^1.1.1",
+        "yet-another-react-lightbox": "^3.10.0"
     },
     "scripts": {
         "dev": "vite",

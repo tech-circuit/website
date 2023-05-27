@@ -1,4 +1,5 @@
-import { FaCaretDown, FaChevronLeft } from "react-icons/fa";
+import { FaBoxOpen, FaCaretDown, FaChevronLeft } from "react-icons/fa";
+import { RxOpenInNewWindow } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import getLinkLogo from "../../getLinkLogo";
 import { useState, useEffect } from "react";
@@ -6,6 +7,7 @@ import BASE_API_URL from "../../constants";
 import notyf from "../../tcNotyf";
 import { ClipLoader } from "react-spinners";
 import Share from "./Share";
+import Lightbox from "yet-another-react-lightbox";
 
 const authToken = localStorage.getItem("authToken");
 
@@ -16,6 +18,7 @@ const FullProject = ({ project, close, socket }) => {
     const [creatingComment, setCreatingComment] = useState(false);
     const [nextPage, setNextPage] = useState(0);
     const [moreComments, setMoreComments] = useState(false);
+    const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     const [totalComments, setTotalComments] = useState(0);
     // const [share, setShare] = useState(false);
@@ -136,10 +139,15 @@ const FullProject = ({ project, close, socket }) => {
         checkIfAuthenticated();
     }, [project, project._id]);
 
-    console.log(authenticated);
-
     return (
         <>
+            <Lightbox
+                open={open}
+                close={() => setOpen(false)}
+                slides={project.imgs.map((img) => {
+                    return { src: img };
+                })}
+            />
             <div className="proj-top">
                 <button className="event-back" onClick={close}>
                     <FaChevronLeft />
@@ -172,9 +180,17 @@ const FullProject = ({ project, close, socket }) => {
                     href={project._id ? `/project/${project._id}` : "/projects"}
                     target="_blank"
                     rel="noreferrer"
-                    className="view-proj"
+                    className="view-proj view-proj-standard"
                 >
                     View Project
+                </a>
+                <a
+                    href={project._id ? `/project/${project._id}` : "/projects"}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="view-proj view-proj-mobile"
+                >
+                    <RxOpenInNewWindow />
                 </a>
             </div>
             <div className="project-body">
@@ -225,35 +241,40 @@ const FullProject = ({ project, close, socket }) => {
                             <div className="project-images">
                                 {project.imgs &&
                                     project.imgs.map((img) => (
-                                        <img src={img} alt={img} />
+                                        <img
+                                            src={img}
+                                            alt={img}
+                                            onClick={() => setOpen(true)}
+                                        />
                                     ))}
                             </div>
                         </div>
                     )}
-                    <div className="fullProjectUnit">
-                        <h3>View it on</h3>
-                        <div className="project-links">
-                            {project.links && project.links.length !== 0
-                                ? project.links
-                                      .slice(0)
-                                      .reverse()
-                                      .map((link) => {
-                                          return (
-                                              <div className="project-link-wrapper">
-                                                  <a
-                                                      href={link}
-                                                      target="_blank"
-                                                      rel="noreferrer"
-                                                      className="project-link"
-                                                  >
-                                                      {getLinkLogo(link)}
-                                                  </a>
-                                              </div>
-                                          );
-                                      })
-                                : "No links to display"}
+                    {project.links && project.links.length !== 0 && (
+                        <div className="fullProjectUnit">
+                            <h3>View it on</h3>
+                            <div className="project-links">
+                                {project.links &&
+                                    project.links
+                                        .slice(0)
+                                        .reverse()
+                                        .map((link) => {
+                                            return (
+                                                <div className="project-link-wrapper">
+                                                    <a
+                                                        href={link}
+                                                        target="_blank"
+                                                        rel="noreferrer"
+                                                        className="project-link"
+                                                    >
+                                                        {getLinkLogo(link)}
+                                                    </a>
+                                                </div>
+                                            );
+                                        })}
+                            </div>
                         </div>
-                    </div>
+                    )}
                     {project.event && (
                         <div className="fullProjectUnit">
                             <h3>For Event</h3>

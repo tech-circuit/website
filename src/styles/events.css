@@ -274,7 +274,7 @@ nav {
     flex-direction: column;
     background: #fff;
     border-radius: 16px;
-    z-index: 9999999999;
+    z-index: 9999;
     transition: all 0.3s ease-in-out;
     opacity: 0;
     pointer-events: none;
@@ -291,7 +291,7 @@ nav {
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 100000000;
+    z-index: 9999;
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s ease-in-out;

@@ -234,9 +234,9 @@ button.workSortActive::after {
 }
 .projectOrg h3 {
     font-weight: 300;
-    color: #4678f9;
+    color: #747474;
     font-size: 1vw;
-    margin-top: 2vh;
+    margin-top: 0;
 }
 
 /* .projectOrg a { */
@@ -275,7 +275,9 @@ button.workSortActive::after {
     background: #fff !important;
     color: #4678f9;
 }
-
+.view-proj-mobile {
+    display: none;
+}
 .projectOrg .edit-wrap {
     margin: auto 0;
     color: #4678f9;
@@ -311,7 +313,7 @@ button.workSortActive::after {
 }
 .fullProjectUnit a {
     margin-right: 9px;
-    font-size: 1.5vw;
+    font-size: 14px;
 }
 
 .fullProjectUnitOrg {
@@ -453,7 +455,7 @@ button.workSortActive::after {
 }
 .project-body h3 {
     font-weight: 400 !important;
-    font-size: 3vh;
+    font-size: 18px;
     margin-top: 3vh;
 }
 
@@ -498,15 +500,23 @@ button.workSortActive::after {
 }
 
 .project-images img {
-    width: 150px;
-    height: 150px;
-    margin: 1vh;
-    border-radius: 10px;
+    width: 100px;
+    height: 100px;
+    margin: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.project-images img:hover {
+    filter: brightness(0.5);
 }
 
 .project-links {
     margin-top: 12px;
     display: flex;
+}
+.fullProjectUnit a {
+    font-size: 18px;
 }
 
 .project-link-wrapper {
@@ -519,13 +529,13 @@ button.workSortActive::after {
     justify-content: center;
     align-items: center;
     margin: 0 !important;
-    width: 55px;
-    height: 55px;
+    width: 42px;
+    height: 42px;
     background-color: #29313d;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 12px;
+    border-radius: 8px;
 }
 
 .project-comments {
@@ -538,11 +548,11 @@ button.workSortActive::after {
 .project-comments h3,
 .fullProjectUnit h3 {
     font-weight: 600;
-    font-size: 3vh;
+    font-size: 18px;
     margin-bottom: 3vh;
 }
 .fullProjectUnit h3 {
-    margin-bottom: 1vh;
+    margin-bottom: 0;
 }
 
 /* SHARE */
@@ -674,8 +684,24 @@ button.workSortActive::after {
     .event-back {
         font-size: 14px;
     }
+    .projectOrg {
+        padding: 20px 40px;
+    }
+    .fullProjectUnit p {
+        font-size: 12px;
+    }
+    .project-field {
+        padding: 6px 12px;
+    }
+    .fullEvent {
+        padding-bottom: 8vh;
+    }
+    .project-comments h3,
+    .fullProjectUnit h3 {
+        font-size: 14px;
+    }
 }
-@media (max-width: 800px) {
+@media (max-width: 830px) {
     .project-body {
         grid-template-columns: 1fr;
     }
@@ -684,6 +710,7 @@ button.workSortActive::after {
     }
     .project-body > div:last-child {
         border-left: none;
+        padding: 0;
     }
     .eventHead a {
         font-size: 12px;
@@ -723,6 +750,10 @@ button.workSortActive::after {
     .project-body h3 {
         font-size: 18px;
     }
+    .project-images img {
+        width: 70px;
+        height: 70px;
+    }
 }
 @media (max-width: 500px) {
     .eventHead a {
@@ -761,12 +792,80 @@ button.workSortActive::after {
         margin-bottom: 14px;
     }
     .workCard img {
-        height: 92px;
+        height: 100px;
     }
     .workCard h2 {
         font-size: 10px;
     }
     .workCard h3 {
         font-size: 6px;
+    }
+    .fullEvent {
+        width: 95vw;
+        padding: 12px 32px;
+    }
+    .fullProjectBanneri {
+        height: 20vh;
+    }
+    .projectOrg h3 {
+        font-size: 10px;
+    }
+    .event-back {
+        margin: 12px 0 !important;
+    }
+    .projectOrg {
+        padding: 14px 20px;
+        margin-bottom: 20px;
+    }
+    .project-body {
+        margin-top: 0;
+        flex-direction: column;
+    }
+    .project-body > div:first-child,
+    .project-body > div:last-child {
+        width: 100%;
+    }
+    .project-comments h3,
+    .fullProjectUnit h3,
+    .project-body h3 {
+        margin-top: 16px;
+    }
+    .view-proj-standard {
+        display: none;
+    }
+    .view-proj-mobile {
+        display: flex;
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+    }
+    .project-images img {
+        margin: 0;
+        margin-right: 10px;
+        margin-bottom: 5px;
+        width: 100px;
+        height: 100px;
+    }
+    .share-box {
+        margin: 20px 0;
+        width: 100%;
+    }
+    .share-box h3 {
+        margin: 0 !important;
+    }
+    .share-link {
+        font-size: 20px;
+        padding: 10px;
+    }
+    .fullProjectUnitOrg .tags,
+    .fullProjectUnitOrg .pFields {
+        width: 100%;
+    }
+    .project-field,
+    .project-tag {
+        margin: 4px 6px 4px 0;
     }
 }

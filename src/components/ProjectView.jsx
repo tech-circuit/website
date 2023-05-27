@@ -7,6 +7,7 @@ import getLinkLogo from "../getLinkLogo";
 import BASE_API_URL from "../constants";
 import { ClipLoader } from "react-spinners";
 import Share from "../components/utility/Share";
+import Lightbox from "yet-another-react-lightbox";
 
 const authToken = localStorage.getItem("authToken");
 
@@ -22,6 +23,8 @@ const ProjectView = ({ socket }) => {
     const [project, setProject] = useState({});
     const [authenticated, setAuthenticated] = useState(false);
     const [userId, setUserId] = useState("");
+    const [open, setOpen] = useState(false);
+    const [index, setIndex] = useState(0);
     const { projectId } = useParams();
 
     const PAGINATION_LIMIT = 5;
@@ -170,6 +173,18 @@ const ProjectView = ({ socket }) => {
 
     return (
         <>
+            <Lightbox
+                open={open}
+                close={() => setOpen(false)}
+                index={index}
+                slides={
+                    project.imgs &&
+                    project.imgs.map((img) => {
+                        return { src: img };
+                    })
+                }
+            />
+
             <div className="black-banner"></div>
             <section className="ViewProjectWrap">
                 <div className="proj-top">
@@ -273,6 +288,14 @@ const ProjectView = ({ socket }) => {
                                                 src={img}
                                                 alt={img}
                                                 key={img}
+                                                onClick={() => {
+                                                    setIndex(
+                                                        project.imgs.indexOf(
+                                                            img
+                                                        )
+                                                    );
+                                                    setOpen(true);
+                                                }}
                                             />
                                         ))}
                                 </div>
