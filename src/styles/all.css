@@ -116,7 +116,6 @@ header {
 
 .head-2 {
     transform: translateY(-2px);
-    padding: 2vh 0;
     position: sticky;
     top: 8.5vh;
     z-index: 999;
@@ -822,7 +821,7 @@ nav {
         box-shadow: 0 0 100px #29313d56;
     }
     nav {
-        height: 7vh;
+        height: 50px;
     }
     .nav-logo-holder {
         display: none;

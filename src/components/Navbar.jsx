@@ -191,6 +191,17 @@ const Navbar = ({ socket }) => {
                     }
                 >
                     <Link
+                        to="/"
+                        onClick={(e) => setActivePage("/")}
+                        className={
+                            activePage === "/"
+                                ? "nav-link nav-link-active"
+                                : "nav-link"
+                        }
+                    >
+                        Home
+                    </Link>
+                    <Link
                         to="/about"
                         onClick={(e) => setActivePage("/about")}
                         className={
@@ -293,9 +304,7 @@ const Navbar = ({ socket }) => {
                         <Link to="/profile">
                             <img
                                 src={
-                                    pfpUrl === ""
-                                        ? "/assets/userFlowIcon.svg"
-                                        : pfpUrl
+                                    pfpUrl ? pfpUrl : "/assets/userFlowIcon.svg"
                                 }
                                 className={hamActive ? "pfp pfp-active" : "pfp"}
                                 alt="pfp"

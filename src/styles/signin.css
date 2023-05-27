@@ -33,8 +33,8 @@
 
 .signup-cont h2 {
     font-weight: 500;
-    font-size: 1.5vw;
-    margin: 2vh 0;
+    font-size: 20px;
+    margin: 5px 0;
 }
 
 .signup-cont .fields {
@@ -68,8 +68,8 @@
 }
 
 .signup-cont p {
-    font-size: 1vw;
-    margin: 1.6vw 0;
+    font-size: 16px;
+    margin: 14px 0;
 }
 
 .signup-span {
@@ -117,14 +117,62 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1vw;
+    font-size: 14px;
     margin: 1vh 0;
     margin-top: 2vh;
     box-shadow: 0 0 7px rgba(116, 116, 116, 0.24);
     border-radius: 10px;
-    padding: 1.8vh 0;
+    padding: 14px 0;
 }
 .google-btn img {
     width: 26px;
     height: 26px;
+}
+@media (max-width: 1500px) {
+    .signup-cont .logo {
+        height: 50px;
+    }
+    .signup-wrap {
+        width: 700px;
+    }
+    .signup-cont .signup-main {
+        padding: 0 100px;
+    }
+    .signup-cont .hero-btn {
+        font-size: 16px;
+    }
+    .signup-cont .signup-main .signup-fields input {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+@media (max-width: 500px) {
+    .signup-cont .logo {
+        width: 70%;
+        height: auto;
+    }
+    .signup-wrap {
+        width: 90%;
+        margin: 100px auto 8vh auto;
+    }
+    .signup-cont .signup-main {
+        padding: 0 30px;
+    }
+    .signup-cont .text {
+        padding: 0 30px;
+    }
+    .signup-cont p {
+        font-size: 14px;
+    }
+    .subside-text {
+        color: rgba(116, 116, 116, 0.8);
+        font-size: 12px !important;
+        text-align: left;
+        margin-top: 10px;
+    }
+    .signup-span {
+        flex-direction: row-reverse;
+    }
+}
+@media (max-width: 1500px) {
 }

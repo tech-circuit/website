@@ -27,10 +27,10 @@ const FullProject = ({ project, close, socket }) => {
             let collabList = project.collaborators.split(",");
             let linkArray = collabList.map((collab, n) => {
                 return (
-                    <Link to="/" key={n}>
+                    <>
                         {collab}
                         {n === collabList.length - 1 ? "" : ","}
-                    </Link>
+                    </>
                 );
             });
             return linkArray;
@@ -166,7 +166,6 @@ const FullProject = ({ project, close, socket }) => {
             <div className="projectOrg">
                 <div>
                     <h1>{project && project.title}</h1>
-                    {console.log(collabList())}
                     {collabList() && <h3>{collabList()}</h3>}
                 </div>
                 <a

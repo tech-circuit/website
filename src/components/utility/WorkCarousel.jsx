@@ -27,11 +27,17 @@ const WorkCarousel = ({ fieldsAvailable, setCurrentField, currentField }) => {
         // </OwlCarousel>
 
         <Swiper
-            slidesPerView={9}
+            slidesPerView={2}
+            breakpoints={{
+                325: { slidesPerView: 3 },
+                700: { slidesPerView: 6 },
+                1000: { slidesPerView: 9 },
+            }}
             className="work-car"
             modules={[Autoplay, Navigation]}
             autoplay
             loop
+            spaceBetween={10}
             navigation={{
                 nextEl: "#carNext",
                 prevEl: "#carPrev",
@@ -72,7 +78,7 @@ function CarouselItem({ field, setCurrentField, currentField }) {
     return (
         <div
             className={`work-car-item ${
-                currentField === field && "work-car-item-active"
+                currentField === field ? "work-car-item-active" : currentField && "work-car-item-dim"
             }`}
         >
             <h1

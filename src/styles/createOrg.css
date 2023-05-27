@@ -32,9 +32,10 @@
 }
 
 .create-org-cont .left-org h3 {
-    font-size: 1vw;
+    font-size: 16px;
     font-weight: 500;
     margin-top: 2.9vh;
+    color: #747474;
 }
 
 .left-org input,
@@ -60,6 +61,16 @@
 .left-org textarea {
     height: 20vh;
 }
+.left-org .indi-wrap h3 {
+    margin-top: 0;
+    margin-right: 10px;
+    font-size: 20px;
+}
+.left-org .indi-wrap input {
+    width: 32px;
+    height: auto;
+    margin: 0;
+}
 
 input:focus,
 select:focus,
@@ -69,15 +80,8 @@ textarea:focus {
 
 .indi-wrap {
     display: flex;
-}
-
-input[type="checkbox"] {
-    width: 1.3vw;
-    height: 1.3vw;
-    display: flex;
-    margin-top: 1.7vw;
-    margin-left: 1vw;
-    cursor: pointer;
+    margin-top: 18px;
+    align-items: center;
 }
 
 .left-org textarea:focus {
@@ -445,4 +449,100 @@ select.mod-input {
     font-size: 1.2vw;
     font-weight: 300;
     margin-left: 1vw;
+}
+@media (max-width: 1100px) {
+    .create-org-cont {
+        margin-top: 100px;
+        padding: 0 80px;
+        padding-bottom: 40px;
+    }
+    .right {
+        width: 40%;
+    }
+    .create-org-cont .left-org h3 {
+        font-size: 10px;
+    }
+    .left-org .mini-img-area {
+        width: 85px;
+        height: 85px;
+    }
+}
+@media (max-width: 500px) {
+    .create-org-cont .left-org h1 {
+        font-size: 26px;
+    }
+    .create-org-cont .left-org p {
+        font-size: 12px;
+    }
+    .event-back {
+        margin-top: 16px;
+        margin-bottom: 4px;
+    }
+    .create-org-cont {
+        margin-top: 60px;
+        padding: 0 32px;
+        padding-bottom: 40px;
+        flex-direction: column;
+    }
+    .left-org,
+    .right {
+        width: 100%;
+    }
+    .left-org input,
+    .left-org select,
+    .left-org textarea {
+        font-size: 14px;
+        padding: 10px 14px;
+        width: 100%;
+    }
+    .create-org-cont .left-org h3 {
+        font-size: 12px;
+        margin-top: 12px;
+    }
+    .create-org-cont .left-org .indi-wrap h3 {
+        margin: 0;
+    }
+    .top-inline {
+        margin-top: 40px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .right h3 {
+        font-size: 14px;
+    }
+    .right span {
+        font-size: 10px;
+    }
+    .image-area {
+        width: 100%;
+        height: 200px;
+    }
+    #file-add-icon {
+        font-size: 24px;
+    }
+    .image-area h5 {
+        font-size: 14px;
+    }
+    .image-area p {
+        font-size: 12px;
+    }
+    .left-org .mini-img-area {
+        width: 110px;
+        height: 110px;
+    }
+    .left-org .image-area.mini-img-area i {
+        font-size: 16px !important;
+    }
+    .left-org .image-area.mini-img-area h5 {
+        font-size: 12px;
+    }
+    .left-org .image-area.mini-img-area p {
+        font-size: 8px;
+    }
+    .button-org .createOrgButton {
+        font-size: 14px;
+    }
+    .tags-hold {
+        width: 100%;
+    }
 }

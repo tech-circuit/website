@@ -12,7 +12,6 @@
     /* margin: 2vh 0; */
 }
 .eventHead2 {
-    padding: 2vh 9.1vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -38,11 +37,6 @@
   background: #fff;
   color: #29313d;
 } */
-.eventHead input {
-    padding: 1.4vh 1vw;
-    font-size: 1vw;
-    padding-left: 0.6vw;
-}
 .rscSearch .input img {
     width: 4.4%;
 }

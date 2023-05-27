@@ -41,7 +41,7 @@
     white-space: nowrap;
 }
 .tag-cross {
-    width: 0.5vw;
+    width: 8px;
     margin-left: 0.6vw;
     cursor: pointer;
 }
@@ -179,4 +179,32 @@
 }
 .img-sub-heading {
     margin-bottom: 2vh;
+}
+@media (max-width: 1100px) {
+    .field {
+        font-size: 12px;
+        width: 47%;
+        margin: 6px 0;
+    }
+    .field-box-top {
+        margin: 10px 0;
+        margin-bottom: 18px;
+    }
+    .field-box-top h1 {
+        font-size: 16px !important;
+        margin-right: 20px;
+    }
+    .field-box {
+        padding: 10px 20px;
+    }
+    .tag {
+        font-size: 10px;
+        padding: 0.8vh 12px;
+    }
+    .tag-cross {
+        width: 6px;
+    }
+    .tags-hold {
+        padding-left: 6px;
+    }
 }

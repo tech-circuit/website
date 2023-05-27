@@ -4,6 +4,7 @@ import notyf from "../../tcNotyf";
 import ProjectCard from "../utility/ProjectCard";
 import FullProject from "../utility/FullProject";
 import { RotateLoader } from "react-spinners";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const Projects = ({ userId }) => {
     const [projects, setProjects] = useState(["loading"]);
@@ -53,8 +54,12 @@ const Projects = ({ userId }) => {
                         <RotateLoader />
                     </div>
                 ) : projects.length === 0 ? (
-                    <div className="load-container">
+                    <div className="load-container faqs-cont">
                         <label>No Projects here!</label>
+                        <br />
+                        <Link>
+                            <button className="btn">Create Project</button>
+                        </Link>
                     </div>
                 ) : (
                     projects.map((project) => {

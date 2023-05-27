@@ -10,31 +10,29 @@
     transform: translateY(-50%);
     background: none;
     color: #85d49c;
-    font-size: 1.3vw;
+    font-size: 20px;
     cursor: pointer;
 }
 #carPrev {
     left: -3.2%;
 }
 #carNext {
-    left: 99.5%;
+    left: 101.5%;
 }
 .work-car-item {
-    max-width: 8.3vw !important;
-    height: 4.5vw !important;
+    height: 80px;
     border: 2px solid #85d49c;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 11px;
-    margin-right: 1.4vw;
-    margin-top: 1.6vh;
-    margin-bottom: 1.6vh;
+    border-radius: 10px;
+    margin: 20px 0;
     cursor: pointer;
     transition: all 0.3s;
+    padding: 0 6px;
 }
 .work-car-item h1 {
-    font-size: 0.8vw;
+    font-size: 14px;
     font-weight: 500;
     color: #85d49c;
     padding: 0 0.2vw;
@@ -43,6 +41,11 @@
 }
 .work-car-item-active {
     background: #85d49c;
+}
+.work-car-item-dim {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
 }
 .work-car-item-active h1 {
     color: #29313d;
@@ -86,7 +89,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 4vh 0;
+    margin: 30px 0;
 }
 .workTitle {
     font-weight: 600;
@@ -227,7 +230,7 @@ button.workSortActive::after {
 
 .projectOrg h1 {
     font-weight: 400;
-    font-size: 2.5vw;
+    font-size: 26px;
 }
 .projectOrg h3 {
     font-weight: 300;
@@ -255,8 +258,9 @@ button.workSortActive::after {
 .view-proj {
     background-color: #4678f9 !important;
     color: white;
-    padding: 1vh 4vw;
-    font-size: 1vw;
+    padding: 1vh 40px;
+    font-size: 18px;
+    white-space: nowrap;
     font-weight: 300;
     background: none;
     border-radius: 5px;
@@ -465,19 +469,6 @@ button.workSortActive::after {
     width: 40%;
 }
 
-@media (max-width: 800px) {
-    .project-body {
-        grid-template-columns: 1fr;
-    }
-    .project-body > div:first-child {
-        border-right: none;
-    }
-
-    .project-body > div:last-child {
-        border-left: none;
-    }
-}
-
 .project-field {
     padding: 8px 20px;
     border: 2px solid #4678f9;
@@ -546,7 +537,7 @@ button.workSortActive::after {
 
 .project-comments h3,
 .fullProjectUnit h3 {
-    font-weight: 400;
+    font-weight: 600;
     font-size: 3vh;
     margin-bottom: 3vh;
 }
@@ -565,8 +556,7 @@ button.workSortActive::after {
 }
 .share-box {
     border-radius: 14px;
-    padding: 20px 26px;
-    padding-right: 46px;
+    padding: 14px 22px;
     box-shadow: 0 4px 30px rgba(41, 49, 61, 0.08);
     margin-top: 3vh;
     width: fit-content;
@@ -606,7 +596,7 @@ button.workSortActive::after {
     font-size: 26px;
     justify-content: center;
     align-items: center;
-    margin: 0 0.3vw;
+    margin: 0 3px;
     margin-bottom: 0.6vw;
     transition: all 0.2s;
 }
@@ -621,4 +611,162 @@ button.workSortActive::after {
 }
 .proj-com-cont {
     margin-bottom: 5vh;
+}
+
+.eventHead2 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.share-link {
+    font-size: 20px;
+}
+@media (max-width: 1100px) {
+    .work-car-item {
+        height: 60px;
+        border-radius: 7px;
+    }
+    .work-car-item h1 {
+        font-size: 10px;
+    }
+    .eventHead2 {
+        padding-top: 0;
+        padding-bottom: 20px;
+    }
+    #carPrev,
+    #carNext {
+        font-size: 16px;
+    }
+    .projects h1 {
+        font-size: 22px;
+    }
+    .projects {
+        margin: 14px 0;
+    }
+    .workCard {
+        width: 110px;
+        margin: 0 14px;
+    }
+    .workCard img {
+        height: 110px;
+    }
+    .workCard h2 {
+        font-size: 12px;
+        margin: 2px 0;
+    }
+    .workCard h3 {
+        font-size: 8px;
+    }
+    .share-link {
+        font-size: 16px;
+        padding: 8px;
+        border-radius: 8px;
+    }
+    .fullEvent {
+        width: 85vw;
+    }
+    .projectOrg h1 {
+        font-size: 20px;
+    }
+    .view-proj {
+        font-size: 12px;
+        padding: 8px 22px;
+    }
+    .event-back {
+        font-size: 14px;
+    }
+}
+@media (max-width: 800px) {
+    .project-body {
+        grid-template-columns: 1fr;
+    }
+    .project-body > div:first-child {
+        border-right: none;
+    }
+    .project-body > div:last-child {
+        border-left: none;
+    }
+    .eventHead a {
+        font-size: 12px;
+    }
+    #carPrev,
+    #carNext {
+        font-size: 14px;
+    }
+    .projects h1 {
+        font-size: 18px;
+    }
+    .projects {
+        margin: 10px 0;
+    }
+    .workCard {
+        width: 96px;
+        margin: 0 10px;
+    }
+    .workCard img {
+        height: 96px;
+    }
+    .workCard h2 {
+        font-size: 10px;
+    }
+    .workCard h3 {
+        font-size: 6px;
+    }
+
+    .projectOrg {
+        padding: 20px 30px;
+    }
+    .projectOrg h1 {
+        font-size: 20px;
+    }
+    .project-comments h3,
+    .fullProjectUnit h3,
+    .project-body h3 {
+        font-size: 18px;
+    }
+}
+@media (max-width: 500px) {
+    .eventHead a {
+        font-size: 10px;
+        padding: 10px;
+    }
+    .eventHead a img {
+        width: 12px;
+    }
+    .head-1 .forumTitle {
+        font-size: 14px;
+        padding-right: 0;
+    }
+    .carHold {
+        padding: 0 12px;
+    }
+    #carNext {
+        left: 100%;
+    }
+    .work-car-item {
+        height: 50px;
+        margin: 16px 0;
+    }
+    .eventHead2 {
+        padding-top: 4px;
+    }
+    .projects h1 {
+        font-size: 18px;
+    }
+    .projects {
+        margin: 10px 0;
+    }
+    .workCard {
+        width: 30%;
+        margin: 0 1.6%;
+        margin-bottom: 14px;
+    }
+    .workCard img {
+        height: 92px;
+    }
+    .workCard h2 {
+        font-size: 10px;
+    }
+    .workCard h3 {
+        font-size: 6px;
+    }
 }

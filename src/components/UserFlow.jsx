@@ -453,7 +453,11 @@ const Component = ({ pfp, user, socket }) => {
                     </div>
                 </div>
                 <div className="basic-right">
-                    <img src={pfp} alt="pfp" id="pfpUpload" />
+                    <img
+                        src={pfp ? pfp : "/assets/userFlowIcon.svg"}
+                        alt="pfp"
+                        id="pfpUpload"
+                    />
                     <p>We recommend an image of 500x500px</p>
                     <div className="basic-btn-hold">
                         <label className="pfp-edit" htmlFor="pfpInp">
@@ -647,7 +651,7 @@ const Component = ({ pfp, user, socket }) => {
             >
                 <img src="/assets/flow.png" alt="flow" />
                 <h1>Post a project</h1>
-                <p>
+                <p style={{ textAlign: "center" }}>
                     Create a project to show off your skills to the community ;)
                 </p>
 

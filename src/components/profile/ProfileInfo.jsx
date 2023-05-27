@@ -308,7 +308,7 @@ const ProfileInfo = () => {
                                 name="about"
                                 defaultValue={user.about ? user.about : ""}
                                 onChange={(eve) => updateUser(eve)}
-                                placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictum eu, aenean porta neque ante tellus. Ipsum consequat semper amet nullam proin. Pretium eget ut et blandit cursus. Mattis malesuada at semper cursus."
+                                placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictum eu, aenean porta neque ante tellus."
                             ></textarea>
                         </div>
 

@@ -60,29 +60,28 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    font-size: 1vw;
+    font-size: 16px;
     background: #fff;
-    padding: 0 1.2vw;
-    padding-left: 1vw;
+    padding: 0 14px;
+    padding-left: 12px;
     border-radius: 6px;
-    width: 30vw;
+    width: 26vw;
 }
-
-.input svg {
-    color: #747474;
-    font-size: 1.6vw;
-    font-weight: 100;
-}
-
 .input input {
     height: 100%;
     width: 100%;
     outline: none;
-    font-size: 1vw;
     font-weight: 300;
-    padding: 0 0.6vw;
+    padding: 14px 8px;
+    font-size: 16px;
+    padding-left: 10px;
     background: transparent;
     border: none;
+}
+.input svg {
+    color: #747474;
+    font-size: 14px;
+    font-weight: 100;
 }
 
 .input input:focus {
@@ -924,9 +923,9 @@ i {
     cursor: pointer;
 }
 /* MEDIA */
-@media (max-width: 1050px) {
+@media (max-width: 1100px) {
     .head-1 .forumTitle {
-        font-size: 3vw;
+        font-size: 20px;
     }
     .head-1 p {
         font-size: 1.6vw;
@@ -1009,14 +1008,23 @@ i {
     .tox .tox-sidebar-wrap {
         height: 10vh;
     }
+
+    .input {
+        font-size: 12px;
+        padding: 0 10px;
+        padding-left: 10px;
+        width: 34vw;
+    }
+    .input input {
+        padding: 12px 8px;
+        font-size: 12px;
+        padding-left: 10px;
+    }
 }
 
 @media (max-width: 800px) {
     .search-box {
         height: 3.6vh;
-    }
-    .head-1 .forumTitle {
-        font-size: 4vw;
     }
     .head-1 p {
         font-size: 2vw;
@@ -1063,7 +1071,7 @@ i {
         width: 20% !important;
     }
     .head-1 {
-        padding-top: calc(7vh + 36px);
+        padding-top: 70px;
     }
     .head-2 {
         top: 7vh;
@@ -1227,6 +1235,17 @@ i {
     #delete-comment {
         font-size: 1.6vw;
     }
+
+    .input {
+        font-size: 12px;
+        padding-left: 10px;
+        width: 36vw;
+    }
+    .input input {
+        padding: 10px 6px;
+        font-size: 12px;
+        padding-left: 10px;
+    }
 }
 
 @media (max-width: 500px) {
@@ -1234,7 +1253,6 @@ i {
         height: 9vh;
     }
     .head-1 .forumTitle {
-        font-size: 5vw;
         width: 90%;
     }
     .head-1 p {
@@ -1344,7 +1362,6 @@ i {
     }
     .head-2 {
         top: 7vh;
-        padding-right: 10vw;
     }
     .forumHeader.head-2 {
         padding-top: 1.4vh !important;
@@ -1524,5 +1541,17 @@ i {
     }
     #delete-comment span {
         display: none;
+    }
+
+    .input {
+        width: 50vw;
+    }
+    .input input {
+        padding: 12px 6px;
+        font-size: 10px;
+        padding-left: 6px;
+    }
+    .input img {
+        width: 12px !important;
     }
 }

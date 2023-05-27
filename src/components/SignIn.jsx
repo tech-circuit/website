@@ -91,7 +91,7 @@ function SignIn() {
                         />
                         <h2 style={{ fontWeight: "normal" }}>Login</h2>
                         <p style={{ color: "red" }}>{message}</p>
-                        <div className="fields sign-fields">
+                        <div className="fields sign-fields signup-fields">
                             <input
                                 type="text"
                                 name="email"

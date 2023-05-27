@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/signin.css";
-import "../styles/all.css";
 import Footer from "./Footer";
 import { useState } from "react";
 import GoogleLoginButton from "./GoogleLoginButton";
@@ -27,10 +26,11 @@ function SignUp() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("submitting");
         setLoading(true);
-        setFormErrors(validate(formValues));
-        if (Object.keys(formErrors).length === 0) {
+        const localFormErrs = validate(formValues);
+        setFormErrors(localFormErrs);
+
+        if (Object.keys(localFormErrs).length === 0) {
             try {
                 const res = await (
                     await fetch(`${BASE_API_URL}/auth/signup`, {
@@ -45,6 +45,7 @@ function SignUp() {
                         }),
                     })
                 ).json();
+
                 if (!res.success) {
                     setMessage(res.error);
                     return notyf.error(res.error);
@@ -98,7 +99,6 @@ function SignUp() {
         if (values.password.length < 4) {
             errors.password = "Password must be more than 4 characters!";
         }
-        console.log(errors);
         return errors;
     };
 
@@ -106,7 +106,6 @@ function SignUp() {
         <>
             <div className="signup-cont">
                 <div className="signup-wrap">
-                    {/* <pre>{JSON.stringify(formValues)}</pre> */}
                     <form className="signup-main" onSubmit={handleSubmit}>
                         <img
                             src="/assets/fulllogo.png"
@@ -183,7 +182,9 @@ function SignUp() {
                                 Login
                             </a>
                         </p>
-                        <p>
+                        <br />
+
+                        <p className="subside-text">
                             By clicking Sign Up, you agree to our{" "}
                             <span className="underlined-link">
                                 Privacy Poicy
@@ -200,7 +201,7 @@ function SignUp() {
                                 name="updates"
                             />
                             &nbsp; &nbsp;
-                            <p>
+                            <p className="subside-text">
                                 Recieve ocassional updates and content from
                                 techCircuit via e-mail.
                             </p>
