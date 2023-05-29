@@ -29,7 +29,7 @@ const WorkCarousel = ({ fieldsAvailable, setCurrentField, currentField }) => {
         <Swiper
             slidesPerView={2}
             breakpoints={{
-                325: { slidesPerView: 3 },
+                375: { slidesPerView: 3 },
                 700: { slidesPerView: 6 },
                 1000: { slidesPerView: 9 },
             }}
@@ -78,7 +78,9 @@ function CarouselItem({ field, setCurrentField, currentField }) {
     return (
         <div
             className={`work-car-item ${
-                currentField === field ? "work-car-item-active" : currentField && "work-car-item-dim"
+                currentField === field
+                    ? "work-car-item-active"
+                    : currentField && "work-car-item-dim"
             }`}
         >
             <h1

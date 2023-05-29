@@ -42,12 +42,7 @@
     font-size: 1vw;
     color: #fff;
     padding: 1.4vh 2vw;
-    background: linear-gradient(
-            91.38deg,
-            rgba(255, 255, 255, 0.18) 16.97%,
-            rgba(255, 255, 255, 0) 100%
-        ),
-        #4678f9;
+    background: #4678f9;
     border-radius: 5px;
     display: flex;
     justify-content: center;

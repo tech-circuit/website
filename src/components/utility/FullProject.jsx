@@ -144,9 +144,12 @@ const FullProject = ({ project, close, socket }) => {
             <Lightbox
                 open={open}
                 close={() => setOpen(false)}
-                slides={project.imgs.map((img) => {
-                    return { src: img };
-                })}
+                slides={
+                    project.imgs &&
+                    project.imgs.map((img) => {
+                        return { src: img };
+                    })
+                }
             />
             <div className="proj-top">
                 <button className="event-back" onClick={close}>
@@ -176,22 +179,26 @@ const FullProject = ({ project, close, socket }) => {
                     <h1>{project && project.title}</h1>
                     {collabList() && <h3>{collabList()}</h3>}
                 </div>
-                <a
-                    href={project._id ? `/project/${project._id}` : "/projects"}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="view-proj view-proj-standard"
-                >
-                    View Project
-                </a>
-                <a
-                    href={project._id ? `/project/${project._id}` : "/projects"}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="view-proj view-proj-mobile"
-                >
-                    <RxOpenInNewWindow />
-                </a>
+                {project && project.mainlink && (
+                    <>
+                        <a
+                            href={project.mainlink ? project.mainlink : ""}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="view-proj view-proj-standard"
+                        >
+                            View Project
+                        </a>
+                        <a
+                            href={project.mainlink ? project.mainlink : ""}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="view-proj view-proj-mobile"
+                        >
+                            <RxOpenInNewWindow />
+                        </a>
+                    </>
+                )}
             </div>
             <div className="project-body">
                 <div className="project-content">
@@ -275,6 +282,7 @@ const FullProject = ({ project, close, socket }) => {
                             </div>
                         </div>
                     )}
+
                     {project.event && (
                         <div className="fullProjectUnit">
                             <h3>For Event</h3>
@@ -283,6 +291,7 @@ const FullProject = ({ project, close, socket }) => {
                             </Link>
                         </div>
                     )}
+
                     <Share />
                 </div>
             </div>
@@ -314,6 +323,9 @@ const FullProject = ({ project, close, socket }) => {
                                 ></textarea>
                             </div>
                             <div className="fullProjectButtons">
+                                <button className="post-pcancel-btn">
+                                    Cancel
+                                </button>
                                 <button
                                     className="post-pcomment-btn"
                                     id="work-comment-btn"
@@ -323,9 +335,6 @@ const FullProject = ({ project, close, socket }) => {
                                     {creatingComment
                                         ? "Loading..."
                                         : "Post Comment"}
-                                </button>
-                                <button className="post-pcancel-btn">
-                                    Cancel
                                 </button>
                             </div>
                         </div>

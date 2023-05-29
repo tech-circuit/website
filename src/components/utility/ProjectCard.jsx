@@ -10,7 +10,7 @@ const ProjectCard = ({ project, view, id, user = false }) => {
     return (
         <>
             <Link
-                onClick={!user && openProject}
+                onClick={!user && window.innerWidth > 450 && openProject}
                 to={
                     user
                         ? `/edit-project/${project._id}`

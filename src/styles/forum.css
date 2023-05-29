@@ -421,10 +421,6 @@
 
 /* Add Comment ------------------------------------------------------------------- */
 
-.add-comment {
-    margin-bottom: 5vh;
-}
-
 .add-comment form {
     display: flex;
     flex-direction: column;
@@ -1092,8 +1088,8 @@ i {
     }
     .comm-icon,
     .add-comm-top img {
-        width: 5vw;
-        height: 5vw;
+        width: 32px;
+        height: 32px;
         margin-top: 0;
         margin-right: 2vw;
     }
@@ -1385,8 +1381,8 @@ i {
     }
     .comm-icon,
     .add-comm-top img {
-        width: 9vw;
-        height: 9vw;
+        width: 32px;
+        height: 32px;
         margin-top: 0;
         margin-right: 3vw;
     }

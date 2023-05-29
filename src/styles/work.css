@@ -149,8 +149,9 @@ button.workSortActive::after {
 }
 .workCard {
     width: 12%;
-    margin: 0 1.6%;
+    margin: 0 2.333%;
     cursor: pointer;
+    margin-bottom: 32px;
 }
 .workCard img {
     width: 100%;
@@ -169,7 +170,7 @@ button.workSortActive::after {
 .workCard h2 {
     font-size: 1vw;
     font-weight: 500;
-    margin: 0.4vh 0;
+    margin: 0;
 }
 .workCard h3 {
     font-size: 0.75vw;
@@ -188,7 +189,7 @@ button.workSortActive::after {
     align-items: center;
     color: white;
     text-decoration: none;
-    font-size: 1vw;
+    font-size: 14px;
     transition: all 0.3s;
     margin-bottom: 2vh;
 }
@@ -253,6 +254,7 @@ button.workSortActive::after {
 .edit-wrap,
 .edit-wrap a {
     color: #fff;
+    font-size: 14px;
 }
 
 .view-proj {
@@ -341,7 +343,7 @@ button.workSortActive::after {
 
 .fullProjectUnit .comment-text {
     width: 100%;
-    height: 20vh;
+    height: 10vh;
     border: 1px solid #c4c4c4;
     box-sizing: border-box;
     border-radius: 5px;
@@ -370,6 +372,7 @@ button.workSortActive::after {
     transition: all 0.3s;
     background: #4678f9;
     align-self: right;
+    margin-left: 10px;
 }
 
 .post-pcancel-btn {
@@ -382,18 +385,17 @@ button.workSortActive::after {
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s;
-    margin-left: 0.5vw;
 }
 
 .proj-com-card {
     display: flex;
-    margin-top: 3vh;
+    margin-top: 24px;
 }
 
 .proj-com-card img {
     border-radius: 100%;
-    width: 3.4vw;
-    height: 3.4vw;
+    width: 42px;
+    height: 42px;
 }
 
 .proj-com-text {
@@ -402,15 +404,15 @@ button.workSortActive::after {
 }
 
 .proj-com-text h4 {
-    font-size: 1.1vw;
+    font-size: 14px;
     font-weight: 500;
     color: #4678f9;
 }
 
 .proj-com-text p {
-    color: #747474;
-    font-size: 1vw;
-    font-weight: 300;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 0;
 }
 
 .more-com-wrap {
@@ -432,7 +434,6 @@ button.workSortActive::after {
 /* Separate page styles */
 .black-banner {
     position: absolute;
-    top: 65px;
     z-index: -1;
     width: 100%;
     height: 35vh;
@@ -538,21 +539,19 @@ button.workSortActive::after {
     border-radius: 8px;
 }
 
-.project-comments {
-    padding: 36px 48px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.07);
-    border-radius: 20px;
-    margin-top: 5vh;
-}
-
 .project-comments h3,
 .fullProjectUnit h3 {
-    font-weight: 600;
+    font-weight: 400;
     font-size: 18px;
     margin-bottom: 3vh;
 }
 .fullProjectUnit h3 {
     margin-bottom: 0;
+}
+.project-comments h3,
+.project-comment-section h3 {
+    font-weight: 400 !important;
+    margin-bottom: 14px !important;
 }
 
 /* SHARE */
@@ -620,7 +619,7 @@ button.workSortActive::after {
     font-size: 2vh;
 }
 .proj-com-cont {
-    margin-bottom: 5vh;
+    margin-bottom: 10px;
 }
 
 .eventHead2 {
@@ -630,7 +629,21 @@ button.workSortActive::after {
 .share-link {
     font-size: 20px;
 }
+.view-project-chev {
+    display: none;
+}
+.view-all {
+    font-size: 14px;
+    color: #4678f9;
+    margin-left: 20px;
+}
+.view-all:hover {
+    text-decoration: underline;
+}
 @media (max-width: 1100px) {
+    .project-body {
+        margin-top: 20px;
+    }
     .work-car-item {
         height: 60px;
         border-radius: 7px;
@@ -686,9 +699,11 @@ button.workSortActive::after {
     }
     .projectOrg {
         padding: 20px 40px;
+        margin: 0;
     }
     .fullProjectUnit p {
         font-size: 12px;
+        padding-right: 40px;
     }
     .project-field {
         padding: 6px 12px;
@@ -699,6 +714,24 @@ button.workSortActive::after {
     .project-comments h3,
     .fullProjectUnit h3 {
         font-size: 14px;
+    }
+    .ViewProjectWrap {
+        padding: 0 30px;
+        padding-top: 40px;
+    }
+    .project-images img {
+        width: 70px;
+        height: 70px;
+        margin: 5px;
+    }
+    .share-box h3 {
+        font-size: 14px !important;
+    }
+    .proj-com-text h4 {
+        font-size: 12px;
+    }
+    .fullProjectUnit .comment-text {
+        font-size: 12px;
     }
 }
 @media (max-width: 830px) {
@@ -728,6 +761,7 @@ button.workSortActive::after {
     .workCard {
         width: 96px;
         margin: 0 10px;
+        margin-bottom: 18px;
     }
     .workCard img {
         height: 96px;
@@ -753,6 +787,28 @@ button.workSortActive::after {
     .project-images img {
         width: 70px;
         height: 70px;
+    }
+    .fullProjectUnit {
+        margin-top: 30px;
+    }
+    .post-pcomment-btn {
+        font-size: 10px;
+        padding: 6px 14px;
+    }
+    .post-pcancel-btn {
+        font-size: 10px;
+        padding: 6px 14px;
+    }
+    .proj-com-card img {
+        width: 32px;
+        height: 32px;
+    }
+    .proj-com-text h4 {
+        font-size: 10px;
+    }
+    .fullProjectUnit p {
+        font-size: 11px;
+        padding-right: 0;
     }
 }
 @media (max-width: 500px) {
@@ -781,31 +837,39 @@ button.workSortActive::after {
         padding-top: 4px;
     }
     .projects h1 {
-        font-size: 18px;
+        font-size: 22px;
     }
     .projects {
         margin: 10px 0;
     }
     .workCard {
-        width: 30%;
-        margin: 0 1.6%;
-        margin-bottom: 14px;
+        width: 45%;
+        margin: 0 2.5%;
+        margin-bottom: 20px;
     }
     .workCard img {
-        height: 100px;
+        height: 18vh;
     }
     .workCard h2 {
-        font-size: 10px;
+        font-size: 14px;
+        margin: 0;
     }
     .workCard h3 {
-        font-size: 6px;
+        font-size: 12px;
+        margin: 0;
     }
     .fullEvent {
         width: 95vw;
         padding: 12px 32px;
     }
     .fullProjectBanneri {
-        height: 20vh;
+        height: calc(35vh - 50px);
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100vw;
+        border-radius: 0;
+        z-index: -1;
     }
     .projectOrg h3 {
         font-size: 10px;
@@ -813,9 +877,36 @@ button.workSortActive::after {
     .event-back {
         margin: 12px 0 !important;
     }
+    .ViewProjectWrap {
+        padding: 0 10px;
+    }
     .projectOrg {
-        padding: 14px 20px;
+        padding: 18px 32px;
+        width: 100%;
         margin-bottom: 20px;
+        margin-top: 28vh;
+        border-radius: 4px;
+        flex-direction: column;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    }
+    .projectOrg h1 {
+        font-size: 24px;
+    }
+    .projectOrg h3 {
+        font-size: 14px;
+        margin: 10px 0;
+    }
+    .view-proj {
+        margin: 6px 0;
+        padding: 10px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .view-project-chev {
+        display: flex;
+        align-items: center;
     }
     .project-body {
         margin-top: 0;
@@ -824,11 +915,15 @@ button.workSortActive::after {
     .project-body > div:first-child,
     .project-body > div:last-child {
         width: 100%;
+        padding: 0;
     }
     .project-comments h3,
     .fullProjectUnit h3,
     .project-body h3 {
-        margin-top: 16px;
+        margin-top: 0;
+    }
+    .project-images {
+        margin-top: 10px;
     }
     .view-proj-standard {
         display: none;
@@ -852,9 +947,13 @@ button.workSortActive::after {
     .share-box {
         margin: 20px 0;
         width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0;
     }
     .share-box h3 {
         margin: 0 !important;
+        font-size: 18px !important;
     }
     .share-link {
         font-size: 20px;
@@ -867,5 +966,27 @@ button.workSortActive::after {
     .project-field,
     .project-tag {
         margin: 4px 6px 4px 0;
+    }
+    .proj-top {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: #29313d;
+        width: 100vw;
+        height: 50px;
+        z-index: 10000;
+        padding: 0 20px;
+    }
+    .project-back,
+    .edit-wrap,
+    .edit-wrap a {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        color: #eee;
+    }
+    .edit-wrap {
+        display: flex;
+        align-items: center;
     }
 }

@@ -8,7 +8,7 @@ import notyf from "../tcNotyf";
 import WorkCarousel from "./utility/WorkCarousel";
 import FullProject from "./utility/FullProject";
 import Search from "./utility/Search";
-import Filter from "./utility/Filter";
+import { Link } from "react-router-dom";
 import { useFieldsAvailable } from "./utility/useFieldsAvailable";
 
 const Projects = ({ socket }) => {
@@ -200,7 +200,6 @@ const Projects = ({ socket }) => {
                                     view={view}
                                     key={project._id}
                                     id={id}
-                                    x
                                 />
                             );
                         })}
@@ -235,9 +234,9 @@ const Projects = ({ socket }) => {
 
 function ProjectView({ view, id, fieldsAvailable }) {
     const [projects, setProjects] = useState([]);
-    const newProjects = [...projects]
-        .sort((p1, p2) => new Date(p2.createdAt) - new Date(p1.createdAt))
-        .slice(0, 10);
+    const [viewAll, setViewAll] = useState("");
+    const newProjects = [...projects];
+
     const projectsByFields = fieldsAvailable.map((field) => {
         return {
             title: field,
@@ -265,37 +264,90 @@ function ProjectView({ view, id, fieldsAvailable }) {
     return (
         <>
             <section className="projects container firstProjSec">
-                <h1>New</h1>
-                <div className="workCards">
-                    {newProjects.map((project) => {
-                        return (
-                            <ProjectCard
-                                project={project}
-                                view={view}
-                                key={project._id}
-                                id={id}
-                            />
-                        );
-                    })}
-                </div>
-            </section>
-            {projectsByFields.map((field) =>
-                field.projects.length !== 0 ? (
-                    <section
-                        key={field.title}
-                        className="projects container firstProjSec"
+                <h1>
+                    New{" "}
+                    <button
+                        onClick={() =>
+                            viewAll === "New"
+                                ? setViewAll("")
+                                : setViewAll("New")
+                        }
+                        className="view-all"
                     >
-                        <h1>{field.title}</h1>
-                        <div className="workCards">
-                            {field.projects.map((project) => {
-                                return (
+                        {viewAll === "New" ? "Show less" : "View All"}
+                    </button>
+                </h1>
+                <div className="workCards">
+                    {newProjects.map((project, i) => {
+                        if (viewAll === "New") {
+                            return (
+                                <ProjectCard
+                                    project={project}
+                                    view={view}
+                                    key={project._id}
+                                    id={id}
+                                />
+                            );
+                        } else {
+                            return (
+                                i < 6 && (
                                     <ProjectCard
                                         project={project}
                                         view={view}
                                         key={project._id}
                                         id={id}
                                     />
-                                );
+                                )
+                            );
+                        }
+                    })}
+                </div>
+            </section>
+
+            {projectsByFields.map((field) =>
+                field.projects.length !== 0 ? (
+                    <section
+                        key={field.title}
+                        className="projects container firstProjSec"
+                    >
+                        <h1>
+                            {field.title}{" "}
+                            <button
+                                onClick={() =>
+                                    viewAll === field.title
+                                        ? setViewAll("")
+                                        : setViewAll(field.title)
+                                }
+                                className="view-all"
+                            >
+                                {viewAll === field.title
+                                    ? "Show less"
+                                    : "View All"}
+                            </button>
+                        </h1>
+                        <div className="workCards">
+                            {field.projects.map((project, i) => {
+                                if (viewAll === field.title) {
+                                    return (
+                                        <ProjectCard
+                                            project={project}
+                                            view={view}
+                                            key={project._id}
+                                            id={id}
+                                        />
+                                    );
+                                } else {
+                                    return (
+                                        i < 6 && (
+                                            <ProjectCard
+                                                project={project}
+                                                view={view}
+                                                key={project._id}
+                                                id={id}
+                                            />
+                                        )
+                                    );
+                                }
                             })}
                         </div>
                     </section>

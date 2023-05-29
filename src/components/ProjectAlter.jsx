@@ -54,7 +54,7 @@ const ProjectAlter = ({ edit }) => {
     };
 
     const setImage = async (inputFile, isCover) => {
-        if (imgUrls.length < 7) {
+        if (imgUrls.length < 6 || isCover) {
             if (
                 inputFile.name.toLowerCase().endsWith(".jpg") ||
                 inputFile.name.toLowerCase().endsWith(".png") ||
@@ -93,7 +93,7 @@ const ProjectAlter = ({ edit }) => {
                 };
             }
         } else {
-            notyf.error("Only 6 images allowed");
+            notyf.error("Only 5 images allowed");
         }
     };
 
@@ -106,14 +106,19 @@ const ProjectAlter = ({ edit }) => {
     };
 
     const submit = async () => {
-        const title = document.querySelector("input[name='title']").value;
-        const description = document.querySelector(
-            "textarea[name='description']"
-        ).value;
+        const title = document
+            .querySelector("input[name='title']")
+            .value.trim();
+        const description = document
+            .querySelector("textarea[name='description']")
+            .value.trim();
         const event = document.querySelector("input[name='event']").value;
-        const collaborators = document.querySelector(
-            "input[name='collaborators']"
-        ).value;
+        const collaborators = document
+            .querySelector("input[name='collaborators']")
+            .value.trim();
+        const mainlink = document
+            .querySelector("input[name='mainlink']")
+            .value.trim();
 
         const reqList = ["title", "description"];
         if (validate(reqList)) {
@@ -126,6 +131,7 @@ const ProjectAlter = ({ edit }) => {
                 commentsEnabled: comments,
                 event,
                 collaborators,
+                mainlink,
                 cover,
                 imgs: imgUrls,
             };
@@ -208,6 +214,7 @@ const ProjectAlter = ({ edit }) => {
                 setTags(data.project.tags);
                 setFields(data.project.fields);
                 setProject(data.project);
+                setComments(data.project.commentsEnabled);
             } else {
                 window.location.href = "/404";
             }
@@ -284,9 +291,64 @@ const ProjectAlter = ({ edit }) => {
                         placeholder="Ishaan Das, Ribhav Sharma"
                         defaultValue={project ? project.collaborators : ""}
                     ></input>
+
+                    <h3>Main Link / Hosted Project</h3>
+                    <input
+                        type="text"
+                        name="mainlink"
+                        autoComplete="off"
+                        placeholder="https://my-cool-project.com/"
+                        defaultValue={project ? project.mainlink : ""}
+                    ></input>
+
+                    <h3>Add other links</h3>
+                    <div className="create-links input">
+                        <div className="link-unit" id="add-link-unit">
+                            <FaLink className="create-link-brand" />
+                            <input
+                                maxLength="200"
+                                type="text"
+                                placeholder="eg. Behance, Github"
+                                id="add-link-inp"
+                                autoComplete="off"
+                            />
+                            <FaPlusCircle
+                                className="create-link-opt"
+                                onClick={addLink}
+                            />
+                        </div>
+                        {links.map((link) => {
+                            return (
+                                <div className="link-unit" key={link}>
+                                    {linksObj[link]}
+                                    <input
+                                        maxLength="200"
+                                        type="text"
+                                        placeholder="example: https://github.com/kevin"
+                                        value={link}
+                                        readOnly
+                                        key={`link-${links.indexOf(link)}`}
+                                        id={`link-${links.indexOf(link)}`}
+                                    />
+                                    <FaTrash
+                                        className="create-link-opt create-link-delete"
+                                        onClick={() =>
+                                            removeLink(
+                                                document.querySelector(
+                                                    `#link-${links.indexOf(
+                                                        link
+                                                    )}`
+                                                ).value
+                                            )
+                                        }
+                                    />
+                                </div>
+                            );
+                        })}
+                    </div>
+
                     <h3>Project Media</h3>
                     <p className="img-sub-heading">Images should be PNG/JPG</p>
-
                     <Reorder.Group
                         values={imgUrls}
                         onReorder={setImgUrls}
@@ -344,51 +406,6 @@ const ProjectAlter = ({ edit }) => {
                         ))}
                     </Reorder.Group>
 
-                    <h3>Add links</h3>
-                    <div className="create-links input">
-                        <div className="link-unit" id="add-link-unit">
-                            <FaLink className="create-link-brand" />
-                            <input
-                                maxLength="200"
-                                type="text"
-                                placeholder="example: https://github.com/kevin"
-                                id="add-link-inp"
-                                autoComplete="off"
-                            />
-                            <FaPlusCircle
-                                className="create-link-opt"
-                                onClick={addLink}
-                            />
-                        </div>
-                        {links.map((link) => {
-                            return (
-                                <div className="link-unit" key={link}>
-                                    {linksObj[link]}
-                                    <input
-                                        maxLength="200"
-                                        type="text"
-                                        placeholder="example: https://github.com/kevin"
-                                        value={link}
-                                        readOnly
-                                        key={`link-${links.indexOf(link)}`}
-                                        id={`link-${links.indexOf(link)}`}
-                                    />
-                                    <FaTrash
-                                        className="create-link-opt create-link-delete"
-                                        onClick={() =>
-                                            removeLink(
-                                                document.querySelector(
-                                                    `#link-${links.indexOf(
-                                                        link
-                                                    )}`
-                                                ).value
-                                            )
-                                        }
-                                    />
-                                </div>
-                            );
-                        })}
-                    </div>
                     <Fields setFields={setFields} fields={fields} />
                     <Tags setTags={setTags} tags={tags} />
                     <p className="input-sub-text">

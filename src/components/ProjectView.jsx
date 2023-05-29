@@ -1,5 +1,13 @@
 import "../styles/work.css";
-import { FaChevronLeft, FaCaretDown, FaPen } from "react-icons/fa";
+import {
+    FaChevronLeft,
+    FaCaretDown,
+    FaPen,
+    FaChevronRight,
+    FaBalanceScaleRight,
+    FaLongArrowAltRight,
+    FaArrowRight,
+} from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import notyf from "../tcNotyf";
@@ -221,12 +229,15 @@ const ProjectView = ({ socket }) => {
                         )}
                     </div>
                     <a
-                        href={project.links ? project.links[0] : ""}
+                        href={project.mainlink ? project.mainlink : ""}
                         target="_blank"
                         rel="noreferrer"
                         className="view-proj"
                     >
-                        Main link to Project
+                        <span>View Project</span>
+                        <span className="view-project-chev">
+                            <FaArrowRight />
+                        </span>
                     </a>
                 </div>
 
@@ -327,8 +338,6 @@ const ProjectView = ({ socket }) => {
                             </div>
                         )}
 
-                        <Share />
-
                         {project.event && (
                             <div className="fullProjectUnit">
                                 <h3>For Event</h3>
@@ -337,6 +346,8 @@ const ProjectView = ({ socket }) => {
                                 </Link>
                             </div>
                         )}
+
+                        <Share />
                     </div>
                 </div>
 
@@ -367,6 +378,16 @@ const ProjectView = ({ socket }) => {
                             </div>
                             <div className="fullProjectButtons">
                                 <button
+                                    className="post-pcancel-btn"
+                                    onClick={() =>
+                                        (document.querySelector(
+                                            "textarea[name='comments']"
+                                        ).value = "")
+                                    }
+                                >
+                                    Cancel
+                                </button>
+                                <button
                                     className="post-pcomment-btn"
                                     id="work-comment-btn"
                                     onClick={createComment}
@@ -375,9 +396,6 @@ const ProjectView = ({ socket }) => {
                                     {creatingComment
                                         ? "Loading..."
                                         : "Post Comment"}
-                                </button>
-                                <button className="post-pcancel-btn">
-                                    Cancel
                                 </button>
                             </div>
                         </div>
