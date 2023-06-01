@@ -29,7 +29,6 @@ const WorkCarousel = ({ fieldsAvailable, setCurrentField, currentField }) => {
         <Swiper
             slidesPerView={2}
             breakpoints={{
-                375: { slidesPerView: 3 },
                 700: { slidesPerView: 6 },
                 1000: { slidesPerView: 9 },
             }}

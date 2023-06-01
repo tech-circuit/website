@@ -163,9 +163,6 @@ button.workSortActive::after {
     display: block;
     text-align: left;
     font-weight: 400;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
 }
 .workCard h2 {
     font-size: 1vw;
@@ -175,6 +172,9 @@ button.workSortActive::after {
 .workCard h3 {
     font-size: 0.75vw;
     color: #747474;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .workCard:hover > h2,
@@ -636,6 +636,7 @@ button.workSortActive::after {
     font-size: 14px;
     color: #4678f9;
     margin-left: 20px;
+    text-decoration: underline;
 }
 .view-all:hover {
     text-decoration: underline;
@@ -812,9 +813,12 @@ button.workSortActive::after {
     }
 }
 @media (max-width: 500px) {
+    .work-car-item h1 {
+        font-size: 12px;
+    }
     .eventHead a {
-        font-size: 10px;
-        padding: 10px;
+        font-size: 11px;
+        padding: 10px 12px;
     }
     .eventHead a img {
         width: 12px;
@@ -837,25 +841,25 @@ button.workSortActive::after {
         padding-top: 4px;
     }
     .projects h1 {
-        font-size: 22px;
+        font-size: 24px;
     }
     .projects {
-        margin: 10px 0;
+        margin: 28px 0;
     }
     .workCard {
-        width: 45%;
-        margin: 0 2.5%;
-        margin-bottom: 20px;
+        width: 42%;
+        margin: 0 4%;
+        margin-bottom: 28px;
     }
     .workCard img {
         height: 18vh;
     }
     .workCard h2 {
-        font-size: 14px;
+        font-size: 16px;
         margin: 0;
     }
     .workCard h3 {
-        font-size: 12px;
+        font-size: 14px;
         margin: 0;
     }
     .fullEvent {

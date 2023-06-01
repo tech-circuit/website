@@ -50,12 +50,7 @@
     transition: all 0.3s;
 }
 .eventHead a:hover {
-    background: linear-gradient(
-            91.38deg,
-            rgba(255, 255, 255, 0.18) 16.97%,
-            rgba(255, 255, 255, 0) 100%
-        ),
-        #3f6ee6;
+    background: #3f6ee6;
 }
 /* Showcase */
 .showcase {

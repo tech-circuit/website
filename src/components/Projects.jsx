@@ -290,7 +290,7 @@ function ProjectView({ view, id, fieldsAvailable }) {
                             );
                         } else {
                             return (
-                                i < 6 && (
+                                i < (window.innerWidth < 700 ? 2 : 6) && (
                                     <ProjectCard
                                         project={project}
                                         view={view}
@@ -338,7 +338,10 @@ function ProjectView({ view, id, fieldsAvailable }) {
                                     );
                                 } else {
                                     return (
-                                        i < 6 && (
+                                        i <
+                                            (window.innerWidth < 700
+                                                ? 2
+                                                : 6) && (
                                             <ProjectCard
                                                 project={project}
                                                 view={view}
