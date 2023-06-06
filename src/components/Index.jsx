@@ -325,12 +325,19 @@ const Index = () => {
             <section className="hero">
                 <div className="hero-left">
                     <div className="container">
-                        <h1>
+                        {/* <h1>
                             The place where
                             <br />
                             <span id="title">everything</span>
                             <div id="cursor" className="cursor"></div>
                             &nbsp;takes place.
+                        </h1> */}
+                        <h1>
+                            A network of the best talented young{" "}
+                            <span style={{ color: "#4678f9" }}>
+                                tech enthusiasts
+                            </span>{" "}
+                            in India.
                         </h1>
                         <p data-aos="fade-right" data-aos-delay="200">
                             Join our mailing list to be notifed about the latest
@@ -365,15 +372,15 @@ const Index = () => {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            Join Discord Server &nbsp;&nbsp;
+                            Get Started &nbsp;&nbsp;
                             <img src="/assets/Right_Arrow.svg" alt="" />
                         </a>
-                        <div className="scroll-more-hold">
-                            <a href="#abt" className="scroll-more">
-                                Scroll to know more
-                            </a>
-                            <FaChevronDown />
-                        </div>
+                        {/* <div className="scroll-more-hold">
+                        <a href="#abt" className="scroll-more">
+                            Scroll to know more
+                        </a>
+                        <FaChevronDown />
+                    </div> */}
                     </div>
                 </div>
                 <div className="hero-right">
@@ -414,7 +421,7 @@ const Index = () => {
                             and events independently or through your
                             school/university or club.
                         </p>
-                        <img src="/assets/abt.svg" alt="About Banner" />
+                        {/* <img src="/assets/abt.svg" alt="About Banner" />
                         <p className="illuBy">
                             Illustrations by{" "}
                             <a
@@ -424,7 +431,7 @@ const Index = () => {
                             >
                                 Paridhi Bisht
                             </a>
-                        </p>
+                        </p> */}
                     </div>
                 </div>
                 <div className="abt-right">
@@ -452,46 +459,6 @@ const Index = () => {
             </section>
 
             <section className="feats">
-                <div className="clubs container">
-                    <div className="club-left">
-                        <h2 data-aos="fade-right">
-                            Home to the most influential
-                            <br />
-                            tech clubs from all over India.
-                        </h2>
-                        <p data-aos="fade-right" data-aos-delay="400">
-                            The biggest names in the Indian Tech Circuit,
-                            including Exun, CW, TS and more have tested and
-                            approved of the features that techCircuit offers.
-                        </p>
-                    </div>
-                    <div className="club-right">
-                        <div className="club-logos">
-                            <img
-                                data-aos="zoom-in"
-                                src="/assets/exun.png"
-                                alt="alt"
-                                className="club-logo"
-                            />
-                            <img
-                                data-aos="zoom-in"
-                                data-aos-delay="200"
-                                src="/assets/cw.jpeg"
-                                alt="alt"
-                                className="club-logo"
-                            />
-                            <img
-                                data-aos="zoom-in"
-                                data-aos-delay="300"
-                                src="/assets/ts.png"
-                                alt="alt"
-                                className="club-logo"
-                                style={{ backgroundColor: "#0E0C0C" }}
-                            />
-                        </div>
-                    </div>
-                </div>
-
                 <div className="feat container first-feat">
                     <div className="feat-banner">
                         <img
@@ -518,37 +485,10 @@ const Index = () => {
                 <div className="feat container">
                     <div className="feat-content">
                         <h2 data-aos="fade-right">
-                            Browsing events made easier for you!
-                        </h2>
-                        <p data-aos="fade-right" data-aos-delay="300">
-                            We strive to provide the ideal platform for people
-                            to host and promote their hackathons, designathons
-                            and tech symposiums, and coordinate schedules to
-                            avoid conflicts.
-                        </p>
-                    </div>
-                    <div className="feat-banner">
-                        <img
-                            className="feat-img-plus"
-                            src="/assets/land2.svg"
-                            alt="alt"
-                        />
-                    </div>
-                </div>
-                <div className="feat container">
-                    <div className="feat-banner">
-                        <img
-                            className="feat-img-minus"
-                            src="/assets/land3.svg"
-                            alt="alt"
-                        />
-                    </div>
-                    <div className="feat-content">
-                        <h2 data-aos="fade-left">
                             Meet. Share. Discuss. Welcome to Community of
                             creators!
                         </h2>
-                        <p data-aos="fade-left" data-aos-delay="300">
+                        <p data-aos="fade-right" data-aos-delay="300">
                             techCircuit has a friendly and really helpful
                             community which aims to ultimately help everyone
                             benefit from the platform. Creators can get feedback
@@ -559,68 +499,69 @@ const Index = () => {
                             tech.
                         </p>
                     </div>
-                </div>
-                <div className="feat container">
-                    <div className="feat-content">
-                        <h2 data-aos="fade-right">
-                            Curated crowdsourced resources for all fields!
-                        </h2>
-                        <p data-aos="fade-right" data-aos-delay="300">
-                            techCircuit also features learning resources for
-                            various tech-related fields, including Design, A/V,
-                            Software Development, Cryptic Hunts and more; to
-                            which members of the community can contribute.
-                        </p>
-                    </div>
                     <div className="feat-banner">
                         <img
                             className="feat-img-plus"
-                            src="/assets/land5.svg"
+                            src="/assets/land3.svg"
                             alt="alt"
-                            id="not-final-img"
                         />
                     </div>
                 </div>
-                <div className="feat container">
-                    <div className="feat-banner">
+            </section>
+
+            <div className="clubs container">
+                <div className="club-left">
+                    <h2 data-aos="fade-right">
+                        Home to the most influential
+                        <br />
+                        tech clubs from all over India.
+                    </h2>
+                    <p data-aos="fade-right" data-aos-delay="400">
+                        The biggest names in the Indian Tech Circuit, including
+                        Exun, CW, TS and more have tested and approved of the
+                        features that techCircuit offers.
+                    </p>
+                </div>
+                <div className="club-right">
+                    <div className="club-logos">
                         <img
-                            className="feat-img-minus"
-                            src="/assets/land4.svg"
+                            data-aos="zoom-in"
+                            src="/assets/exun.png"
                             alt="alt"
+                            className="club-logo"
                         />
-                    </div>
-                    <div className="feat-content">
-                        <h2 data-aos="fade-left">
-                            Place to discuss your interests & projects with
-                            everyone!
-                        </h2>
-                        <p data-aos="fade-left" data-aos-delay="300">
-                            Our forum provides a place for the tech community to
-                            discuss their interests or projects, promote
-                            content, and share their views on technology-related
-                            topics.
-                        </p>
-                    </div>
-                </div>
-                <div className="feat last-feat container">
-                    <div className="feat-content">
-                        <h2 data-aos="fade-right">
-                            Home to student clubs and organizations!
-                        </h2>
-                        <p data-aos="fade-right" data-aos-delay="300">
-                            techCircuit aims to provide a unified platform for
-                            school and college tech clubs and organizations to
-                            connect and host events.
-                        </p>
-                    </div>
-                    <div className="feat-banner">
                         <img
-                            className="feat-img-plus"
-                            src="/assets/land6.svg"
+                            data-aos="zoom-in"
+                            data-aos-delay="200"
+                            src="/assets/cw.jpeg"
                             alt="alt"
+                            className="club-logo"
+                        />
+                        <img
+                            data-aos="zoom-in"
+                            data-aos-delay="300"
+                            src="/assets/ts.png"
+                            alt="alt"
+                            className="club-logo"
+                            style={{ backgroundColor: "#0E0C0C" }}
                         />
                     </div>
                 </div>
+            </div>
+
+            <section className="ready">
+                <h4>Ready to join the community?</h4>
+                <a
+                    data-aos="fade-up"
+                    data-aos-delay="300"
+                    href="https://dsc.gg/techcircuit"
+                    className="hero-btn"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    Get Started &nbsp;&nbsp;
+                    <img src="/assets/Right_Arrow.svg" alt="" />
+                </a>
             </section>
 
             <Footer />

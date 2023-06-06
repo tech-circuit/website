@@ -1006,7 +1006,7 @@ i {
     }
 
     .input {
-        font-size: 12px;
+        font-size: 14px;
         padding: 0 10px;
         padding-left: 10px;
         width: 34vw;
@@ -1540,14 +1540,14 @@ i {
     }
 
     .input {
-        width: 50vw;
+        width: 100%;
     }
     .input input {
-        padding: 12px 6px;
-        font-size: 11px;
-        padding-left: 6px;
+        padding: 12px 10px;
+        font-size: 14px;
+        padding-left: 10px;
     }
     .input img {
-        width: 12px !important;
+        width: 16px !important;
     }
 }

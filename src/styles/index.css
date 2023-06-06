@@ -150,6 +150,8 @@
 
 .mail {
     display: flex;
+    margin-right: 10vw;
+    justify-content: space-between;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
     border-radius: 4px;
@@ -210,25 +212,28 @@
     flex-direction: column;
     justify-content: center;
 }
-
+.hero-left .container {
+    padding-right: 0;
+}
 .hero h1 {
-    font-size: 2.7vw;
-    font-weight: 400;
+    font-size: 2.4vw;
+    font-weight: 500;
     margin-top: 10vh;
-    height: 9vw;
-    width: 150%;
+    width: 100%;
 }
 
 .hero p {
     font-size: 1vw;
     margin-top: 1.6vh;
+    padding-right: 100px;
+    font-weight: 300;
 }
 
 .hero-btn {
     align-self: flex-start;
-    font-size: 14px;
+    font-size: 1vw;
     font-weight: 400;
-    padding: 16px 20px;
+    padding: 2vh 2vw;
     border-radius: 6px;
     background: #4678f9;
     color: #fff;
@@ -271,7 +276,10 @@
     display: flex;
     z-index: 9;
     padding: 10vh 0;
-    padding-bottom: 0;
+    padding-bottom: 14vh;
+    background-color: #29313d;
+    color: #fff;
+    overflow: hidden;
 }
 
 .abt-left {
@@ -286,7 +294,7 @@
 }
 
 .about h1 {
-    color: #4678f9;
+    color: #85d49c;
     font-weight: 400;
     font-size: 2.7vw;
 }
@@ -299,6 +307,7 @@
     font-size: 1vw;
     margin-top: 2vh;
     width: 36vw;
+    font-weight: 300;
 }
 
 .abt-left img {
@@ -391,6 +400,8 @@
     margin-top: 2vh;
     font-size: 1vw;
     padding-right: 9vw;
+    color: #fff;
+    font-weight: 300;
 }
 
 .club-logos {
@@ -403,24 +414,22 @@
 }
 
 .club-logo {
-    width: 26%;
-    margin: 1%;
+    width: 25%;
+    margin: 0 2.5%;
     background: #4678f9;
     border-radius: 12px;
-    box-shadow: 0px 5.664000034332275px 52.39200210571289px 0px #0000004d;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
 /* Write ---------------------------------------------------------------------------------------------------------- */
-
-.first-feat {
-    margin-top: 10vh;
+.feats {
+    padding: 6vh 0;
 }
-
 .feat {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 14vh 0;
+    margin: 2vh 0;
 }
 
 .feat-banner {
@@ -466,16 +475,15 @@
 .abt-right {
     width: 35%;
     position: relative;
-    overflow: hidden;
 }
 
 .circ-hold {
     position: relative;
-    top: 20%;
-    left: 5%;
+    top: 10%;
+    left: 35%;
     right: 100%;
-    width: 150%;
-    height: calc((35 / 100 * 100vw) * 1.5);
+    width: 90%;
+    height: 135%;
     border-radius: 50%;
     transform: translateY(-20%);
     animation: rot 8s infinite linear;
@@ -483,8 +491,8 @@
 
 .circ {
     position: absolute;
-    width: 12vw;
-    height: 12vw;
+    width: 8vw;
+    height: 8vw;
     background: #4678f9;
     border-radius: 50%;
     display: flex;
@@ -580,6 +588,27 @@
     pointer-events: all;
 }
 
+/* READY */
+.ready {
+    padding: 6vh 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.ready h4 {
+    color: #4678f9;
+    font-weight: 500;
+    font-size: 32px;
+}
+.ready .hero-btn {
+    margin: 0;
+    margin-top: 4vh;
+    align-self: center;
+    padding: 1.4vh 2vw;
+}
+
 /* MEDIAS */
 @media (max-width: 1400px) {
     .msg {
@@ -631,21 +660,20 @@
     .cursor {
         height: 4vh;
     }
-    .hero h1 {
-        height: 10vw;
+    .hero-btn {
+        font-size: 1.2vw;
     }
 }
-@media (max-width: 830px) {
+@media (max-width: 850px) {
     .cursor {
         height: 3vh;
     }
     .hero h1 {
         width: 100%;
-        padding: 0 18vw;
-        height: 14vw;
     }
     .hero {
         flex-direction: column;
+        margin-top: 4vh;
     }
     .hero-left,
     .hero-right {
@@ -660,6 +688,7 @@
     }
     .hero-left .container {
         align-items: center;
+        padding-right: 5vw;
     }
     .hero-left h1 {
         text-align: center;
@@ -678,6 +707,8 @@
         margin: 12px 0;
         align-self: center;
         /* font-size: 2.4vw; */
+        padding: 1vh 2vw;
+        font-size: 1.6vw;
     }
     .scroll-more-hold {
         display: none;
@@ -693,6 +724,9 @@
     .about p {
         width: 90%;
         font-size: 1.8vw;
+    }
+    .abt-left {
+        padding: 5vh 0;
     }
     .abt-left img {
         margin-top: 4vh;
@@ -710,6 +744,8 @@
 
     .clubs {
         flex-direction: column-reverse;
+        padding: 0;
+        padding: 4vh 0;
     }
     .club-left,
     .club-right {
@@ -724,11 +760,13 @@
         height: 60%;
     }
     .club-logo {
-        width: 25%;
-        margin: 1.8%;
+        width: 22%;
+        margin: 3%;
     }
     .club-left {
+        padding: 0;
         padding-bottom: 1vh;
+        margin-top: 1vh;
         text-align: center;
         align-items: center;
     }
@@ -737,10 +775,10 @@
         text-align: center;
     }
     .clubs p {
-        padding: 0 8vw;
+        padding: 0 20vw;
         line-height: 3vh;
         font-size: 2vw;
-        margin-top: 3vh;
+        margin-top: 1vh;
     }
     .club-btn {
         margin: 4vh 0;
@@ -748,8 +786,11 @@
         font-size: 2.4vw;
     }
 
+    .feats {
+        padding: 3vh 0;
+    }
     .feat {
-        margin: 12vh 0;
+        margin: 4vh 0;
         padding: 0;
     }
     .feat-banner {
@@ -818,23 +859,41 @@
         padding: 1vh 0;
         margin-top: 0.5vw;
     }
+    .mail {
+        margin: 0;
+    }
+    .mail .input {
+        padding: 0 2vw;
+    }
+    .mail .input input {
+        padding: 1.2vh 2vw !important;
+    }
+    .ready {
+        padding: 4vh 0;
+    }
+    .ready .hero-btn {
+        margin-top: 2vh;
+    }
 }
 @media (max-width: 630px) {
     .cursor {
         height: 2.6vh;
     }
+    .hero {
+        margin-top: 10vh;
+    }
     .hero h1 {
         width: 100%;
-        padding: 0 6vw;
-        height: 22vw;
+        padding: 0;
+        font-size: 2vw;
     }
     .hero-left,
     .hero-right {
         width: 100%;
-        height: 42vh;
     }
     .hero-right {
         justify-content: center;
+        height: 30vh;
     }
     .hero-right img {
         width: 80%;
@@ -844,7 +903,7 @@
     }
     .hero-left h1 {
         text-align: center;
-        font-size: 6vw;
+        font-size: 5vw;
         margin-top: 0;
     }
     .hero-left p {
@@ -857,8 +916,8 @@
     }
     .hero-btn {
         margin: 12px 0;
-        /* font-size: 3.4vw; */
-        /* width: 43%; */
+        font-size: 3.4vw;
+        padding: 1.4vh 4vw;
     }
 
     .about {
@@ -1023,6 +1082,10 @@
 
     .mail {
         justify-content: space-between;
-        width: 100%;
+        width: 90%;
+    }
+
+    .ready h4 {
+        font-size: 20px;
     }
 }

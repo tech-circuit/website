@@ -530,3 +530,8 @@ nav {
 .search-heading {
     margin-top: 5vh;
 }
+@media (max-width: 600px) {
+    .eventSearch {
+        width: 100%;
+    }
+}

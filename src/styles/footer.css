@@ -156,6 +156,9 @@
     .foot-bottom {
         margin-top: 6vh;
     }
+    .foot-bottom.container {
+        padding-right: 5vw;
+    }
     .foot svg {
         font-size: 2.6vw;
         margin: 0 1.2vw;

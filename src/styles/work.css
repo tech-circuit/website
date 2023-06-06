@@ -817,24 +817,32 @@ button.workSortActive::after {
         font-size: 12px;
     }
     .eventHead a {
-        font-size: 11px;
+        margin-top: 10px;
+        font-size: 14px;
         padding: 10px 12px;
     }
     .eventHead a img {
-        width: 12px;
+        width: 14px;
     }
     .head-1 .forumTitle {
-        font-size: 14px;
+        font-size: 16px;
         padding-right: 0;
     }
     .carHold {
-        padding: 0 12px;
+        padding: 0 24px;
+    }
+    #carNext,
+    #carPrev {
+        font-size: 18px;
+    }
+    #carPrev {
+        left: -1%;
     }
     #carNext {
-        left: 100%;
+        left: 97%;
     }
     .work-car-item {
-        height: 50px;
+        height: 56px;
         margin: 16px 0;
     }
     .eventHead2 {
