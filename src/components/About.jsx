@@ -204,10 +204,10 @@ const About = () => {
                     who have all experienced our own difficulties when trying to
                     build a better understanding of the tech circuit in general.
                     While we believe we live in an era full of opportunity and
-                    resources, much of it remains challenging to a lot of students to
-                    access. Given our abundant and constant access to valuable
-                    resources, we felt that we should do out part in helping
-                    fellow tech enthusiasts.
+                    resources, much of it remains challenging to a lot of
+                    students to access. Given our abundant and constant access
+                    to valuable resources, we felt that we should do out part in
+                    helping fellow tech enthusiasts.
                     <br />
                     <br />
                     Since long, the{" "}
@@ -469,14 +469,17 @@ const About = () => {
                         </div>
                     </div>
                 </div>
-                <h2>Got more Questions?</h2>
+                <h2>
+                    Ready to recruit some of the best technical & creative young
+                    minds out there?
+                </h2>
                 <Link className="btn" onClick={() => modalStateChange(false)}>
-                    Leave us a Message!&nbsp;&nbsp;
+                    Schedule a call&nbsp;&nbsp;
                     <FaLongArrowAltRight />
                 </Link>
             </div>
 
-            <div className="member-cont container">
+            {/* <div className="member-cont container">
                 <h1>Team behind techCircuit</h1>
                 <div className="big-members">
                     <div className="big-member member">
@@ -505,7 +508,7 @@ const About = () => {
                       </div>
                     ))}
                 </div>
-            </div>
+            </div> */}
 
             <Footer />
         </>

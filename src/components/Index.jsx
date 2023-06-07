@@ -553,7 +553,6 @@ const Index = () => {
                 <h4>Ready to join the community?</h4>
                 <a
                     data-aos="fade-up"
-                    data-aos-delay="300"
                     href="https://dsc.gg/techcircuit"
                     className="hero-btn"
                     target="_blank"

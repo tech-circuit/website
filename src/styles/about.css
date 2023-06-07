@@ -217,6 +217,7 @@
     font-size: 2vw;
     text-align: center;
     margin-top: 5vh;
+    width: 70%;
 }
 
 .faqs-cont .btn {
@@ -501,6 +502,7 @@
     }
     .faqs-cont h2 {
         font-size: 4vw;
+        width: 90%;
     }
     .faqs-cont .btn {
         font-size: 2.6vw;
@@ -684,7 +686,8 @@
         top: calc((1vw + 2.2vh));
     }
     .faqs-cont h2 {
-        font-size: 6vw;
+        font-size: 5vw;
+        width: 100%;
     }
     .faqs-cont .btn {
         font-size: 3.2vw;
