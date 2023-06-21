@@ -350,7 +350,7 @@ select.mod-input {
     font-family: Poppins;
     font-size: 1vw;
     transition: all 0.3s;
-    margin-top: 2vh;
+    margin-top: 1vh;
 }
 .button-org .deleteOrgBtn:hover {
     background: #d85656;
@@ -539,8 +539,20 @@ select.mod-input {
     .left-org .image-area.mini-img-area p {
         font-size: 8px;
     }
-    .button-org .createOrgButton {
+    .button-org .createOrgButton,
+    .deleteOrgBtn {
         font-size: 14px;
+    }
+    .deleteOrgBtn {
+        width: 100%;
+        margin-top: 6px;
+    }
+    .button-org {
+        margin-top: 32px;
+    }
+    #delete-icon {
+        font-size: 14px;
+        color: #ff6b6b;
     }
     .tags-hold {
         width: 100%;

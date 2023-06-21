@@ -239,3 +239,13 @@
     font-size: 2vw;
     font-weight: 500;
 }
+
+@media (max-width: 835px) {
+    .profileInfo .fields {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

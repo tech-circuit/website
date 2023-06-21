@@ -149,16 +149,17 @@
 }
 
 .mail {
-    display: flex;
+    display: none; /* For now */
     margin-right: 10vw;
     justify-content: space-between;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
     border-radius: 4px;
 }
 
 .mail .input {
     border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
 }
 
 .mail .input img {
@@ -173,7 +174,7 @@
     background: #29313d;
     color: #fff;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 3px;
     transition: all 0.3s;
 }
 .mail .btn:hover {
@@ -942,7 +943,7 @@
     .about p {
         width: 100%;
         font-size: 3vw;
-        text-align: center;
+        text-align: justify;
     }
     .abt-left img {
         margin-top: 2vh;
@@ -1024,7 +1025,7 @@
         padding: 0 7vw;
         font-size: 2.8vw;
         line-height: 2.7vh;
-        text-align: center;
+        text-align: justify;
         margin-bottom: 2vh;
     }
 

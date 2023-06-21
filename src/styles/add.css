@@ -345,5 +345,12 @@
     .head-2 {
         flex-direction: column;
         align-items: flex-start;
+        padding-bottom: 12px;
+    }
+    .profile-tabs {
+        padding-bottom: 0;
+    }
+    .pInfo {
+        margin-top: 1vh;
     }
 }

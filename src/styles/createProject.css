@@ -180,6 +180,22 @@
 .img-sub-heading {
     margin-bottom: 2vh;
 }
+.field-box-overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 30;
+    display: none;
+    pointer-events: none;
+}
+.field-box-overlay-active {
+    display: block;
+    pointer-events: all;
+}
+
+/* MEDIA */
 @media (max-width: 1100px) {
     .field {
         font-size: 12px;
@@ -206,5 +222,26 @@
     }
     .tags-hold {
         padding-left: 6px;
+    }
+}
+@media (max-width: 500px) {
+    .filter-hold .field-box {
+        padding: 12px 18px;
+        left: auto;
+        right: 0;
+        width: 80vw;
+        z-index: 40;
+    }
+    .field {
+        margin: 4px 0;
+    }
+    .filter-btns {
+        display: flex;
+        align-items: center;
+        margin-top: 22px;
+    }
+    .filter-btns .close {
+        margin: 0;
+        margin-left: 24px;
     }
 }

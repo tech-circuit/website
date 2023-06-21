@@ -810,16 +810,19 @@ nav {
         padding: 1vh 5vw;
     }
     .login-btn {
-        position: fixed;
+        /* position: fixed;
         bottom: 2%;
         right: calc(45vw / 2);
-        transform: translate3d(300%, 0, 0);
+        transform: translate3d(300%, 0, 0); */
         z-index: 11;
+        padding: 0.6vh 1vw;
+        font-size: 14px;
+        margin-right: 20px;
     }
-    .login-btn-active {
+    /* .login-btn-active {
         transform: translate3d(50%, 0, 0);
         box-shadow: 0 0 100px #29313d56;
-    }
+    } */
     nav {
         height: 50px;
     }
@@ -845,12 +848,12 @@ nav {
         z-index: 11;
     }
     .pfp-active {
-        transform: translate3d(50%, 0, 0);
+        transform: translate3d(10%, 0, 0);
         box-shadow: 0 0 100px #29313d56;
     }
     .logout {
         position: fixed;
-        bottom: 2%;
+        bottom: calc(8% + 8vw / 2);
         right: calc(45vw / 2);
         transform: translate3d(860%, 0, 0);
         z-index: 11;
@@ -885,11 +888,11 @@ nav {
         right: calc(80vw / 2);
     }
     .pfp-active {
-        transform: translate3d(50%, 0, 0);
+        transform: translate3d(10%, 0, 0);
         box-shadow: 0 0 100px #29313d56;
     }
     .logout {
-        right: calc(80vw / 2);
+        right: calc(60vw / 2);
     }
     .logout img {
         width: 7vw;

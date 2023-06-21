@@ -1,18 +1,17 @@
 import "../styles/work.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useState, useRef, useEffect } from "react";
-// import OwlCarousel from "react-owl-carousel2";
 import BASE_API_URL from "../constants";
 import ProjectCard from "./utility/ProjectCard";
 import notyf from "../tcNotyf";
 import WorkCarousel from "./utility/WorkCarousel";
 import FullProject from "./utility/FullProject";
 import Search from "./utility/Search";
-import { Link } from "react-router-dom";
 import { useFieldsAvailable } from "./utility/useFieldsAvailable";
+import Filter from "./utility/Filter";
 
 const Projects = ({ socket }) => {
-    // const [workSort, setWorkSort] = useState("Coding")
+    // const [workSort, setWorkSort] = useState("Coding");
     const [searchProjects, setSearchProjects] = useState([]);
     const [searching, setSearching] = useState(false);
     const [searchLoading, setSearchLoading] = useState(false);
@@ -168,17 +167,17 @@ const Projects = ({ socket }) => {
                         loading={searchLoading}
                         placeholder="Search for amazing projects"
                     />
-                    {/* <Filter
-                        fieldsAvailable={fieldsAvailable}
-                        field={currentField}
-                        setField={setCurrentField}
-                    /> */}
                 </div>
                 <div className="addEvent">
                     <a href="/create-project">
                         <img src="/assets/plus.svg" alt="alt" />
                         &nbsp;&nbsp;Create Project
                     </a>
+                    <Filter
+                        fieldsAvailable={fieldsAvailable}
+                        field={currentField}
+                        setField={setCurrentField}
+                    />
                 </div>
             </header>
 
@@ -228,7 +227,7 @@ const Projects = ({ socket }) => {
     );
 
     // function sortWork(eve) {
-    //   setWorkSort(eve.target.textContent);
+    //     setWorkSort(eve.target.textContent);
     // }
 };
 

@@ -1,10 +1,11 @@
 .abt-hero {
     text-align: center;
-    height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 18vh;
+    margin-bottom: 12vh;
 }
 
 .abt-hero img {
@@ -377,8 +378,11 @@
     margin-bottom: 10vh;
 }
 .about-abt .abt-right {
-    height: auto;
-    transform: scale(0.8) translateX(20%) translateY(-18%);
+    width: 35%;
+    position: relative;
+}
+.about-abt .abt-right .circ-hold {
+    height: 90%;
 }
 .about-abt {
     margin-bottom: -10vh;
@@ -396,9 +400,6 @@
 
 /* MEDIA */
 @media (max-width: 830px) {
-    .abt-hero {
-        height: 75vh;
-    }
     .abt-hero img {
         width: 50%;
         margin: 0;
@@ -580,10 +581,7 @@
         margin-bottom: 1vh;
     }
 }
-@media (max-width: 500px) {
-    .abt-hero {
-        height: 80vh;
-    }
+@media (max-width: 640px) {
     .abt-hero img {
         width: 70%;
     }
@@ -605,7 +603,7 @@
         top: 40%;
     }
     .why {
-        margin-top: 4vh;
+        margin-top: 0;
         padding-top: 4vh;
         padding-bottom: 4vh;
     }
@@ -769,5 +767,12 @@
 
     .about-abt .abt-right {
         transform: scale(1) translateX(0) translateY(-22%);
+    }
+    .about-abt .abt-right .circ-hold {
+        height: 150%;
+        left: 22.5%;
+    }
+    .about-abt {
+        margin-bottom: 0;
     }
 }

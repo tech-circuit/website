@@ -8,7 +8,7 @@ const Filter = ({ field, setField, fieldsAvailable }) => {
         <div className="field-hold filter-hold">
             <button className="eventFilter" onClick={() => setActive(!active)}>
                 <IoFilter className="filter-icon" />
-                &nbsp;&nbsp;&nbsp;&nbsp;Filter fields
+                &nbsp;&nbsp;&nbsp;Filter fields
             </button>
 
             <div className={`field-box ${active && "field-box-active"}`}>
@@ -29,16 +29,31 @@ const Filter = ({ field, setField, fieldsAvailable }) => {
                         );
                     })}
                 </div>
-                <button
-                    className="close"
-                    style={{ color: "#747474" }}
-                    onClick={() => {
-                        setActive(false);
-                    }}
-                >
-                    Close
-                </button>
+                <div className="filter-btns">
+                    <button
+                        onClick={() => setField(null)}
+                        style={{ color: "#747474" }}
+                    >
+                        Reset
+                    </button>
+                    <button
+                        className="close"
+                        style={{ color: "#747474" }}
+                        onClick={() => {
+                            setActive(false);
+                        }}
+                    >
+                        Close
+                    </button>
+                </div>
             </div>
+
+            <div
+                className={`field-box-overlay ${
+                    active && "field-box-overlay-active"
+                }`}
+                onClick={() => setActive(false)}
+            ></div>
         </div>
     );
 };

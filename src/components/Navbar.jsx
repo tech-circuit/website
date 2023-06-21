@@ -202,6 +202,17 @@ const Navbar = ({ socket }) => {
                         Home
                     </Link>
                     <Link
+                        to="/projects"
+                        onClick={(e) => setActivePage("/projects")}
+                        className={
+                            activePage === "/projects"
+                                ? "nav-link nav-link-active"
+                                : "nav-link"
+                        }
+                    >
+                        Projects
+                    </Link>
+                    <Link
                         to="/about"
                         onClick={(e) => setActivePage("/about")}
                         className={
@@ -223,17 +234,6 @@ const Navbar = ({ socket }) => {
                     >
                         Forum
                     </Link> */}
-                    <Link
-                        to="/projects"
-                        onClick={(e) => setActivePage("/projects")}
-                        className={
-                            activePage === "/projects"
-                                ? "nav-link nav-link-active"
-                                : "nav-link"
-                        }
-                    >
-                        Projects
-                    </Link>
                     {/* <Link
                         to="/events"
                         onClick={(e) => setActivePage("/events")}
@@ -301,7 +301,7 @@ const Navbar = ({ socket }) => {
                                 }
                             />
                         </button> */}
-                        <Link to="/profile">
+                        <Link to="/profile" onClick={(e) => setHam(!hamActive)}>
                             <img
                                 src={
                                     pfpUrl ? pfpUrl : "/assets/userFlowIcon.svg"

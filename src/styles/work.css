@@ -72,8 +72,8 @@
     margin-bottom: 14px;
     display: flex;
     width: 100%;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: space-between;
+    align-items: baseline;
 }
 .projects h1 a {
     color: #4678f9;
@@ -163,18 +163,17 @@ button.workSortActive::after {
     display: block;
     text-align: left;
     font-weight: 400;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 .workCard h2 {
     font-size: 1vw;
     font-weight: 500;
-    margin: 0;
 }
 .workCard h3 {
     font-size: 0.75vw;
     color: #747474;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
 }
 
 .workCard:hover > h2,
@@ -641,6 +640,9 @@ button.workSortActive::after {
 .view-all:hover {
     text-decoration: underline;
 }
+.eventFilter {
+    display: none !important;
+}
 @media (max-width: 1100px) {
     .project-body {
         margin-top: 20px;
@@ -827,9 +829,10 @@ button.workSortActive::after {
     .head-1 .forumTitle {
         font-size: 16px;
         padding-right: 0;
+        margin-bottom: 10px;
     }
     .carHold {
-        padding: 0 24px;
+        display: none;
     }
     #carNext,
     #carPrev {
@@ -1000,5 +1003,20 @@ button.workSortActive::after {
     .edit-wrap {
         display: flex;
         align-items: center;
+    }
+    .addEvent {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .eventFilter {
+        display: flex !important;
+        margin-top: 10px;
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+    .eventFilter svg {
+        font-size: 14px !important;
     }
 }
